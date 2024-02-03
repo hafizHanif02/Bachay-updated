@@ -7206,4 +7206,8 @@
   'colour_is_shown_in_the_image_section_top_right.' => 'Colour is shown in the image section top right.',
   'welcome_back_to_vendor_login' => 'Welcome back to vendor login',
   'no_Data_Found' => 'No Data Found',
+  'general_Settings' => 'General Settings',
+  'business_Settings' => 'Business Settings',
+  'only_the_Admin_Panel_&_Vendor_Panel_will_be_functional' => 'Only the Admin Panel & Vendor Panel will be functional',
+  'admin_password_updated_successfully' => 'Admin password updated successfully',
 );
