@@ -1,5 +1,5 @@
 @if ($most_demanded_product !=null)
-<section class="most-demanded-product-section section-gap pb-0">
+<section class="most-demanded-product-section section-gap pb-0 pt-0">
     <div class="overflow-hidden">
         <div class="section-title-2 text-capitalize">
             <span class="shapetitle">{{ translate('most_demanded') }}</span>

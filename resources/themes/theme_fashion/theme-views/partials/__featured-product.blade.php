@@ -1,4 +1,4 @@
-<section class="recommended-product-section section-gap">
+<section class="recommended-product-section section-gap pt-3 pb-3">
     <div class="container">
         <div class="section-title pb-lg-1 text-capitalize">
             <div class="d-flex flex-wrap justify-content-between row-gap-2 column-gap-4 align-items-center single_section_dual_tabs">
