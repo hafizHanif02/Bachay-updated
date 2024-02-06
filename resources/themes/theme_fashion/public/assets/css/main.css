@@ -1256,7 +1256,7 @@ footer .footer-top {
   background-color: var(--body-bg);
   color: var(--title);
   block-size: var(--block-size);
-  font-size: 1rem;
+  font-size: 12px;
 }
 
 /*
@@ -1449,7 +1449,7 @@ input:-webkit-autofill:active {
     left: 0.3571428571rem;
     height: 2px;
     transition: all ease 0.3s;
-    background: var(--title);
+    background: #000;
     width: 0;
   }
   .menu-area .menu li a:hover::before,
@@ -2381,7 +2381,7 @@ a:not(:focus) ~ .__dropdown-menu {
   }
 }
 .search-form .input-group .form-control {
-  height: 3.2142857143rem;
+  height: 2.2142857143rem;
   border: none;
   padding-inline-start: 1.2857142857rem;
   width: 0;

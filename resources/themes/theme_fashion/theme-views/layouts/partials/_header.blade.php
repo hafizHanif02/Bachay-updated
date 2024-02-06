@@ -1,3 +1,8 @@
+<style>
+    .nav-ul_text{
+        color: #000 !important;
+    }
+</style>
 @if (isset($web_config['announcement']) && $web_config['announcement']['status']==1)
     <div class="offer-bar" data-bg-img="{{theme_asset('assets/img/media/top-offer-bg.png')}}">
         <div class="d-flex py-2 gap-2 align-items-center">
@@ -11,7 +16,7 @@
     </div>
 @endif
 
-<header class="bg-base">
+<header class="bg-base" style="background: #fff !important;">
     <div class="search-form-header d-xl-none">
         <div class="d-flex w-100 align-items-center">
             <div class="close-search search-toggle" id="hide_search_toggle">
@@ -105,7 +110,7 @@
                         <input type="text" class="form-control" id="input-value-web" name="name" value="{{ request('name') }}"
                                 placeholder="{{ translate('search_for_items_or_store') }}" style="color: #000;">
                 
-                        <button class="btn btn-base bg-danger" type="submit"><i class="bi bi-search"></i></button>
+                        <button class="btn btn-base bg-light border" type="submit"><i class="bi bi-search" style="color: #000;"></i></button>
                         <div class="card search-card position-absolute z-99 w-100 bg-white d-none top-100 start-0 search-result-box-web"></div>
                     </div>
                     <input name="data_from" value="search" hidden>
@@ -116,11 +121,11 @@
                 <ul class="menu me-xl-4">
                     <li>
                         <a href="{{route('home')}}"
-                           class="{{ Request::is('/')?'active':'' }}">{{ translate('home') }}</a>
+                           class="{{ Request::is('/')?'active':'' }} nav-ul_text">{{ translate('home') }}</a>
                     </li>
                     @php($categories = \App\Utils\CategoryManager::get_categories_with_counting())
                     <li>
-                        <a href="javascript:">{{ translate('all_categories')}}</a>
+                        <a href="javascript:" class="nav-ul_text">{{ translate('all_categories')}}</a>
                         <ul class="submenu">
                             @foreach($categories as $key => $category)
                                 @if ($key <= 10)
@@ -141,12 +146,12 @@
                     @if($web_config['brand_setting'])
                         <li>
                             <a href="{{route('brands')}}"
-                               class="{{ Request::is('brands')?'active':'' }}">{{ translate('all_brand') }}</a>
+                               class="{{ Request::is('brands')?'active':'' }} nav-ul_text">{{ translate('all_brand') }}</a>
                         </li>
                     @endif
                     <li>
                         <a href="{{route('products',['data_from'=>'discounted','page'=>1])}}"
-                           class="{{ request('data_from')=='discounted'?'active':'' }}">
+                           class="{{ request('data_from')=='discounted'?'active':'' }} nav-ul_text">
                             {{ translate('offers') }}
                             <div class="offer-count flower-bg d-flex justify-content-center align-items-center offer-count-custom ">
                                 {{ ($web_config['total_discount_products'] < 100 ? $web_config['total_discount_products']:'99+') }}
@@ -157,7 +162,7 @@
                     @if($web_config['business_mode'] == 'multi')
                         <li>
                             <a href="{{route('vendors')}}"
-                               class="{{ Request::is('vendors')?'active':'' }}">{{translate('vendors')}}</a>
+                               class="{{ Request::is('vendors')?'active':'' }} nav-ul_text">{{translate('shops')}}</a>
                         </li>
 
                         @if ($web_config['seller_registration'])
@@ -182,7 +187,7 @@
                         @else
                             <a href="javascript:" class="customer_login_register_modal">
                                 <div class="position-relative mt-1 px-8px">
-                                    <i class="bi bi-heart"></i>
+                                    <i class="bi bi-heart nav-ul_text"></i>
                                     <span class="btn-status">{{translate('0')}}</span>
                                 </div>
                             </a>
@@ -265,9 +270,10 @@
                     @else
                         <li class="me-2 me-sm-0">
                             <a href="javascript:" class="customer_login_register_modal">
-                                <i class="bi bi-person d-none d-xl-inline-block"></i>
-                                <i class="bi bi-person-circle d-xl-none"></i>
-                                <span class="mx-1 d-none d-md-block">{{ translate('login') }} / {{ translate('register') }}</span>
+                                <i class="bi bi-person d-none d-xl-inline-block nav-ul_text"></i>
+                                <i class="bi bi-person-circle d-xl-none nav-ul_text"></i>
+                                <span class="mx-1 d-none d-md-block nav-ul_text
+                                ">{{ translate('login') }} / {{ translate('register') }}</span>
                             </a>
                         </li>
                     @endif
