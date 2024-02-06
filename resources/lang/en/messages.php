@@ -7210,4 +7210,6 @@
   'business_Settings' => 'Business Settings',
   'only_the_Admin_Panel_&_Vendor_Panel_will_be_functional' => 'Only the Admin Panel & Vendor Panel will be functional',
   'admin_password_updated_successfully' => 'Admin password updated successfully',
+  'all_Pages_Banner ' => 'All Pages Banner ',
+  '' => '',
 );

@@ -93,6 +93,25 @@
                 <img loading="lazy" class="d-none d-sm-block"
                      src="{{ getValidImage(path: "storage/app/public/company/".$web_config['web_logo']->value, type: 'logo') }}" alt="{{ translate('logo') }}">
             </a>
+            <div class="container d-none d-xl-block col-3">
+                <form class="search-form m-0 p-0" action="{{route('products')}}" type="submit">
+                    <div class="input-group search_input_group">
+                        {{-- <select class="select2-init" id="search_category_value_web" name="search_category_value">
+                            <option value="all">{{translate('all_Categories')}}</option>
+                            @foreach($web_config['main_categories'] as $category)
+                            <option value="{{ $category->id }}" {{ $category->id == request('search_category_value') ? 'selected':'' }}>{{$category['name']}}</option>
+                            @endforeach
+                        </select> --}}
+                        <input type="text" class="form-control" id="input-value-web" name="name" value="{{ request('name') }}"
+                                placeholder="{{ translate('search_for_items_or_store') }}" style="color: #000;">
+                
+                        <button class="btn btn-base bg-danger" type="submit"><i class="bi bi-search"></i></button>
+                        <div class="card search-card position-absolute z-99 w-100 bg-white d-none top-100 start-0 search-result-box-web"></div>
+                    </div>
+                    <input name="data_from" value="search" hidden>
+                    <input name="page" value="1" hidden>
+                </form>
+            </div>
             <div class="menu-area text-capitalize">
                 <ul class="menu me-xl-4">
                     <li>
@@ -172,7 +191,9 @@
                     <li id="cart_items" class="d-none d-xl-block">
                         @include('theme-views.layouts.partials._cart')
                     </li>
-                    <li class="d-none d-sm-block">
+                    {{-- currency  --}}
+
+                    {{-- <li class="d-none d-sm-block">
                         <a href="javascript:">
                             <i class="">{{ session('currency_symbol') }}</i>
                             <i class="ms-1 text-small bi bi-chevron-down"></i>
@@ -186,8 +207,11 @@
                                 <span id="currency-route" data-currency-route="{{route('currency.change')}}"></span>
                             </ul>
                         </div>
-                    </li>
-                    <li class="d-none d-sm-block">
+                    </li> --}}
+
+                    {{-- translate --}}
+
+                    {{-- <li class="d-none d-sm-block">
                         <a href="javascript:">
                             <i class="bi bi-translate"></i>
                             <i class="ms-1 text-small bi bi-chevron-down"></i>
@@ -207,7 +231,7 @@
                                 @endforeach
                             </ul>
                         </div>
-                    </li>
+                    </li> --}}
                     <li class="d-xl-none">
                         <a href="javascript:" class="search-toggle">
                             <i class="bi bi-search"></i>
@@ -250,8 +274,8 @@
                             </a>
                         </li>
                     @endif
-
-                    <div class="darkLight-switcher d-none d-xl-block">
+                    {{-- dark mode switch --}}
+                    {{-- <div class="darkLight-switcher d-none d-xl-block">
                         <button type="button" title="{{ translate('Dark_Mode') }}" class="dark_button">
                             <img loading="lazy" class="svg" src="{{theme_asset('assets/img/icons/dark.svg')}}"
                                  alt="{{ translate('dark_Mode') }}">
@@ -260,14 +284,15 @@
                             <img loading="lazy" class="svg" src="{{theme_asset('assets/img/icons/light.svg')}}"
                                  alt="{{ translate('light_Mode') }}">
                         </button>
-                    </div>
+                    </div> --}}
 
+                    {{-- vendor registration --}}
 
-                    @if ($web_config['business_mode'] == 'multi' && $web_config['seller_registration'])
+                    {{-- @if ($web_config['business_mode'] == 'multi' && $web_config['seller_registration'])
                         <li class="me-2 me-xl-0 d-none d-sm-block">
                             <a href="{{route('shop.apply')}}" class="btn __btn-outline">{{translate('vendor_reg').'.'}}</a>
                         </li>
-                    @endif
+                    @endif --}}
 
                     <li class="nav-toggle d-xl-none" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
                         aria-controls="offcanvasRight">
