@@ -2,7 +2,7 @@
     <div class="container">
         <div class="section-title-3 mb-0">
             <div class="mb-32px">
-                <h1 class="title mx-auto mb-0 text-capitalize main-sec_heading">{{ translate('most_visited_categories') }}</h1>
+                <h2 class="title mx-auto mb-0 text-capitalize">{{ translate('most_visited_categories') }}</h2>
             </div>
         </div>
 
