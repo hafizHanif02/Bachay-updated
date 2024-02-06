@@ -196,6 +196,10 @@ h6 {
   line-height: 1.2857142857rem;
 }
 
+.main-sec_heading{
+  font-size: 44px;
+}
+
 @media (max-width: 575px) {
   h1 {
     font-size: 2.1428571429rem;
@@ -1762,7 +1766,7 @@ input:-webkit-autofill:active {
 }
 
 header {
-  padding: 16px 0;
+  padding: 10px 0;
   z-index: 999;
   position: sticky;
   top: 0;
@@ -4031,10 +4035,12 @@ a:not(:focus) ~ .__dropdown-menu {
   width: 10.4285714286rem;
   height: 17.7142857143rem;
 }
-
+.most-visited-category-wrapper a {
+  border-radius: 20px;
+}
 @media (min-width: 1199px) {
   .most-visited-category-wrapper > .most-visited-item {
-    max-width: 18.8571428571rem;
+    /* max-width: 18.8571428571rem; */
   }
 }
 .most-visited-category-wrapper .most-visited-item {
