@@ -1,5 +1,5 @@
 @if($deal_of_the_day)
-    <section class="deal-of-the-day section-gap pb-0">
+    <section class="deal-of-the-day section-gap pb-0 pt-3">
         <div class="container">
             <div class="deal-of-the-day-wrapper">
                 <img loading="lazy" src="{{asset('/resources/themes/theme_fashion/public/assets/img/deal/dd-1.png')}}"
