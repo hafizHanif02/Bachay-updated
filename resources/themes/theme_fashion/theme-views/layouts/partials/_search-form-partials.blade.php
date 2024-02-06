@@ -1,4 +1,4 @@
-{{-- <form class="search-form" action="{{route('products')}}" type="submit">
+<form class="search-form" action="{{route('products')}}" type="submit">
     <div class="input-group search_input_group">
         <select class="select2-init" id="search_category_value_web" name="search_category_value">
             <option value="all">{{translate('all_Categories')}}</option>
@@ -14,4 +14,4 @@
     </div>
     <input name="data_from" value="search" hidden>
     <input name="page" value="1" hidden>
-</form> --}}
+</form>
