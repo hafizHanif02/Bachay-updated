@@ -1651,8 +1651,8 @@ input:-webkit-autofill:active {
 
 .header-right-icons li a .btn-status {
   position: absolute;
-  inset-inline-end: 0px;
-  inset-block-start: -4px;
+  inset-inline-end: -2px;
+  inset-block-start: -7px;
   width: 1.2rem;
   height: 1.2rem;
   font-size: 0.8571428571rem;
