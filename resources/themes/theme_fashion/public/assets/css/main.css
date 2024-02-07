@@ -2392,7 +2392,7 @@ a:not(:focus) ~ .__dropdown-menu {
   }
 }
 .search-form .input-group .form-control {
-  height: 2.2142857143rem;
+  height: 2.5rem;
   border: none;
   padding-inline-start: 1.2857142857rem;
   width: 0;

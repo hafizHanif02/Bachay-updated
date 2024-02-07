@@ -338,7 +338,7 @@
                         @if (auth('customer')->check())
                             <a href="{{ route('wishlists') }}">
                                 <div class="position-relative mt-1 px-8px">
-                                    <i class="bi bi-heart"></i>
+                                    <i class="bi bi-heart" style="font-size: 16px !important;"></i>
                                     <span
                                         class="btn-status wishlist_count_status">{{ session()->has('wish_list') ? count(session('wish_list')) : 0 }}</span>
                                 </div>
@@ -346,7 +346,7 @@
                         @else
                             <a href="javascript:" class="customer_login_register_modal">
                                 <div class="position-relative mt-1 px-8px">
-                                    <i class="bi bi-heart nav-ul_text"></i>
+                                    <i class="bi bi-heart nav-ul_text"  style="font-size: 16px !important;"></i>
                                     <span class="btn-status">{{ translate('0') }}</span>
                                 </div>
                             </a>
@@ -401,8 +401,8 @@
                     @if (auth('customer')->check())
                         <li class="me-2 me-sm-0">
                             <a href="javascript:">
-                                <i class="bi bi-person d-none d-xl-inline-block"></i>
-                                <i class="bi bi-person-circle d-xl-none"></i>
+                                <i class="bi bi-person d-none d-xl-inline-block" style="font-size: 16px !important"></i>
+                                <i class="bi bi-person-circle d-xl-none" style="font-size: 16px !important"></i>
                                 <span class="mx-1 d-none d-md-block">{{ auth('customer')->user()->f_name }}</span>
                                 <i class="ms-1 text-small bi bi-chevron-down d-none d-md-block"></i>
                             </a>
@@ -431,8 +431,8 @@
                     @else
                         <li class="me-2 me-sm-0">
                             <a href="javascript:" class="customer_login_register_modal">
-                                <i class="bi bi-person d-none d-xl-inline-block nav-ul_text"></i>
-                                <i class="bi bi-person-circle d-xl-none nav-ul_text"></i>
+                                <i class="bi bi-person d-none d-xl-inline-block nav-ul_text" style="font-size: 16px !important;"></i>
+                                <i class="bi bi-person-circle d-xl-none nav-ul_text" style="font-size: 16px !important;"></i>
                                 <span
                                     class="mx-1 d-none d-md-block nav-ul_text
                                 ">{{ translate('login') }}
