@@ -1,5 +1,6 @@
-@if ($main_banner->count() > 0)
+{{-- @if ($main_banner->count() > 0)
 <section class="banner-section custom-height">
+
     <div class="banner-slider owl-theme owl-carousel custom-single-slider">
         @foreach($main_banner as $banner)
         <div class="banner-slide" style="--base: {{ $banner['background_color'] }};">
@@ -43,5 +44,8 @@
     <section class="promo-page-header">
         <div class="product_blank_banner"></div>
     </section>
-@endif
+@endif --}}
+<h1>
+    hello
+</h1>
 
