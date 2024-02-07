@@ -250,7 +250,7 @@
                     src="{{ getValidImage(path: 'storage/app/public/company/' . $web_config['web_logo']->value, type: 'logo') }}"
                     alt="{{ translate('logo') }}">
             </a>
-            <div class="container d-none d-xl-block col-3">
+            <div class="container d-none d-xl-block col-4">
                 <form class="search-form m-0 p-0" action="{{ route('products') }}" type="submit">
                     <div class="input-group search_input_group">
                         {{-- <select class="select2-init" id="search_category_value_web" name="search_category_value">
@@ -474,8 +474,9 @@
             <ul class="container-xxl sub-nav d-flex justify-content-between align-items-baseline pt-3 pb-3 mb-0">
                 <li>
                     <a href="#" class="all_categories">
-                            <i class="bi bi-grid"></i> Browse All
-                            Categories 
+                            <img src="{{ asset('public/images/union.png') }}" alt="" width="15px" height="15px">
+                             <span class="mt-1">Browse All
+                                Categories </span>
                     </a>
                     <div class="mega-menu-container">
                         <div class="mega-menu-grid">
@@ -620,7 +621,7 @@
                 <li> <a href="#" class="drp-btn active">
                         
                         <img class="align-items-center mb-2 me-1" src="{{ asset('public/images/fire.gif') }}"
-                            alt="" width="17px" height="24px"> <span>Hot Deals</span>
+                            alt="" width="17px" height="24px"> <span style="color: #ff6b00; ">Hot Deals</span>
                     </a>
                     <div class="mega-menu-container">
                         <div class="mega-menu-grid">
