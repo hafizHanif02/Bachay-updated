@@ -79,7 +79,7 @@
         position: absolute;
         display: block;
         width: 100%;
-        top: 50px;
+        top: 100%;
         left: 0;
         visibility: hidden;
         overflow-y: auto;
