@@ -174,7 +174,10 @@ h6 {
   line-height: 1.4285714286rem;
   letter-spacing: 0.05em;
 }
-
+.nav-ul_text{
+  font-size: 12px !important;
+  font-weight: 600;
+}
 .text-normal {
   font-weight: 450;
   font-size: 1rem !important;

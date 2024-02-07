@@ -3,6 +3,7 @@
 @section('title', $web_config['name']->value.' '.translate('online_shopping').' | '.$web_config['name']->value.' '.translate('ecommerce'))
 
 @push('css_or_js')
+    <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Poppins' />
     <meta property="og:image" content="{{asset('storage/app/public/company')}}/{{$web_config['web_logo']->value}}"/>
     <meta property="og:title" content="Welcome To {{$web_config['name']->value}} Home"/>
     <meta property="og:url" content="{{ config('app.url') }}">
