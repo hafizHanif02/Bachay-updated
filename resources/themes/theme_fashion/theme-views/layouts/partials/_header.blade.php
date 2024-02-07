@@ -47,9 +47,9 @@
     .sub-nav {
         position: relative;
         cursor: default;
-        z-index: 1004;
-        /* padding-left: 50px !important;
-    padding-right: 50px !important; */
+        /* z-index: 1004;
+        padding-left: 50px !important;
+        padding-right: 50px !important; */
         padding-left: 1.7142857143rem !important;
         padding-right: 1.7142857143rem !important;
     }
