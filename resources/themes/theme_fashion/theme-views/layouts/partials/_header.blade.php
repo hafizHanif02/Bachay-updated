@@ -9,6 +9,7 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-family: 'Aristotelica' !important;
+    font-size: 18px !important;
 }
 </style>
 <style>
