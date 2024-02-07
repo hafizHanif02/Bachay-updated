@@ -1460,7 +1460,7 @@ input:-webkit-autofill:active {
     left: 0.3571428571rem;
     height: 2px;
     transition: all ease 0.3s;
-    background: #000;
+    background: #845dc2;
     width: 0;
   }
   .menu-area .menu li a:hover::before,

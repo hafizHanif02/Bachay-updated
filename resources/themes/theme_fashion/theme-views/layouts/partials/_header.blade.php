@@ -2,7 +2,9 @@
     .nav-ul_text {
         color: #000 !important;
     }
-
+    .nav-ul_text:hover{
+        color: #845dc2 !important;
+    }
     .all_categories {
         font-weight: 600 !important;
         background: linear-gradient(90.27deg, #845dc2 -27.96%, #f99327 -27.94%, #d55fad 28.41%, #845dc2 82.13%, #845dc2 130.57%);
@@ -21,6 +23,9 @@
     .drp-btn {
         color: #000 !important;
         font-family: 'Aristotelica' !important;
+    }
+    .drp-btn:hover{
+        color: #845dc2 !important;
     }
 
     .collection-item h4 {
