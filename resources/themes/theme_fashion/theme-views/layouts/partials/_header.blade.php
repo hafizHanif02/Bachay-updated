@@ -338,7 +338,7 @@
                         @if (auth('customer')->check())
                             <a href="{{ route('wishlists') }}">
                                 <div class="position-relative mt-1 px-8px">
-                                    <i class="bi bi-heart" style="font-size: 16px !important;"></i>
+                                    <i class="bi bi-heart nav-ul_text" style="font-size: 16px !important;"></i>
                                     <span
                                         class="btn-status wishlist_count_status">{{ session()->has('wish_list') ? count(session('wish_list')) : 0 }}</span>
                                 </div>
