@@ -468,9 +468,9 @@
             </div>
         </div>
     </div>
-    <div class="nav-btn mt-2" id="mega-menu" class="hide-on-med-and-down" style="background-image: url('{{ asset('public/images/top-offer-bg.png') }}');">
+    <div class="nav-btn mt-3" id="mega-menu" class="hide-on-med-and-down" style="background-image: url('{{ asset('public/images/top-offer-bg.png') }}');">
         <div class="bg_mega_menu">
-            <ul class="container-xxl sub-nav d-flex justify-content-between align-items-baseline pt-2 pb-2 mb-0">
+            <ul class="container-xxl sub-nav d-flex justify-content-between align-items-baseline pt-3 pb-3 mb-0">
                 <li>
                     <a href="#" class="all_categories">
                             <i class="bi bi-grid"></i> Browse All
