@@ -6,7 +6,7 @@
 </style>
 <style>
     .drp-btn {
-        color: #fff !important;
+        color: #000 !important;
     }
 
     .collection-item h4 {
@@ -126,11 +126,11 @@
         color: #845DC2;
     }
 
-    .bg_mega_menu {
+    /* .bg_mega_menu {
         background-color: #845dc2;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 
-    }
+    } */
 
     .all_cate_btn {
         background: var(--greadient-normal, linear-gradient(270deg, #d55fad 36.37%, #fc966c 72.82%, #f99327 100.48%, #ffc55d 145.17%));
@@ -457,7 +457,7 @@
             </div>
         </div>
     </div>
-    <div class="nav-btn mt-2" id="mega-menu" class="hide-on-med-and-down">
+    <div class="nav-btn mt-2" id="mega-menu" class="hide-on-med-and-down" style="background-image: url('{{ asset('public/images/top-offer-bg.png') }}');">
         <div class="bg_mega_menu">
             <ul class="container-xxl sub-nav d-flex justify-content-between align-items-baseline pt-2 pb-2 mb-0">
                 <li>

@@ -1,3 +1,7 @@
+@font-face {
+  font-family: Aristotelica;
+  src: url(/public/fonts/AristotelicaDisplayDemiBoldTrial.ttf);
+}
 :root {
   --base: #1b7fed;
   --base-rgb: 27, 127, 237;
