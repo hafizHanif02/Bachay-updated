@@ -403,7 +403,7 @@
                             <a href="javascript:">
                                 <i class="bi bi-person d-none d-xl-inline-block nav-ul_text" style="font-size: 16px !important"></i>
                                 <i class="bi bi-person-circle d-xl-none nav-ul_text" style="font-size: 16px !important"></i>
-                                <span class="mx-1 d-none d-md-block">{{ auth('customer')->user()->f_name }}</span>
+                                <span class="mx-1 d-none d-md-block nav-ul_text">{{ auth('customer')->user()->f_name }}</span>
                                 <i class="ms-1 text-small bi bi-chevron-down d-none d-md-block"></i>
                             </a>
                             <div class="dropdown-menu __dropdown-menu">
