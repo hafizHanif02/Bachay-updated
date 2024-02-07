@@ -5,21 +5,13 @@
                 <div
                     class="d-flex flex-wrap justify-content-between row-gap-2 column-gap-4 align-items-center text-capitalize">
                     <h2 class="title mb-0 me-auto font-medium test-capitalize">{{ translate("other_stores") }}</h2>
-                    {{-- <ul class=" nav nav-tabs nav--tabs order-1">
+                    <ul class=" nav nav-tabs nav--tabs order-1">
                         <li>
                             <a href="#top-rated" class="active"
                                data-bs-toggle="tab">{{ translate('top_rated_vendor') }}</a>
                         </li>
                         <li>
                             <a href="#new-seller" data-bs-toggle="tab">{{ translate('new_vendor') }}</a>
-                        </li>
-                    </ul> --}}
-                    <ul class="nav nav-tabs nav--tabs order-1">
-                        <li>
-                            <a href="#top-rated" data-bs-toggle="tab">{{ translate('top_rated_vendor') }}</a>
-                        </li>
-                        <li class="active">
-                            <a href="#new-seller" class="active" data-bs-toggle="tab">{{ translate('new_vendor') }}</a>
                         </li>
                     </ul>
                     <div
