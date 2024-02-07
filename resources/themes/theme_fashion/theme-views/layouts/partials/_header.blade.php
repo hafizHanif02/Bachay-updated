@@ -122,7 +122,6 @@
     .collection-item:hover {
         color: #845DC2;
     }
-
     .bg_mega_menu {
         background-color: #845dc2;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
