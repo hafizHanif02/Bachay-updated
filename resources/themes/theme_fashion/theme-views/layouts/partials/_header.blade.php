@@ -474,7 +474,7 @@
             <ul class="container-xxl sub-nav d-flex justify-content-between align-items-baseline pt-3 pb-3 mb-0">
                 <li>
                     <a href="#" class="all_categories">
-                            <img src="{{ asset('public/images/union.png') }}" alt="" width="15px" height="15px">
+                            <img src="{{ asset('public/images/Union.png') }}" alt="" width="15px" height="15px">
                              <span class="mt-1">Browse All
                                 Categories </span>
                     </a>
