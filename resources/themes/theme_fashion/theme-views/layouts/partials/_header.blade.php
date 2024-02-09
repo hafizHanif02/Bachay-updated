@@ -487,7 +487,7 @@
     <div class="nav-btn mt-3" id="mega-menu" class="hide-on-med-and-down"
         style="background-image: url('{{ asset('public/images/top-offer-bg.png') }}');">
         <div class="bg_mega_menu">
-            <ul class="container-xxl sub-nav d-flex justify-content-between align-items-baseline pt-1 pb-1 mb-0">
+            <ul class="container-xxl sub-nav d-flex justify-content-between align-items-center mb-0">
                 <li>
                     <a href="#" class="all_categories">
                         <img src="{{ asset('public/images/Union.png') }}" alt="" width="15px"
@@ -784,8 +784,8 @@
                 </li>
                 <li> <a href="#" class="drp-btn active" style="margin-left: -15px; !important">
 
-                        <img class="align-items-center" src="{{ asset('public/images/parent.gif') }}"
-                            alt="" width="45px" height="45px"> <span style="color: #ff6f92; margin-left: -6px;">Parenting</span>
+                        <img class="align-items-center" src="{{ asset('public/images/heartgif.gif') }}"
+                            alt="" width="40px" height="40px"> <span style="color: #ff6f92; margin-left: -6px;">Parenting</span>
                     </a>
                     {{-- <div class="mega-menu-container">
                         <div class="mega-menu-grid">
@@ -1794,7 +1794,7 @@
                 @if ($web_config['business_mode'] == 'multi' && $web_config['seller_registration'])
                 <li class="me-2 me-xl-0 d-none d-sm-block">
                                                 <a href="{{ route('shop.apply') }}"
-                                                    class="btn __btn-outline drp-btn bg-info pt-2 pb-2">{{ translate('Sell_with_us') . '.' }}</a>
+                                                    class=" drp-btn bg-info p-3" style="color: #fff !important;">{{ translate('Sell_with_us') . '.' }}</a>
                 </li>
                 @endif
                 {{-- <li><a href="#" class="drp-btn bg-info pt-2 pb-2">Health & Safety</a>
