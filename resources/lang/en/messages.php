@@ -7212,4 +7212,5 @@
   'admin_password_updated_successfully' => 'Admin password updated successfully',
   'parenting' => 'Parenting',
   'Sell_with_us' => 'Sell with us',
+  'Customer_Added_Successfully' => 'Customer Added Successfully',
 );
