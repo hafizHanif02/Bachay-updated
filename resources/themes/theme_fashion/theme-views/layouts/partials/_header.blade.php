@@ -800,7 +800,7 @@
                 <li> <a href="#" class="drp-btn active" style="margin-left: -15px; !important">
 
                     <img class="align-items-center" src="{{ asset('public/images/book.gif') }}"
-                        alt="" width="25px" height="25px"> <span style="color: #a866ed;">Education</span>
+                        alt="" width="22px" height="22px"> <span style="color: #a866ed;">Education</span>
                 </a>
                 
             </li>
