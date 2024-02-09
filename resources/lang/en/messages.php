@@ -7213,4 +7213,5 @@
   'parenting' => 'Parenting',
   'Sell_with_us' => 'Sell with us',
   'Customer_Added_Successfully' => 'Customer Added Successfully',
+  'please_login_first' => 'Please login first',
 );
