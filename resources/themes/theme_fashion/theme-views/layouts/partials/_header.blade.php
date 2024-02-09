@@ -415,6 +415,7 @@
                                     style="font-size: 16px !important"></i> --}}
                                 {{-- <i class="bi bi-person-circle d-xl-none nav-ul_text"
                                     style="font-size: 16px !important"></i> --}}
+
                                     <img alt="#" class="rounded-circle me-1"
                                      src="{{ ('storage/app/public/profile/'.auth('customer')->user()->image ) }}" width="30px" height="30px">
                                 <span
@@ -798,8 +799,8 @@
                 </li>
                 <li> <a href="#" class="drp-btn active" style="margin-left: -15px; !important">
 
-                    <img class="align-items-center" src="{{ asset('public/images/education.gif') }}"
-                        alt="" width="25px" height="25px"> <span style="color: #f420b1;margin-left: 5px;">Education</span>
+                    <img class="align-items-center" src="{{ asset('public/images/book.gif') }}"
+                        alt="" width="25px" height="25px"> <span style="color: #a866ed;">Education</span>
                 </a>
                 
             </li>
