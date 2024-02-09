@@ -782,7 +782,7 @@
                         </div>
                     </div>
                 </li>
-                <li> <a href="#" class="drp-btn active">
+                <li> <a href="#" class="drp-btn active" style="margin-left: -15px; !important">
 
                         <img class="align-items-center" src="{{ asset('public/images/parent.gif') }}"
                             alt="" width="45px" height="45px"> <span style="color: #ff6f92; margin-left: -6px;">Parenting</span>
