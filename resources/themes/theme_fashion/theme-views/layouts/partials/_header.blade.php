@@ -1573,7 +1573,7 @@
                 <li>
                     <a href="{{ route('home') }}">{{ translate('home') }}</a>
                 </li>
-                <li>
+                {{-- <li>
                     <a href="javascript:">{{ translate('all_categories') }}</a>
                     <ul class="submenu">
                         @foreach ($categories as $key => $category)
@@ -1591,7 +1591,7 @@
                             </li>
                         @endif
                     </ul>
-                </li>
+                </li> --}}
                 @if ($web_config['brand_setting'])
                     <li>
                         <a href="{{ route('brands') }}">{{ translate('all_brand') }}</a>
