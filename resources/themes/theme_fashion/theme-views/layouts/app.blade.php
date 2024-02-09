@@ -13,7 +13,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="{{asset('storage/app/public/company')}}/{{$web_config['fav_icon']->value}}">
 
     <link rel="stylesheet" type="text/css" href="{{ theme_asset('assets/css/'.(session()->get('direction') == 'rtl' ? 'bootstrap-rtl.min.css': 'bootstrap.css' )) }}" />
-
+    <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Poppins' />
     <link rel="stylesheet" media="screen" href="{{ theme_asset('assets/plugins/font-awesome-4.7.0/css/font-awesome.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ theme_asset('assets/css/roboto-font.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ theme_asset('assets/css/bootstrap-icons.css') }}" />
