@@ -12,7 +12,7 @@
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         font-family: 'Aristotelica' !important;
-        font-size: 18px !important;
+        font-size: 16px !important;
     }
 </style>
 <style>
@@ -86,7 +86,7 @@
         -webkit-transition: all 0.3s ease;
         -o-transition: all 0.3s ease;
         transition: all 0.3s ease;
-        font-size: 16px;
+        font-size: 14px;
     }
 
     .sub-nav>li:hover {
