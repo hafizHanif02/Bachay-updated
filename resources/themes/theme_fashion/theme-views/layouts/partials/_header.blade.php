@@ -325,7 +325,7 @@
                                 class="{{ Request::is('brands') ? 'active' : '' }} nav-ul_text">{{ translate('brand') }}</a>
                         </li>
                     @endif
-                    <li>
+                    {{-- <li>
                         <a href="{{ route('products', ['data_from' => 'discounted', 'page' => 1]) }}"
                             class="{{ request('data_from') == 'discounted' ? 'active' : '' }} nav-ul_text">
                             {{ translate('offers') }}
@@ -334,8 +334,11 @@
                                 {{ $web_config['total_discount_products'] < 100 ? $web_config['total_discount_products'] : '99+' }}
                             </div>
                         </a>
+                    </li> --}}
+                    <li>
+                        <a href="{{ route('track-order.index') }}" class="nav-ul_text">{{ translate('track_order') }}</a>
                     </li>
-
+                    
                    
 
                 </ul>
