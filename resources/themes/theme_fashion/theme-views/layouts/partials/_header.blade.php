@@ -641,7 +641,7 @@
                             alt="" width="17px" height="24px"> <span style="color: #ff6b00; ">Hot
                             Deals</span>
                     </a>
-                    <div class="mega-menu-container">
+                    {{-- <div class="mega-menu-container">
                         <div class="mega-menu-grid">
                             <div class="sub-nav-column">
                                 <ul class="collection">
@@ -780,14 +780,14 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </li>
                 <li> <a href="#" class="drp-btn active" style="margin-left: -15px; !important">
 
                         <img class="align-items-center" src="{{ asset('public/images/parent.gif') }}"
                             alt="" width="45px" height="45px"> <span style="color: #ff6f92; margin-left: -6px;">Parenting</span>
                     </a>
-                    <div class="mega-menu-container">
+                    {{-- <div class="mega-menu-container">
                         <div class="mega-menu-grid">
                             <div class="sub-nav-column">
                                 <ul class="collection">
@@ -926,8 +926,154 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </li>
+                <li> <a href="#" class="drp-btn active" style="margin-left: -15px; !important">
+
+                    <img class="align-items-center" src="{{ asset('public/images/parent.gif') }}"
+                        alt="" width="45px" height="45px"> <span style="color: #ff6f92; margin-left: -6px;">Education</span>
+                </a>
+                {{-- <div class="mega-menu-container">
+                    <div class="mega-menu-grid">
+                        <div class="sub-nav-column">
+                            <ul class="collection">
+                                <li class="collection-item">
+                                    <h4>SHOP BY CATEGORY</h4>
+                                </li>
+                                <li><a href="#">Sets & Suits <span class="color">NEW</span></a>
+                                </li>
+                                <li><a href="#">T-shirts <span class="color">NEW</span></a></li>
+                                <li><a href="">Nightwear</a></li>
+                                <li><a href="#">Sweatshirts<span class="color">NEW</span></a></li>
+                                <li><a href="#">Jackets <span class="color">NEW</span></a></li>
+                                <li><a href="#">Sweaters<span class="color">NEW</span></a></li>
+                                <li><a href="#">Ethnic Wear<span class="color">NEW</span></a></li>
+                                <li><a href="#">Party Wear<span class="color">NEW</span></a></li>
+                                <li><a href="#">Jeans & Trousers</a></li>
+                                <li><a chref="#">Lounge & Trackpants</a></li>
+                                <li><a href="#">Diaper & Bootie Leggings</a></li>
+                                <li><a href="#">Shirts <span class="color">NEW</span></a></li>
+                                <li><a href="#">Onesies & Rompers</a></li>
+                                <li><a href="#">Athleisure & Sportswear</a></li>
+                                <li><a href="#">Thermals <span class="color">NEW</span></a></li>
+                                <li><a href="#">Inner Wear</a></li>
+                                <li><a href="#">Caps & Gloves <span class="color">NEW</span></a>
+                                </li>
+                                <li><a href="#">Bath Time</a></li>
+                                <li><a href="#">Swim Wear</a></li>
+                                <li><a href="#">Rainwear</a></li>
+                                <li><a href="#">Theme Costumes</a></li>
+                                <li><a href="#">View All</a></li>
+                            </ul>
+                        </div>
+                        <div class="sub-nav-column">
+                            <ul class="collection">
+                                <li class="collection-item">
+                                    <h4>SHOP BY COLLECTION</h4>
+                                </li>
+                                <li><a href="#">Fall For Fashion <span class="color">NEW</span></a>
+                                </li>
+                                <li><a href="#">Bestsellers</span></a></li>
+                                <li><a href="">Multi-packs</a></li>
+                                <li><a href="#">Baby Essentials <span class="color">NEW</span></a>
+                                </li>
+                                <div class="box"></div>
+                                <li class="collection-item">
+                                    <h4>FASHION ACCESSORIES</h4>
+                                </li>
+                                <li><a href="#">Sunglasses</a></li>
+                                <li><a href="#">Summer Caps <span class="color">NEW</span></a></li>
+                                <li><a href="#">Watches <span class="color">NEW</span></a></li>
+                                <li><a href="#">Ties, Belts & Suspenders <span class="color">NEW</span></a>
+                                </li>
+                                <li><a href="#">Bags</a></li>
+                                <li><a href="#">Kids Umbrellas</a></li>
+                                <div class="box"></div>
+                                <li class="collection-item">
+                                    <h4>FOOTWEAR</h4>
+                                </li>
+                                <li><a href="#">Casual Shoes <span class="color">NEW</span></a>
+                                </li>
+                                <li><a href="#">Sneakers & Sports Shoes <span class="color">NEW</span></a>
+                                </li>
+                                <li><a href="#">Formal & Partywear <span class="color">NEW</span></a>
+                                </li>
+                                <li><a href="#">Booties</a></li>
+                                <li><a href="#">Clogs </a></li>
+                                <li><a href="#">Flip Flops</a></li>
+                                <li><a href="#">Sandals</a></li>
+                            </ul>
+                        </div>
+                        <div class="sub-nav-column">
+                            <ul class="collection">
+                                <li class="collection-item">
+                                    <h4>SHOP BY AGE</h4>
+                                </li>
+                                <li><a href="#">Preemie/Tine Preemie</a></li>
+                                <li><a href="#">New Born (0-3 M)</span></a></li>
+                                <li><a href="">3-6 Months</a></li>
+                                <li><a href="#">6-9 Months</a></li>
+                                <li><a href="#">9-12 Months</span></a></li>
+                                <li><a href="#">12-18 Months</a></li>
+                                <li><a href="#">18-24 Months</a></li>
+                                <li><a href="#">2 to 4 Years</a></li>
+                                <li><a href="#">4 to 6 Years</a></li>
+                                <li><a href="#">6 to 8 Years</a></li>
+                                <li><a href="#">8+ Years </a></li>
+                                <div class="box"></div>
+                                <li class="collection-item">
+                                    <h4>SHOP BY PRICE</h4>
+                                </li>
+                                <li><a href="#">All Under 199</a></li>
+                                <li><a href="#">All Under 299</a></li>
+                                <li><a href="#">All Under 399</a></li>
+                                <li><a href="#">All Under 499</a></li>
+                            </ul>
+                        </div>
+                        <div class="sub-nav-column">
+                            <ul class="collection">
+                                <li class="collection-item">
+                                    <h4>SHOP BY BRANDS</h4>
+                                </li>
+                                <li><a href="#">Babyhug</a></li>
+                                <li><a href="#">Babyoye</a></li>
+                                <li><a href="">Kookie Kids</a></li>
+                                <li><a href="#">Carter's</a></li>
+                                <li><a href="#">Pine Kids</a></li>
+                                <li><a href="#">Cute Walk</a></li>
+                                <li><a href="#">Honeyhap</a></li>
+                                <li><a href="#">OLLINGTON ST.</a></li>
+                                <li><a href="#">Doodle Poodle</a></li>
+                                <li><a href="#">Primo Gino</a></li>
+                                <li><a href="#">Mark & Mia</a></li>
+                                <li><a href="#">Bonfino</a></li>
+                                <li><a href="#">Earthy Touch</a></li>
+                                <li><a href="#">Arias by Lara Dutta</a></li>
+                                <li><a href="#">Pine Active</a></li>
+                                <li><a href="#">ToffyHouse</a></li>
+                                <li><a href="#">Ed-a-mamma</a></li>
+                                <li><a href="#">UCB</a></li>
+                                <li><a href="#">U.S. Polo Assn. Kids</a></li>
+                                <li><a href="#">Monte Carlo</a></li>
+                                <li><a href="#">Gini & Jony</a></li>
+                                <li><a href="#">Puma</a></li>
+                                <li><a href="#">Tommy Hilfiger</a></li>
+                                <li><a href="#">ADIDAS KIDS</a></li>
+                                <li><a href="#">RUFF</a></li>
+                                <li><a href="#">Puma</a></li>
+                            </ul>
+                        </div>
+                        <div class="sub-nav-column">
+                            <div class="z-depth-1 polariod">
+                                <img class="object-fit-cover rounded-3"
+                                    src="{{ asset('public/images/img2.2.webp') }}" alt="image 2"
+                                    class="theme responsive-img" width="100%" height="100%">
+
+                            </div>
+                        </div>
+                    </div>
+                </div> --}}
+            </li>
                 <li><a href="#" class="drp-btn">Boys Fashion</a>
                     <div class="mega-menu-container">
                         <div class="mega-menu-grid">
@@ -1769,130 +1915,7 @@
                         </div>
                     </div>
                 </li>
-                <li><a href="#" class="drp-btn">Footwear</a>
-
-                    <div class="mega-menu-container">
-                        <div class="mega-menu-grid">
-                            <div class="sub-nav-column">
-                                <ul class="collection">
-                                    <li class="collection-item">
-                                        <h4>SHOP BY CATEGORY</h4>
-                                    </li>
-                                    <li><a href="#">Musical Toys</a></li>
-                                    <li><a href="#">Learning & Educational Toys</a></li>
-                                    <li><a href="">Soft Toys</a></li>
-                                    <li><a href="#">Backyard Play</a></li>
-                                    <li><a href="#">Play Gyms & Playmats</a></li>
-                                    <li><a href="#">Sports & Games</a></li>
-                                    <li><a href="#">Role & Pretend Play Toys</a></li>
-                                    <li><a href="#">Blocks & Construction Sets</a></li>
-                                    <li><a href="#">Stacking Toys</a></li>
-                                    <li><a chref="#">Kids Puzzles</a></li>
-                                    <li><a href="#">Baby Rattles</a></li>
-                                    <li><a href="#">Toys Cars Trains & Vehicles</a></li>
-                                    <li><a href="#">Kids Musical Instruments</a></li>
-                                    <li><a href="#">Dolls & Dollhouses</a></li>
-                                    <li><a href="#">Push & Pull Along Toys</a></li>
-                                    <li><a href="#">Art Crafts & Hobby Kits</a></li>
-                                    <li><a href="#">Board Games</a></li>
-                                </ul>
-                            </div>
-                            <div class="sub-nav-column">
-                                <ul class="collection">
-                                    <li class="collection-item">
-                                        <h4></h4>
-                                    </li>
-                                    <li><a href="#">Action Figures & Collectibles</a></li>
-                                    <li><a href="#">Radio & Remote Control Toys</a></li>
-                                    <li><a href="">Bath Toys</a></li>
-                                    <li><a href="#">Toys Guns & Weapons</a></li>
-                                    <li><a href="#">Kids Gadgets <span class="color">NEW</span></a>
-                                    </li>
-                                    <div class="box"></div>
-                                    <li class="collection-item">
-                                        <h4> RIDE-ONS & SCOOTERS</h4>
-                                    </li>
-                                    <li><a href="#">Battery Operated Ride-ons</a></li>
-                                    <li><a href="#">Manual Push Ride-ons</a></li>
-                                    <li><a href="#">Swing cars/twisters</a></li>
-                                    <li><a href="#">Rocking Ride Ons</a></li>
-                                    <li><a href="#">Tricycles</a></li>
-                                    <li><a href="#">Bicycles</a></li>
-                                    <li><a href="#">Balance Bike</a></li>
-                                    <div class="box"></div>
-                                    <li class="collection-item">
-                                        <h4> COMBO PACKS</h4>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="sub-nav-column">
-                                <ul class="collection">
-                                    <li class="collection-item">
-                                        <h4>BOARD GAMES</h4>
-                                    </li>
-                                    <li><a href="#">IQ Games</a></li>
-                                    <li><a href="#">Ludo, Snakes & Ladders</span></a></li>
-                                    <li><a href="">Words, Pictures & Scrabble Games</a></li>
-                                    <li><a href="#">Playing Cards</a></li>
-                                    <li><a href="#">Life & Travel Board Games</span></a></li>
-                                    <li><a href="#">Animal, Birds & Marine Life Games</a></li>
-                                    <li><a href="#">Business/Monopoly</a></li>
-                                    <div class="box"></div>
-                                    <li class="collection-item">
-                                        <h4>BHOME PLAY ACTIVITIES</h4>
-                                    </li>
-                                    <li><a href="#">Play Dough, Sand & Moulds</a></li>
-                                    <li><a href="#">Coloring, Sequencing & Engraving Art</a></li>
-                                    <li><a href="#">Activity Kit </a></li>
-                                    <li><a href="#">SBuilding Construction Sets</a></li>
-                                    <li><a href="#">Multi Model Making Sets</a></li>
-                                    <li><a href="#">Kitchen Sets</a></li>
-                                    <li><a href="#">Play Foods</a></li>
-                                    <li><a href="#">Kids' Doctor Sets</a></li>
-                                    <li><a href="#">Piano & Keyboards</a></li>
-                                    <li><a href="#">Drum Sets & Percussion</a></li>
-                                </ul>
-                            </div>
-                            <div class="sub-nav-column">
-                                <ul class="collection">
-                                    <li class="collection-item">
-                                        <h4>SHOP BY BRANDS</h4>
-                                    </li>
-                                    <li><a href="#">Fisher Price</a></li>
-                                    <li><a href="#">Intellikit</a></li>
-                                    <li><a href="">Babyhug</a></li>
-                                    <li><a href="#">Intelliskills</a></li>
-                                    <li><a href="#">Intellibaby</a></li>
-                                    <li><a href="#">Fab n Funky</a></li>
-                                    <li><a href="#">Hotwheels</a></li>
-                                    <li><a href="#">Disney</a></li>
-                                    <li><a href="#">Barbie</a></li>
-                                    <li><a href="#">Giggles</a></li>
-                                    <li><a href="#">Lego</a></li>
-                                    <li><a href="#">Bonfino</a></li>
-                                    <li><a href="#">Pine Kids</a></li>
-                                    <li><a href="#">Playnation</a></li>
-                                    <div class="box"></div>
-                                    <li class="collection-item">
-                                        <h4>SHOP BY PRICE</h4>
-                                    </li>
-                                    <li><a href="#">Under 299</a></li>
-                                    <li><a href="#">Under 499</a></li>
-                                    <li><a href="#">Under 699</a></li>
-                                    <li><a href="#">Under 999</a></li>
-                                </ul>
-                            </div>
-                            <div class="sub-nav-column">
-                                <div class="z-depth-1 polariod">
-                                    <img class="object-fit-cover rounded-3"
-                                        src="{{ asset('public/images/premium-b-2.webp') }}" alt="premium b2 image"
-                                        class="theme responsive-img" width="100%" height="100%">
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
+                
 
             </ul>
         </div>
