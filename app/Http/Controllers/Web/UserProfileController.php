@@ -125,7 +125,13 @@ class UserProfileController extends Controller
 
         $zip_codes = $zip_restrict_status ? DeliveryZipCode::all() : 0;
 
-        return view(VIEW_FILE_NAMES['account_address_add'], compact('countries', 'zip_restrict_status', 'zip_codes', 'default_location'));
+        if (auth('customer')->check()) {
+            return view(VIEW_FILE_NAMES['account_address_add'], compact('countries', 'zip_restrict_status', 'zip_codes', 'default_location'));
+        }else{
+            Toastr::error(translate('please_login_first'));
+            return back();
+        }
+
     }
 
     public function account_delete($id)

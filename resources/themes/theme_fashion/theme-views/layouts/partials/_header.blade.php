@@ -294,6 +294,7 @@
             </div>
             <div class="menu-area text-capitalize">
                 <ul class="menu me-xl-2 font-poppins">
+                    @auth('customer')
                     <li>
                         <a href="{{ route('account-address-add') }}" class="nav-ul_text">
                             <img src="{{ asset('public/images/location.gif') }}" alt="" width="20px" height="20px">
@@ -301,6 +302,15 @@
                             {{ translate('location') }}
                         </a>
                     </li>
+                    @else
+                    <li>
+                        <a href="{{ route('account-address-add') }}" class="nav-ul_text">
+                            <img src="{{ asset('public/images/location.gif') }}" alt="" width="20px" height="20px">
+
+                            {{ translate('location') }}
+                        </a>
+                    </li>
+                    @endauth
                     @if ($web_config['business_mode'] == 'multi')
                         <li>
                             <a href="{{ route('vendors') }}"
