@@ -2,9 +2,11 @@
     .nav-ul_text {
         color: #000 !important;
     }
-    .nav-ul_text:hover{
+
+    .nav-ul_text:hover {
         color: #845dc2 !important;
     }
+
     .all_categories {
         font-weight: 600 !important;
         background: linear-gradient(90.27deg, #845dc2 -27.96%, #f99327 -27.94%, #d55fad 28.41%, #845dc2 82.13%, #845dc2 130.57%);
@@ -14,12 +16,14 @@
         font-family: 'Aristotelica' !important;
         font-size: 14px !important;
     }
-    .seller_reg{
-        color: #fff !important; 
-        background: #835ec1 !important; 
+
+    .seller_reg {
+        color: #fff !important;
+        background: #835ec1 !important;
     }
-    .seller_reg:hover{
-    background: #ff9670 !important;
+
+    .seller_reg:hover {
+        background: #ff9670 !important;
     }
 </style>
 <style>
@@ -31,7 +35,8 @@
         color: #000 !important;
         font-family: 'Aristotelica' !important;
     }
-    .drp-btn:hover{
+
+    .drp-btn:hover {
         color: #845dc2 !important;
     }
 
@@ -289,23 +294,32 @@
             </div>
             <div class="menu-area text-capitalize">
                 <ul class="menu me-xl-2 font-poppins">
-                    @if ($web_config['business_mode'] == 'multi')
                     <li>
-                        <a href="{{ route('vendors') }}"
-                            class="{{ Request::is('vendors') ? 'active' : '' }} nav-ul_text">{{ translate('shops') }}</a>
-                    </li>
+                        <a href="{{ route('home') }}" class="nav-ul_text">
+                            <img src="{{ asset('public/images/location.gif') }}" alt="" width="20px" height="20px">
 
-                    @if ($web_config['seller_registration'])
-                        <li class="d-sm-none">
-                            <a href="{{ route('shop.apply') }}"
-                                class="{{ Request::is('shop.apply') ? 'active' : '' }}">{{ translate('vendor_reg') . '.' }}</a>
+                            {{ translate('location') }}
+                        </a>
+                    </li>
+                    @if ($web_config['business_mode'] == 'multi')
+                        <li>
+                            <a href="{{ route('vendors') }}"
+                                class="{{ Request::is('vendors') ? 'active' : '' }} nav-ul_text">{{ translate('shops') }}</a>
                         </li>
+
+                        @if ($web_config['seller_registration'])
+                            <li class="d-sm-none">
+                                <a href="{{ route('shop.apply') }}"
+                                    class="{{ Request::is('shop.apply') ? 'active' : '' }}">{{ translate('vendor_reg') . '.' }}</a>
+                            </li>
+                        @endif
                     @endif
-                @endif
+
                     <li>
                         <a href="{{ route('home') }}" class="nav-ul_text">{{ translate('Support') }}</a>
                     </li>
-                    @php($categories = \App\Utils\CategoryManager::get_categories_with_counting())
+                    
+                    {{-- @php($categories = \App\Utils\CategoryManager::get_categories_with_counting())
                     <li>
                         <a href="javascript:" class="nav-ul_text">{{ translate('categories') }}</a>
                         <ul class="submenu">
@@ -325,7 +339,7 @@
                                 </li>
                             @endif
                         </ul>
-                    </li>
+                    </li> --}}
                     @if ($web_config['brand_setting'])
                         <li>
                             <a href="{{ route('brands') }}"
@@ -343,10 +357,11 @@
                         </a>
                     </li> --}}
                     <li>
-                        <a href="{{ route('track-order.index') }}" class="nav-ul_text">{{ translate('track_order') }}</a>
+                        <a href="{{ route('track-order.index') }}"
+                            class="nav-ul_text">{{ translate('track_order') }}</a>
                     </li>
-                    
-                   
+
+
 
                 </ul>
 
@@ -424,15 +439,16 @@
                                     style="font-size: 16px !important"></i> --}}
                                 <span class="rounded-circle" style="border: 1px solid #000; !important">
                                     <img alt="#" class="rounded-circle"
-                                     src="{{ ('storage/app/public/profile/'.auth('customer')->user()->image ) }}" width="30px" height="30px">
+                                        src="{{ 'storage/app/public/profile/' . auth('customer')->user()->image }}"
+                                        width="30px" height="30px">
 
                                 </span>
                                 <span
                                     class="mx-1 d-none d-md-block nav-ul_text">{{ auth('customer')->user()->f_name }}</span>
-                                    
-                                
-                                    
-                                    {{-- <span
+
+
+
+                                {{-- <span
                                     class="mx-1 d-none d-md-block nav-ul_text">{{ auth('customer')->user()->image }}</span> --}}
                                 <i class="ms-1 text-small bi bi-chevron-down d-none d-md-block nav-ul_text"></i>
                             </a>
@@ -802,17 +818,18 @@
                 <li> <a href="#" class="drp-btn active" style="margin-left: -15px; !important">
 
                         <img class="align-items-center" src="{{ asset('public/images/heartgif.gif') }}"
-                            alt="" width="40px" height="40px"> <span style="color: #ff6f92; margin-left: -6px;">Parenting</span>
+                            alt="" width="40px" height="40px"> <span
+                            style="color: #ff6f92; margin-left: -6px;">Parenting</span>
                     </a>
-                    
+
                 </li>
                 <li> <a href="#" class="drp-btn active" style="margin-left: -15px; !important">
 
-                    <img class="align-items-center" src="{{ asset('public/images/book.gif') }}"
-                        alt="" width="22px" height="22px"> <span style="color: #a866ed;">Education</span>
-                </a>
-                
-            </li>
+                        <img class="align-items-center" src="{{ asset('public/images/book.gif') }}" alt=""
+                            width="22px" height="22px"> <span style="color: #a866ed;">Education</span>
+                    </a>
+
+                </li>
                 <li><a href="#" class="drp-btn">Boys Fashion</a>
                     <div class="mega-menu-container">
                         <div class="mega-menu-grid">
@@ -1405,7 +1422,7 @@
                         </div>
                     </div>
                 </li>
-              
+
                 <li><a href="#" class="drp-btn">Diapering</a>
 
                     <div class="mega-menu-container">
@@ -1531,15 +1548,15 @@
                     </div>
                 </li>
                 @if ($web_config['business_mode'] == 'multi' && $web_config['seller_registration'])
-                <li class="me-2 me-xl-0 d-none d-sm-block">
-                                                <a href="{{ route('shop.apply') }}"
-                                                    class=" drp-btn seller_reg p-3" style="color: #fff !important;">{{ translate('Sell_with_us') . '.' }}</a>
-                </li>
+                    <li class="me-2 me-xl-0 d-none d-sm-block">
+                        <a href="{{ route('shop.apply') }}" class=" drp-btn seller_reg p-3"
+                            style="color: #fff !important;">{{ translate('Sell_with_us') . '.' }}</a>
+                    </li>
                 @endif
                 {{-- <li><a href="#" class="drp-btn bg-info pt-2 pb-2">Health & Safety</a>
 
                 </li> --}}
-                
+
 
             </ul>
         </div>
@@ -1548,8 +1565,7 @@
 
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
     <div class="offcanvas-header justify-content-end">
-        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
-            aria-label="Close"></button>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body text-capitalize d-flex flex-column">
         <div>
