@@ -14,6 +14,13 @@
         font-family: 'Aristotelica' !important;
         font-size: 14px !important;
     }
+    .seller_reg{
+        color: #fff !important; 
+        background: #835ec1 !important; 
+    }
+    .seller_reg:hover{
+    background: #ff9670 !important;
+    }
 </style>
 <style>
     .font-poppins {
@@ -415,9 +422,11 @@
                                     style="font-size: 16px !important"></i> --}}
                                 {{-- <i class="bi bi-person-circle d-xl-none nav-ul_text"
                                     style="font-size: 16px !important"></i> --}}
-
-                                    <img alt="#" class="rounded-circle me-1"
+                                <span class="rounded-circle" style="border: 1px solid #000; !important">
+                                    <img alt="#" class="rounded-circle"
                                      src="{{ ('storage/app/public/profile/'.auth('customer')->user()->image ) }}" width="30px" height="30px">
+
+                                </span>
                                 <span
                                     class="mx-1 d-none d-md-block nav-ul_text">{{ auth('customer')->user()->f_name }}</span>
                                     
@@ -1524,7 +1533,7 @@
                 @if ($web_config['business_mode'] == 'multi' && $web_config['seller_registration'])
                 <li class="me-2 me-xl-0 d-none d-sm-block">
                                                 <a href="{{ route('shop.apply') }}"
-                                                    class=" drp-btn p-3" style="color: #fff !important; background: #835ec1 !important;">{{ translate('Sell_with_us') . '.' }}</a>
+                                                    class=" drp-btn seller_reg p-3" style="color: #fff !important;">{{ translate('Sell_with_us') . '.' }}</a>
                 </li>
                 @endif
                 {{-- <li><a href="#" class="drp-btn bg-info pt-2 pb-2">Health & Safety</a>
