@@ -295,7 +295,7 @@
             <div class="menu-area text-capitalize">
                 <ul class="menu me-xl-2 font-poppins">
                     <li>
-                        <a href="{{ route('home') }}" class="nav-ul_text">
+                        <a href="{{ route('account-address-add') }}" class="nav-ul_text">
                             <img src="{{ asset('public/images/location.gif') }}" alt="" width="20px" height="20px">
 
                             {{ translate('location') }}
