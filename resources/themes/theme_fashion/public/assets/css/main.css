@@ -5874,6 +5874,9 @@ a:not(:focus) ~ .__dropdown-menu {
 }
 
 @media (max-width: 767px) {
+  #mega-menu{
+    display: none;
+  }
   /* .search-form-mobile .form-control {
       padding-inline: 1rem;
       border: 1px solid var(--border);

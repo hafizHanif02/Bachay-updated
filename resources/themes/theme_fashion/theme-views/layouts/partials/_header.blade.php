@@ -12,7 +12,7 @@
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         font-family: 'Aristotelica' !important;
-        font-size: 16px !important;
+        font-size: 14px !important;
     }
 </style>
 <style>
@@ -86,7 +86,7 @@
         -webkit-transition: all 0.3s ease;
         -o-transition: all 0.3s ease;
         transition: all 0.3s ease;
-        font-size: 14px;
+        font-size: 12px;
     }
 
     .sub-nav>li:hover {
@@ -282,8 +282,21 @@
             </div>
             <div class="menu-area text-capitalize">
                 <ul class="menu me-xl-2 font-poppins">
+                    @if ($web_config['business_mode'] == 'multi')
                     <li>
-                        <a href="{{ route('home') }}" class="nav-ul_text">{{ translate('parenting') }}</a>
+                        <a href="{{ route('vendors') }}"
+                            class="{{ Request::is('vendors') ? 'active' : '' }} nav-ul_text">{{ translate('shops') }}</a>
+                    </li>
+
+                    @if ($web_config['seller_registration'])
+                        <li class="d-sm-none">
+                            <a href="{{ route('shop.apply') }}"
+                                class="{{ Request::is('shop.apply') ? 'active' : '' }}">{{ translate('vendor_reg') . '.' }}</a>
+                        </li>
+                    @endif
+                @endif
+                    <li>
+                        <a href="{{ route('home') }}" class="nav-ul_text">{{ translate('Support') }}</a>
                     </li>
                     @php($categories = \App\Utils\CategoryManager::get_categories_with_counting())
                     <li>
@@ -323,19 +336,7 @@
                         </a>
                     </li>
 
-                    @if ($web_config['business_mode'] == 'multi')
-                        <li>
-                            <a href="{{ route('vendors') }}"
-                                class="{{ Request::is('vendors') ? 'active' : '' }} nav-ul_text">{{ translate('shops') }}</a>
-                        </li>
-
-                        @if ($web_config['seller_registration'])
-                            <li class="d-sm-none">
-                                <a href="{{ route('shop.apply') }}"
-                                    class="{{ Request::is('shop.apply') ? 'active' : '' }}">{{ translate('vendor_reg') . '.' }}</a>
-                            </li>
-                        @endif
-                    @endif
+                   
 
                 </ul>
 
