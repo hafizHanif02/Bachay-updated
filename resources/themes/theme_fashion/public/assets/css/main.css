@@ -1596,10 +1596,13 @@ input:-webkit-autofill:active {
 .offcanvas-body .menu li a {
   padding: 0.5rem 0.25rem;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   color: var(--title);
 }
-
+.offcanvas-body .menu li a:hover{
+  background: #835ec1 !important;
+  color: #fff !important;
+}
 .offcanvas-body .menu li.has-child > a::after {
   display: inline-block;
   font-family: bootstrap-icons !important;
