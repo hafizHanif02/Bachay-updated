@@ -4052,7 +4052,7 @@ a:not(:focus) ~ .__dropdown-menu {
 
 .most-visited-category-wrapper {
   display: flex;
-  gap: 0.5714285714rem;
+  /* gap: 0.5714285714rem; */
 }
 
 .most-visited-category-wrapper > .most-visited-item {
