@@ -166,6 +166,18 @@
     .all_cate_btn {
         background: var(--greadient-normal, linear-gradient(270deg, #d55fad 36.37%, #fc966c 72.82%, #f99327 100.48%, #ffc55d 145.17%));
     }
+
+    header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: #333;
+        color: #fff;
+        padding: 10px 0;
+        transition: top 0.5s;
+        z-index: 1000;
+    }
 </style>
 @if (isset($web_config['announcement']) && $web_config['announcement']['status'] == 1)
     <div class="offer-bar" data-bg-img="{{ theme_asset('assets/img/media/top-offer-bg.png') }}">
@@ -180,7 +192,7 @@
     </div>
 @endif
 
-<header class="bg-base pb-0" style="background: #fff !important;">
+<header class="bg-base pb-0" id="header" style="background: #fff !important;">
     <div class="search-form-header d-xl-none">
         <div class="d-flex w-100 align-items-center">
             <div class="close-search search-toggle" id="hide_search_toggle">
@@ -304,14 +316,15 @@
                             </a>
                         </li>
                     @else
-                    <li>
-                       
+                        <li>
 
-                        <a href="javascript:" class="customer_login_register_modal nav-ul_text">
-                        <img src="{{ asset('public/images/location.gif') }}" alt="" width="20px" height="20px">
-                        {{ translate('location') }}
+
+                            <a href="javascript:" class="customer_login_register_modal nav-ul_text">
+                                <img src="{{ asset('public/images/location.gif') }}" alt="" width="20px"
+                                    height="20px">
+                                {{ translate('location') }}
                             </a>
-                    </li>
+                        </li>
                     @endauth
                     @if ($web_config['business_mode'] == 'multi')
                         <li>
@@ -1595,7 +1608,7 @@
         <div>
             <ul class="menu scrollY-60 ">
                 <li>
-                    <a href="{{ route('home') }}"class="nav-ul_text" >{{ translate('home') }}</a>
+                    <a href="{{ route('home') }}"class="nav-ul_text">{{ translate('home') }}</a>
                 </li>
                 {{-- <li>
                     <a href="javascript:">{{ translate('all_categories') }}</a>
@@ -1757,3 +1770,19 @@
         @endif
     </div>
 </div>
+
+<script>
+    let lastScrollTop = 0;
+
+window.addEventListener("scroll", function() {
+  let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+  if (currentScroll > lastScrollTop) {
+    // Scroll down
+    document.getElementById("header").style.top = "-110px"; 
+  } else {
+    // Scroll up
+    document.getElementById("header").style.top = "0";
+  }
+  lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; 
+}, false);
+</script>
