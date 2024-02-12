@@ -8,10 +8,10 @@ function pauseAudio() {
     audio.pause();
 }
 toastr.options = {
-    "closeButton": false,
+    "closeButton": true,
     "debug": false,
     "newestOnTop": false,
-    "progressBar": false,
+    "progressBar": true,
     "positionClass": "toast-bottom-left",
     "preventDuplicates": false,
     "onclick": null,
