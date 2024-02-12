@@ -1,9 +1,11 @@
 <section class="most-visited-category section-gap pb-0 text-center pt-3">
     <div class="container">
         <div class="section-title-3 mb-0">
-            <div class="mb-32px">
-                <h2 class="title mx-auto mb-0 text-capitalize">{{ translate('most_visited_categories') }}</h2>
-            </div>
+            {{-- <div class="mb-32px"> --}}
+                {{-- <h2 class="title mx-auto mb-0 text-capitalize">{{ translate('most_visited_categories') }}</h2> --}}
+                <h2 class="title mx-auto mb-3 text-capitalize">{{ translate('our_categories') }}</h2>
+
+            {{-- </div> --}}
         </div>
 
         <div class="most-visited-category-wrapper align-items-center">
