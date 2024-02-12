@@ -1781,7 +1781,7 @@ window.addEventListener("scroll", function() {
   if (currentScroll > lastScrollTop) {
     // Scroll down
     if (currentScroll > threshold) {
-      document.getElementById("header").style.top = "-115px";
+      document.getElementById("header").style.top = "-110px";
     }
   } else {
     // Scroll up
