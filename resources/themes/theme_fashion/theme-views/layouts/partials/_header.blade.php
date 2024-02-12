@@ -295,13 +295,14 @@
             <div class="menu-area text-capitalize">
                 <ul class="menu me-xl-2 font-poppins">
                     @auth('customer')
-                    <li>
-                        <a href="{{ route('account-address-add') }}" class="nav-ul_text">
-                            <img src="{{ asset('public/images/location.gif') }}" alt="" width="20px" height="20px">
+                        <li>
+                            <a href="{{ route('account-address-add') }}" class="nav-ul_text">
+                                <img src="{{ asset('public/images/location.gif') }}" alt="" width="20px"
+                                    height="20px">
 
-                            {{ translate('location') }}
-                        </a>
-                    </li>
+                                {{ translate('location') }}
+                            </a>
+                        </li>
                     @else
                     <li>
                        
@@ -341,7 +342,7 @@
                         </li>
                     @endauth
 
-                    
+
                     {{-- @php($categories = \App\Utils\CategoryManager::get_categories_with_counting())
                     <li>
                         <a href="javascript:" class="nav-ul_text">{{ translate('categories') }}</a>
@@ -1594,7 +1595,7 @@
         <div>
             <ul class="menu scrollY-60 ">
                 <li>
-                    <a href="{{ route('home') }}">{{ translate('home') }}</a>
+                    <a href="{{ route('home') }}"class="nav-ul_text" >{{ translate('home') }}</a>
                 </li>
                 {{-- <li>
                     <a href="javascript:">{{ translate('all_categories') }}</a>
@@ -1615,12 +1616,29 @@
                         @endif
                     </ul>
                 </li> --}}
-                @if ($web_config['brand_setting'])
+                {{-- @if ($web_config['brand_setting'])
                     <li>
                         <a href="{{ route('brands') }}">{{ translate('all_brand') }}</a>
                     </li>
-                @endif
-                <li>
+                @endif --}}
+                @auth('customer')
+                    <li>
+                        <a href="{{ route('account-address-add') }}" class="nav-ul_text">
+                            {{-- <img src="{{ asset('public/images/location.gif') }}" alt="" width="20px" height="20px"> --}}
+
+                            {{ translate('location') }}
+                        </a>
+                    </li>
+                @else
+                    <li>
+                        <a href="{{ route('account-address-add') }}" class="nav-ul_text">
+                            {{-- <img src="{{ asset('public/images/location.gif') }}" alt="" width="20px" height="20px"> --}}
+
+                            {{ translate('location') }}
+                        </a>
+                    </li>
+                @endauth
+                {{-- <li>
                     <a class="d-flex align-items-center gap-2"
                         href="{{ route('products', ['data_from' => 'discounted', 'page' => 1]) }}">
                         {{ translate('offers') }}
@@ -1629,9 +1647,14 @@
                             {{ $web_config['total_discount_products'] < 100 ? $web_config['total_discount_products'] : '99+' }}
                         </div>
                     </a>
-                </li>
-
+                </li> --}}
                 @if ($web_config['business_mode'] == 'multi')
+                    <li>
+                        <a href="{{ route('vendors') }}"
+                            class="{{ Request::is('vendors') ? 'active' : '' }} nav-ul_text">{{ translate('shops') }}</a>
+                    </li>
+                @endif
+                {{-- @if ($web_config['business_mode'] == 'multi')
                     <li>
                         <a href="{{ route('vendors') }}">{{ translate('vendors') }}</a>
                     </li>
@@ -1641,12 +1664,72 @@
                             <a href="{{ route('shop.apply') }}">{{ translate('vendor_reg') . '.' }}</a>
                         </li>
                     @endif
+                @endif --}}
+                @auth('customer')
+                    <li>
+                        <a href="{{ route('account-tickets') }}" class="nav-ul_text">{{ translate('Support') }}</a>
+                    </li>
+                @else
+                    <li>
+                        <a href="{{ route('account-tickets') }}" class="nav-ul_text">{{ translate('Support') }}</a>
+                    </li>
+                @endauth
+                @if ($web_config['brand_setting'])
+                    <li>
+                        <a href="{{ route('brands') }}"
+                            class="{{ Request::is('brands') ? 'active' : '' }} nav-ul_text">{{ translate('brand') }}</a>
+                    </li>
                 @endif
+                <li>
+                    <a href="{{ route('track-order.index') }}"
+                        class="nav-ul_text">{{ translate('track_order') }}</a>
+                </li>
+                <li>
+                    @if (auth('customer')->check())
+                        <a href="{{ route('wishlists') }}">
+                            <div class="nav-ul_text">
+                                <span>Wishlist</span>
+                                {{-- <i class="bi bi-heart nav-ul_text" style="font-size: 16px !important;"></i> --}}
 
+                                {{-- <span
+                                        class="btn-status wishlist_count_status">{{ session()->has('wish_list') ? count(session('wish_list')) : 0 }}</span> --}}
+                            </div>
+                        </a>
+                    @else
+                        <a href="javascript:" class="customer_login_register_modal">
+                            <div class="nav-ul_text">
+                                <span>Wishlist</span>
+                                {{-- <i class="bi bi-heart nav-ul_text" style="font-size: 16px !important;"></i> --}}
+                                {{-- <span class="btn-status">{{ translate('0') }}</span> --}}
+                            </div>
+                        </a>
+                    @endif
+                </li>
+                <li>
+                    @if (auth('customer')->check())
+                        <a href="{{ route('shop-cart') }}">
+                            <div class="nav-ul_text">
+                                <span>My Cart</span>
+                                {{-- <i class="bi bi-heart nav-ul_text" style="font-size: 16px !important;"></i> --}}
+
+                                {{-- <span
+                                        class="btn-status wishlist_count_status">{{ session()->has('wish_list') ? count(session('wish_list')) : 0 }}</span> --}}
+                            </div>
+                        </a>
+                    @else
+                        <a href="javascript:" class="customer_login_register_modal">
+                            <div class="nav-ul_text">
+                                <span>My Cart</span>
+                                {{-- <i class="bi bi-heart nav-ul_text" style="font-size: 16px !important;"></i> --}}
+                                {{-- <span class="btn-status">{{ translate('0') }}</span> --}}
+                            </div>
+                        </a>
+                    @endif
+                </li>
             </ul>
         </div>
 
-        <div class="d-flex align-items-center gap-2 justify-content-between py-4 mt-3">
+        {{-- <div class="d-flex align-items-center gap-2 justify-content-between py-4 mt-3">
             <span class="text-dark">{{ translate('theme_mode') }}</span>
             <div class="theme-bar">
                 <button class="light_button active">
@@ -1658,7 +1741,7 @@
                         alt="{{ translate('dark_Mode') }}">
                 </button>
             </div>
-        </div>
+        </div> --}}
 
         @if (auth('customer')->check())
             <div class="d-flex justify-content-center mb-2 pb-3 mt-auto px-4">

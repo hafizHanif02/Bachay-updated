@@ -7216,4 +7216,8 @@
   'please_login_first' => 'Please login first',
   'most_visitedd_categories' => 'Most visitedd categories',
   'our_categories' => 'Our categories',
+  'want_to_clear_all_cart ' => 'Want to clear all cart ',
+  'before_the_vendor_confirms_the_order' => 'Before the vendor confirms the order',
+  'vendor_Not_Found' => 'Vendor Not Found',
+  'you_have_not_add_any_products_in_Wishlist ' => 'You have not add any products in Wishlist ',
 );
