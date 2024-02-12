@@ -1772,21 +1772,17 @@
 </div>
 
 <script>
-   let lastScrollTop = 0;
-const threshold = window.innerHeight * 0.3; // 30vh threshold
+    let lastScrollTop = 0;
 
 window.addEventListener("scroll", function() {
   let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
   if (currentScroll > lastScrollTop) {
     // Scroll down
-    if (currentScroll > threshold) {
-      document.getElementById("header").style.top = "-115px";
-    }
+    document.getElementById("header").style.top = "-115px"; 
   } else {
     // Scroll up
     document.getElementById("header").style.top = "0";
   }
   lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; 
 }, false);
-
 </script>
