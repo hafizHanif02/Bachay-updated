@@ -1778,7 +1778,7 @@ window.addEventListener("scroll", function() {
   let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
   if (currentScroll > lastScrollTop) {
     // Scroll down
-    document.getElementById("header").style.top = "-110px"; 
+    document.getElementById("header").style.top = "-115px"; 
   } else {
     // Scroll up
     document.getElementById("header").style.top = "0";
