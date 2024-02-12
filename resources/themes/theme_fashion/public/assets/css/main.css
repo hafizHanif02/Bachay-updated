@@ -2231,7 +2231,7 @@ a:not(:focus) ~ .__dropdown-menu {
 @media (max-width: 1499px) {
   .banner-slide img {
     width: calc(100% - 23.9285714286rem) !important;
-    object-fit: cover !important;
+    object-fit: contain !important;
   }
   .banner-slide .content {
     min-width: 23.9285714286rem !important;
