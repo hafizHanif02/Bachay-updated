@@ -1773,7 +1773,7 @@
 
 <script>
     let lastScrollTop = 0;
-const threshold = window.innerHeight * 0.5; // 30vh threshold
+const threshold = window.innerHeight * 0.9; 
 
 window.addEventListener("scroll", function() {
   let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
