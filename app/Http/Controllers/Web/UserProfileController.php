@@ -129,7 +129,7 @@ class UserProfileController extends Controller
             return view(VIEW_FILE_NAMES['account_address_add'], compact('countries', 'zip_restrict_status', 'zip_codes', 'default_location'));
         }else{
             Toastr::error(translate('please_login_first'));
-            return back();
+            return back()->withErrors(['login' => 'Login']);
         }
 
     }

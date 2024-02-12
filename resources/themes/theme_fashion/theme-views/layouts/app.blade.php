@@ -252,17 +252,22 @@
     <script src="{{ theme_asset('assets/js/custom.js') }}"></script>
 
     {!! Toastr::message() !!}
+    
 
     <script>
         "use strict";
 
         @if ($errors->any())
+         @if($errors->login)
+         document.getElementsByClassName("customer_login_register_modal")[0].click();
+         @else
             @foreach($errors->all() as $error)
                 toastr.error('{{$error}}', Error, {
                     CloseButton: true,
                     ProgressBar: true
                 });
             @endforeach
+            @endif
         @endif
 
         @if(Request::is('/') &&  \Illuminate\Support\Facades\Cookie::has('popup_banner')==false)

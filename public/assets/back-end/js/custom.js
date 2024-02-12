@@ -727,7 +727,7 @@ $('.admin-product-status-form').on('submit', function (event) {
             if (response.success) {
                 toastr.success(response.message);
             } else {
-                toastr.error(response.message + "testing");
+                toastr.error(response.message);
                 setTimeout(function () {
                     location.reload();
                 }, 2000);
