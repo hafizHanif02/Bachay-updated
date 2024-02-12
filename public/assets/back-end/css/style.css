@@ -1,5 +1,5 @@
 :root {
-    --c1: #0177cd;
+    --c1: #835ec1;
     --c1-rgb: 1, 119, 205;
     --c2: #ff6767;
     --title-color: #334257;
@@ -97,7 +97,7 @@ a:hover {
 }
 
 .navbar-vertical-content {
-    background: #073b74;
+    background: linear-gradient(45deg, #170e25, #5c4289);
     padding: 10px 15px;
 }
 
@@ -830,7 +830,7 @@ label {
 }
 
 .btn--primary:hover {
-    background-color: #04a3e7;
+    background-color: #ff9670;
     color: #fff;
 }
 
@@ -5279,7 +5279,7 @@ select {
     position: sticky;
     top: 0;
     z-index: 9;
-    background: #073b74;
+    background: rgba(0,0,0,0);
 }
 
 aside .navbar-vertical-content {
