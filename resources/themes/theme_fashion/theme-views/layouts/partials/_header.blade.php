@@ -75,6 +75,7 @@
     .nav-btn ul li a {
         text-decoration: none;
         color: inherit;
+        color: #000;
     }
 
     .sub-nav {
