@@ -209,7 +209,7 @@
         </div>
     </div>
     <div class="container">
-        <div class="mobile-header-top d-sm-none text-capitalize">
+        {{-- <div class="mobile-header-top d-sm-none text-capitalize">
             <ul class="header-right-icons mb-2">
                 @if ($web_config['business_mode'] == 'multi' && $web_config['seller_registration'])
                     <li>
@@ -259,7 +259,7 @@
                     </div>
                 </li>
             </ul>
-        </div>
+        </div> --}}
         <div class="header-wrapper">
             <a href="{{ route('home') }}" class="logo">
                 <img loading="lazy" class="d-sm-none mobile-logo-cs"
@@ -449,7 +449,7 @@
                     </li> --}}
                     <li class="d-xl-none">
                         <a href="javascript:" class="search-toggle">
-                            <i class="bi bi-search"></i>
+                            <i class="bi bi-search" style="color: #000;"></i>
                         </a>
                     </li>
                     @if (auth('customer')->check())
