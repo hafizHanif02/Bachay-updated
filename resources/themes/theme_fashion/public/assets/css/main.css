@@ -107,6 +107,7 @@ body {
   font-family: var(--body);
   background: var(--body-bg);
   text-align: start;
+  padding-top: 115px !important;
 }
 
 h1,
