@@ -259,7 +259,10 @@
 
         @if ($errors->any())
          @if($errors->login)
-         document.getElementsByClassName("customer_login_register_modal")[0].click();
+         $(document).ready(function () {
+            console.log("Hello World!");
+            document.getElementsByClassName("customer_login_register_modal")[0].click();
+            });
          @else
             @foreach($errors->all() as $error)
                 toastr.error('{{$error}}', Error, {
