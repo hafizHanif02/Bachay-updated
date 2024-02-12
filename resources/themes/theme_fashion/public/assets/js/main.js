@@ -406,9 +406,9 @@
         });
         // Normal 1 Items Slider
         const topRatedFromStoreTwo = $(".slider").owlCarousel({
-            margin: 20,
+            margin: 0,
             responsiveClass: true,
-            nav: false,
+            nav: true,
             dots: false,
             loop: true,
             autoplay: true,
