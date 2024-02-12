@@ -5892,6 +5892,9 @@ a:not(:focus) ~ .__dropdown-menu {
   #mega-menu{
     display: none;
   }
+  body{
+    padding-top: 115px !important;
+  }
   /* .search-form-mobile .form-control {
       padding-inline: 1rem;
       border: 1px solid var(--border);
