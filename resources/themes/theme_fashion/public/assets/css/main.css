@@ -2184,7 +2184,7 @@ a:not(:focus) ~ .__dropdown-menu {
   height: 100%;
   -o-object-fit: contain;
   object-fit: contain;
-  width: calc(100% - 435px) !important;
+  width: calc(100% - 0px) !important;
   /*max-width: 760px; */
 }
 
