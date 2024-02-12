@@ -448,7 +448,9 @@ class UserProfileController extends Controller
                 $supportTickets = SupportTicket::where('customer_id', auth('customer')->id())->latest()->paginate(10);
             return view(VIEW_FILE_NAMES['account_tickets'], compact('supportTickets'));
         } else {
-            return redirect()->route('home');
+            // return redirect()->route('home');
+            Toastr::error(translate('please_login_first'));
+            return back();
         }
     }
 

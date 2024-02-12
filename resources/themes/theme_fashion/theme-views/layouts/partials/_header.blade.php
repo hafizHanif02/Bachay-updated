@@ -325,9 +325,21 @@
                         @endif
                     @endif
 
-                    <li>
+                    {{-- <li>
                         <a href="{{ route('home') }}" class="nav-ul_text">{{ translate('Support') }}</a>
-                    </li>
+                    </li> --}}
+
+
+                    @auth('customer')
+                        <li>
+                            <a href="{{ route('account-tickets') }}" class="nav-ul_text">{{ translate('Support') }}</a>
+                        </li>
+                    @else
+                        <li>
+                            <a href="{{ route('account-tickets') }}" class="nav-ul_text">{{ translate('Support') }}</a>
+                        </li>
+                    @endauth
+
                     
                     {{-- @php($categories = \App\Utils\CategoryManager::get_categories_with_counting())
                     <li>
@@ -1308,6 +1320,130 @@
                         </div>
                     </div>
                 </li>
+                <li><a href="#" class="drp-btn">Articles</a>
+
+                    {{-- <div class="mega-menu-container">
+                        <div class="mega-menu-grid">
+                            <div class="sub-nav-column">
+                                <ul class="collection">
+                                    <li class="collection-item">
+                                        <h4>SHOP BY CATEGORY</h4>
+                                    </li>
+                                    <li><a href="#">Musical Toys</a></li>
+                                    <li><a href="#">Learning & Educational Toys</a></li>
+                                    <li><a href="">Soft Toys</a></li>
+                                    <li><a href="#">Backyard Play</a></li>
+                                    <li><a href="#">Play Gyms & Playmats</a></li>
+                                    <li><a href="#">Sports & Games</a></li>
+                                    <li><a href="#">Role & Pretend Play Toys</a></li>
+                                    <li><a href="#">Blocks & Construction Sets</a></li>
+                                    <li><a href="#">Stacking Toys</a></li>
+                                    <li><a chref="#">Kids Puzzles</a></li>
+                                    <li><a href="#">Baby Rattles</a></li>
+                                    <li><a href="#">Toys Cars Trains & Vehicles</a></li>
+                                    <li><a href="#">Kids Musical Instruments</a></li>
+                                    <li><a href="#">Dolls & Dollhouses</a></li>
+                                    <li><a href="#">Push & Pull Along Toys</a></li>
+                                    <li><a href="#">Art Crafts & Hobby Kits</a></li>
+                                    <li><a href="#">Board Games</a></li>
+                                </ul>
+                            </div>
+                            <div class="sub-nav-column">
+                                <ul class="collection">
+                                    <li class="collection-item">
+                                        <h4></h4>
+                                    </li>
+                                    <li><a href="#">Action Figures & Collectibles</a></li>
+                                    <li><a href="#">Radio & Remote Control Toys</a></li>
+                                    <li><a href="">Bath Toys</a></li>
+                                    <li><a href="#">Toys Guns & Weapons</a></li>
+                                    <li><a href="#">Kids Gadgets <span class="color">NEW</span></a>
+                                    </li>
+                                    <div class="box"></div>
+                                    <li class="collection-item">
+                                        <h4> RIDE-ONS & SCOOTERS</h4>
+                                    </li>
+                                    <li><a href="#">Battery Operated Ride-ons</a></li>
+                                    <li><a href="#">Manual Push Ride-ons</a></li>
+                                    <li><a href="#">Swing cars/twisters</a></li>
+                                    <li><a href="#">Rocking Ride Ons</a></li>
+                                    <li><a href="#">Tricycles</a></li>
+                                    <li><a href="#">Bicycles</a></li>
+                                    <li><a href="#">Balance Bike</a></li>
+                                    <div class="box"></div>
+                                    <li class="collection-item">
+                                        <h4> COMBO PACKS</h4>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="sub-nav-column">
+                                <ul class="collection">
+                                    <li class="collection-item">
+                                        <h4>BOARD GAMES</h4>
+                                    </li>
+                                    <li><a href="#">IQ Games</a></li>
+                                    <li><a href="#">Ludo, Snakes & Ladders</span></a></li>
+                                    <li><a href="">Words, Pictures & Scrabble Games</a></li>
+                                    <li><a href="#">Playing Cards</a></li>
+                                    <li><a href="#">Life & Travel Board Games</span></a></li>
+                                    <li><a href="#">Animal, Birds & Marine Life Games</a></li>
+                                    <li><a href="#">Business/Monopoly</a></li>
+                                    <div class="box"></div>
+                                    <li class="collection-item">
+                                        <h4>BHOME PLAY ACTIVITIES</h4>
+                                    </li>
+                                    <li><a href="#">Play Dough, Sand & Moulds</a></li>
+                                    <li><a href="#">Coloring, Sequencing & Engraving Art</a></li>
+                                    <li><a href="#">Activity Kit </a></li>
+                                    <li><a href="#">SBuilding Construction Sets</a></li>
+                                    <li><a href="#">Multi Model Making Sets</a></li>
+                                    <li><a href="#">Kitchen Sets</a></li>
+                                    <li><a href="#">Play Foods</a></li>
+                                    <li><a href="#">Kids' Doctor Sets</a></li>
+                                    <li><a href="#">Piano & Keyboards</a></li>
+                                    <li><a href="#">Drum Sets & Percussion</a></li>
+                                </ul>
+                            </div>
+                            <div class="sub-nav-column">
+                                <ul class="collection">
+                                    <li class="collection-item">
+                                        <h4>SHOP BY BRANDS</h4>
+                                    </li>
+                                    <li><a href="#">Fisher Price</a></li>
+                                    <li><a href="#">Intellikit</a></li>
+                                    <li><a href="">Babyhug</a></li>
+                                    <li><a href="#">Intelliskills</a></li>
+                                    <li><a href="#">Intellibaby</a></li>
+                                    <li><a href="#">Fab n Funky</a></li>
+                                    <li><a href="#">Hotwheels</a></li>
+                                    <li><a href="#">Disney</a></li>
+                                    <li><a href="#">Barbie</a></li>
+                                    <li><a href="#">Giggles</a></li>
+                                    <li><a href="#">Lego</a></li>
+                                    <li><a href="#">Bonfino</a></li>
+                                    <li><a href="#">Pine Kids</a></li>
+                                    <li><a href="#">Playnation</a></li>
+                                    <div class="box"></div>
+                                    <li class="collection-item">
+                                        <h4>SHOP BY PRICE</h4>
+                                    </li>
+                                    <li><a href="#">Under 299</a></li>
+                                    <li><a href="#">Under 499</a></li>
+                                    <li><a href="#">Under 699</a></li>
+                                    <li><a href="#">Under 999</a></li>
+                                </ul>
+                            </div>
+                            <div class="sub-nav-column">
+                                <div class="z-depth-1 polariod">
+                                    <img class="object-fit-cover rounded-3"
+                                        src="{{ asset('public/images/premium-b-2.webp') }}" alt="premium b2 image"
+                                        class="theme responsive-img" width="100%" height="100%">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div> --}}
+                </li>
                 <li><a href="#" class="drp-btn">Nursing</a>
 
                     <div class="mega-menu-container">
@@ -1433,130 +1569,6 @@
                     </div>
                 </li>
 
-                <li><a href="#" class="drp-btn">Diapering</a>
-
-                    <div class="mega-menu-container">
-                        <div class="mega-menu-grid">
-                            <div class="sub-nav-column">
-                                <ul class="collection">
-                                    <li class="collection-item">
-                                        <h4>SHOP BY CATEGORY</h4>
-                                    </li>
-                                    <li><a href="#">Musical Toys</a></li>
-                                    <li><a href="#">Learning & Educational Toys</a></li>
-                                    <li><a href="">Soft Toys</a></li>
-                                    <li><a href="#">Backyard Play</a></li>
-                                    <li><a href="#">Play Gyms & Playmats</a></li>
-                                    <li><a href="#">Sports & Games</a></li>
-                                    <li><a href="#">Role & Pretend Play Toys</a></li>
-                                    <li><a href="#">Blocks & Construction Sets</a></li>
-                                    <li><a href="#">Stacking Toys</a></li>
-                                    <li><a chref="#">Kids Puzzles</a></li>
-                                    <li><a href="#">Baby Rattles</a></li>
-                                    <li><a href="#">Toys Cars Trains & Vehicles</a></li>
-                                    <li><a href="#">Kids Musical Instruments</a></li>
-                                    <li><a href="#">Dolls & Dollhouses</a></li>
-                                    <li><a href="#">Push & Pull Along Toys</a></li>
-                                    <li><a href="#">Art Crafts & Hobby Kits</a></li>
-                                    <li><a href="#">Board Games</a></li>
-                                </ul>
-                            </div>
-                            <div class="sub-nav-column">
-                                <ul class="collection">
-                                    <li class="collection-item">
-                                        <h4></h4>
-                                    </li>
-                                    <li><a href="#">Action Figures & Collectibles</a></li>
-                                    <li><a href="#">Radio & Remote Control Toys</a></li>
-                                    <li><a href="">Bath Toys</a></li>
-                                    <li><a href="#">Toys Guns & Weapons</a></li>
-                                    <li><a href="#">Kids Gadgets <span class="color">NEW</span></a>
-                                    </li>
-                                    <div class="box"></div>
-                                    <li class="collection-item">
-                                        <h4> RIDE-ONS & SCOOTERS</h4>
-                                    </li>
-                                    <li><a href="#">Battery Operated Ride-ons</a></li>
-                                    <li><a href="#">Manual Push Ride-ons</a></li>
-                                    <li><a href="#">Swing cars/twisters</a></li>
-                                    <li><a href="#">Rocking Ride Ons</a></li>
-                                    <li><a href="#">Tricycles</a></li>
-                                    <li><a href="#">Bicycles</a></li>
-                                    <li><a href="#">Balance Bike</a></li>
-                                    <div class="box"></div>
-                                    <li class="collection-item">
-                                        <h4> COMBO PACKS</h4>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="sub-nav-column">
-                                <ul class="collection">
-                                    <li class="collection-item">
-                                        <h4>BOARD GAMES</h4>
-                                    </li>
-                                    <li><a href="#">IQ Games</a></li>
-                                    <li><a href="#">Ludo, Snakes & Ladders</span></a></li>
-                                    <li><a href="">Words, Pictures & Scrabble Games</a></li>
-                                    <li><a href="#">Playing Cards</a></li>
-                                    <li><a href="#">Life & Travel Board Games</span></a></li>
-                                    <li><a href="#">Animal, Birds & Marine Life Games</a></li>
-                                    <li><a href="#">Business/Monopoly</a></li>
-                                    <div class="box"></div>
-                                    <li class="collection-item">
-                                        <h4>BHOME PLAY ACTIVITIES</h4>
-                                    </li>
-                                    <li><a href="#">Play Dough, Sand & Moulds</a></li>
-                                    <li><a href="#">Coloring, Sequencing & Engraving Art</a></li>
-                                    <li><a href="#">Activity Kit </a></li>
-                                    <li><a href="#">SBuilding Construction Sets</a></li>
-                                    <li><a href="#">Multi Model Making Sets</a></li>
-                                    <li><a href="#">Kitchen Sets</a></li>
-                                    <li><a href="#">Play Foods</a></li>
-                                    <li><a href="#">Kids' Doctor Sets</a></li>
-                                    <li><a href="#">Piano & Keyboards</a></li>
-                                    <li><a href="#">Drum Sets & Percussion</a></li>
-                                </ul>
-                            </div>
-                            <div class="sub-nav-column">
-                                <ul class="collection">
-                                    <li class="collection-item">
-                                        <h4>SHOP BY BRANDS</h4>
-                                    </li>
-                                    <li><a href="#">Fisher Price</a></li>
-                                    <li><a href="#">Intellikit</a></li>
-                                    <li><a href="">Babyhug</a></li>
-                                    <li><a href="#">Intelliskills</a></li>
-                                    <li><a href="#">Intellibaby</a></li>
-                                    <li><a href="#">Fab n Funky</a></li>
-                                    <li><a href="#">Hotwheels</a></li>
-                                    <li><a href="#">Disney</a></li>
-                                    <li><a href="#">Barbie</a></li>
-                                    <li><a href="#">Giggles</a></li>
-                                    <li><a href="#">Lego</a></li>
-                                    <li><a href="#">Bonfino</a></li>
-                                    <li><a href="#">Pine Kids</a></li>
-                                    <li><a href="#">Playnation</a></li>
-                                    <div class="box"></div>
-                                    <li class="collection-item">
-                                        <h4>SHOP BY PRICE</h4>
-                                    </li>
-                                    <li><a href="#">Under 299</a></li>
-                                    <li><a href="#">Under 499</a></li>
-                                    <li><a href="#">Under 699</a></li>
-                                    <li><a href="#">Under 999</a></li>
-                                </ul>
-                            </div>
-                            <div class="sub-nav-column">
-                                <div class="z-depth-1 polariod">
-                                    <img class="object-fit-cover rounded-3"
-                                        src="{{ asset('public/images/premium-b-2.webp') }}" alt="premium b2 image"
-                                        class="theme responsive-img" width="100%" height="100%">
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
                 @if ($web_config['business_mode'] == 'multi' && $web_config['seller_registration'])
                     <li class="me-2 me-xl-0 d-none d-sm-block">
                         <a href="{{ route('shop.apply') }}" class=" drp-btn seller_reg p-3"
