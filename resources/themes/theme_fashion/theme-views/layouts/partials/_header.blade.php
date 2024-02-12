@@ -304,11 +304,12 @@
                     </li>
                     @else
                     <li>
-                        <a href="{{ route('account-address-add') }}" class="nav-ul_text">
-                            <img src="{{ asset('public/images/location.gif') }}" alt="" width="20px" height="20px">
+                       
 
-                            {{ translate('location') }}
-                        </a>
+                        <a href="javascript:" class="customer_login_register_modal nav-ul_text">
+                        <img src="{{ asset('public/images/location.gif') }}" alt="" width="20px" height="20px">
+                        {{ translate('location') }}
+                            </a>
                     </li>
                     @endauth
                     @if ($web_config['business_mode'] == 'multi')
