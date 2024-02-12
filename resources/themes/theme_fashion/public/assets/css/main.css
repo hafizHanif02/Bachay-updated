@@ -1750,7 +1750,8 @@ input:-webkit-autofill:active {
   height: 2px;
   width: 100%;
   transition: all ease 0.3s;
-  background: var(--title);
+  /* background: var(--title); */
+  background: #000 !important;
   left: 0;
 }
 
