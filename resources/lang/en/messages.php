@@ -7214,4 +7214,6 @@
   'Sell_with_us' => 'Sell with us',
   'Customer_Added_Successfully' => 'Customer Added Successfully',
   'please_login_first' => 'Please login first',
+  'most_visitedd_categories' => 'Most visitedd categories',
+  'our_categories' => 'Our categories',
 );

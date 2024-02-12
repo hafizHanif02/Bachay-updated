@@ -1,6 +1,6 @@
 <footer class="footer">
     <div class="container">
-        <div class="newsletter-wrapper">
+        <div class="newsletter-wrapper" style="background: linear-gradient(90.27deg, #845dc2 -27.96%, #f99327 -27.94%, #d55fad 28.41%, #845dc2 82.13%, #845dc2 130.57%);">
             <div class="newsletter-wrapper-inner">
                 <div class="cont">
                     <h5 class="title">{{ translate('newsletter') }}</h5>
