@@ -1,13 +1,13 @@
 @if ($main_banner->count() > 0)
-<section class="banner-section custom-height">
-    <div class="banner-slider owl-theme owl-carousel custom-single-slider">
+<section class="banner-section ">
+    <div class="slider owl-theme owl-carousel custom-single-slider">
         @foreach($main_banner as $banner)
-        <div class="banner-slide" style="--base: {{ $banner['background_color'] }};">
+        <div class="banner-slide" style="background: {{ $banner['background_color'] }};">
 
-            <img class="banner-slide-img" alt="{{ translate('banner') }}" loading="lazy"
+            <img class="banner-slide-img" style="height:400px;" alt="{{ translate('banner') }}" loading="lazy"
                  src="{{ getValidImage(path: 'storage/app/public/banner/'.$banner['photo'], type:'product') }}">
 
-            @if($banner['title'] && $banner['sub_title'])
+            <!-- @if($banner['title'] && $banner['sub_title'])
                 <div class="content">
                     <h1 class="title mb-3">{{ $banner['title'] }} <br><span class="subtxt">{{ $banner['sub_title'] }}</span> </h1>
                     @if($banner['button_text'])
@@ -16,7 +16,7 @@
                     </div>
                     @endif
                 </div>
-            @endif
+            @endif -->
 
             <svg width="16" height="44" viewBox="0 0 16 44" fill="none" xmlns="http://www.w3.org/2000/svg" class="shapes d-sm-none">
                 <g filter="url(#filter0_b_3844_38351)">

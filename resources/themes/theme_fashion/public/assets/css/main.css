@@ -2171,6 +2171,7 @@ a:not(:focus) ~ .__dropdown-menu {
 }
 .banner-slide {
   display: flex;
+  justify-content: center;
 }
 
 .banner-arrow {
