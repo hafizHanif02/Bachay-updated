@@ -106,7 +106,7 @@ a:hover {
 }
 
 .navbar-vertical-content .nav-link:hover {
-    color: #8ce98a;
+    color: #ff9670;
     background: rgba(239, 246, 255, 0.1);
 }
 
@@ -114,7 +114,7 @@ a:hover {
 .navbar .nav-link.active,
 .navbar .nav-link.show,
 .navbar .show > .nav-link {
-    color: #8ce98a;
+    color: #ff9670;
     background-color: rgba(239, 246, 255, 0.1);
 }
 
@@ -125,7 +125,7 @@ a:hover {
 .navbar-vertical .active .nav-indicator-icon,
 .navbar-vertical .nav-link:hover .nav-indicator-icon,
 .navbar-vertical .show > .nav-link > .nav-indicator-icon {
-    color: #8ce98a;
+    color: #ff9670;
 }
 
 .navbar-vertical .navbar-nav.nav-tabs .active .nav-link,
