@@ -329,6 +329,7 @@ class ProductService
             'name' => $request['name'][array_search('en', $request['lang'])],
             'code' => $request['code'],
             'slug' => $this->getSlug($request),
+            'gender' => $request['gender'],
             'category_ids' => json_encode($this->getCategoriesArray(request: $request)),
             'category_id' => $request['category_id'],
             'sub_category_id' => $request['sub_category_id'],
@@ -388,6 +389,7 @@ class ProductService
         $dataArray = [
             'name' => $request['name'][array_search('en', $request['lang'])],
             'code' => $request['code'],
+            'gender' => $request['gender'],
             'product_type' => $request['product_type'],
             'category_ids' => json_encode($this->getCategoriesArray(request: $request)),
             'category_id' => $request['category_id'],

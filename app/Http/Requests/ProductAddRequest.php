@@ -31,6 +31,7 @@ class ProductAddRequest extends Request
         return [
             'name' => 'required',
             'category_id' => 'required',
+            'gender' => 'required',
             'product_type' => 'required',
             'digital_product_type' => 'required_if' . ':' . 'product_type' . ',==,' . 'digital',
             'digital_file_ready' => 'required_if' . ':' . 'digital_product_type' . ',==,' . 'ready_product' . '|' . 'mimes' . ':jpg,jpeg,png,gif,zip,pdf',

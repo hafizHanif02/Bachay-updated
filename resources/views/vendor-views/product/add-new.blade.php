@@ -208,6 +208,16 @@
                                 </select>
                             </div>
                         </div>
+                        <div class="col-md-6 col-lg-4 col-xl-3 physical_product_show">
+                            <div class="form-group">
+                                <label class="title-color">{{ translate('Gender') }}</label>
+                                <select class="js-example-basic-multiple form-control" name="gender">
+                                        <option value="unisex" >Unisex</option>
+                                        <option value="male" >Male</option>
+                                        <option value="female" >Female</option>
+                                </select>
+                            </div>
+                        </div>
                         <div class="col-md-9">
                             <div class="form-group">
                                 <label class="title-color d-flex align-items-center gap-2">

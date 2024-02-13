@@ -65,6 +65,7 @@ class Product extends Model
         'name',
         'code',
         'slug',
+        'gender',
         'category_ids',
         'category_id',
         'sub_category_id',

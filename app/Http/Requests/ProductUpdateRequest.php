@@ -43,6 +43,7 @@ class ProductUpdateRequest extends FormRequest
             'name' => 'required',
             'category_id' => 'required',
             'product_type' => 'required',
+            'gender' => 'required',
             'digital_product_type' => 'required_if:product_type,==,digital',
             'digital_file_ready' => 'mimes:jpg,jpeg,png,gif,zip,pdf',
             'unit' => 'required_if:product_type,==,physical',
