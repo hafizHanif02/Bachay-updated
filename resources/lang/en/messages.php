@@ -7221,6 +7221,6 @@
   'vendor_Not_Found' => 'Vendor Not Found',
   'you_have_not_add_any_products_in_Wishlist ' => 'You have not add any products in Wishlist ',
   'sorry_this_coupon_is_not_valid_for_this_user!' => 'sorry this coupon is not valid for this user!',
-  'select_Sub_Category' => 'Select Sub Category'
-
+  'select_sub_category_first' => 'Select sub category first',
+  'vendor_name' => 'Vendor name',
 );
