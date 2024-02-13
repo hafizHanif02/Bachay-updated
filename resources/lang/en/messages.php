@@ -7223,4 +7223,5 @@
   'sorry_this_coupon_is_not_valid_for_this_user!' => 'sorry this coupon is not valid for this user!',
   'select_sub_category_first' => 'Select sub category first',
   'vendor_name' => 'Vendor name',
+  'product_remove_from_the_wishlist' => 'product remove from the wishlist'
 );
