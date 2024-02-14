@@ -867,12 +867,13 @@ class ShopViewController extends Controller
 
             $gender = [];
             if($request->gender){
-                $products = $products->whereIn('gender', $request->gender);
+                $products = Product::whereIn('gender', $request->gender)->get();
             }
 
             $allProducts = [];
             if ($request->size) {
                 // Assuming $products is a collection of products
+                $products = Product::get();
                 foreach ($products as $product) {
                     $matchedOptions = json_decode($product->choice_options, true);
                     if (!empty($matchedOptions)) {

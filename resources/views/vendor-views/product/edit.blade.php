@@ -228,9 +228,9 @@
                             <div class="form-group">
                                 <label class="title-color">{{ translate('Gender') }}</label>
                                 <select class="js-example-basic-multiple form-control" name="gender">
-                                        <option value="unisex" >Unisex</option>
-                                        <option value="male" >Male</option>
-                                        <option value="female" >Female</option>
+                                    <option value="unisex" {{ $product['gender']=='unisex' ? 'selected' : '' }} >Unisex</option>
+                                    <option value="male" {{ $product['gender']=='male' ? 'selected' : '' }} >Male</option>
+                                    <option value="female" {{ $product['gender']=='female' ? 'selected' : '' }} >Female</option>
                                 </select>
                             </div>
                         </div>
