@@ -192,7 +192,6 @@
         </div>
     </div>
 </div>
-
 @isset($colors)
     <div class="widget">
         <div class="widget-header open">
@@ -218,7 +217,7 @@
     </div>
 @endisset
 
-
+{{-- Gender --}}
 <div class="widget">
     <div class="widget-header open">
         <h5 class="title">Gender</h5>
@@ -256,6 +255,34 @@
                             {{-- <span class="badge badge-soft-base ms-auto">{{ (isset($gender->count)?$gender->count:$gender->gender_products_count) ?? 0 }}</span> --}}
                         </label>
                     </div>
+            </div>
+        </div>
+    </div>
+</div>  
+
+
+{{-- Size --}}
+<div class="widget">
+    <div class="widget-header open">
+        <h5 class="title">Size</h5>
+        <div class="chevron-icon">
+            <i class="bi bi-chevron-down"></i>
+        </div>
+    </div>
+    <div class="widget-body">
+        <div class="widget-body-inner">
+            <div class="all-brands">
+                    @foreach($sizes as $size)
+                    <div class="form--check">
+                        <label class="form--check-inner brand_class_for_tag_gender">
+                            <input type="checkbox" name="size[]"
+                                   value="{{ $size }}" >
+                            <span class="check-icon"><i class="bi bi-check"></i></span>
+                            <span class="form-check-label">{{ $size }}</span>
+                            {{-- <span class="badge badge-soft-base ms-auto">{{ (isset($gender->count)?$gender->count:$gender->gender_products_count) ?? 0 }}</span> --}}
+                        </label>
+                    </div>
+                    @endforeach
             </div>
         </div>
     </div>

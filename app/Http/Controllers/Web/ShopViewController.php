@@ -870,6 +870,28 @@ class ShopViewController extends Controller
                 $products = $products->whereIn('gender', $request->gender);
             }
 
+            $allProducts = [];
+            if ($request->size) {
+                // Assuming $products is a collection of products
+                foreach ($products as $product) {
+                    $matchedOptions = json_decode($product->choice_options, true);
+                    if (!empty($matchedOptions)) {
+                        $title = $matchedOptions[0]['title'];
+                        $options = $matchedOptions[0]['options'];
+                        if($title == 'Size'){
+                            if(!empty(array_diff($request->size, $options))){
+                                $allProducts[] = $product;
+                            }
+                        }
+                    }   
+                    }
+                $products = $allProducts;
+            }
+            
+
+
+            
+
         return response()->json([
             'html_products'=>view('theme-views.product._ajax-products',['products'=>$products,'paginate_count'=>$paginate_count,'page'=>($request->page??1), 'request_data'=>$request->all()])->render(),
             'html_tags'=>view('theme-views.product._selected_filter_tags',['tags_category'=>$category,'tags_brands'=>$brands,'rating'=>$rating, 'sort_by'=>$request['sort_by']])->render(),

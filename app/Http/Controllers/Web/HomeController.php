@@ -2,26 +2,27 @@
 
 namespace App\Http\Controllers\Web;
 
-use App\Utils\Helpers;
-use App\Http\Controllers\Controller;
-use App\Models\Banner;
 use App\Models\Brand;
-use App\Models\BusinessSetting;
-use App\Models\Category;
-use App\Models\Coupon;
-use App\Models\DealOfTheDay;
-use App\Models\FlashDeal;
-use App\Models\MostDemanded;
 use App\Models\Order;
-use App\Models\OrderDetail;
-use App\Models\Product;
-use App\Models\Seller;
+use App\Models\Banner;
+use App\Models\Coupon;
 use App\Models\Review;
-use App\Utils\ProductManager;
-use Illuminate\Contracts\View\View;
+use App\Models\Seller;
+use App\Utils\Helpers;
+use PHPUnit\Util\Json;
+use App\Models\Product;
+use App\Models\Category;
+use App\Models\FlashDeal;
+use App\Models\OrderDetail;
 use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\Auth;
+use App\Models\DealOfTheDay;
+use App\Models\MostDemanded;
+use App\Utils\ProductManager;
+use App\Models\BusinessSetting;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Contracts\View\View;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -777,10 +778,61 @@ class HomeController extends Controller
                     ->whereDate('end_date', '>=', date('Y-m-d'));
             })->latest()->take(4)->get();
 
+            $sizes = [];
+            foreach ($all_products as $product) {
+                $choice_options = json_decode($product->choice_options, true);
+                if (is_array($choice_options) && !empty($choice_options)) {
+                    $title = $choice_options[0]['title'];
+                    if ($title == 'Size') {
+                        $options = $choice_options[0]['options'];
+                        foreach ($options as $option) {
+                            $sizes[] = $option;
+                        }
+                    }
+                }
+            }
+            
+            $custom_sort = function ($a, $b) {
+                $order = [
+                    "New Born" => -1,
+                    "Preemie" => 0,
+                    "M" => 1,
+                    "Y" => 2,
+                ];
+                $pattern = '/(\d+)\s?[-to]+\s?(\d+)?\s?([MY])?/i';
+                preg_match($pattern, $a, $matches_a);
+                preg_match($pattern, $b, $matches_b);
+                $a_unit = isset($matches_a[3]) ? strtoupper($matches_a[3]) : '';
+                $b_unit = isset($matches_b[3]) ? strtoupper($matches_b[3]) : '';
+                $a_order = isset($order[$a_unit]) ? $order[$a_unit] : PHP_INT_MAX;
+                $b_order = isset($order[$b_unit]) ? $order[$b_unit] : PHP_INT_MAX;
+                if ($a_unit === "New Born" && $b_unit === "Preemie") {
+                    return -1;
+                } elseif ($a_unit === "Preemie" && $b_unit === "New Born") {
+                    return 1;
+                }
+                if ($a_unit === $b_unit) {
+                    $a_value = isset($matches_a[1]) ? (int)$matches_a[1] : null;
+                    $b_value = isset($matches_b[1]) ? (int)$matches_b[1] : null;
+            
+                    if ($a_value !== null && $b_value !== null) {
+                        return $a_value - $b_value;
+                    }
+                }
+                return $a_order <=> $b_order;
+            };
+            usort($sizes, $custom_sort);
+            $sizes = array_unique($sizes);
+            $new_born_key = array_search("New Born", $sizes);
+            $preemie_key = array_search("Preemie", $sizes);
+            unset($sizes[$new_born_key]);
+            unset($sizes[$preemie_key]);
+            array_unshift($sizes, "Preemie", "New Born");
+
 
         return view(VIEW_FILE_NAMES['home'],
             compact(
-                'latest_products', 'deal_of_the_day', 'top_sellers','topRatedShops', 'main_banner','most_visited_categories',
+                'sizes','latest_products', 'deal_of_the_day', 'top_sellers','topRatedShops', 'main_banner','most_visited_categories',
                 'random_product', 'decimal_point_settings', 'newSellers', 'sidebar_banner', 'top_side_banner', 'recent_order_shops',
                 'categories', 'colors_in_shop', 'all_products_info', 'most_searching_product', 'most_demanded_product', 'featured_products','promo_banner_left',
                 'promo_banner_middle_top','promo_banner_middle_bottom','promo_banner_right', 'promo_banner_bottom', 'currentDate', 'all_products',
