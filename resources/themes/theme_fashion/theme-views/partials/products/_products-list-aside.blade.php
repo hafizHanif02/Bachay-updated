@@ -262,6 +262,7 @@
 
 
 {{-- Size --}}
+@isset($sizes)
 <div class="widget">
     <div class="widget-header open">
         <h5 class="title">Size</h5>
@@ -287,3 +288,4 @@
         </div>
     </div>
 </div>  
+@endisset

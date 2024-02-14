@@ -879,7 +879,8 @@ class ShopViewController extends Controller
                         $title = $matchedOptions[0]['title'];
                         $options = $matchedOptions[0]['options'];
                         if($title == 'Size'){
-                            if(!empty(array_diff($request->size, $options))){
+                            dd(array_intersect($request->size, $options));
+                            if(!empty(array_intersect($request->size, $options))){
                                 $allProducts[] = $product;
                             }
                         }
