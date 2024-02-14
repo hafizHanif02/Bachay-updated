@@ -704,7 +704,6 @@ class ShopViewController extends Controller
      */
     public function ajax_filter_products(Request $request)
     {
-
         $categories = $request->category ?? [];
         $category = [];
         if($request->category)
@@ -865,6 +864,11 @@ class ShopViewController extends Controller
         $products = $products->skip(($request->page - 1) * $paginate_limit)
             ->take($paginate_limit)
             ->paginate($paginate_limit);
+
+            $gender = [];
+            if($request->gender){
+                $products = $products->whereIn('gender', $request->gender);
+            }
 
         return response()->json([
             'html_products'=>view('theme-views.product._ajax-products',['products'=>$products,'paginate_count'=>$paginate_count,'page'=>($request->page??1), 'request_data'=>$request->all()])->render(),

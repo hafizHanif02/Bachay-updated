@@ -7222,4 +7222,5 @@
   'you_have_not_add_any_products_in_Wishlist ' => 'You have not add any products in Wishlist ',
   'promo' => 'Promo',
   'Gender' => 'Gender',
+  'select_sub_category_first' => 'Select sub category first',
 );

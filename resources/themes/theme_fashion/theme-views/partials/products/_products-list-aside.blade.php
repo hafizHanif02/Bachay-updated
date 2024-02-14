@@ -217,3 +217,46 @@
         </div>
     </div>
 @endisset
+
+
+<div class="widget">
+    <div class="widget-header open">
+        <h5 class="title">Gender</h5>
+        <div class="chevron-icon">
+            <i class="bi bi-chevron-down"></i>
+        </div>
+    </div>
+    <div class="widget-body">
+        <div class="widget-body-inner">
+            <div class="all-brands">
+                    <div class="form--check">
+                        <label class="form--check-inner brand_class_for_tag_gender">
+                            <input type="checkbox" name="gender[]"
+                                   value="unisex" >
+                            <span class="check-icon"><i class="bi bi-check"></i></span>
+                            <span class="form-check-label">Unisex</span>
+                            {{-- <span class="badge badge-soft-base ms-auto">{{ (isset($gender->count)?$gender->count:$gender->gender_products_count) ?? 0 }}</span> --}}
+                        </label>
+                    </div>
+                    <div class="form--check">
+                        <label class="form--check-inner brand_class_for_tag_gender">
+                            <input type="checkbox" name="gender[]"
+                                   value="male" >
+                            <span class="check-icon"><i class="bi bi-check"></i></span>
+                            <span class="form-check-label">Male</span>
+                            {{-- <span class="badge badge-soft-base ms-auto">{{ (isset($gender->count)?$gender->count:$gender->gender_products_count) ?? 0 }}</span> --}}
+                        </label>
+                    </div>
+                    <div class="form--check">
+                        <label class="form--check-inner brand_class_for_tag_gender">
+                            <input type="checkbox" name="gender[]"
+                                   value="female" >
+                            <span class="check-icon"><i class="bi bi-check"></i></span>
+                            <span class="form-check-label">Female</span>
+                            {{-- <span class="badge badge-soft-base ms-auto">{{ (isset($gender->count)?$gender->count:$gender->gender_products_count) ?? 0 }}</span> --}}
+                        </label>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>  
