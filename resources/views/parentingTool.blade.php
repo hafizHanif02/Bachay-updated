@@ -15,5 +15,11 @@
 @endpush
 
 @section('content')
-    <h1>parenting Tool</h1>
+    <div class="text-center">
+        <img src="{{ asset('public/images/parenting.webp') }}" alt="">
+        <img src="{{ asset('public/images/p2.webp') }}" alt="">
+        
+
+
+    </div>
 @endsection
