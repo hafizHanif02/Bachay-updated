@@ -1086,6 +1086,32 @@
                                 </li>
                             @endif
                         @endif
+
+                        <li class="nav-item">
+                            <small class="nav-subtitle" title="">Blogs</small>
+                            <li class="navbar-vertical-aside-has-menu {{Request::is('admin/article/list','admin/article/edit/*')?'active':''}}">
+                                <a class="js-navbar-vertical-aside-menu-link nav-link"
+                                   href="{{ route('admin.article.list') }}" >
+                                    <i class="tio-messages nav-icon"></i>
+                                    <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">
+                                    <span class="position-relative">
+                                        Article
+                                    </span>
+                                </span>
+                                </a>
+                            </li>
+                            <li class="navbar-vertical-aside-has-menu {{Request::is('admin/article/category*')?'active':''}}">
+                                <a class="js-navbar-vertical-aside-menu-link nav-link"
+                                   href="{{ route('admin.article.category.list') }}" >
+                                    <i class="tio-star nav-icon"></i>
+                                    <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">
+                                    <span class="position-relative">
+                                        Article Category
+                                    </span>
+                                </span>
+                                </a>
+                            </li>
+                        </li>
                         <li class="nav-item pt-5">
                         </li>
                     </ul>
