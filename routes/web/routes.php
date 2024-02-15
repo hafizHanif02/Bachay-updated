@@ -49,7 +49,9 @@ Route::group(['namespace' => 'Web','middleware'=>['maintenance_mode','guestCheck
     });
     Route::post(ShopFollower::SHOP_FOLLOW[URI], [ShopFollowerController::class, 'followOrUnfollowShop'])->name('shop-follow');
 });
-
+route::get('parenting', function () {
+    return view('parentingTool');
+});
 Route::group(['namespace' => 'Web','middleware'=>['maintenance_mode','guestCheck']], function () {
     Route::get('/', 'HomeController@index')->name('home');
 
@@ -64,7 +66,7 @@ Route::group(['namespace' => 'Web','middleware'=>['maintenance_mode','guestCheck
             Route::post(Review::ADD_DELIVERYMAN_REVIEW[URI],'addDeliveryManReview')->name('submit-deliveryman-review');
         });
     });
-
+    
     Route::get('checkout-details', 'WebController@checkout_details')->name('checkout-details');
     Route::get('checkout-shipping', 'WebController@checkout_shipping')->name('checkout-shipping');
     Route::get('checkout-payment', 'WebController@checkout_payment')->name('checkout-payment');
@@ -106,6 +108,7 @@ Route::group(['namespace' => 'Web','middleware'=>['maintenance_mode','guestCheck
     });
 
     Route::get('/product/{slug}', 'ProductDetailsController@index')->name('product');
+
     Route::get('products', 'ProductListController@products')->name('products');
     Route::post('ajax-filter-products', 'ShopViewController@ajax_filter_products')->name('ajax-filter-products'); // Theme fashion, ALl purpose
     Route::get('orderDetails', 'WebController@orderdetails')->name('orderdetails');
