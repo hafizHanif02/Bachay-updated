@@ -38,6 +38,7 @@ use App\Enums\ViewPaths\Admin\FileManager;
 use App\Enums\ViewPaths\Admin\InhouseShop;
 use App\Enums\ViewPaths\Admin\SocialMedia;
 use App\Enums\ViewPaths\Admin\SubCategory;
+use App\Http\Controllers\ParentController;
 use App\Http\Controllers\SharedController;
 use App\Enums\ViewPaths\Admin\DealOfTheDay;
 use App\Enums\ViewPaths\Admin\GoogleMapAPI;
@@ -369,7 +370,16 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['admin']],
                 Route::get(CustomerWallet::BONUS_SETUP_EDIT[URI].'/{id}', 'getUpdateView')->name('bonus-setup-edit');
                 Route::delete(CustomerWallet::BONUS_SETUP_DELETE[URI], 'deleteBonus')->name('bonus-setup-delete');
             });
+
         });
+
+        Route::group(['prefix' => 'parent', 'as' => 'parent.'], function () {
+            Route::get('list', [ParentController::class, 'index'])->name('list');
+            Route::get('view/{id}', [ParentController::class, 'ParentView'])->name('view');
+            Route::post('create', [ParentController::class, 'create'])->name('create');
+
+        });
+
 
         Route::group(['prefix' => 'loyalty', 'as' => 'loyalty.'], function () {
             Route::controller(CustomerLoyaltyController::class)->group(function (){

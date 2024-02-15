@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use App\Models\FamilyRelation;
 use App\Models\ShippingAddress;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 /**
  * Class User
@@ -158,6 +159,11 @@ class User extends Authenticatable
     public function orders(): hasMany
     {
         return $this->hasMany(Order::class, 'customer_id');
+    }
+
+    public function childs(){
+        return $this->hasMany(FamilyRelation::class, 'user_id');
+
     }
 
     public function customer(): BelongsTo
