@@ -13,15 +13,19 @@ class ArticleController extends Controller
     /**
      * Display a listing of the resource.
      */
+    public function articles()
+    {
+        return view(VIEW_FILE_NAMES['articles']); // Assuming 'articles.blade.php' is your view file
+    }
     public function index(Request $request)
     {
-        $articles = Article::with('articlecategory')->orderBy('id','desc')->paginate(10);
-        $categories = ArticleCategory::where('status','1')->get();
-        if($request->search){
-            $articles = Article::with('articlecategory')->where('title','like','%'.$request->search.'%')->orderBy('id','desc')->paginate(10);
+        $articles = Article::with('articlecategory')->orderBy('id', 'desc')->paginate(10);
+        $categories = ArticleCategory::where('status', '1')->get();
+        if ($request->search) {
+            $articles = Article::with('articlecategory')->where('title', 'like', '%' . $request->search . '%')->orderBy('id', 'desc')->paginate(10);
         }
         // $categories = ArticleCategory::with('articles')->get();
-        return view('admin-views.article.article',compact('articles','categories'));
+        return view('admin-views.article.article', compact('articles', 'categories'));
     }
 
     /**
@@ -73,10 +77,10 @@ class ArticleController extends Controller
      */
     public function edit($id)
     {
-        $article = Article::where('id',$id)->with('articlecategory')->first();
-        $categories = DB::table('article_category')->where('status','1')->orderBy('id','desc')->get();
+        $article = Article::where('id', $id)->with('articlecategory')->first();
+        $categories = DB::table('article_category')->where('status', '1')->orderBy('id', 'desc')->get();
         // $terms_condition = BusinessSetting::where('type', 'article')->first();
-        return view('admin-views.article.edit',compact('article','categories'));
+        return view('admin-views.article.edit', compact('article', 'categories'));
     }
 
     /**
@@ -90,7 +94,7 @@ class ArticleController extends Controller
             $filename = $file->getClientOriginalName();
             $file->move(public_path('assets/images/articles/thumbnail'), $filename);
         }
-        DB::table('articles')->where('id',$request->id)->update([
+        DB::table('articles')->where('id', $request->id)->update([
             'title' => $request->title,
             'text' => $request->text,
             'thumbnail' => ($filename ?? ''),
@@ -101,13 +105,14 @@ class ArticleController extends Controller
     }
 
 
-    public function ArticleStatus(Request $request){
-        if($request->status){
-            DB::table('articles')->where('id',$request->id)->update([
+    public function ArticleStatus(Request $request)
+    {
+        if ($request->status) {
+            DB::table('articles')->where('id', $request->id)->update([
                 'status' => $request->status
             ]);
-        }else{
-            Article::where('id',$request->id)->update([
+        } else {
+            Article::where('id', $request->id)->update([
                 'status' => 0
             ]);
         }
@@ -117,7 +122,8 @@ class ArticleController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Request $request){
+    public function destroy(Request $request)
+    {
         $article = Article::find($request->id);
         $article->delete();
         return redirect()->back();

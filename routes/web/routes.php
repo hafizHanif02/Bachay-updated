@@ -36,9 +36,10 @@ use App\Http\Controllers\Payment_Methods\PaystackController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
 Route::get('maintenance-mode', 'Web\WebController@maintenance_mode')->name('maintenance-mode');
 
-Route::group(['namespace' => 'Web','middleware'=>['maintenance_mode','guestCheck']], function () {
+Route::group(['namespace' => 'Web', 'middleware' => ['maintenance_mode', 'guestCheck']], function () {
     Route::group(['prefix' => 'product-compare', 'as' => 'product-compare.'], function () {
         Route::controller(ProductCompareController::class)->group(function () {
             Route::get(ProductCompare::INDEX[URI], 'index')->name('index');
@@ -49,24 +50,26 @@ Route::group(['namespace' => 'Web','middleware'=>['maintenance_mode','guestCheck
     });
     Route::post(ShopFollower::SHOP_FOLLOW[URI], [ShopFollowerController::class, 'followOrUnfollowShop'])->name('shop-follow');
 });
-route::get('parenting', function () {
-    return view('parentingTool');
-});
-Route::group(['namespace' => 'Web','middleware'=>['maintenance_mode','guestCheck']], function () {
+
+Route::get('parenting', 'ParentController@parenting_tools')->name('parenting');
+Route::get('articles', 'ArticleController@articles')->name('articles');
+
+
+Route::group(['namespace' => 'Web', 'middleware' => ['maintenance_mode', 'guestCheck']], function () {
     Route::get('/', 'HomeController@index')->name('home');
 
     Route::get('quick-view', 'WebController@getQuickView')->name('quick-view');
     Route::get('searched-products', 'WebController@searched_products')->name('searched-products');
 
-    Route::group(['middleware'=>['customer']], function () {
+    Route::group(['middleware' => ['customer']], function () {
         // Route::get('submit-review/{id}','UserProfileController@submit_review')->name('submit-review'); ( Unused )
-        Route::controller(ReviewController::class)->group(function (){
+        Route::controller(ReviewController::class)->group(function () {
             Route::post(Review::ADD[URI], 'add')->name('review.store');
             // Route::get(Review::DELIVERYMAN_REVIEW[URI].'/{id}','getDeliveryManReview')->name('deliveryman-review'); ( Unused )
-            Route::post(Review::ADD_DELIVERYMAN_REVIEW[URI],'addDeliveryManReview')->name('submit-deliveryman-review');
+            Route::post(Review::ADD_DELIVERYMAN_REVIEW[URI], 'addDeliveryManReview')->name('submit-deliveryman-review');
         });
     });
-    
+
     Route::get('checkout-details', 'WebController@checkout_details')->name('checkout-details');
     Route::get('checkout-shipping', 'WebController@checkout_shipping')->name('checkout-shipping');
     Route::get('checkout-payment', 'WebController@checkout_payment')->name('checkout-payment');
@@ -115,8 +118,8 @@ Route::group(['namespace' => 'Web','middleware'=>['maintenance_mode','guestCheck
     Route::get('discounted-products', 'WebController@discounted_products')->name('discounted-products');
     Route::post('/products-view-style', 'WebController@product_view_style')->name('product_view_style');
 
-    Route::post('review-list-product','WebController@review_list_product')->name('review-list-product');
-    Route::post('review-list-shop','WebController@review_list_shop')->name('review-list-shop'); // theme fashion
+    Route::post('review-list-product', 'WebController@review_list_product')->name('review-list-product');
+    Route::post('review-list-shop', 'WebController@review_list_shop')->name('review-list-shop'); // theme fashion
     //Chat with seller from product details
     Route::get('chat-for-product', 'WebController@chat_for_product')->name('chat-for-product');
 
@@ -125,7 +128,7 @@ Route::group(['namespace' => 'Web','middleware'=>['maintenance_mode','guestCheck
     Route::post('delete-wishlist', 'WebController@deleteWishlist')->name('delete-wishlist');
     Route::get('delete-wishlist-all', 'WebController@delete_wishlist_all')->name('delete-wishlist-all')->middleware('customer');
 
-    Route::controller(CurrencyController::class)->group(function (){
+    Route::controller(CurrencyController::class)->group(function () {
         Route::post('/currency', 'changeCurrency')->name('currency.change');
     });
 
@@ -141,7 +144,7 @@ Route::group(['namespace' => 'Web','middleware'=>['maintenance_mode','guestCheck
     Route::get('account-address', 'UserProfileController@account_address')->name('account-address');
     Route::post('account-address-store', 'UserProfileController@address_store')->name('address-store');
     Route::get('account-address-delete', 'UserProfileController@address_delete')->name('address-delete');
-    ROute::get('account-address-edit/{id}','UserProfileController@address_edit')->name('address-edit');
+    ROute::get('account-address-edit/{id}', 'UserProfileController@address_edit')->name('address-edit');
     Route::post('account-address-update', 'UserProfileController@address_update')->name('address-update');
     Route::get('account-payment', 'UserProfileController@account_payment')->name('account-payment');
     Route::get('account-oder', 'UserProfileController@account_order')->name('account-oder')->middleware('customer');
@@ -151,13 +154,13 @@ Route::group(['namespace' => 'Web','middleware'=>['maintenance_mode','guestCheck
     Route::get('account-order-details-reviews', 'UserProfileController@account_order_details_reviews')->name('account-order-details-reviews')->middleware('customer');
     Route::get('generate-invoice/{id}', 'UserProfileController@generate_invoice')->name('generate-invoice');
     Route::get('account-wishlist', 'UserProfileController@account_wishlist')->name('account-wishlist'); //add to card not work
-    Route::get('refund-request/{id}','UserProfileController@refund_request')->name('refund-request');
-    Route::get('refund-details/{id}','UserProfileController@refund_details')->name('refund-details');
-    Route::post('refund-store','UserProfileController@store_refund')->name('refund-store');
+    Route::get('refund-request/{id}', 'UserProfileController@refund_request')->name('refund-request');
+    Route::get('refund-details/{id}', 'UserProfileController@refund_details')->name('refund-details');
+    Route::post('refund-store', 'UserProfileController@store_refund')->name('refund-store');
     Route::get('account-tickets', 'UserProfileController@account_tickets')->name('account-tickets');
     Route::get('order-cancel/{id}', 'UserProfileController@order_cancel')->name('order-cancel');
     Route::post('ticket-submit', 'UserProfileController@submitSupportTicket')->name('ticket-submit');
-    Route::get('account-delete/{id}','UserProfileController@account_delete')->name('account-delete');
+    Route::get('account-delete/{id}', 'UserProfileController@account_delete')->name('account-delete');
     Route::get('refer-earn', 'UserProfileController@refer_earn')->name('refer-earn')->middleware('customer');
     Route::get('user-coupons', 'UserProfileController@user_coupons')->name('user-coupons')->middleware('customer');
     // Chatting start
@@ -174,8 +177,8 @@ Route::group(['namespace' => 'Web','middleware'=>['maintenance_mode','guestCheck
         Route::get('close/{id}', 'UserProfileController@support_ticket_close')->name('close');
     });
 
-    Route::get('wallet-account','UserWalletController@my_wallet_account')->name('wallet-account'); //theme fashion
-    Route::get('wallet','UserWalletController@index')->name('wallet')->middleware('customer');
+    Route::get('wallet-account', 'UserWalletController@my_wallet_account')->name('wallet-account'); //theme fashion
+    Route::get('wallet', 'UserWalletController@index')->name('wallet')->middleware('customer');
 
     Route::controller(UserLoyaltyController::class)->group(function () {
         Route::get(UserLoyalty::LOYALTY[URI], 'index')->name('loyalty')->middleware('customer');
@@ -193,7 +196,7 @@ Route::group(['namespace' => 'Web','middleware'=>['maintenance_mode','guestCheck
 
     //sellerShop
     Route::get('shopView/{id}', 'ShopViewController@seller_shop')->name('shopView');
-    Route::get('ajax-shop-vacation-check', 'ShopViewController@ajax_shop_vacation_check')->name('ajax-shop-vacation-check');//theme fashion
+    Route::get('ajax-shop-vacation-check', 'ShopViewController@ajax_shop_vacation_check')->name('ajax-shop-vacation-check'); //theme fashion
     Route::post('shopView/{id}', 'WebController@seller_shop_product');
     // Route::post('shop-follow', 'ShopFollowerController@shop_follow')->name('shop_follow');
 
@@ -212,18 +215,17 @@ Route::group(['namespace' => 'Web','middleware'=>['maintenance_mode','guestCheck
 Route::group(['prefix' => 'shop', 'as' => 'shop.', 'namespace' => 'Vendor\Auth'], function () {
     Route::get('apply', 'RegisterController@create')->name('apply');
     Route::post('apply', 'RegisterController@store');
-
 });
 
 //check done
 Route::group(['prefix' => 'cart', 'as' => 'cart.', 'namespace' => 'Web'], function () {
     Route::post('variant_price', 'CartController@variant_price')->name('variant_price');
     Route::post('add', 'CartController@addToCart')->name('add');
-    Route::post('update-variation', 'CartController@update_variation')->name('update-variation');//theme fashion
+    Route::post('update-variation', 'CartController@update_variation')->name('update-variation'); //theme fashion
     Route::post('remove', 'CartController@removeFromCart')->name('remove');
-    Route::get('remove-all', 'CartController@remove_all_cart')->name('remove-all');//theme fashion
+    Route::get('remove-all', 'CartController@remove_all_cart')->name('remove-all'); //theme fashion
     Route::post('nav-cart-items', 'CartController@updateNavCart')->name('nav-cart');
-    Route::post('floating-nav-cart-items', 'CartController@update_floating_nav')->name('floating-nav-cart-items');// theme fashion floating nav
+    Route::post('floating-nav-cart-items', 'CartController@update_floating_nav')->name('floating-nav-cart-items'); // theme fashion floating nav
     Route::post('updateQuantity', 'CartController@updateQuantity')->name('updateQuantity');
     Route::post('updateQuantity-guest', 'CartController@updateQuantity_guest')->name('updateQuantity.guest');
     Route::post('order-again', 'CartController@order_again')->name('order-again')->middleware('customer');
@@ -411,6 +413,6 @@ Route::get('web-payment', 'Customer\PaymentController@web_payment_success')->nam
 Route::get('payment-success', 'Customer\PaymentController@success')->name('payment-success');
 Route::get('payment-fail', 'Customer\PaymentController@fail')->name('payment-fail');
 
-Route::get('/test', function (){
+Route::get('/test', function () {
     return view('welcome');
 });
