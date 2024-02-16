@@ -868,7 +868,7 @@
                     </a>
 
                 </li>
-                <li><a href="#" class="drp-btn">Boys Fashion</a>
+                <li><a href="{{ url('/products?id=1&data_from=category&page=1') }}" class="drp-btn">Boys Fashion</a>
                     <div class="mega-menu-container">
                         <div class="mega-menu-grid">
                             <div class="sub-nav-column">
@@ -1008,7 +1008,7 @@
                         </div>
                     </div>
                 </li>
-                <li><a href="#" class="drp-btn">Girls Fashion</a>
+                <li><a href="{{ url('/products?id=2&data_from=category&page=1') }}" class="drp-btn">Girls Fashion</a>
 
                     <div class="mega-menu-container">
                         <div class="mega-menu-grid">
@@ -1088,7 +1088,7 @@
                         </div>
                     </div>
                 </li>
-                <li><a href="#" class="drp-btn">Baby Care</a>
+                <li><a href="{{ url('/products?id=4&data_from=category&page=1') }}" class="drp-btn">Baby Care</a>
 
                     <div class="mega-menu-container">
                         <div class="mega-menu-grid">
@@ -1212,7 +1212,7 @@
                         </div>
                     </div>
                 </li>
-                <li><a href="#" class="drp-btn">Toys</a>
+                <li><a href="{{ url('/products?id=3&data_from=category&page=1') }}" class="drp-btn">Toys</a>
 
                     <div class="mega-menu-container">
                         <div class="mega-menu-grid">
