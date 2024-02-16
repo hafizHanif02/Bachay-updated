@@ -17,19 +17,23 @@ class ParentController extends Controller
      */
     public function index()
     {
-        $customers = User::with('childs')->where('id','!=','0')->get();
-        return view('admin-views.parent.list',compact('customers'));
+        $customers = User::with('childs')->where('id', '!=', '0')->get();
+        return view('admin-views.parent.list', compact('customers'));
     }
 
-    public function ParentView($id){
-        $customer = User::where('id',$id)->with('childs')->first();
+    public function ParentView($id)
+    {
+        $customer = User::where('id', $id)->with('childs')->first();
         if (isset($customer)) {
             return view('admin-views.parent.view', compact('customer'));
         }
         Toastr::error(translate('customer_Not_Found'));
         return back();
     }
-
+    public function parenting_tools()
+    {
+        return view(VIEW_FILE_NAMES['parenting']);
+    }
     /**
      * Show the form for creating a new resource.
      */
@@ -46,7 +50,7 @@ class ParentController extends Controller
         if ($validator->fails()) {
             Toastr::error($validator);
             return back();
-        }else{
+        } else {
             if ($request->hasFile('profile_picture')) {
                 $file = $request->file('profile_picture');
                 $extension = $file->getClientOriginalExtension();
@@ -82,7 +86,6 @@ class ParentController extends Controller
             // }
             Toastr::success('Child Added Successfully');
             return back();
-
         }
     }
 

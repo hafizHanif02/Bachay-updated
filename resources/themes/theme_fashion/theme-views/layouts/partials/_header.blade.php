@@ -853,7 +853,8 @@
                         </div>
                     </div> --}}
                 </li>
-                <li> <a href="{{ url('/parenting') }}" class="drp-btn active" style="margin-left: -15px; !important">
+                <li> <a href="{{ url('/parenting') }}" class="drp-btn active"
+                        style="margin-left: -15px; !important">
 
                         <img class="align-items-center" src="{{ asset('public/images/heartgif.gif') }}"
                             alt="" width="40px" height="40px"> <span
@@ -1336,7 +1337,7 @@
                         </div>
                     </div>
                 </li>
-                <li><a href="#" class="drp-btn">Articles</a>
+                <li><a href="{{ url('/articles') }}" class="drp-btn">Articles</a>
 
                     {{-- <div class="mega-menu-container">
                         <div class="mega-menu-grid">
@@ -1774,20 +1775,19 @@
 
 <script>
     let lastScrollTop = 0;
-const threshold = window.innerHeight * 0.9; 
+    const threshold = window.innerHeight * 0.9;
 
-window.addEventListener("scroll", function() {
-  let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-  if (currentScroll > lastScrollTop) {
-    // Scroll down
-    if (currentScroll > threshold) {
-      document.getElementById("header").style.top = "-110px";
-    }
-  } else {
-    // Scroll up
-    document.getElementById("header").style.top = "0";
-  }
-  lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; 
-}, false);
-
+    window.addEventListener("scroll", function() {
+        let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+        if (currentScroll > lastScrollTop) {
+            // Scroll down
+            if (currentScroll > threshold) {
+                document.getElementById("header").style.top = "-110px";
+            }
+        } else {
+            // Scroll up
+            document.getElementById("header").style.top = "0";
+        }
+        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+    }, false);
 </script>
