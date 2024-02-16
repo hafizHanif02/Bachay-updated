@@ -853,7 +853,7 @@
                         </div>
                     </div> --}}
                 </li>
-                <li> <a href="#" class="drp-btn active" style="margin-left: -15px; !important">
+                <li> <a href="{{ url('/parenting') }}" class="drp-btn active" style="margin-left: -15px; !important">
 
                         <img class="align-items-center" src="{{ asset('public/images/heartgif.gif') }}"
                             alt="" width="40px" height="40px"> <span
