@@ -706,7 +706,7 @@
                         </div>
                     </div>
                 </li>
-                <li> <a href="#" class="drp-btn active">
+                <li> <a href="{{ route('products', ['data_from' => 'discounted', 'page' => 1]) }}" class="drp-btn active">
 
                         <img class="align-items-center mb-2 me-1" src="{{ asset('public/images/fire.gif') }}"
                             alt="" width="17px" height="24px"> <span style="color: #ff6b00; ">Hot
