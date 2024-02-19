@@ -1149,6 +1149,43 @@
                             </li>
                         </li>
 
+                        <li class="nav-item">
+                            <small class="nav-subtitle" title="">Quiz Leagues</small>
+                            <li class="navbar-vertical-aside-has-menu {{Request::is('admin/customer/quiz.quiz-category*')?'active':''}}">
+                                <a class="js-navbar-vertical-aside-menu-link nav-link"
+                                   href="{{ route('admin.customer.quiz.quiz-category.list') }}" >
+                                   <i class="tio-star nav-icon"></i>
+                                    <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">
+                                    <span class="position-relative">
+                                        Quiz Category
+                                    </span>
+                                </span>
+                                </a>
+                            </li>
+                            <li class="navbar-vertical-aside-has-menu {{Request::is('admin/quiz*')?'active':''}}">
+                                <a class="js-navbar-vertical-aside-menu-link nav-link"
+                                   href="{{ route('admin.customer.quiz.list') }}" >
+                                   <i class="tio-baseball nav-icon"></i>
+                                    <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">
+                                    <span class="position-relative">
+                                        Quiz
+                                    </span>
+                                </span>
+                                </a>
+                            </li>
+                            <li class="navbar-vertical-aside-has-menu {{Request::is('admin/quiz*')?'active':''}}">
+                                <a class="js-navbar-vertical-aside-menu-link nav-link"
+                                   href="{{ route('admin.customer.quiz.question.list') }}" >
+                                   <i class="tio nav-icon">&#63;</i>
+                                    <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">
+                                    <span class="position-relative">
+                                        Question
+                                    </span>
+                                </span>
+                                </a>
+                            </li>
+                        </li>
+
                         <li class="nav-item pt-5">
                         </li>
                     </ul>

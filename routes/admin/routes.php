@@ -28,6 +28,7 @@ use App\Enums\ViewPaths\Admin\FlashDeal;
 use App\Enums\ViewPaths\Admin\HelpTopic;
 use App\Enums\ViewPaths\Admin\Recaptcha;
 use App\Enums\ViewPaths\Admin\SMSModule;
+use App\Http\Controllers\QuizController;
 use App\Enums\ViewPaths\Admin\AddonSetup;
 use App\Enums\ViewPaths\Admin\CustomRole;
 use App\Enums\ViewPaths\Admin\ReactSetup;
@@ -65,6 +66,8 @@ use App\Enums\ViewPaths\Admin\PushNotification;
 use App\Enums\ViewPaths\Admin\WithdrawalMethod;
 use App\Enums\ViewPaths\Admin\RefundTransaction;
 use App\Http\Controllers\Admin\ReportController;
+use App\Http\Controllers\QuizCategoryController;
+use App\Http\Controllers\QuizQuestionController;
 use App\Enums\ViewPaths\Admin\InhouseProductSale;
 use App\Http\Controllers\Admin\POS\POSController;
 use App\Http\Controllers\Admin\ProfileController;
@@ -390,7 +393,34 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['admin']],
             Route::post('delete', [VaccineController::class , 'destroy'])->name('delete');
         });
 
-        
+        Route::group(['prefix' => 'quiz', 'as' => 'quiz.'],function(){
+            // Category
+            Route::group(['prefix' => 'quiz-category', 'as' => 'quiz-category.'],function(){
+                Route::get('/list', [QuizCategoryController::class,'index'])->name('list');
+                Route::post('/store', [QuizCategoryController::class,'store'])->name('store');
+                Route::get('/edit/{id}', [QuizCategoryController::class,'edit'])->name('edit');
+                Route::post('/update', [QuizCategoryController::class,'update'])->name('update');
+                Route::post('/delete', [QuizCategoryController::class,'destroy'])->name('delete');
+            });
+            // Quiz
+            Route::get('/list', [QuizController::class,'index'])->name('list');
+            Route::post('/store', [QuizController::class,'store'])->name('store');
+            Route::get('/edit/{id}', [QuizController::class,'edit'])->name('edit');
+            Route::get('/view/{id}', [QuizController::class,'show'])->name('view');
+            Route::put('/update', [QuizController::class,'update'])->name('update');
+            Route::post('/delete', [QuizController::class,'destroy'])->name('delete');
+
+            // Question
+            Route::group(['prefix' => 'question', 'as' => 'question.'],function(){
+                Route::get('/list', [QuizQuestionController::class,'index'])->name('list');
+                Route::post('/store', [QuizQuestionController::class,'store'])->name('store');
+                Route::get('/edit/{id}', [QuizQuestionController::class,'edit'])->name('edit');
+                Route::post('/update', [QuizQuestionController::class,'update'])->name('update');
+                Route::post('/delete', [QuizQuestionController::class,'destroy'])->name('delete');
+                        });
+        });
+
+
 
 
         Route::group(['prefix' => 'loyalty', 'as' => 'loyalty.'], function () {
