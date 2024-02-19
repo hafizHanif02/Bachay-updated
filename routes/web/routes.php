@@ -53,6 +53,7 @@ Route::group(['namespace' => 'Web', 'middleware' => ['maintenance_mode', 'guestC
 
 Route::get('parenting', 'ParentController@parenting_tools')->name('parenting');
 Route::get('articles', 'ArticleController@articles')->name('articles');
+Route::get('article/category/{id}', 'ArticleController@CategoryArticle')->name('articles.category');
 
 
 Route::group(['namespace' => 'Web', 'middleware' => ['maintenance_mode', 'guestCheck']], function () {

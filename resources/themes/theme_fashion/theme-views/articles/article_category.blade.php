@@ -695,19 +695,19 @@
                     <!--MAIN CARD BEGINING-->
                     <div class="blog_card">
                         <a href="article.html" class="figure">
-                            <img  src="{{ asset('public/assets/images/articles/thumbnail/' . $latest_article->thumbnail) }}"
+                            <img  src="{{ asset('public/assets/images/articles/category/thumbnail/' . $article_category->image) }}"
                                 alt="" loading="lazy" />
-                            <span class="tag">{{ date_format($latest_article->created_at,"d-M Y") }}</span>
+                            <span class="tag">{{ date_format($article_category->created_at,"d-M Y") }}</span>
                         </a>
                         <section>
-                            <a href="#" class="title">{{ $latest_article->title }}</a>
+                            <a href="#" class="title">{{ $article_category->name }}</a>
                             <p>
-                                {{ $latest_article->text }}
+                                {{ $article_category->tag_line }}
                             </p>
                         </section>
                     </div>
                     <!--CARD ENDS-->
-                    @foreach($all_articles as $article)
+                    @foreach($article_category->articles as $article)
                     <!--CARD BEGINING-->
                     <div class="blog_card">
                         <a href="#" class="figure">
@@ -752,7 +752,7 @@
                     <span class="title">New Books
                         <a href="#" title="Explore More"><i class="fa fa-share"></i></a></span>
                     <section>
-                        @foreach($slidder_article as $article)
+                        @foreach($article_category->articles as $article)
                         <div class="cards">
                             <div class="card_part card_part-{{ $loop->iteration }}"
                                 style="
@@ -779,7 +779,7 @@
                     <span class="title">Recent Posts
                         <a href="#" title="Explore More"><i class="fa fa-share"></i></a></span>
                     <section>
-                        @foreach($slidder_article as $article)
+                        @foreach($article_category->articles as $article)
                         <a href="#"><img
                                 src="{{ asset('public/assets/images/articles/thumbnail/' . $article->thumbnail)  }}"
                                 alt="" loading="lazy" />

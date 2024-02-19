@@ -32,6 +32,13 @@ class ArticleController extends Controller
         return view('admin-views.article.article', compact('articles', 'categories'));
     }
 
+    public function CategoryArticle($id){
+        $article_category = ArticleCategory::where('id', $id)->with('articles')->first();
+        $categories = ArticleCategory::where('status', '1')->get();
+        return view(VIEW_FILE_NAMES['article-category'],compact('article_category','categories')); 
+
+    }
+
     /**
      * Show the form for creating a new resource.
      */
