@@ -46,6 +46,7 @@ use App\Enums\ViewPaths\Admin\MostDemanded;
 use App\Enums\ViewPaths\Admin\Notification;
 use App\Enums\ViewPaths\Admin\ShippingType;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\VaccineController;
 use App\Enums\ViewPaths\Admin\PaymentMethod;
 use App\Enums\ViewPaths\Admin\RefundRequest;
 use App\Enums\ViewPaths\Admin\SupportTicket;
@@ -379,6 +380,17 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['admin']],
             Route::post('create', [ParentController::class, 'create'])->name('create');
 
         });
+
+
+        Route::group(['prefix' => 'vaccine', 'as' => 'vaccine.'],function(){
+            Route::get('list', [VaccineController::class, 'index'])->name('list');
+            Route::post('/store',[VaccineController::class, 'store'])->name('store');
+            Route::get('edit/{id}', [VaccineController::class , 'edit'])->name('edit');
+            Route::post('update', [VaccineController::class , 'update'])->name('update');
+            Route::post('delete', [VaccineController::class , 'destroy'])->name('delete');
+        });
+
+        
 
 
         Route::group(['prefix' => 'loyalty', 'as' => 'loyalty.'], function () {

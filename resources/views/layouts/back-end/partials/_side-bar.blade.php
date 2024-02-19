@@ -1132,6 +1132,23 @@
                                 </a>
                             </li>
                         </li>
+
+
+                        <li class="nav-item">
+                            <small class="nav-subtitle" title="">Vaccine</small>
+                            <li class="navbar-vertical-aside-has-menu {{Request::is('admin/customer/vaccine*')?'active':''}}">
+                                <a class="js-navbar-vertical-aside-menu-link nav-link"
+                                   href="{{ route('admin.customer.vaccine.list') }}" >
+                                   <i class="tio-hospital nav-icon"></i>
+                                    <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">
+                                    <span class="position-relative">
+                                        Vaccination
+                                    </span>
+                                </span>
+                                </a>
+                            </li>
+                        </li>
+
                         <li class="nav-item pt-5">
                         </li>
                     </ul>
