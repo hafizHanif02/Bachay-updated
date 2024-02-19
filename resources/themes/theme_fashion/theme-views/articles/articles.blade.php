@@ -411,19 +411,19 @@
             background-color: #f1f1f1;
         }
 
-        .books .card_part.card_part-two {
+        .books .card_part.card_part-2 {
             z-index: 6;
             animation-delay: 7s;
             background-repeat: no-repeat;
         }
 
-        .books .card_part.card_part-three {
+        .books .card_part.card_part-3 {
             z-index: 5;
             animation-delay: 14s;
             background-repeat: no-repeat;
         }
 
-        .books .card_part.card_part-four {
+        .books .card_part.card_part-4 {
             z-index: 4;
             animation-delay: 21s;
             background-repeat: no-repeat;
@@ -692,132 +692,39 @@
         <div class="blog_container">
             <div class="blog_content">
                 <div class="left_content">
-                    <!--CARD BEGINING-->
+                    <!--MAIN CARD BEGINING-->
                     <div class="blog_card">
                         <a href="article.html" class="figure">
-                            <img src="https://lablab.ai/_next/image?url=https%3A%2F%2Fimagedelivery.net%2FK11gkZF3xaVyYzFESMdWIQ%2F6c56e928-3848-4367-5d6b-3006afe68300%2Ffull&w=750&q=80"
+                            <img  src="{{ asset('public/assets/images/articles/thumbnail/' . $latest_article->thumbnail) }}"
                                 alt="" loading="lazy" />
-                            <span class="tag">15 JAN</span>
+                            <span class="tag">{{ date_format($latest_article->created_at,"d-M Y") }}</span>
                         </a>
                         <section>
-                            <a href="#" class="title">Blog title goes here...</a>
+                            <a href="#" class="title">{{ $latest_article->title }}</a>
                             <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                                nisi ut aliquip ex ea commodo consequat...
+                                {{ $latest_article->text }}
                             </p>
                         </section>
                     </div>
                     <!--CARD ENDS-->
+                    @foreach($all_articles as $article)
                     <!--CARD BEGINING-->
                     <div class="blog_card">
                         <a href="#" class="figure">
-                            <img src="https://lablab.ai/_next/image?url=https%3A%2F%2Fimagedelivery.net%2FK11gkZF3xaVyYzFESMdWIQ%2F6c56e928-3848-4367-5d6b-3006afe68300%2Ffull&w=750&q=80"
+                            <img src="{{ asset('public/assets/images/articles/thumbnail/' . $article->thumbnail) }}"
                                 alt="" loading="lazy" />
-                            <span class="tag">15 JAN</span>
+                            <span class="tag">{{ date_format($article->created_at,"d-M Y") }}</span>
                         </a>
                         <section>
-                            <a href="article.html" class="title">Blog title goes here...</a>
+                            <a href="article.html" class="title">{{ $article->title }}</a>
                             <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                                nisi ut aliquip ex ea commodo consequat...
+                                {{$article->text}}
                             </p>
                         </section>
                     </div>
+
                     <!--CARD ENDS-->
-                    <!--CARD BEGINING-->
-                    <div class="blog_card">
-                        <a href="article.html" class="figure">
-                            <img src="https://lablab.ai/_next/image?url=https%3A%2F%2Fimagedelivery.net%2FK11gkZF3xaVyYzFESMdWIQ%2F6c56e928-3848-4367-5d6b-3006afe68300%2Ffull&w=750&q=80"
-                                alt="" loading="lazy" />
-                            <span class="tag">15 JAN</span>
-                        </a>
-                        <section>
-                            <a href="#" class="title">Blog title goes here...</a>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                                nisi ut aliquip ex ea commodo consequat...
-                            </p>
-                        </section>
-                    </div>
-                    <!--CARD ENDS-->
-                    <!--CARD BEGINING-->
-                    <div class="blog_card">
-                        <a href="article.html" class="figure">
-                            <img src="https://lablab.ai/_next/image?url=https%3A%2F%2Fimagedelivery.net%2FK11gkZF3xaVyYzFESMdWIQ%2F6c56e928-3848-4367-5d6b-3006afe68300%2Ffull&w=750&q=80"
-                                alt="" loading="lazy" />
-                            <span class="tag">15 JAN</span>
-                        </a>
-                        <section>
-                            <a href="#" class="title">Blog title goes here...</a>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                                nisi ut aliquip ex ea commodo consequat...
-                            </p>
-                        </section>
-                    </div>
-                    <!--CARD ENDS-->
-                    <!--CARD BEGINING-->
-                    <div class="blog_card">
-                        <a href="article.html" class="figure">
-                            <img src="https://lablab.ai/_next/image?url=https%3A%2F%2Fimagedelivery.net%2FK11gkZF3xaVyYzFESMdWIQ%2F6c56e928-3848-4367-5d6b-3006afe68300%2Ffull&w=750&q=80"
-                                alt="" loading="lazy" />
-                            <span class="tag">15 JAN</span>
-                        </a>
-                        <section>
-                            <a href="#" class="title">Blog title goes here...</a>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                                nisi ut aliquip ex ea commodo consequat...
-                            </p>
-                        </section>
-                    </div>
-                    <!--CARD ENDS-->
-                    <!--CARD BEGINING-->
-                    <div class="blog_card">
-                        <a href="#" class="figure">
-                            <img src="https://lablab.ai/_next/image?url=https%3A%2F%2Fimagedelivery.net%2FK11gkZF3xaVyYzFESMdWIQ%2F6c56e928-3848-4367-5d6b-3006afe68300%2Ffull&w=750&q=80"
-                                alt="" loading="lazy" />
-                            <span class="tag">15 JAN</span>
-                        </a>
-                        <section>
-                            <a href="#" class="title">Blog title goes here...</a>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                                nisi ut aliquip ex ea commodo consequat...
-                            </p>
-                        </section>
-                    </div>
-                    <!--CARD ENDS-->
-                    <!--CARD BEGINING-->
-                    <div class="blog_card">
-                        <a href="#" class="figure">
-                            <img src="https://lablab.ai/_next/image?url=https%3A%2F%2Fimagedelivery.net%2FK11gkZF3xaVyYzFESMdWIQ%2F6c56e928-3848-4367-5d6b-3006afe68300%2Ffull&w=750&q=80"
-                                alt="" loading="lazy" />
-                            <span class="tag">15 JAN</span>
-                        </a>
-                        <section>
-                            <a href="article.html" class="title">Blog title goes here...</a>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                                nisi ut aliquip ex ea commodo consequat...
-                            </p>
-                        </section>
-                    </div>
-                    <!--CARD ENDS-->
+                    @endforeach
                 </div>
                 <button class="btn1 load-btn">Load more</button>
             </div>
@@ -845,27 +752,14 @@
                     <span class="title">New Books
                         <a href="#" title="Explore More"><i class="fa fa-share"></i></a></span>
                     <section>
+                        @foreach($slidder_article as $article)
                         <div class="cards">
-                            <div class="card_part card_part-one"
+                            <div class="card_part card_part-{{ $loop->iteration }}"
                                 style="
-                  background-image: url(https://lablab.ai/_next/image?url=https%3A%2F%2Fimagedelivery.net%2FK11gkZF3xaVyYzFESMdWIQ%2F6c56e928-3848-4367-5d6b-3006afe68300%2Ffull&w=750&q=80);
+                  background-image: url({{ asset('public/assets/images/articles/thumbnail/' . $article->thumbnail)  }});
                 ">
                             </div>
-                            <div class="card_part card_part-two"
-                                style="
-                  background-image: url(https://lablab.ai/_next/image?url=https%3A%2F%2Fimagedelivery.net%2FK11gkZF3xaVyYzFESMdWIQ%2F6c56e928-3848-4367-5d6b-3006afe68300%2Ffull&w=750&q=80);
-                ">
-                            </div>
-                            <div class="card_part card_part-three"
-                                style="
-                  background-image: url(https://lablab.ai/_next/image?url=https%3A%2F%2Fimagedelivery.net%2FK11gkZF3xaVyYzFESMdWIQ%2F6c56e928-3848-4367-5d6b-3006afe68300%2Ffull&w=750&q=80);
-                ">
-                            </div>
-                            <div class="card_part card_part-four"
-                                style="
-                  background-image: url(https://lablab.ai/_next/image?url=https%3A%2F%2Fimagedelivery.net%2FK11gkZF3xaVyYzFESMdWIQ%2F6c56e928-3848-4367-5d6b-3006afe68300%2Ffull&w=750&q=80);
-                ">
-                            </div>
+                            @endforeach
                         </div>
                     </section>
                 </div>
@@ -874,13 +768,9 @@
                 <div class="columns categories">
                     <span class="title">Categories</span>
                     <section>
-                        <a href="#">Early Learning</a>
-                        <a href="#">Child Development</a>
-                        <a href="#">Parenting Tips</a>
-                        <a href="#">Children's Literature</a>
-                        <a href="#">Educational Toys and Games</a>
-                        <a href="#">Health and Safety for Kids</a>
-                        <a href="#">Fun Activities for Children</a>
+                        @foreach($categories as $category)
+                        <a href="#">{{ $category->name }}</a>
+                        @endforeach
                     </section>
                 </div>
                 <!--CATEGORIES COLUMN ENDS-->

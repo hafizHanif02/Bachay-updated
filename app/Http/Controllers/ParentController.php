@@ -3,11 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Growth;
 use App\Models\Customer;
+use App\Models\Vaccination;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Support\Facades\Auth;
+use App\Models\VaccinationSubmission;
 use Illuminate\Support\Facades\Validator;
 
 class ParentController extends Controller
@@ -67,23 +71,23 @@ class ParentController extends Controller
                 'gender' => $request->gender,
                 'profile_picture' => ($filename ?? ''),
             ]);
-            // $Vaccinations = Vaccination::get();
-            // foreach($Vaccinations as $vaccination){
-            //     $dateOfBirth = $request->dob;
-            //     $carbonDateOfBirth = Carbon::parse($dateOfBirth);
-            //     $resultDate = $carbonDateOfBirth->addWeeks($vaccination->age)->toDateString();
-            //     VaccinationSubmission::create([
-            //         'user_id' => Auth::user()->id,
-            //         'child_id' => $childId,
-            //         'vaccination_id' => $vaccination->id,
-            //         'vaccination_date' => $resultDate,
-            //     ]);
-            //     Growth::create([
-            //         'user_id' => Auth::user()->id,
-            //         'child_id' => $childId,
-            //         'vaccination_id' => $vaccination->id,
-            //     ]);
-            // }
+            $Vaccinations = Vaccination::get();
+            foreach($Vaccinations as $vaccination){
+                $dateOfBirth = $request->dob;
+                $carbonDateOfBirth = Carbon::parse($dateOfBirth);
+                $resultDate = $carbonDateOfBirth->addWeeks($vaccination->age)->toDateString();
+                VaccinationSubmission::create([
+                    'user_id' => $request->user_id,
+                    'child_id' => $childId,
+                    'vaccination_id' => $vaccination->id,
+                    'vaccination_date' => $resultDate,
+                ]);
+                Growth::create([
+                    'user_id' => $request->user_id,
+                    'child_id' => $childId,
+                    'vaccination_id' => $vaccination->id,
+                ]);
+            }
             Toastr::success('Child Added Successfully');
             return back();
         }

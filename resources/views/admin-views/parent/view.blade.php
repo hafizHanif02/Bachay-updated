@@ -173,8 +173,8 @@
                 <label for="" class="form-label">Gender</label>
                 <select class="form-control" name="gender" id="">
                     <option value="">Select Gender</option>
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
+                    <option value="1">Male</option>
+                    <option value="0">Female</option>
                 </select>
             </div>
         

@@ -15,7 +15,11 @@ class ArticleController extends Controller
      */
     public function articles()
     {
-        return view(VIEW_FILE_NAMES['articles']); // Assuming 'articles.blade.php' is your view file
+        $latest_article = Article::orderBy('id', 'desc')->where('status', '1')->first();
+        $slidder_article = Article::orderBy('id', 'desc')->where('status', '1')->take(6)->get();
+        $all_articles = Article::with('articlecategory')->where('status', '1')->get();
+        $categories = ArticleCategory::where('status', '1')->get();
+        return view(VIEW_FILE_NAMES['articles'],compact('latest_article','slidder_article','all_articles','categories')); 
     }
     public function index(Request $request)
     {
