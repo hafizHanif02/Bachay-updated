@@ -1,16 +1,18 @@
 @extends('theme-views.layouts.app')
 @push('css_or_js')
     <link href='https://fonts.googleapis.com/css?family=Outfit' rel='stylesheet'>
-    <meta property="og:image" content="{{asset('storage/app/public/company')}}/{{$web_config['web_logo']->value}}"/>
-    <meta property="og:title" content="Welcome To {{$web_config['name']->value}} Home"/>
+    <meta property="og:image" content="{{ asset('storage/app/public/company') }}/{{ $web_config['web_logo']->value }}" />
+    <meta property="og:title" content="Welcome To {{ $web_config['name']->value }} Home" />
     <meta property="og:url" content="{{ config('app.url') }}">
     <meta property="og:description"
-          content="{{ substr(strip_tags(str_replace('&nbsp;', ' ', $web_config['about']->value)),0,160) }}">
+        content="{{ substr(strip_tags(str_replace('&nbsp;', ' ', $web_config['about']->value)), 0, 160) }}">
 
-    <meta property="twitter:card" content="{{asset('storage/app/public/company')}}/{{$web_config['web_logo']->value}}"/>
-    <meta property="twitter:title" content="Welcome To {{$web_config['name']->value}} Home"/>
+    <meta property="twitter:card"
+        content="{{ asset('storage/app/public/company') }}/{{ $web_config['web_logo']->value }}" />
+    <meta property="twitter:title" content="Welcome To {{ $web_config['name']->value }} Home" />
     <meta property="twitter:url" content="{{ config('app.url') }}">
-    <meta property="twitter:description" content="{{ substr(strip_tags(str_replace('&nbsp;', ' ', $web_config['about']->value)),0,160) }}">
+    <meta property="twitter:description"
+        content="{{ substr(strip_tags(str_replace('&nbsp;', ' ', $web_config['about']->value)), 0, 160) }}">
 @endpush
 
 <head>
@@ -25,7 +27,7 @@
             /* --white: #fff; */
             --white: #f1f1f1;
             --black: #000;
-            --dark: #2a2a2e; 
+            --dark: #2a2a2e;
             --purple: #835ec1;
             --darkpurple: #ED956F;
             --red: #fe3e30;
@@ -35,6 +37,7 @@
             --defaultfont: "Poppins", sans-serif;
             --titlefont: "Roboto", sans-serif;
         }
+
         /********************************
             DEFAULT
         *********************************/
@@ -80,6 +83,10 @@
             margin: 0;
         }
 
+        .custom {
+            width: 80%;
+        }
+
         .title {
             /* font-family: var(--titlefont); */
             font-family: var(--Aristotelica);
@@ -116,7 +123,7 @@
         *********************************/
         .articleHeader {
             width: 100%;
-            display: flex;
+            /* display: flex; */
             align-items: center;
             justify-content: center;
             background-size: cover;
@@ -142,10 +149,19 @@
             transform: translate(-50%, 0);
         }
 
-        .articleHeader section .title {
+        .articleHeader .title {
             font-size: 3em;
-            /* line-height: 0; */
+            font-family: 'Aristotelica';
+            padding: 2rem;
+            padding-bottom: 5px;
+            background: linear-gradient(90.27deg, #845dc2 -27.96%, #f99327 -27.94%, #d55fad 28.41%, #845dc2 82.13%, #845dc2 130.57%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
         }
+
+
 
         .articleHeader section span {
             position: absolute;
@@ -208,6 +224,10 @@
             column-count: 2;
             gap: 20px 10px;
             flex: 0 0 70%;
+        }
+
+        .btnWidth {
+            width: 100%;
         }
 
         .right_content {
@@ -351,13 +371,14 @@
         }
 
         .search form {
+            margin: 0;
             width: 100%;
             display: flex;
             align-items: center;
         }
 
         .search .field:nth-child(2) {
-            width: 10%;
+            width: 20%;
         }
 
         .search form input {
@@ -657,14 +678,19 @@
             color: black;
             background-color: #b8bca7;
         }
+
+        .hidden {
+            display: none;
+        }
     </style>
 </head>
 
 @section('content')
+
     <body>
         <!--HEADER-->
         <!-- <header
-                                                              style="background: linear-gradient(rgba(1, 1, 1, 0.5), rgba(1, 1, 1, 0.5)),
+                                                                      style="background: linear-gradient(rgba(1, 1, 1, 0.5), rgba(1, 1, 1, 0.5)),
           url(../images/#);"> -->
         {{-- <section
             style="background: linear-gradient( 90.27deg, #845dc2 -27.96%, #f99327 -27.94%, #d55fad 28.41%, #845dc2 82.13%, #845dc2 130.57% ),
@@ -676,16 +702,17 @@
             </section>
         </section> --}}
 
-        <div class="articleHeader"
-            style="background: linear-gradient( 90.27deg, #845dc2 -27.96%, #f99327 -27.94%, #d55fad 28.41%, #845dc2 82.13%, #845dc2 130.57% ), url(../images/placeholder.jpg);">
-            <section>
-                <h1 class="title">Articles</h1>
-                <span>
+        <div class="articleHeader">
+            {{-- style="background: linear-gradient( 90.27deg, #845dc2 -27.96%, #f99327 -27.94%, #d55fad 28.41%, #845dc2 82.13%, #845dc2 130.57% ), url(../images/placeholder.jpg);">
+            <img src="../images/placeholder.jpg" alt="Header Image">
+            <section> --}}
+            <h1 class="title">Articles</h1>
+            {{-- <span>
                     <a href="{{ route('home') }}">Home</a>
                     <i class="fa fa-angle-double-right"></i>
                     <a href="#" class="active">Articles</a>
                 </span>
-            </section>
+            </section> --}}
         </div>
 
         <!--BLOG SECTION-->
@@ -695,9 +722,9 @@
                     <!--MAIN CARD BEGINING-->
                     <div class="blog_card">
                         <a href="article.html" class="figure">
-                            <img  src="{{ asset('public/assets/images/articles/thumbnail/' . $latest_article->thumbnail) }}"
+                            <img src="{{ asset('public/assets/images/articles/thumbnail/' . $latest_article->thumbnail) }}"
                                 alt="" loading="lazy" />
-                            <span class="tag">{{ date_format($latest_article->created_at,"d-M Y") }}</span>
+                            <span class="tag">{{ date_format($latest_article->created_at, 'd-M Y') }}</span>
                         </a>
                         <section>
                             <a href="#" class="title">{{ $latest_article->title }}</a>
@@ -707,23 +734,21 @@
                         </section>
                     </div>
                     <!--CARD ENDS-->
-                    @foreach($all_articles as $article)
-                    <!--CARD BEGINING-->
-                    <div class="blog_card">
-                        <a href="#" class="figure">
-                            <img src="{{ asset('public/assets/images/articles/thumbnail/' . $article->thumbnail) }}"
-                                alt="" loading="lazy" />
-                            <span class="tag">{{ date_format($article->created_at,"d-M Y") }}</span>
-                        </a>
-                        <section>
-                            <a href="article.html" class="title">{{ $article->title }}</a>
-                            <p>
-                                {{$article->text}}
-                            </p>
-                        </section>
-                    </div>
-
-                    <!--CARD ENDS-->
+                    @foreach ($all_articles as $article)
+                        <!--CARD BEGINING-->
+                        <div class="blog_card{{ $loop->index >= 4 ? ' additional-card hidden' : '' }}">
+                            <a href="#" class="figure">
+                                <img src="{{ asset('public/assets/images/articles/thumbnail/' . $article->thumbnail) }}"
+                                    alt="" loading="lazy" />
+                                <span class="tag">{{ date_format($article->created_at, 'd-M Y') }}</span>
+                            </a>
+                            <section>
+                                <a href="article.html" class="title">{{ $article->title }}</a>
+                                <p>
+                                    {{ $article->text }}
+                                </p>
+                            </section>
+                        </div>
                     @endforeach
                 </div>
                 <button class="btn1 load-btn">Load more</button>
@@ -734,12 +759,12 @@
                 <div class="columns search_column">
                     <section class="search">
                         <form>
-                            <div class="field">
+                            <div class="field custom">
                                 <input type="text" name="search" placeholder="Search..." maxlength="100"
                                     required="" />
                             </div>
                             <div class="field">
-                                <button type="submit" class="btn1">
+                                <button type="submit" class="btn1 btnWidth">
                                     <i class="bi bi-search"></i>
                                 </button>
                             </div>
@@ -752,79 +777,95 @@
                     <span class="title">New Books
                         <a href="#" title="Explore More"><i class="fa fa-share"></i></a></span>
                     <section>
-                        @foreach($slidder_article as $article)
-                        <div class="cards">
-                            <div class="card_part card_part-{{ $loop->iteration }}"
-                                style="
-                  background-image: url({{ asset('public/assets/images/articles/thumbnail/' . $article->thumbnail)  }});
+                        @foreach ($slidder_article as $article)
+                            <div class="cards">
+                                <div class="card_part card_part-{{ $loop->iteration }}"
+                                    style="
+                  background-image: url({{ asset('public/assets/images/articles/thumbnail/' . $article->thumbnail) }});
                 ">
-                            </div>
-                            @endforeach
-                        </div>
-                    </section>
-                </div>
-                <!--BOOKS COLUMN ENDS-->
-                <!--CATEGORIES COLUMN BEGINING-->
-                <div class="columns categories">
-                    <span class="title">Categories</span>
-                    <section>
-                        @foreach($categories as $category)
-                        <a href="{{ route('articles.category' , $category->id) }}">{{ $category->name }}</a>
+                                </div>
                         @endforeach
-                    </section>
                 </div>
-                <!--CATEGORIES COLUMN ENDS-->
-                <!--POSTS COLUMN BEGINING-->
-                <div class="columns posts">
-                    <span class="title">Recent Posts
-                        <a href="#" title="Explore More"><i class="fa fa-share"></i></a></span>
-                    <section>
-                        @foreach($slidder_article as $article)
+                </section>
+            </div>
+            <!--BOOKS COLUMN ENDS-->
+            <!--CATEGORIES COLUMN BEGINING-->
+            <div class="columns categories">
+                <span class="title">Categories</span>
+                <section>
+                    @foreach ($categories as $category)
+                        <a href="{{ route('articles.category', $category->id) }}">{{ $category->name }}</a>
+                    @endforeach
+                </section>
+            </div>
+            <!--CATEGORIES COLUMN ENDS-->
+            <!--POSTS COLUMN BEGINING-->
+            <div class="columns posts">
+                <span class="title">Recent Posts
+                    <a href="#" title="Explore More"><i class="fa fa-share"></i></a></span>
+                <section>
+                    @foreach ($slidder_article as $article)
                         <a href="#"><img
-                                src="{{ asset('public/assets/images/articles/thumbnail/' . $article->thumbnail)  }}"
+                                src="{{ asset('public/assets/images/articles/thumbnail/' . $article->thumbnail) }}"
                                 alt="" loading="lazy" />
                             <p>{{ $article->title }}</p>
                         </a>
-                        @endforeach
-                        
-                    </section>
-                </div>
-                <!--POSTS COLUMN ENDS-->
-                <!--COMMENTS COLUMN BEGINING-->
-                <div class="columns comments">
-                    <span class="title">
-                        Recent Comments
-                        <a href="#" title="Explore More"><i class="fa fa-share"></i></a></span>
-                    <section>
-                        <marquee direction="up" scrollamount="4" onMouseOver="this.stop()" onMouseOut="this.start()"
-                            class="marquee2">
-                            <p>
-                                Remember, torn clothes should not be left at home. Dispose of
-                                them out. Buying new clothes like towels.
-                            </p>
-                            <p>
-                                wearing clothes, bedsheets are like inviting good luck to the
-                                home.
-                            </p>
-                            <p>
-                                Arrange doormats before every door and please change the
-                                doormats once in 6/8 months or maximum within 1 year. For More
-                                Daily
-                            </p>
-                        </marquee>
-                    </section>
-                </div>
-                <!--COMMENTS COLUMN ENDS-->
-                <!--SOCIAL MEDIA ICONS BEGINING-->
-                <div class="columns social_icons">
-                    <a href="#" title="Facebook"><i class="fa fa-facebook"></i></a>
-                    <a href="#" title="Instagram"><i class="fa fa-instagram"></i></a>
-                    <a href="#" title="Youtube"><i class="fa fa-youtube"></i></a>
-                    <a href="#" title="Whatsapp"><i class="fa fa-whatsapp"></i></a>
-                    <a href="#" title="Telegram"><i class="fa fa-telegram"></i></a>
-                </div>
-                <!--SOCIAL MEDIA ICONS ENDS-->
+                    @endforeach
+
+                </section>
             </div>
+            <!--POSTS COLUMN ENDS-->
+            <!--COMMENTS COLUMN BEGINING-->
+            <div class="columns comments">
+                <span class="title">
+                    Recent Comments
+                    <a href="#" title="Explore More"><i class="fa fa-share"></i></a></span>
+                <section>
+                    <marquee direction="up" scrollamount="4" onMouseOver="this.stop()" onMouseOut="this.start()"
+                        class="marquee2">
+                        <p>
+                            <span class="bi bi-chat-right-dots me-2"></span>
+                            Remember, torn clothes should not be left at home. Dispose of
+                            them out. Buying new clothes like towels.
+                        </p>
+                        <p>
+                            <span class="bi bi-chat-right-dots me-2"></span>
+                            wearing clothes, bedsheets are like inviting good luck to the
+                            home.
+                        </p>
+                        <p>
+                            <span class="bi bi-chat-right-dots me-2"></span>
+                            Arrange doormats before every door and please change the
+                            doormats once in 6/8 months or maximum within 1 year. For More
+                            Daily
+                        </p>
+                    </marquee>
+                </section>
+            </div>
+            <!--COMMENTS COLUMN ENDS-->
+            <!--SOCIAL MEDIA ICONS BEGINING-->
+            <div class="columns social_icons">
+                <a href="#" title="Facebook"><i class="fa fa-facebook"></i></a>
+                <a href="#" title="Instagram"><i class="fa fa-instagram"></i></a>
+                <a href="#" title="Youtube"><i class="fa fa-youtube"></i></a>
+                <a href="#" title="Whatsapp"><i class="fa fa-whatsapp"></i></a>
+                <a href="#" title="Telegram"><i class="fa fa-telegram"></i></a>
+            </div>
+            <!--SOCIAL MEDIA ICONS ENDS-->
+        </div>
         </div>
     </body>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const loadBtn = document.querySelector('.load-btn');
+            const hiddenCards = document.querySelectorAll('.additional-card');
+
+            loadBtn.addEventListener('click', function() {
+                hiddenCards.forEach(card => {
+                    card.classList.remove('hidden');
+                });
+                loadBtn.style.display = 'none'; // Hide the button after loading additional cards
+            });
+        });
+    </script>
 @endsection

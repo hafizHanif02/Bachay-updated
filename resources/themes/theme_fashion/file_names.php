@@ -61,7 +61,7 @@ return [
     'refer_earn' => 'theme-views.users-profile.refer-earn',
     'articles' => 'theme-views.articles.articles',
     'article-category' => 'theme-views.articles.article_category',
-    'parenting' => 'theme-views.parentingTools.parentingTools',
+    'parenting' => 'theme-views.parenting.parentingTools',
     'user_coupons' => 'theme-views.users-profile.coupons',
     'pay_offline_method_list_partials' => 'theme-views.partials._pay_offline_method_list_fields',
     'digital_product_order_otp_verify' => 'theme-views.layouts.partials.modal._digital-product-order-otp-verify',
