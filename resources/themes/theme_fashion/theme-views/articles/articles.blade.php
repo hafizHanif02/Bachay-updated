@@ -736,7 +736,7 @@
                     <!--CARD ENDS-->
                     @foreach ($all_articles as $article)
                         <!--CARD BEGINING-->
-                        <div class="blog_card{{ $loop->index >= 4 ? ' additional-card hidden' : '' }}">
+                        <div class="blog_card{{ $loop->index >= 6 ? ' additional-card hidden' : '' }}">
                             <a href="#" class="figure">
                                 <img src="{{ asset('public/assets/images/articles/thumbnail/' . $article->thumbnail) }}"
                                     alt="" loading="lazy" />
