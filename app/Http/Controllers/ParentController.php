@@ -52,8 +52,8 @@ class ParentController extends Controller
         ]);
 
         if ($validator->fails()) {
-            Toastr::error($validator);
-            return back();
+            Toastr::error($validator->errors()->first()); 
+            return back(); 
         } else {
             if ($request->hasFile('profile_picture')) {
                 $file = $request->file('profile_picture');

@@ -57,6 +57,7 @@ use App\Enums\ViewPaths\Admin\CustomerWallet;
 use App\Enums\ViewPaths\Admin\ShippingMethod;
 use App\Enums\ViewPaths\Admin\SoftwareUpdate;
 use App\Enums\ViewPaths\Admin\SubSubCategory;
+use App\Http\Controllers\QnaAnswerController;
 use App\Enums\ViewPaths\Admin\DatabaseSetting;
 use App\Enums\ViewPaths\Admin\DeliveryManCash;
 use App\Enums\ViewPaths\Admin\FeaturesSection;
@@ -65,6 +66,7 @@ use App\Enums\ViewPaths\Admin\BusinessSettings;
 use App\Enums\ViewPaths\Admin\EmergencyContact;
 use App\Enums\ViewPaths\Admin\PushNotification;
 use App\Enums\ViewPaths\Admin\WithdrawalMethod;
+use App\Http\Controllers\QnaQuestionController;
 use App\Enums\ViewPaths\Admin\RefundTransaction;
 use App\Http\Controllers\Admin\ReportController;
 use App\Http\Controllers\QuizCategoryController;
@@ -422,7 +424,21 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['admin']],
         });
 
         Route::group(['prefix' => 'qna', 'as' => 'qna.'],function(){
-            Route::get('list', [QnaController::class, 'index'])->name('list');
+            Route::group(['prefix' => 'question', 'as' => 'question.'],function(){
+                Route::get('/list', [QnaQuestionController::class,'index'])->name('list');
+                Route::post('/store', [QnaQuestionController::class,'store'])->name('store');
+                Route::get('/edit/{id}', [QnaQuestionController::class,'edit'])->name('edit');
+                Route::post('/update', [QnaQuestionController::class,'update'])->name('update');
+                Route::post('/delete', [QnaQuestionController::class,'destroy'])->name('delete');
+            });
+
+            Route::group(['prefix' => 'answer', 'as' => 'answer.'],function(){
+                Route::get('/list', [QnaAnswerController::class,'index'])->name('list');
+                Route::post('/store', [QnaAnswerController::class,'store'])->name('store');
+                Route::get('/edit/{id}', [QnaAnswerController::class,'edit'])->name('edit');
+                Route::post('/update', [QnaAnswerController::class,'update'])->name('update');
+                Route::post('/delete', [QnaAnswerController::class,'destroy'])->name('delete');
+            });
 
         });
 

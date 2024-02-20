@@ -1131,13 +1131,29 @@
                                 </span>
                                 </a>
                             </li>
-                            <li class="navbar-vertical-aside-has-menu {{Request::is('admin/customer/qna*')?'active':''}}">
+                        </li>
+
+
+                        <li class="nav-item">
+                            <small class="nav-subtitle" title="">Q&A</small>
+                            <li class="navbar-vertical-aside-has-menu {{Request::is('admin/customer/qna/question/*')?'active':''}}">
                                 <a class="js-navbar-vertical-aside-menu-link nav-link"
-                                   href="{{ route('admin.customer.qna.list') }}" >
+                                   href="{{ route('admin.customer.qna.question.list') }}" >
                                     <i class="tio-messages nav-icon"></i>
                                     <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">
                                     <span class="position-relative">
-                                        Q & A
+                                        Q&A Questions
+                                    </span>
+                                </span>
+                                </a>
+                            </li>
+                            <li class="navbar-vertical-aside-has-menu {{Request::is('admin/customer/qna/answer*')?'active':''}}">
+                                <a class="js-navbar-vertical-aside-menu-link nav-link"
+                                   href="{{ route('admin.customer.qna.answer.list') }}" >
+                                    <i class="tio-star nav-icon"></i>
+                                    <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">
+                                    <span class="position-relative">
+                                        Q&A Answer
                                     </span>
                                 </span>
                                 </a>

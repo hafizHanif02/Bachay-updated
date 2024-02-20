@@ -173,11 +173,10 @@
                 <label for="" class="form-label">Gender</label>
                 <select class="form-control" name="gender" id="">
                     <option value="">Select Gender</option>
-                    <option value="1">Male</option>
-                    <option value="0">Female</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
                 </select>
             </div>
-        
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

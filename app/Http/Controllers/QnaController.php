@@ -28,7 +28,8 @@ class QnaController extends Controller
                     }
                 }
             }
-            return view('admin-views.qna.list', compact('questions'));}
+        }
+        return view('admin-views.qna.list', compact('questions'));
     }
 
     /**
