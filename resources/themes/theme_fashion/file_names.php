@@ -59,6 +59,7 @@ return [
     'otp_verification' => 'theme-views.customer-views.auth.verify-otp',
     'reset_password' => 'theme-views.customer-views.auth.reset-password',
     'refer_earn' => 'theme-views.users-profile.refer-earn',
+    'article' => 'theme-views.articles.article',
     'articles' => 'theme-views.articles.articles',
     'article-category' => 'theme-views.articles.article_category',
     'parenting' => 'theme-views.parenting.parentingTools',

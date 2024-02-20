@@ -690,7 +690,7 @@
     <body>
         <!--HEADER-->
         <!-- <header
-                                                                      style="background: linear-gradient(rgba(1, 1, 1, 0.5), rgba(1, 1, 1, 0.5)),
+                                                                              style="background: linear-gradient(rgba(1, 1, 1, 0.5), rgba(1, 1, 1, 0.5)),
           url(../images/#);"> -->
         {{-- <section
             style="background: linear-gradient( 90.27deg, #845dc2 -27.96%, #f99327 -27.94%, #d55fad 28.41%, #845dc2 82.13%, #845dc2 130.57% ),
@@ -721,7 +721,7 @@
                 <div class="left_content">
                     <!--MAIN CARD BEGINING-->
                     <div class="blog_card">
-                        <a href="article.html" class="figure">
+                        <a href="{{ route('article', $latest_article->id) }}" class="figure">
                             <img src="{{ asset('public/assets/images/articles/thumbnail/' . $latest_article->thumbnail) }}"
                                 alt="" loading="lazy" />
                             <span class="tag">{{ date_format($latest_article->created_at, 'd-M Y') }}</span>
@@ -737,7 +737,7 @@
                     @foreach ($all_articles as $article)
                         <!--CARD BEGINING-->
                         <div class="blog_card{{ $loop->index >= 6 ? ' additional-card hidden' : '' }}">
-                            <a href="#" class="figure">
+                            <a href="{{ route('article', $article->id) }}" class="figure">
                                 <img src="{{ asset('public/assets/images/articles/thumbnail/' . $article->thumbnail) }}"
                                     alt="" loading="lazy" />
                                 <span class="tag">{{ date_format($article->created_at, 'd-M Y') }}</span>
@@ -873,7 +873,7 @@
             const loadBtn = document.querySelector('.load-btn');
             const hiddenCards = document.querySelectorAll('.additional-card');
             let currentIndex = 0; // Keep track of the index of the first hidden card to show
-    
+
             loadBtn.addEventListener('click', function() {
                 // Show the next 6 hidden cards or less if there are fewer than 6 remaining
                 for (let i = currentIndex; i < currentIndex + 6 && i < hiddenCards.length; i++) {
@@ -881,7 +881,7 @@
                 }
                 // Update the current index for the next batch of cards
                 currentIndex += 6;
-                
+
                 // Hide the button if all cards are displayed
                 if (currentIndex >= hiddenCards.length) {
                     loadBtn.style.display = 'none';
@@ -889,5 +889,4 @@
             });
         });
     </script>
-    
 @endsection

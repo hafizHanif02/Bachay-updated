@@ -13,13 +13,23 @@ class ArticleController extends Controller
     /**
      * Display a listing of the resource.
      */
+    public function article($id)
+    {
+
+        $article = Article::where('status', '1')->where('id', $id)->first();
+        $slidder_article = Article::orderBy('id', 'desc')->where('status', '1')->take(6)->get();
+        $categories = ArticleCategory::where('status', '1')->get();
+
+
+        return view(VIEW_FILE_NAMES['article'], compact('article','slidder_article','categories'));
+    }
     public function articles()
     {
         $latest_article = Article::orderBy('id', 'desc')->where('status', '1')->first();
         $slidder_article = Article::orderBy('id', 'desc')->where('status', '1')->take(6)->get();
         $all_articles = Article::with('articlecategory')->where('status', '1')->get();
         $categories = ArticleCategory::where('status', '1')->get();
-        return view(VIEW_FILE_NAMES['articles'],compact('latest_article','slidder_article','all_articles','categories')); 
+        return view(VIEW_FILE_NAMES['articles'], compact('latest_article', 'slidder_article', 'all_articles', 'categories'));
     }
     public function index(Request $request)
     {
@@ -32,11 +42,11 @@ class ArticleController extends Controller
         return view('admin-views.article.article', compact('articles', 'categories'));
     }
 
-    public function CategoryArticle($id){
+    public function CategoryArticle($id)
+    {
         $article_category = ArticleCategory::where('id', $id)->with('articles')->first();
         $categories = ArticleCategory::where('status', '1')->get();
-        return view(VIEW_FILE_NAMES['article-category'],compact('article_category','categories')); 
-
+        return view(VIEW_FILE_NAMES['article-category'], compact('article_category', 'categories'));
     }
 
     /**
