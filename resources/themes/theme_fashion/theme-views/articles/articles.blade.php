@@ -855,7 +855,7 @@
         </div>
         </div>
     </body>
-    <script>
+    {{-- <script>
         document.addEventListener("DOMContentLoaded", function() {
             const loadBtn = document.querySelector('.load-btn');
             const hiddenCards = document.querySelectorAll('.additional-card');
@@ -867,5 +867,27 @@
                 loadBtn.style.display = 'none'; // Hide the button after loading additional cards
             });
         });
+    </script> --}}
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const loadBtn = document.querySelector('.load-btn');
+            const hiddenCards = document.querySelectorAll('.additional-card');
+            let currentIndex = 0; // Keep track of the index of the first hidden card to show
+    
+            loadBtn.addEventListener('click', function() {
+                // Show the next 6 hidden cards or less if there are fewer than 6 remaining
+                for (let i = currentIndex; i < currentIndex + 6 && i < hiddenCards.length; i++) {
+                    hiddenCards[i].classList.remove('hidden');
+                }
+                // Update the current index for the next batch of cards
+                currentIndex += 6;
+                
+                // Hide the button if all cards are displayed
+                if (currentIndex >= hiddenCards.length) {
+                    loadBtn.style.display = 'none';
+                }
+            });
+        });
     </script>
+    
 @endsection

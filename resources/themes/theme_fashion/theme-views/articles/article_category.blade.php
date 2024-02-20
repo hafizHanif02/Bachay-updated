@@ -116,7 +116,7 @@
         *********************************/
         .articleHeader {
             width: 100%;
-            display: flex;
+            /* display: flex; */
             align-items: center;
             justify-content: center;
             background-size: cover;
@@ -142,9 +142,20 @@
             transform: translate(-50%, 0);
         }
 
-        .articleHeader section .title {
+        .articleHeader .title {
             font-size: 3em;
-            /* line-height: 0; */
+            font-family: 'Aristotelica';
+            padding: 2rem;
+            padding-bottom: 5px;
+            background: linear-gradient(90.27deg, #845dc2 -27.96%, #f99327 -27.94%, #d55fad 28.41%, #845dc2 82.13%, #845dc2 130.57%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .btnWidth {
+            width: 100%;
         }
 
         .articleHeader section span {
@@ -351,13 +362,14 @@
         }
 
         .search form {
+            margin: 0;
             width: 100%;
             display: flex;
             align-items: center;
         }
 
         .search .field:nth-child(2) {
-            width: 10%;
+            width: 20%;
         }
 
         .search form input {
@@ -657,6 +669,14 @@
             color: black;
             background-color: #b8bca7;
         }
+
+        .custom {
+            width: 80%;
+        }
+
+        .hidden {
+            display: none;
+        }
     </style>
 </head>
 
@@ -676,16 +696,17 @@
             </section>
         </section> --}}
 
-        <div class="articleHeader"
-            style="background: linear-gradient( 90.27deg, #845dc2 -27.96%, #f99327 -27.94%, #d55fad 28.41%, #845dc2 82.13%, #845dc2 130.57% ), url(../images/placeholder.jpg);">
-            <section>
-                <h1 class="title">Articles</h1>
-                <span>
+        <div class="articleHeader">
+            {{-- style="background: linear-gradient( 90.27deg, #845dc2 -27.96%, #f99327 -27.94%, #d55fad 28.41%, #845dc2 82.13%, #845dc2 130.57% ), url(../images/placeholder.jpg);">
+            <img src="../images/placeholder.jpg" alt="Header Image">
+            <section> --}}
+            <h1 class="title">Articles</h1>
+            {{-- <span>
                     <a href="{{ route('home') }}">Home</a>
                     <i class="fa fa-angle-double-right"></i>
                     <a href="#" class="active">Articles</a>
                 </span>
-            </section>
+            </section> --}}
         </div>
 
         <!--BLOG SECTION-->
@@ -709,7 +730,7 @@
                     <!--CARD ENDS-->
                     @foreach($article_category->articles as $article)
                     <!--CARD BEGINING-->
-                    <div class="blog_card">
+                    <div class="blog_card{{ $loop->index >= 6 ? ' additional-card hidden' : '' }}">
                         <a href="#" class="figure">
                             <img src="{{ asset('public/assets/images/articles/thumbnail/' . $article->thumbnail) }}"
                                 alt="" loading="lazy" />
@@ -734,7 +755,7 @@
                 <div class="columns search_column">
                     <section class="search">
                         <form>
-                            <div class="field">
+                            <div class="field custom">
                                 <input type="text" name="search" placeholder="Search..." maxlength="100"
                                     required="" />
                             </div>
@@ -799,14 +820,17 @@
                         <marquee direction="up" scrollamount="4" onMouseOver="this.stop()" onMouseOut="this.start()"
                             class="marquee2">
                             <p>
+                                <span class="bi bi-chat-right-dots me-2"></span>
                                 Remember, torn clothes should not be left at home. Dispose of
                                 them out. Buying new clothes like towels.
                             </p>
                             <p>
+                                <span class="bi bi-chat-right-dots me-2"></span>
                                 wearing clothes, bedsheets are like inviting good luck to the
                                 home.
                             </p>
                             <p>
+                                <span class="bi bi-chat-right-dots me-2"></span>
                                 Arrange doormats before every door and please change the
                                 doormats once in 6/8 months or maximum within 1 year. For More
                                 Daily
@@ -827,4 +851,25 @@
             </div>
         </div>
     </body>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const loadBtn = document.querySelector('.load-btn');
+            const hiddenCards = document.querySelectorAll('.additional-card');
+            let currentIndex = 0; // Keep track of the index of the first hidden card to show
+    
+            loadBtn.addEventListener('click', function() {
+                // Show the next 6 hidden cards or less if there are fewer than 6 remaining
+                for (let i = currentIndex; i < currentIndex + 6 && i < hiddenCards.length; i++) {
+                    hiddenCards[i].classList.remove('hidden');
+                }
+                // Update the current index for the next batch of cards
+                currentIndex += 6;
+                
+                // Hide the button if all cards are displayed
+                if (currentIndex >= hiddenCards.length) {
+                    loadBtn.style.display = 'none';
+                }
+            });
+        });
+    </script>
 @endsection
