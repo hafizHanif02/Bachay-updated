@@ -79,6 +79,7 @@ use App\Enums\ViewPaths\Admin\DeliveryRestriction;
 use App\Enums\ViewPaths\Admin\EnvironmentSettings;
 use App\Enums\ViewPaths\Admin\SocialLoginSettings;
 use App\Http\Controllers\Admin\POS\CartController;
+use App\Http\Controllers\FamilyRelationController;
 use App\Enums\ViewPaths\Admin\OfflinePaymentMethod;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\ArticleCategoryController;
@@ -384,6 +385,13 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['admin']],
             Route::get('list', [ParentController::class, 'index'])->name('list');
             Route::get('view/{id}', [ParentController::class, 'ParentView'])->name('view');
             Route::post('create', [ParentController::class, 'create'])->name('create');
+
+            Route::group(['prefix' => 'child', 'as' => 'child.'], function () {
+                Route::get('show/{id}', [FamilyRelationController::class, 'show'])->name('show');
+                Route::get('edit/{id}', [FamilyRelationController::class, 'edit'])->name('edit');
+                Route::post('update', [FamilyRelationController::class, 'update'])->name('update');
+                Route::post('delete', [FamilyRelationController::class, 'destroy'])->name('delete');
+            });
 
         });
 

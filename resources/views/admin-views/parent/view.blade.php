@@ -56,7 +56,8 @@
                                 <th>{{translate('avatar')}}</th>
                                 <th>{{translate('child_name')}}</th>
                                 <th>{{translate('gender')}}</th>
-                                <th>{{translate('date_of_birth')}}</th>
+                                <th>{{translate('DOB')}}</th>
+                                <th>{{translate('action')}}</th>
                                 {{-- <th class="text-center">{{translate('action')}}</th> --}}
                             </tr>
                             </thead>
@@ -65,11 +66,37 @@
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
                                     <td>
-                                        <img class="avatar avatar-xxl" width="75" style="border-radius: 50%" src="{{asset('public/assets/images/customers/child/'.$child->profile_picture)}}" alt="avatar">
+                                        <img class="avatar avatar-xl"   src="{{asset('public/assets/images/customers/child/'.$child->profile_picture)}}" alt="avatar">
                                     </td>
                                     <td>{{$child->name}}</td>
-                                    <td>{{($child->gender == 1) ? 'Male' : 'Female'}}</td>
+                                    <td>{{$child->gender == 'male' ? translate('male') : translate('female')}}</td>
                                     <td>{{$child->dob}}</td>
+                                    <td class="text-center">
+                                        <div class="d-flex justify-content-center gap-2">
+                                            <a class="btn btn-outline--primary btn-sm edit square-btn"
+                                               title="{{translate('edit')}}"
+                                               href="{{route('admin.customer.parent.child.edit',$child->id)}}">
+                                                <i class="tio-edit"></i>
+                                            </a>
+                                            <div class="d-flex justify-content-center gap-2">
+                                                <a title="{{translate('view')}}"
+                                                   class="btn btn-outline-info btn-sm square-btn"
+                                                   href="{{route('admin.customer.parent.child.show',$child->id)}}">
+                                                    <i class="tio-invisible"></i>
+                                                </a>
+                                            </div>
+                                            <form action="{{route('admin.customer.parent.child.delete')}}" method="POST">
+                                                @csrf
+                                                <input type="hidden" value="{{ $child->id }}" name="id">
+                                                <button type="submit" class="btn btn-outline-danger btn-sm delete"
+                                                        title="{{translate('delete')}}"
+                                                        href="javascript:"
+                                                        >
+                                                    <i class="tio-delete"></i>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </td>
                                     {{-- <td>
                                         <a href="{{route('admin.orders.details',['id'=>$order['id']])}}"
                                            class="title-color hover-c1">{{$order['id']}}</a>
