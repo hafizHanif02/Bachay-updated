@@ -22,6 +22,7 @@ use App\Enums\ViewPaths\Admin\Customer;
 use App\Enums\ViewPaths\Admin\Employee;
 use App\Enums\ViewPaths\Admin\Language;
 use App\Enums\ViewPaths\Admin\POSOrder;
+use App\Http\Controllers\QnaController;
 use App\Enums\ViewPaths\Admin\Attribute;
 use App\Enums\ViewPaths\Admin\Dashboard;
 use App\Enums\ViewPaths\Admin\FlashDeal;
@@ -418,6 +419,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['admin']],
                 Route::post('/update', [QuizQuestionController::class,'update'])->name('update');
                 Route::post('/delete', [QuizQuestionController::class,'destroy'])->name('delete');
                         });
+        });
+
+        Route::group(['prefix' => 'qna', 'as' => 'qna.'],function(){
+            Route::get('list', [QnaController::class, 'index'])->name('list');
+
         });
 
 
