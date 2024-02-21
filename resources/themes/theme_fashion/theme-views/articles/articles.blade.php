@@ -705,22 +705,13 @@
             </section>
         </section> --}}
 
-        <div class="articleHeader container">
-            {{-- style="background: linear-gradient( 90.27deg, #845dc2 -27.96%, #f99327 -27.94%, #d55fad 28.41%, #845dc2 82.13%, #845dc2 130.57% ), url(../images/placeholder.jpg);">
-            <img src="../images/placeholder.jpg" alt="Header Image">
-            <section> --}}
-            <h1 class="title">Articles</h1>
-            {{-- <span>
-                    <a href="{{ route('home') }}">Home</a>
-                    <i class="fa fa-angle-double-right"></i>
-                    <a href="#" class="active">Articles</a>
-                </span>
-            </section> --}}
+        <div class="articleHeader">
+            <h1 class="title container">Articles</h1>
         </div>
 
         <!--BLOG SECTION-->
-        <div class="blog_container container">
-            <div class="blog_content">
+        <div class="blog_container">
+            <div class="blog_content container">
                 <div class="left_content">
                     <!--MAIN CARD BEGINING-->
                     <div class="blog_card">
