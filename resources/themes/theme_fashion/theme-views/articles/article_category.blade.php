@@ -1,16 +1,18 @@
 @extends('theme-views.layouts.app')
 @push('css_or_js')
     <link href='https://fonts.googleapis.com/css?family=Outfit' rel='stylesheet'>
-    <meta property="og:image" content="{{asset('storage/app/public/company')}}/{{$web_config['web_logo']->value}}"/>
-    <meta property="og:title" content="Welcome To {{$web_config['name']->value}} Home"/>
+    <meta property="og:image" content="{{ asset('storage/app/public/company') }}/{{ $web_config['web_logo']->value }}" />
+    <meta property="og:title" content="Welcome To {{ $web_config['name']->value }} Home" />
     <meta property="og:url" content="{{ config('app.url') }}">
     <meta property="og:description"
-          content="{{ substr(strip_tags(str_replace('&nbsp;', ' ', $web_config['about']->value)),0,160) }}">
+        content="{{ substr(strip_tags(str_replace('&nbsp;', ' ', $web_config['about']->value)), 0, 160) }}">
 
-    <meta property="twitter:card" content="{{asset('storage/app/public/company')}}/{{$web_config['web_logo']->value}}"/>
-    <meta property="twitter:title" content="Welcome To {{$web_config['name']->value}} Home"/>
+    <meta property="twitter:card"
+        content="{{ asset('storage/app/public/company') }}/{{ $web_config['web_logo']->value }}" />
+    <meta property="twitter:title" content="Welcome To {{ $web_config['name']->value }} Home" />
     <meta property="twitter:url" content="{{ config('app.url') }}">
-    <meta property="twitter:description" content="{{ substr(strip_tags(str_replace('&nbsp;', ' ', $web_config['about']->value)),0,160) }}">
+    <meta property="twitter:description"
+        content="{{ substr(strip_tags(str_replace('&nbsp;', ' ', $web_config['about']->value)), 0, 160) }}">
 @endpush
 
 <head>
@@ -25,7 +27,7 @@
             /* --white: #fff; */
             --white: #f1f1f1;
             --black: #000;
-            --dark: #2a2a2e; 
+            --dark: #2a2a2e;
             --purple: #835ec1;
             --darkpurple: #ED956F;
             --red: #fe3e30;
@@ -35,6 +37,7 @@
             --defaultfont: "Poppins", sans-serif;
             --titlefont: "Roboto", sans-serif;
         }
+
         /********************************
             DEFAULT
         *********************************/
@@ -230,6 +233,7 @@
             flex: 0 0 48.5%;
             overflow: hidden;
             background-color: var(--white);
+            border-radius: 10px;
         }
 
         .blog_card:nth-child(1) {
@@ -242,6 +246,7 @@
             height: 200px;
             position: relative;
             overflow: hidden;
+            border-radius: 10px;
         }
 
         .blog_card:nth-child(1) .figure {
@@ -682,31 +687,14 @@
 
 @section('content')
     <body>
-        <!--HEADER-->
-        <!-- <header
-                                                              style="background: linear-gradient(rgba(1, 1, 1, 0.5), rgba(1, 1, 1, 0.5)),
-          url(../images/#);"> -->
-        {{-- <section
-            style="background: linear-gradient( 90.27deg, #845dc2 -27.96%, #f99327 -27.94%, #d55fad 28.41%, #845dc2 82.13%, #845dc2 130.57% ),
-        url(../images/#);">
-            <section>
-                <h1 class="title">Articles</h1>
-                <span><a href="#">Home</a> <i class="fa fa-angle-double-right"></i>
-                    <a href="#" class="active">Articles</a></span>
-            </section>
-        </section> --}}
-
         <div class="articleHeader">
-            {{-- style="background: linear-gradient( 90.27deg, #845dc2 -27.96%, #f99327 -27.94%, #d55fad 28.41%, #845dc2 82.13%, #845dc2 130.57% ), url(../images/placeholder.jpg);">
-            <img src="../images/placeholder.jpg" alt="Header Image">
-            <section> --}}
-            <h1 class="title">Articles</h1>
-            {{-- <span>
-                    <a href="{{ route('home') }}">Home</a>
-                    <i class="fa fa-angle-double-right"></i>
-                    <a href="#" class="active">Articles</a>
-                </span>
-            </section> --}}
+            <h1 class="title">
+                @if (count($categories) > 0)
+                    Category: {{ $categories[0]->name }}
+                @else
+                    Articles
+                @endif
+            </h1>
         </div>
 
         <!--BLOG SECTION-->
@@ -715,36 +703,40 @@
                 <div class="left_content">
                     <!--MAIN CARD BEGINING-->
                     <div class="blog_card">
-                        <a href="article.html" class="figure">
-                            <img  src="{{ asset('public/assets/images/articles/category/thumbnail/' . $article_category->image) }}"
+                        <a href="{{ route('article', $article_category->id) }}" class="figure">
+                            <img src="{{ asset('public/assets/images/articles/category/thumbnail/' . $article_category->image) }}"
                                 alt="" loading="lazy" />
-                            <span class="tag">{{ date_format($article_category->created_at,"d-M Y") }}</span>
+                            <span class="tag">{{ date_format($article_category->created_at, 'd-M Y') }}</span>
                         </a>
                         <section>
-                            <a href="#" class="title">{{ $article_category->name }}</a>
+                            <a href="{{ route('article', $article_category->id) }}" class="title">{{ $article_category->name }}</a>
                             <p>
-                                {{ $article_category->tag_line }}
-                            </p>
+                                {{ mb_strimwidth($article_category->tag_line, 0, 300, "...") }}
+                                <a href="{{ route('article', $article_category->id) }}">Read more</a>
+                            </p> 
                         </section>
                     </div>
                     <!--CARD ENDS-->
-                    @foreach($article_category->articles as $article)
-                    <!--CARD BEGINING-->
+                    @foreach ($article_category->articles as $article)
+                        <!--CARD BEGINING-->
                     <div class="blog_card{{ $loop->index >= 6 ? ' additional-card hidden' : '' }}">
-                        <a href="#" class="figure">
-                            <img src="{{ asset('public/assets/images/articles/thumbnail/' . $article->thumbnail) }}"
-                                alt="" loading="lazy" />
+                        <a href="{{ route('article', $article->id) }}" class="figure">
+                            <img src="{{ asset('public/assets/images/articles/thumbnail/' . $article->thumbnail) }}" alt="" loading="lazy" />
                             <span class="tag">{{ date_format($article->created_at,"d-M Y") }}</span>
                         </a>
                         <section>
-                            <a href="article.html" class="title">{{ $article->title }}</a>
+                            <a href="{{ route('article', $article->id) }}" class="title">{{ $article->title }}</a>
                             <p>
-                                {{$article->text}}
+                                @php
+                                    $text = $article->text;
+                                    $wordCount = str_word_count($text);
+                                    $limitedText = implode(' ', array_slice(str_word_count($text, 1), 0, 34));
+                                    echo $limitedText . ($wordCount > 34 ? "..." : "");
+                                @endphp
                             </p>
                         </section>
-                    </div>
-
-                    <!--CARD ENDS-->
+                    </div>                    
+                        <!--CARD ENDS-->
                     @endforeach
                 </div>
                 <button class="btn1 load-btn">Load more</button>
@@ -773,82 +765,80 @@
                     <span class="title">New Books
                         <a href="#" title="Explore More"><i class="fa fa-share"></i></a></span>
                     <section>
-                        @foreach($article_category->articles as $article)
-                        <div class="cards">
-                            <div class="card_part card_part-{{ $loop->iteration }}"
-                                style="
-                  background-image: url({{ asset('public/assets/images/articles/thumbnail/' . $article->thumbnail)  }});
-                ">
-                            </div>
-                            @endforeach
-                        </div>
-                    </section>
-                </div>
-                <!--BOOKS COLUMN ENDS-->
-                <!--CATEGORIES COLUMN BEGINING-->
-                <div class="columns categories">
-                    <span class="title">Categories</span>
-                    <section>
-                        @foreach($categories as $category)
-                        <a href="{{ route('articles.category' , $category->id) }}">{{ $category->name }}</a>
+                        @foreach ($article_category->articles as $article)
+                            <div class="cards">
+                                <div class="card_part card_part-{{ $loop->iteration }}"
+                                    style="background-image: url({{ asset('public/assets/images/articles/thumbnail/' . $article->thumbnail) }});">
+                                </div>
                         @endforeach
-                    </section>
                 </div>
-                <!--CATEGORIES COLUMN ENDS-->
-                <!--POSTS COLUMN BEGINING-->
-                <div class="columns posts">
-                    <span class="title">Recent Posts
-                        <a href="#" title="Explore More"><i class="fa fa-share"></i></a></span>
-                    <section>
-                        @foreach($article_category->articles as $article)
+                </section>
+            </div>
+            <!--BOOKS COLUMN ENDS-->
+            <!--CATEGORIES COLUMN BEGINING-->
+            <div class="columns categories">
+                <span class="title">Categories</span>
+                <section>
+                    @foreach ($categories as $category)
+                        <a href="{{ route('articles.category', $category->id) }}">{{ $category->name }}</a>
+                    @endforeach
+                </section>
+            </div>
+            <!--CATEGORIES COLUMN ENDS-->
+            <!--POSTS COLUMN BEGINING-->
+            <div class="columns posts">
+                <span class="title">Recent Posts
+                    <a href="#" title="Explore More"><i class="fa fa-share"></i></a></span>
+                <section>
+                    @foreach ($article_category->articles as $article)
                         <a href="#"><img
-                                src="{{ asset('public/assets/images/articles/thumbnail/' . $article->thumbnail)  }}"
+                                src="{{ asset('public/assets/images/articles/thumbnail/' . $article->thumbnail) }}"
                                 alt="" loading="lazy" />
                             <p>{{ $article->title }}</p>
                         </a>
-                        @endforeach
-                        
-                    </section>
-                </div>
-                <!--POSTS COLUMN ENDS-->
-                <!--COMMENTS COLUMN BEGINING-->
-                <div class="columns comments">
-                    <span class="title">
-                        Recent Comments
-                        <a href="#" title="Explore More"><i class="fa fa-share"></i></a></span>
-                    <section>
-                        <marquee direction="up" scrollamount="4" onMouseOver="this.stop()" onMouseOut="this.start()"
-                            class="marquee2">
-                            <p>
-                                <span class="bi bi-chat-right-dots me-2"></span>
-                                Remember, torn clothes should not be left at home. Dispose of
-                                them out. Buying new clothes like towels.
-                            </p>
-                            <p>
-                                <span class="bi bi-chat-right-dots me-2"></span>
-                                wearing clothes, bedsheets are like inviting good luck to the
-                                home.
-                            </p>
-                            <p>
-                                <span class="bi bi-chat-right-dots me-2"></span>
-                                Arrange doormats before every door and please change the
-                                doormats once in 6/8 months or maximum within 1 year. For More
-                                Daily
-                            </p>
-                        </marquee>
-                    </section>
-                </div>
-                <!--COMMENTS COLUMN ENDS-->
-                <!--SOCIAL MEDIA ICONS BEGINING-->
-                <div class="columns social_icons">
-                    <a href="#" title="Facebook"><i class="fa fa-facebook"></i></a>
-                    <a href="#" title="Instagram"><i class="fa fa-instagram"></i></a>
-                    <a href="#" title="Youtube"><i class="fa fa-youtube"></i></a>
-                    <a href="#" title="Whatsapp"><i class="fa fa-whatsapp"></i></a>
-                    <a href="#" title="Telegram"><i class="fa fa-telegram"></i></a>
-                </div>
-                <!--SOCIAL MEDIA ICONS ENDS-->
+                    @endforeach
+
+                </section>
             </div>
+            <!--POSTS COLUMN ENDS-->
+            <!--COMMENTS COLUMN BEGINING-->
+            <div class="columns comments">
+                <span class="title">
+                    Recent Comments
+                    <a href="#" title="Explore More"><i class="fa fa-share"></i></a></span>
+                <section>
+                    <marquee direction="up" scrollamount="4" onMouseOver="this.stop()" onMouseOut="this.start()"
+                        class="marquee2">
+                        <p>
+                            <span class="bi bi-chat-right-dots me-2"></span>
+                            Remember, torn clothes should not be left at home. Dispose of
+                            them out. Buying new clothes like towels.
+                        </p>
+                        <p>
+                            <span class="bi bi-chat-right-dots me-2"></span>
+                            wearing clothes, bedsheets are like inviting good luck to the
+                            home.
+                        </p>
+                        <p>
+                            <span class="bi bi-chat-right-dots me-2"></span>
+                            Arrange doormats before every door and please change the
+                            doormats once in 6/8 months or maximum within 1 year. For More
+                            Daily
+                        </p>
+                    </marquee>
+                </section>
+            </div>
+            <!--COMMENTS COLUMN ENDS-->
+            <!--SOCIAL MEDIA ICONS BEGINING-->
+            <div class="columns social_icons">
+                <a href="#" title="Facebook"><i class="fa fa-facebook"></i></a>
+                <a href="#" title="Instagram"><i class="fa fa-instagram"></i></a>
+                <a href="#" title="Youtube"><i class="fa fa-youtube"></i></a>
+                <a href="#" title="Whatsapp"><i class="fa fa-whatsapp"></i></a>
+                <a href="#" title="Telegram"><i class="fa fa-telegram"></i></a>
+            </div>
+            <!--SOCIAL MEDIA ICONS ENDS-->
+        </div>
         </div>
     </body>
     <script>
@@ -856,7 +846,7 @@
             const loadBtn = document.querySelector('.load-btn');
             const hiddenCards = document.querySelectorAll('.additional-card');
             let currentIndex = 0; // Keep track of the index of the first hidden card to show
-    
+
             loadBtn.addEventListener('click', function() {
                 // Show the next 6 hidden cards or less if there are fewer than 6 remaining
                 for (let i = currentIndex; i < currentIndex + 6 && i < hiddenCards.length; i++) {
@@ -864,7 +854,7 @@
                 }
                 // Update the current index for the next batch of cards
                 currentIndex += 6;
-                
+
                 // Hide the button if all cards are displayed
                 if (currentIndex >= hiddenCards.length) {
                     loadBtn.style.display = 'none';

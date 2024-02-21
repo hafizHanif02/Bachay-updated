@@ -239,6 +239,7 @@
             flex: 0 0 48.5%;
             overflow: hidden;
             background-color: var(--white);
+            border-radius: 10px;
         }
 
         .blog_card:nth-child(1) {
@@ -251,6 +252,7 @@
             height: 200px;
             position: relative;
             overflow: hidden;
+            border-radius: 10px;
         }
 
         .blog_card:nth-child(1) .figure {
@@ -727,10 +729,11 @@
                             <span class="tag">{{ date_format($latest_article->created_at, 'd-M Y') }}</span>
                         </a>
                         <section>
-                            <a href="#" class="title">{{ $latest_article->title }}</a>
+                            <a href="{{ route('article', $latest_article->id) }}" class="title">{{ $latest_article->title }}</a>
                             <p>
-                                {{ $latest_article->text }}
-                            </p>
+                                {{ mb_strimwidth($latest_article->text, 0, 300, "...") }}
+                                <a href="{{ route('article', $latest_article->id) }}">Read more</a>
+                            </p>                            
                         </section>
                     </div>
                     <!--CARD ENDS-->
@@ -743,10 +746,14 @@
                                 <span class="tag">{{ date_format($article->created_at, 'd-M Y') }}</span>
                             </a>
                             <section>
-                                <a href="article.html" class="title">{{ $article->title }}</a>
+                                <a href="{{ route('article', $article->id) }}" class="title">{{ $article->title }}</a>
                                 <p>
-                                    {{ $article->text }}
-                                </p>
+                                    @php
+                                        $words = str_word_count($article->text, 1);
+                                        $limitedText = implode(' ', array_slice($words, 0, 34));
+                                        echo $limitedText . (count($words) > 34 ? '...' : '');
+                                    @endphp
+                                </p>                                
                             </section>
                         </div>
                     @endforeach
