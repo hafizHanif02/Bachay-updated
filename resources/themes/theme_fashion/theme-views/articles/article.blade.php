@@ -691,12 +691,12 @@
 @section('content')
 
     <body>
-        <div class="articleHeader container">
-            <h1 class="title">{{ $article->title }}</h1>
+        <div class="articleHeader container-xxl">
+            <h1 class="title ">{{ $article->title }}</h1>
         </div>
 
         <!--BLOG SECTION-->
-        <div class="blog_container container">
+        <div class="blog_container container-xxl">
             <div class="blog_content">
                 <div class="left_content">
 

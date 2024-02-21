@@ -693,7 +693,7 @@
     <body>
         <!--HEADER-->
         <!-- <header
-                                                                              style="background: linear-gradient(rgba(1, 1, 1, 0.5), rgba(1, 1, 1, 0.5)),
+                                                                                          style="background: linear-gradient(rgba(1, 1, 1, 0.5), rgba(1, 1, 1, 0.5)),
           url(../images/#);"> -->
         {{-- <section
             style="background: linear-gradient( 90.27deg, #845dc2 -27.96%, #f99327 -27.94%, #d55fad 28.41%, #845dc2 82.13%, #845dc2 130.57% ),
@@ -705,21 +705,12 @@
             </section>
         </section> --}}
 
-        <div class="articleHeader container">
-            {{-- style="background: linear-gradient( 90.27deg, #845dc2 -27.96%, #f99327 -27.94%, #d55fad 28.41%, #845dc2 82.13%, #845dc2 130.57% ), url(../images/placeholder.jpg);">
-            <img src="../images/placeholder.jpg" alt="Header Image">
-            <section> --}}
+        <div class="articleHeader container-xxl">
             <h1 class="title">Articles</h1>
-            {{-- <span>
-                    <a href="{{ route('home') }}">Home</a>
-                    <i class="fa fa-angle-double-right"></i>
-                    <a href="#" class="active">Articles</a>
-                </span>
-            </section> --}}
         </div>
 
         <!--BLOG SECTION-->
-        <div class="blog_container container">
+        <div class="blog_container container-xxl">
             <div class="blog_content">
                 <div class="left_content">
                     <!--MAIN CARD BEGINING-->
@@ -730,11 +721,12 @@
                             <span class="tag">{{ date_format($latest_article->created_at, 'd-M Y') }}</span>
                         </a>
                         <section>
-                            <a href="{{ route('article', $latest_article->id) }}" class="title">{{ $latest_article->title }}</a>
+                            <a href="{{ route('article', $latest_article->id) }}"
+                                class="title">{{ $latest_article->title }}</a>
                             <p>
-                                {{ mb_strimwidth($latest_article->text, 0, 300, "...") }}
+                                {{ mb_strimwidth($latest_article->text, 0, 300, '...') }}
                                 <a href="{{ route('article', $latest_article->id) }}">Read more</a>
-                            </p>                            
+                            </p>
                         </section>
                     </div>
                     <!--CARD ENDS-->
@@ -754,7 +746,7 @@
                                         $limitedText = implode(' ', array_slice($words, 0, 34));
                                         echo $limitedText . (count($words) > 34 ? '...' : '');
                                     @endphp
-                                </p>                                
+                                </p>
                             </section>
                         </div>
                     @endforeach

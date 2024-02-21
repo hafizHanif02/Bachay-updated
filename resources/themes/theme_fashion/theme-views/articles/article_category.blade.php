@@ -688,7 +688,7 @@
 
 @section('content')
     <body>
-        <div class="articleHeader container">
+        <div class="articleHeader container-xxl">
             <h1 class="title">
                 @if (count($categories) > 0)
                     Category: {{ $categories[0]->name }}
@@ -699,7 +699,7 @@
         </div>
 
         <!--BLOG SECTION-->
-        <div class="blog_container container">
+        <div class="blog_container container-xxl">
             <div class="blog_content">
                 <div class="left_content">
                     <!--MAIN CARD BEGINING-->
