@@ -1,4 +1,22 @@
 <style>
+    @media (min-width: 780px) and (max-width: 909px) {
+        .sub-nav li:nth-child(n + 8) {
+            display: none;
+        }
+    }
+
+    @media (min-width: 910px) and (max-width: 1091px) {
+        .sub-nav li:nth-child(n + 9) {
+            display: none;
+        }
+    }
+
+    @media (min-width: 1092px) and (max-width: 1199px) {
+        .sub-nav li:nth-last-child(2) {
+            display: none;
+        }
+    }
+
     .nav-ul_text {
         color: #000 !important;
     }

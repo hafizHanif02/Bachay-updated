@@ -705,7 +705,7 @@
             </section>
         </section> --}}
 
-        <div class="articleHeader">
+        <div class="articleHeader container">
             {{-- style="background: linear-gradient( 90.27deg, #845dc2 -27.96%, #f99327 -27.94%, #d55fad 28.41%, #845dc2 82.13%, #845dc2 130.57% ), url(../images/placeholder.jpg);">
             <img src="../images/placeholder.jpg" alt="Header Image">
             <section> --}}
@@ -719,7 +719,7 @@
         </div>
 
         <!--BLOG SECTION-->
-        <div class="blog_container">
+        <div class="blog_container container">
             <div class="blog_content">
                 <div class="left_content">
                     <!--MAIN CARD BEGINING-->
