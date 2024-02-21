@@ -297,7 +297,7 @@
         content: "";
         position: absolute;
         top: -110px;
-        right: -150px;
+        right: 0;
         width: 400px;
         height: 400px;
         background-image: url('../public/images/background-blur.png');
@@ -467,24 +467,166 @@
     .bottom-heading {
         position: relative;
     }
+
+    .ready-to-start {
+        display: flex;
+    }
+
+    .btns {
+        display: inline-flex;
+    }
+
+    /* Tablet-specific styles */
+    @media (min-width: 768px) and (max-width: 991.98px) {
+
+        .section1 .container,
+        .section2 .container,
+        .section3 .container,
+        .section4 .container,
+        .section5 .container,
+        .ready-to-start {
+            display: flex;
+        }
+
+        .bg-blurimg::before {
+            right: 0;
+        }
+
+        .Quiz-heading::before {
+            left: 80%;
+        }
+
+        .bottom-heading::before {
+            right: -250px;
+        }
+
+        .last-sec-btns {
+            padding: 20px;
+        }
+
+        .btns {
+            display: block;
+
+        }
+
+        .app-btns {
+            margin: 10px 0 0 0;
+        }
+
+        .section1 div h1 {
+            font-size: 40px;
+            line-height: 45px;
+            margin: 110px 0 0 0;
+
+        }
+    }
+
+    /* Mobile Responsive Styles */
+    @media (max-width: 767px) {
+
+        .section1 .container,
+        .section2 .container,
+        .section3 .container,
+        .section4 .container,
+        .section5 .container,
+        .ready-to-start {
+            display: block !important;
+        }
+
+        .custom-con {
+            width: 100%;
+        }
+
+        .bottom-heading::before {
+            display: none;
+        }
+
+        .section1 div h1::before {
+            left: 0;
+            width: 300px;
+            height: 300px;
+        }
+
+        .bg-blurimg::before {
+            right: 50px;
+            width: 300px;
+            height: 300px;
+        }
+
+        .Quiz-heading::before {
+            left: 80%;
+        }
+
+        .last-sec-btns {
+            padding: 30px;
+        }
+
+        .app-btns {
+            width: 100%;
+            margin: 10px 0 0 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .btns {
+            display: block;
+        }
+
+        .section1 div h1 {
+            font-size: 36px;
+            line-height: 45px;
+            margin: 105px 0 0 0;
+        }
+
+        .parenting-content::before {
+            display: none;
+        }
+
+        .download-btn {
+            width: 170px;
+        }
+
+        .Porfessionals,
+        .parenting-about-us,
+        .parenting-head {
+            font-size: 36px;
+            line-height: 45px;
+        }
+
+        .advatnages::before {
+            display: none;
+        }
+
+        .growth-tracker {
+            font-size: 18px;
+        }
+
+        .parenting-faq-text {
+            line-height: 24px;
+        }
+
+        .parenting-faq-head {
+            font-size: 22px;
+        }
+
+        .bottom-heading {
+            font-size: 40px;
+        }
+    }
 </style>
 @section('content')
-    {{-- <div class="text-center">
-        <img src="{{ asset('public/images/parenting.webp') }}" alt="">
-        <img src="{{ asset('public/images/p2.webp') }}" alt="">
-
-
-
-    </div> --}}
     <section class="parenting-section section1">
         <div class="container d-flex mt-5">
-            <div class="col-6 parenting-content position-relative">
+            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 parenting-content position-relative">
                 <h1>Qorem ipsum dolor sit amet, conset.</h1>
                 <p class="mt-3">Cum et convallis risus placerat aliquam, nunc. Scelerisque aliquet faucibus tincidunt eu
                     adipiscing sociis
                     arcu lorem porttitor.</p>
                 <div class="d-flex align-items-center gap-3 mt-4">
-                    <button class="download-btn"><i class="bi bi-arrow-down"></i> Download App</button>
+                    <a href="#parenting-section-last">
+                        <button class="download-btn"><i class="bi bi-arrow-down"></i> Download App</button>
+
+                    </a>
                     <button class="border-0 bg-transparent watchvideo-btn d-inline-flex gap-2"><i
                             class="bi bi-play-circle"></i> watch video</button>
 
@@ -493,18 +635,19 @@
                     <img src="{{ asset('public/images/P-firstLeft.png') }}" alt="" width="90%">
                 </div>
             </div>
-            <div class="col-6 mt-3 parenting-img position-relative">
+            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-3 parenting-img position-relative">
                 <img src="{{ asset('public/images/P-firstRight.png') }}" alt="" width="100%">
             </div>
 
         </div>
     </section>
+
     <section class="parenting-section section2">
         <div class="container d-flex align-items-center">
-            <div class="col-6">
+            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                 <img src="{{ asset('public/images/P-secondLeft.png') }}" alt="" width="100%">
             </div>
-            <div class="col-6">
+            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                 <h3 class="features">
                     features
                 </h3>
@@ -536,7 +679,7 @@
     </section>
     <section class="parenting-section section3">
         <div class="container d-flex align-items-center">
-            <div class="col-6">
+            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                 <h3 class="advatnages">
                     advatnages
                 </h3>
@@ -558,7 +701,7 @@
 
                 </ul>
             </div>
-            <div class="col-6 why-choose-parenting-img position-relative">
+            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 why-choose-parenting-img position-relative">
                 <img src="{{ asset('public/images/P-thirdRight.png') }}" alt="" width="100%">
             </div>
 
@@ -566,10 +709,10 @@
     </section>
     <section class="parenting-section section4">
         <div class="container d-flex align-items-center">
-            <div class="col-6 why-choose-parenting-img position-relative">
+            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 why-choose-parenting-img position-relative">
                 <img src="{{ asset('public/images/P-fourthLeft.png') }}" alt="" width="100%">
             </div>
-            <div class="col-6">
+            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
 
                 <ul class="mt-4">
                     <li>
@@ -598,10 +741,10 @@
             </h1>
         </div>
         <div class="container d-flex align-items-center">
-            <div class="col-6 testimonials position-relative">
+            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 testimonials position-relative">
                 <img src="{{ asset('public/images/P-fifthRight.png') }}" alt="" width="100%">
             </div>
-            <div class="col-6">
+            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
 
                 <ul class="mt-4">
                     <li>
@@ -643,7 +786,8 @@
                     </li>
                     <li class="f-Left bg-transparent text-dark">
                         <h1 class="parenting-faq-head text-dark">Lorem ipsum dolor sit amet,sectetur adipiscing elit.</h1>
-                        <p class="parenting-faq-text mt-2 text-dark opacity-50">“Arcu at dictum sapien, mollis. Vulputate sit id
+                        <p class="parenting-faq-text mt-2 text-dark opacity-50">“Arcu at dictum sapien, mollis. Vulputate
+                            sit id
                             accumsan, ultricies. In ultrices malesuada elit mauris.</p>
                     </li>
                     <li class="third-Left">
@@ -657,7 +801,8 @@
                 <ul class="">
                     <li class="f-Right bg-transparent position-relative">
                         <h1 class="parenting-faq-head text-dark">Lorem ipsum dolor sit amet,sectetur adipiscing elit.</h1>
-                        <p class="parenting-faq-text mt-2 text-dark opacity-50">“Arcu at dictum sapien, mollis. Vulputate sit id
+                        <p class="parenting-faq-text mt-2 text-dark opacity-50">“Arcu at dictum sapien, mollis. Vulputate
+                            sit id
                             accumsan, ultricies. In ultrices malesuada elit mauris.</p>
                     </li>
                     <li class="second-Right">
@@ -667,7 +812,7 @@
                     </li>
                     <li class="third-Left bg-transparent">
                         <h1 class="parenting-faq-head text-dark">Lorem ipsum dolor sit amet,sectetur adipiscing elit.</h1>
-                        <p class="parenting-faq-text mt-2 text-dark opacity-50">“Arcu at dictum sapien, mollis. Vulputate sit id
+                        <p class="parenting-faq-text mt-2 text-dark">“Arcu at dictum sapien, mollis. Vulputate sit id
                             accumsan, ultricies. In ultrices malesuada elit mauris.</p>
                     </li>
                 </ul>
@@ -678,17 +823,17 @@
 
         </div>
     </section>
-    <section class="parenting-section section6">
+    <section id="parenting-section-last" class="parenting-section section6">
         <div class="container d-flex col-12 section6 blur-effect position-relative">
-            <div class="col-12 d-flex justify-content-between align-items-center pt-4 pb-4 section6 star-bg"
+            <div class="ready-to-start col-12 justify-content-between align-items-center pt-4 pb-4 section6 star-bg"
                 style="background-image: url('../public/images/P-backgroundLast.png');
                 background-repeat: no-repeat;
                 background-size: cover;
                 ">
-                <div class="last-sec-btns">
+                <div class="last-sec-btns col-sm-12 col-md-6 col-lg-6 col-xl-6">
                     <h1 class="bottom-heading">ready to get started?</h1>
                     <p class="bottom-text mt-3">Risus habitant leo egestas mauris diam eget morbi tempus vulputate.</p>
-                    <div class="d-inline-flex gap-4">
+                    <div class="btns gap-4">
                         <button class="border-0 app-btns"> <img src="{{ asset('public/images/apple.svg') }}"
                                 alt="">
                             download app</button>
@@ -697,8 +842,8 @@
 
                     </div>
                 </div>
-                <div>
-                    <img src="{{ asset('public/images/P-lastFront.png') }}" alt="">
+                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                    <img src="{{ asset('public/images/P-lastFront.png') }}" alt="" width="100%">
                 </div>
 
             </div>
