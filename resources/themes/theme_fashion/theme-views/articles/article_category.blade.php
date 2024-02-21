@@ -380,7 +380,7 @@
 
         .search form input {
             border: 1px solid rgba(1, 1, 1, 0.1);
-            padding: 1rem;
+            padding: 0.75rem;
             width: 100%;
             font-weight: 600;
             color: rgba(1, 1, 1, 0.5);
