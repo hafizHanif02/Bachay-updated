@@ -206,6 +206,7 @@
         .blog_content {
             padding: 2rem;
             width: 100%;
+            padding-top: 10px;
         }
 
         .blog_content .load-btn {
