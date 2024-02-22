@@ -55,6 +55,11 @@ class VaccineController extends Controller
         return back();
     }
 
+
+    public function VaccineSubmissionCreate($id){
+        return $id;
+    }
+
     /**
      * Display the specified resource.
      */

@@ -33,7 +33,7 @@
                             class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table w-100">
                             <thead class="thead-light thead-50 text-capitalize">
                                 <tr class="text-center">
-                                    <th colspan="4">VACCINATION DETAIL</th>
+                                    <th colspan="5">VACCINATION DETAIL</th>
                                 </tr>
                             </thead>
                             <thead class="thead-light thead-50 text-capitalize">
@@ -41,6 +41,7 @@
                                     <th>{{ translate('sl') }}</th>
                                     <th>{{ translate('Vaccine') }}</th>
                                     <th>{{ translate('Vaccine_Date') }}</th>
+                                    <th>{{ translate('submission_Date') }}</th>
                                     <th>{{ translate('action') }}</th>
                                 </tr>
                             </thead>
@@ -50,17 +51,26 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $vaccine_sub->vaccination->name }}</td>
                                         <td>{{ $vaccine_sub->vaccination_date }}</td>
+                                        <td>{{ $vaccine_sub->submission_date ?? 'Not Submitted' }}</td>
                                         <td class="text-center">
                                             <div class="d-flex justify-content-center gap-2">
+                                                @if($vaccine_sub->is_taken == 0)
                                                 <a class="btn btn-outline--primary btn-sm edit square-btn"
-                                                    title="{{ translate('edit') }}"
-                                                    href="{{ route('admin.customer.parent.child.edit', $child->id) }}">
+                                                    title="{{ translate('add-vaccine') }}"
+                                                    href="{{ route('admin.customer.parent.child.vaccine_submission.create', $vaccine_sub->id) }}">
+                                                    <i class="tio-add"></i>
+                                                </a>
+                                                @else
+                                                <a class="btn btn-outline--primary btn-sm edit square-btn"
+                                                    title="{{ translate('edit-vaccine') }}"
+                                                    href="{{ route('admin.customer.parent.child.vaccine_submission.edit', $vaccine_sub->id) }}">
                                                     <i class="tio-edit"></i>
                                                 </a>
+                                                @endif
                                                 <div class="d-flex justify-content-center gap-2">
                                                     <a title="{{ translate('view') }}"
                                                         class="btn btn-outline-info btn-sm square-btn"
-                                                        href="{{ route('admin.customer.parent.child.show', $child->id) }}">
+                                                        href="{{ route('admin.customer.parent.child.vaccine_submission.show', $vaccine_sub->id) }}">
                                                         <i class="tio-invisible"></i>
                                                     </a>
                                                 </div>

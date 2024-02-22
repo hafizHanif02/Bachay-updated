@@ -98,6 +98,7 @@ use App\Http\Controllers\Admin\Settings\PagesController;
 use App\Http\Controllers\Admin\Settings\ThemeController;
 use App\Http\Controllers\Admin\Product\ProductController;
 use App\Http\Controllers\Admin\ThirdParty\MailController;
+use App\Http\Controllers\VaccinationSubmissionController;
 use App\Http\Controllers\Admin\Product\CategoryController;
 use App\Http\Controllers\Admin\Promotion\BannerController;
 use App\Http\Controllers\Admin\Promotion\CouponController;
@@ -391,6 +392,14 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['admin']],
                 Route::get('edit/{id}', [FamilyRelationController::class, 'edit'])->name('edit');
                 Route::post('update', [FamilyRelationController::class, 'update'])->name('update');
                 Route::post('delete', [FamilyRelationController::class, 'destroy'])->name('delete');
+
+                Route::group(['prefix' => 'vaccine_submission', 'as' => 'vaccine_submission.'], function () {
+                    Route::get('create/{submission_id}', [VaccinationSubmissionController::class, 'create'])->name('create');
+                    Route::post('store', [VaccinationSubmissionController::class, 'store'])->name('store');
+                    Route::get('edit/{submission_id}', [VaccinationSubmissionController::class, 'edit'])->name('edit');
+                    Route::post('update', [VaccinationSubmissionController::class, 'update'])->name('update');
+                    Route::get('show/{submission_id}', [VaccinationSubmissionController::class, 'show'])->name('show');
+                });
             });
 
         });
