@@ -25,7 +25,7 @@
         *,
         :root {
             /* --white: #fff; */
-            --white: #f1f1f1;
+            --white: #f9f9f9;
             --black: #000;
             --dark: #2a2a2e;
             --purple: #835ec1;
@@ -404,7 +404,7 @@
             height: 46vh;
             overflow: hidden;
             border-radius: 5px;
-            background-color: #f1f1f1;
+            background-color: #f9f9f9;
         }
 
         .books .cards::after {
@@ -432,7 +432,7 @@
             transform: translateX(700px);
             background-repeat: no-repeat;
             animation: opaqTransition 28s cubic-bezier(0, 0, 0, 0.97) infinite;
-            background-color: #f1f1f1;
+            background-color: #f9f9f9;
         }
 
         .books .card_part.card_part-2 {
@@ -556,7 +556,7 @@
 
         .social_icons .fa {
             padding: 7px 13px;
-            background-color: #f1f1f1;
+            background-color: #f9f9f9;
             color: var(--white);
             transition: 0.2s;
             border-radius: 10px;
@@ -704,7 +704,7 @@
                         <div class="figure">
                             <img src="{{ asset('public/assets/images/articles/thumbnail/' . $article->thumbnail) }}"
                                 alt="" loading="lazy" />
-                            <span class="tag">{{ date_format($article->created_at, 'd-M Y') }}</span>
+                            <span class="tag">{{ date_format($article->created_at, 'd-M-Y h:i:s A') }}</span>
                         </div>
                         <section>
                             {{-- <a href="#" class="title">{{ $article->title }}</a> --}}

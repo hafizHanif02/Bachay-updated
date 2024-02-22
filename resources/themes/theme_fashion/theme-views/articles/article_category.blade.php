@@ -25,7 +25,7 @@
         *,
         :root {
             /* --white: #fff; */
-            --white: #f1f1f1;
+            --white: #f9f9f9;
             --black: #000;
             --dark: #2a2a2e;
             --purple: #835ec1;
@@ -398,7 +398,7 @@
             height: 46vh;
             overflow: hidden;
             border-radius: 5px;
-            background-color: #f1f1f1;
+            background-color: #f9f9f9;
         }
 
         .books .cards::after {
@@ -426,7 +426,7 @@
             transform: translateX(700px);
             background-repeat: no-repeat;
             animation: opaqTransition 28s cubic-bezier(0, 0, 0, 0.97) infinite;
-            background-color: #f1f1f1;
+            background-color: #f9f9f9;
         }
 
         .books .card_part.card_part-2 {
@@ -550,7 +550,7 @@
 
         .social_icons .fa {
             padding: 7px 13px;
-            background-color: #f1f1f1;
+            background-color: #f9f9f9;
             color: var(--white);
             transition: 0.2s;
             border-radius: 10px;
@@ -707,7 +707,7 @@
                         <a href="{{ route('article', $article_category->id) }}" class="figure">
                             <img src="{{ asset('public/assets/images/articles/category/thumbnail/' . $article_category->image) }}"
                                 alt="" loading="lazy" />
-                            <span class="tag">{{ date_format($article_category->created_at, 'd-M Y') }}</span>
+                            <span class="tag">{{ date_format($article_category->created_at, 'd-M-Y h:i:s A') }}</span>
                         </a>
                         <section>
                             <a href="{{ route('article', $article_category->id) }}" class="title">{{ $article_category->name }}</a>
@@ -723,17 +723,22 @@
                     <div class="blog_card{{ $loop->index >= 6 ? ' additional-card hidden' : '' }}">
                         <a href="{{ route('article', $article->id) }}" class="figure">
                             <img src="{{ asset('public/assets/images/articles/thumbnail/' . $article->thumbnail) }}" alt="" loading="lazy" />
-                            <span class="tag">{{ date_format($article->created_at,"d-M Y") }}</span>
+                            <span class="tag">{{ date_format($article->created_at,'d-M-Y h:i:s A') }}</span>
                         </a>
                         <section>
                             <a href="{{ route('article', $article->id) }}" class="title">{{ $article->title }}</a>
                             <p>
-                                @php
+                                {{-- @php
                                     $text = $article->text;
                                     $wordCount = str_word_count($text);
                                     $limitedText = implode(' ', array_slice(str_word_count($text, 1), 0, 34));
                                     echo $limitedText . ($wordCount > 34 ? "..." : "");
-                                @endphp
+                                @endphp --}}
+                                @php
+                                    $words = str_word_count($article->text, 1);
+                                    $limitedText = implode(' ', array_slice($words, 0, 34));
+                                    echo $limitedText . (count($words) > 34 ? '...' : '') . ' <a href="' . route('article', $article->id) . '">Read more</a>';
+                                @endphp  
                             </p>
                         </section>
                     </div>                    
