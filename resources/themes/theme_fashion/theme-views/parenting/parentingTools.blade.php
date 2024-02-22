@@ -618,10 +618,8 @@
     <section class="parenting-section section1">
         <div class="container d-flex mt-5">
             <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 parenting-content position-relative">
-                <h1>Qorem ipsum dolor sit amet, conset.</h1>
-                <p class="mt-3">Cum et convallis risus placerat aliquam, nunc. Scelerisque aliquet faucibus tincidunt eu
-                    adipiscing sociis
-                    arcu lorem porttitor.</p>
+                <h1>Bachay.com</h1>
+                <p class="mt-3">Your one-stop Solution to Happy Parenting and Magical Childhood.</p>
                 <div class="d-flex align-items-center gap-3 mt-4">
                     <a href="#parenting-section-last">
                         <button class="download-btn"><i class="bi bi-arrow-down"></i> Download App</button>
@@ -657,21 +655,17 @@
                 <ul class="mt-4">
                     <li>
                         <img src="{{ asset('public/images/question.svg') }}" alt=""> <span
-                            class="question">Questions & Answers By Parents</span>
-                        <p class="question-para mt-3">Cum et convallis risus placerat aliquam, nunc. Scelerisque aliquet
-                            faucibus tincidunt eu adipiscing sociis arcu lorem porttitor.</p>
+                            class="question">Questions & Answers By Parents:</span>
+                        <p class="question-para mt-3">Get expert advice! Real parents ask, and child specialists answer. You will find all the support and solutions for your parenting journey at this destination!</p>
                     </li>
                     <li>
                         <img src="{{ asset('public/images/Q.svg') }}" alt=""> <span class="question">Quizzes For
-                            Childrens</span>
-                        <p class="question-para mt-3">Cum et convallis risus placerat aliquam, nunc. Scelerisque aliquet
-                            faucibus tincidunt eu adipiscing sociis arcu lorem porttitor.</p>
+                            Children:</span>
+                        <p class="question-para mt-3">Make learning fun and delightful! Interactive quizzes spark curiosity, test intelligence, and make an enjoyable experience across various age groups.</p>
                     </li>
                     <li>
-                        <img src="{{ asset('public/images/V.svg') }}" alt=""> <span class="question">Vaccination &
-                            Growth Tracker</span>
-                        <p class="question-para mt-3">Cum et convallis risus placerat aliquam, nunc. Scelerisque aliquet
-                            faucibus tincidunt eu adipiscing sociis arcu lorem porttitor.</p>
+                        <img src="{{ asset('public/images/V.svg') }}" alt=""> <span class="question">Vaccination and Growth Tracker:</span>
+                        <p class="question-para mt-3">Stay informed and on the right track! Monitoring your child's immunizations has never been so easy before! Follow growth milestones conveniently with our easy-to-use tracker.</p>
                     </li>
                 </ul>
             </div>
@@ -693,10 +687,8 @@
                             <span class="growth-tracker">Vaccination & Growth Tracker</span>
 
                         </div>
-                        <p class="question-para mt-3">Arcu at dictum sapien, mollis. Vulputate sit id accumsan, ultricies.
-                            In ultrices malesuada elit mauris etiam odio. Duis tristique lacus, et blandit viverra nisl
-                            velit. Sed mattis rhoncus, diam suspendisse sit nunc, gravida eu. Lectus eget eget ac dolor
-                            neque lorem sapien, suspendisse aliquam.</p>
+                        <p class="question-para mt-3">Dump messy notes and spreadsheets! Your child’s vaccinations and growth can now be managed smoothly with our user-friendly tracker. Get personalized reminders, get access to expert insights, and guarantee your child stays on track for optimal health and development. It's a state of peacefulness and convenience at your fingertips.
+                        </p>
                     </li>
 
                 </ul>
@@ -721,10 +713,7 @@
                             <span class="growth-tracker">Quiz Challenges</span>
 
                         </div>
-                        <p class="question-para mt-3">Arcu at dictum sapien, mollis. Vulputate sit id accumsan, ultricies.
-                            In ultrices malesuada elit mauris etiam odio. Duis tristique lacus, et blandit viverra nisl
-                            velit. Sed mattis rhoncus, diam suspendisse sit nunc, gravida eu. Lectus eget eget ac dolor
-                            neque lorem sapien, suspendisse aliquam.</p>
+                        <p class="question-para mt-3">Go beyond rote learning and empower young minds with our interactive quiz challenges! Tailored to various age groups and interests. These quizzes are customized to different age groups that test intelligence and increase curiosity enjoyably and engagingly. This keeps the children entertained as they learn new things. Watch their confidence flourish as they tackle challenges and make new and exciting discoveries.</p>
                     </li>
 
                 </ul>
@@ -750,13 +739,10 @@
                     <li>
                         <div class="d-inline-flex align-items-center Quiz-heading position-relative">
 
-                            <span class="parent-testimonial-heading">the best financial accounting app ever!</span>
+                            <span class="parent-testimonial-heading">An Amazing Experience!</span>
 
                         </div>
-                        <p class="question-para mt-4">“Arcu at dictum sapien, mollis. Vulputate sit id accumsan, ultricies.
-                            In ultrices malesuada elit mauris etiam odio. Duis tristique lacus, et blandit viverra nisl
-                            velit. Sed mattis rhoncus, diam suspendisse sit nunc, gravida eu. Lectus eget eget ac dolor
-                            neque lorem sapien, suspendisse aliquam.”</p>
+                        <p class="question-para mt-4">“I used to dread shopping for kid's clothes and toys. So many choices, and never enough time! Bachay.com changed everything. Their structured selection saves me hours, and the quality is amazing. Plus, the vaccination tracker keeps me organized, and the quizzes are perfect for bonding time with my kids. This app is a lifesaver!”</p>
                         <img class="mt-3" src="{{ asset('public/images/testimonial-img.svg') }}" alt="">
                         <p class="testimonial-name mt-3">
                             Samina Ahmed
@@ -780,40 +766,33 @@
             <div class="custom-con">
                 <ul class="">
                     <li class="f-Left">
-                        <h1 class="parenting-faq-head">Lorem ipsum dolor sit amet,sectetur adipiscing elit.</h1>
-                        <p class="parenting-faq-text mt-2">“Arcu at dictum sapien, mollis. Vulputate sit id accumsan,
-                            ultricies. In ultrices malesuada elit mauris.</p>
+                        <h1 class="parenting-faq-head">How do I place an order on your website?</h1>
+                        <p class="parenting-faq-text mt-2">“You can place an order by browsing our website, and adding items to your 
+                            cart, and follow the checkout steps”</p>
                     </li>
                     <li class="f-Left bg-transparent text-dark">
-                        <h1 class="parenting-faq-head text-dark">Lorem ipsum dolor sit amet,sectetur adipiscing elit.</h1>
-                        <p class="parenting-faq-text mt-2 text-dark opacity-50">“Arcu at dictum sapien, mollis. Vulputate
-                            sit id
-                            accumsan, ultricies. In ultrices malesuada elit mauris.</p>
+                        <h1 class="parenting-faq-head text-dark">“What payment methods do you accept?</h1>
+                        <p class="parenting-faq-text mt-2 text-dark opacity-50">“We accept payment by credit card, debit card, online banking as well as COD”</p>
                     </li>
                     <li class="third-Left">
-                        <h1 class="parenting-faq-head">Lorem ipsum dolor sit amet,sectetur adipiscing elit.</h1>
-                        <p class="parenting-faq-text mt-2">“Arcu at dictum sapien, mollis. Vulputate sit id accumsan,
-                            ultricies. In ultrices malesuada elit mauris.</p>
+                        <h1 class="parenting-faq-head">Can I cancel or modify my order after I place it?</h1>
+                        <p class="parenting-faq-text mt-2">“Yes, you can cancel or modify your order within 24 hours of placing it. Please contact customer service for assistance”</p>
                     </li>
                 </ul>
             </div>
             <div class="custom-con">
                 <ul class="">
                     <li class="f-Right bg-transparent position-relative">
-                        <h1 class="parenting-faq-head text-dark">Lorem ipsum dolor sit amet,sectetur adipiscing elit.</h1>
-                        <p class="parenting-faq-text mt-2 text-dark opacity-50">“Arcu at dictum sapien, mollis. Vulputate
-                            sit id
-                            accumsan, ultricies. In ultrices malesuada elit mauris.</p>
+                        <h1 class="parenting-faq-head text-dark">What are the sizes and materials of your clothes?</h1>
+                        <p class="parenting-faq-text mt-2 text-dark opacity-50">“You can find the size and material information for each product on its product page”</p>
                     </li>
                     <li class="second-Right">
-                        <h1 class="parenting-faq-head">Lorem ipsum dolor sit amet,sectetur adipiscing elit.</h1>
-                        <p class="parenting-faq-text mt-2">“Arcu at dictum sapien, mollis. Vulputate sit id accumsan,
-                            ultricies. In ultrices malesuada elit mauris.</p>
+                        <h1 class="parenting-faq-head">What is your return policy?</h1>
+                        <p class="parenting-faq-text mt-2">“You can return or exchange any item within 30 days of purchase, as long as it is in its original condition with tags attached”</p>
                     </li>
                     <li class="third-Left bg-transparent">
-                        <h1 class="parenting-faq-head text-dark">Lorem ipsum dolor sit amet,sectetur adipiscing elit.</h1>
-                        <p class="parenting-faq-text mt-2 text-dark">“Arcu at dictum sapien, mollis. Vulputate sit id
-                            accumsan, ultricies. In ultrices malesuada elit mauris.</p>
+                        <h1 class="parenting-faq-head text-dark">How long does it take to ship my order?</h1>
+                        <p class="parenting-faq-text mt-2 text-dark">“Standard shipping typically takes 3-5 business days. We also offer expedited shipping options for an additional fee”</p>
                     </li>
                 </ul>
             </div>
