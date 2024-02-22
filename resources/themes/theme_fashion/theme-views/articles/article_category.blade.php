@@ -687,14 +687,12 @@
 </head>
 
 @section('content')
+
     <body>
         <div class="articleHeader container-xxl">
             <h1 class="title">
-                @if (count($categories) > 0)
-                    Category: {{ $categories[0]->name }}
-                @else
-                    Articles
-                @endif
+                Category: {{ translate($article_category->name) }}
+                Articles
             </h1>
         </div>
 
@@ -710,38 +708,40 @@
                             <span class="tag">{{ date_format($article_category->created_at, 'd-M-Y h:i:s A') }}</span>
                         </a>
                         <section>
-                            <a href="{{ route('article', $article_category->id) }}" class="title">{{ $article_category->name }}</a>
+                            <a href="{{ route('article', $article_category->id) }}"
+                                class="title">{{ $article_category->name }}</a>
                             <p>
-                                {{ mb_strimwidth($article_category->tag_line, 0, 300, "...") }}
+                                {{ mb_strimwidth($article_category->tag_line, 0, 300, '...') }}
                                 <a href="{{ route('article', $article_category->id) }}">Read more</a>
-                            </p> 
+                            </p>
                         </section>
                     </div>
                     <!--CARD ENDS-->
                     @foreach ($article_category->articles as $article)
                         <!--CARD BEGINING-->
-                    <div class="blog_card{{ $loop->index >= 6 ? ' additional-card hidden' : '' }}">
-                        <a href="{{ route('article', $article->id) }}" class="figure">
-                            <img src="{{ asset('public/assets/images/articles/thumbnail/' . $article->thumbnail) }}" alt="" loading="lazy" />
-                            <span class="tag">{{ date_format($article->created_at,'d-M-Y h:i:s A') }}</span>
-                        </a>
-                        <section>
-                            <a href="{{ route('article', $article->id) }}" class="title">{{ $article->title }}</a>
-                            <p>
-                                {{-- @php
+                        <div class="blog_card{{ $loop->index >= 6 ? ' additional-card hidden' : '' }}">
+                            <a href="{{ route('article', $article->id) }}" class="figure">
+                                <img src="{{ asset('public/assets/images/articles/thumbnail/' . $article->thumbnail) }}"
+                                    alt="" loading="lazy" />
+                                <span class="tag">{{ date_format($article->created_at, 'd-M-Y h:i:s A') }}</span>
+                            </a>
+                            <section>
+                                <a href="{{ route('article', $article->id) }}" class="title">{{ $article->title }}</a>
+                                <p>
+                                    {{-- @php
                                     $text = $article->text;
                                     $wordCount = str_word_count($text);
                                     $limitedText = implode(' ', array_slice(str_word_count($text, 1), 0, 34));
                                     echo $limitedText . ($wordCount > 34 ? "..." : "");
                                 @endphp --}}
-                                @php
-                                    $words = str_word_count($article->text, 1);
-                                    $limitedText = implode(' ', array_slice($words, 0, 34));
-                                    echo $limitedText . (count($words) > 34 ? '...' : '') . ' <a href="' . route('article', $article->id) . '">Read more</a>';
-                                @endphp  
-                            </p>
-                        </section>
-                    </div>                    
+                                    @php
+                                        $words = str_word_count($article->text, 1);
+                                        $limitedText = implode(' ', array_slice($words, 0, 34));
+                                        echo $limitedText . (count($words) > 34 ? '...' : '') . ' <a href="' . route('article', $article->id) . '">Read more</a>';
+                                    @endphp
+                                </p>
+                            </section>
+                        </div>
                         <!--CARD ENDS-->
                     @endforeach
                 </div>
