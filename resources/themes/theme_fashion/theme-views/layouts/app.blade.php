@@ -347,9 +347,9 @@
             cardSize = { width: this.offsetWidth || 0, height: this.offsetHeight || 0 };
             this.style.transition = "transform 0.3s ease"; // Smooth transition on hover
             this.style.transform = `perspective(1000px) rotateX(${
-                (mousePosition.y / cardSize.height) * -(SCALE_Y * 3) + SCALE_Y
+                (mousePosition.y / cardSize.height) * -(SCALE_Y * 5) + SCALE_Y
             }deg) rotateY(${
-                (mousePosition.x / cardSize.width) * (SCALE_X * 3) - SCALE_X
+                (mousePosition.x / cardSize.width) * (SCALE_X * 5) - SCALE_X
             }deg) translateZ(10px)`;
             }
 
