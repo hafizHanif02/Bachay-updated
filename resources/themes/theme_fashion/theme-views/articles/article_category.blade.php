@@ -683,6 +683,10 @@
         .hidden {
             display: none;
         }
+        .capitalize {
+            text-transform: capitalize;
+        }
+
     </style>
 </head>
 
@@ -690,9 +694,12 @@
 
     <body>
         <div class="articleHeader container-xxl">
-            <h1 class="title">
+            {{-- <h1 class="title">
                 Category: {{ translate($article_category->name) }}
                 Articles
+            </h1> --}}
+            <h1 class="title">
+                Category: <span class="capitalize">{{ $article_category->name }}</span> Articles
             </h1>
         </div>
 
