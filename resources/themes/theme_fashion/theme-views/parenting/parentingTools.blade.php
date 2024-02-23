@@ -672,7 +672,7 @@
             </div>
             <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-3 parenting-img position-relative">
                 <div class="card_animation">
-                    <img src="{{ asset('public/images/P-firstRight.png') }}" alt="" width="100%">
+                    <img src="{{ asset('public/images/first-img.png') }}" alt="" width="100%">
                 </div>
             </div>
 
