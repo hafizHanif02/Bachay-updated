@@ -16,8 +16,6 @@
         content="{{ substr(strip_tags(str_replace('&nbsp;', ' ', $web_config['about']->value)), 0, 160) }}">
 @endpush
 <style>
-    
-
     .section1 div h1 {
         font-size: 64px;
         color: #000;
@@ -116,7 +114,7 @@
     }
 
     .download-btn {
-        transition: color 0.3s ease, background 0.3s ease, border 0.3s ease ;
+        transition: color 0.3s ease, background 0.3s ease, border 0.3s ease;
         border-radius: 4px;
         background: #8F6FC6;
         color: #fff;
@@ -478,9 +476,30 @@
     .btns {
         display: inline-flex;
     }
-    .download-btn:hover{
-        background: #ff9670 ;
+
+    .download-btn:hover {
+        background: #ff9670;
         border: 2px solid #ff9670;
+    }
+
+    .parenting-img::before , .parenting-content::before , .addvertisment-img::before , .features::before , .why-choose-parenting-img::before , .advatnages::before , .Quiz-heading::before , .testimonials::before , .f-Right::before , .bottom-heading::before {
+
+        animation: rotateImage 2s ease-in-out infinite;
+
+    }
+
+    @keyframes rotateImage {
+        0% {
+            transform: rotate(30deg);
+        }
+
+        50% {
+            transform: rotate(-30deg);
+        }
+
+        100% {
+            transform: rotate(30deg);
+        }
     }
 
     /* Tablet-specific styles */
@@ -532,20 +551,24 @@
     @media (max-width: 767px) {
 
         .section1 .container,
-        
+
         .section3 .container,
-        
+
         .section5 .container,
         .ready-to-start {
             display: block !important;
-            
+
         }
-        .section2 .container , .section4 .container{
+
+        .section2 .container,
+        .section4 .container {
             flex-direction: column-reverse;
         }
-        .parenting-content div{
+
+        .parenting-content div {
             gap: 0.5rem !important;
         }
+
         .custom-con {
             width: 100%;
         }
@@ -626,28 +649,34 @@
             font-size: 40px;
         }
     }
-    @media screen and (max-width: 280px) {
-    /* Your styles for Galaxy Fold in portrait mode */
-    .section1 div h1::before{
-        width: 200px;
-        height: 200px;
-        top: -50px;
-        opacity: 0.6;
 
+    @media screen and (max-width: 280px) {
+
+        /* Your styles for Galaxy Fold in portrait mode */
+        .section1 div h1::before {
+            width: 200px;
+            height: 200px;
+            top: -50px;
+            opacity: 0.6;
+
+        }
+
+        .blur-effect::before {
+            width: 200px;
+            height: 200px;
+            top: -30;
+            left: 10px;
+        }
+
+        .download-btn {
+            width: 100%;
+        }
+
+        .watchvideo-btn,
+        .download-btn {
+            line-height: 20px;
+        }
     }
-    .blur-effect::before{
-        width: 200px;
-        height: 200px;
-        top: -30;
-        left: 10px;
-    }
-    .download-btn{
-        width: 100%;
-    }
-    .watchvideo-btn, .download-btn{
-        line-height: 20px;
-    }
-}
 </style>
 @section('content')
     <section class="parenting-section section1">
