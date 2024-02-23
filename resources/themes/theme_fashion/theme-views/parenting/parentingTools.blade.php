@@ -532,14 +532,17 @@
     @media (max-width: 767px) {
 
         .section1 .container,
-        .section2 .container,
+        
         .section3 .container,
-        .section4 .container,
+        
         .section5 .container,
         .ready-to-start {
             display: block !important;
+            
         }
-
+        .section2 .container , .section4 .container{
+            flex-direction: column-reverse;
+        }
         .custom-con {
             width: 100%;
         }
