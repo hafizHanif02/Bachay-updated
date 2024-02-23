@@ -62,9 +62,11 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
+
+        // dd($request->text);
         $request->validate([
             'title' => 'required|string|max:255',
-            'text' => 'required|string',
+            'text' => 'required',
             'thumbnail' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             'article_category_id' => 'required|integer|exists:article_category,id',
         ]);
@@ -74,7 +76,7 @@ class ArticleController extends Controller
             $filename = $file->getClientOriginalName();
             $file->move(public_path('assets/images/articles/thumbnail'), $filename);
         }
-        DB::table('articles')->insert([
+        Article::create([
             'title' => $request->title,
             'text' => $request->text,
             'thumbnail' => ($filename ?? ''),

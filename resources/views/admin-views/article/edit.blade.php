@@ -2,8 +2,10 @@
 
 @section('title', 'Articles')
 
-@push('css_or_js')
 
+@push('css_or_js')
+    <link href="{{ asset('public/assets/back-end/css/tags-input.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('public/assets/select2/css/select2.min.css') }}" rel="stylesheet">
 @endpush
 
 @section('content')
@@ -32,47 +34,53 @@
                                     <div class="form-group">
                                         <label class="title-color text-capitalize"
                                                for="exampleFormControlInput1">Title </label>
-                                        <input value="{{ $article->title }}" type="text" name="title" class="form-control"
+                                        <input type="text" value="{{ $article->title }}" name="title" class="form-control"
                                                required>
                                     </div>
                                     <div class="form-group">
                                         <label class="title-color text-capitalize"
-                                               for="exampleFormControlInput1">Text </label>
-                                        <textarea value="{{ $article->text }}" name="text" class="form-control" required> {{ $article->text }}</textarea>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="title-color text-capitalize"
-                                               for="exampleFormControlInput1">Category </label>
-                                        <select class="form-control" name="category_id" id="">
-                                            <option value="" {{ $article->category_id == null ? 'selected' : '' }}>Select Category</option>
+                                               for="exampleFormControlInput1">Article Category </label>
+                                        <select class="form-control" name="article_category_id">
+                                            <option value="" selected disabled>Select Category</option>
                                             @foreach($categories as $category)
-                                            <option value="{{ $category->id }}" {{ $article->category_id == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
+                                            <option value="{{ $category->id }}" {{ $article->article_category_id==$category->id?'selected':'' }}>{{ $category->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        {{-- <center>
-                                            <img class="upload-img-view mb-4" id="viewer"
-                                                 onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
-                                                 src="{{asset('public/assets/admin/img/900x400/img1.jpg')}}"
-                                                 alt="image"/>
-                                        </center> --}}
                                         <label
-                                            class="title-color text-capitalize">Thumbnail</label>
+                                        class="title-color text-capitalize">Thumbnail</label>
                                         <span class="text-info"></span>
                                         <div class="custom-file text-left">
-                                            <input type="file" name="thumbnail" value="{{ $article->thumbnail }}" class="custom-file-input" >
+                                            <input type="file" value="{{ $article->thumbnail }}" name="thumbnail" class="custom-file-input" >
                                             <label class="custom-file-label" for="customFileEg1">Choose File</label>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <div class="row g-3">
+                                <div class="col-md-12">
+                                    <div class="form-group pt-4">
+                                        <label class="title-color"
+                                               >Text
+                                            </label>
+                                        <textarea name="text[]"
+                                                value="{{ $article->text }}"   class="textarea editor-textarea">{{ $article->text }}</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row g-3">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <button type="button" class="mt-5 btn btn-primary" onclick="openModal()">Add Article Category</button>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="d-flex justify-content-end gap-3">
                                 <button type="reset" class="btn btn-secondary">Reset </button>
-                                <button type="submit" class="btn btn--primary">Save </button>
+                                <button type="submit" class="btn btn--primary">Update </button>
                             </div>
                         </form>
                     </div>
@@ -82,7 +90,14 @@
         </div>
     </div>
 @endsection
-
+@push('script')
+    <script src="{{ asset('public/assets/back-end/js/tags-input.min.js') }}"></script>
+    <script src="{{ asset('public/assets/back-end/js/spartan-multi-image-picker.js') }}"></script>
+    <script src="{{ asset('/vendor/ckeditor/ckeditor/ckeditor.js') }}"></script>
+    <script src="{{ asset('/vendor/ckeditor/ckeditor/adapters/jquery.js') }}"></script>
+    <script src="{{ asset('public/assets/back-end/js/admin/product-add-update.js') }}"></script>
+    <script src="{{ asset('public/assets/back-end/js/admin/product-add-colors-img.js') }}"></script>
+@endpush
 @push('script')
     {{--ck editor--}}
     <script src="{{asset('/')}}vendor/ckeditor/ckeditor/ckeditor.js"></script>

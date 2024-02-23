@@ -3,8 +3,10 @@
 @section('title', 'Articles')
 
 @push('css_or_js')
-
+    <link href="{{ asset('public/assets/back-end/css/tags-input.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('public/assets/select2/css/select2.min.css') }}" rel="stylesheet">
 @endpush
+
 
 @section('content')
     <div class="content container-fluid">
@@ -36,12 +38,6 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="title-color text-capitalize"
-                                               for="exampleFormControlInput1">Text </label>
-                                        <textarea name="text" class="form-control" required></textarea>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="title-color text-capitalize"
                                                for="exampleFormControlInput1">Article Category </label>
                                         <select class="form-control" name="article_category_id">
                                             <option value="" selected disabled>Select Category</option>
@@ -49,24 +45,35 @@
                                             <option value="{{ $category->id }}">{{ $category->name }}</option>
                                             @endforeach
                                         </select>
-                                        <button type="button" class="mt-5 btn btn-primary" onclick="openModal()">Add Article Category</button>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        {{-- <center>
-                                            <img class="upload-img-view mb-4" id="viewer"
-                                                 onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
-                                                 src="{{asset('public/assets/admin/img/900x400/img1.jpg')}}"
-                                                 alt="image"/>
-                                        </center> --}}
                                         <label
-                                            class="title-color text-capitalize">Thumbnail</label>
+                                        class="title-color text-capitalize">Thumbnail</label>
                                         <span class="text-info"></span>
                                         <div class="custom-file text-left">
                                             <input type="file" name="thumbnail" class="custom-file-input" >
                                             <label class="custom-file-label" for="customFileEg1">Choose File</label>
                                         </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row g-3">
+                                <div class="col-md-12">
+                                    <div class="form-group pt-4">
+                                        <label class="title-color"
+                                               >Text
+                                            </label>
+                                        <textarea name="text"
+                                                  class="textarea editor-textarea"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row g-3">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <button type="button" class="mt-5 btn btn-primary" onclick="openModal()">Add Article Category</button>
                                     </div>
                                 </div>
                             </div>
@@ -266,6 +273,15 @@
     
 </script>
 @endsection
+
+@push('script')
+    <script src="{{ asset('public/assets/back-end/js/tags-input.min.js') }}"></script>
+    <script src="{{ asset('public/assets/back-end/js/spartan-multi-image-picker.js') }}"></script>
+    <script src="{{ asset('/vendor/ckeditor/ckeditor/ckeditor.js') }}"></script>
+    <script src="{{ asset('/vendor/ckeditor/ckeditor/adapters/jquery.js') }}"></script>
+    <script src="{{ asset('public/assets/back-end/js/admin/product-add-update.js') }}"></script>
+    <script src="{{ asset('public/assets/back-end/js/admin/product-add-colors-img.js') }}"></script>
+@endpush
 
 @push('script')
 <script>
