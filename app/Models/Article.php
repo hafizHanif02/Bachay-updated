@@ -12,7 +12,7 @@ class Article extends Model
     protected $fillable = [
         'article_category_id',
         'title',
-        'description',
+        'text',
         'status',
     ];
     protected $table = 'articles';
