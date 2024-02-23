@@ -543,6 +543,9 @@
         .section2 .container , .section4 .container{
             flex-direction: column-reverse;
         }
+        .parenting-content div{
+            gap: 0.5rem !important;
+        }
         .custom-con {
             width: 100%;
         }
