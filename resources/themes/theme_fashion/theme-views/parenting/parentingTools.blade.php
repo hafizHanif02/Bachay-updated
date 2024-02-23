@@ -626,6 +626,28 @@
             font-size: 40px;
         }
     }
+    @media screen and (max-width: 280px) {
+    /* Your styles for Galaxy Fold in portrait mode */
+    .section1 div h1::before{
+        width: 200px;
+        height: 200px;
+        top: -50px;
+        opacity: 0.6;
+
+    }
+    .blur-effect::before{
+        width: 200px;
+        height: 200px;
+        top: -30;
+        left: 10px;
+    }
+    .download-btn{
+        width: 100%;
+    }
+    .watchvideo-btn, .download-btn{
+        line-height: 20px;
+    }
+}
 </style>
 @section('content')
     <section class="parenting-section section1">
