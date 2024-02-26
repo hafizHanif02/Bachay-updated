@@ -60,6 +60,7 @@ class LoginController extends Controller
 
     public function submit(Request $request)
     {
+        
         $request->validate([
             'user_id' => 'required',
             'password' => 'required'

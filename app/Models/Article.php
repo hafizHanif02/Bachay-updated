@@ -9,6 +9,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Article extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'article_category_id',
+        'title',
+        'text',
+        'status',
+    ];
     protected $table = 'articles';
 
     public function articlecategory()
