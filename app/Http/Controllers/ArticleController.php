@@ -21,7 +21,7 @@ class ArticleController extends Controller
         $categories = ArticleCategory::where('status', '1')->get();
 
 
-        return view(VIEW_FILE_NAMES['article'], compact('article','slidder_article','categories'));
+        return view(VIEW_FILE_NAMES['article'], compact('article', 'slidder_article', 'categories'));
     }
     public function articles()
     {
@@ -120,8 +120,8 @@ class ArticleController extends Controller
         DB::table('articles')->where('id', $request->id)->update([
             'title' => $request->title,
             'text' => $request->text,
+            'article_category_id' => $request->article_category_id,
             'thumbnail' => ($filename ?? ''),
-            'article_category_id' => $request->category_id,
         ]);
         Toastr::success('Article Updated !');
         return redirect()->route('admin.article.list');

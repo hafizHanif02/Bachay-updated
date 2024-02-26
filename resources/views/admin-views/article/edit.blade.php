@@ -13,8 +13,8 @@
         <!-- Page Title -->
         <div class="mb-3">
             <h2 class="h1 mb-0 text-capitalize d-flex align-items-center gap-2">
-                <img width="20" src="{{asset('/public/assets/back-end/img/Pages.png')}}" alt="">
-                {{translate('pages')}}
+                <img width="20" src="{{ asset('/public/assets/back-end/img/Pages.png') }}" alt="">
+                {{ translate('pages') }}
             </h2>
         </div>
         <!-- End Page Title -->
@@ -32,29 +32,31 @@
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="title-color text-capitalize"
-                                               for="exampleFormControlInput1">Title </label>
-                                        <input type="text" value="{{ $article->title }}" name="title" class="form-control"
-                                               required>
+                                        <label class="title-color text-capitalize" for="exampleFormControlInput1">Title
+                                        </label>
+                                        <input type="text" value="{{ $article->title }}" name="title"
+                                            class="form-control" required>
                                     </div>
                                     <div class="form-group">
-                                        <label class="title-color text-capitalize"
-                                               for="exampleFormControlInput1">Article Category </label>
+                                        <label class="title-color text-capitalize" for="exampleFormControlInput1">Article
+                                            Category </label>
                                         <select class="form-control" name="article_category_id">
-                                            <option value="" selected disabled>Select Category</option>
-                                            @foreach($categories as $category)
-                                            <option value="{{ $category->id }}" {{ $article->article_category_id==$category->id?'selected':'' }}>{{ $category->name }}</option>
+                                            <option value="" disabled>Select Category</option>
+                                            @foreach ($categories as $category)
+                                                <option value="{{ $category->id }}"
+                                                    {{ $article->article_category_id == $category->id ? 'selected' : '' }}>
+                                                    {{ $category->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label
-                                        class="title-color text-capitalize">Thumbnail</label>
+                                        <label class="title-color text-capitalize">Thumbnail</label>
                                         <span class="text-info"></span>
                                         <div class="custom-file text-left">
-                                            <input type="file" value="{{ $article->thumbnail }}" name="thumbnail" class="custom-file-input" >
+                                            <input type="file" value="{{ $article->thumbnail }}" name="thumbnail"
+                                                class="custom-file-input">
                                             <label class="custom-file-label" for="customFileEg1">Choose File</label>
                                         </div>
                                     </div>
@@ -63,18 +65,17 @@
                             <div class="row g-3">
                                 <div class="col-md-12">
                                     <div class="form-group pt-4">
-                                        <label class="title-color"
-                                               >Text
-                                            </label>
-                                        <textarea name="text[]"
-                                                value="{{ $article->text }}"   class="textarea editor-textarea">{{ $article->text }}</textarea>
+                                        <label class="title-color">Text
+                                        </label>
+                                        <textarea name="text[]" value="{{ $article->text }}" class="textarea editor-textarea">{{ $article->text }}</textarea>
                                     </div>
                                 </div>
                             </div>
                             <div class="row g-3">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <button type="button" class="mt-5 btn btn-primary" onclick="openModal()">Add Article Category</button>
+                                        <button type="button" class="mt-5 btn btn-primary" onclick="openModal()">Add
+                                            Article Category</button>
                                     </div>
                                 </div>
                             </div>
@@ -99,13 +100,13 @@
     <script src="{{ asset('public/assets/back-end/js/admin/product-add-colors-img.js') }}"></script>
 @endpush
 @push('script')
-    {{--ck editor--}}
-    <script src="{{asset('/')}}vendor/ckeditor/ckeditor/ckeditor.js"></script>
-    <script src="{{asset('/')}}vendor/ckeditor/ckeditor/adapters/jquery.js"></script>
+    {{-- ck editor --}}
+    <script src="{{ asset('/') }}vendor/ckeditor/ckeditor/ckeditor.js"></script>
+    <script src="{{ asset('/') }}vendor/ckeditor/ckeditor/adapters/jquery.js"></script>
     <script>
         $('#editor').ckeditor({
-            contentsLangDirection : '{{Session::get('direction')}}',
+            contentsLangDirection: '{{ Session::get('direction') }}',
         });
     </script>
-    {{--ck editor--}}
+    {{-- ck editor --}}
 @endpush

@@ -6,6 +6,10 @@
         .sub-nav>li>a{
             font-size: 10px !important;
         }
+        .sub-nav.sub-nav-media-query{
+            padding-left: 2.714286rem !important;
+            padding-right: 2.214286rem !important;
+        }
     }
 
     @media (min-width: 910px) and (max-width: 1091px) {
@@ -15,11 +19,25 @@
         .sub-nav>li>a{
             font-size: 10px !important;
         }
+        .sub-nav.sub-nav-media-query{
+            padding-left: 7.414286rem !important;
+            padding-right: 6.914286rem !important;
+        }
     }
 
     @media (min-width: 1092px) and (max-width: 1199px) {
         .sub-nav li:nth-last-child(2) {
             display: none;
+        }
+        .sub-nav.sub-nav-media-query{
+            padding-left: 5.3rem !important;
+            padding-right: 5rem !important;
+        }
+    }
+    @media (min-width: 1200px) and (max-width: 1399px){
+        .sub-nav.sub-nav-media-query{
+            padding-left: 3.514286rem !important;
+            padding-right: 4.214286rem !important;
         }
     }
 
@@ -582,7 +600,7 @@
     <div class="nav-btn mt-3" id="mega-menu" class="hide-on-med-and-down"
         style="background-image: url('{{ asset('public/images/top-offer-bg.png') }}');">
         <div class="bg_mega_menu">
-            <ul class="container-xxl sub-nav d-flex justify-content-between align-items-center mb-0">
+            <ul class="container-xxl sub-nav sub-nav-media-query d-flex justify-content-between align-items-center mb-0">
                 <li>
                     <a href="#" class="all_categories">
                         <img src="{{ asset('public/images/Union.png') }}" alt="" width="15px"
