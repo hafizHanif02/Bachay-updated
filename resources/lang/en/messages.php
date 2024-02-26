@@ -719,7 +719,7 @@
   'Web_&_App_Settings' => 'Web & App Settings',
   'Report_&_Analytics' => 'Report & Analytics',
   'Employee_Section' => 'Employee Section',
-  'like_for_BD_880' => 'Like for BD 880',
+  'like_for_PK_+92' => 'Like for PK +92',
   'resubmit' => 'Resubmit',
   'text_updated_successfully' => 'Text updated successfully',
   'date' => 'Date',
