@@ -149,11 +149,12 @@ class RegisterController extends Controller
 
             $response = '';
             
-            if($published_status == 1){
-                SmsGateway::send($user->phone, $token);
-            }else{
-                SMS_module::send($user->phone, $token);
-            }
+            SMS_module::send($user->phone, $token);
+            // if($published_status == 1){
+            //     SmsGateway::send($user->phone, $token);
+            // }else{
+            //     SMS_module::send($user->phone, $token);
+            // }
 
             $response = translate('please_check_your_SMS_for_OTP');
             Toastr::success($response);
@@ -474,11 +475,12 @@ class RegisterController extends Controller
                     $published_status = $payment_published_status[0]['is_published'];
                 }
 
-                if($published_status == 1){
-                    SmsGateway::send($user->phone, $new_token_generate);
-                }else{
-                    SMS_module::send($user->phone, $new_token_generate);
-                }
+                SMS_module::send($user->phone, $new_token_generate);
+                // if($published_status == 1){
+                //     SmsGateway::send($user->phone, $new_token_generate);
+                // }else{
+                //     SMS_module::send($user->phone, $new_token_generate);
+                // }
             }
 
             if ($email_verification && !$user->is_email_verified) {
