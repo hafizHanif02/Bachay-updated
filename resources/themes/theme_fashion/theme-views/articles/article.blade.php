@@ -708,9 +708,21 @@
                         </div>
                         <section>
                             {{-- <a href="#" class="title">{{ $article->title }}</a> --}}
-                            <p class="textArea">
+                            {{-- <p class="textArea">
                                 {{ $article->text }}
+                            </p> --}}
+                            <p class="textArea">
+                                @php
+                                    $decodedText = json_decode($article->text);
+                                @endphp
+                            
+                                @if ($decodedText !== null)
+                                    {!! $decodedText[0] !!}
+                                @else
+                                    Unable to display the article text.
+                                @endif
                             </p>
+                            
                         </section>
                     </div>
 

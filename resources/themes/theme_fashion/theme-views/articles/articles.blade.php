@@ -725,10 +725,18 @@
                         <section>
                             <a href="{{ route('article', $latest_article->id) }}"
                                 class="title">{{ $latest_article->title }}</a>
-                            <p>
-                                {{ mb_strimwidth($latest_article->text, 0, 300, '...') }}
-                                <a href="{{ route('article', $latest_article->id) }}">Read more</a>
-                            </p>
+                                <p>
+                                    @php
+                                        $decodedText = json_decode($latest_article->text);
+                                    @endphp
+
+                                    @if (is_array($decodedText))
+                                        {!! mb_strimwidth(strip_tags($decodedText[0]), 0, 300, '...') !!}
+                                    @else
+                                        Unable to display the article text.
+                                    @endif
+                                    <a href="{{ route('article', $latest_article->id) }}">Read more</a>
+                                </p> 
                         </section>
                     </div>
                     <!--CARD ENDS-->
