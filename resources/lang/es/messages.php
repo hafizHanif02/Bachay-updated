@@ -2922,7 +2922,7 @@
   'country' => 'देश',
   'country_code' => 'कंट्री कोड',
   'country_code_is_must' => 'देश कोड होना चाहिए',
-  'country_code_is_must_like_for_BD' => 'देश कोड को बीडी के लिए पसंद करना चाहिए',
+  'country_code_is_must_like_for_PK' => 'पीके के लिए देश कोड को प्राथमिकता दी जानी चाहिए',
   'country_name' => 'देश नाम',
   'coupon' => 'कूपन',
   'coupon_Add' => 'कूपन जोड़ें',

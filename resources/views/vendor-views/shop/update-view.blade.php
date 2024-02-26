@@ -29,7 +29,7 @@
                                             required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="name" class="title-color">{{translate('contact')}} <span class="text-info">( {{'*'.translate('country_code_is_must_like_for_BD_880')}} )</span></label>
+                                    <label for="name" class="title-color">{{translate('contact')}} <span class="text-info">( {{'*'.translate('country_code_is_must_like_for_PK_+92')}} )</span></label>
                                     <input type="number" name="contact" value="{{$shop->contact}}" class="form-control" id="name" required>
                                 </div>
                                 <div class="form-group">

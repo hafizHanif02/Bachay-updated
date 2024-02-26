@@ -73,7 +73,7 @@
                                     <div class="form-group col-md-6 mb-0">
                                         <label for="phone" class="mb-2 text-capitalize">{{translate('phone_number')}}
                                             <small class="text-primary">
-                                                (* {{translate('country_code_is_must_like_for_BD_880')}})
+                                                (* {{translate('country_code_is_must_like_for_PK_+92')}})
                                             </small>
                                         </label>
                                         <input type="text" class="form-control" id="phone"
