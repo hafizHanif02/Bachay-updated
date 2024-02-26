@@ -20,7 +20,7 @@ class SMS_module
                         $data = array(
                             "messaging_product" => "whatsapp",
                             "recipient_type" => "individual",
-                            "to" => $ureceiver,
+                            "to" => $receiver,
                             "type" => "template",
                             "template" => array(
                                 "name" => "bachay_otp",
