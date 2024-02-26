@@ -110,7 +110,7 @@
                                        class="col-sm-3 col-form-label input-label">{{translate('phone')}} </label>
 
                                 <div class="col-sm-9 mb-3">
-                                    <div class="text-info mb-2">( * {{translate('country_code_is_must_like_for_BD_880')}} )</div>
+                                    <div class="text-info mb-2">( * {{translate('country_code_is_must_like_for_PK_+92')}} )</div>
                                     <input type="number" class="js-masked-input form-control" name="phone" id="phoneLabel"
                                            placeholder="{{translate('+x(xxx)xxx-xx-xx')}}"
                                            value="{{$vendor->phone}}" required>

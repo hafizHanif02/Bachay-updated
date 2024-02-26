@@ -40,7 +40,7 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label class="form-label font-semibold">{{ translate('phone_number') }}
-                                    <small class="text-primary">( * {{ translate('country_code_is_must_like_for_BD') }} 880 )</small></label>
+                                    <small class="text-primary">( * {{ translate('country_code_is_must_like_for_PK') }} +92 )</small></label>
                                 <input class="form-control text-align-direction" type="number"  value="{{old('phone') }}" name="phone"
                                         placeholder="{{ translate('enter_phone_number') }}"
                                         required>

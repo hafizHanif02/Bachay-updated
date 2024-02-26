@@ -2900,7 +2900,7 @@
   'country' => 'دولة',
   'country_code' => 'الرقم الدولي',
   'country_code_is_must' => 'رمز البلد لا بد منه',
-  'country_code_is_must_like_for_BD' => 'رمز البلد يجب أن يكون مثل BD',
+  'country_code_is_must_like_for_PK' => 'رمز البلد يجب أن يكون مثل PK',
   'country_name' => 'اسم الدولة',
   'coupon' => 'قسيمة',
   'coupon_Add' => 'القسيمة إضافة',

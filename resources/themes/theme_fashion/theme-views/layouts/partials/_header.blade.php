@@ -1,12 +1,4 @@
 <style>
-    /* @media (min-width: 768px) {
-        .sub-nav li:nth-child(n + 8) {
-            display: none;
-        }
-        .sub-nav>li>a{
-
-        }
-    } */
     @media (min-width: 768px) and (max-width: 909px) {
         .sub-nav li:nth-child(n + 8) {
             display: none;

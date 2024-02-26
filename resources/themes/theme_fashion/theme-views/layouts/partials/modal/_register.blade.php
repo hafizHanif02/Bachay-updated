@@ -34,8 +34,8 @@
                         </div>
                         <div class="col-sm-6">
                             <label class="form-label form--label" for="phone">{{ translate('phone') }} <small
-                                    class="text-danger">(* {{ translate('country_code_is_must_like_for_BD')}}
-                                {{ translate('880') }})</small></label>
+                                    class="text-danger">(* {{ translate('country_code_is_must_like_for_PK')}}
+                                {{ translate('+92') }})</small></label>
                             <input type="number" id="phone" value="{{old('phone')}}" name="phone" class="form-control"
                                 placeholder="{{ translate('enter_phone_number') }}" required autocomplete="on"/>
                         </div>
