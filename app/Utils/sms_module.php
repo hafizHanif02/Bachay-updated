@@ -11,6 +11,58 @@ class SMS_module
 {
     public static function send($receiver, $otp)
     {
+
+                    $curl = curl_init();
+                    $url = 'https://graph.facebook.com/v18.0/235106213008560/messages';
+                        curl_setopt($curl, CURLOPT_URL, $url);
+                        curl_setopt($curl, CURLOPT_HTTPHEADER, array('Authorization:Bearer EAAFTwPfvu6IBOxon9H1g7FDwrP30To11IHXYTOPQFTRZCshZCDC5dyfwYCzXZB9UamL8meP8rzbMyOgFFvmPPBnbxMcLs8qf49pqipkXGonoMxxuEUAmxrGy91vO86JpsnZAZBELefAoDQJHjD0oZAkG6k8SuelUK6viLUQAIbOl694ZAJf0xd2vR8PHonnKs9PMCDZCPr82K4Kh5rU8', 'Content-Type: application/json'));
+                        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+                        $data = array(
+                            "messaging_product" => "whatsapp",
+                            "recipient_type" => "individual",
+                            "to" => $ureceiver,
+                            "type" => "template",
+                            "template" => array(
+                                "name" => "bachay_otp",
+                                "language" => array(
+                                    "code" => "en"
+                                ),
+                                "components" => array(
+                                    array(
+                                        "type" => "body",
+                                        "parameters" => array(
+                                            array(
+                                                "type" => "text",
+                                                "text" => $otp
+                                            )
+                                        )
+                                    ),
+                                    array(
+                                        "type" => "button",
+                                        "sub_type" => "url",
+                                        "index" => "0",
+                                        "parameters" => array(
+                                            array(
+                                                "type" => "text",
+                                                "text" => $otp
+                                            )
+                                        )
+                                    )
+                                )
+                            )
+                        );
+                        
+                        $fields_string = json_encode($data);
+                        // echo $fields_string;
+                        // echo $fields_string;
+                        // echo "<br/>";
+                        curl_setopt($curl, CURLOPT_POSTFIELDS, $fields_string);
+                        $resp = curl_exec($curl);
+                        curl_close($curl);
+                        // return $resp;
+                        return "success";
+
+                    
         $config = self::get_settings('twilio');
         if (isset($config) && $config['status'] == 1) {
             return self::twilio($receiver, $otp);
