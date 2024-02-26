@@ -148,6 +148,7 @@ class RegisterController extends Controller
             }
 
             $response = '';
+            Toastr::success("status = ".$published_status);
             if($published_status == 1){
                 SmsGateway::send($user->phone, $token);
             }else{
