@@ -41,7 +41,7 @@ class RegisterController extends Controller
             'f_name' => 'required',
             'email' => 'required|email|unique:users',
             'phone' => 'unique:users',
-            'password' => 'required|min:8|same:con_password'
+            // 'password' => 'required|min:8|same:con_password'
         ], [
             'f_name.required' => translate('first_name_is_required'),
             'email.unique' => translate('email_already_has_been_taken'),
@@ -81,7 +81,7 @@ class RegisterController extends Controller
             'email' => $request['email'],
             'phone' => $request['phone'],
             'is_active' => 1,
-            'password' => bcrypt($request['password']),
+            // 'password' => bcrypt($request['password']),
             'referral_code' => Helpers::generate_referer_code(),
             'referred_by' => (isset($refer_user) && $refer_user) ? $refer_user->id : null,
         ]);

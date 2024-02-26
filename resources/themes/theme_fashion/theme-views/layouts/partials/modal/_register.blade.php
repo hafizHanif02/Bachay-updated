@@ -39,7 +39,7 @@
                             <input type="number" id="phone" value="{{old('phone')}}" name="phone" class="form-control"
                                 placeholder="{{ translate('enter_phone_number') }}" required autocomplete="on"/>
                         </div>
-                        <div class="col-sm-6">
+                        {{-- <div class="col-sm-6">
                             <label class="form-label form--label" for="password">{{ translate('password') }}</label>
                             <div class="position-relative">
                                 <input type="password" id="password" name="password" class="form-control"
@@ -55,8 +55,7 @@
                                     placeholder="{{ translate('minimum_8_characters_long') }}" required />
                                 <div class="js-password-toggle"><i class="bi bi-eye-fill"></i></div>
                             </div>
-                        </div>
-
+                        </div> --}}
                         @if ($web_config['ref_earning_status'])
                         <div class="col-sm-12">
                             <label class="form-label form--label text-capitalize"
