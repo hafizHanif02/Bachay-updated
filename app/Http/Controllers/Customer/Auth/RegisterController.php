@@ -157,6 +157,22 @@ class RegisterController extends Controller
             // }
 
             $response = translate('please_check_your_SMS_for_OTP');
+
+            $emailServices_smtp = Helpers::get_business_settings('mail_config');
+            if ($emailServices_smtp['status'] == 0) {
+                $emailServices_smtp = Helpers::get_business_settings('mail_config_sendgrid');
+            }
+            if ($emailServices_smtp['status'] == 1) {
+                try{
+                    EmailVerificationEvent::dispatch($user['email'], $token);
+                    $response = translate('check_your_email_or_whatsapp_for_OTP');
+                } catch (\Exception $exception) {
+                    Toastr::error(translate('email_is_not_configured').'. '.translate('contact_with_the_administrator'));
+                    //return back();
+                }
+            }else{
+                $response= translate('email_failed');
+            }
             Toastr::success($response);
         }
 
