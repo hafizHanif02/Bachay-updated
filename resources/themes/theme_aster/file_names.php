@@ -33,6 +33,7 @@ return [
     'seller_registration'=>'theme-views.seller-views.auth.register',
     'all_stores_page'=>'theme-views.seller-views.sellers',
     'customer_auth_verify'=>'theme-views.customer-views.auth.verify',
+    'customer_auth_verify_token'=>'theme-views.customer-views.auth.verify_token',
     'products_details'=>'theme-views.product.details',
     'products_cart_partials'=>'theme-views.layouts.partials._cart',
     'products_cart_details_partials'=>'theme-views.cart.cart-details',

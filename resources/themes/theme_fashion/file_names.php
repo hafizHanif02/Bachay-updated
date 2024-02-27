@@ -55,6 +55,7 @@ return [
     'flash_deals' => 'theme-views.product.flash-deals',
     'product_quick_view_partials' => 'theme-views.layouts.partials.modal._quick-view-data',
     'customer_auth_verify' => 'theme-views.customer-views.auth.verify',
+    'customer_auth_verify_token' => 'theme-views.customer-views.auth.verify_token',
     'recover_password' => 'theme-views.customer-views.auth.recover-password',
     'otp_verification' => 'theme-views.customer-views.auth.verify-otp',
     'reset_password' => 'theme-views.customer-views.auth.reset-password',
