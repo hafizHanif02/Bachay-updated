@@ -447,6 +447,20 @@ class RegisterController extends Controller
                 // }else{
                 //     SMS_module::send($user->phone, $new_token_generate);
                 // }
+
+                $email_services_smtp = Helpers::get_business_settings('mail_config');
+                if ($email_services_smtp['status'] == 0) {
+                    $email_services_smtp = Helpers::get_business_settings('mail_config_sendgrid');
+                }
+                if ($email_services_smtp['status'] == 1) {
+                    try{
+                        EmailVerificationEvent::dispatch($user['email'], $new_token_generate);
+                    } catch (\Exception $exception) {
+                        return response()->json([
+                            'status'=>"0",
+                        ]);
+                    }
+                }
             }
 
             if ($email_verification && !$user->is_email_verified) {
