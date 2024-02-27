@@ -63,6 +63,7 @@ class LoginController extends Controller
 
     public function verifyToken(Request $request){
         // dd($request->all());
+        $emailServices_smtp = Helpers::get_business_settings('mail_config');
         $user = User::where(['phone' => $request->user_id])->orWhere(['email' => $request->user_id])->first();
         $token = rand(1000, 9999);
         DB::table('phone_or_email_verifications')->insert([
@@ -71,6 +72,8 @@ class LoginController extends Controller
             'created_at' => now(),
             'updated_at' => now(),
         ]);
+
+        
 
         $curl = curl_init();
         $url = 'https://graph.facebook.com/v18.0/235106213008560/messages';
