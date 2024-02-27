@@ -24,14 +24,14 @@
                         name="user_id" id="login_email" value="{{old('user_id')}}"
                         placeholder="{{translate('enter_email_or_phone_number')}}" required>
                     </div>
-                    <div class="col-sm-12">
+                    {{-- <div class="col-sm-12">
                         <label class="form-label form--label" for="login_password">{{ translate('password') }}</label>
                         <div class="position-relative">
                             <input type="password" class="form-control" name="password" id="login_password"
                                    placeholder="{{ translate('ex_:_7+_character')}}" required>
                             <div class="js-password-toggle"><i class="bi bi-eye-fill"></i></div>
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="col-sm-12 text-small">
                         <div class="d-flex justify-content-between gap-1">
                             <label class="form-check m-0">
@@ -42,7 +42,7 @@
                         </div>
                     </div>
 
-                    @if($web_config['recaptcha']['status'] == 1)
+                    {{-- @if($web_config['recaptcha']['status'] == 1)
                         <div id="recaptcha_element_customer_login" class="w-100 mt-4" data-type="image"></div>
                         <br/>
                     @else
@@ -58,7 +58,7 @@
                                 </span>
                             </div>
                         </div>
-                    @endif
+                    @endif --}}
 
                     <div class="col-sm-12 text-small">
                         <button type="submit" class="btn btn-block btn-base text-capitalize">{{translate('sign_in')}}</button>

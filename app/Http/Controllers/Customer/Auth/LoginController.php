@@ -2,18 +2,19 @@
 
 namespace App\Http\Controllers\Customer\Auth;
 
-use App\Utils\Helpers;
-use App\Http\Controllers\Controller;
-use App\Models\ProductCompare;
-use App\Models\Wishlist;
 use App\User;
-use App\Utils\CartManager;
-use Brian2694\Toastr\Facades\Toastr;
 use Carbon\Carbon;
+use App\Utils\Helpers;
+use App\Models\Wishlist;
+use App\Utils\CartManager;
 use Carbon\CarbonInterval;
-use Gregwar\Captcha\CaptchaBuilder;
-use Gregwar\Captcha\PhraseBuilder;
 use Illuminate\Http\Request;
+use App\Models\ProductCompare;
+use Gregwar\Captcha\PhraseBuilder;
+use Gregwar\Captcha\CaptchaBuilder;
+use App\Http\Controllers\Controller;
+use Brian2694\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
@@ -63,44 +64,8 @@ class LoginController extends Controller
         
         $request->validate([
             'user_id' => 'required',
-            'password' => 'required'
+            // 'password' => 'required'
         ]);
-
-        //recaptcha validation start
-        $recaptcha = Helpers::get_business_settings('recaptcha');
-        if (isset($recaptcha) && $recaptcha['status'] == 1) {
-            try {
-                $request->validate([
-                    'g-recaptcha-response' => [
-                        function ($attribute, $value, $fail) {
-                            $secret_key = Helpers::get_business_settings('recaptcha')['secret_key'];
-                            $response = $value;
-                            $url = 'https://www.google.com/recaptcha/api/siteverify?secret=' . $secret_key . '&response=' . $response;
-                            $response = \file_get_contents($url);
-                            $response = json_decode($response);
-                            if (!$response->success) {
-                                $fail(translate('ReCAPTCHA Failed'));
-                            }
-                        },
-                    ],
-                ]);
-            } catch (\Exception $exception) {}
-        } else {
-            if (strtolower($request->default_recaptcha_id_customer_login) != strtolower(Session('default_recaptcha_id_customer_login'))) {
-                if($request->ajax()) {
-                    return response()->json([
-                        'status'=>'error',
-                        'message'=>translate('Captcha_Failed.'),
-                        'redirect_url'=>''
-                    ]);
-                }else {
-                    Session::forget('default_recaptcha_id_customer_login');
-                    Toastr::error(translate('captcha_failed'));
-                    return back();
-                }
-            }
-        }
-        //recaptcha validation end
 
         $user = User::where(['phone' => $request->user_id])->orWhere(['email' => $request->user_id])->first();
         $remember = ($request['remember']) ? true : false;
@@ -163,8 +128,10 @@ class LoginController extends Controller
                 return back()->withInput();
             }
         }
-
-        if (isset($user) && $user->is_active && auth('customer')->attempt(['email' => $user['email'], 'password' => $request->password], $remember)) {
+        
+        Auth::guard('customer')->login($user);
+        
+        if (isset($user) && $user->is_active && (Auth::guard('customer')->user() != null)) {
             $wish_list = Wishlist::whereHas('wishlistProduct',function($q){
                 return $q;
             })->where('customer_id', auth('customer')->user()->id)->pluck('product_id')->toArray();
