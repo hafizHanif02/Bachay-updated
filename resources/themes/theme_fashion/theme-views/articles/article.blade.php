@@ -719,7 +719,7 @@
                                 @if ($decodedText !== null)
                                     {!! $decodedText[0] !!}
                                 @else
-                                    Unable to display the article text.
+                                    {{ $article->text }} 
                                 @endif
                             </p>
                             

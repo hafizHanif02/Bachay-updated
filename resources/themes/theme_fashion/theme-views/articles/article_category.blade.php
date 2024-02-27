@@ -709,18 +709,27 @@
                 <div class="left_content">
                     <!--MAIN CARD BEGINING-->
                     <div class="blog_card">
-                        <a href="{{ route('article', $article_category->id) }}" class="figure">
+                        {{-- <a href="{{ route('article', $article_category->id) }}" class="figure">
                             <img src="{{ asset('public/assets/images/articles/category/thumbnail/' . $article_category->image) }}"
                                 alt="" loading="lazy" />
                             <span class="tag">{{ date_format($article_category->created_at, 'd-M-Y h:i:s A') }}</span>
-                        </a>
+                        </a> --}}
+                        <div class="figure">
+                            <img src="{{ asset('public/assets/images/articles/category/thumbnail/' . $article_category->image) }}" alt="" loading="lazy" />
+                            <span class="tag">{{ date_format($article_category->created_at, 'd-M-Y h:i:s A') }}</span>
+                        </div>                        
                         <section>
-                            <a href="{{ route('article', $article_category->id) }}"
-                                class="title">{{ $article_category->name }}</a>
-                            <p>
-                                {{ mb_strimwidth($article_category->tag_line, 0, 300, '...') }}
-                                <a href="{{ route('article', $article_category->id) }}">Read more</a>
-                            </p>
+                            {{-- <a href="{{ route('article', $article_category->id) }}"
+                                class="title">{{ $article_category->name }}</a> --}}
+                            <span class="title">{{ $article_category->name }}</span>
+                            <div class="article-category">
+                                <p>
+                                    <span id="visible_text">{{ mb_strimwidth($article_category->tag_line, 0, 127, '...') }}</span>
+                                    <span id="remaining_text" style="display: none;">{{ mb_substr($article_category->tag_line, 127) }}</span>
+                                    <a href="#" id="read_more_link" onclick="toggleRemainingText(); return false;">Read more</a>
+                                </p>
+                            </div>                            
+                            
                         </section>
                     </div>
                     <!--CARD ENDS-->
@@ -736,11 +745,11 @@
                                 <a href="{{ route('article', $article->id) }}" class="title">{{ $article->title }}</a>
                                 <p>
                                     {{-- @php
-                                    $text = $article->text;
-                                    $wordCount = str_word_count($text);
-                                    $limitedText = implode(' ', array_slice(str_word_count($text, 1), 0, 34));
-                                    echo $limitedText . ($wordCount > 34 ? "..." : "");
-                                @endphp --}}
+                                        $text = $article->text;
+                                        $wordCount = str_word_count($text);
+                                        $limitedText = implode(' ', array_slice(str_word_count($text, 1), 0, 34));
+                                        echo $limitedText . ($wordCount > 34 ? "..." : "");
+                                    @endphp --}}
                                     @php
                                         $words = str_word_count($article->text, 1);
                                         $limitedText = implode(' ', array_slice($words, 0, 34));
@@ -875,4 +884,19 @@
             });
         });
     </script>
+    <script>
+        function toggleRemainingText() {
+            var visibleText = document.getElementById('visible_text');
+            var remainingText = document.getElementById('remaining_text');
+            var readMoreLink = document.getElementById('read_more_link');
+            
+            if (remainingText.style.display === 'none') {
+                remainingText.style.display = 'inline'; // Show the remaining text
+                readMoreLink.style.display = 'none'; // Hide the "Read more" link
+            } else {
+                remainingText.style.display = 'none'; // Hide the remaining text
+            }
+        }
+    </script>
+    
 @endsection
