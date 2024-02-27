@@ -1,12 +1,49 @@
 <ul class="list-unstyled d-flex justify-content-around gap-3 mb-0 position-relative">
     <li>
+        <a href="{{ route('home') }}"
+            class="d-flex align-items-center {{ Request::is('/') || Request::is('home') ? 'active' : '' }} flex-column gap-1 py-3">
+            <i class="bi bi-shop-window"></i>
+            <span>{{ translate('shopping') }}</span>
+        </a>
+    </li>
+    <li>
+        <a href="{{ route('home') }}"
+            class="d-flex align-items-center {{ Request::is('/') || Request::is('home') ? 'active' : '' }} flex-column gap-1 py-3">
+            <i class="bi bi-compass"></i>
+            <span>{{ translate('explore') }}</span>
+        </a>
+    </li>
+    <li>
+        <a href="{{ route('parenting') }}"
+            class="d-flex align-items-center {{ Request::is('/') || Request::is('home') ? 'active' : '' }} flex-column gap-1 py-3">
+            <i class="bi bi-chat-square-heart-fill"></i>
+            <span>{{ translate('parenting') }}</span>
+        </a>
+    </li>
+    <li>
+        <a href="{{ route('home') }}"
+            class="d-flex align-items-center {{ Request::is('/') || Request::is('home') ? 'active' : '' }} flex-column gap-1 py-3">
+            <i class="bi bi-person"></i>
+            <span>{{ translate('profile') }}</span>
+        </a>
+    </li>
+    <li>
+        <a href="{{ route('home') }}"
+            class="d-flex align-items-center {{ Request::is('/') || Request::is('home') ? 'active' : '' }} flex-column gap-1 py-3">
+            <i class="bi bi-nut"></i>
+            <span>{{ translate('menu') }}</span>
+        </a>
+    </li>
+
+    {{-- below is previous work which has 4 buttons which are HOME WISHLIST CART COMPARE --}}
+    {{-- <li>
         <a href="{{route('home')}}"
            class="d-flex align-items-center {{ (Request::is('/') || Request::is('home')) ? 'active':''}} flex-column gap-1 py-3">
             <i class="bi bi-house-door fs-18"></i>
             <span>{{translate('home')}}</span>
         </a>
     </li>
-    @if(auth('customer')->check())
+    @if (auth('customer')->check())
         <li>
             <a href="{{ route('wishlists') }}"
                class="d-flex align-items-center {{ Request::is('wishlists') ? 'active' : '' }} flex-column gap-1 py-3">
@@ -35,10 +72,10 @@
 
     <li>
         @php($cart=\App\Utils\CartManager::get_cart())
-        @if($cart->count() > 0)
+        @if ($cart->count() > 0)
             @php($sub_total=0)
             @php($total_tax=0)
-            @foreach($cart as  $cartItem)
+            @foreach ($cart as $cartItem)
                 @php($sub_total+=($cartItem['price']-$cartItem['discount'])*(int)$cartItem['quantity'])
                 @php($total_tax+=$cartItem['tax']*(int)$cartItem['quantity'])
             @endforeach
@@ -54,7 +91,7 @@
             </a>
 
             <ul class="dropdown-menu scrollY-60 p-3 min-vw-100" id="cart_dropdown">
-                @if($cart->count() > 0)
+                @if ($cart->count() > 0)
                     @include('theme-views.layouts.partials._cart-data',['cart'=>$cart])
                     <li>
                         <div class="app-cart-subtotal">
@@ -63,7 +100,7 @@
                         </div>
 
                         <div class="d-flex gap-3 mt-3">
-                            @if($web_config['guest_checkout_status'] || auth('customer')->check())
+                            @if ($web_config['guest_checkout_status'] || auth('customer')->check())
                                 <a href="{{route('shop-cart')}}"
                                    class="btn btn-outline-base flex-grow-1">{{translate('view_all_cart_items')}}</a>
                                 <a href="{{route('checkout-details')}}"
@@ -87,7 +124,7 @@
         </div>
     </li>
 
-    @if(auth('customer')->check())
+    @if (auth('customer')->check())
         <li>
             <a href="{{ route('product-compare.index') }}"
                class="d-flex align-items-center {{ Request::is('compare-list') ? 'active' : '' }} flex-column gap-1 py-3">
@@ -110,5 +147,5 @@
                 <span>{{ translate('compare') }}</span>
             </a>
         </li>
-    @endif
+    @endif --}}
 </ul>
