@@ -165,6 +165,7 @@ class LoginController extends Controller
                     'redirect_url'=>route('customer.auth.check', [$user->id]),
                 ]);
             }else{
+                
                 return redirect(route('customer.auth.check', [$user->id]));
             }
         }
@@ -176,6 +177,7 @@ class LoginController extends Controller
                     'redirect_url'=>route('customer.auth.check', [$user->id]),
                 ]);
             }else{
+               
                 return redirect(route('customer.auth.check', [$user->id]));
             }
         }
@@ -205,6 +207,7 @@ class LoginController extends Controller
         
         if (isset($user) && $user->is_active && (Auth::guard('customer')->user() != null)) {
             $wish_list = Wishlist::whereHas('wishlistProduct',function($q){
+               
                 return $q;
             })->where('customer_id', auth('customer')->user()->id)->pluck('product_id')->toArray();
 
@@ -233,12 +236,16 @@ class LoginController extends Controller
             }
 
             if($request->ajax()) {
+               
                 return response()->json([
                     'status'=>'success',
                     'message'=>translate('login_successful'),
                     'redirect_url'=> $redirect_url,
                 ]);
+            }elseif($request->otp){
+                return redirect(route('home'));
             }else{
+                
                 return redirect(session('keep_return_url'));
             }
 

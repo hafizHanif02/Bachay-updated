@@ -7236,4 +7236,9 @@
   'submission_Date' => 'Submission Date',
   'add-vaccine' => 'Add-vaccine',
   'vaccination_Detail' => 'Vaccination Detail',
+  'country_code_is_must_like_for_PK' => 'Country code is must like for PK',
+  '+92' => '+92',
+  'please_Verify_that_it’s_you' => 'Please Verify that it’s you',
+  'an_OTP_(One_Time_Password)_has_been_sent_to' => 'An OTP (One Time Password) has been sent to',
+  'please_enter_the_OTP_in_the_field_below_to_verify_your_phone' => 'Please enter the OTP in the field below to verify your phone',
 );
