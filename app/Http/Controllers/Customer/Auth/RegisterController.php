@@ -40,12 +40,14 @@ class RegisterController extends Controller
         $validator = Validator::make($request->all(), [
             'f_name' => 'required',
             'email' => 'required|email|unique:users',
-            'phone' => 'unique:users',
+            'phone' => ['unique:users','required', 'regex:/^3\d{9}$/'],
             // 'password' => 'required|min:8|same:con_password'
         ], [
             'f_name.required' => translate('first_name_is_required'),
             'email.unique' => translate('email_already_has_been_taken'),
             'phone.unique' => translate('phone_number_already_has_been_taken'),
+        ], [
+            'phone.regex' => 'The phone number must start with "3" and have 10 digits.'
         ]);
 
         if($request->ajax()) {
@@ -89,7 +91,7 @@ class RegisterController extends Controller
         $phone_verification = Helpers::get_business_settings('phone_verification');
         $email_verification = Helpers::get_business_settings('email_verification');
 
-        
+
         if($request->ajax()) {
             if ($phone_verification && !$user->is_phone_verified) {
                 self::varificaton_check($user->id);
