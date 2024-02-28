@@ -48,6 +48,7 @@ return [
     'order_complete' => 'theme-views.checkout.complete',
     'all_brands' => 'theme-views.product.brands',
     'all_stores_page' => 'theme-views.seller-views.sellers',
+    'all_categories' => 'theme-views.product.categories',
     'about_us' => 'theme-views.pages.about-us',
     'faq' => 'theme-views.pages.help-topics',
     'contacts' => 'theme-views.pages.contact-us',
