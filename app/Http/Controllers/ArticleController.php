@@ -63,11 +63,10 @@ class ArticleController extends Controller
     public function store(Request $request)
     {
 
-        // dd($request->text);
         $request->validate([
             'title' => 'required|string|max:255',
             'text' => 'required',
-            'thumbnail' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'thumbnail' => 'image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
             'article_category_id' => 'required|integer|exists:article_category,id',
         ]);
         if ($request->file('thumbnail')) {
