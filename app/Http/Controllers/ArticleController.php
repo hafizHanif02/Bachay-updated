@@ -66,7 +66,7 @@ class ArticleController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'text' => 'required',
-            'thumbnail' => 'image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
+            'thumbnail' => 'image|mimes:jpeg,png,jpg,gif,svg,webp',
             'article_category_id' => 'required|integer|exists:article_category,id',
         ]);
         if ($request->file('thumbnail')) {
@@ -78,7 +78,7 @@ class ArticleController extends Controller
         Article::create([
             'title' => $request->title,
             'text' => $request->text,
-            'thumbnail' => ($filename ?? ''),
+            'thumbnail' => $filename,
             'article_category_id' => $request->article_category_id,
         ]);
 
