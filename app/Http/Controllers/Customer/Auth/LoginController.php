@@ -82,7 +82,6 @@ class LoginController extends Controller
         
         if ($emailServices_smtp['status'] == 1) {
             $email =  EmailVerificationEvent::dispatch($user['email'], $token);
-            dd($email, $user['email'], $token, $emailServices_smtp );
         }
         SMS_module::send($user->phone, $token);
 
