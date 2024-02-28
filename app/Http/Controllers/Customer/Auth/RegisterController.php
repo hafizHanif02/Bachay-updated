@@ -76,12 +76,12 @@ class RegisterController extends Controller
         if ($request->referral_code){
             $refer_user = User::where(['referral_code' => $request->referral_code])->first();
         }
-
+        $phone = '92'.$request['phone'];
         $user = User::create([
             'f_name' => $request['f_name'],
             'l_name' => $request['l_name'],
             'email' => $request['email'],
-            'phone' => $request['phone'],
+            'phone' => $phone,
             'is_active' => 1,
             // 'password' => bcrypt($request['password']),
             'referral_code' => Helpers::generate_referer_code(),
