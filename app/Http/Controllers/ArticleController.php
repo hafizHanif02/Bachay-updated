@@ -120,7 +120,7 @@ class ArticleController extends Controller
             'title' => $request->title,
             'text' => $request->text,
             'article_category_id' => $request->article_category_id,
-            'thumbnail' => ($filename ?? ''),
+            'thumbnail' => $filename,
         ]);
         Toastr::success('Article Updated !');
         return redirect()->route('admin.article.list');

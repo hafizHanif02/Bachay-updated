@@ -89,7 +89,7 @@ class RegisterController extends Controller
         $phone_verification = Helpers::get_business_settings('phone_verification');
         $email_verification = Helpers::get_business_settings('email_verification');
 
-
+        
         if($request->ajax()) {
             if ($phone_verification && !$user->is_phone_verified) {
                 self::varificaton_check($user->id);
