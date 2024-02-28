@@ -13,6 +13,7 @@ class Article extends Model
         'article_category_id',
         'title',
         'text',
+        'thumbnail',
         'status',
     ];
     protected $table = 'articles';
