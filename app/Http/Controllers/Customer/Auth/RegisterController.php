@@ -61,17 +61,17 @@ class RegisterController extends Controller
         }
 
         //recaptcha validation
-        $recaptcha = Helpers::get_business_settings('recaptcha');
-        if ($recaptcha['status'] != 1 && strtolower($request->default_recaptcha_value_customer_regi) != strtolower(Session('default_recaptcha_id_customer_regi'))) {
-            Session::forget('default_recaptcha_id_customer_regi');
-            if($request->ajax()) {
-                return response()->json([
-                    'errors' => [0=>translate('Captcha Failed')]
-                ]);
-            }else {
-                return back()->withErrors(translate('Captcha Failed'));
-            }
-        }
+        // $recaptcha = Helpers::get_business_settings('recaptcha');
+        // if ($recaptcha['status'] != 1 && strtolower($request->default_recaptcha_value_customer_regi) != strtolower(Session('default_recaptcha_id_customer_regi'))) {
+        //     Session::forget('default_recaptcha_id_customer_regi');
+        //     if($request->ajax()) {
+        //         return response()->json([
+        //             'errors' => [0=>translate('Captcha Failed')]
+        //         ]);
+        //     }else {
+        //         return back()->withErrors(translate('Captcha Failed'));
+        //     }
+        // }
 
         if ($request->referral_code){
             $refer_user = User::where(['referral_code' => $request->referral_code])->first();

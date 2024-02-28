@@ -572,6 +572,7 @@ class HomeController extends Controller
 
     public function theme_fashion(): View
     {
+        
         $theme_name = theme_root_path();
         $currentDate = date('Y-m-d H:i:s');
 
