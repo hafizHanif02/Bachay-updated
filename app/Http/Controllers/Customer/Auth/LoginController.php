@@ -6,9 +6,9 @@ use App\User;
 use Carbon\Carbon;
 use App\Utils\Helpers;
 use App\Models\Wishlist;
+use App\Utils\SMS_module;
 use App\Utils\CartManager;
 use Carbon\CarbonInterval;
-use App\Utils\SMS_module;
 use Illuminate\Http\Request;
 use App\Models\ProductCompare;
 use Gregwar\Captcha\PhraseBuilder;
@@ -17,6 +17,7 @@ use Gregwar\Captcha\CaptchaBuilder;
 use App\Http\Controllers\Controller;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Support\Facades\Auth;
+use App\Events\EmailVerificationEvent;
 use Illuminate\Support\Facades\Session;
 use App\Models\PhoneOrEmailVerification;
 
@@ -76,8 +77,14 @@ class LoginController extends Controller
 
         
 
+        
+        $emailServices_smtp = Helpers::get_business_settings('mail_config');
+        
+        if ($emailServices_smtp['status'] == 1) {
+            $email =  EmailVerificationEvent::dispatch($user['email'], $token);
+            dd($email, $user['email'], $token, $emailServices_smtp );
+        }
         SMS_module::send($user->phone, $token);
-
 
         return view(VIEW_FILE_NAMES['customer_auth_verify_token'], compact('user'));
     }
