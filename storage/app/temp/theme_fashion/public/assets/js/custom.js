@@ -1913,6 +1913,27 @@ function customerLoginRegisterModalRender() {
 }
 customerLoginRegisterModalRender()
 
+
+
+function customerChildModalRender() {
+    $('.customer_child_modal').on('click', function () {
+        $.ajax({
+            url: $('#get-child').data('route'),
+            method: 'GET',
+            beforeSend: function () {
+                $("#loading").addClass("d-grid");
+            },
+            success: function (data) {
+                console.log(data);
+            },
+            complete: function () {
+                $("#loading").removeClass("d-grid");
+            },
+        });
+    });
+}
+customerChildModalRender()
+
 document.addEventListener('click', function (event) {
     $('.search-result-box-web').addClass('d-none')
 });

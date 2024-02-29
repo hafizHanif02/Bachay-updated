@@ -1,3 +1,7 @@
+<h3>Child</h3>
+@auth('customer')
+<p>{{ $childs }}</p>
+@endauth
 <div class="modal fade __sign-in-modal" id="SignInModal" tabindex="-1" aria-labelledby="SignInModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">

@@ -2,13 +2,14 @@
 
 namespace App;
 
-use App\Models\ShippingAddress;
 use App\Models\Order;
-use App\Models\ProductCompare;
 use App\Models\Wishlist;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
+use App\Models\FamilyRelation;
+use App\Models\ProductCompare;
+use App\Models\ShippingAddress;
 use Laravel\Passport\HasApiTokens;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
@@ -72,5 +73,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(ProductCompare::class, 'user_id');
     }
+
+    public function children(){
+        return $this->hasMany(FamilyRelation::class,'user_id','id');
+    }
+    
 
 }

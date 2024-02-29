@@ -234,7 +234,6 @@
         </div>
     </div>
 @endif
-
 <header class="bg-base pb-0" id="header" style="background: #fff !important;">
     <div class="search-form-header d-xl-none">
         <div class="d-flex w-100 align-items-center">
@@ -369,6 +368,18 @@
                             </a>
                         </li>
                     @endauth
+                    @auth('customer')
+                    <li>
+                        <a href="javascript:" class="customer_child_modal nav-ul_text">
+                            Switch User
+                            <?php
+                            $childs = App\Models\FamilyRelation::where('user_id',auth('customer')->id())->get();
+                            ?>
+                            
+                        </a>
+                    </li>
+                    @endauth
+                    
                     @if ($web_config['business_mode'] == 'multi')
                         <li>
                             <a href="{{ route('vendors') }}"

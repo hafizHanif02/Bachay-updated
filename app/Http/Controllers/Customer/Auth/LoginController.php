@@ -10,6 +10,7 @@ use App\Utils\SMS_module;
 use App\Utils\CartManager;
 use Carbon\CarbonInterval;
 use Illuminate\Http\Request;
+use App\Models\FamilyRelation;
 use App\Models\ProductCompare;
 use Gregwar\Captcha\PhraseBuilder;
 use Illuminate\Support\Facades\DB;
@@ -294,6 +295,14 @@ class LoginController extends Controller
         return response()->json([
             'login_modal' => view(VIEW_FILE_NAMES['get_login_modal_data'])->render(),
             'register_modal' => view(VIEW_FILE_NAMES['get_register_modal_data'])->render(),
+        ]);
+    }
+
+    public function get_child(Request $request)
+    {
+        $childs = FamilyRelation::where('user_id',auth()->guard('customer')->user()->id)->get();
+        return response()->json([
+            'child_modal' => view(VIEW_FILE_NAMES['get_child_modal'], 'childs')->render(),
         ]);
     }
 

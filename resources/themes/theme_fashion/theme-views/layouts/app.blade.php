@@ -77,12 +77,7 @@
             --bs-btn-disabled-border-color: {{ $web_config['secondary_color'] }}75;
         }
 
-        @if (isset($web_config['announcement']) && $web_config['announcement']['status'] == 1)
-            .offer-bar {
-                background-color: {{ $web_config['announcement']['color'] }};
-                color: {{ $web_config['announcement']['text_color'] }};
-            }
-        @endif
+       
     </style>
 
     <script src="{{ theme_asset('assets/js/jquery-3.7.1.min.js') }}"></script>
@@ -205,6 +200,7 @@
 
 
     <span id="get-login-modal-data" data-route="{{ route('customer.auth.get-login-modal-data') }}"></span>
+    <span id="get-child" data-route="{{ route('customer.auth.get-child') }}"></span>
     <span id="get-current-route-name" data-route="{{ Route::currentRouteName() }}"></span>
     <span id="update_nav_cart_url" data-url="{{ route('cart.nav-cart') }}"></span>
     <span id="update_floating_nav_cart_url" data-url="{{ route('cart.floating-nav-cart-items') }}"></span>
