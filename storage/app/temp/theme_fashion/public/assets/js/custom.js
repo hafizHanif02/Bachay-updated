@@ -204,7 +204,8 @@ function updateNavCart() {
         update_floating_nav_cart();
         updateCartQuantity_cart_data();
         addWishlist_function_view_page();
-        customerLoginRegisterModalRender()
+        customerLoginRegisterModalRender();
+        customerChildModalRender();
     });
 }
 
@@ -1893,6 +1894,7 @@ passwordToTextType()
 
 function customerLoginRegisterModalRender() {
     $('.customer_login_register_modal').on('click', function () {
+        console.log('login modal');
         $.ajax({
             url: $('#get-login-modal-data').data('route'),
             method: 'GET',
@@ -1917,6 +1919,7 @@ customerLoginRegisterModalRender()
 
 function customerChildModalRender() {
     $('.customer_child_modal').on('click', function () {
+        console.log($('#get-child').data('route'),'custom1');
         $.ajax({
             url: $('#get-child').data('route'),
             method: 'GET',
@@ -1924,7 +1927,7 @@ function customerChildModalRender() {
                 $("#loading").addClass("d-grid");
             },
             success: function (data) {
-                console.log(data);
+                console.log(data.childs);
             },
             complete: function () {
                 $("#loading").removeClass("d-grid");

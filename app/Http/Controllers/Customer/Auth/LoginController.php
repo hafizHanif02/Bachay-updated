@@ -300,9 +300,11 @@ class LoginController extends Controller
 
     public function get_child(Request $request)
     {
-        $childs = FamilyRelation::where('user_id',auth()->guard('customer')->user()->id)->get();
+        dd(auth()->guard('customer')->user()->id);
+        $childs = FamilyRelation::where('user_id',auth()->guard('customer')->user()->id)->first();
         return response()->json([
-            'child_modal' => view(VIEW_FILE_NAMES['get_child_modal'], 'childs')->render(),
+            'child_modal' => view(VIEW_FILE_NAMES['get_child_modal'])->render(),
+            'childs' => $childs
         ]);
     }
 

@@ -359,8 +359,6 @@
                         </li>
                     @else
                         <li>
-
-
                             <a href="javascript:" class="customer_login_register_modal nav-ul_text">
                                 <img src="{{ asset('public/images/location.gif') }}" alt="" width="20px"
                                     height="20px">

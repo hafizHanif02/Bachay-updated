@@ -166,6 +166,8 @@
     @include('theme-views.layouts.partials._header')
     @include('theme-views.layouts.partials.modal._quick-view')
     <div id="login-and-register-modal-section"></div>
+    <div id="child-modal-section"></div>
+  
 
     <div class="d-none d-md-block">
         @if (!auth('customer')->id())
