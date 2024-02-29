@@ -1,21 +1,21 @@
 <ul class="list-unstyled d-flex justify-content-around gap-3 mb-0 position-relative">
     <li>
         <a href="{{ route('home') }}"
-            class="d-flex align-items-center {{ Request::is('/') || Request::is('home') ? 'active' : '' }} flex-column gap-1 py-3">
+            class="d-flex align-items-center {{ Request::is('/home') || Request::is('home') ? 'active' : '' }} flex-column gap-1 py-3">
             <i class="bi bi-shop-window custom-icon"></i>
             <span>{{ translate('shopping') }}</span>
         </a>
     </li>
     <li>
         <a href="{{ route('categories') }}"
-            class="d-flex align-items-center {{ Request::is('/') || Request::is('home') ? 'active' : '' }} flex-column gap-1 py-3">
+            class="d-flex align-items-center {{ Request::is('/categories') || Request::is('categories') ? 'active' : '' }} flex-column gap-1 py-3">
             <i class="bi bi-compass custom-icon"></i>
             <span>{{ translate('explore') }}</span>
         </a>
     </li>
     <li>
         <a href="{{ route('parenting') }}"
-            class="d-flex align-items-center {{ Request::is('/') || Request::is('home') ? 'active' : '' }} flex-column gap-1 py-3">
+            class="d-flex align-items-center {{ Request::is('/parenting') || Request::is('parenting') ? 'active' : '' }} flex-column gap-1 py-3">
             <i class="bi bi-chat-square-heart-fill custom-icon"></i>
             <span>{{ translate('parenting') }}</span>
         </a>
@@ -23,28 +23,28 @@
     @if (auth('customer')->check())
         <li>
             <a href="{{ route('user-profile') }}"
-                class="d-flex align-items-center {{ Request::is('/') || Request::is('home') ? 'active' : '' }} flex-column gap-1 py-3">
+                class="d-flex align-items-center {{ Request::is('/user-profile') || Request::is('user-profile') ? 'active' : '' }} flex-column gap-1 py-3">
                 <i class="bi bi-person custom-icon"></i>
                 <span>{{ translate('profile') }}</span>
             </a>
         </li>
-        @else
+    @else
         <li>
             <a href="javascript:"
-               class="d-flex align-items-center text-dark flex-column gap-1 py-3 customer_login_register_modal">
-                    <i class="bi bi-person custom-icon"></i>
+                class="d-flex align-items-center {{ Request::is('/user-profile') || Request::is('user-profile') ? 'active' : '' }}   flex-column gap-1 py-3 customer_login_register_modal">
+                <i class="bi bi-person custom-icon"></i>
                 <span>{{ translate('profile') }}</span>
             </a>
         </li>
     @endif
     <li>
         <a href="{{ route('home') }}"
-            class="d-flex align-items-center {{ Request::is('/') || Request::is('home') ? 'active' : '' }} flex-column gap-1 py-3">
+            class="d-flex align-items-center {{ Request::is('/home') || Request::is('home') ? 'active' : '' }} flex-column gap-1 py-3">
             <i class="bi bi-nut custom-icon"></i>
             <span>{{ translate('menu') }}</span>
         </a>
     </li>
-    
+
 
     {{-- below is previous work which has 4 buttons which are HOME WISHLIST CART COMPARE --}}
 
