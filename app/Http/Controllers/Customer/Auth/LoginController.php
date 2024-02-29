@@ -67,13 +67,18 @@ class LoginController extends Controller
         // dd($request->all());
         $emailServices_smtp = Helpers::get_business_settings('mail_config');
         $user = User::where(['phone' => $request->user_id])->orWhere(['email' => $request->user_id])->first();
-        $token = rand(1000, 9999);
-        DB::table('phone_or_email_verifications')->insert([
-            'phone_or_email' => $user['email'],
-            'token' => $token,
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
+        if($user != null){
+            $token = rand(1000, 9999);
+            DB::table('phone_or_email_verifications')->insert([
+                'phone_or_email' => $user['email'],
+                'token' => $token,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);    
+        }else{
+            Toastr::error(translate('Phone or Email has not properly entered'));
+            return redirect()->back();
+        }
 
         
 
