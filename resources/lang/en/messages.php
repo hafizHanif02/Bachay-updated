@@ -7247,4 +7247,5 @@
   'explore' => 'Explore',
   'menu' => 'Menu',
   '3XXXXXXXXX' => '3XXXXXXXXX',
+  'Switch User' => 'Switch User',
 );

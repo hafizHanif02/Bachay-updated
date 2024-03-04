@@ -577,6 +577,14 @@
                             </a>
                         </li>
                     @endif
+                    <li class="me-2 me-sm-0">
+                        <a href="javascript:" class="switchuser">
+                            
+                            <span
+                                class="mx-1 d-none d-md-block nav-ul_text
+                            ">{{ translate('Switch User') }}</span>
+                        </a>
+                    </li>
                     {{-- darkMode-switcher  --}}
                     {{-- <div class="darkLight-switcher d-none d-xl-block">
                         <button type="button" title="{{ translate('Dark_Mode') }}" class="dark_button">

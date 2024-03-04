@@ -201,6 +201,7 @@
     @include('theme-views.layouts.partials._footer')
 
 
+    <span id="switch-user" data-route="{{ route('customer.auth.switch-user') }}"></span>
     <span id="get-login-modal-data" data-route="{{ route('customer.auth.get-login-modal-data') }}"></span>
     <span id="get-child" data-route="{{ route('customer.auth.get-child') }}"></span>
     <span id="get-current-route-name" data-route="{{ Route::currentRouteName() }}"></span>

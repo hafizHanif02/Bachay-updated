@@ -1913,6 +1913,27 @@ function customerLoginRegisterModalRender() {
 }
 customerLoginRegisterModalRender()
 
+function switchuser() {
+    $('.switchuser').on('click', function () {
+        $.ajax({
+            url: $('#get-login-modal-data').data('route'),
+            method: 'GET',
+            beforeSend: function () {
+                $("#loading").addClass("d-grid");
+            },
+            success: function (data) {
+                $('#login-and-register-modal-section').html(data.login_modal);
+                $('#login-and-register-modal-section').append(data.register_modal);
+                $('#SignInModal').modal('show');
+                passwordToTextType()
+            },
+            complete: function () {
+                $("#loading").removeClass("d-grid");
+            },
+        });
+    });
+}
+switchuser()
 
 function customerChildModalRender() {
     $('.customer_child_modal').on('click', function () {

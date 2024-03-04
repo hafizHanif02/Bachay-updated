@@ -257,6 +257,7 @@ Route::group(['namespace' => 'Customer', 'prefix' => 'customer', 'as' => 'custom
         Route::post('login', 'LoginController@submit')->name('login_submit');
         Route::get('logout', 'LoginController@logout')->name('logout');
         Route::get('get-login-modal-data', 'LoginController@get_login_modal_data')->name('get-login-modal-data');
+        Route::get('switch-user', 'LoginController@get_login_modal_data')->name('switch-user');
         Route::get('get-child', 'LoginController@get_child')->name('get-child');
 
         Route::get('sign-up', 'RegisterController@register')->name('sign-up');
