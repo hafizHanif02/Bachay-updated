@@ -7252,4 +7252,6 @@
   'Parenting' => 'Parenting',
   'Phone or Email has not properly entered' => 'Phone or Email has not properly entered',
   'vendor_details' => 'Vendor details',
+  'Shopping' => 'Shopping',
+  'Education' => 'Education',
 );

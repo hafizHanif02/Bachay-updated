@@ -2,20 +2,41 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
-use App\Models\Growth;
+use App\Models\Banner;
+use App\Models\Category;
 use App\Models\Customer;
+use App\Models\DealOfTheDay;
+use App\Models\Growth;
+use App\Models\MostDemanded;
+use App\Models\Order;
+use App\Models\OrderDetail;
+use App\Models\Product;
+use App\Models\Review;
+use App\Models\Seller;
+use App\Models\User;
 use App\Models\Vaccination;
+use App\Models\VaccinationSubmission;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\DB;
-use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Support\Facades\Auth;
-use App\Models\VaccinationSubmission;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class ParentController extends Controller
 {
+    public function __construct(
+        private Product      $product,
+        private Order        $order,
+        private Category     $category,
+        private Seller       $seller,
+        private Review       $review,
+        private DealOfTheDay $deal_of_the_day,
+        private Banner       $banner,
+        private MostDemanded $most_demanded,
+    )
+    {
+    }
     /**
      * Display a listing of the resource.
      */
@@ -38,10 +59,25 @@ class ParentController extends Controller
     {
         return view(VIEW_FILE_NAMES['parenting']);
     }
+    
+
+
     public function parentuser()
     {
-        return view(VIEW_FILE_NAMES['parenting-user']);
+        
+        $theme_name = theme_root_path();
+        $main_banner = $this->banner->where(['banner_type'=>'Main Banner', 'theme'=>$theme_name, 'published'=> 1])->latest()->get();
+        $main_section_banner = $this->banner->where(['banner_type'=> 'Main Section Banner', 'theme'=>$theme_name, 'published'=> 1])->orderBy('id', 'desc')->latest()->first();
+       
+        return view(VIEW_FILE_NAMES['parenting-user'],
+        
+            compact(
+                'main_section_banner', 'main_banner',
+            )
+        );
+        
     }
+
     /**
      * Show the form for creating a new resource.
      */
