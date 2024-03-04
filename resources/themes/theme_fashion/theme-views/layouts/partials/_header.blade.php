@@ -930,12 +930,10 @@
                     </a>
 
                 </li> --}}
-
-
-                <a href="http://parenting.localhost"></a>
+                
                 @auth('customer')
                     <li class="me-2 me-sm-0">
-                        <a href="http://parenting.bachay.com" class="drp-btn active"
+                        <a href="{{ url('/parenting-user') }}" class="drp-btn active"
                             style="margin-left: -15px; !important">
                             <img class="align-items-center" src="{{ asset('public/images/heartgif.gif') }}"
                                 alt="" width="40px" height="40px">
