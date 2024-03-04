@@ -66,6 +66,7 @@ return [
     'articles' => 'theme-views.articles.articles',
     'article-category' => 'theme-views.articles.article_category',
     'parenting' => 'theme-views.parenting.parentingTools',
+    'parenting-user' => 'theme-views.parenting.parenting-user' ,
     'user_coupons' => 'theme-views.users-profile.coupons',
     'pay_offline_method_list_partials' => 'theme-views.partials._pay_offline_method_list_fields',
     'digital_product_order_otp_verify' => 'theme-views.layouts.partials.modal._digital-product-order-otp-verify',

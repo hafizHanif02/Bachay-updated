@@ -52,6 +52,20 @@ Route::group(['namespace' => 'Web', 'middleware' => ['maintenance_mode', 'guestC
 });
 
 Route::get('parenting', 'ParentController@parenting_tools')->name('parenting');
+
+Route::domain('parenting.bachay.com')->group(function () {
+    Route::get('/', 'ParentController@parentuser')->name('parenting-user');
+});
+
+Route::get('/', function () {
+    if (auth()->check()) {
+        return redirect()->route('parenting-user');
+    } else {
+        return redirect()->route('parenting');
+    }
+});
+
+
 Route::get('article/{id}', 'ArticleController@article')->name('article');
 Route::get('articles', 'ArticleController@articles')->name('articles');
 Route::get('article/category/{id}', 'ArticleController@CategoryArticle')->name('articles.category');

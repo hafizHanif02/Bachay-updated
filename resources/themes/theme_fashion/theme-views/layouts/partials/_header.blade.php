@@ -3,10 +3,12 @@
         .sub-nav li:nth-child(n + 8) {
             display: none;
         }
-        .sub-nav>li>a{
+
+        .sub-nav>li>a {
             font-size: 10px !important;
         }
-        .sub-nav.sub-nav-media-query{
+
+        .sub-nav.sub-nav-media-query {
             padding-left: 2.714286rem !important;
             padding-right: 2.214286rem !important;
         }
@@ -16,10 +18,12 @@
         .sub-nav li:nth-child(n + 9) {
             display: none;
         }
-        .sub-nav>li>a{
+
+        .sub-nav>li>a {
             font-size: 10px !important;
         }
-        .sub-nav.sub-nav-media-query{
+
+        .sub-nav.sub-nav-media-query {
             padding-left: 7.414286rem !important;
             padding-right: 6.914286rem !important;
         }
@@ -29,13 +33,15 @@
         .sub-nav li:nth-last-child(2) {
             display: none;
         }
-        .sub-nav.sub-nav-media-query{
+
+        .sub-nav.sub-nav-media-query {
             padding-left: 5.3rem !important;
             padding-right: 5rem !important;
         }
     }
-    @media (min-width: 1200px) and (max-width: 1399px){
-        .sub-nav.sub-nav-media-query{
+
+    @media (min-width: 1200px) and (max-width: 1399px) {
+        .sub-nav.sub-nav-media-query {
             padding-left: 3.514286rem !important;
             padding-right: 4.214286rem !important;
         }
@@ -367,17 +373,17 @@
                         </li>
                     @endauth
                     @auth('customer')
-                    <li>
-                        <a href="javascript:" class="customer_child_modal nav-ul_text">
-                            Switch User
-                            <?php
-                            $childs = App\Models\FamilyRelation::where('user_id',auth('customer')->id())->get();
-                            ?>
-                            
-                        </a>
-                    </li>
+                        <li>
+                            <a href="javascript:" class="customer_child_modal nav-ul_text">
+                                Switch User
+                                <?php
+                                $childs = App\Models\FamilyRelation::where('user_id', auth('customer')->id())->get();
+                                ?>
+
+                            </a>
+                        </li>
                     @endauth
-                    
+
                     @if ($web_config['business_mode'] == 'multi')
                         <li>
                             <a href="{{ route('vendors') }}"
@@ -579,12 +585,13 @@
                     @endif
                     <li class="me-2 me-sm-0">
                         <a href="javascript:" class="switchuser">
-                            
+
                             <span
                                 class="mx-1 d-none d-md-block nav-ul_text
                             ">{{ translate('Switch User') }}</span>
                         </a>
                     </li>
+
                     {{-- darkMode-switcher  --}}
                     {{-- <div class="darkLight-switcher d-none d-xl-block">
                         <button type="button" title="{{ translate('Dark_Mode') }}" class="dark_button">
@@ -617,7 +624,8 @@
     <div class="nav-btn mt-3" id="mega-menu" class="hide-on-med-and-down"
         style="background-image: url('{{ asset('public/images/top-offer-bg.png') }}');">
         <div class="bg_mega_menu">
-            <ul class="container-xxl sub-nav sub-nav-media-query d-flex justify-content-between align-items-center mb-0">
+            <ul
+                class="container-xxl sub-nav sub-nav-media-query d-flex justify-content-between align-items-center mb-0">
                 <li>
                     <a href="#" class="all_categories">
                         <img src="{{ asset('public/images/Union.png') }}" alt="" width="15px"
@@ -765,7 +773,8 @@
                         </div>
                     </div>
                 </li>
-                <li> <a href="{{ route('products', ['data_from' => 'discounted', 'page' => 1]) }}" class="drp-btn active">
+                <li> <a href="{{ route('products', ['data_from' => 'discounted', 'page' => 1]) }}"
+                        class="drp-btn active">
 
                         <img class="align-items-center mb-2 me-1" src="{{ asset('public/images/fire.gif') }}"
                             alt="" width="17px" height="24px"> <span style="color: #ff6b00; ">Hot
@@ -912,7 +921,7 @@
                         </div>
                     </div> --}}
                 </li>
-                <li> <a href="{{ url('/parenting') }}" class="drp-btn active"
+                {{-- <li> <a href="{{ url('/parenting') }}" class="drp-btn active"
                         style="margin-left: -15px; !important">
 
                         <img class="align-items-center" src="{{ asset('public/images/heartgif.gif') }}"
@@ -920,7 +929,30 @@
                             style="color: #ff6f92; margin-left: -6px;">Parenting</span>
                     </a>
 
-                </li>
+                </li> --}}
+
+
+                <a href="http://parenting.localhost"></a>
+                @auth('customer')
+                    <li class="me-2 me-sm-0">
+                        <a href="http://parenting.bachay.com" class="drp-btn active"
+                            style="margin-left: -15px; !important">
+                            <img class="align-items-center" src="{{ asset('public/images/heartgif.gif') }}"
+                                alt="" width="40px" height="40px">
+                            <span style="color: #ff6f92; margin-left: -6px;">Parenting</span>
+                        </a>
+                    </li>
+                @else
+                    <li>
+                        <a href="{{ url('/parenting') }}" class="drp-btn active" style="margin-left: -15px; !important">
+                            <img class="align-items-center" src="{{ asset('public/images/heartgif.gif') }}"
+                                alt="" width="40px" height="40px">
+                            <span style="color: #ff6f92; margin-left: -6px;">Parenting</span>
+                        </a>
+                    </li>
+                @endauth
+
+
                 <li> <a href="#" class="drp-btn active" style="margin-left: -15px; !important">
 
                         <img class="align-items-center" src="{{ asset('public/images/book.gif') }}" alt=""

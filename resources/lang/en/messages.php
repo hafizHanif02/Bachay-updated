@@ -7248,4 +7248,6 @@
   'menu' => 'Menu',
   '3XXXXXXXXX' => '3XXXXXXXXX',
   'Switch User' => 'Switch User',
+  'parenting-user' => 'Parenting-user',
+  'Parenting' => 'Parenting',
 );

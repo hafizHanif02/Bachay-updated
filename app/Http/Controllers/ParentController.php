@@ -38,6 +38,10 @@ class ParentController extends Controller
     {
         return view(VIEW_FILE_NAMES['parenting']);
     }
+    public function parentuser()
+    {
+        return view(VIEW_FILE_NAMES['parenting-user']);
+    }
     /**
      * Show the form for creating a new resource.
      */
