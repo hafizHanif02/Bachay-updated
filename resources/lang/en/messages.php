@@ -7251,5 +7251,5 @@
   'parenting-user' => 'Parenting-user',
   'Parenting' => 'Parenting',
   'Phone or Email has not properly entered' => 'Phone or Email has not properly entered',
-  'cash on delivery' => 'Cash on delivery',
+  'vendor details' => 'Vendor details',
 );
