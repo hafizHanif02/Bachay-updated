@@ -239,19 +239,27 @@
                     </div>
                     <div class="form--check">
                         <label class="form--check-inner brand_class_for_tag_gender">
-                            <input type="checkbox" name="gender[]"
+                            <input type="checkbox" 
+                            @if(isset($genders))
+                            {{ $genders == 'male' ? 'checked' : '' }}
+                            @endif
+                            name="gender[]"
                                    value="male" >
                             <span class="check-icon"><i class="bi bi-check"></i></span>
-                            <span class="form-check-label">Male</span>
+                            <span class="form-check-label">Boy</span>
                             {{-- <span class="badge badge-soft-base ms-auto">{{ (isset($gender->count)?$gender->count:$gender->gender_products_count) ?? 0 }}</span> --}}
                         </label>
                     </div>
                     <div class="form--check">
                         <label class="form--check-inner brand_class_for_tag_gender">
-                            <input type="checkbox" name="gender[]"
+                            <input type="checkbox"
+                            @if(isset($genders))
+                            {{ $genders == 'female' ? 'checked' : '' }}
+                            @endif
+                            name="gender[]"
                                    value="female" >
                             <span class="check-icon"><i class="bi bi-check"></i></span>
-                            <span class="form-check-label">Female</span>
+                            <span class="form-check-label">Girl</span>
                             {{-- <span class="badge badge-soft-base ms-auto">{{ (isset($gender->count)?$gender->count:$gender->gender_products_count) ?? 0 }}</span> --}}
                         </label>
                     </div>

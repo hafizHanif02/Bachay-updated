@@ -285,6 +285,7 @@ class LoginController extends Controller
     public function logout(Request $request)
     {
         auth()->guard('customer')->logout();
+        session()->forget('switch_user');
         session()->forget('wish_list');
         Toastr::info(translate('come_back_soon').'!');
         return redirect()->route('home');
@@ -298,15 +299,7 @@ class LoginController extends Controller
         ]);
     }
 
-    public function get_child(Request $request)
-    {
-        dd(auth()->guard('customer')->user()->id);
-        $childs = FamilyRelation::where('user_id',auth()->guard('customer')->user()->id)->first();
-        return response()->json([
-            'child_modal' => view(VIEW_FILE_NAMES['get_child_modal'])->render(),
-            'childs' => $childs
-        ]);
-    }
+    
 
 
 }

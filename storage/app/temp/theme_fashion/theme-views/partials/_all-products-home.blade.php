@@ -91,7 +91,6 @@
 
                     <div id="ajax_products_section">
                         @include('theme-views.product._ajax-products',['products'=>$all_products,'page'=>1,])
-
                         @php($paginate_count = $all_products->total() > 20 ? ceil($all_products->total()/20) : 1)
                         @php($page = 1)
                         @if($all_products->total() > 20)

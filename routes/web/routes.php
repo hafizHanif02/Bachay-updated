@@ -1,30 +1,31 @@
 <?php
 
-use App\Enums\ViewPaths\Web\ProductCompare;
-use App\Enums\ViewPaths\Web\ShopFollower;
-use App\Http\Controllers\Web\ProductCompareController;
-use App\Http\Controllers\Web\Shop\ShopFollowerController;
-use Illuminate\Support\Facades\Route;
 use App\Enums\ViewPaths\Web\Pages;
 use App\Enums\ViewPaths\Web\Review;
+use Illuminate\Support\Facades\Route;
 use App\Enums\ViewPaths\Web\UserLoyalty;
-use App\Http\Controllers\Web\CurrencyController;
+use App\Enums\ViewPaths\Web\ShopFollower;
+use App\Enums\ViewPaths\Web\ProductCompare;
 use App\Http\Controllers\Web\PageController;
 use App\Http\Controllers\Web\ReviewController;
+use App\Http\Controllers\Web\CurrencyController;
 use App\Http\Controllers\Web\UserLoyaltyController;
-use App\Http\Controllers\Payment_Methods\SslCommerzPaymentController;
-use App\Http\Controllers\Payment_Methods\StripePaymentController;
-use App\Http\Controllers\Payment_Methods\PaymobController;
-use App\Http\Controllers\Payment_Methods\FlutterwaveV3Controller;
+use App\Http\Controllers\Web\UserProfileController;
+use App\Http\Controllers\Web\ProductCompareController;
 use App\Http\Controllers\Payment_Methods\PaytmController;
-use App\Http\Controllers\Payment_Methods\PaypalPaymentController;
-use App\Http\Controllers\Payment_Methods\PaytabsController;
+use App\Http\Controllers\Web\Shop\ShopFollowerController;
 use App\Http\Controllers\Payment_Methods\LiqPayController;
+use App\Http\Controllers\Payment_Methods\PaymobController;
+use App\Http\Controllers\Payment_Methods\PaytabsController;
+use App\Http\Controllers\Payment_Methods\PaystackController;
 use App\Http\Controllers\Payment_Methods\RazorPayController;
 use App\Http\Controllers\Payment_Methods\SenangPayController;
 use App\Http\Controllers\Payment_Methods\MercadoPagoController;
 use App\Http\Controllers\Payment_Methods\BkashPaymentController;
-use App\Http\Controllers\Payment_Methods\PaystackController;
+use App\Http\Controllers\Payment_Methods\FlutterwaveV3Controller;
+use App\Http\Controllers\Payment_Methods\PaypalPaymentController;
+use App\Http\Controllers\Payment_Methods\StripePaymentController;
+use App\Http\Controllers\Payment_Methods\SslCommerzPaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -138,6 +139,12 @@ Route::group(['namespace' => 'Web', 'middleware' => ['maintenance_mode', 'guestC
     // // end theme_aster compare list
     Route::get('searched-products-for-compare', 'WebController@searched_products_for_compare_list')->name('searched-products-compare'); // theme fashion compare list
 
+
+    // SWITCH USER
+    if(Auth::guard('customer')){
+        Route::get('switch-user', [UserProfileController::class,'get_child'])->name('switch-user');
+        Route::get('switch_child/{id}', [UserProfileController::class,'switchChild'])->name('switch_child');
+    }
     //profile Route
     Route::get('user-profile', 'UserProfileController@user_profile')->name('user-profile')->middleware('customer'); //theme_aster
     Route::get('user-account', 'UserProfileController@user_account')->name('user-account')->middleware('customer');

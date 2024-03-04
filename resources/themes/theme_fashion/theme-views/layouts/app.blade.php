@@ -35,6 +35,23 @@
         type="image/x-icon" />
 
     @stack('css_or_js')
+    @if((session('switch_user')))
+    <?php $child = session('switch_user'); ?>
+        @if($child['gender'] == 'male')
+        <style>
+            body {
+                background-color: rgb(221, 240, 248) !important;
+            }
+        </style>    
+        @endif
+        @if($child['gender'] == 'female')
+        <style>
+            body {
+                background-color: rgb(251, 237, 239) !important;
+            }
+        </style>
+        @endif
+    @endif
 
     <style>
         :root {
@@ -200,10 +217,11 @@
 
     @include('theme-views.layouts.partials._footer')
 
-
-    <span id="switch-user" data-route="{{ route('customer.auth.switch-user') }}"></span>
+    @auth('customer')
+        <span id="switch-user" data-route="{{ route('switch-user') }}"></span>
+    @endauth
     <span id="get-login-modal-data" data-route="{{ route('customer.auth.get-login-modal-data') }}"></span>
-    <span id="get-child" data-route="{{ route('customer.auth.get-child') }}"></span>
+    {{-- <span id="get-child" data-route="{{ route('customer.auth.get-child') }}"></span> --}}
     <span id="get-current-route-name" data-route="{{ Route::currentRouteName() }}"></span>
     <span id="update_nav_cart_url" data-url="{{ route('cart.nav-cart') }}"></span>
     <span id="update_floating_nav_cart_url" data-url="{{ route('cart.floating-nav-cart-items') }}"></span>
