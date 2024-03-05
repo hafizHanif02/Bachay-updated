@@ -24,7 +24,7 @@
                             <input type="text" class="form-control" name="user_id" id="login_email"
                                 value="{{ old('user_id') }}"
                                 placeholder="{{ translate('enter_email_or_phone_number') }}" required>
-                                <small>Your phone format will be 923XXXXXXXXX</small>
+                            <small>Your phone format will be 923XXXXXXXXX</small>
                         </div>
                         {{-- <div class="col-sm-12">
                         <label class="form-label form--label" for="login_password">{{ translate('password') }}</label>
@@ -222,11 +222,17 @@
             if (inputValue.charAt(0) === '0') {
                 inputValue = '92' + inputValue.substring(1);
             }
-
+            // Add '92' automatically if number starts with '3' and has 10 digits
+            else if (inputValue.startsWith('3') && inputValue.length === 10) {
+                inputValue = '92' + inputValue;
+            }
+            // If '+' occurs at the beginning and input is numeric, remove '+' when numeric part reaches length 10
+            else if (inputValue.startsWith('+') && /^\d{10}$/.test(inputValue.substring(1))) {
+                inputValue = inputValue.substring(1); // Remove the '+' prefix
+            }
             console.log('Number input:', inputValue);
         }
 
-        // Your existing logic here...
         // Requirement 2: Validate input start
         let startsWithValid = false;
         let firstChar = inputValue.charAt(0);
