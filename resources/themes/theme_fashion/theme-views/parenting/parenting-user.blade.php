@@ -41,7 +41,7 @@
         height: 90vh;
         overflow-y: auto;
         position: sticky;
-        top: 10px;
+        top: 30px;
     }
     /* scroll color for parenting child */
     .child-container::-webkit-scrollbar-track {
@@ -158,7 +158,7 @@
 
     </section>
 
-    <div class="container mt-5 d-flex justify-content-between">
+    <div class="container mt-5 d-flex justify-content-between pb-5">
 
         <div class="video-container">
             <h3 class="mb-4 video_heading">Videos you might be interested in</h3>

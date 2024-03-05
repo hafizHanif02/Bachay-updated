@@ -273,6 +273,12 @@
     .parenitng-option {
         margin: 15px 0 0 0;
     }
+    .dropbtn:hover {
+        color: #845dc2 !important;
+    }
+    li a:hover{
+        color: #845dc2 !important;
+    }
 </style>
 @if (isset($web_config['announcement']) && $web_config['announcement']['status'] == 1)
     <div class="offer-bar" data-bg-img="{{ theme_asset('assets/img/media/top-offer-bg.png') }}">
@@ -399,12 +405,14 @@
             <div class="menu-area text-capitalize">
                 <ul class="menu me-xl-2 font-poppins">
                     <li>
-                        <a href="{{ route('home') }}" class="nav-ul_text"> <img src="{{ asset('public/images/shopping.gif') }}" alt="" width="30px" height="30px"> {{ translate('Shopping') }}</a>
+                        <a href="{{ route('home') }}" class="nav-ul_text" style="color: #6D3CF7 !important;">
+                            <img src="{{ asset('public/images/shopping.gif') }}" alt="" width="30px"
+                                height="30px"> {{ translate('Shopping') }}</a>
                     </li>
                     <li>
-                        <a href="#"
-                            class="nav-ul_text" style="color: #a866ed !important;">
-                            <img class="align-items-center" src="http://localhost/public/images/book.gif" alt="" width="22px" height="22px">
+                        <a href="#" class="nav-ul_text" style="color: #a866ed !important;">
+                            <img class="align-items-center" src="http://localhost/public/images/book.gif" alt=""
+                                width="22px" height="22px">
                             {{ translate('Education') }}
                         </a>
                     </li>
@@ -419,8 +427,8 @@
                         </li>
                     @endauth
 
-                
-                    
+
+
 
 
 
@@ -493,7 +501,7 @@
                             </a>
                         </li>
                     @endif
-                    
+
 
                     {{-- darkMode-switcher  --}}
                     {{-- <div class="darkLight-switcher d-none d-xl-block">
@@ -525,15 +533,15 @@
         </div>
     </div>
 
-    <div class="parenitng-option d-none d-xl-block" style="background-image: url('http://localhost/public/images/top-offer-bg.png');">
+    <div class="parenitng-option d-none d-xl-block"
+        style="background-image: url('http://localhost/public/images/top-offer-bg.png');">
         <div class="container con">
             <div class="parenting-drpdown-con">
                 <div class="parenting-drpdown">
                     <a href="#" class="dropbtn">Pregnancy <i class="bi bi-chevron-down"></i></a>
                     <ul class="parenting-drpdown-content">
-                        <li><a href="#">parenting-drpdown Item 1-1</a></li>
-                        <li><a href="#">parenting-drpdown Item 1-2</a></li>
-                        <li><a href="#">parenting-drpdown Item 1-3</a></li>
+                        <li><a href="#">Getting pregnant</a></li>
+                        <li><a href="#">paregnancy</a></li>
                     </ul>
                 </div>
             </div>
@@ -542,9 +550,8 @@
                 <div class="parenting-drpdown">
                     <a href="#" class="dropbtn">Baby & Toddler <i class="bi bi-chevron-down"></i></a>
                     <ul class="parenting-drpdown-content">
-                        <li><a href="#">parenting-drpdown Item 2-1</a></li>
-                        <li><a href="#">parenting-drpdown Item 2-2</a></li>
-                        <li><a href="#">parenting-drpdown Item 2-3</a></li>
+                        <li><a href="#">Baby</a></li>
+                        <li><a href="#">Toddler</a></li>
                     </ul>
                 </div>
             </div>
@@ -552,9 +559,8 @@
                 <div class="parenting-drpdown">
                     <a href="#" class="dropbtn">Preschooler & Kid <i class="bi bi-chevron-down"></i></a>
                     <ul class="parenting-drpdown-content">
-                        <li><a href="#">parenting-drpdown Item 1-1</a></li>
-                        <li><a href="#">parenting-drpdown Item 1-2</a></li>
-                        <li><a href="#">parenting-drpdown Item 1-3</a></li>
+                        <li><a href="#">Preschooler</a></li>
+                        <li><a href="#">Big kid</a></li>
                     </ul>
                 </div>
             </div>
@@ -563,9 +569,12 @@
                 <div class="parenting-drpdown">
                     <a href="#" class="dropbtn">Magazine <i class="bi bi-chevron-down"></i></a>
                     <ul class="parenting-drpdown-content">
-                        <li><a href="#">parenting-drpdown Item 2-1</a></li>
-                        <li><a href="#">parenting-drpdown Item 2-2</a></li>
-                        <li><a href="#">parenting-drpdown Item 2-3</a></li>
+                        <li><a href="#">Beauty & Fashion</a></li>
+                        <li><a href="#">Health & Wellness
+                        <li><a href="#">Entertainment</a></li>
+                        <li><a href="#">Relationships</a></li>
+                        <li><a href="#">Life & Work</a></li>
+                        <li><a href="#">Recipes</a></li>
                     </ul>
                 </div>
             </div>
@@ -573,9 +582,15 @@
                 <div class="parenting-drpdown">
                     <a href="#" class="dropbtn">Tools <i class="bi bi-chevron-down"></i></a>
                     <ul class="parenting-drpdown-content">
-                        <li><a href="#">parenting-drpdown Item 1-1</a></li>
-                        <li><a href="#">parenting-drpdown Item 1-2</a></li>
-                        <li><a href="#">parenting-drpdown Item 1-3</a></li>
+                        <li><a href="#">Expert Panel</a></li>
+                        <li><a href="#">Discussions</a></li>
+                        <li><a href="#">Contest & Winners</a></li>
+                        <li><a href="#">Groups</a></li>
+                        <li><a href="#">Videos</a></li>
+                        <li><a href="#">Memories</a></li>
+                        <li><a href="#"> Quiz</a></li>
+                        <li><a href="#">Parenting Tools</a></li>
+                        <li><a href="#">Pregnancy Tools</a></li>
                     </ul>
                 </div>
             </div>
@@ -583,42 +598,22 @@
             <div class="parenting-drpdown-con">
                 <div class="parenting-drpdown">
                     <a href="#" class="dropbtn">Baby Names</a>
-                    <ul class="parenting-drpdown-content">
-                        <li><a href="#">parenting-drpdown Item 2-1</a></li>
-                        <li><a href="#">parenting-drpdown Item 2-2</a></li>
-                        <li><a href="#">parenting-drpdown Item 2-3</a></li>
-                    </ul>
                 </div>
             </div>
             <div class="parenting-drpdown-con">
                 <div class="parenting-drpdown">
                     <a href="#" class="dropbtn">Q&A</a>
-                    <ul class="parenting-drpdown-content">
-                        <li><a href="#">parenting-drpdown Item 1-1</a></li>
-                        <li><a href="#">parenting-drpdown Item 1-2</a></li>
-                        <li><a href="#">parenting-drpdown Item 1-3</a></li>
-                    </ul>
                 </div>
             </div>
 
             <div class="parenting-drpdown-con">
                 <div class="parenting-drpdown">
                     <a href="#" class="dropbtn">Coloring Pages</a>
-                    <ul class="parenting-drpdown-content">
-                        <li><a href="#">parenting-drpdown Item 2-1</a></li>
-                        <li><a href="#">parenting-drpdown Item 2-2</a></li>
-                        <li><a href="#">parenting-drpdown Item 2-3</a></li>
-                    </ul>
                 </div>
             </div>
             <div class="parenting-drpdown-con">
                 <div class="parenting-drpdown">
                     <a href="#" class="dropbtn">Shop</a>
-                    <ul class="parenting-drpdown-content">
-                        <li><a href="#">parenting-drpdown Item 1-1</a></li>
-                        <li><a href="#">parenting-drpdown Item 1-2</a></li>
-                        <li><a href="#">parenting-drpdown Item 1-3</a></li>
-                    </ul>
                 </div>
             </div>
 
