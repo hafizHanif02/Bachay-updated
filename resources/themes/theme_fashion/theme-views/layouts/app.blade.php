@@ -217,9 +217,9 @@
 
     @include('theme-views.layouts.partials._footer')
 
-    @auth('customer')
+    {{-- @auth('customer') --}}
         <span id="switch-user" data-route="{{ route('switch-user') }}"></span>
-    @endauth
+    {{-- @endauth --}}
     <span id="get-login-modal-data" data-route="{{ route('customer.auth.get-login-modal-data') }}"></span>
     {{-- <span id="get-child" data-route="{{ route('customer.auth.get-child') }}"></span> --}}
     <span id="get-current-route-name" data-route="{{ Route::currentRouteName() }}"></span>

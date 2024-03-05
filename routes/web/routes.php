@@ -141,10 +141,10 @@ Route::group(['namespace' => 'Web', 'middleware' => ['maintenance_mode', 'guestC
 
 
     // SWITCH USER
-    if(Auth::guard('customer')){
+    // if(Auth::guard('customer')){
         Route::get('switch-user', [UserProfileController::class,'get_child'])->name('switch-user');
         Route::get('switch_child/{id}', [UserProfileController::class,'switchChild'])->name('switch_child');
-    }
+    // }
     //profile Route
     Route::get('user-profile', 'UserProfileController@user_profile')->name('user-profile')->middleware('customer'); //theme_aster
     Route::get('user-account', 'UserProfileController@user_account')->name('user-account')->middleware('customer');
