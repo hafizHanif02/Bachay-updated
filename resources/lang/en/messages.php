@@ -7254,4 +7254,5 @@
   'vendor_details' => 'Vendor details',
   'Shopping' => 'Shopping',
   'Education' => 'Education',
+  'female' => 'Female',
 );

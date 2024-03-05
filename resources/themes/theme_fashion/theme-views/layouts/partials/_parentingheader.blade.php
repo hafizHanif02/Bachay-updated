@@ -403,7 +403,10 @@
                     </li>
                     <li>
                         <a href="#"
-                            class="nav-ul_text">{{ translate('Education') }}</a>
+                            class="nav-ul_text" style="color: #a866ed !important;">
+                            <img class="align-items-center" src="http://localhost/public/images/book.gif" alt="" width="22px" height="22px">
+                            {{ translate('Education') }}
+                        </a>
                     </li>
 
                     @auth('customer')
