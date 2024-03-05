@@ -16,6 +16,7 @@
         content="{{ substr(strip_tags(str_replace('&nbsp;', ' ', $web_config['about']->value)), 0, 160) }}">
 @endpush
 <style>
+    
     iframe{
         border-radius: 20px;
     }
@@ -25,9 +26,66 @@
         border: 1px solid #ebeaea;
         width: 60%;
     }
-    .video_heading{
+    .child-container{
+        width: 38%;
+        border: 1px solid #ebeaea;
+        border-radius: 20px;
+        padding: 10px 30px;
+        padding-bottom: 0;
+    background-image: url(https://cdn.cdnparenting.com/brainbees/community/preact/public/media/Personalization_BG.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-origin: content-box;
+    background-position: bottom;
+    height: 90vh;
+    overflow-y: auto;
+    }
+    .video_heading , .child-heading , .child-heading{
         font-family: 'poppins';
     }
+    .baby_circle_child{
+        width: 70px;
+    height: 70px;
+    float: left;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+    }
+    .child-img{
+        max-width: 100%;
+    }
+
+@media screen and (min-width: 1024px) and (max-width: 1199px) {
+  /* Styles for larger tablets, laptops, and desktops */
+  .video-container{
+    width: 100%;
+  }
+  
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  /* Styles for tablets and small laptops */
+  .video-container{
+    width: 100%;
+    padding: 0;
+
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  /* Styles for phones and small tablets */
+  .video-container{
+    width: 100%;
+    padding: 0;
+    border: none;
+  }
+  iframe{
+        height: 280px;
+    }
+}
+
+
 </style>
 
 @section('content')
@@ -81,28 +139,119 @@
 
 </section>
 
-<div class="container mt-5">
+<div class="container mt-5 d-flex justify-content-between">
     
-    <div class="video-container">
-        <h3 class="mb-4 video_heading">Videos you might be interested in</h3>
-        <iframe width="100%" height="400" src="https://www.youtube.com/embed/tgbNymZ7vqY">
-        </iframe>
-        <h3 class="mb-4 mt-4 video_heading">Videos you might be interested in</h3>
-        <iframe width="100%" height="400" src="https://www.youtube.com/embed/tgbNymZ7vqY">
-        </iframe>
-        <h3 class="mb-4 mt-4 video_heading">Videos you might be interested in</h3>
+        <div class="video-container">
+            <h3 class="mb-4 video_heading">Videos you might be interested in</h3>
+            <iframe width="100%" height="400" src="https://www.youtube.com/embed/tgbNymZ7vqY">
+            </iframe>    
+            <h3 class="mb-4 mt-4 video_heading">Videos you might be interested in</h3>
+            <iframe width="100%" height="400" src="https://www.youtube.com/embed/tgbNymZ7vqY">
+            </iframe>
+            <h3 class="mb-4 mt-4 video_heading">Videos you might be interested in</h3>
+    
+            <iframe width="100%" height="400" src="https://www.youtube.com/embed/tgbNymZ7vqY">
+            </iframe>
+            <h3 class="mb-4 mt-4 video_heading">Videos you might be interested in</h3>
+    
+            <iframe width="100%" height="400" src="https://www.youtube.com/embed/tgbNymZ7vqY">
+            </iframe>
+            <h3 class="mb-4 mt-4 video_heading">Videos you might be interested in</h3>
+    
+            <iframe width="100%" height="400" src="https://www.youtube.com/embed/tgbNymZ7vqY">
+            </iframe>
+        </div>
+        <div class="child-container">
+            <h3 class="text-center child-heading">
+                Tell us more about yourself get More Personalised 
+            </h3>
+            <div class="d-flex align-items-center gap-3 mt-4 mb-4">
+                <div class="baby_circle_child">
+                    <img class="child-img" src="{{ asset('public/images/01-Infant.jpg') }}" alt="">
 
-        <iframe width="100%" height="400" src="https://www.youtube.com/embed/tgbNymZ7vqY">
-        </iframe>
-        <h3 class="mb-4 mt-4 video_heading">Videos you might be interested in</h3>
+                </div>
+                <div>
+                    <h3 class="child-heading">
+                        Infant  
+                    </h3>
+                    <p class="m-0">
+                        0 to 6 Months 
+                    </p>
+                </div>
+            </div>
+            <div class="d-flex align-items-center gap-3 mb-4">
+                <div class="baby_circle_child">
+                    <img class="child-img" src="{{ asset('public/images/01-Infant.jpg') }}" alt="">
 
-        <iframe width="100%" height="400" src="https://www.youtube.com/embed/tgbNymZ7vqY">
-        </iframe>
-        <h3 class="mb-4 mt-4 video_heading">Videos you might be interested in</h3>
+                </div>
+                <div>
+                    <h3 class="child-heading">
+                        Infant  
+                    </h3>
+                    <p class="m-0">
+                        0 to 6 Months 
+                    </p>
+                </div>
+            </div>
+            <div class="d-flex align-items-center gap-3 mb-4">
+                <div class="baby_circle_child">
+                    <img class="child-img" src="{{ asset('public/images/01-Infant.jpg') }}" alt="">
 
-        <iframe width="100%" height="400" src="https://www.youtube.com/embed/tgbNymZ7vqY">
-        </iframe>
-    </div>
+                </div>
+                <div>
+                    <h3 class="child-heading">
+                        Infant  
+                    </h3>
+                    <p class="m-0">
+                        0 to 6 Months 
+                    </p>
+                </div>
+            </div>
+            <div class="d-flex align-items-center gap-3 mb-4">
+                <div class="baby_circle_child">
+                    <img class="child-img" src="{{ asset('public/images/01-Infant.jpg') }}" alt="">
+
+                </div>
+                <div>
+                    <h3 class="child-heading">
+                        Infant  
+                    </h3>
+                    <p class="m-0">
+                        0 to 6 Months 
+                    </p>
+                </div>
+            </div>
+            <div class="d-flex align-items-center gap-3 mb-4">
+                <div class="baby_circle_child">
+                    <img class="child-img" src="{{ asset('public/images/01-Infant.jpg') }}" alt="">
+
+                </div>
+                <div>
+                    <h3 class="child-heading">
+                        Infant  
+                    </h3>
+                    <p class="m-0">
+                        0 to 6 Months 
+                    </p>
+                </div>
+            </div>
+            <div class="d-flex align-items-center gap-3 mb-4">
+                <div class="baby_circle_child">
+                    <img class="child-img" src="{{ asset('public/images/01-Infant.jpg') }}" alt="">
+
+                </div>
+                <div>
+                    <h3 class="child-heading">
+                        Infant  
+                    </h3>
+                    <p class="m-0">
+                        0 to 6 Months 
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    
 </div>
 
 @endsection

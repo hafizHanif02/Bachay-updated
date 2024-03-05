@@ -530,7 +530,7 @@
         </div>
     </div>
 
-    <div class="parenitng-option" style="background-image: url('http://localhost/public/images/top-offer-bg.png');">
+    <div class="parenitng-option d-none d-xl-block" style="background-image: url('http://localhost/public/images/top-offer-bg.png');">
         <div class="container con">
             <div class="parenting-drpdown-con">
                 <div class="parenting-drpdown">
