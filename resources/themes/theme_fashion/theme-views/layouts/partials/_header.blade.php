@@ -381,6 +381,8 @@
                             ">{{ translate('Switch User') }}</span>
                         </a>
                     </li>
+
+                    
                     
 
                     {{-- @if ($web_config['business_mode'] == 'multi')
@@ -434,12 +436,12 @@
                             @endif
                         </ul>
                     </li> --}}
-                    @if ($web_config['brand_setting'])
+                    {{-- @if ($web_config['brand_setting'])
                         <li>
                             <a href="{{ route('brands') }}"
                                 class="{{ Request::is('brands') ? 'active' : '' }} nav-ul_text">{{ translate('brand') }}</a>
                         </li>
-                    @endif
+                    @endif --}}
                     {{-- <li>
                         <a href="{{ route('products', ['data_from' => 'discounted', 'page' => 1]) }}"
                             class="{{ request('data_from') == 'discounted' ? 'active' : '' }} nav-ul_text">
@@ -478,9 +480,44 @@
                             </a>
                         @endif
                     </li>
+
+
+                    
                     <li id="cart_items" class="d-none d-xl-block">
                         @include('theme-views.layouts.partials._cart')
                     </li>
+                    
+                    
+                    @if((session('switch_user')))
+                    <?php $child = session('switch_user'); ?>
+                    <li>
+                        <a href="javascript:" class="rounded  nav-ul_text">
+                            <img class="rounded-circle me-2" src="{{asset('public/assets/images/customers/child/'.$child->profile_picture)}}" alt="" width="20px"
+                                height="20px">
+                            {{ $child->name }}
+                        </a>
+                    </li>
+                    @endif
+                    
+                    @if((session('switch_female')))
+                    <li>
+                        <a href="javascript:" class="rounded  nav-ul_text">
+                            <img class="rounded-circle me-2" src="{{asset('public/images/girl.jpg')}}" alt="" width="20px"
+                                height="20px">
+                            Girl
+                        </a>
+                    </li>
+                    @endif
+
+                    @if((session('switch_male')))
+                    <li>
+                        <a href="javascript:" class="rounded  nav-ul_text">
+                            <img class="rounded-circle me-2" src="{{asset('public/images/boy.jpg')}}" alt="" width="20px"
+                                height="20px">
+                            Boy
+                        </a>
+                    </li>
+                    @endif
                     {{-- currency --}}
                     {{-- <li class="d-none d-sm-block">
                         <a href="javascript:">

@@ -144,6 +144,9 @@ Route::group(['namespace' => 'Web', 'middleware' => ['maintenance_mode', 'guestC
     // if(Auth::guard('customer')){
         Route::get('switch-user', [UserProfileController::class,'get_child'])->name('switch-user');
         Route::get('switch_child/{id}', [UserProfileController::class,'switchChild'])->name('switch_child');
+        Route::get('switch_male', [UserProfileController::class,'SwitchMale'])->name('switch_male');
+        Route::get('switch_female', [UserProfileController::class,'SwitchFemale'])->name('switch_female');
+        Route::get('unswitch', [UserProfileController::class,'Unswitch'])->name('unswitch');
     // }
     //profile Route
     Route::get('user-profile', 'UserProfileController@user_profile')->name('user-profile')->middleware('customer'); //theme_aster

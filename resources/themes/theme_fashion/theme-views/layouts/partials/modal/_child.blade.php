@@ -53,18 +53,20 @@
                                     </h3>
 
                             </div>
-                                <button class="btn btn-primary">Switch</button>
+                            <form action="{{ route('unswitch') }}" method="get">
+                                @csrf
+                                <button type="submit" class="btn btn-secondary">Switch</button>
+                            </form>
                             
                         </div>
                         @auth('customer')
                             <?php $childs = \App\Models\FamilyRelation::where('user_id', Auth::guard('customer')->user()->id)->get();
                             ?>
-                        @endauth
                         @foreach($childs as $child)
                         <?php $childDob = \Carbon\Carbon::parse($child->dob);
                         $diff = $childDob->diff(\Carbon\Carbon::now());
                         $formattedAge = '';
-                    
+                        
                         if ($diff->y > 0) {
                             $formattedAge .= $diff->y . 'Y';
                         }
@@ -81,8 +83,7 @@
                         <div class="d-flex align-items-center justify-content-between gap-3 mb-4">
                             <div class="d-flex align-items-center gap-2">
                                 <div class="baby_circle_child">
-                                    <img class="child-img" src="{{asset('public/assets/images/customers/child/'.$child->profile_picture)}}" alt="">
-                
+                                    <img class="child-img" src="{{asset('public/assets/images/customers/child/'.$child->profile_picture)}}" alt=""> 
                                 </div>
                                 <div>
                                     <h3 class="child-heading">
@@ -92,15 +93,53 @@
                                         Age: {{ $formattedAge }}
                                     </p>
                                 </div>
-
+                                
                             </div>
-                            
-                                <button class="btn btn-primary">Switch</button>
-                            
+                            <form action="{{ route('switch_child', $child->id) }}" method="get">
+                                @csrf
+                            <button class="btn btn-{{ $child->gender == 'male' ? 'primary' : 'custom-pink' }}">Switch</button>
+                            </form>
                         </div>
                         @endforeach
+                        @endauth
+                        @guest('customer')
+                        <div class="d-flex align-items-center justify-content-between gap-3 mt-4 mb-4">
+                            <div class="d-flex align-items-center gap-2">
+                                <div class="baby_circle_child">
+                                    <img class="child-img" src="{{ asset('public/images/boy.jpg') }}" alt="">
+                
+                                </div>
+                                
+                                    <h3 class="child-heading">
+                                        Boy
+                                    </h3>
+
+                            </div>
+                            <form action="{{ route('switch_male') }}" method="get">
+                                @csrf
+                                <button type="submit" class="btn btn-primary">Switch</button>
+                            </form>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-between gap-3 mt-4 mb-4">
+                            <div class="d-flex align-items-center gap-2">
+                                <div class="baby_circle_child">
+                                    <img class="child-img" src="{{ asset('public/images/girl.jpg') }}" alt="">
+                
+                                </div>
+                                
+                                    <h3 class="child-heading">
+                                        Girl
+                                    </h3>
+
+                            </div>
+                            <form action="{{ route('switch_female') }}" method="get">
+                                @csrf
+                                <button type="submit" class="btn btn-custom-pink">Switch</button>
+                            </form>
+                        </div>
+                        @endguest
                     </div>
-            </div>
+                </div>
         </div>
     </div>
 </div>

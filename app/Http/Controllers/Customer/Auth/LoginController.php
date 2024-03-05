@@ -286,6 +286,8 @@ class LoginController extends Controller
     {
         auth()->guard('customer')->logout();
         session()->forget('switch_user');
+        session()->forget('switch_male');
+        session()->forget('switch_female');
         session()->forget('wish_list');
         Toastr::info(translate('come_back_soon').'!');
         return redirect()->route('home');

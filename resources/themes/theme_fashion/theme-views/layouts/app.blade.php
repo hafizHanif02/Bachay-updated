@@ -53,6 +53,23 @@
         @endif
     @endif
 
+    @if((session('switch_male')))
+        <style>
+            body {
+                background-color: rgb(221, 240, 248) !important;
+            }
+        </style>    
+    @endif
+
+    @if((session('switch_female')))
+    <style>
+        body {
+            background-color: rgb(251, 237, 239) !important;
+        }
+    </style>    
+@endif
+    
+
     <style>
         :root {
             --base: {{ $web_config['primary_color'] }};
