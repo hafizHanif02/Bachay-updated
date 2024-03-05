@@ -447,12 +447,7 @@
                                     style="font-size: 16px !important"></i> --}}
                                 {{-- <i class="bi bi-person-circle d-xl-none nav-ul_text"
                                     style="font-size: 16px !important"></i> --}}
-                                <span class="rounded-circle" style="border: 1px solid #000; !important">
-                                    <img alt="#" class="rounded-circle"
-                                        src="{{ 'storage/app/public/profile/' . auth('customer')->user()->image }}"
-                                        width="30px" height="30px">
-
-                                </span>
+                                    <i class="bi bi-person-fill" style="color: #000"></i>
                                 <span
                                     class="mx-1 d-none d-md-block nav-ul_text">{{ auth('customer')->user()->f_name }}</span>
 

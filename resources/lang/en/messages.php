@@ -7255,4 +7255,6 @@
   'Shopping' => 'Shopping',
   'Education' => 'Education',
   'female' => 'Female',
+  'parent_banner' => 'Parent banner',
+  'parent_Banner' => 'Parent Banner',
 );
