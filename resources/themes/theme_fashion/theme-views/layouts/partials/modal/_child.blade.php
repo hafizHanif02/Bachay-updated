@@ -41,19 +41,20 @@
                             Switch User
                         </h3>
 
-                        <div class="d-flex align-items-center gap-3 mt-4 mb-4">
-                            <div class="baby_circle_child">
-                                <img class="child-img" src="{{ asset('public/images/all.jpg') }}" alt="">
-            
+                        <div class="d-flex align-items-center justify-content-between gap-3 mt-4 mb-4">
+                            <div class="d-flex align-items-center gap-2">
+                                <div class="baby_circle_child">
+                                    <img class="child-img" src="{{ asset('public/images/all.jpg') }}" alt="">
+                
+                                </div>
+                                
+                                    <h3 class="child-heading">
+                                        ALL
+                                    </h3>
+
                             </div>
-                            <div>
-                                <h3 class="child-heading">
-                                    ALL
-                                </h3>
-                                {{-- <p class="m-0">
-                                    0 to 6 Months 
-                                </p> --}}
-                            </div>
+                                <button class="btn btn-primary">Switch</button>
+                            
                         </div>
                         @auth('customer')
                             <?php $childs = \App\Models\FamilyRelation::where('user_id', Auth::guard('customer')->user()->id)->get();
