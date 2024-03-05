@@ -39,7 +39,8 @@ class BannerService
                 "Main Banner" => translate('main_Banner'),
                 "Popup Banner" => translate('popup_Banner'),
                 "Footer Banner" => translate('footer_Banner'),
-                "Main Section Banner" => translate('main_Section_Banner')
+                "Main Section Banner" => translate('main_Section_Banner'),
+                "Parent Banner" => translate('parent_Banner')
             ];
 
         }elseif (theme_root_path() == 'theme_aster') {
@@ -51,6 +52,7 @@ class BannerService
                 "Header Banner" => translate('header_Banner'),
                 "Sidebar Banner" => translate('sidebar_Banner'),
                 "Top Side Banner" => translate('top_Side_Banner'),
+                "Parent Banner" => translate('parent_Banner'),
             ];
         }elseif (theme_root_path() == 'theme_fashion') {
             $bannerTypes = [
@@ -61,6 +63,7 @@ class BannerService
                 "Promo Banner Middle Bottom" => translate('promo_banner_middle_bottom'),
                 "Promo Banner Right" => translate('promo_banner_right'),
                 "Promo Banner Bottom" => translate('promo_banner_bottom'),
+                "Parent Banner" => translate('parent_banner'),
             ];
         }
 
@@ -71,6 +74,7 @@ class BannerService
                 'Top Side Banner' => translate('top_Side_Banner'),
                 'Footer Banner' => translate('footer_Banner'),
                 'Popup Banner' => translate('popup_Banner'),
+                'Parent Banner' => translate('parent_Banner'),
             ];
             $bannerTypes = array_unique(array_merge($bannerTypes, $reactBanner));
         }
