@@ -372,7 +372,7 @@
                             </a>
                         </li>
                     @endauth
-                    @auth('customer')
+                    
                     <li class="me-2 me-sm-0">
                         <a href="javascript:" class="switchuser">
 
@@ -381,9 +381,9 @@
                             ">{{ translate('Switch User') }}</span>
                         </a>
                     </li>
-                    @endauth
+                    
 
-                    @if ($web_config['business_mode'] == 'multi')
+                    {{-- @if ($web_config['business_mode'] == 'multi')
                         <li>
                             <a href="{{ route('vendors') }}"
                                 class="{{ Request::is('vendors') ? 'active' : '' }} nav-ul_text">{{ translate('shops') }}</a>
@@ -395,7 +395,7 @@
                                     class="{{ Request::is('shop.apply') ? 'active' : '' }}">{{ translate('vendor_reg') . '.' }}</a>
                             </li>
                         @endif
-                    @endif
+                    @endif --}}
 
                     {{-- <li>
                         <a href="{{ route('home') }}" class="nav-ul_text">{{ translate('Support') }}</a>
