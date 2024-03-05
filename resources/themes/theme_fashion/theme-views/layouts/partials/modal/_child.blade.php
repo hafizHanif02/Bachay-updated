@@ -36,7 +36,7 @@
                         </form>
                         @endforeach
                     @endauth --}}
-                    <div class="child-container">
+                    <div class="child-container ps-3 pe-3">
                         <h3 class="text-center child-heading">
                             Switch User
                         </h3>
@@ -77,22 +77,25 @@
                             $formattedAge = 'New Born';
                         }
                         ?>
-                        <div class="d-flex align-items-center gap-3 mb-4">
-                            <div class="baby_circle_child">
-                                <img class="child-img" src="{{asset('public/assets/images/customers/child/'.$child->profile_picture)}}" alt="">
-            
+                        <div class="d-flex align-items-center justify-content-between gap-3 mb-4">
+                            <div class="d-flex align-items-center gap-2">
+                                <div class="baby_circle_child">
+                                    <img class="child-img" src="{{asset('public/assets/images/customers/child/'.$child->profile_picture)}}" alt="">
+                
+                                </div>
+                                <div>
+                                    <h3 class="child-heading">
+                                        {{ $child->name }} 
+                                    </h3>
+                                    <p class="m-0">
+                                        Age: {{ $formattedAge }}
+                                    </p>
+                                </div>
+
                             </div>
-                            <div>
-                                <h3 class="child-heading">
-                                    {{ $child->name }} 
-                                </h3>
-                                <p class="m-0">
-                                    Age: {{ $formattedAge }}
-                                </p>
-                            </div>
-                            <div class="text-end">
+                            
                                 <button class="btn btn-primary">Switch</button>
-                            </div>
+                            
                         </div>
                         @endforeach
                     </div>
