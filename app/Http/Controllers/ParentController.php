@@ -66,7 +66,7 @@ class ParentController extends Controller
     {
         
         $theme_name = theme_root_path();
-        $main_banner = $this->banner->where(['banner_type'=>'Main Banner', 'theme'=>$theme_name, 'published'=> 1])->latest()->get();
+        $main_banner = $this->banner->where(['banner_type'=>'Parent Banner', 'theme'=>$theme_name, 'published'=> 1])->latest()->get();
         $main_section_banner = $this->banner->where(['banner_type'=> 'Main Section Banner', 'theme'=>$theme_name, 'published'=> 1])->orderBy('id', 'desc')->latest()->first();
        
         return view(VIEW_FILE_NAMES['parenting-user'],

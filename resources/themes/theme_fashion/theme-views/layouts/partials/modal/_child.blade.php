@@ -168,7 +168,7 @@
         width: 60%;
     }
     .child-container{
-       
+       width: 100% !important;
         border: 1px solid #ebeaea;
         border-radius: 20px;
         padding: 10px 30px;

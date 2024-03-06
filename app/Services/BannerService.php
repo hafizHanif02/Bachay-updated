@@ -25,7 +25,7 @@ class BannerService
             'sub_title' => $request['sub_title'],
             'button_text' => $request['button_text'],
             'background_color' => $request['background_color'],
-            'url' => $request['url'],
+            'url' => $request['url'] ?? '',
             'photo' => $imageName,
         ];
     }

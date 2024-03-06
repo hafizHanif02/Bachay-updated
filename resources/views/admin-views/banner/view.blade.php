@@ -60,7 +60,7 @@
 
                                     <div class="form-group mb-3">
                                         <label for="name" class="title-color text-capitalize">{{ translate('banner_URL') }}</label>
-                                        <input type="url" name="url" class="form-control" id="url" required placeholder="{{ translate('Enter_url') }}">
+                                        <input type="url" name="url" class="form-control" id="url"  placeholder="{{ translate('Enter_url') }}">
                                     </div>
 
                                     <div class="form-group">

@@ -448,6 +448,34 @@
                             <i class="bi bi-search" style="color: #000;"></i>
                         </a>
                     </li>
+                    @if((session('switch_user')))
+                    <?php $child = session('switch_user'); ?>
+                    <li>
+                        <a href="javascript:" class="rounded  nav-ul_text">
+                            <img class="rounded-circle me-2" src="{{asset('public/assets/images/customers/child/'.$child->profile_picture)}}" alt="" width="20px"
+                                height="20px">
+                            {{ $child->name }}
+                        </a>
+                    </li>
+                    @endif        
+                    @if((session('switch_female')))
+                    <li>
+                        <a href="javascript:" class="rounded  nav-ul_text">
+                            <img class="rounded-circle me-2" src="{{asset('public/images/girl.jpg')}}" alt="" width="20px"
+                                height="20px">
+                            Girl
+                        </a>
+                    </li>
+                    @endif
+                    @if((session('switch_male')))
+                    <li>
+                        <a href="javascript:" class="rounded  nav-ul_text">
+                            <img class="rounded-circle me-2" src="{{asset('public/images/boy.jpg')}}" alt="" width="20px"
+                                height="20px">
+                            Boy
+                        </a>
+                    </li>
+                    @endif
                     @if (auth('customer')->check())
                         <li class="me-2 me-sm-0">
                             <a href="javascript:">

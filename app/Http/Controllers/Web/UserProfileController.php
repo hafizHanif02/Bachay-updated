@@ -879,6 +879,8 @@ class UserProfileController extends Controller
         // Accessing the stored value
         $switchedUser = session('switch_user');
 
+        
+        // dd($theme_name);
         return match ($theme_name) {
             'theme_fashion' => self::theme_fashion($gender, $age),
         };
