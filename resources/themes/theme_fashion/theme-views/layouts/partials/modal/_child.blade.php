@@ -5,38 +5,6 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                
-                {{-- <div class="logo">
-                    <a href="javascript:">
-                        <img loading="lazy" alt="{{ translate('logo') }}"
-                            src="{{ getValidImage(path: 'storage/app/public/company/' . $web_config['web_logo']->value, type: 'logo') }}">
-                    </a>
-                </div>
-                <h3 class="title text-capitalize">Switch User</h3>
-                @auth('customer')
-                    <div class="row mb-5 mt-3">
-                        <div class="col-12 text-end">
-                            <button type="button" class="btn drp-btn">Add Child</button>
-                        </div>
-                    </div>
-                    
-                        @foreach ($childs as $child)
-                        <form action="{{ route('switch_child', $child->id) }}" method="get">
-                            @csrf
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <table class="table table-borderless">
-                                        <tr>
-                                            <th><img style="width: 50px;" src="{{asset('public/assets/images/customers/child/'.$child->profile_picture)}}" alt=""></th>
-                                            <th>{{ $child->name }}</th>
-                                            <th><button class="btn btn-{{ $child->gender == 'male' ? 'primary' : 'custom-pink' }}">Switch</button></th>
-                                        </tr>
-                                    </table>
-                                    
-                            </div>
-                        </form>
-                        @endforeach
-                    @endauth --}}
                     <div class="child-container ps-3 pe-3">
                         <h3 class="text-center child-heading">
                             Switch User
@@ -77,45 +45,82 @@
                         @auth('customer')
                             <?php $childs = \App\Models\FamilyRelation::where('user_id', Auth::guard('customer')->user()->id)->get();
                             ?>
-                        @foreach($childs as $child)
-                        <?php $childDob = \Carbon\Carbon::parse($child->dob);
-                        $diff = $childDob->diff(\Carbon\Carbon::now());
-                        $formattedAge = '';
-                        
-                        if ($diff->y > 0) {
-                            $formattedAge .= $diff->y . 'Y';
-                        }
-                    
-                        if ($diff->m > 0) {
-                            $formattedAge .= ($formattedAge ? ' ' : '') . $diff->m . 'M';
-                        }
-                    
-                        // If the age is less than a month, display "New Born"
-                        if ($diff->y == 0 && $diff->m == 0) {
-                            $formattedAge = 'New Born';
-                        }
-                        ?>
-                        <div class="d-flex align-items-center justify-content-between gap-3 mb-4">
-                            <div class="d-flex align-items-center gap-2">
-                                <div class="baby_circle_child">
-                                    <img class="child-img" src="{{asset('public/assets/images/customers/child/'.$child->profile_picture)}}" alt=""> 
-                                </div>
-                                <div>
-                                    <h3 class="child-heading">
-                                        {{ $child->name }} 
-                                    </h3>
-                                    <p class="m-0">
-                                        Age: {{ $formattedAge }}
-                                    </p>
-                                </div>
+                            @if(!$childs->isEmpty())
+                                @foreach($childs as $child)
+                                <?php $childDob = \Carbon\Carbon::parse($child->dob);
+                                $diff = $childDob->diff(\Carbon\Carbon::now());
+                                $formattedAge = '';
                                 
-                            </div>
-                            <form action="{{ route('switch_child', $child->id) }}" method="get">
-                                @csrf
-                            <button class="btn btn-{{ $child->gender == 'male' ? 'primary' : 'custom-pink' }}">Switch</button>
-                            </form>
-                        </div>
-                        @endforeach
+                                if ($diff->y > 0) {
+                                    $formattedAge .= $diff->y . 'Y';
+                                }
+                            
+                                if ($diff->m > 0) {
+                                    $formattedAge .= ($formattedAge ? ' ' : '') . $diff->m . 'M';
+                                }
+                            
+                                // If the age is less than a month, display "New Born"
+                                if ($diff->y == 0 && $diff->m == 0) {
+                                    $formattedAge = 'New Born';
+                                }
+                                ?>
+                                <div class="d-flex align-items-center justify-content-between gap-3 mb-4">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <div class="baby_circle_child">
+                                            <img class="child-img" src="{{asset('public/assets/images/customers/child/'.$child->profile_picture)}}" alt=""> 
+                                        </div>
+                                        <div>
+                                            <h3 class="child-heading">
+                                                {{ $child->name }} 
+                                            </h3>
+                                            <p class="m-0">
+                                                Age: {{ $formattedAge }}
+                                            </p>
+                                        </div>
+                                        
+                                    </div>
+                                    <form action="{{ route('switch_child', $child->id) }}" method="get">
+                                        @csrf
+                                    <button class="btn btn-{{ $child->gender == 'male' ? 'primary' : 'custom-pink' }}">Switch</button>
+                                    </form>
+                                </div>
+                                @endforeach
+                                @else
+                                    <div class="d-flex align-items-center justify-content-between gap-3 mt-4 mb-4">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="baby_circle_child">
+                                                <img class="child-img" src="{{ asset('public/images/boy.jpg') }}" alt="">
+                            
+                                            </div>
+                                            
+                                                <h3 class="child-heading">
+                                                    Boy
+                                                </h3>
+            
+                                        </div>
+                                        <form action="{{ route('switch_male') }}" method="get">
+                                            @csrf
+                                            <button type="submit" class="btn btn-primary">Switch</button>
+                                        </form>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between gap-3 mt-4 mb-4">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="baby_circle_child">
+                                                <img class="child-img" src="{{ asset('public/images/girl.jpg') }}" alt="">
+                            
+                                            </div>
+                                            
+                                                <h3 class="child-heading">
+                                                    Girl
+                                                </h3>
+            
+                                        </div>
+                                        <form action="{{ route('switch_female') }}" method="get">
+                                            @csrf
+                                            <button type="submit" class="btn btn-custom-pink">Switch</button>
+                                        </form>
+                                    </div>
+                            @endif
                         @endauth
                         @guest('customer')
                         <div class="d-flex align-items-center justify-content-between gap-3 mt-4 mb-4">
