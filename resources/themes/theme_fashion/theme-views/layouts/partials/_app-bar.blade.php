@@ -2,31 +2,41 @@
     <li>
         <a href="{{ route('home') }}"
             class="d-flex align-items-center {{ Request::is('/home') || Request::is('home') ? 'active' : '' }} flex-column gap-1 py-3">
-            <i class="bi bi-shop-window custom-icon"></i>
+            <i class="bi bi-house-door custom-icon"></i>
             <span>{{ translate('shopping') }}</span>
         </a>
     </li>
     <li>
         <a href="{{ route('categories') }}"
             class="d-flex align-items-center {{ Request::is('/categories') || Request::is('categories') ? 'active' : '' }} flex-column gap-1 py-3">
-            <i class="bi bi-compass custom-icon"></i>
+            <i class="bi bi-collection-play custom-icon"></i>
             <span>{{ translate('explore') }}</span>
         </a>
     </li>
     <li>
         <a href="{{ route('parenting') }}"
-            class="d-flex align-items-center {{ Request::is('/parenting') || Request::is('parenting') ? 'active' : '' }} flex-column gap-1 py-3">
-            <i class="bi bi-chat-square-heart-fill custom-icon"></i>
+            class="d-flex align-items-center {{ Request::is('/parenting-user') || Request::is('parenting-user') ? 'active' : '' }} flex-column gap-1 py-3">
+            <i class="bi bi-hearts custom-icon"></i>
             <span>{{ translate('parenting') }}</span>
         </a>
     </li>
     @if (auth('customer')->check())
         <li>
-            <a href="{{ route('user-profile') }}"
+            {{-- <a href="{{ route('user-profile') }}"
                 class="d-flex align-items-center {{ Request::is('/user-profile') || Request::is('user-profile') ? 'active' : '' }} flex-column gap-1 py-3">
                 <i class="bi bi-person custom-icon"></i>
                 <span>{{ translate('profile') }}</span>
+            </a> --}}
+            <a href="{{ route('user-profile') }}"
+                class="d-flex align-items-center {{ Request::is('/user-profile') || Request::is('user-profile') ? 'active' : '' }} flex-column gap-1 py-3">
+                @if(Request::is('/user-profile') || Request::is('user-profile'))
+                    <i class="bi bi-person-fill custom-icon"></i>
+                @else
+                    <i class="bi bi-person custom-icon"></i>
+                @endif
+                <span>{{ translate('profile') }}</span>
             </a>
+
         </li>
     @else
         <li>
@@ -40,7 +50,7 @@
     <li>
         <a href="{{ route('home') }}"
             class="d-flex align-items-center {{ Request::is('/home') || Request::is('home') ? 'active' : '' }} flex-column gap-1 py-3">
-            <i class="bi bi-nut custom-icon"></i>
+            <i class="bi bi-list custom-icon"></i>
             <span>{{ translate('menu') }}</span>
         </a>
     </li>
