@@ -52,7 +52,7 @@ class CategoryController extends BaseController
 
     public function getUpdateView(string|int $id): View
     {
-        $category = $this->categoryRepo->getFirstWhere(params:['id'=>$id], relations: ['translations']);
+        $category = $this->categoryRepo->getFirstWhere(params:['id'=>$id], relations: ['translations','nav_views.nav_subs']);
         $languages = getWebConfig(name: 'pnc_language') ?? null;
         $defaultLanguage = $languages[0];
         return view(Category::UPDATE[VIEW], [
