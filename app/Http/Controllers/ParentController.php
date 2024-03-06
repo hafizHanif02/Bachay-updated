@@ -2,25 +2,30 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Banner;
-use App\Models\Category;
-use App\Models\Customer;
-use App\Models\DealOfTheDay;
-use App\Models\Growth;
-use App\Models\MostDemanded;
+use App\Models\User;
 use App\Models\Order;
-use App\Models\OrderDetail;
-use App\Models\Product;
+use App\Models\Banner;
+use App\Models\Growth;
 use App\Models\Review;
 use App\Models\Seller;
-use App\Models\User;
+use App\Models\Product;
+use App\Models\Category;
+use App\Models\Customer;
+use App\Models\Wishlist;
+use App\Models\DeliveryMan;
+use App\Models\OrderDetail;
 use App\Models\Vaccination;
-use App\Models\VaccinationSubmission;
-use Brian2694\Toastr\Facades\Toastr;
+use App\Models\DealOfTheDay;
+use App\Models\MostDemanded;
 use Illuminate\Http\Request;
+use App\Models\FamilyRelation;
+use App\Models\ProductCompare;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\Auth;
+use App\Models\ShippingAddress;
 use Illuminate\Support\Facades\DB;
+use Brian2694\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Auth;
+use App\Models\VaccinationSubmission;
 use Illuminate\Support\Facades\Validator;
 
 class ParentController extends Controller
@@ -28,12 +33,16 @@ class ParentController extends Controller
     public function __construct(
         private Product      $product,
         private Order        $order,
+        private OrderDetail  $order_details,
         private Category     $category,
         private Seller       $seller,
         private Review       $review,
         private DealOfTheDay $deal_of_the_day,
         private Banner       $banner,
         private MostDemanded $most_demanded,
+        private DeliveryMan $deliver_man,
+        private ProductCompare $compare,
+        private Wishlist $wishlist,
     )
     {
     }
@@ -170,6 +179,11 @@ class ParentController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+       FamilyRelation::where('id', $id)->delete();
+        Toastr::success('Child Deleted Successfully');
+        return back();
     }
+
+
+    
 }

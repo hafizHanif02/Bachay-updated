@@ -1779,6 +1779,28 @@ class UserProfileController extends Controller
         return redirect()->route('home');
     }
 
+
+
+    public function HomeChild(){
+        if(Auth::guard('customer')->check()){
+            $wishlists = $this->wishlist->whereHas('wishlistProduct', function ($q) {
+                return $q;
+            })->where('customer_id', auth('customer')->id())->count();
+            $total_order = $this->order->where('customer_id', auth('customer')->id())->count();
+            $total_loyalty_point = auth('customer')->user()->loyalty_point;
+            $total_wallet_balance = auth('customer')->user()->wallet_balance;
+            $addresses = ShippingAddress::where('customer_id', auth('customer')->id())->latest()->get();
+            $customer_detail = User::where('id', auth('customer')->id())->first();
+            $childs = FamilyRelation::where('user_id', Auth::guard('customer')->user()->id)->get();
+            return view(VIEW_FILE_NAMES['child_list'], compact('childs','customer_detail', 'addresses', 'wishlists', 'total_order', 'total_loyalty_point', 'total_wallet_balance'));
+            
+        }else{
+            Toastr::success('Please Login First');
+            return back();
+        }
+        
+    }
+
     
 
 }

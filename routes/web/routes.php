@@ -5,6 +5,7 @@ use App\Enums\ViewPaths\Web\Review;
 use Illuminate\Support\Facades\Route;
 use App\Enums\ViewPaths\Web\UserLoyalty;
 use App\Enums\ViewPaths\Web\ShopFollower;
+use App\Http\Controllers\ParentController;
 use App\Enums\ViewPaths\Web\ProductCompare;
 use App\Http\Controllers\Web\PageController;
 use App\Http\Controllers\Web\ReviewController;
@@ -176,6 +177,12 @@ Route::group(['namespace' => 'Web', 'middleware' => ['maintenance_mode', 'guestC
     Route::get('account-delete/{id}', 'UserProfileController@account_delete')->name('account-delete');
     Route::get('refer-earn', 'UserProfileController@refer_earn')->name('refer-earn')->middleware('customer');
     Route::get('user-coupons', 'UserProfileController@user_coupons')->name('user-coupons')->middleware('customer');
+    // My Child
+    Route::group(['prefix' => 'my-child', 'as' => 'my-child.'], function () {
+        Route::get('/', [UserProfileController::class,'HomeChild'])->name('list');
+        Route::post('store', [ParentController::class,'create'])->name('create');
+        Route::get('delete/{id}', [ParentController::class,'destroy'])->name('destroy');
+    });
     // Chatting start
     Route::get('chat/{type}', 'ChattingController@chat_list')->name('chat')->middleware('customer');
     Route::get('messages', 'ChattingController@messages')->name('messages');
