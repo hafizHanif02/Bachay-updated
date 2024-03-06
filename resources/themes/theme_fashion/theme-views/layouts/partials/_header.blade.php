@@ -373,14 +373,42 @@
                         </li>
                     @endauth
                     
-                    <li class="me-2 me-sm-0">
-                        <a href="javascript:" class="switchuser">
 
-                            <span
-                                class="mx-1 d-none d-md-block nav-ul_text
-                            ">{{ translate('Switch User') }}</span>
+                    {{-- SWITCH USER USER --}}
+                    @if((session('switch_user')))
+                    <?php $child = session('switch_user'); ?>
+                    <li>
+                        <a href="javascript:" class="switchuser nav-ul_text">
+                            <img class="rounded-circle me-2" src="{{asset('public/assets/images/customers/child/'.$child->profile_picture)}}" alt="" width="20px"
+                                height="20px">
+                            {{ $child->name }}
                         </a>
                     </li>
+                    @elseif((session('switch_female')))
+                    <li>
+                        <a href="javascript:" class="switchuser nav-ul_text">
+                            <img class="rounded-circle me-2" src="{{asset('public/images/girl.jpg')}}" alt="" width="20px"
+                                height="20px">
+                            Girl
+                        </a>
+                    </li>
+                    @elseif((session('switch_male')))
+                    <li>
+                        <a href="javascript:" class="switchuser nav-ul_text">
+                            <img class="rounded-circle me-2" src="{{asset('public/images/boy.jpg')}}" alt="" width="20px"
+                                height="20px">
+                            Boy
+                        </a>
+                    </li>
+                    @else
+                    <li class="me-2 me-sm-0">
+                        <a href="javascript:" class="switchuser nav-ul_text">
+                            <img class="rounded-circle me-2" src="{{asset('public/images/all.jpg')}}" alt="" width="20px"
+                                height="20px">
+                            ALL
+                        </a>
+                    </li>
+                    @endif
 
                     
                     
@@ -488,36 +516,7 @@
                     </li>
                     
                     
-                    @if((session('switch_user')))
-                    <?php $child = session('switch_user'); ?>
-                    <li>
-                        <a href="javascript:" class="rounded  nav-ul_text">
-                            <img class="rounded-circle me-2" src="{{asset('public/assets/images/customers/child/'.$child->profile_picture)}}" alt="" width="20px"
-                                height="20px">
-                            {{ $child->name }}
-                        </a>
-                    </li>
-                    @endif
                     
-                    @if((session('switch_female')))
-                    <li>
-                        <a href="javascript:" class="rounded  nav-ul_text">
-                            <img class="rounded-circle me-2" src="{{asset('public/images/girl.jpg')}}" alt="" width="20px"
-                                height="20px">
-                            Girl
-                        </a>
-                    </li>
-                    @endif
-
-                    @if((session('switch_male')))
-                    <li>
-                        <a href="javascript:" class="rounded  nav-ul_text">
-                            <img class="rounded-circle me-2" src="{{asset('public/images/boy.jpg')}}" alt="" width="20px"
-                                height="20px">
-                            Boy
-                        </a>
-                    </li>
-                    @endif
                     {{-- currency --}}
                     {{-- <li class="d-none d-sm-block">
                         <a href="javascript:">
