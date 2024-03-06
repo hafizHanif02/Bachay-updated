@@ -180,7 +180,7 @@
             <iframe width="100%" height="400" src="https://www.youtube.com/embed/tgbNymZ7vqY">
             </iframe>
         </div>
-        <div class="child-container">
+        <div class="child-container d-none d-xl-block">
             <h3 class="text-center child-heading">
                 Tell us more about yourself get More Personalized
             </h3>
