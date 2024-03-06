@@ -5,6 +5,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
+                
                 {{-- <div class="logo">
                     <a href="javascript:">
                         <img loading="lazy" alt="{{ translate('logo') }}"
@@ -40,7 +41,21 @@
                         <h3 class="text-center child-heading">
                             Switch User
                         </h3>
-
+                        <a href="{{ route('my-child.list') }}">
+                            <div class="d-flex align-items-center justify-content-between gap-3 mt-4 mb-4">
+                                <div class="d-flex align-items-center gap-2">
+                                    <div class="baby_circle_child">
+                                        <img class="child-img" src="{{ asset('public/images/plus.png') }}" alt="">
+                    
+                                    </div>
+                                    
+                                        <h3 class="child-heading">
+                                            Add Child
+                                        </h3>
+    
+                                </div>
+                            </div>
+                        </a>
                         <div class="d-flex align-items-center justify-content-between gap-3 mt-4 mb-4">
                             <div class="d-flex align-items-center gap-2">
                                 <div class="baby_circle_child">
