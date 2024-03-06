@@ -11,9 +11,13 @@
         </a>
     </li>
     <li>
-        <a href="{{ route('categories') }}"
-            class="d-flex align-items-center {{ Request::is('/categories') || Request::is('categories') ? 'active' : '' }} flex-column gap-1 py-3">
-            <i class="bi bi-collection-play custom-icon"></i>
+        <a href="{{ Request::is('/categories-detail') || Request::is('categories-detail') ? 'javascript:void(0)' : route('categories-detail') }}"
+            class="d-flex align-items-center {{ Request::is('/categories-detail') || Request::is('categories-detail') ? 'active' : '' }} flex-column gap-1 py-3">
+            @if(Request::is('/categories-detail') || Request::is('categories-detail'))
+                <i class="bi bi-collection-play-fill custom-icon"></i>
+            @else
+                <i class="bi bi-collection-play custom-icon"></i>
+            @endif
             <span>{{ translate('explore') }}</span>
         </a>
     </li>
