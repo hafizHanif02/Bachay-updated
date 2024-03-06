@@ -1597,7 +1597,8 @@ input:-webkit-autofill:active {
 .offcanvas-body .menu li a {
   padding: 0.5rem 0.25rem;
   display: flex;
-  justify-content: center;
+  padding-right: 1.5rem !important;
+  padding-left: 1.5rem !important;
   color: var(--title);
 }
 .offcanvas-body .menu li a:hover{

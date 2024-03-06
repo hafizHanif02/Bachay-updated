@@ -54,7 +54,12 @@
     .nav-ul_text:hover {
         color: #845dc2 !important;
     }
-
+    .heading_for_profile{
+        margin: 0;
+        color: gray;
+        font-size: 10px;
+        margin-top: -3px;
+    }
     .all_categories {
         font-weight: 600 !important;
         background: linear-gradient(90.27deg, #845dc2 -27.96%, #f99327 -27.94%, #d55fad 28.41%, #845dc2 82.13%, #845dc2 130.57%);
@@ -354,6 +359,59 @@
             </div>
             <div class="menu-area text-capitalize">
                 <ul class="menu me-xl-2 font-poppins">
+                     {{-- SWITCH USER USER --}}
+                     @if((session('switch_user')))
+                     <?php $child = session('switch_user'); ?>
+                     <li>
+                         <a href="javascript:" class="switchuser nav-ul_text d-flex align-items-center">
+                             <img class="rounded-circle me-2" src="{{asset('public/assets/images/customers/child/'.$child->profile_picture)}}" alt="" width="30px"
+                                 height="30px">
+                                 <div>
+                                     Shop for
+                                    <p class="heading_for_profile">{{ $child->name }} <i class="bi bi-chevron-down"></i></p> 
+ 
+                                 </div>
+                                
+                             
+                         </a>
+                     </li>
+                     @elseif((session('switch_female')))
+                     <li>
+                         <a href="javascript:" class="switchuser nav-ul_text d-flex align-items-center">
+                             <img class="rounded-circle me-2" src="{{asset('public/images/girl.jpg')}}" alt="" width="30px"
+                                 height="30px">
+                                 <div>
+                                     Shop for
+                                    <p class="heading_for_profile">Girl <i class="bi bi-chevron-down"></i></p> 
+ 
+                                 </div>
+                         </a>
+                     </li>
+                     @elseif((session('switch_male')))
+                     <li>
+                         <a href="javascript:" class="switchuser nav-ul_text d-flex align-items-center">
+                             <img class="rounded-circle me-2" src="{{asset('public/images/boy.jpg')}}" alt="" width="30px"
+                                 height="30px">
+                                 <div>
+                                     Shop for
+                                    <p class="heading_for_profile">Boy <i class="bi bi-chevron-down"></i></p> 
+ 
+                                 </div>
+                         </a>
+                     </li>
+                     @else
+                     <li class="me-2 me-sm-0">
+                         <a href="javascript:" class="switchuser nav-ul_text d-flex align-items-center">
+                             <img class="rounded-circle me-2" src="{{asset('public/images/all.jpg')}}" alt="" width="30px"
+                                 height="30px">
+                                 <div>
+                                     Shop for
+                                    <p class="heading_for_profile">All <i class="bi bi-chevron-down"></i></p> 
+ 
+                                 </div>
+                         </a>
+                     </li>
+                     @endif
                     @auth('customer')
                         <li>
                             <a href="{{ route('account-address-add') }}" class="nav-ul_text">
@@ -374,41 +432,7 @@
                     @endauth
                     
 
-                    {{-- SWITCH USER USER --}}
-                    @if((session('switch_user')))
-                    <?php $child = session('switch_user'); ?>
-                    <li>
-                        <a href="javascript:" class="switchuser nav-ul_text">
-                            <img class="rounded-circle me-2" src="{{asset('public/assets/images/customers/child/'.$child->profile_picture)}}" alt="" width="20px"
-                                height="20px">
-                            {{ $child->name }}
-                        </a>
-                    </li>
-                    @elseif((session('switch_female')))
-                    <li>
-                        <a href="javascript:" class="switchuser nav-ul_text">
-                            <img class="rounded-circle me-2" src="{{asset('public/images/girl.jpg')}}" alt="" width="20px"
-                                height="20px">
-                            Girl
-                        </a>
-                    </li>
-                    @elseif((session('switch_male')))
-                    <li>
-                        <a href="javascript:" class="switchuser nav-ul_text">
-                            <img class="rounded-circle me-2" src="{{asset('public/images/boy.jpg')}}" alt="" width="20px"
-                                height="20px">
-                            Boy
-                        </a>
-                    </li>
-                    @else
-                    <li class="me-2 me-sm-0">
-                        <a href="javascript:" class="switchuser nav-ul_text">
-                            <img class="rounded-circle me-2" src="{{asset('public/images/all.jpg')}}" alt="" width="20px"
-                                height="20px">
-                            ALL
-                        </a>
-                    </li>
-                    @endif
+                   
 
                     
                     
