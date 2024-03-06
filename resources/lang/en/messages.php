@@ -7257,4 +7257,7 @@
   'female' => 'Female',
   'parent_banner' => 'Parent banner',
   'parent_Banner' => 'Parent Banner',
+  'my-child' => 'My-child',
+  'My_Childeren' => 'My Childeren',
+  'no_child_found' => 'No child found',
 );
