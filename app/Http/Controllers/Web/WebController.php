@@ -2,55 +2,56 @@
 
 namespace App\Http\Controllers\Web;
 
-use App\Utils\Helpers;
-use App\Events\DigitalProductOtpVerificationMailEvent;
-use App\Http\Controllers\Controller;
-use App\Models\OfflinePaymentMethod;
-use App\Models\ShippingAddress;
-use App\Models\ShippingType;
-use App\Models\Shop;
-use App\Models\Subscription;
-use App\Models\OrderDetail;
-use App\Models\Review;
-use App\Models\Brand;
-use App\Models\BusinessSetting;
+use Carbon\Carbon;
 use App\Models\Cart;
-use App\Models\CartShipping;
-use App\Models\Category;
-use App\Models\Contact;
-use App\Models\Currency;
-use App\Models\DeliveryZipCode;
-use App\Models\DigitalProductOtpVerification;
-use App\Models\FlashDeal;
-use App\Models\FlashDealProduct;
+use App\Models\Shop;
+use App\Models\Brand;
 use App\Models\Order;
-use App\Models\Product;
-use App\Models\ProductCompare;
+use App\Models\Banner;
+use App\Models\Review;
 use App\Models\Seller;
+use App\Utils\Convert;
+use App\Utils\Helpers;
+use App\Models\Contact;
+use App\Models\Product;
 use App\Models\Setting;
+use App\Models\Category;
+use App\Models\Currency;
 use App\Models\Wishlist;
-use App\Traits\CommonTrait;
+use App\Models\FlashDeal;
+use App\Utils\SMS_module;
 use App\Traits\SmsGateway;
 use App\Utils\CartManager;
-use App\Utils\Convert;
-use App\Utils\CustomerManager;
-use App\Utils\OrderManager;
-use App\Utils\ProductManager;
-use App\Utils\SMS_module;
-use Brian2694\Toastr\Facades\Toastr;
-use Carbon\Carbon;
 use Carbon\CarbonInterval;
-use Gregwar\Captcha\CaptchaBuilder;
-use Gregwar\Captcha\PhraseBuilder;
-use Illuminate\Contracts\View\View;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
+use App\Models\OrderDetail;
+use App\Traits\CommonTrait;
+use App\Utils\OrderManager;
 use Illuminate\Support\Arr;
+use App\Models\CartShipping;
+use App\Models\ShippingType;
+use App\Models\Subscription;
+use Illuminate\Http\Request;
+use App\Utils\ProductManager;
+use App\Models\ProductCompare;
+use App\Utils\CustomerManager;
+use App\Models\BusinessSetting;
+use App\Models\DeliveryZipCode;
+use App\Models\ShippingAddress;
+use App\Models\FlashDealProduct;
+use Illuminate\Http\JsonResponse;
+use Gregwar\Captcha\PhraseBuilder;
 use Illuminate\Support\Facades\DB;
+use Gregwar\Captcha\CaptchaBuilder;
+use Illuminate\Contracts\View\View;
+use App\Http\Controllers\Controller;
+use App\Models\OfflinePaymentMethod;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Support\Facades\File;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Session;
 use function App\Utils\payment_gateways;
+use App\Models\DigitalProductOtpVerification;
+use App\Events\DigitalProductOtpVerificationMailEvent;
 
 class WebController extends Controller
 {
@@ -1467,6 +1468,13 @@ class WebController extends Controller
         return response()->json([
             'methodHtml'=> view(VIEW_FILE_NAMES['pay_offline_method_list_partials'],compact('method'))->render(),
         ]);
+    }
+
+
+    public function CategoryDetail(){
+        $categories = Category::all();
+        $banner = Banner::all();
+        return view(VIEW_FILE_NAMES['categories_detail'],compact('categories','banner'));
     }
 
 }

@@ -51,6 +51,7 @@ return [
     'all_brands' => 'theme-views.product.brands',
     'all_stores_page' => 'theme-views.seller-views.sellers',
     'all_categories' => 'theme-views.product.categories',
+    'categories_detail' => 'theme-views.product.categories_detail',
     'about_us' => 'theme-views.pages.about-us',
     'faq' => 'theme-views.pages.help-topics',
     'contacts' => 'theme-views.pages.contact-us',

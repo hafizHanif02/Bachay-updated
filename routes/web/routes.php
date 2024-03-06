@@ -7,6 +7,7 @@ use App\Enums\ViewPaths\Web\UserLoyalty;
 use App\Enums\ViewPaths\Web\ShopFollower;
 use App\Http\Controllers\ParentController;
 use App\Enums\ViewPaths\Web\ProductCompare;
+use App\Http\Controllers\Web\WebController;
 use App\Http\Controllers\Web\PageController;
 use App\Http\Controllers\Web\ReviewController;
 use App\Http\Controllers\Web\CurrencyController;
@@ -58,6 +59,7 @@ Route::get('parenting-user', 'ParentController@parentuser')->name('parenting');
 Route::get('article/{id}', 'ArticleController@article')->name('article');
 Route::get('articles', 'ArticleController@articles')->name('articles');
 Route::get('article/category/{id}', 'ArticleController@CategoryArticle')->name('articles.category');
+Route::get('categories-detail', [WebController::class,'CategoryDetail'])->name('category-detail');
 
 
 Route::group(['namespace' => 'Web', 'middleware' => ['maintenance_mode', 'guestCheck']], function () {
