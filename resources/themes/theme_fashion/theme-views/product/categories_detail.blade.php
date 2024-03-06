@@ -50,13 +50,7 @@
   .category_banner_full_w-bottom{
     margin-bottom: 140px;
   }
-  /* .arrow-down {
-    width: 0; 
-    height: 0; 
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-top: 5px solid black;
-  } */
+ 
   .accordion-open .arrow-down {
     transform: rotate(180deg);
   }
@@ -66,6 +60,17 @@
     align-items: center;
 
   }
+  .accordion-header-2 p {
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .accordion-content ul li a {
+    color: #000;
+    font-family: 'poppins'
+    }
+    .accordion-content ul li a:hover {
+    color: #835ec1;
+    }
 </style>
 @section('content')
 <div class="category_banner_full_w">
@@ -88,11 +93,11 @@
       </div>
       <div class="accordion-content">
         <ul>
-          <li>Tiny Preemie</li>
-          <li>New Born</li>
-          <li>3 to 6 Months</li>
-          <li>6 to 9 Months</li>
-          <li>Item 5</li>
+          <li><a href="https://bachay.com/products?id=1&data_from=category&page=1">Tiny Preemie</a></li>
+          <li><a href="https://bachay.com/products?id=1&data_from=category&page=1">New Born</a></li>
+          <li><a href="https://bachay.com/products?id=1&data_from=category&page=1">3 to 6 Months</a></li>
+          <li><a href="https://bachay.com/products?id=1&data_from=category&page=1">6 to 9 Months</a></li>
+          <li><a href="https://bachay.com/products?id=1&data_from=category&page=1">Item 5</a></li>
         </ul>
       </div>
     </div>
@@ -112,11 +117,11 @@
         </div>
         <div class="accordion-content">
           <ul>
-            <li>Adorable Onsies and Rompers</li>
-            <li>Matchy Sets</li>
-            <li>Cool T-shirts</li>
-            <li>Classy T-shirts</li>
-            <li>Breezy shorts</li>
+            <li><a href="https://bachay.com/products?id=1&data_from=category&page=1">Adorable Onsies and Rompers</a></li>
+            <li><a href="https://bachay.com/products?id=1&data_from=category&page=1">Matchy Sets</a></li>
+            <li><a href="https://bachay.com/products?id=1&data_from=category&page=1">Cool T-shirts</a></li>
+            <li><a href="https://bachay.com/products?id=1&data_from=category&page=1">Classy T-shirts</a></li>
+            <li><a href="https://bachay.com/products?id=1&data_from=category&page=1">Breezy shorts</a></li>
           </ul>
         </div>
       </div>
@@ -136,11 +141,11 @@
         </div>
         <div class="accordion-content">
           <ul>
-            <li>Casual Shoes</li>
-            <li>Formal And Party Wear</li>
-            <li>Clogs</li>
-            <li>Sandles</li>
-            <li>Booties</li>
+            <li><a href="https://bachay.com/products?id=1&data_from=category&page=1">Casual Shoes</a></li>
+            <li><a href="https://bachay.com/products?id=1&data_from=category&page=1">Formal And Party Wear</a></li>
+            <li><a href="https://bachay.com/products?id=1&data_from=category&page=1">Clogs</a></li>
+            <li><a href="https://bachay.com/products?id=1&data_from=category&page=1">Sandles</a></li>
+            <li><a href="https://bachay.com/products?id=1&data_from=category&page=1">Booties</a></li>
           </ul>
         </div>
       </div>
@@ -160,11 +165,11 @@
         </div>
         <div class="accordion-content">
           <ul>
-            <li>T-shirts under 399</li>
-            <li>Bottom Wear 499 </li>
-            <li>Night wear 499</li>
-            <li>Onises and Rompers 599</li>
-            <li>Sets and Cords</li>
+            <li><a href="https://bachay.com/products?id=1&data_from=category&page=1">T-shirts under 399</a></li>
+            <li><a href="https://bachay.com/products?id=1&data_from=category&page=1">Bottom Wear 499 </a></li>
+            <li><a href="https://bachay.com/products?id=1&data_from=category&page=1">Night wear 499</a></li>
+            <li><a href="https://bachay.com/products?id=1&data_from=category&page=1">Onises and Rompers 599</a></li>
+            <li><a href="https://bachay.com/products?id=1&data_from=category&page=1">Sets and Cords</a></li>
           </ul>
         </div>
       </div>
@@ -184,11 +189,11 @@
         </div>
         <div class="accordion-content">
           <ul>
-            <li>Traditional kurta pajamaas</li>
-            <li>Party suits</li>
-            <li>Ethicin Kurtas</li>
-            <li>Partyn footwear</li>
-            <li>Dhooti Kurta</li>
+            <li><a href="https://bachay.com/products?id=1&data_from=category&page=1">Traditional kurta pajamaas</a></li>
+            <li><a href="https://bachay.com/products?id=1&data_from=category&page=1">Party suits</a></li>
+            <li><a href="https://bachay.com/products?id=1&data_from=category&page=1">Ethicin Kurtas</a></li>
+            <li><a href="https://bachay.com/products?id=1&data_from=category&page=1">Partyn footwear</a></li>
+            <li><a href="https://bachay.com/products?id=1&data_from=category&page=1">Dhooti Kurta</a></li>
           </ul>
         </div>
       </div>
@@ -208,11 +213,11 @@
         </div>
         <div class="accordion-content">
           <ul>
-            <li>Woolens Cap</li>
-            <li>Air Muf and Mufflers</li>
-            <li>Mittens And Booties</li>
-            <li>Belts and Suspendors</li>
-            <li>Summer Caps</li>
+            <li><a href="https://bachay.com/products?id=1&data_from=category&page=1">Woolens Cap</a></li>
+            <li><a href="https://bachay.com/products?id=1&data_from=category&page=1">Air Muf and Mufflers</a></li>
+            <li><a href="https://bachay.com/products?id=1&data_from=category&page=1">Mittens And Booties</a></li>
+            <li><a href="https://bachay.com/products?id=1&data_from=category&page=1">Belts and Suspendors</a></li>
+            <li><a href="https://bachay.com/products?id=1&data_from=category&page=1">Summer Caps</a></li>
           </ul>
         </div>
       </div>
@@ -232,10 +237,10 @@
         </div>
         <div class="accordion-content">
           <ul>
-            <li>Blankets Quilts</li>
-            <li>Wrappers and sandles</li>
-            <li>Multi-pack Blanlets</li>
-            <li>Sleeping Bags</li>
+            <li><a href="https://bachay.com/products?id=1&data_from=category&page=1">Blankets Quilts</a></li>
+            <li><a href="https://bachay.com/products?id=1&data_from=category&page=1">Wrappers and sandles</a></li>
+            <li><a href="https://bachay.com/products?id=1&data_from=category&page=1">Multi-pack Blanlets</a></li>
+            <li><a href="https://bachay.com/products?id=1&data_from=category&page=1">Sleeping Bags</a></li>
             
           </ul>
         </div>
