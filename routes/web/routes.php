@@ -59,7 +59,7 @@ Route::get('parenting-user', 'ParentController@parentuser')->name('parenting');
 Route::get('article/{id}', 'ArticleController@article')->name('article');
 Route::get('articles', 'ArticleController@articles')->name('articles');
 Route::get('article/category/{id}', 'ArticleController@CategoryArticle')->name('articles.category');
-Route::get('categories-detail', [WebController::class,'CategoryDetail'])->name('category-detail');
+Route::get('categories-detail', [WebController::class,'CategoryDetail'])->name('categories-detail');
 
 
 Route::group(['namespace' => 'Web', 'middleware' => ['maintenance_mode', 'guestCheck']], function () {
