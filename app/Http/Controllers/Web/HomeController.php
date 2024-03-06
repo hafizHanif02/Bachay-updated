@@ -728,11 +728,11 @@ class HomeController extends Controller
                                 $sub_query->with(['childes' => function ($sub_sub_query) {
                                     $sub_sub_query->withCount(['subSubCategoryProduct'])->where('position', 2);
                                 }])->withCount(['subCategoryProduct'])->where('position', 1);
-                            }, 'childes.childes'])
+                            }, 'childes.childes'])->orderBy('id','asc')
                             ->where('position', 0);
 
         $categories = $all_categories->get();
-        $most_visited_categories = $all_categories->inRandomOrder()->get();
+        $most_visited_categories = $all_categories->get();
 
 
         $colors_in_shop = ProductManager::get_colors_form_products();

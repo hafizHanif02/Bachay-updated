@@ -1473,7 +1473,7 @@ class WebController extends Controller
 
     public function CategoryDetail(Request $request){
         $userAgent = $request->header('User-Agent');
-        $categories = Category::all();
+        $categories = Category::orderBy('id','asc')->all();
         $banner = Banner::all();
         if (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Android') !== false) {
         return view(VIEW_FILE_NAMES['categories_detail'],compact('categories','banner'));
