@@ -54,6 +54,9 @@
     .nav-ul_text:hover {
         color: #845dc2 !important;
     }
+    .heading_for_profile:hover {
+    color: #845dc2 !important;
+    }
     .heading_for_profile{
         margin: 0;
         color: gray;
@@ -363,7 +366,7 @@
                      @if((session('switch_user')))
                      <?php $child = session('switch_user'); ?>
                      <li>
-                         <a href="javascript:" class="switchuser nav-ul_text d-flex align-items-center">
+                         <a href="javascript:" class="switchuser nav-ul_text d-flex align-items-center pe-0">
                              <img class="rounded-circle me-2" src="{{asset('public/assets/images/customers/child/'.$child->profile_picture)}}" alt="" width="30px"
                                  height="30px">
                                  <div>
@@ -377,7 +380,7 @@
                      </li>
                      @elseif((session('switch_female')))
                      <li>
-                         <a href="javascript:" class="switchuser nav-ul_text d-flex align-items-center">
+                         <a href="javascript:" class="switchuser nav-ul_text d-flex align-items-center pe-0">
                              <img class="rounded-circle me-2" src="{{asset('public/images/girl.jpg')}}" alt="" width="30px"
                                  height="30px">
                                  <div>
@@ -389,7 +392,7 @@
                      </li>
                      @elseif((session('switch_male')))
                      <li>
-                         <a href="javascript:" class="switchuser nav-ul_text d-flex align-items-center">
+                         <a href="javascript:" class="switchuser nav-ul_text d-flex align-items-center pe-0">
                              <img class="rounded-circle me-2" src="{{asset('public/images/boy.jpg')}}" alt="" width="30px"
                                  height="30px">
                                  <div>
@@ -401,7 +404,7 @@
                      </li>
                      @else
                      <li class="me-2 me-sm-0">
-                         <a href="javascript:" class="switchuser nav-ul_text d-flex align-items-center">
+                         <a href="javascript:" class="switchuser nav-ul_text d-flex align-items-center pe-0">
                              <img class="rounded-circle me-2" src="{{asset('public/images/all.jpg')}}" alt="" width="30px"
                                  height="30px">
                                  <div>
@@ -514,7 +517,7 @@
                 </ul>
 
                 <ul class="header-right-icons">
-                    <li class="d-none d-xl-block">
+                    <li class="d-xl-block">
                         @if (auth('customer')->check())
                             <a href="{{ route('wishlists') }}">
                                 <div class="position-relative mt-1 px-8px">
@@ -535,7 +538,7 @@
 
 
                     
-                    <li id="cart_items" class="d-none d-xl-block">
+                    <li id="cart_items" class="d-xl-block">
                         @include('theme-views.layouts.partials._cart')
                     </li>
                     
@@ -585,7 +588,7 @@
                         </a>
                     </li>
                     @if (auth('customer')->check())
-                        <li class="me-2 me-sm-0">
+                        <li class="me-2 me-sm-0 d-none d-xl-block">
                             <a href="javascript:">
                                 {{-- <i class="bi bi-person d-none d-xl-inline-block nav-ul_text"
                                     style="font-size: 16px !important"></i> --}}

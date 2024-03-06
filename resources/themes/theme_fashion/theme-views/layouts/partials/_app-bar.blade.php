@@ -21,7 +21,7 @@
         <a href="{{ Request::is('/parenting-user') || Request::is('parenting-user') ? 'javascript:void(0)' : route('parenting') }}"
             class="d-flex align-items-center {{ Request::is('/parenting-user') || Request::is('parenting-user') ? 'active' : '' }} flex-column gap-1 py-3">
             @if(Request::is('/parenting-user') || Request::is('parenting-user'))
-                <i class="bi bi-chat-square-heart-fill"></i>
+                <i class="bi bi-chat-square-heart-fill custom-icon"></i>
             @else
                 <i class="bi bi-chat-square-heart custom-icon"></i>
             @endif
