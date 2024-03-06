@@ -5329,8 +5329,8 @@ a:not(:focus) ~ .__dropdown-menu {
 .easyzoom {
   position: relative;
   display: block;
-  *display: inline;
-  *zoom: 1;
+  display: inline;
+  zoom: 1;
   direction: ltr;
 }
 
