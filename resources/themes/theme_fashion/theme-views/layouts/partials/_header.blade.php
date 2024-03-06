@@ -576,12 +576,8 @@
                                 </span> --}}
                                 
                                     <i class="bi bi-person-fill" style="color: #000"></i>
-
-                               
                                 <span
-                                    class="mx-1 d-none d-md-block nav-ul_text">{{ auth('customer')->user()->f_name }}</span>
-
-
+                                    class="mx-1 d-none d-md-block nav-ul_text">Hello, {{ auth('customer')->user()->f_name }}</span>
 
                                 {{-- <span
                                     class="mx-1 d-none d-md-block nav-ul_text">{{ auth('customer')->user()->image }}</span> --}}

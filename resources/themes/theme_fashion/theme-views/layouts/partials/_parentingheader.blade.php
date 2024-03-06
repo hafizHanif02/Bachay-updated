@@ -227,6 +227,26 @@
         transition: top 0.5s;
         z-index: 1000;
     }
+
+    .parenting-drpdown:hover .dropbtn:after {
+        background-color: #845DC2;
+        width: 100%;
+        top: 30px;
+    }
+
+    .parenting-drpdown .dropbtn:after {
+        background-color: transparent;
+        content: "";
+        width: 0;
+        height: 3px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        transform: translateZ(0);
+        transition: width .2s ease;
+    }
 </style>
 <style>
     .parenting-drpdown {
@@ -273,10 +293,12 @@
     .parenitng-option {
         margin: 15px 0 0 0;
     }
+
     .dropbtn:hover {
         color: #845dc2 !important;
     }
-    li a:hover{
+
+    li a:hover {
         color: #845dc2 !important;
     }
 </style>
@@ -448,33 +470,34 @@
                             <i class="bi bi-search" style="color: #000;"></i>
                         </a>
                     </li>
-                    @if((session('switch_user')))
-                    <?php $child = session('switch_user'); ?>
-                    <li>
-                        <a href="javascript:" class="rounded  nav-ul_text">
-                            <img class="rounded-circle me-2" src="{{asset('public/assets/images/customers/child/'.$child->profile_picture)}}" alt="" width="20px"
-                                height="20px">
-                            {{ $child->name }}
-                        </a>
-                    </li>
-                    @endif        
-                    @if((session('switch_female')))
-                    <li>
-                        <a href="javascript:" class="rounded  nav-ul_text">
-                            <img class="rounded-circle me-2" src="{{asset('public/images/girl.jpg')}}" alt="" width="20px"
-                                height="20px">
-                            Girl
-                        </a>
-                    </li>
+                    @if (session('switch_user'))
+                        <?php $child = session('switch_user'); ?>
+                        <li>
+                            <a href="javascript:" class="rounded  nav-ul_text">
+                                <img class="rounded-circle me-2"
+                                    src="{{ asset('public/assets/images/customers/child/' . $child->profile_picture) }}"
+                                    alt="" width="20px" height="20px">
+                                {{ $child->name }}
+                            </a>
+                        </li>
                     @endif
-                    @if((session('switch_male')))
-                    <li>
-                        <a href="javascript:" class="rounded  nav-ul_text">
-                            <img class="rounded-circle me-2" src="{{asset('public/images/boy.jpg')}}" alt="" width="20px"
-                                height="20px">
-                            Boy
-                        </a>
-                    </li>
+                    @if (session('switch_female'))
+                        <li>
+                            <a href="javascript:" class="rounded  nav-ul_text">
+                                <img class="rounded-circle me-2" src="{{ asset('public/images/girl.jpg') }}"
+                                    alt="" width="20px" height="20px">
+                                Girl
+                            </a>
+                        </li>
+                    @endif
+                    @if (session('switch_male'))
+                        <li>
+                            <a href="javascript:" class="rounded  nav-ul_text">
+                                <img class="rounded-circle me-2" src="{{ asset('public/images/boy.jpg') }}"
+                                    alt="" width="20px" height="20px">
+                                Boy
+                            </a>
+                        </li>
                     @endif
                     @if (auth('customer')->check())
                         <li class="me-2 me-sm-0">
@@ -483,9 +506,9 @@
                                     style="font-size: 16px !important"></i> --}}
                                 {{-- <i class="bi bi-person-circle d-xl-none nav-ul_text"
                                     style="font-size: 16px !important"></i> --}}
-                                    <i class="bi bi-person-fill" style="color: #000"></i>
-                                <span
-                                    class="mx-1 d-none d-md-block nav-ul_text">{{ auth('customer')->user()->f_name }}</span>
+                                <i class="bi bi-person-fill" style="color: #000"></i>
+                                <span class="mx-1 d-none d-md-block nav-ul_text">Hello,
+                                    {{ auth('customer')->user()->f_name }}</span>
 
 
 
