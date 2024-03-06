@@ -89,6 +89,15 @@
                                 <button type="submit" class="btn btn--primary">{{ translate('submit') }}</button>
                             </div>
                         </form>
+
+                        <div class="hr"></div>
+                        <div class="text-center"><h3>Navbar Views</h3></div>
+                        <div class="row">
+                            <div class="col-md-6"><h5>Create Navbar View</h5></div>
+                            <div class="col-md-6 text-end">
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createModal"><i class="tio-add"></i></button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -211,6 +220,15 @@
 
     <span id="route-admin-category-delete" data-url="{{ route('admin.category.delete') }}"></span>
 @endsection
+
+<style>
+    .hr {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        border: 0;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+</style>
 
 @push('script')
     <script src="{{ asset('public/assets/back-end/js/products-management.js') }}"></script>

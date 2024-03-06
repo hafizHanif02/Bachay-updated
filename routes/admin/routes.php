@@ -66,6 +66,7 @@ use App\Enums\ViewPaths\Admin\BusinessSettings;
 use App\Enums\ViewPaths\Admin\EmergencyContact;
 use App\Enums\ViewPaths\Admin\PushNotification;
 use App\Enums\ViewPaths\Admin\WithdrawalMethod;
+use App\Http\Controllers\NavCategoryController;
 use App\Http\Controllers\QnaQuestionController;
 use App\Enums\ViewPaths\Admin\RefundTransaction;
 use App\Http\Controllers\Admin\ReportController;
@@ -315,6 +316,18 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['admin']],
             Route::post(Category::UPDATE[URI], 'update');
             Route::post(Category::DELETE[URI], 'delete')->name('delete');
             Route::post(Category::STATUS[URI], 'updateStatus')->name('status');
+
+            Route::group(['prefix' => 'nav-category', 'as' => 'nav-category.'], function () {
+                Route::post('store', [NavCategoryController::class, 'store'])->name('store');
+                Route::get('delete/{id}', [NavCategoryController::class, 'destroy'])->name('delete');
+                
+                
+                Route::group(['prefix' => 'nav-sub', 'as' => 'nav-sub.'], function () {
+                    Route::post('store', [NavCategoryController::class, 'Substore'])->name('store');
+                    Route::get('delete/{id}', [NavCategoryController::class, 'Subdestroy'])->name('delete');
+                });
+            });
+
         });
     });
 

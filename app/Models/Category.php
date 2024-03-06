@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\MorphMany;
+use App\Models\NavCategory;
 use Illuminate\Support\Facades\App;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 /**
  * @property int $id
@@ -93,6 +94,10 @@ class Category extends Model
     public function scopePriority($query): mixed
     {
         return $query->orderBy('priority', 'asc');
+    }
+
+    public function nav_views(){
+        return $this->hasMany(NavCategory::class,'category_id','id');
     }
 
 
