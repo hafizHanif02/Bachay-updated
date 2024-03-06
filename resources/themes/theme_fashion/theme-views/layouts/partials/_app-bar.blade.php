@@ -1,8 +1,12 @@
 <ul class="list-unstyled d-flex justify-content-around gap-3 mb-0 position-relative">
     <li>
-        <a href="{{ route('home') }}"
-            class="d-flex align-items-center {{ Request::is('/home') || Request::is('home') ? 'active' : '' }} flex-column gap-1 py-3">
-            <i class="bi bi-house-door custom-icon"></i>
+        <a href="{{ Request::is('/') || Request::is('home') ? 'javascript:void(0)' : route('home') }}"
+            class="d-flex align-items-center {{ Request::is('/') || Request::is('home') ? 'active' : '' }} flex-column gap-1 py-3">
+            @if(Request::is('/') || Request::is('home'))
+                <i class="bi bi-house-door-fill custom-icon"></i>
+            @else
+                <i class="bi bi-house-door custom-icon"></i>
+            @endif
             <span>{{ translate('shopping') }}</span>
         </a>
     </li>
@@ -14,9 +18,13 @@
         </a>
     </li>
     <li>
-        <a href="{{ route('parenting') }}"
+        <a href="{{ Request::is('/parenting-user') || Request::is('parenting-user') ? 'javascript:void(0)' : route('parenting') }}"
             class="d-flex align-items-center {{ Request::is('/parenting-user') || Request::is('parenting-user') ? 'active' : '' }} flex-column gap-1 py-3">
-            <i class="bi bi-hearts custom-icon"></i>
+            @if(Request::is('/parenting-user') || Request::is('parenting-user'))
+                <i class="bi bi-chat-square-heart-fill"></i>
+            @else
+                <i class="bi bi-chat-square-heart custom-icon"></i>
+            @endif
             <span>{{ translate('parenting') }}</span>
         </a>
     </li>
