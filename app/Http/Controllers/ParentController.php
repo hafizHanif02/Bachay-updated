@@ -179,9 +179,14 @@ class ParentController extends Controller
      */
     public function destroy(string $id)
     {
-       FamilyRelation::where('id', $id)->delete();
-        Toastr::success('Child Deleted Successfully');
-        return back();
+        if(Auth::guard('customer')->check()){
+            FamilyRelation::where(['id'=> $id, 'user_id'=> Auth::guard('customer')->id()])->delete();
+            Toastr::success('Child Deleted Successfully');
+            return back();
+        }else{
+            Toastr::error(translate('please_login_first'));
+            return back();
+        }
     }
 
 
