@@ -2344,7 +2344,7 @@ a:not(:focus) ~ .__dropdown-menu {
   margin: 0 auto;
   position: relative;
   z-index: 99;
-  padding: 0.7142857143rem;
+  /* padding: 0.7142857143rem; */
   box-shadow: 0px 0px 2px rgba(145, 158, 171, 0.2), 0px 12px 24px -4px rgba(145, 158, 171, 0.1);
   border-radius: 0.3571428571rem;
   background: var(--body-bg);
@@ -2359,6 +2359,7 @@ a:not(:focus) ~ .__dropdown-menu {
 .search-form .input-group {
   border: 0.0714285714rem solid rgba(var(--base-rgb), 0.25);
   border-radius: 0.2857142857rem;
+  margin: 26px 0 0 0;
 }
 
 .search-form .input-group .select2-container--default .select2-selection--single {
@@ -2411,7 +2412,7 @@ a:not(:focus) ~ .__dropdown-menu {
   }
 }
 .search-form .input-group .form-control {
-  height: 2.5rem;
+  /* height: 2.5rem; */
   border: none;
   padding-inline-start: 1.2857142857rem;
   width: 0;
