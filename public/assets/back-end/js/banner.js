@@ -74,6 +74,31 @@ function readUrl(input) {
     }
 }
 
+function readUrl2(input) {
+    if (input.files && input.files[0]) {
+        let reader = new FileReader();
+        let inputImage = $('.input_image2');
+        reader.onload = (e) => {
+            let imageData = e.target.result;
+            input.setAttribute("data-title", "");
+            let img = new Image();
+            img.onload = function () {
+                inputImage.css({
+                    "background-image": `url('${imageData}')`,
+                    "width": "100%",
+                    "height": "auto",
+                    backgroundPosition: "center",
+                    backgroundSize: "contain",
+                    backgroundRepeat: "no-repeat",
+                });
+                inputImage.addClass('hide-before-content')
+            };
+            img.src = imageData;
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
 $('.banner-delete-button').on('click', function () {
     let bannerId = $(this).attr("id");
     Swal.fire({

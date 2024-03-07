@@ -37,6 +37,7 @@ class Banner extends Model
 
     protected $fillable = [
         'photo',
+        'mobile_photo',
         'banner_type',
         'theme',
         'published',

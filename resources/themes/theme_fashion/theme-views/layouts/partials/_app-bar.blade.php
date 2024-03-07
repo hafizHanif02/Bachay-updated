@@ -11,9 +11,9 @@
         </a>
     </li>
     <li>
-        <a href="{{ Request::is('/categories-detail') || Request::is('categories-detail') ? 'javascript:void(0)' : route('categories-detail') }}"
-            class="d-flex align-items-center {{ Request::is('/categories-detail') || Request::is('categories-detail') ? 'active' : '' }} flex-column gap-1 py-3">
-            @if(Request::is('/categories-detail') || Request::is('categories-detail'))
+        <a href="{{ Request::is('/categories*') || Request::is('categories*') ? 'javascript:void(0)' : route('categories.list') }}"
+            class="d-flex align-items-center {{ Request::is('/categories*') || Request::is('categories*') ? 'active' : '' }} flex-column gap-1 py-3">
+            @if(Request::is('/categories*') || Request::is('categories*'))
                 <i class="bi bi-collection-play-fill custom-icon"></i>
             @else
                 <i class="bi bi-collection-play custom-icon"></i>
@@ -21,6 +21,7 @@
             <span>{{ translate('explore') }}</span>
         </a>
     </li>
+    
     <li>
         <a href="{{ Request::is('/parenting-user') || Request::is('parenting-user') ? 'javascript:void(0)' : route('parenting') }}"
             class="d-flex align-items-center {{ Request::is('/parenting-user') || Request::is('parenting-user') ? 'active' : '' }} flex-column gap-1 py-3">

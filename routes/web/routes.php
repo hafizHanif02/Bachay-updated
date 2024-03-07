@@ -59,7 +59,11 @@ Route::get('parenting-user', 'ParentController@parentuser')->name('parenting');
 Route::get('article/{id}', 'ArticleController@article')->name('article');
 Route::get('articles', 'ArticleController@articles')->name('articles');
 Route::get('article/category/{id}', 'ArticleController@CategoryArticle')->name('articles.category');
-Route::get('categories-detail', [WebController::class,'CategoryDetail'])->name('categories-detail');
+
+Route::group(['prefix' => 'categories','as' => 'categories.' ], function () {
+    Route::get('/', [WebController::class,'all_categories'])->name('list');
+    Route::get('detail/{id}', [WebController::class,'CategoryDetail'])->name('detail');
+});
 
 
 Route::group(['namespace' => 'Web', 'middleware' => ['maintenance_mode', 'guestCheck']], function () {
@@ -97,7 +101,7 @@ Route::group(['namespace' => 'Web', 'middleware' => ['maintenance_mode', 'guestC
     Route::post('subscription', 'WebController@subscription')->name('subscription');
     Route::get('search-shop', 'WebController@search_shop')->name('search-shop');
 
-    Route::get('categories', 'WebController@all_categories')->name('categories');
+    // Route::get('categories', 'WebController@all_categories')->name('categories');
     Route::get('category-ajax/{id}', 'WebController@categories_by_category')->name('category-ajax');
 
     Route::get('brands', 'WebController@all_brands')->name('brands');

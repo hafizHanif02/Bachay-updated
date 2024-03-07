@@ -144,6 +144,26 @@
                                         <span class="text-info" id="theme_ratio">( {{ translate('ratio') }} {{ "4:1" }} )</span>
                                         <p>{{ translate('banner_Image_ratio_is_not_same_for_all_sections_in_website') }}. {{ translate('please_review_the_ratio_before_upload') }}</p>
 
+
+                                        {{-- Mobile Photo --}}
+                                        <div class="mx-auto text-center">
+                                            <div class="uploadDnD">
+                                                <div class="form-group inputDnD input_image2 input_image_edit2"
+                                                     data-bg-img="{{ asset('storage/app/public/banner') }}/{{$banner['mobile_photo']}}"
+                                                     data-title="{{ file_exists('storage/app/public/banner/'.$banner['mobile_photo']) ? '': 'Drag and drop file or Browse file'}}">
+                                                    <input type="file" name="mobile_photo" class="form-control-file text--primary font-weight-bold" onchange="readUrl2(this)"  accept=".jpg, .png, .jpeg, .gif, .bmp, .webp |image/*">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <label for="name" class="title-color text-capitalize">
+                                            <span class="input-label-secondary cursor-pointer" data-toggle="tooltip" data-placement="right" title="" data-original-title="{{ translate('banner_image_ratio_is_not_same_for_all_sections_in_website').' '.translate('Please_review_the_ratio_before_upload') }}">
+                                                <img alt="" width="16" src={{asset('public/assets/back-end/img/info-circle.svg') }} alt="" class="m-1">
+                                            </span>
+                                            {{ translate('banner_mobile_image') }}
+                                        </label>
+                                        <span class="text-info" id="theme_ratio">( {{ translate('ratio') }} {{ "4:1" }} )</span>
+                                        <p>{{ translate('banner_Image_ratio_is_not_same_for_all_sections_in_website') }}. {{ translate('please_review_the_ratio_before_upload') }}</p>
+
                                          @if(theme_root_path() == 'theme_fashion')
                                          <div class="form-group mt-4 input-field-for-main-banner {{$banner['banner_type'] !='Main Banner'?'d-none':''}}">
                                              <label for="title" class="title-color text-capitalize">{{ translate('Title') }}</label>

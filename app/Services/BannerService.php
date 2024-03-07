@@ -12,9 +12,17 @@ class BannerService
     {
         if ($image) {
             $imageName = $request->file('image') ? $this->update(dir:'banner/', oldImage:$image, format: 'webp', image: $request->file('image')) : $image;
+            if($request->file('mobile_photo')){
+                $ImageMobile = $request->file('mobile_photo') ? $this->update(dir:'banner/', oldImage:$image, format: 'webp', image: $request->file('mobile_photo')) : $image;
+            }
         }else {
             $imageName = $this->upload(dir:'banner/', format: 'webp', image: $request->file('image'));
+            if($request->file('mobile_photo')){
+                $ImageMobile = $this->upload(dir:'banner/', format: 'webp', image: $request->file('mobile_photo'));
+            }
         }
+        
+        
 
         return [
             'banner_type' => $request['banner_type'],
@@ -27,6 +35,7 @@ class BannerService
             'background_color' => $request['background_color'],
             'url' => $request['url'] ?? '',
             'photo' => $imageName,
+            'mobile_photo' => $request->file('mobile_photo') ? $ImageMobile : null,
         ];
     }
 

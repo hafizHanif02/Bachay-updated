@@ -1471,14 +1471,15 @@ class WebController extends Controller
     }
 
 
-    public function CategoryDetail(Request $request){
+    public function CategoryDetail(Request $request, $id){
         $userAgent = $request->header('User-Agent');
-        $categories = Category::all();
-        $banner = Banner::all();
+        $category = Category::where('id', $id)->with('nav_views.nav_subs')->first();
+        $banner = Banner::where(['resource_type' => 'category', 'resource_id' => $id, 'published' => 1])->first();
+        // dd($categories,$banner);
         if (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Android') !== false) {
-        return view(VIEW_FILE_NAMES['categories_detail'],compact('categories','banner'));
+        return view(VIEW_FILE_NAMES['categories_detail'],compact('category','banner'));
         }else{
-            return view(VIEW_FILE_NAMES['all_categories'],compact('categories','banner'));
+            return redirect('/products?id='.$id.'&data_from=category&page=1');
         }
     }
 
