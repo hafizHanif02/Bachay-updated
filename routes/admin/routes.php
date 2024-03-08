@@ -62,6 +62,7 @@ use App\Enums\ViewPaths\Admin\DatabaseSetting;
 use App\Enums\ViewPaths\Admin\DeliveryManCash;
 use App\Enums\ViewPaths\Admin\FeaturesSection;
 use App\Enums\ViewPaths\Admin\SocialMediaChat;
+use App\Http\Controllers\CustomPageController;
 use App\Enums\ViewPaths\Admin\BusinessSettings;
 use App\Enums\ViewPaths\Admin\EmergencyContact;
 use App\Enums\ViewPaths\Admin\PushNotification;
@@ -305,6 +306,20 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['admin']],
             Route::get(Brand::EXPORT[URI], 'exportList')->name('export');
             Route::post(Brand::STATUS[URI], 'updateStatus')->name('status-update');
         });
+    });
+
+
+    // Custom Page
+    Route::group(['prefix' => 'custom-page', 'as' => 'custom-page.'],function(){
+        Route::get('/', [CustomPageController::class,'AllCustomePage'])->name('list');
+        Route::post('store', [CustomPageController::class,'CustomePageStore'])->name('store');
+        Route::post('web/{id}', [CustomPageController::class,'CustomePageWeb'])->name('web');
+        Route::post('mobile/{id}', [CustomPageController::class,'CustomePageMobile'])->name('mobile');
+        Route::get('edit/{id}', [CustomPageController::class,'EditCustomPage'])->name('edit');
+        Route::post('update/{id}', [CustomPageController::class,'UpdateCustomPage'])->name('update');
+        Route::get('delete/{id}', [CustomPageController::class,'DeleteCustomPage'])->name('delete');
+        Route::post('image/store/{id}', [CustomPageController::class,'ImageStore'])->name('image.store');
+        Route::get('page-data/delete/{id}', [CustomPageController::class,'DeletePageData'])->name('page-data.delete');
     });
 
     // Category

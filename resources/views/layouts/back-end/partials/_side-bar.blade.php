@@ -1135,6 +1135,22 @@
 
 
                         <li class="nav-item">
+                            <small class="nav-subtitle" title="">Custom Page</small>
+                            <li class="navbar-vertical-aside-has-menu {{Request::is('admin/custom-page*')?'active':''}}">
+                                <a class="js-navbar-vertical-aside-menu-link nav-link"
+                                   href="{{ route('admin.custom-page.list') }}" >
+                                   <i class="tio-website nav-icon"></i>
+                                    <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">
+                                    <span class="position-relative">
+                                        Custom Page
+                                    </span>
+                                </span>
+                                </a>
+                            </li>
+                        </li>
+
+
+                        <li class="nav-item">
                             <small class="nav-subtitle" title="">Q&A</small>
                             <li class="navbar-vertical-aside-has-menu {{Request::is('admin/customer/qna/question/*')?'active':''}}">
                                 <a class="js-navbar-vertical-aside-menu-link nav-link"
