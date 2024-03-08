@@ -48,6 +48,7 @@ use App\Enums\ViewPaths\Admin\MostDemanded;
 use App\Enums\ViewPaths\Admin\Notification;
 use App\Enums\ViewPaths\Admin\ShippingType;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\ExploreController;
 use App\Http\Controllers\VaccineController;
 use App\Enums\ViewPaths\Admin\PaymentMethod;
 use App\Enums\ViewPaths\Admin\RefundRequest;
@@ -67,6 +68,7 @@ use App\Enums\ViewPaths\Admin\BusinessSettings;
 use App\Enums\ViewPaths\Admin\EmergencyContact;
 use App\Enums\ViewPaths\Admin\PushNotification;
 use App\Enums\ViewPaths\Admin\WithdrawalMethod;
+use App\Http\Controllers\ExploreItemController;
 use App\Http\Controllers\NavCategoryController;
 use App\Http\Controllers\QnaQuestionController;
 use App\Enums\ViewPaths\Admin\RefundTransaction;
@@ -199,6 +201,26 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['admin']],
         });
     });
 
+
+
+    Route::group(['prefix' => 'explore', 'as' => 'explore.'], function () {
+        Route::get('list', [ExploreController::class, 'index'])->name('list');
+        Route::post('store', [ExploreController::class, 'store'])->name('store');
+        Route::get('edit/{id}', [ExploreController::class, 'edit'])->name('edit');
+        Route::post('update', [ExploreController::class, 'update'])->name('update');
+        Route::post('status', [ExploreController::class, 'ExploreStatus'])->name('status');
+        Route::get('delete/{id}', [ExploreController::class, 'destroy'])->name('delete');
+
+        Route::group(['prefix' => 'item', 'as' => 'item.'], function () {
+            Route::get('list', [ExploreItemController::class, 'index'])->name('list');
+            Route::post('store', [ExploreItemController::class, 'store'])->name('store');
+            Route::get('edit/{id}', [ExploreItemController::class, 'edit'])->name('edit');
+            Route::post('update', [ExploreItemController::class, 'update'])->name('update');
+            Route::post('status', [ExploreItemController::class, 'ExploreItemStatus'])->name('status');
+            Route::get('delete/{id}', [ExploreItemController::class, 'destroy'])->name('delete');
+        });
+    });
+
     Route::get('logout', [LoginController::class, 'logout'])->name('logout');
     Route::group(['prefix' => 'pos', 'as' => 'pos.','middleware'=>['module:pos_management']], function () {
         Route::controller(POSController::class)->group(function () {
@@ -321,6 +343,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['admin']],
         Route::post('image/store/{id}', [CustomPageController::class,'ImageStore'])->name('image.store');
         Route::get('page-data/delete/{id}', [CustomPageController::class,'DeletePageData'])->name('page-data.delete');
     });
+
+
+    
+
+
 
     // Category
     Route::group(['prefix' => 'category', 'as' => 'category.','middleware'=>['module:product_management']], function () {
