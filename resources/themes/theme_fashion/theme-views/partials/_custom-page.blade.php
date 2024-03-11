@@ -23,18 +23,19 @@
 
    
 </style>
-{{-- {{ dd($custom_pages) }} --}}
+
 <div class="container">
     <div class="custom-main-container mt-2 mb-2 d-lg-none d-xl-none ">
-        @foreach ($custom_pages as $custom_page)
+        @foreach ($custom_pages->take(5) as $custom_page)
         <div class="column">
-          <a href="{{ route('custom_page') }}">
-            <img src="{{ asset('public/assets/images/custom_page/'.$custom_page->image) }}" alt="Image 1">
-
-            {{-- <h6 class="font-poppins">{{ $custom_page->title }}</h6> --}}
-          </a>
+            <a href="{{ route('custom_page', ['id' => $custom_page->id]) }}">
+                <img src="{{ asset('public/assets/images/custom_page/'.$custom_page->image) }}" alt="Image 1">
+                
+                {{-- <h6 class="font-poppins">{{ $custom_page->title }}</h6> --}}
+            </a>
         </div>
-        @endforeach
+    @endforeach
+    
         
         
        

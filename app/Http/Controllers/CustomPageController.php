@@ -237,8 +237,8 @@ class CustomPageController extends Controller
 
     }
 
-    public function CustomPageHome(){
-        $custom_page = CustomPage::with('page_data')->get();
+    public function CustomPageHome(Request $request){
+        $custom_page = CustomPage::where('id', $request->id)->with('page_data')->first();
         return view(VIEW_FILE_NAMES['custom_page'], compact('custom_page'));
     }
 }
