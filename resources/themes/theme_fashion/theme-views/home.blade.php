@@ -17,6 +17,8 @@
 @endpush
 
 @section('content')
+@include('theme-views.partials._custom-page')
+
     @include('theme-views.partials._banner-section')
 
     <div class="container d-none d-xl-block">
