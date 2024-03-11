@@ -2,27 +2,28 @@
 
 namespace App\Http\Controllers\Web;
 
-use App\Models\Brand;
-use App\Models\Order;
+use App\Http\Controllers\Controller;
 use App\Models\Banner;
+use App\Models\Brand;
+use App\Models\BusinessSetting;
+use App\Models\Category;
 use App\Models\Coupon;
+use App\Models\CustomPage;
+use App\Models\DealOfTheDay;
+use App\Models\FlashDeal;
+use App\Models\MostDemanded;
+use App\Models\Order;
+use App\Models\OrderDetail;
+use App\Models\Product;
 use App\Models\Review;
 use App\Models\Seller;
 use App\Utils\Helpers;
-use PHPUnit\Util\Json;
-use App\Models\Product;
-use App\Models\Category;
-use App\Models\FlashDeal;
-use App\Models\OrderDetail;
-use Illuminate\Support\Arr;
-use App\Models\DealOfTheDay;
-use App\Models\MostDemanded;
 use App\Utils\ProductManager;
-use App\Models\BusinessSetting;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Contracts\View\View;
-use App\Http\Controllers\Controller;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use PHPUnit\Util\Json;
 
 class HomeController extends Controller
 {
@@ -133,10 +134,11 @@ class HomeController extends Controller
         $main_section_banner = $this->banner->where(['banner_type'=> 'Main Section Banner', 'theme'=>$theme_name, 'published'=> 1])->orderBy('id', 'desc')->latest()->first();
 
         $product=$this->product->active()->inRandomOrder()->first();
+        $custom_pages = CustomPage::get();
         $footer_banner = $this->banner->where('banner_type','Footer Banner')->where('theme', theme_root_path())->where('published',1)->orderBy('id','desc')->take(2)->get();
         return view(VIEW_FILE_NAMES['home'],
             compact(
-                'featured_products', 'topRated', 'bestSellProduct', 'latest_products', 'categories', 'brands',
+                'custom_pages','featured_products', 'topRated', 'bestSellProduct', 'latest_products', 'categories', 'brands',
                 'deal_of_the_day', 'top_sellers', 'home_categories', 'brand_setting', 'main_banner', 'main_section_banner',
                 'current_date','product','footer_banner',
             )
@@ -829,11 +831,12 @@ class HomeController extends Controller
             unset($sizes[$new_born_key]);
             unset($sizes[$preemie_key]);
             array_unshift($sizes, "Preemie", "New Born");
+            $custom_pages = CustomPage::get();
 
 
         return view(VIEW_FILE_NAMES['home'],
             compact(
-                'sizes','latest_products', 'deal_of_the_day', 'top_sellers','topRatedShops', 'main_banner','most_visited_categories',
+                'custom_pages','sizes','latest_products', 'deal_of_the_day', 'top_sellers','topRatedShops', 'main_banner','most_visited_categories',
                 'random_product', 'decimal_point_settings', 'newSellers', 'sidebar_banner', 'top_side_banner', 'recent_order_shops',
                 'categories', 'colors_in_shop', 'all_products_info', 'most_searching_product', 'most_demanded_product', 'featured_products','promo_banner_left',
                 'promo_banner_middle_top','promo_banner_middle_bottom','promo_banner_right', 'promo_banner_bottom', 'currentDate', 'all_products',

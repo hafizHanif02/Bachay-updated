@@ -23,44 +23,19 @@
 
    
 </style>
-
+{{-- {{ dd($custom_pages) }} --}}
 <div class="container">
     <div class="custom-main-container mt-2 mb-2 d-lg-none d-xl-none ">
+        @foreach ($custom_pages as $custom_page)
         <div class="column">
           <a href="{{ route('custom_page') }}">
-            <img src="{{ asset('public/images/custom-page1.webp') }}" alt="Image 1">
+            <img src="{{ asset('public/assets/images/custom_page/'.$custom_page->image) }}" alt="Image 1">
 
-            {{-- <h3>Heading 1</h3> --}}
+            {{-- <h6 class="font-poppins">{{ $custom_page->title }}</h6> --}}
           </a>
         </div>
-        <div class="column">
-          <a href="{{ route('custom_page') }}">
-            <img src="{{ asset('public/images/custom-page2.webp') }}" alt="Image 1">
-    
-            {{-- <h3>Heading 2</h3> --}}
-          </a>
-        </div>
-        <div class="column">
-          <a href="{{ route('custom_page') }}">
-            <img src="{{ asset('public/images/custom-page3.webp') }}" alt="Image 1">
-    
-            {{-- <h3>Heading 3</h3> --}}
-          </a>
-        </div>
-        <div class="column">
-          <a href="{{ route('custom_page') }}">
-            <img src="{{ asset('public/images/custom-page4.webp') }}" alt="Image 1">
-    
-            {{-- <h3>Heading 4</h3> --}}
-          </a>
-        </div>
-        <div class="column">
-          <a href="{{ route('custom_page') }}">
-            <img src="{{ asset('public/images/custom-page5.webp') }}" alt="Image 1">
-    
-            {{-- <h3>Heading 5</h3> --}}
-          </a>
-        </div>
+        @endforeach
+        
         
        
 

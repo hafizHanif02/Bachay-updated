@@ -123,6 +123,7 @@ class CustomPageController extends Controller
                 foreach($custom_page->page_data as $page_data){
                     $imageUrl = asset("public/assets/images/customePage/{$custom_page->id}/{$resourceData->id}/" . $page_data->image);
                     $page_data->imageurl = $imageUrl;
+                    
                 }
             }
 
@@ -237,6 +238,7 @@ class CustomPageController extends Controller
     }
 
     public function CustomPageHome(){
-        return view(VIEW_FILE_NAMES['custom_page']);
+        $custom_page = CustomPage::with('page_data')->get();
+        return view(VIEW_FILE_NAMES['custom_page'], compact('custom_page'));
     }
 }

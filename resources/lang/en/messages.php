@@ -7260,4 +7260,12 @@
   'my-child' => 'My-child',
   'My_Childeren' => 'My Childeren',
   'no_child_found' => 'No child found',
+  'custom_page' => 'Custom page',
+  'currently_you_are_managing_custom_pages_for_' => 'Currently you are managing custom pages for ',
+  'if_you_change_theme_from_theme_setup_these_custom_pages_will_not_be_shown_in_changed_theme._You_have_upload_all_the_custom_pages_over_again _according_to_the_new_theme_ratio_and_sizes._If_you_switch_back_to_' => 'If you change theme from theme setup these custom pages will not be shown in changed theme. You have upload all the custom pages over again  according to the new theme ratio and sizes. If you switch back to ',
+  'custom_page_form' => 'Custom page form',
+  'deals' => 'Deals',
+  'none' => 'None',
+  'Custom_page_table' => 'Custom page table',
+  'create_page' => 'Create page',
 );
