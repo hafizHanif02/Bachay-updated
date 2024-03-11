@@ -102,7 +102,25 @@ class ExploreController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $explore = Explore::find($id);
+        $filePath = public_path('assets/images/explore/media') . '/' . $explore->media;
+        if (file_exists($filePath)) {
+            unlink($filePath);
+        }
+        if ($request->file('media')) {
+            $file = $request->file('media');
+            $extension = $file->getClientOriginalExtension();
+            $filename = $file->getClientOriginalName();
+            $file->move(public_path('assets/images/explore/media'), $filename);
+        }
+        $explore->update([
+            'title' => $request->title,
+            'media' => $filename,
+            'tags' => $request->tags,
+        ]);
+        Toastr::success('Explore has Been Updated !');
+        return redirect()->route('admin.explore.list');
+
     }
 
     /**

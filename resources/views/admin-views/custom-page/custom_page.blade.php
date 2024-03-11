@@ -53,6 +53,10 @@
                                     <label for="title" class="form-label">Title</label>
                                     <input type="text" name="title" class="form-control" id="title" placeholder="Enter title">
                                 </div>
+                                <div class="col-md-6">
+                                    <label for="image" class="form-label">Image</label>
+                                    <input type="file" name="image" class="form-control" id="title" placeholder="Enter title">
+                                </div>
                                 <div class="form-group">
                                     <label for="resource_id"
                                            class="title-color text-capitalize">{{translate('resource_type')}}</label>

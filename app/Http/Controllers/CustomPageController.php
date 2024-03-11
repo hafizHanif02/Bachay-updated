@@ -60,10 +60,18 @@ class CustomPageController extends Controller
     public function CustomePageStore(Request $request){
         $validator = Validator::make($request->all(), [
             'title' => 'required',
+            'image' => 'required',
             'resource_type' => 'required',
         ]);
+        if ($request->file('image')) {
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $filename = $file->getClientOriginalName();
+            $file->move(public_path('assets/images/custom_page/'), $filename);
+        }
         CustomPage::create([
             'title' => $request->title,
+            'image' => $filename,
             'resource_type' => $request->resource_type,
             'resource_id' => $request[$request->resource_type . '_id'],
         ]);
@@ -124,10 +132,18 @@ class CustomPageController extends Controller
     public function UpdateCustomPage(Request $request, $id){
         $validator = Validator::make($request->all(), [
             'title' => 'required',
+            'image' => 'required',
             'resource_type'=>'required',
         ]);
+        if ($request->file('image')) {
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $filename = $file->getClientOriginalName();
+            $file->move(public_path('assets/images/custom_page/'), $filename);
+        }
         CustomPage::where('id', $id)->update([
             'title' => $request->title,
+            'image' => $filename,
             'resource_type' => $request->resource_type,
             'resource_id' => $request[$request->resource_type . '_id'],
         ]);

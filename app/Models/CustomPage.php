@@ -12,6 +12,7 @@ class CustomPage extends Model
     protected $table = 'custom_page';
     protected $fillable = [
         'title',
+        'image',
         'is_mobile',
         'is_web',
         'resource_type',
