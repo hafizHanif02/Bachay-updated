@@ -12,6 +12,74 @@
     <meta property="twitter:title" content="Products of {{$web_config['name']}}"/>
     <meta property="twitter:url" content="{{config('app.url')}}">
     <meta property="twitter:description" content="{!! substr($web_config['about']->value,0,100) !!}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Your form HTML code -->
+
+    <script>
+      $(document).ready(function() {
+        // Define the function to handle form submission
+            $('.product_view_title').text($('.product_view_title').data('allproduct'));
+            let form = $(this);
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                }
+            });
+
+            // Extract query parameters from the current URL
+            var urlParams = new URLSearchParams(window.location.search);
+
+            // Get the category and size parameters
+            var categoryParam = urlParams.get('category');
+            var sizeParam = urlParams.get('size');
+
+            // Split the parameters into arrays
+            var categories = categoryParam ? categoryParam.split(',') : [];
+            var sizes = sizeParam ? sizeParam.split(',') : [];
+
+            // Trim and decode the values
+            categories = categories.map(function(category) {
+                return decodeURIComponent(category.trim());
+            });
+
+            sizes = sizes.map(function(size) {
+                return decodeURIComponent(size.trim());
+            });
+            var csrfToken = $('input[name="_token"]').val();
+            // Construct the data object to be sent in the AJAX request
+            var requestData = {
+                _token: csrfToken,
+                category: categories,
+                size: sizes,
+                // You can include other form data here if needed
+                // data: form.serialize(),
+            };
+            console.log(requestData);
+            $.ajax({
+                url: '/ajax-filter-products',
+                method: 'POST',
+                data: requestData,
+                beforeSend: function () {
+                    $('#loading').addClass('d-grid');
+                },
+                success: function (data) {
+                    var tabId = '.scroll_to_form_top';
+                    // Using scrollTop() method
+                    var tabTopPosition = $(tabId).offset().top - 80;
+                    $('html, body').scrollTop(tabTopPosition);
+
+                    $('#ajax_products_section').empty().html(data.html_products);
+                    $('#selected_filter_area').empty().html(data.html_tags);
+                    productCommonActionForViewEvents();
+                },
+                complete: function () {
+                    $('#loading').removeClass('d-grid');
+                },
+            });
+    });
+
+</script>
 @endpush
 
 @section('content')
@@ -28,7 +96,6 @@
     <div class="container">
         @include('theme-views.layouts.partials._search-form-partials')
     </div>
-
     <section class="all-products-section pt-20px scroll_to_form_top">
         <form action="{{ route('ajax-filter-products') }}" method="POST" id="fashion_products_list_form">
             @csrf

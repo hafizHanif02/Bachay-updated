@@ -710,13 +710,19 @@ class ShopViewController extends Controller
         {
             foreach($categories as $category)
             {
-                $cat_info = Category::where('id', $category)->first();
+                $cat_info = Category::where(function ($query) use ($category) {
+                    if (is_numeric($category)) {
+                        $query->where('id', $category);
+                    } else {
+                        $query->where('name', $category);
+                    }
+                })->first();
                 $index = array_search($cat_info->parent_id, $categories);
                 if ($index !== false) {
                     array_splice($categories, $index, 1);
                 }
             }
-            $category = Category::whereIn('id', $request->category)
+            $category = Category::whereIn('id', $request->category)->orwhereIn('name', $categories)
                 ->select('id', 'name')
                 ->get();
         }
@@ -751,19 +757,19 @@ class ShopViewController extends Controller
                     ->orWhereIn('sub_category_id', $categories)
                     ->orWhereIn('sub_sub_category_id', $categories);
             })
-            ->when($request->has('search_data_form') && $request->search_data_form == 'search', function($query) use($request){
-                return $query->when($request->search_category_value == 'all', function($query) use($request){
-                    return $query->where('name', 'Like', '%' . $request->name . '%');
-                })->when($request->search_category_value != 'all', function($query) use($request){
-                    return $query->where('category_id', $request->search_category_value)->where('name', 'Like', '%' . $request->name . '%');
-                });
-            })
-            ->when($request->has('search_data_form') && $request->search_data_form == 'discounted', function($query) use($request){
-                return $query->where('discount','!=',0);
-            })
-            ->when($request->has('search_data_form') && $request->search_data_form == 'featured', function($query) use($request){
-                return $query->where('featured', 1);
-            })
+            // ->when($request->has('search_data_form') && $request->search_data_form == 'search', function($query) use($request){
+            //     return $query->when($request->search_category_value == 'all', function($query) use($request){
+            //         return $query->where('name', 'Like', '%' . $request->name . '%');
+            //     })->when($request->search_category_value != 'all', function($query) use($request){
+            //         return $query->where('category_id', $request->search_category_value)->where('name', 'Like', '%' . $request->name . '%');
+            //     });
+            // })
+            // ->when($request->has('search_data_form') && $request->search_data_form == 'discounted', function($query) use($request){
+            //     return $query->where('discount','!=',0);
+            // })
+            // ->when($request->has('search_data_form') && $request->search_data_form == 'featured', function($query) use($request){
+            //     return $query->where('featured', 1);
+            // })
             ->when($request->has('sort_by'), function($query) use($request){
                     $query->when($request['sort_by'] == 'default', function($query){
                         return $query->orderBy('order_details_sum_qty', 'DESC');

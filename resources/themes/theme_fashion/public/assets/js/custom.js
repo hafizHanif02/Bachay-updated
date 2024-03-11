@@ -959,7 +959,6 @@ $('#fashion_products_list_form').on('submit',function(event){
             'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
         }
     });
-
     $.ajax({
         url: $(this).attr('action'),
         method: 'POST',
@@ -981,6 +980,16 @@ $('#fashion_products_list_form').on('submit',function(event){
             $('#loading').removeClass('d-grid');
         },
     });
+    form.find('input[name="_token"]').remove();
+    var formData = form.serialize();
+
+    let aa = formData.toString();
+
+// Remove "%5B%5D" and spaces
+let cleanString = aa.replace(/%5B%5D|\s/g, '');
+
+console.log(cleanString);
+    //console.log(formData.toString().trim());
 })
 
 // Product Add To Wishlist || Start

@@ -1,7 +1,7 @@
 <div class="product-wrapper">
     <input class="search_input_store" type="text" name="search_category_value" value="{{request('search_category_value')}}" hidden>
     <input class="search_input_store search_input_name" type="text" name="name" value="{{request('name')}}" hidden>
-    <input class="search_input_store" type="text" name="search_data_form" value="{{isset($request_data)?$request_data['search_data_form']:request('data_from')}}" hidden>
+    {{-- <input class="search_input_store" type="text" name="search_data_form" value="{{isset($request_data)?$request_data['search_data_form']:request('data_from')}}" hidden> --}}
     @if (count($products) > 0)
         @foreach($products as $product)
             @include('theme-views.partials._products-list-single-card', ['product'=>$product])
