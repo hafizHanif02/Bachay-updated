@@ -121,7 +121,7 @@ class CustomPageController extends Controller
             $resourceData = $model::where('id', $custom_page->resource_id)->first();
             if($custom_page->page_data != null){
                 foreach($custom_page->page_data as $page_data){
-                    $imageUrl = asset("public/assets/images/customePage/{$custom_page->id}/{$resourceData->id}/" . $page_data->image);
+                    $imageUrl = asset("public/assets/images/custome_page/" . $page_data->image);
                     $page_data->imageurl = $imageUrl;
                     
                 }
@@ -198,7 +198,7 @@ class CustomPageController extends Controller
             $file = $request->file('image');
             $extension = $file->getClientOriginalExtension();
             $filename = $file->getClientOriginalName();
-            $file->move(public_path("assets/images/customePage/{$CustomPage->id}/{$resourceData->id}"), $filename);
+            $file->move(public_path("assets/images/custome_page/"), $filename);
         }else{
             $filename = null;
         }
