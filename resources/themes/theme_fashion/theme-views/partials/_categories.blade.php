@@ -12,7 +12,7 @@
             @foreach ($most_visited_categories as $key => $item)
                 {{-- @if ($key != 0 && $key < 8) --}}
                     <div class="col-6 col-sm-4 col-md-3 col-lg-3">
-                        <a href="{{ route('categories.detail', $item->id) }}"
+                        <a href="{{ route('categories.detail', $item->name) }}"
                             class="most-visited-item d-block text-center mb-4">
                             <img loading="lazy" alt="{{ translate('category') }}"
                                 src="{{ getValidImage(path: 'storage/app/public/category/' . $item->icon, type: 'category') }}"

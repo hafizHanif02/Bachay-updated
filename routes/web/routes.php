@@ -64,7 +64,7 @@ Route::get('article/category/{id}', 'ArticleController@CategoryArticle')->name('
 
 Route::group(['prefix' => 'categories','as' => 'categories.' ], function () {
     Route::get('/', [WebController::class,'all_categories'])->name('list');
-    Route::get('detail/{id}', [WebController::class,'CategoryDetail'])->name('detail');
+    Route::get('detail/{slug}', [WebController::class,'CategoryDetail'])->name('detail');
 });
 
 
