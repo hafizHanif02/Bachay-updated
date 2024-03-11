@@ -24,14 +24,14 @@
 </style>
 
 @section('content')
-    <div class="custom-main-con">
-        @foreach ($custom_page->page_data as $page_data)
-            <div class="custom-page-banner" style="width: {{ $page_data->width }}%;">
-                <a href="">
-                    <img src="{{ asset('public/assets/images/customePage/' . $custom_page->id . '/' . $custom_page->resource_id . '/' . $page_data->image) }}"
-                        alt="" width="100%">
-                </a>
-            </div>
-        @endforeach
-    </div>
+<div class="custom-main-con">
+    @foreach ($custom_page->page_data as $page_data)
+        <div class="custom-page-banner" style="width: {{ $page_data->width }}%; margin-right: {{ $page_data->margin_right }}px; margin-bottom: {{ $page_data->margin_bottom }}px;">
+            <a href="">
+                <img src="{{ asset('public/assets/images/customePage/' . $custom_page->id . '/' . $custom_page->resource_id . '/' . $page_data->image) }}"
+                    alt="" width="100%">
+            </a>
+        </div>
+    @endforeach
+</div>
 @endsection
