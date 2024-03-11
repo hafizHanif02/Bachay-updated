@@ -2359,7 +2359,7 @@ a:not(:focus) ~ .__dropdown-menu {
 .search-form .input-group {
   border: 0.0714285714rem solid rgba(var(--base-rgb), 0.25);
   border-radius: 0.2857142857rem;
-  margin: 26px 0 0 0;
+  /* margin: 26px 0 0 0; */
 }
 
 .search-form .input-group .select2-container--default .select2-selection--single {
