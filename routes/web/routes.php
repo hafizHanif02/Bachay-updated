@@ -9,6 +9,7 @@ use App\Http\Controllers\ParentController;
 use App\Enums\ViewPaths\Web\ProductCompare;
 use App\Http\Controllers\Web\WebController;
 use App\Http\Controllers\Web\PageController;
+use App\Http\Controllers\CustomPageController;
 use App\Http\Controllers\Web\ReviewController;
 use App\Http\Controllers\Web\CurrencyController;
 use App\Http\Controllers\Web\UserLoyaltyController;
@@ -55,6 +56,7 @@ Route::group(['namespace' => 'Web', 'middleware' => ['maintenance_mode', 'guestC
 });
 
 Route::get('parenting', 'ParentController@parenting_tools')->name('parenting');
+Route::get('custom_page',[ CustomPageController::class,'CustomPageHome'])->name('custom_page');
 Route::get('parenting-user', 'ParentController@parentuser')->name('parenting-user');
 Route::get('article/{id}', 'ArticleController@article')->name('article');
 Route::get('articles', 'ArticleController@articles')->name('articles');

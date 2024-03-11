@@ -235,4 +235,8 @@ class CustomPageController extends Controller
         }
 
     }
+
+    public function CustomPageHome(){
+        return view(VIEW_FILE_NAMES['custom_page']);
+    }
 }
