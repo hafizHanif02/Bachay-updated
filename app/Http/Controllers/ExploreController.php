@@ -46,6 +46,7 @@ class ExploreController extends Controller
             $extension = $file->getClientOriginalExtension();
             $filename = $file->getClientOriginalName();
             $file->move(public_path('assets/images/explore/media'), $filename);
+            
         }
         $explore = Explore::create([
             'title' => $request->title,
@@ -136,6 +137,16 @@ class ExploreController extends Controller
         $explore->delete();
         Toastr::success('Explore has Been Deleted !');
         return back();
+
     }
-    
+
+
+
+
+    public function explore(){
+        $explore = Explore::with('items.product')->get();
+        
+        return view(VIEW_FILE_NAMES['explore'], compact('explore'));
+
+    }
 }

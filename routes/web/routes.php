@@ -1,34 +1,38 @@
 <?php
 
 use App\Enums\ViewPaths\Web\Pages;
-use App\Enums\ViewPaths\Web\Review;
-use Illuminate\Support\Facades\Route;
-use App\Enums\ViewPaths\Web\UserLoyalty;
-use App\Enums\ViewPaths\Web\ShopFollower;
-use App\Http\Controllers\ParentController;
 use App\Enums\ViewPaths\Web\ProductCompare;
-use App\Http\Controllers\Web\WebController;
-use App\Http\Controllers\Web\PageController;
+use App\Enums\ViewPaths\Web\Review;
+use App\Enums\ViewPaths\Web\ShopFollower;
+use App\Enums\ViewPaths\Web\UserLoyalty;
 use App\Http\Controllers\CustomPageController;
-use App\Http\Controllers\Web\ReviewController;
-use App\Http\Controllers\Web\CurrencyController;
-use App\Http\Controllers\Web\UserLoyaltyController;
-use App\Http\Controllers\Web\UserProfileController;
-use App\Http\Controllers\Web\ProductCompareController;
-use App\Http\Controllers\Payment_Methods\PaytmController;
-use App\Http\Controllers\Web\Shop\ShopFollowerController;
-use App\Http\Controllers\Payment_Methods\LiqPayController;
-use App\Http\Controllers\Payment_Methods\PaymobController;
-use App\Http\Controllers\Payment_Methods\PaytabsController;
-use App\Http\Controllers\Payment_Methods\PaystackController;
-use App\Http\Controllers\Payment_Methods\RazorPayController;
-use App\Http\Controllers\Payment_Methods\SenangPayController;
-use App\Http\Controllers\Payment_Methods\MercadoPagoController;
+use App\Http\Controllers\ExploreController;
+use App\Http\Controllers\ParentController;
 use App\Http\Controllers\Payment_Methods\BkashPaymentController;
 use App\Http\Controllers\Payment_Methods\FlutterwaveV3Controller;
+use App\Http\Controllers\Payment_Methods\LiqPayController;
+use App\Http\Controllers\Payment_Methods\MercadoPagoController;
+use App\Http\Controllers\Payment_Methods\PaymobController;
 use App\Http\Controllers\Payment_Methods\PaypalPaymentController;
-use App\Http\Controllers\Payment_Methods\StripePaymentController;
+use App\Http\Controllers\Payment_Methods\PaystackController;
+use App\Http\Controllers\Payment_Methods\PaytabsController;
+use App\Http\Controllers\Payment_Methods\PaytmController;
+use App\Http\Controllers\Payment_Methods\RazorPayController;
+use App\Http\Controllers\Payment_Methods\SenangPayController;
 use App\Http\Controllers\Payment_Methods\SslCommerzPaymentController;
+use App\Http\Controllers\Payment_Methods\StripePaymentController;
+use App\Http\Controllers\Web\CurrencyController;
+use App\Http\Controllers\Web\HomeController;
+use App\Http\Controllers\Web\PageController;
+use App\Http\Controllers\Web\ProductCompareController;
+use App\Http\Controllers\Web\ReviewController;
+use App\Http\Controllers\Web\Shop\ShopFollowerController;
+use App\Http\Controllers\Web\UserLoyaltyController;
+use App\Http\Controllers\Web\UserProfileController;
+use App\Http\Controllers\Web\WebController;
+use Illuminate\Support\Facades\Route;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -57,6 +61,8 @@ Route::group(['namespace' => 'Web', 'middleware' => ['maintenance_mode', 'guestC
 
 Route::get('parenting', 'ParentController@parenting_tools')->name('parenting');
 Route::get('custom_page',[ CustomPageController::class,'CustomPageHome'])->name('custom_page');
+Route::get('explore',[ ExploreController::class,'explore'])->name('explore');
+
 Route::get('parenting-user', 'ParentController@parentuser')->name('parenting-user');
 Route::get('article/{id}', 'ArticleController@article')->name('article');
 Route::get('articles', 'ArticleController@articles')->name('articles');

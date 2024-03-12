@@ -844,7 +844,7 @@ class HomeController extends Controller
             )
         );
     }
-
+    
     public function theme_all_purpose(){
         $user = Helpers::get_customer();
         $main_banner = $this->banner->where('banner_type','Main Banner')->where('published',1)->latest()->get();
@@ -1045,6 +1045,6 @@ class HomeController extends Controller
             'discounted_products','featured_deals','just_for_you','deal_of_the_day','order_again_products','top_rated_brands','top_sellers',
             'more_sellers','latest_products_count', 'latest_products', 'category_wise_products'));
     }
-
+    
 
 }

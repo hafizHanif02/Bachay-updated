@@ -69,6 +69,7 @@ return [
     'article-category' => 'theme-views.articles.article_category',
     'parenting' => 'theme-views.parenting.parentingTools',
     'custom_page' => 'theme-views.custom_page.custom_page',
+    'explore' => 'theme-views.explore.explore',
     'parenting-user' => 'theme-views.parenting.parenting-user' ,
     'user_coupons' => 'theme-views.users-profile.coupons',
     'pay_offline_method_list_partials' => 'theme-views.partials._pay_offline_method_list_fields',
