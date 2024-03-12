@@ -24,13 +24,15 @@
     
     @if (auth('customer')->check())
         <li>
-            <a href="{{ route('parenting-user') }}"
+            <a href="{{ Request::is('parenting-user') ? 'javascript:void(0)' : route('parenting-user') }}"
                 class="d-flex align-items-center {{ Request::is('parenting-user') ? 'active' : '' }} flex-column gap-1 py-3">
                 <i class="bi bi-chat-square-heart{{ Request::is('parenting-user') ? '-fill' : '' }} custom-icon"></i>
                 <span>{{ translate('parenting') }}</span>
             </a>
-        @else
-            <a href="{{ route('parenting') }}"
+        </li>
+    @else
+        <li>
+            <a href="{{ Request::is('parenting') ? 'javascript:void(0)' : route('parenting') }}"
                 class="d-flex align-items-center {{ Request::is('parenting') ? 'active' : '' }} flex-column gap-1 py-3">
                 <i class="bi bi-chat-square-heart{{ Request::is('parenting') ? '-fill' : '' }} custom-icon"></i>
                 <span>{{ translate('parenting') }}</span>
