@@ -1,4 +1,4 @@
-<ul class="list-unstyled d-flex justify-content-around gap-3 mb-0 position-relative">
+<ul class="list-unstyled d-flex justify-content-around gap-3 mb-0 position-relative custom-font">
     <li>
         <a href="{{ Request::is('/') || Request::is('home') ? 'javascript:void(0)' : route('home') }}"
             class="d-flex align-items-center {{ Request::is('/') || Request::is('home') ? 'active' : '' }} flex-column gap-1 py-3">
@@ -37,7 +37,7 @@
             </a>
         </li>
     @endif
-    
+
     @if (auth('customer')->check())
         <li>
             {{-- <a href="{{ route('user-profile') }}"
@@ -193,5 +193,9 @@
 <style>
     .custom-icon {
         font-size: 18px;
+    }
+    .custom-font{
+        font-family: 'Aristotelica';
+        font-size: 10px !important;
     }
 </style>
