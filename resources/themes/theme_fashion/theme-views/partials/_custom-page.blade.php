@@ -5,7 +5,7 @@
     }
 
     .column {
-      flex: 0 0 20%; 
+      flex: 0 0 25%; 
     }
 
     .column a {
@@ -17,7 +17,7 @@
 
     .column img {
       max-width: 100%;
-      height: 90px;
+      height: auto;
       margin-bottom: 5px;
     }
 
@@ -26,7 +26,7 @@
 
 <div class="container">
     <div class="custom-main-container mt-2 mb-2 d-lg-none d-xl-none ">
-        @foreach ($custom_pages->take(5) as $custom_page)
+        @foreach ($custom_pages->take(4) as $custom_page)
         <div class="column">
             <a href="{{ route('custom_page', ['id' => $custom_page->id]) }}">
                 <img src="{{ asset('public/assets/images/custom_page/'.$custom_page->image) }}" alt="Image 1">
