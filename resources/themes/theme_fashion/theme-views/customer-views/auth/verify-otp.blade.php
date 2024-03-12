@@ -40,14 +40,22 @@
                           id="customer_verify">
                             @csrf
                             <div class="d-flex gap-2 gap-sm-3 align-items-end justify-content-center">
-                                <input class="otp-field" type="text" name="opt-field[]" maxlength="1"
+                                {{-- <input class="otp-field" type="text" name="opt-field[]" maxlength="1"
                                     autocomplete="off">
                                 <input class="otp-field" type="text" name="opt-field[]" maxlength="1"
                                     autocomplete="off">
                                 <input class="otp-field" type="text" name="opt-field[]" maxlength="1"
                                     autocomplete="off">
                                 <input class="otp-field" type="text" name="opt-field[]" maxlength="1"
-                                    autocomplete="off">
+                                    autocomplete="off"> --}}
+                                <input class="otp-field" inputmode="numeric" pattern="[0-9]*" type="text" name="opt-field[]" maxlength="1"
+                                autocomplete="off">
+                                <input class="otp-field" inputmode="numeric" pattern="[0-9]*" type="text" name="opt-field[]" maxlength="1"
+                                autocomplete="off">
+                                <input class="otp-field" inputmode="numeric" pattern="[0-9]*" type="text" name="opt-field[]" maxlength="1"
+                                autocomplete="off">
+                                <input class="otp-field" inputmode="numeric" pattern="[0-9]*" type="text" name="opt-field[]" maxlength="1"
+                                autocomplete="off">
                             </div>
 
                             <input class="otp-value" type="hidden" name="otp">
