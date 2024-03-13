@@ -5,7 +5,10 @@
        
         <div class="banner-slide" style="background: {{ $banner['background_color'] }};">
 
-            <img class="banner-slide-img" style="height: 400px;" alt="{{ translate('banner') }}" loading="lazy"
+            <img class="banner-slide-img d-none d-lg-block d-xl-block" style="height: 400px;" alt="{{ translate('banner') }}" loading="lazy"
+                 src="{{ getValidImage(path: 'storage/app/public/banner/'.$banner['photo'], type:'product') }}">
+
+            <img class="banner-slide-img d-lg-none d-xl-none" style="height: 400px;" alt="{{ translate('banner') }}" loading="lazy"
                  src="{{ getValidImage(path: 'storage/app/public/banner/'.$banner['mobile_photo'], type:'product') }}">
 
             <!-- @if($banner['title'] && $banner['sub_title'])

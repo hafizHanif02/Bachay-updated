@@ -7273,4 +7273,5 @@
   'order_history' => 'Order history',
   'cash_refund' => 'Cash refund',
   '' => '',
+  'you_have_not_placed_any_previous_order_yet' => 'You have not placed any previous order yet',
 );
