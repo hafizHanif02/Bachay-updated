@@ -3,6 +3,9 @@
         .sub-nav li:nth-child(n + 8) {
             display: none;
         }
+        .custom-gap{
+            padding: 0%;
+        }
 
         .sub-nav>li>a {
             font-size: 10px !important;
@@ -234,6 +237,18 @@
         padding: 10px 0;
         transition: top 0.5s;
         z-index: 1000;
+    }
+    .custom-style{
+        box-shadow: 0 5px 3px -3px rgba(0,0,0,0.29);
+        font-size: 9px;
+        border-top: 1px lightgray solid;
+        padding: 5px 0 0 0;
+    }
+    .custom-style li a{
+        color: var(--title);
+    }
+    .custom-style li a.active {
+        color: var(--base);
     }
 </style>
 @if (isset($web_config['announcement']) && $web_config['announcement']['status'] == 1)
@@ -1746,15 +1761,121 @@
 </header>
 
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-    <div class="offcanvas-header justify-content-end">
+    <div class="offcanvas-header justify-content-end pb-0">
+        
         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
-    <div class="offcanvas-body text-capitalize d-flex flex-column">
+    <div class="offcanvas-body text-capitalize d-flex flex-column custom-gap pt-0">
+        <div>
+            <h3 class="font-poppins fs-6 mb-1 text-center">Welcome to Bachay</h3>
+            @if (auth('customer')->check())
+                {{-- <div class="d-flex justify-content-center mb-2 pb-3 mt-auto px-4"> --}}
+                <div class="d-flex justify-content-center mt-auto mb-2">
+                    <a href="{{ route('customer.auth.logout') }}"
+                        class="btn btn-base w-100">{{ translate('logout') }}</a>
+                </div>
+            @else
+                <div class="d-flex justify-content-center mt-auto mb-2">
+                    <a href="javascript:" class="btn btn-base w-100 customer_login_register_modal">
+                        {{ translate('login') }} / {{ translate('register') }}
+                    </a>
+                </div>
+            @endif
+         </div>
+        <ul class="list-unstyled d-flex justify-content-around gap-3 mb-0 position-relative custom-style">
+            @if (auth('customer')->check())
+                <li>
+                    <a href="{{ Request::is('/user-account') || Request::is('user-account') ? 'javascript:void(0)' : route('user-account') }}"
+                        class="d-flex align-items-center {{ Request::is('/user-account') || Request::is('user-account') ? 'active' : '' }} flex-column gap-1">
+                        @if(Request::is('/user-account') || Request::is('user-account'))
+                            <i class="bi bi bi-person-fill custom-icon"></i>
+                        @else
+                            <i class="bi bi bi-person custom-icon"></i>
+                        @endif
+                        <span>{{ translate('account') }}</span>
+                    </a>
+                </li>   
+            @else
+                <li>
+                    <a href="javascript:"
+                        class="d-flex align-items-center customer_login_register_modal {{ Request::is('/user-account') || Request::is('user-account') ? 'active' : '' }} flex-column gap-1 ">
+                        <i class="bi bi bi-person custom-icon"></i>
+                        <span>{{ translate('account') }}</span>
+                    </a>
+                </li> 
+            @endif
+            @if (auth('customer')->check())
+                <li>
+                    <a href="{{ Request::is('/account-oder') || Request::is('account-oder') ? 'javascript:void(0)' : route('account-oder') }}"
+                        class="d-flex align-items-center {{ Request::is('/account-oder') || Request::is('account-oder') ? 'active' : '' }} flex-column gap-1">
+                        @if(Request::is('/account-oder') || Request::is('account-oder'))
+                            <i class="bi bi-box-seam-fill custom-icon"></i>
+                        @else
+                            <i class="bi bi-box-seam custom-icon"></i>
+                        @endif
+                        <span>{{ translate('order_history') }}</span>
+                    </a>
+                </li>
+            @else
+                <li>
+                    <a href="javascript:"                    
+                        class="d-flex align-items-center customer_login_register_modal {{ Request::is('/account-oder') || Request::is('account-oder') ? 'active' : '' }} flex-column gap-1">
+                        <i class="bi bi-box-seam custom-icon"></i>
+                        <span>{{ translate('order_history') }}</span>
+                    </a>
+                </li>
+            @endif
+            @if (auth('customer')->check())
+                <li>
+                    <a href="{{ Request::is('/track-order') || Request::is('track-order') ? 'javascript:void(0)' : route('track-order.index') }}"
+                        class="d-flex align-items-center {{ Request::is('/track-order') || Request::is('track-order') ? 'active' : '' }} flex-column gap-1">
+                        @if(Request::is('/track-order') || Request::is('track-order'))
+                            <i class="bi bi-truck custom-icon"></i>
+                        @else
+                            <i class="bi bi-truck-flatbed custom-icon"></i>
+                        @endif
+                        <span>{{ translate('track_order') }}</span>
+                    </a>
+                </li>
+            @else
+                <li>
+                    <a href="javascript:"                    
+                        class="d-flex align-items-center customer_login_register_modal {{ Request::is('/track-order') || Request::is('track-order') ? 'active' : '' }} flex-column gap-1">
+                        <i class="bi bi-truck custom-icon"></i>
+                        <span>{{ translate('track_order') }}</span>
+                    </a>
+                </li>
+            @endif
+            @if (auth('customer')->check())
+                <li>
+                    <a href="{{ Request::is('/refund-policy') || Request::is('refund-policy') ? 'javascript:void(0)' : route('refund-policy') }}"
+                        class="d-flex align-items-center {{ Request::is('/refund-policy') || Request::is('refund-policy') ? 'active' : '' }} flex-column gap-1">
+                        @if(Request::is('/refund-policy') || Request::is('refund-policy'))
+                            <i class="bi bi-circle-fill custom-icon"></i>
+                        @else
+                            <i class="bi bi-arrow-repeat custom-icon"></i>
+                        @endif
+                        <span>{{ translate('cash_refund') }}</span>
+                    </a>
+                </li>
+            @else
+                <li>
+                    <a href="javascript:"                        
+                        class="d-flex align-items-center customer_login_register_modal {{ Request::is('/') || Request::is('') ? 'active' : '' }} flex-column gap-1">
+                        <i class="bi bi-arrow-repeat custom-icon"></i>
+                        <span>{{ translate('cash_refund') }}</span>
+                    </a>
+                </li>
+            @endif
+        </ul>
         <div>
             <ul class="menu scrollY-60 ">
                 <li>
-                    <a href="{{ route('home') }}"class="nav-ul_text">{{ translate('home') }}</a>
-                </li>
+                    <a href="{{ route('home') }}" class="nav-ul_text">
+                      <i class="bi bi-house me-3"></i>
+                      {{ translate('home') }}
+                    </a>
+                </li>                  
                 {{-- <li>
                     <a href="javascript:">{{ translate('all_categories') }}</a>
                     <ul class="submenu">
@@ -1783,7 +1904,7 @@
                     <li>
                         <a href="{{ route('account-address-add') }}" class="nav-ul_text">
                             {{-- <img src="{{ asset('public/images/location.gif') }}" alt="" width="20px" height="20px"> --}}
-
+                            <i class="bi bi-geo-alt me-3"></i>
                             {{ translate('location') }}
                         </a>
                     </li>
@@ -1791,7 +1912,7 @@
                     <li>
                         <a href="{{ route('account-address-add') }}" class="nav-ul_text">
                             {{-- <img src="{{ asset('public/images/location.gif') }}" alt="" width="20px" height="20px"> --}}
-
+                            <i class="bi bi-geo-alt me-3"></i>
                             {{ translate('location') }}
                         </a>
                     </li>
@@ -1809,7 +1930,7 @@
                 @if ($web_config['business_mode'] == 'multi')
                     <li>
                         <a href="{{ route('vendors') }}"
-                            class="{{ Request::is('vendors') ? 'active' : '' }} nav-ul_text">{{ translate('shops') }}</a>
+                            class="{{ Request::is('vendors') ? 'active' : '' }} nav-ul_text"><i class="bi bi-shop-window me-3"></i>{{ translate('shops') }}</a>
                     </li>
                 @endif
                 {{-- @if ($web_config['business_mode'] == 'multi')
@@ -1823,66 +1944,29 @@
                         </li>
                     @endif
                 @endif --}}
-                @auth('customer')
+                {{-- @auth('customer') --}}
+                    <li>
+                        <a href="{{ route('account-tickets') }}" class="nav-ul_text">
+                            <i class="bi bi-headset me-3"></i>{{ translate('Support') }}</a>
+                    </li>
+                {{-- @else
                     <li>
                         <a href="{{ route('account-tickets') }}" class="nav-ul_text">{{ translate('Support') }}</a>
                     </li>
-                @else
-                    <li>
-                        <a href="{{ route('account-tickets') }}" class="nav-ul_text">{{ translate('Support') }}</a>
-                    </li>
-                @endauth
+                @endauth --}}
                 @if ($web_config['brand_setting'])
                     <li>
                         <a href="{{ route('brands') }}"
-                            class="{{ Request::is('brands') ? 'active' : '' }} nav-ul_text">{{ translate('brand') }}</a>
+                            class="{{ Request::is('brands') ? 'active' : '' }} nav-ul_text"><i class="bi bi-bag-check me-3"></i>{{ translate('brand') }}</a>
                     </li>
                 @endif
                 <li>
                     <a href="{{ route('track-order.index') }}"
-                        class="nav-ul_text">{{ translate('track_order') }}</a>
+                        class="nav-ul_text"><i class="bi bi-boxes me-3"></i>{{ translate('track_order') }}</a>
                 </li>
                 <li>
-                    @if (auth('customer')->check())
-                        <a href="{{ route('wishlists') }}">
-                            <div class="nav-ul_text">
-                                <span>Wishlist</span>
-                                {{-- <i class="bi bi-heart nav-ul_text" style="font-size: 16px !important;"></i> --}}
-
-                                {{-- <span
-                                        class="btn-status wishlist_count_status">{{ session()->has('wish_list') ? count(session('wish_list')) : 0 }}</span> --}}
-                            </div>
-                        </a>
-                    @else
-                        <a href="javascript:" class="customer_login_register_modal">
-                            <div class="nav-ul_text">
-                                <span>Wishlist</span>
-                                {{-- <i class="bi bi-heart nav-ul_text" style="font-size: 16px !important;"></i> --}}
-                                {{-- <span class="btn-status">{{ translate('0') }}</span> --}}
-                            </div>
-                        </a>
-                    @endif
-                </li>
-                <li>
-                    @if (auth('customer')->check())
-                        <a href="{{ route('shop-cart') }}">
-                            <div class="nav-ul_text">
-                                <span>My Cart</span>
-                                {{-- <i class="bi bi-heart nav-ul_text" style="font-size: 16px !important;"></i> --}}
-
-                                {{-- <span
-                                        class="btn-status wishlist_count_status">{{ session()->has('wish_list') ? count(session('wish_list')) : 0 }}</span> --}}
-                            </div>
-                        </a>
-                    @else
-                        <a href="javascript:" class="customer_login_register_modal">
-                            <div class="nav-ul_text">
-                                <span>My Cart</span>
-                                {{-- <i class="bi bi-heart nav-ul_text" style="font-size: 16px !important;"></i> --}}
-                                {{-- <span class="btn-status">{{ translate('0') }}</span> --}}
-                            </div>
-                        </a>
-                    @endif
+                    <a href="{{ route('home') }}"
+                        class="nav-ul_text"><i class="bi bi-heart me-3"></i>{{ translate('') }} <img src="https://bachay.com/public/images/bachay-parenting.png" alt=""> </a>
                 </li>
             </ul>
         </div>
@@ -1901,7 +1985,7 @@
             </div>
         </div> --}}
 
-        @if (auth('customer')->check())
+        {{-- @if (auth('customer')->check())
             <div class="d-flex justify-content-center mb-2 pb-3 mt-auto px-4">
                 <a href="{{ route('customer.auth.logout') }}"
                     class="btn btn-base w-100">{{ translate('logout') }}</a>
@@ -1912,7 +1996,7 @@
                     {{ translate('login') }} / {{ translate('register') }}
                 </a>
             </div>
-        @endif
+        @endif --}}
     </div>
 </div>
 
