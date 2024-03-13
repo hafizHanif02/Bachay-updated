@@ -7,7 +7,7 @@
         @php($total_tax+=$cartItem['tax']*(int)$cartItem['quantity'])
     @endforeach
 @endif
-<div class="d-block d-md-block">
+<div class="d-block d-md-block me-2">
     <a href="javascript:">
         <div class="position-relative mt-1 px-8px">
             <i class="bi bi-cart-dash nav-ul_text" style="font-size: 16px !important;"></i>

@@ -3,7 +3,8 @@
         .sub-nav li:nth-child(n + 8) {
             display: none;
         }
-        .custom-gap{
+
+        .custom-gap {
             padding: 0%;
         }
 
@@ -57,15 +58,18 @@
     .nav-ul_text:hover {
         color: #845dc2 !important;
     }
+
     .heading_for_profile:hover {
-    color: #845dc2 !important;
+        color: #845dc2 !important;
     }
-    .heading_for_profile{
+
+    .heading_for_profile {
         margin: 0;
         color: gray;
         font-size: 10px;
         margin-top: -3px;
     }
+
     .all_categories {
         font-weight: 600 !important;
         background: linear-gradient(90.27deg, #845dc2 -27.96%, #f99327 -27.94%, #d55fad 28.41%, #845dc2 82.13%, #845dc2 130.57%);
@@ -86,6 +90,9 @@
     }
 </style>
 <style>
+    li::marker {
+    content: "";
+}
     .font-poppins {
         font-family: 'poppins' !important;
     }
@@ -238,15 +245,18 @@
         transition: top 0.5s;
         z-index: 1000;
     }
-    .custom-style{
-        box-shadow: 0 5px 3px -3px rgba(0,0,0,0.29);
+
+    .custom-style {
+        box-shadow: 0 5px 3px -3px rgba(0, 0, 0, 0.29);
         font-size: 9px;
         border-top: 1px lightgray solid;
         padding: 5px 0 0 0;
     }
-    .custom-style li a{
+
+    .custom-style li a {
         color: var(--title);
     }
+
     .custom-style li a.active {
         color: var(--base);
     }
@@ -344,6 +354,56 @@
             </ul>
         </div> --}}
         <div class="header-wrapper">
+            <div class="d-lg-none d-xl-none">
+                @if (session('switch_user'))
+                    <?php $child = session('switch_user'); ?>
+                    <li>
+                        <a href="javascript:" class="switchuser nav-ul_text d-flex align-items-center pe-0">
+                            <img class="rounded-circle me-2"
+                                src="{{ asset('public/assets/images/customers/child/' . $child->profile_picture) }}"
+                                alt="" width="30px" height="30px">
+                            <div>
+                                Shop for
+                                <p class="heading_for_profile">{{ $child->name }} <i class="bi bi-chevron-down"></i></p>
+                            </div>
+                        </a>
+                    </li>
+                @elseif(session('switch_female'))
+                    <li>
+                        <a href="javascript:" class="switchuser nav-ul_text d-flex align-items-center pe-0">
+                            <img class="rounded-circle me-2" src="{{ asset('public/images/girl.jpg') }}" alt=""
+                                width="30px" height="30px">
+                            <div>
+                                Shop for
+                                <p class="heading_for_profile">Girl <i class="bi bi-chevron-down"></i></p>
+                            </div>
+                        </a>
+                    </li>
+                @elseif(session('switch_male'))
+                    <li>
+                        <a href="javascript:" class="switchuser nav-ul_text d-flex align-items-center pe-0">
+                            <img class="rounded-circle me-2" src="{{ asset('public/images/boy.jpg') }}" alt=""
+                                width="30px" height="30px">
+                            <div>
+                                Shop for
+                                <p class="heading_for_profile">Boy <i class="bi bi-chevron-down"></i></p>
+                            </div>
+                        </a>
+                    </li>
+                @else
+                    <li class="me-2 me-sm-0">
+                        <a href="javascript:" class="switchuser nav-ul_text d-flex align-items-center pe-0">
+                            <img class="rounded-circle me-2" src="{{ asset('public/images/all.jpg') }}" alt=""
+                                width="30px" height="30px">
+                            <div>
+                                Shop for
+                                <p class="heading_for_profile">All <i class="bi bi-chevron-down"></i></p>
+                            </div>
+                        </a>
+                    </li>
+                @endif
+            </div>
+            
             <a href="{{ route('home') }}" class="logo">
                 <img loading="lazy" class="d-sm-none mobile-logo-cs"
                     src="{{ getValidImage(path: 'storage/app/public/company/' . $web_config['mob_logo']->value, type: 'logo') }}"
@@ -377,59 +437,61 @@
             </div>
             <div class="menu-area text-capitalize">
                 <ul class="menu me-xl-2 font-poppins">
-                     {{-- SWITCH USER USER --}}
-                     @if((session('switch_user')))
-                     <?php $child = session('switch_user'); ?>
-                     <li>
-                         <a href="javascript:" class="switchuser nav-ul_text d-flex align-items-center pe-0">
-                             <img class="rounded-circle me-2" src="{{asset('public/assets/images/customers/child/'.$child->profile_picture)}}" alt="" width="30px"
-                                 height="30px">
-                                 <div>
-                                     Shop for
-                                    <p class="heading_for_profile">{{ $child->name }} <i class="bi bi-chevron-down"></i></p> 
- 
-                                 </div>
-                                
-                             
-                         </a>
-                     </li>
-                     @elseif((session('switch_female')))
-                     <li>
-                         <a href="javascript:" class="switchuser nav-ul_text d-flex align-items-center pe-0">
-                             <img class="rounded-circle me-2" src="{{asset('public/images/girl.jpg')}}" alt="" width="30px"
-                                 height="30px">
-                                 <div>
-                                     Shop for
-                                    <p class="heading_for_profile">Girl <i class="bi bi-chevron-down"></i></p> 
- 
-                                 </div>
-                         </a>
-                     </li>
-                     @elseif((session('switch_male')))
-                     <li>
-                         <a href="javascript:" class="switchuser nav-ul_text d-flex align-items-center pe-0">
-                             <img class="rounded-circle me-2" src="{{asset('public/images/boy.jpg')}}" alt="" width="30px"
-                                 height="30px">
-                                 <div>
-                                     Shop for
-                                    <p class="heading_for_profile">Boy <i class="bi bi-chevron-down"></i></p> 
- 
-                                 </div>
-                         </a>
-                     </li>
-                     @else
-                     <li class="me-2 me-sm-0">
-                         <a href="javascript:" class="switchuser nav-ul_text d-flex align-items-center pe-0">
-                             <img class="rounded-circle me-2" src="{{asset('public/images/all.jpg')}}" alt="" width="30px"
-                                 height="30px">
-                                 <div>
-                                     Shop for
-                                    <p class="heading_for_profile">All <i class="bi bi-chevron-down"></i></p> 
- 
-                                 </div>
-                         </a>
-                     </li>
-                     @endif
+                    {{-- SWITCH USER USER --}}
+                    @if (session('switch_user'))
+                        <?php $child = session('switch_user'); ?>
+                        <li>
+                            <a href="javascript:" class="switchuser nav-ul_text d-flex align-items-center pe-0">
+                                <img class="rounded-circle me-2"
+                                    src="{{ asset('public/assets/images/customers/child/' . $child->profile_picture) }}"
+                                    alt="" width="30px" height="30px">
+                                <div>
+                                    Shop for
+                                    <p class="heading_for_profile">{{ $child->name }} <i
+                                            class="bi bi-chevron-down"></i></p>
+
+                                </div>
+
+
+                            </a>
+                        </li>
+                    @elseif(session('switch_female'))
+                        <li>
+                            <a href="javascript:" class="switchuser nav-ul_text d-flex align-items-center pe-0">
+                                <img class="rounded-circle me-2" src="{{ asset('public/images/girl.jpg') }}"
+                                    alt="" width="30px" height="30px">
+                                <div>
+                                    Shop for
+                                    <p class="heading_for_profile">Girl <i class="bi bi-chevron-down"></i></p>
+
+                                </div>
+                            </a>
+                        </li>
+                    @elseif(session('switch_male'))
+                        <li>
+                            <a href="javascript:" class="switchuser nav-ul_text d-flex align-items-center pe-0">
+                                <img class="rounded-circle me-2" src="{{ asset('public/images/boy.jpg') }}"
+                                    alt="" width="30px" height="30px">
+                                <div>
+                                    Shop for
+                                    <p class="heading_for_profile">Boy <i class="bi bi-chevron-down"></i></p>
+
+                                </div>
+                            </a>
+                        </li>
+                    @else
+                        <li class="me-2 me-sm-0">
+                            <a href="javascript:" class="switchuser nav-ul_text d-flex align-items-center pe-0">
+                                <img class="rounded-circle me-2" src="{{ asset('public/images/all.jpg') }}"
+                                    alt="" width="30px" height="30px">
+                                <div>
+                                    Shop for
+                                    <p class="heading_for_profile">All <i class="bi bi-chevron-down"></i></p>
+
+                                </div>
+                            </a>
+                        </li>
+                    @endif
                     @auth('customer')
                         <li>
                             <a href="{{ route('account-address-add') }}" class="nav-ul_text">
@@ -448,12 +510,12 @@
                             </a>
                         </li>
                     @endauth
-                    
 
-                   
 
-                    
-                    
+
+
+
+
 
                     {{-- @if ($web_config['business_mode'] == 'multi')
                         <li>
@@ -552,13 +614,13 @@
                     </li>
 
 
-                    
+
                     <li id="cart_items" class="d-xl-block">
                         @include('theme-views.layouts.partials._cart')
                     </li>
-                    
-                    
-                    
+
+
+
                     {{-- currency --}}
                     {{-- <li class="d-none d-sm-block">
                         <a href="javascript:">
@@ -597,7 +659,7 @@
                             </ul>
                         </div>
                     </li> --}}
-                    <li class="d-xl-none">
+                    <li class="d-none d-xl-none">
                         <a href="javascript:" class="search-toggle">
                             <i class="bi bi-search" style="color: #000;"></i>
                         </a>
@@ -615,10 +677,10 @@
                                         width="30px" height="30px">
 
                                 </span> --}}
-                                
-                                    <i class="bi bi-person-fill" style="color: #000"></i>
-                                <span
-                                    class="mx-1 d-none d-md-block nav-ul_text">Hello, {{ auth('customer')->user()->f_name }}</span>
+
+                                <i class="bi bi-person-fill" style="color: #000"></i>
+                                <span class="mx-1 d-none d-md-block nav-ul_text">Hello,
+                                    {{ auth('customer')->user()->f_name }}</span>
 
                                 {{-- <span
                                     class="mx-1 d-none d-md-block nav-ul_text">{{ auth('customer')->user()->image }}</span> --}}
@@ -647,7 +709,7 @@
                             </div>
                         </li>
                     @else
-                        <li class="me-2 me-sm-0">
+                        <li class="me-2 me-sm-0 d-none d-xl-block">
                             <a href="javascript:" class="customer_login_register_modal">
                                 <i class="bi bi-person d-none d-xl-inline-block nav-ul_text"
                                     style="font-size: 16px !important;"></i>
@@ -999,7 +1061,7 @@
                     </a>
 
                 </li> --}}
-                
+
                 @auth('customer')
                     <li class="me-2 me-sm-0">
                         <a href="{{ url('/parenting-user') }}" class="drp-btn active"
@@ -1762,7 +1824,7 @@
 
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
     <div class="offcanvas-header justify-content-end pb-0">
-        
+
         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body text-capitalize d-flex flex-column custom-gap pt-0">
@@ -1781,20 +1843,20 @@
                     </a>
                 </div>
             @endif
-         </div>
+        </div>
         <ul class="list-unstyled d-flex justify-content-around gap-3 mb-0 position-relative custom-style">
             @if (auth('customer')->check())
                 <li>
                     <a href="{{ Request::is('/user-account') || Request::is('user-account') ? 'javascript:void(0)' : route('user-account') }}"
                         class="d-flex align-items-center {{ Request::is('/user-account') || Request::is('user-account') ? 'active' : '' }} flex-column gap-1">
-                        @if(Request::is('/user-account') || Request::is('user-account'))
+                        @if (Request::is('/user-account') || Request::is('user-account'))
                             <i class="bi bi bi-person-fill custom-icon"></i>
                         @else
                             <i class="bi bi bi-person custom-icon"></i>
                         @endif
                         <span>{{ translate('account') }}</span>
                     </a>
-                </li>   
+                </li>
             @else
                 <li>
                     <a href="javascript:"
@@ -1802,13 +1864,13 @@
                         <i class="bi bi bi-person custom-icon"></i>
                         <span>{{ translate('account') }}</span>
                     </a>
-                </li> 
+                </li>
             @endif
             @if (auth('customer')->check())
                 <li>
                     <a href="{{ Request::is('/account-oder') || Request::is('account-oder') ? 'javascript:void(0)' : route('account-oder') }}"
                         class="d-flex align-items-center {{ Request::is('/account-oder') || Request::is('account-oder') ? 'active' : '' }} flex-column gap-1">
-                        @if(Request::is('/account-oder') || Request::is('account-oder'))
+                        @if (Request::is('/account-oder') || Request::is('account-oder'))
                             <i class="bi bi-box-seam-fill custom-icon"></i>
                         @else
                             <i class="bi bi-box-seam custom-icon"></i>
@@ -1818,7 +1880,7 @@
                 </li>
             @else
                 <li>
-                    <a href="javascript:"                    
+                    <a href="javascript:"
                         class="d-flex align-items-center customer_login_register_modal {{ Request::is('/account-oder') || Request::is('account-oder') ? 'active' : '' }} flex-column gap-1">
                         <i class="bi bi-box-seam custom-icon"></i>
                         <span>{{ translate('order_history') }}</span>
@@ -1829,7 +1891,7 @@
                 <li>
                     <a href="{{ Request::is('/track-order') || Request::is('track-order') ? 'javascript:void(0)' : route('track-order.index') }}"
                         class="d-flex align-items-center {{ Request::is('/track-order') || Request::is('track-order') ? 'active' : '' }} flex-column gap-1">
-                        @if(Request::is('/track-order') || Request::is('track-order'))
+                        @if (Request::is('/track-order') || Request::is('track-order'))
                             <i class="bi bi-truck custom-icon"></i>
                         @else
                             <i class="bi bi-truck-flatbed custom-icon"></i>
@@ -1839,7 +1901,7 @@
                 </li>
             @else
                 <li>
-                    <a href="javascript:"                    
+                    <a href="javascript:"
                         class="d-flex align-items-center customer_login_register_modal {{ Request::is('/track-order') || Request::is('track-order') ? 'active' : '' }} flex-column gap-1">
                         <i class="bi bi-truck custom-icon"></i>
                         <span>{{ translate('track_order') }}</span>
@@ -1850,7 +1912,7 @@
                 <li>
                     <a href="{{ Request::is('/refund-policy') || Request::is('refund-policy') ? 'javascript:void(0)' : route('refund-policy') }}"
                         class="d-flex align-items-center {{ Request::is('/refund-policy') || Request::is('refund-policy') ? 'active' : '' }} flex-column gap-1">
-                        @if(Request::is('/refund-policy') || Request::is('refund-policy'))
+                        @if (Request::is('/refund-policy') || Request::is('refund-policy'))
                             <i class="bi bi-circle-fill custom-icon"></i>
                         @else
                             <i class="bi bi-arrow-repeat custom-icon"></i>
@@ -1860,7 +1922,7 @@
                 </li>
             @else
                 <li>
-                    <a href="javascript:"                        
+                    <a href="javascript:"
                         class="d-flex align-items-center customer_login_register_modal {{ Request::is('/') || Request::is('') ? 'active' : '' }} flex-column gap-1">
                         <i class="bi bi-arrow-repeat custom-icon"></i>
                         <span>{{ translate('cash_refund') }}</span>
@@ -1872,10 +1934,10 @@
             <ul class="menu scrollY-60 ">
                 <li>
                     <a href="{{ route('home') }}" class="nav-ul_text">
-                      <i class="bi bi-house me-3"></i>
-                      {{ translate('home') }}
+                        <i class="bi bi-house me-3"></i>
+                        {{ translate('home') }}
                     </a>
-                </li>                  
+                </li>
                 {{-- <li>
                     <a href="javascript:">{{ translate('all_categories') }}</a>
                     <ul class="submenu">
@@ -1930,7 +1992,8 @@
                 @if ($web_config['business_mode'] == 'multi')
                     <li>
                         <a href="{{ route('vendors') }}"
-                            class="{{ Request::is('vendors') ? 'active' : '' }} nav-ul_text"><i class="bi bi-shop-window me-3"></i>{{ translate('shops') }}</a>
+                            class="{{ Request::is('vendors') ? 'active' : '' }} nav-ul_text"><i
+                                class="bi bi-shop-window me-3"></i>{{ translate('shops') }}</a>
                     </li>
                 @endif
                 {{-- @if ($web_config['business_mode'] == 'multi')
@@ -1945,10 +2008,10 @@
                     @endif
                 @endif --}}
                 {{-- @auth('customer') --}}
-                    <li>
-                        <a href="{{ route('account-tickets') }}" class="nav-ul_text">
-                            <i class="bi bi-headset me-3"></i>{{ translate('Support') }}</a>
-                    </li>
+                <li>
+                    <a href="{{ route('account-tickets') }}" class="nav-ul_text">
+                        <i class="bi bi-headset me-3"></i>{{ translate('Support') }}</a>
+                </li>
                 {{-- @else
                     <li>
                         <a href="{{ route('account-tickets') }}" class="nav-ul_text">{{ translate('Support') }}</a>
@@ -1957,16 +2020,18 @@
                 @if ($web_config['brand_setting'])
                     <li>
                         <a href="{{ route('brands') }}"
-                            class="{{ Request::is('brands') ? 'active' : '' }} nav-ul_text"><i class="bi bi-bag-check me-3"></i>{{ translate('brand') }}</a>
+                            class="{{ Request::is('brands') ? 'active' : '' }} nav-ul_text"><i
+                                class="bi bi-bag-check me-3"></i>{{ translate('brand') }}</a>
                     </li>
                 @endif
                 <li>
-                    <a href="{{ route('track-order.index') }}"
-                        class="nav-ul_text"><i class="bi bi-boxes me-3"></i>{{ translate('track_order') }}</a>
+                    <a href="{{ route('track-order.index') }}" class="nav-ul_text"><i
+                            class="bi bi-boxes me-3"></i>{{ translate('track_order') }}</a>
                 </li>
                 <li>
-                    <a href="{{ route('home') }}"
-                        class="nav-ul_text"><i class="bi bi-heart me-3"></i>{{ translate('') }} <img src="https://bachay.com/public/images/bachay-parenting.png" alt=""> </a>
+                    <a href="{{ route('home') }}" class="nav-ul_text"><i
+                            class="bi bi-heart me-3"></i>{{ translate('') }} <img
+                            src="https://bachay.com/public/images/bachay-parenting.png" alt=""> </a>
                 </li>
             </ul>
         </div>

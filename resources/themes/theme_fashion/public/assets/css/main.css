@@ -1413,7 +1413,7 @@ input:-webkit-autofill:active {
 }
 
 .header-wrapper .logo {
-  margin-inline-end: auto;
+  /* margin-inline-end: auto; */
   max-width: 131px;
   display: block;
 }

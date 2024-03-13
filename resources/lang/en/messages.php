@@ -7269,4 +7269,8 @@
   'Custom_page_table' => 'Custom page table',
   'create_page' => 'Create page',
   'banner_mobile_image' => 'Banner mobile image',
+  'account' => 'Account',
+  'order_history' => 'Order history',
+  'cash_refund' => 'Cash refund',
+  '' => '',
 );
