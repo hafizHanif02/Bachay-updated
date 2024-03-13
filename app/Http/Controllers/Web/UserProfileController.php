@@ -1178,10 +1178,11 @@ class UserProfileController extends Controller
                 ->paginate(20);
             }
             $genders = $gender[1];
+            $custom_pages = CustomPage::get();
 
             return view(VIEW_FILE_NAMES['home'],
         compact(
-                'genders','sizes','latest_products', 'deal_of_the_day', 'top_sellers','topRatedShops', 'main_banner','most_visited_categories',
+                'custom_pages','genders','sizes','latest_products', 'deal_of_the_day', 'top_sellers','topRatedShops', 'main_banner','most_visited_categories',
                 'random_product', 'decimal_point_settings', 'newSellers', 'sidebar_banner', 'top_side_banner', 'recent_order_shops',
                 'categories', 'colors_in_shop', 'all_products_info', 'most_searching_product', 'most_demanded_product', 'featured_products','promo_banner_left',
                 'promo_banner_middle_top','promo_banner_middle_bottom','promo_banner_right', 'promo_banner_bottom', 'currentDate', 'all_products',
@@ -1470,10 +1471,11 @@ class UserProfileController extends Controller
                 ->paginate(20);
             
             $genders = 'male';
+            $custom_pages = CustomPage::get();
 
             return view(VIEW_FILE_NAMES['home'],
         compact(
-                'genders','sizes','latest_products', 'deal_of_the_day', 'top_sellers','topRatedShops', 'main_banner','most_visited_categories',
+                'custom_pages','genders','sizes','latest_products', 'deal_of_the_day', 'top_sellers','topRatedShops', 'main_banner','most_visited_categories',
                 'random_product', 'decimal_point_settings', 'newSellers', 'sidebar_banner', 'top_side_banner', 'recent_order_shops',
                 'categories', 'colors_in_shop', 'all_products_info', 'most_searching_product', 'most_demanded_product', 'featured_products','promo_banner_left',
                 'promo_banner_middle_top','promo_banner_middle_bottom','promo_banner_right', 'promo_banner_bottom', 'currentDate', 'all_products',
@@ -1760,10 +1762,12 @@ class UserProfileController extends Controller
                 ->paginate(20);
             
             $genders = 'female';
+            $custom_pages = CustomPage::get();
+
 
             return view(VIEW_FILE_NAMES['home'],
         compact(
-                'genders','sizes','latest_products', 'deal_of_the_day', 'top_sellers','topRatedShops', 'main_banner','most_visited_categories',
+                'custom_pages','genders','sizes','latest_products', 'deal_of_the_day', 'top_sellers','topRatedShops', 'main_banner','most_visited_categories',
                 'random_product', 'decimal_point_settings', 'newSellers', 'sidebar_banner', 'top_side_banner', 'recent_order_shops',
                 'categories', 'colors_in_shop', 'all_products_info', 'most_searching_product', 'most_demanded_product', 'featured_products','promo_banner_left',
                 'promo_banner_middle_top','promo_banner_middle_bottom','promo_banner_right', 'promo_banner_bottom', 'currentDate', 'all_products',
