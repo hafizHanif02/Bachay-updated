@@ -1923,7 +1923,7 @@
             @else
                 <li>
                     <a href="javascript:"
-                        class="d-flex align-items-center customer_login_register_modal {{ Request::is('/') || Request::is('') ? 'active' : '' }} flex-column gap-1">
+                        class="d-flex align-items-center customer_login_register_modal {{ Request::is('/refund-policy') || Request::is('refund-policy') ? 'active' : '' }} flex-column gap-1">
                         <i class="bi bi-arrow-repeat custom-icon"></i>
                         <span>{{ translate('cash_refund') }}</span>
                     </a>
