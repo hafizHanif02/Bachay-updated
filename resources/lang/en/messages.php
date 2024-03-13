@@ -7268,4 +7268,5 @@
   'none' => 'None',
   'Custom_page_table' => 'Custom page table',
   'create_page' => 'Create page',
+  'banner_mobile_image' => 'Banner mobile image',
 );

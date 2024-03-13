@@ -10020,13 +10020,6 @@ a.img5:hover::before {
 .signature-products-slider-wrapper .owl-stage-outer {
   overflow: visible;
 }
-.banner-slide-img{
-  height: 400px !important;
-}
-@media screen and (max-width: 767px) {
-  .banner-slide-img {
-    height: auto !important; 
-}
   .signature-product-section-inner {
     background: var(--section-2);
   }

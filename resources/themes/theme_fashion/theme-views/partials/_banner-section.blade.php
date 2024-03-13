@@ -2,10 +2,11 @@
 <section class="banner-section ">
     <div class="slider owl-theme owl-carousel custom-single-slider">
         @foreach($main_banner as $banner)
+       
         <div class="banner-slide" style="background: {{ $banner['background_color'] }};">
 
-            <img class="banner-slide-img" alt="{{ translate('banner') }}" loading="lazy"
-                 src="{{ getValidImage(path: 'storage/app/public/banner/'.$banner['photo'], type:'product') }}">
+            <img class="banner-slide-img" style="height: 400px;" alt="{{ translate('banner') }}" loading="lazy"
+                 src="{{ getValidImage(path: 'storage/app/public/banner/'.$banner['mobile_photo'], type:'product') }}">
 
             <!-- @if($banner['title'] && $banner['sub_title'])
                 <div class="content">
