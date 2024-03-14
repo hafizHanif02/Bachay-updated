@@ -2034,9 +2034,8 @@
                     <a href="{{ route('track-order.index') }}" class="nav-ul_text"><i
                             class="bi bi-boxes me-3"></i>{{ translate('track_order') }}</a>
                 </li>
-                <li>
-                    <a href="{{ route('home') }}" class="nav-ul_text"><i
-                            class="bi bi-heart me-3"></i>{{ translate('') }} <img
+                <li class="mt-3">
+                    <a href="{{ route('home') }}" class="nav-ul_text"><img
                             src="https://bachay.com/public/images/bachay-parenting.png" alt=""> </a>
                 </li>
             </ul>

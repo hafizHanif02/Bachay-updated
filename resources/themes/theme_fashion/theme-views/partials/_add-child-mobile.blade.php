@@ -34,6 +34,17 @@
         text-align: center;
         font-weight: 600;
         margin: 0;
+        color: #000;
+    }
+    .child_mobile_btn{
+        background: transparent;
+        border: none;
+        font-size: 10px;
+        text-align: center;
+        font-weight: 600;
+        margin: 0;
+        color: #000;
+        padding: 0;
     }
 </style>
 <div class="show-div d-lg-none d-xl-none" id="showDiv">
@@ -50,10 +61,10 @@
         <div class="slider_child">
             <img alt="Shop for Kids" title="Shop for Kids" class="static_img gastaticimage"
                 src="{{ asset('public/images/all_p_icon.png') }}" width="50px">
-            {{-- <p >All</p> --}}
+            
             <form action="{{ route('unswitch') }}" method="get">
                 @csrf
-                <button type="submit" class="R11_42">All</button>
+                <button type="submit" class="child_mobile_btn w-100">All</button>
             </form>
         </div>
 
@@ -63,14 +74,14 @@
         @if(!$childs->isEmpty())
             @foreach($childs as $child)
             <div class="slider_child">
-                <img alt="boy" class="static_img gastaticimage"
-                src="{{asset('public/assets/images/customers/child/'.$child->profile_picture)}}" width="50px">
-                <p class="R11_42">
+                <img alt="boy" class="static_img gastaticimage rounded-circle"
+                src="{{asset('public/assets/images/customers/child/'.$child->profile_picture)}}" width="50px" height="50px">
+                
                     <form action="{{ route('switch_child', $child->id) }}" method="get">
                         @csrf
-                    <button class="btn btn-{{ $child->gender == 'male' ? 'primary' : 'custom-pink' }}">{{ $child->name }}</button>
+                    <button class="btn {{ $child->gender == 'male' ? 'primary' : 'child_mobile_btn' }}">{{ $child->name }}</button>
                     </form>
-                </p>
+                
             </div>
             @endforeach
         @else
@@ -79,7 +90,9 @@
                 src="{{ asset('public/images/boy_p_icon.png') }}" width="50px">
             <form action="{{ route('switch_male') }}" method="get">
                 @csrf
-                <button type="submit" class="btn btn-primary"><p class="R11_42">Boy</p></button>
+                <button type="submit" class="child_mobile_btn w-100">
+                  Boy
+                </button>
             </form>
         </div>
         <div class="slider_child">
@@ -106,7 +119,7 @@
                 src="{{ asset('public/images/boy_p_icon.png') }}" width="50px">
             <form action="{{ route('switch_male') }}" method="get">
                 @csrf
-                <button type="submit" class="btn btn-primary"><p class="R11_42">Boy</p></button>
+                <button type="submit" class="child_mobile_btn w-100">Boy</button>
             </form>
         </div>
         <div class="slider_child">
@@ -116,7 +129,7 @@
             <p class="R11_42">
                 <form action="{{ route('switch_female') }}" method="get">
                     @csrf
-                    <button type="submit" class="btn btn-custom-pink"><p class="R11_42">Girl</p></button>
+                    <button type="submit" class="child_mobile_btn w-100">Girl</button>
                 </form>
             </p>
         </div>

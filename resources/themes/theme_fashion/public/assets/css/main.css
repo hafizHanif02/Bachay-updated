@@ -8580,6 +8580,9 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 @media (max-width: 767px) {
+  header {
+    box-shadow: none !important;
+}
   .user-author-info-wrap {
     flex-grow: 1;
   }
