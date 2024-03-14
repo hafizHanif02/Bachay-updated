@@ -90,6 +90,7 @@
     }
 </style>
 <style>
+   
     li::marker {
     content: "";
 }
@@ -358,7 +359,7 @@
                 @if (session('switch_user'))
                     <?php $child = session('switch_user'); ?>
                     <li>
-                        <a href="javascript:" class="switchuser nav-ul_text d-flex align-items-center pe-0">
+                        <a href="javascript:" class="add_child_con nav-ul_text d-flex align-items-center pe-0">
                             <img class="rounded-circle me-2"
                                 src="{{ asset('public/assets/images/customers/child/' . $child->profile_picture) }}"
                                 alt="" width="30px" height="30px">
@@ -370,7 +371,7 @@
                     </li>
                 @elseif(session('switch_female'))
                     <li>
-                        <a href="javascript:" class="switchuser nav-ul_text d-flex align-items-center pe-0">
+                        <a href="javascript:" class="add_child_con nav-ul_text d-flex align-items-center pe-0">
                             <img class="rounded-circle me-2" src="{{ asset('public/images/girl.jpg') }}" alt=""
                                 width="30px" height="30px">
                             <div>
@@ -381,7 +382,7 @@
                     </li>
                 @elseif(session('switch_male'))
                     <li>
-                        <a href="javascript:" class="switchuser nav-ul_text d-flex align-items-center pe-0">
+                        <a href="javascript:" class="add_child_con nav-ul_text d-flex align-items-center pe-0">
                             <img class="rounded-circle me-2" src="{{ asset('public/images/boy.jpg') }}" alt=""
                                 width="30px" height="30px">
                             <div>
@@ -392,7 +393,7 @@
                     </li>
                 @else
                     <li class="me-2 me-sm-0">
-                        <a href="javascript:" class="switchuser nav-ul_text d-flex align-items-center pe-0">
+                        <a href="javascript:" class="add_child_con nav-ul_text d-flex align-items-center pe-0">
                             <img class="rounded-circle me-2" src="{{ asset('public/images/all.jpg') }}" alt=""
                                 width="30px" height="30px">
                             <div>
@@ -402,6 +403,10 @@
                         </a>
                     </li>
                 @endif
+
+                
+                
+
             </div>
             
             <a href="{{ route('home') }}" class="logo">
@@ -750,6 +755,7 @@
                     </li>
                 </ul>
             </div>
+           
         </div>
     </div>
     <div class="nav-btn mt-3" id="mega-menu" class="hide-on-med-and-down"
@@ -2066,6 +2072,7 @@
 </div>
 
 <script>
+    
     let lastScrollTop = 0;
     const threshold = window.innerHeight * 0.9;
 
