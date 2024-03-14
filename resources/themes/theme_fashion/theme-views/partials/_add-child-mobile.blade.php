@@ -47,7 +47,7 @@
         padding: 0;
     }
 </style>
-<div class="show-div d-lg-none d-xl-none" id="showDiv">
+<div class="container show-div d-lg-none d-xl-none" id="showDiv">
     <span class="close-btn-add" onclick="hideDiv()"><i class="bi bi-x-lg"></i></span>
     <div id="slider_part">
         <a href="{{ route('my-child.list') }}">
