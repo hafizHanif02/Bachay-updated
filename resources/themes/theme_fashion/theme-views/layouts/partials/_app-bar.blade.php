@@ -1,7 +1,7 @@
 <ul class="list-unstyled d-flex justify-content-around gap-3 mb-0 position-relative custom-font">
     <li>
         <a href="{{ Request::is('/') || Request::is('home') ? 'javascript:void(0)' : route('home') }}"
-            class="d-flex align-items-center {{ Request::is('/') || Request::is('home') ? 'active' : '' }} flex-column gap-1 py-3">
+            class="d-flex align-items-center {{ Request::is('/') || Request::is('home') ? 'active' : '' }} flex-column gap-0 py-1">
             @if(Request::is('/') || Request::is('home'))
                 <i class="bi bi-house-door-fill custom-icon"></i>
             @else
@@ -12,7 +12,7 @@
     </li>
     <li>
         <a href="{{ Request::is('/categories*') || Request::is('categories*') ? 'javascript:void(0)' : route('categories.list') }}"
-            class="d-flex align-items-center {{ Request::is('/categories*') || Request::is('categories*') ? 'active' : '' }} flex-column gap-1 py-3">
+            class="d-flex align-items-center {{ Request::is('/categories*') || Request::is('categories*') ? 'active' : '' }} flex-column gap-0 py-1">
             @if(Request::is('/categories*') || Request::is('categories*'))
                 <i class="bi bi-collection-play-fill custom-icon"></i>
             @else
@@ -25,7 +25,7 @@
     @if (auth('customer')->check())
         <li>
             <a href="{{ Request::is('parenting-user') ? 'javascript:void(0)' : route('parenting-user') }}"
-                class="d-flex align-items-center {{ Request::is('parenting-user') ? 'active' : '' }} flex-column gap-1 py-3">
+                class="d-flex align-items-center {{ Request::is('parenting-user') ? 'active' : '' }} flex-column gap-0 py-1">
                 <i class="bi bi-chat-square-heart{{ Request::is('parenting-user') ? '-fill' : '' }} custom-icon"></i>
                 <span>{{ translate('parenting') }}</span>
             </a>
@@ -33,7 +33,7 @@
     @else
         <li>
             <a href="{{ Request::is('parenting') ? 'javascript:void(0)' : route('parenting') }}"
-                class="d-flex align-items-center {{ Request::is('parenting') ? 'active' : '' }} flex-column gap-1 py-3">
+                class="d-flex align-items-center {{ Request::is('parenting') ? 'active' : '' }} flex-column gap-0 py-1">
                 <i class="bi bi-chat-square-heart{{ Request::is('parenting') ? '-fill' : '' }} custom-icon"></i>
                 <span>{{ translate('parenting') }}</span>
             </a>
@@ -48,7 +48,7 @@
                 <span>{{ translate('profile') }}</span>
             </a> --}}
             <a href="{{ route('user-profile') }}"
-                class="d-flex align-items-center {{ Request::is('/user-profile') || Request::is('user-profile') ? 'active' : '' }} flex-column gap-1 py-3">
+                class="d-flex align-items-center {{ Request::is('/user-profile') || Request::is('user-profile') ? 'active' : '' }} flex-column gap-0 py-1">
                 @if(Request::is('/user-profile') || Request::is('user-profile'))
                     <i class="bi bi-person-fill custom-icon"></i>
                 @else
@@ -61,7 +61,7 @@
     @else
         <li>
             <a href="javascript:"
-                class="d-flex align-items-center {{ Request::is('/user-profile') || Request::is('user-profile') ? 'active' : '' }}   flex-column gap-1 py-3 customer_login_register_modal">
+                class="d-flex align-items-center {{ Request::is('/user-profile') || Request::is('user-profile') ? 'active' : '' }}   flex-column gap-0 py-1 customer_login_register_modal">
                 <i class="bi bi-person custom-icon"></i>
                 <span>{{ translate('profile') }}</span>
             </a>
@@ -69,7 +69,7 @@
     @endif
     <li>
         <a href="{{ route('home') }}"
-            class="d-flex align-items-center {{ Request::is('/home') || Request::is('home') ? 'active' : '' }} flex-column gap-1 py-3">
+            class="d-flex align-items-center {{ Request::is('/home') || Request::is('home') ? 'active' : '' }} flex-column gap-0 py-1">
             <i class="bi bi-list custom-icon"></i>
             <span>{{ translate('menu') }}</span>
         </a>
