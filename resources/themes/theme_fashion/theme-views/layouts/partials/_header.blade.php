@@ -1833,8 +1833,8 @@
 
         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
-    <div class="offcanvas-body text-capitalize d-flex flex-column custom-gap pt-0">
-        <div>
+    <div class="text-capitalize d-flex flex-column custom-gap pt-0">
+        <div class="ps-3 pe-3">
             <h3 class="font-poppins fs-6 mb-1 text-center">Welcome to Bachay</h3>
             @if (auth('customer')->check())
                 {{-- <div class="d-flex justify-content-center mb-2 pb-3 mt-auto px-4"> --}}
@@ -1850,7 +1850,7 @@
                 </div>
             @endif
         </div>
-        <ul class="list-unstyled d-flex justify-content-around gap-3 mb-0 position-relative custom-style">
+        <ul class="list-unstyled d-flex justify-content-around gap-3 mb-0 position-relative custom-style ps-3 pe-3">
             @if (auth('customer')->check())
                 <li>
                     <a href="{{ Request::is('/user-account') || Request::is('user-account') ? 'javascript:void(0)' : route('user-account') }}"
@@ -1936,7 +1936,7 @@
                 </li>
             @endif
         </ul>
-        <div>
+        <div class="ps-3 pe-3">
             <ul class="menu scrollY-60 ">
                 <li>
                     <a href="{{ route('home') }}" class="nav-ul_text">
