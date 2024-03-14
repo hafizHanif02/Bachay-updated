@@ -100,7 +100,7 @@
         </li>
         <li class="nav-item">
             <a href="{{route('my-child.list')}}"
-               class="nav-link {{Request::is ('my-child') || Request::is('my-child*') ? 'active' : ''}}">{{ translate('my-child') }}</a>
+               class="nav-link {{Request::is ('my-child') || Request::is('my-child*') ? 'active' : ''}}">{{ translate('my_child') }}</a>
         </li>
         
         @if ($web_config['ref_earning_status'])
