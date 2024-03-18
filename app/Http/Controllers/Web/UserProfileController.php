@@ -1801,7 +1801,7 @@ class UserProfileController extends Controller
             
         }else{
             Toastr::success('Please Login First');
-            return back();
+            return redirect()->route('customer.auth.login');
         }
         
     }

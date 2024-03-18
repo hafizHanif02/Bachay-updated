@@ -9,13 +9,7 @@
                         <h3 class="text-center child-heading">
                             Switch User
                         </h3>
-                        <a
-                        @if(Auth::guard('customer')->check())
-                         href="{{ route('my-child.list') }}"
-                         @else
-                         href="{{ route('customer.auth.login') }}"
-                         @endif
-                         >
+                        <a href="{{ route('my-child.list') }}">
                             <div class="d-flex align-items-center justify-content-between gap-3 mt-4 mb-4">
                                 <div class="d-flex align-items-center gap-2">
                                     <div class="baby_circle_child">
