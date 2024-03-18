@@ -144,6 +144,7 @@
 <script>
     let isShownDiv = true;
     function showDiv() {
+        console.log("shown = "+ isShownDiv);
         if(isShownDiv){
 
             var anchor = document.querySelector('.add_child_con');
