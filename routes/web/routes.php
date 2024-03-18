@@ -285,14 +285,14 @@ Route::group(['namespace' => 'Customer', 'prefix' => 'customer', 'as' => 'custom
 
     Route::group(['namespace' => 'Auth', 'prefix' => 'auth', 'as' => 'auth.'], function () {
         Route::get('/code/captcha/{tmp}', 'LoginController@captcha')->name('default-captcha');
-        Route::get('login', 'LoginController@login')->name('login');
+        Route::get('login', 'LoginController@CustomerLogin')->name('login');
         Route::get('verify-token', 'LoginController@VerifyToken')->name('verify-token');
         Route::post('login', 'LoginController@submit')->name('login_submit');
         Route::get('logout', 'LoginController@logout')->name('logout');
         Route::get('get-login-modal-data', 'LoginController@get_login_modal_data')->name('get-login-modal-data');
         Route::get('get-child', 'LoginController@get_child')->name('get-child');
 
-        Route::get('sign-up', 'RegisterController@register')->name('sign-up');
+        Route::get('sign-up', 'RegisterController@registerCustomer')->name('sign-up');
         Route::post('sign-up', 'RegisterController@submit');
 
         Route::get('check/{id}', 'RegisterController@check')->name('check');

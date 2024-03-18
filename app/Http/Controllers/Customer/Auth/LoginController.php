@@ -301,6 +301,10 @@ class LoginController extends Controller
         ]);
     }
 
+    public function CustomerLogin(){
+        return view(VIEW_FILE_NAMES['customer_login']);
+    }
+
     
 
 

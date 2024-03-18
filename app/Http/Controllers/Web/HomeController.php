@@ -17,6 +17,7 @@ use App\Models\OrderDetail;
 use App\Models\Product;
 use App\Models\Review;
 use App\Models\Seller;
+use Illuminate\Http\Request;    
 use App\Utils\Helpers;
 use App\Utils\ProductManager;
 use Illuminate\Contracts\View\View;
@@ -42,14 +43,13 @@ class HomeController extends Controller
     }
 
 
-    public function index()
+    public function index(Request $request)
     {
         $theme_name = theme_root_path();
-
         return match ($theme_name) {
             'default' => self::default_theme(),
             'theme_aster' => self::theme_aster(),
-            'theme_fashion' => self::theme_fashion(),
+            'theme_fashion' => self::theme_fashion($request),
             'theme_all_purpose' => self::theme_all_purpose(),
         };
     }
@@ -573,8 +573,15 @@ class HomeController extends Controller
         );
     }
 
-    public function theme_fashion(): View
+    public function theme_fashion($request): View
     {
+        
+        $userAgent = $request->header('User-Agent');
+        if ((strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Android') !== false)) {
+            $device = 'mobile';
+        }else{
+            $device = 'desktop';
+        }
         
         $theme_name = theme_root_path();
         $currentDate = date('Y-m-d H:i:s');
@@ -837,7 +844,7 @@ class HomeController extends Controller
 
         return view(VIEW_FILE_NAMES['home'],
             compact(
-                'custom_pages','sizes','latest_products', 'deal_of_the_day', 'top_sellers','topRatedShops', 'main_banner','most_visited_categories',
+                'device','custom_pages','sizes','latest_products', 'deal_of_the_day', 'top_sellers','topRatedShops', 'main_banner','most_visited_categories',
                 'random_product', 'decimal_point_settings', 'newSellers', 'sidebar_banner', 'top_side_banner', 'recent_order_shops',
                 'categories', 'colors_in_shop', 'all_products_info', 'most_searching_product', 'most_demanded_product', 'featured_products','promo_banner_left',
                 'promo_banner_middle_top','promo_banner_middle_bottom','promo_banner_right', 'promo_banner_bottom', 'currentDate', 'all_products',

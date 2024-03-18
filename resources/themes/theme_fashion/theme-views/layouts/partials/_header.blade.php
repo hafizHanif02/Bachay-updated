@@ -1844,7 +1844,13 @@
                 </div>
             @else
                 <div class="d-flex justify-content-center mt-auto mb-2">
-                    <a href="javascript:" class="btn btn-base w-100 customer_login_register_modal">
+                    <a
+                    @if($device = 'mobile')
+                    href="{{ route('customer.auth.login') }}"
+                    @else
+                     href="javascript:" 
+                    @endif
+                     class="btn btn-base w-100 customer_login_register_modal">
                         {{ translate('login') }} / {{ translate('register') }}
                     </a>
                 </div>

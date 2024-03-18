@@ -381,6 +381,10 @@ class RegisterController extends Controller
         ]);
     }
 
+    public function registerCustomer(){
+        return view(VIEW_FILE_NAMES['customer_register']);
+    }
+
     public static function login_process($user, $email, $password)
     {
         if (auth('customer')->attempt(['email' => $email, 'password' => $password], true)) {

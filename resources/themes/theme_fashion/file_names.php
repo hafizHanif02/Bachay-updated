@@ -17,6 +17,8 @@ return [
     'seller_registration' => 'theme-views.seller-views.auth.register',
     'product_search_result' => 'theme-views.partials._search-result',
     'get_login_modal_data' => 'theme-views.layouts.partials.modal._login',
+    'customer_login' => 'theme-views.users-profile.customer_login',
+    'customer_register' => 'theme-views.users-profile.customer_register',
     'get_child_modal' => 'theme-views.layouts.partials.modal._child',
     'get_register_modal_data' => 'theme-views.layouts.partials.modal._register',
     'user_profile' => 'theme-views.users-profile.user-profile',

@@ -169,7 +169,6 @@
 </head>
 
 <body>
-
     <script>
         "use strict";
 
