@@ -13,8 +13,7 @@
                         @if(Auth::guard('customer')->check())
                          href="{{ route('my-child.list') }}"
                          @else
-                         href="javascript:"
-                         class="customer_login_register_modal"
+                         href="{{ route('customer.auth.login') }}"
                          @endif
                          >
                             <div class="d-flex align-items-center justify-content-between gap-3 mt-4 mb-4">
