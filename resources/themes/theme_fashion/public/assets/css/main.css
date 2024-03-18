@@ -1892,7 +1892,7 @@ a:not(:focus) ~ .__dropdown-menu {
 }
 
 .__header-cart-menu {
-  inset-inline-end: -70px;
+  /*inset-inline-end: -70px; */
 }
 
 .__header-cart-menu .view-all {
@@ -10049,7 +10049,7 @@ a.img5:hover::before {
     max-width: 100%;
     width: 100%;
   }
-}
+
 @media screen and (max-width: 425px) {
   .signature-product-section-inner {
     overflow: hidden;
