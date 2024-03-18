@@ -142,12 +142,20 @@
     </div>
 </div>
 <script>
+    let isShownDiv = true;
     function showDiv() {
-        var anchor = document.querySelector('.add_child_con');
-        var div = document.getElementById('showDiv');
-        var anchorRect = anchor.getBoundingClientRect();
-        // div.style.top = (anchorRect.bottom + window.scrollY) + 'px';
-        div.style.display = 'block';
+        if(isShownDiv){
+
+            var anchor = document.querySelector('.add_child_con');
+            var div = document.getElementById('showDiv');
+            var anchorRect = anchor.getBoundingClientRect();
+            // div.style.top = (anchorRect.bottom + window.scrollY) + 'px';
+            div.style.display = 'block';
+            isShownDiv = true;
+        }else {
+            hideDiv();
+            isShownDiv = false;
+        }
     }
 
     function hideDiv() {
