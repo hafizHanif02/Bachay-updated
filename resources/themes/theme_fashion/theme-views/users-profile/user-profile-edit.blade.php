@@ -49,7 +49,7 @@
                                                    value="{{$customerDetail['email']}}"
                                                    placeholder="{{translate('enter_email_number')}}" readonly>
                                         </div>
-                                        <div class="col-sm-6">
+                                        {{-- <div class="col-sm-6">
                                             <label class="form--label mb-2">{{translate('password')}}</label>
                                             <div class="position-relative">
                                                 <input type="password" minlength="6" id="password2" class="form-control"
@@ -66,7 +66,7 @@
                                                 <div class="js-password-toggle"><i class="bi bi-eye-fill"></i></div>
                                             </div>
                                             <div id='message'></div>
-                                        </div>
+                                        </div> --}}
                                         <div class="d-flex flex-wrap align-items-center">
                                             <div class="upload-wrapper">
                                                 <div class="thumb">
@@ -99,7 +99,7 @@
                                                     {{translate('reset')}}
                                                 </button>
                                                 <button type="submit"
-                                                        class="btn btn-base  form-control  min-w-180 ms-auto go-step-2 text-capitalize">
+                                                        class="btn btn-base form-control min-w-180 ms-auto go-step-2 text-capitalize seller_reg">
                                                     {{translate('update_profile')}}
                                                 </button>
                                             </div>

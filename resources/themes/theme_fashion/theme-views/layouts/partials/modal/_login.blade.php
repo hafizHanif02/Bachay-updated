@@ -23,7 +23,7 @@
                             </label>
                             <input type="text" class="form-control" name="user_id" id="login_email"
                                 value="{{ old('user_id') }}"
-                                placeholder="{{ translate('enter_email_or_phone_number') }}" required>
+                                placeholder="{{ translate('enter_email_or_phone_number') }}" required autofocus>
                             <small>Your phone format will be 923XXXXXXXXX</small>
                         </div>
                         {{-- <div class="col-sm-12">
