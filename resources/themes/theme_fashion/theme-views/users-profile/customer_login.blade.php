@@ -14,13 +14,18 @@
     <meta property="twitter:description"
         content="{{ substr(strip_tags(str_replace('&nbsp;', ' ', $web_config['about']->value)), 0, 160) }}">
 @endpush
+<style>
+    /* .sign-in-cardbody{
+        margin: 50px 0 100px 0;
+    } */
+</style>
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
+<div class="container mt-5">
+    <div class="row justify-content-center pb-5">
         <div class="col-md-6">
             <div class="card">
                 <div class="card-body">
-                    <h3 class="title text-capitalize">{{ translate('sign_in') }}</h3>
+                    <h3 class="title text-center text-capitalize mb-3">{{ translate('sign_in') }}</h3>
                     <form action="{{ route('customer.auth.verify-token') }}" method="get" id="customer_login_modal" autocomplete="off">
                         @csrf
                         <div class="row g-3">
