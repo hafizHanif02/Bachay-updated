@@ -8434,7 +8434,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .scrollY-60 {
-  max-block-size: 65vh;
+  max-block-size: 85vh;
   overflow-y: auto;
   line-height: 30px;
 }
@@ -8515,7 +8515,8 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .offcanvas {
-  width: 280px !important;
+  /* width: 280px !important; */
+  width: 85% !important;
 }
 
 .offcanvas-footer .btn-base {

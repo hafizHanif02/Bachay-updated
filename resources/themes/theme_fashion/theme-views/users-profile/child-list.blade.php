@@ -14,7 +14,7 @@
                 <div class="address-details px-md-4">
                     <h4 class="subtitle mb-3 mx-2 text-capitalize">{{ translate('My_Children') }}</h4>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-6 custom-spacing">
                             <div class="child_list">
                                 <table class="table-responsive table-borderless w-100">
                                     <thead>
@@ -102,8 +102,8 @@
                     </div>
 
                     @if (count($childs) <= 0)
-                        <div class="text-center pt-5 w-100">
-                            <div class="text-center mb-5">
+                        <div class="text-center pt-5 w-100 custom-space">
+                            <div class="text-center mb-5 custom-space">
                                 <img loading="lazy" src="{{ theme_asset('assets/img/icons/no-child.svg') }}"
                                     alt="{{ translate('address') }}" width="200px" height="200px">
                                 <h5 class="my-3 pt-4 text-muted">{{ translate('no_child_found') }}!</h5>
@@ -116,5 +116,19 @@
             </div>
         </div>
         </div>
+        <style>
+            @media (max-width: 767px) {
+            .custom-space {
+                margin-bottom: 0 !important;
+            }
+
+            .custom-space {
+                padding-top: 0 !important;
+            }
+            .custom-spacing {
+                margin-bottom: 20px !important;
+            }
+        }
+        </style>
     </section>
 @endsection
