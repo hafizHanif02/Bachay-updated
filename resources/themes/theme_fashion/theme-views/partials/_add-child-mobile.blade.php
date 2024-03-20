@@ -23,6 +23,7 @@
         top: 0;
         right: 5px;
         cursor: pointer;
+        z-index: 999;
     }
 
     #slider_part {
