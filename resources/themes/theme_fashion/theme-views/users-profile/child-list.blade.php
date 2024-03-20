@@ -45,8 +45,10 @@
                                         ?>
                                         <tbody>
                                             <tr>
-                                                <td><img class="rounded-circle me-2" style="width: 20%"
-                                                        src="{{ asset('public/assets/images/customers/child/' . $child->profile_picture) }}">
+                                                <td>
+                                                    <img class="rounded-circle me-2"
+                                                        src="{{ asset('public/assets/images/customers/child/' . $child->profile_picture) }}"
+                                                        width="50px" height="50px">
                                                 </td>
                                                 <td>{{ $child->name }}</td>
                                                 <td>{{ $formattedAge }}</td>
@@ -117,18 +119,22 @@
         </div>
         </div>
         <style>
+            tbody tr td {
+                padding-bottom: 10px;
+            }
             @media (max-width: 767px) {
-            .custom-space {
-                margin-bottom: 0 !important;
-            }
+                .custom-space {
+                    margin-bottom: 0 !important;
+                }
 
-            .custom-space {
-                padding-top: 0 !important;
+                .custom-space {
+                    padding-top: 0 !important;
+                }
+
+                .custom-spacing {
+                    margin-bottom: 20px !important;
+                }
             }
-            .custom-spacing {
-                margin-bottom: 20px !important;
-            }
-        }
         </style>
     </section>
 @endsection
