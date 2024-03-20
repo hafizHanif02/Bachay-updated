@@ -10,13 +10,13 @@
                     <h2 class="text-center mb-2">{{ translate('OTP_verification') }}</h2>
                     <p class="text-center mb-5 text-muted">{{ translate('please_Verify_that_it’s_you') }}.</p>
                     <div class="d-flex justify-content-center">
-                        <img width="283" class="dark-support" src="{{theme_asset('assets/img/otp-found.png')}}"
+                        <img width="283" class="dark-support bg-transparent" src="{{ asset('public/images/otp.png') }}"
                              alt="{{translate('image')}}">
                     </div>
                 </div>
                 <div class="col-lg-6 text-center">
                     <div class="d-flex justify-content-center mb-3">
-                        <img width="50" class="dark-support" src="{{theme_asset('assets/img/otp-lock.png')}}"
+                        <img width="200" class="dark-support" src="{{ asset('public/images/wt.png') }}"
                              alt="{{translate('image')}}">
                     </div>
                     <p class="text-muted mx-w mx-auto width--27-5rem">

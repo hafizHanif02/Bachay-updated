@@ -97,7 +97,7 @@
                                     </select>
                                 </div>
                                 <div class="row mt-3 text-center">
-                                    <button type="submit" class="btn seller_reg">Save</button>
+                                    <button type="submit" class="btn seller_reg mt-3">Save</button>
                                 </div>
                             </form>
                         </div>
