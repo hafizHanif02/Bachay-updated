@@ -80,6 +80,7 @@ use App\Http\Controllers\QuizQuestionController;
 use App\Enums\ViewPaths\Admin\InhouseProductSale;
 use App\Http\Controllers\Admin\POS\POSController;
 use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\ParentArticleController;
 use App\Enums\ViewPaths\Admin\DeliverymanWithdraw;
 use App\Enums\ViewPaths\Admin\DeliveryRestriction;
 use App\Enums\ViewPaths\Admin\EnvironmentSettings;
@@ -104,6 +105,7 @@ use App\Http\Controllers\Admin\Settings\PagesController;
 use App\Http\Controllers\Admin\Settings\ThemeController;
 use App\Http\Controllers\Admin\Product\ProductController;
 use App\Http\Controllers\Admin\ThirdParty\MailController;
+use App\Http\Controllers\ParentArticleCategoryController;
 use App\Http\Controllers\VaccinationSubmissionController;
 use App\Http\Controllers\Admin\Product\CategoryController;
 use App\Http\Controllers\Admin\Promotion\BannerController;
@@ -204,6 +206,25 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['admin']],
     });
 
 
+    Route::group(['prefix' => 'parent_article', 'as' => 'parent_article.'], function () {
+        Route::get('list', [ParentArticleController::class, 'index'])->name('list');
+        Route::post('store', [ParentArticleController::class, 'store'])->name('store');
+        Route::get('edit/{id}', [ParentArticleController::class, 'edit'])->name('edit');
+        Route::post('update', [ParentArticleController::class, 'update'])->name('update');
+        Route::post('status', [ParentArticleController::class, 'ParentArticleStatus'])->name('status');
+        Route::post('delete', [ParentArticleController::class, 'destroy'])->name('delete');
+
+        Route::group(['prefix' => 'category', 'as' => 'category.'], function () {
+            Route::get('list', [ParentArticleCategoryController::class, 'index'])->name('list');
+            Route::post('store', [ParentArticleCategoryController::class, 'store'])->name('store');
+            Route::get('edit/{id}', [ParentArticleCategoryController::class, 'edit'])->name('edit');
+            Route::post('update', [ParentArticleCategoryController::class, 'update'])->name('update');
+            Route::post('status', [ParentArticleCategoryController::class, 'ParentArticleCategoryStatus'])->name('status');
+            Route::post('delete', [ParentArticleCategoryController::class, 'destroy'])->name('delete');
+        });
+    });
+
+
     Route::group(['prefix' => 'poll', 'as' => 'poll.'], function () {
         Route::get('list', [PollController::class, 'index'])->name('list');
         Route::post('store', [PollController::class, 'store'])->name('store');
@@ -217,6 +238,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['admin']],
         });
         
     });
+
+    
 
 
 

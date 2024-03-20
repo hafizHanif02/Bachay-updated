@@ -762,6 +762,20 @@
                                             <span class="text-truncate">{{translate('customer_List')}} </span>
                                         </a>
                                     </li>
+                                    <li class="nav-item {{Request::is('admin/customer/parent*')?'active':''}}">
+                                        <a class="nav-link " href="{{route('admin.parent_article.list')}}"
+                                           title="{{translate('Customer_List')}}">
+                                            <span class="tio-circle nav-indicator-icon"></span>
+                                            <span class="text-truncate">{{translate('Article')}} </span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item {{Request::is('admin/customer/parent*')?'active':''}}">
+                                        <a class="nav-link " href="{{route('admin.parent_article.category.list')}}"
+                                           title="{{translate('Customer_List')}}">
+                                            <span class="tio-circle nav-indicator-icon"></span>
+                                            <span class="text-truncate">{{translate('Article_category')}} </span>
+                                        </a>
+                                    </li>
                                 </ul>
                             </li>
 
