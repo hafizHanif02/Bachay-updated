@@ -7285,4 +7285,10 @@
   'Customer Register' => 'Customer Register',
   'my_child' => 'My child',
   'My_Children' => 'My Children',
+  'Recently_viewed' => 'Recently viewed',
+  'My_shortlist' => 'My shortlist',
+  ' Quick_reorder' => ' Quick reorder',
+  'Gift_certificate' => 'Gift certificate',
+  'Contact_us' => 'Contact us',
+  'Policies' => 'Policies',
 );
