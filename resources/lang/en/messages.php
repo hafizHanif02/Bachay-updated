@@ -7294,17 +7294,5 @@
   'update_Address' => 'Update address',
   'no_Configuration_Found' => 'No configuration found',
   'No_Gender' => 'No Gender',
-  'Gift_certificate' => 'Gift certificate',
-  'Contact_us' => 'Contact us',
-  'Policies' => 'Policies',
-
-  
-
-
-  
-
-
-
-
-
+  'Articles' => 'Articles',
 );

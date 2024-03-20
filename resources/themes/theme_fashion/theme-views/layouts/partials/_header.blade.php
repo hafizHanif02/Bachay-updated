@@ -2033,6 +2033,10 @@
                 @endif --}}
                 {{-- @auth('customer') --}}
                 <li class="custom-border">
+                    <a href="{{ route('articles') }}" class="ps-3 nav-ul_text">
+                        <i class="bi bi-book me-3"></i>{{ translate('Articles') }}</a>
+                </li>
+                <li class="custom-border">
                     <a href="{{ route('account-tickets') }}" class="ps-3 nav-ul_text">
                         <i class="bi bi-headset me-3"></i>{{ translate('Support') }}</a>
                 </li>
