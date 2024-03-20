@@ -90,10 +90,10 @@
     }
 </style>
 <style>
-   
     li::marker {
-    content: "";
-}
+        content: "";
+    }
+
     .font-poppins {
         font-family: 'poppins' !important;
     }
@@ -261,6 +261,24 @@
     .custom-style li a.active {
         color: var(--base);
     }
+
+    .custom-border ul li {
+        padding: 8px 0px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .custom-border ul li:last-child {
+        border-bottom: none
+    }
+
+    .big-text {
+        font-size: 30px;
+        font-family: "Aristotelica";
+        font-size: 20px;
+        background: linear-gradient(90.27deg, #845dc2 -27.96%, #f99327 -27.94%, #d55fad 28.41%, #845dc2 82.13%, #845dc2 130.57%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
 </style>
 @if (isset($web_config['announcement']) && $web_config['announcement']['status'] == 1)
     <div class="offer-bar" data-bg-img="{{ theme_asset('assets/img/media/top-offer-bg.png') }}">
@@ -365,7 +383,8 @@
                                 alt="" width="30px" height="30px">
                             <div>
                                 Shop for
-                                <p class="heading_for_profile">{{ $child->name }} <i class="bi bi-chevron-down"></i></p>
+                                <p class="heading_for_profile">{{ $child->name }} <i class="bi bi-chevron-down"></i>
+                                </p>
                             </div>
                         </a>
                     </li>
@@ -404,11 +423,11 @@
                     </li>
                 @endif
 
-                
-                
+
+
 
             </div>
-            
+
             <a href="{{ route('home') }}" class="logo">
                 <img loading="lazy" class="d-sm-none mobile-logo-cs"
                     src="{{ getValidImage(path: 'storage/app/public/company/' . $web_config['mob_logo']->value, type: 'logo') }}"
@@ -755,7 +774,7 @@
                     </li>
                 </ul>
             </div>
-           
+
         </div>
     </div>
     <div class="nav-btn mt-3" id="mega-menu" class="hide-on-med-and-down"
@@ -1844,13 +1863,10 @@
                 </div>
             @else
                 <div class="d-flex justify-content-center mt-auto mb-2">
-                    <a
-                    @if($device = 'mobile')
-                    href="{{ route('customer.auth.login') }}"
+                    <a @if ($device = 'mobile') href="{{ route('customer.auth.login') }}"
                     @else
-                     href="javascript:" 
-                    @endif
-                     class="btn btn-base w-100 customer_login_register_modal">
+                     href="javascript:" @endif
+                        class="btn btn-base w-100 customer_login_register_modal">
                         {{ translate('login') }} / {{ translate('register') }}
                     </a>
                 </div>
@@ -1942,10 +1958,10 @@
                 </li>
             @endif
         </ul>
-        <div class="ps-3 pe-3">
+        <div class="custom-border">
             <ul class="menu scrollY-60 ">
                 <li>
-                    <a href="{{ route('home') }}" class="nav-ul_text">
+                    <a href="{{ route('home') }}" class="ps-3 nav-ul_text">
                         <i class="bi bi-house me-3"></i>
                         {{ translate('home') }}
                     </a>
@@ -1976,7 +1992,7 @@
                 @endif --}}
                 @auth('customer')
                     <li>
-                        <a href="{{ route('account-address-add') }}" class="nav-ul_text">
+                        <a href="{{ route('account-address-add') }}" class="ps-3 nav-ul_text">
                             {{-- <img src="{{ asset('public/images/location.gif') }}" alt="" width="20px" height="20px"> --}}
                             <i class="bi bi-geo-alt me-3"></i>
                             {{ translate('location') }}
@@ -1984,7 +2000,7 @@
                     </li>
                 @else
                     <li>
-                        <a href="{{ route('account-address-add') }}" class="nav-ul_text">
+                        <a href="{{ route('account-address-add') }}" class="ps-3 nav-ul_text">
                             {{-- <img src="{{ asset('public/images/location.gif') }}" alt="" width="20px" height="20px"> --}}
                             <i class="bi bi-geo-alt me-3"></i>
                             {{ translate('location') }}
@@ -2004,7 +2020,7 @@
                 @if ($web_config['business_mode'] == 'multi')
                     <li>
                         <a href="{{ route('vendors') }}"
-                            class="{{ Request::is('vendors') ? 'active' : '' }} nav-ul_text"><i
+                            class="{{ Request::is('vendors') ? 'active' : '' }} ps-3 nav-ul_text"><i
                                 class="bi bi-shop-window me-3"></i>{{ translate('shops') }}</a>
                     </li>
                 @endif
@@ -2021,7 +2037,7 @@
                 @endif --}}
                 {{-- @auth('customer') --}}
                 <li>
-                    <a href="{{ route('account-tickets') }}" class="nav-ul_text">
+                    <a href="{{ route('account-tickets') }}" class="ps-3 nav-ul_text">
                         <i class="bi bi-headset me-3"></i>{{ translate('Support') }}</a>
                 </li>
                 {{-- @else
@@ -2032,21 +2048,118 @@
                 @if ($web_config['brand_setting'])
                     <li>
                         <a href="{{ route('brands') }}"
-                            class="{{ Request::is('brands') ? 'active' : '' }} nav-ul_text"><i
+                            class="{{ Request::is('brands') ? 'active' : '' }} ps-3 nav-ul_text"><i
                                 class="bi bi-bag-check me-3"></i>{{ translate('brand') }}</a>
                     </li>
                 @endif
                 <li>
-                    <a href="{{ route('track-order.index') }}" class="nav-ul_text"><i
+                    <a href="{{ route('track-order.index') }}" class="ps-3 nav-ul_text"><i
                             class="bi bi-boxes me-3"></i>{{ translate('track_order') }}</a>
                 </li>
                 <li class="mt-1">
-                    <a href="{{ route('home') }}" class="nav-ul_text" style="display: inline-block;">
-                        <img src="https://bachay.com/public/images/heartgif.gif" alt width="30px" height="30px" style="margin-left: -7px; margin-top: -19px;">
-                        <img src="https://bachay.com/public/images/bachay-parenting.png" alt="Main Image">
-                    </a>                    
+                    <a href="{{ route('home') }}" class="ps-3 nav-ul_text" style="display: inline-block;">
+                        <img src="https://bachay.com/public/images/heartgif.gif" alt width="30px" height="30px"
+                            style="margin-left: -7px; margin-top: -10px;">
+                        <span class="big-text">Bachay Parenting</span>
+                        {{-- <img src="https://bachay.com/public/images/bachay-parenting.png" alt="Main Image"> --}}
+                    </a>
                 </li>
+                <div>
+                    <div class="custom-border">
+                        <span class="ps-3 toggleActivity fw-bold">My Activity</span>
+                        <ul class="activityList">
+                            <li><a href="{{ route('home') }}" class="ps-3 text-dark"><i
+                                        class="bi bi-eye me-3"></i>{{ translate('Recently_viewed') }}</a>
+                            </li>
+
+                            <li>
+                                <a href="{{ route('home') }}" class="ps-3 text-dark"><i
+                                        class="bi bi-heart me-3"></i>{{ translate('My_shortlist') }}</a>
+                            </li>
+
+                            <li>
+                                <a href="{{ route('home') }}" class="ps-3 text-dark"><i
+                                        class="bi bi-cart me-3"></i>{{ translate(' Quick_reorder') }}</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="custom-border">
+                        <span class="ps-3 toggleActivity fw-bold">Shop By Category</span>
+                        <ul class="activityList">
+                            <li>
+                                <a href="https://bachay.com/categories/detail/Baby%20Care" class="ps-3 text-dark">
+                                    <i class="bi bi-house me-3"></i>
+                                    Baby Care
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://bachay.com/categories/detail/Boys%20Fashion" class="ps-3 text-dark">
+                                    <i class="bi bi-universal-access me-3"></i>
+                                    Boys Fashion
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://bachay.com/categories/detail/Girls%20Fashion" class="ps-3 text-dark">
+                                    <i class="bi bi-house me-3"></i>
+                                    Girls Fashion
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://bachay.com/categories/detail/Toys" class="ps-3 text-dark">
+                                    <i class="bi bi-house me-3"></i>
+                                    Toys
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="custom-border">
+                        <span class="ps-3 toggleActivity fw-bold">Shop By Filter</span>
+                        <ul class="activityList">
+                            <li>
+                                <a href="" class="ps-3 text-dark">
+                                    <i class="bi bi-house me-3"></i>
+                                    Boys Fashion
+                                </a>
+                            </li>
+                            <li>
+                                <a href="" class="ps-3 text-dark">
+                                    <i class="bi bi-house me-3"></i>
+                                    Boys Fashion
+                                </a>
+                            </li>
+                            <li>
+                                <a href="" class="ps-3 text-dark">
+                                    <i class="bi bi-house me-3"></i>
+                                    Boys Fashion
+                                </a>
+                            </li>
+                            <li>
+                                <a href="" class="ps-3 text-dark">
+                                    <i class="bi bi-house me-3"></i>
+                                    Boys Fashion
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="custom-border">
+                        <ul>
+                            <li>
+                                <a href="{{ route('home') }}" class="ps-3 text-dark"><i
+                                        class="bi bi-gift me-3"></i>{{ translate('Gift_certificate') }}</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('home') }}" class="ps-3 text-dark"><i
+                                        class="bi bi-telephone me-3"></i>{{ translate('Contact_us') }}</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('home') }}" class="ps-3 text-dark"><i
+                                        class="bi bi-hammer me-3"></i>{{ translate('Policies') }}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </ul>
+
         </div>
 
         {{-- <div class="d-flex align-items-center gap-2 justify-content-between py-4 mt-3">
@@ -2079,7 +2192,6 @@
 </div>
 
 <script>
-    
     let lastScrollTop = 0;
     const threshold = window.innerHeight * 0.9;
 
@@ -2096,4 +2208,11 @@
         }
         lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
     }, false);
+</script>
+<script>
+    $(document).ready(function() {
+        $(".toggleActivity").click(function() {
+            $(this).next(".activityList").toggle();
+        });
+    });
 </script>
