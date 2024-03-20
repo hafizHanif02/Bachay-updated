@@ -165,10 +165,10 @@
 
                                                 <div class="d-lg-none d-xl-none">
                                                     <a
-                                                        href="{{ getValidImage(path: 'storage/app/public/product/' . $photo->image_name, type: 'product') }}">
+                                                        href="{{ getValidImage(path: 'storage/app/public/product/' . $photo->image_name, type: 'product') }}" data-fancybox="gallery">
                                                         <img loading="lazy" alt="{{ translate('product') }}"
                                                             src="{{ getValidImage(path: 'storage/app/public/product/' . $photo->image_name, type: 'product') }}"
-                                                            data-fancybox="gallery" id="product-color-images">
+                                                            >
                                                     </a>
                                                 </div>
                                             </div>
@@ -276,9 +276,7 @@
                                                 </a>
                                             </div>
                                             <div class="d-lg-none d-xl-none">
-                                                <a href="{{ getValidImage(path: 'storage/app/public/product/' . $photo, type: 'product') }}"
-                                                    id="galleryImage" class="gallery-trigger" data-fancybox="gallery"
-                                                    data-caption="Caption for Image 1">
+                                                <a href="{{ getValidImage(path: 'storage/app/public/product/' . $photo, type: 'product') }}" data-fancybox="gallery">
                                                     <img loading="lazy" alt="{{ translate('product') }}"
                                                         src="{{ getValidImage(path: 'storage/app/public/product/' . $photo, type: 'product') }}">
                                                 </a>
@@ -1214,26 +1212,6 @@
                 ],
                 protect: true,
             });
-        });
-
-
-
-
-        function blockDisplayNone(mutationsList, observer) {
-            mutationsList.forEach((mutation) => {
-                if (mutation.attributeName === 'style') {
-                    const targetElement = mutation.target;
-                    if (targetElement.id === 'product-color-images' && targetElement.style.display === 'none') {
-                        targetElement.style.display = 'block';
-                        console.log('Display none blocked for element with id "product-color-images"');
-                    }
-                }
-            });
-        }
-        const observer = new MutationObserver(blockDisplayNone);
-        observer.observe(document.getElementById('product-color-images'), {
-            attributes: true,
-            attributeFilter: ['style'],
         });
     </script>
     <script src="{{ theme_asset('assets/js/product-details.js') }}"></script>
