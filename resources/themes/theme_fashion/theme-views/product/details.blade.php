@@ -253,13 +253,22 @@
                                             </div>
                                         @endif
                                         <div class="main-thumb border rounded overflow-hidden">
-                                            <div class="easyzoom easyzoom--overlay">
+                                            <div class="easyzoom easyzoom--overlay d-none d-md-none d-lg-block d-xl-block">
                                                 <a href="{{ getValidImage(path: 'storage/app/public/product/'.$photo, type:'product') }}">
                                                     <img loading="lazy" alt="{{ translate('product') }}"
                                                          src="{{ getValidImage(path: 'storage/app/public/product/'.$photo, type:'product') }}">
                                                 </a>
                                             </div>
+                                            <div class="d-lg-none d-xl-none">
+                                                <a href="{{ getValidImage(path: 'storage/app/public/product/'.$photo, type:'product') }}" id="galleryImage" class="gallery-trigger">
+                                                    <img loading="lazy" alt="{{ translate('product') }}" src="{{ getValidImage(path: 'storage/app/public/product/'.$photo, type:'product') }}">
+                                                  </a>
+                                            </div>
+                                            
+                                              
+                                            
                                         </div>
+                                       
                                     @endforeach
                                     @if (count(json_decode($product->images)) < 1 && preg_match('/^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=|\?v=)([^#\&\?]*).*/',$product->video_url))
                                         <div class="main-thumb border rounded overflow-hidden">
