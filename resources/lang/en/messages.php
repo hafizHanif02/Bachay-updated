@@ -7291,4 +7291,6 @@
   'Gift_certificate' => 'Gift certificate',
   'Contact_us' => 'Contact us',
   'Policies' => 'Policies',
+  'update_Address' => 'Update address',
+
 );
