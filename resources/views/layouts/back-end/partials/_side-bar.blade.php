@@ -1232,6 +1232,7 @@
                             <li class="navbar-vertical-aside-has-menu {{Request::is('admin/explore*')?'active':''}}">
                                 <a class="js-navbar-vertical-aside-menu-link nav-link"
                                    href="{{ route('admin.explore.list') }}" >
+                                   <i class="tio-baseball nav-icon"></i>
                                     <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">
                                     <span class="position-relative">
                                         Explore
@@ -1240,7 +1241,20 @@
                                 </a>
                             </li>
                         </li>
-
+                        <li class="nav-item">
+                            <small class="nav-subtitle" title="">Polls</small>
+                            <li class="navbar-vertical-aside-has-menu {{Request::is('admin/poll*')?'active':''}}">
+                                <a class="js-navbar-vertical-aside-menu-link nav-link"
+                                   href="{{ route('admin.poll.list') }}" >
+                                   <i class="tio-chart-bar-4 nav-icon"></i>
+                                    <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">
+                                    <span class="position-relative">
+                                        Polls
+                                    </span>
+                                </span>
+                                </a>
+                            </li>
+                        </li>
                         <li class="nav-item pt-5">
                         </li>
                     </ul>
