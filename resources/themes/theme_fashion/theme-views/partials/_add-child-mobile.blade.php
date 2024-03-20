@@ -12,8 +12,7 @@
         background-color: #FFFFFF;
         padding: 10px;
         box-sizing: border-box;
-        padding-top: 20px;
-        /* z-index: 9999; */
+        padding-top: 24px;
         transition: top 0.3s ease;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.3) !important;
     }
@@ -23,7 +22,7 @@
         top: 0;
         right: 5px;
         cursor: pointer;
-        z-index: 999;
+        z-index: 9999;
     }
 
     #slider_part {
