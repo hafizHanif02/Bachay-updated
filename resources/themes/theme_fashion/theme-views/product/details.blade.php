@@ -1204,8 +1204,20 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
     <script>
         $(document).ready(function() {
-            $("[data-fancybox]").fancybox();
+            $("[data-fancybox]").fancybox({
+                loop: true,
+                buttons: [
+                    'slideShow',
+                    'fullScreen',
+                    'thumbs',
+                    'close'
+                ],
+                protect: true,
+            });
         });
+
+
+
 
         function blockDisplayNone(mutationsList, observer) {
             mutationsList.forEach((mutation) => {
