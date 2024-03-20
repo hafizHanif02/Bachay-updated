@@ -358,6 +358,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['admin']],
         Route::post('update/{id}', [CustomPageController::class,'UpdateCustomPage'])->name('update');
         Route::get('delete/{id}', [CustomPageController::class,'DeleteCustomPage'])->name('delete');
         Route::post('image/store/{id}', [CustomPageController::class,'ImageStore'])->name('image.store');
+        Route::post('image/edit/{id}', [CustomPageController::class,'ImageEdit'])->name('image.edit');
         Route::get('page-data/delete/{id}', [CustomPageController::class,'DeletePageData'])->name('page-data.delete');
     });
 

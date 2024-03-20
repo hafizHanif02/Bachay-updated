@@ -223,6 +223,64 @@ class CustomPageController extends Controller
             return redirect()->back();
     }
 
+    public function ImageEdit(Request $request, $id){
+        $validator = Validator::make($request->all(), [
+            'image' => 'required',
+            'tags'=>'required',
+            'url'=>'required',
+        ]);
+        $CustomPage = CustomPage::findOrFail($id);
+        switch ($CustomPage->resource_type) {
+            case 'category':
+                $model = Category::class;
+                break;
+            case 'brand':
+                $model = Brand::class;
+                break;
+            case 'product':
+                $model = Product::class;
+                break;
+            case 'banner':
+                $model = Banner::class;
+                break;
+            case 'deals':
+                $model = FlashDeal::class;
+                break;
+            case 'shop':
+                $model = Shop::class;
+                break;
+            default:
+                $model = null;
+            }
+            $resourceData = $model::where('id', $CustomPage->resource_id)->first();
+        if ($request->file('image')) {
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $filename = $file->getClientOriginalName();
+            $file->move(public_path("assets/images/custome_page/"), $filename);
+        }else{
+            $filename = null;
+        }
+        if($request->tags != null){
+            $tagsString = $request->tags;
+            $tagsArray = explode(', ', $tagsString);
+        }else{
+            $tagsArray = [];
+        }
+
+        CustomPageData::where('id', $request->id)->update([
+            'custom_page_id' => $CustomPage->id,
+            'image' => $filename,
+            'tags' => json_encode($tagsArray),
+            'url' => $request->url,
+            'width' => $request->width,
+            'margin_bottom' => $request->margin_bottom,
+            'margin_right' => $request->margin_right,
+        ]);
+
+        Toastr::success('Your Image Has Been Updated Into Your Page');
+            return redirect()->back();
+    }
 
     public function DeletePageData($id){
         $page_data = CustomPageData::where('id', $id)->first();
