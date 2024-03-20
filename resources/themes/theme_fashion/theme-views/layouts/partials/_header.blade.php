@@ -262,13 +262,9 @@
         color: var(--base);
     }
 
-    .custom-border ul li {
+    .custom-border{
         padding: 8px 0px;
         border-bottom: 1px solid #ddd;
-    }
-
-    .custom-border ul li:last-child {
-        border-bottom: none
     }
 
     .big-text {
@@ -1958,9 +1954,9 @@
                 </li>
             @endif
         </ul>
-        <div class="custom-border">
+        <div>
             <ul class="menu scrollY-60 ">
-                <li>
+                <li class="custom-border">
                     <a href="{{ route('home') }}" class="ps-3 nav-ul_text">
                         <i class="bi bi-house me-3"></i>
                         {{ translate('home') }}
@@ -1991,7 +1987,7 @@
                     </li>
                 @endif --}}
                 @auth('customer')
-                    <li>
+                    <li class="custom-border">
                         <a href="{{ route('account-address-add') }}" class="ps-3 nav-ul_text">
                             {{-- <img src="{{ asset('public/images/location.gif') }}" alt="" width="20px" height="20px"> --}}
                             <i class="bi bi-geo-alt me-3"></i>
@@ -1999,7 +1995,7 @@
                         </a>
                     </li>
                 @else
-                    <li>
+                    <li class="custom-border">
                         <a href="{{ route('account-address-add') }}" class="ps-3 nav-ul_text">
                             {{-- <img src="{{ asset('public/images/location.gif') }}" alt="" width="20px" height="20px"> --}}
                             <i class="bi bi-geo-alt me-3"></i>
@@ -2018,7 +2014,7 @@
                     </a>
                 </li> --}}
                 @if ($web_config['business_mode'] == 'multi')
-                    <li>
+                    <li class="custom-border">
                         <a href="{{ route('vendors') }}"
                             class="{{ Request::is('vendors') ? 'active' : '' }} ps-3 nav-ul_text"><i
                                 class="bi bi-shop-window me-3"></i>{{ translate('shops') }}</a>
@@ -2036,7 +2032,7 @@
                     @endif
                 @endif --}}
                 {{-- @auth('customer') --}}
-                <li>
+                <li class="custom-border">
                     <a href="{{ route('account-tickets') }}" class="ps-3 nav-ul_text">
                         <i class="bi bi-headset me-3"></i>{{ translate('Support') }}</a>
                 </li>
@@ -2046,21 +2042,21 @@
                     </li>
                 @endauth --}}
                 @if ($web_config['brand_setting'])
-                    <li>
+                    <li class="custom-border">
                         <a href="{{ route('brands') }}"
                             class="{{ Request::is('brands') ? 'active' : '' }} ps-3 nav-ul_text"><i
                                 class="bi bi-bag-check me-3"></i>{{ translate('brand') }}</a>
                     </li>
                 @endif
-                <li>
+                <li class="custom-border">
                     <a href="{{ route('track-order.index') }}" class="ps-3 nav-ul_text"><i
                             class="bi bi-boxes me-3"></i>{{ translate('track_order') }}</a>
                 </li>
-                <li class="mt-1">
+                <li class="mt-1 custom-border">
                     <a href="{{ route('home') }}" class="ps-3 nav-ul_text" style="display: inline-block;">
                         <img src="https://bachay.com/public/images/heartgif.gif" alt width="30px" height="30px"
                             style="margin-left: -7px; margin-top: -10px;">
-                        <span class="big-text">Bachay Parenting</span>
+                        <span class="big-text pt-1 pb-1">Bachay Parenting</span>
                         {{-- <img src="https://bachay.com/public/images/bachay-parenting.png" alt="Main Image"> --}}
                     </a>
                 </li>
@@ -2110,44 +2106,39 @@
                                     Toys
                                 </a>
                             </li>
-                        </ul>
-                    </div>
-                    <div class="custom-border">
-                        <span class="ps-3 toggleActivity fw-bold">Shop By Filter</span>
-                        <ul class="activityList">
                             <li>
                                 <a href="" class="ps-3 text-dark">
                                     <i class="bi bi-house me-3"></i>
-                                    Boys Fashion
+                                    Beauty
                                 </a>
                             </li>
                             <li>
                                 <a href="" class="ps-3 text-dark">
                                     <i class="bi bi-house me-3"></i>
-                                    Boys Fashion
+                                    Diaper
                                 </a>
                             </li>
                             <li>
                                 <a href="" class="ps-3 text-dark">
                                     <i class="bi bi-house me-3"></i>
-                                    Boys Fashion
+                                    Health & Safety
                                 </a>
                             </li>
                             <li>
                                 <a href="" class="ps-3 text-dark">
                                     <i class="bi bi-house me-3"></i>
-                                    Boys Fashion
+                                    Books & School
                                 </a>
                             </li>
                         </ul>
                     </div>
-                    <div class="custom-border">
+                    <div>
                         <ul>
-                            <li>
+                            <li class="custom-border">
                                 <a href="{{ route('home') }}" class="ps-3 text-dark"><i
                                         class="bi bi-gift me-3"></i>{{ translate('Gift_certificate') }}</a>
                             </li>
-                            <li>
+                            <li class="custom-border">
                                 <a href="{{ route('home') }}" class="ps-3 text-dark"><i
                                         class="bi bi-telephone me-3"></i>{{ translate('Contact_us') }}</a>
                             </li>
@@ -2159,7 +2150,6 @@
                     </div>
                 </div>
             </ul>
-
         </div>
 
         {{-- <div class="d-flex align-items-center gap-2 justify-content-between py-4 mt-3">
