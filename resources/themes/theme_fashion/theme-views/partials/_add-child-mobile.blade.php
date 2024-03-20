@@ -80,7 +80,7 @@
 		.circleCard {
 			text-decoration: none;
 			width: auto;
-			height: auto;
+			height: 72px;
 			flex: 0 0 auto;
 			margin: 0 0.5rem;
 			border: none;
