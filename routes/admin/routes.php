@@ -29,6 +29,7 @@ use App\Enums\ViewPaths\Admin\FlashDeal;
 use App\Enums\ViewPaths\Admin\HelpTopic;
 use App\Enums\ViewPaths\Admin\Recaptcha;
 use App\Enums\ViewPaths\Admin\SMSModule;
+use App\Http\Controllers\PollController;
 use App\Http\Controllers\QuizController;
 use App\Enums\ViewPaths\Admin\AddonSetup;
 use App\Enums\ViewPaths\Admin\CustomRole;
@@ -64,6 +65,7 @@ use App\Enums\ViewPaths\Admin\DeliveryManCash;
 use App\Enums\ViewPaths\Admin\FeaturesSection;
 use App\Enums\ViewPaths\Admin\SocialMediaChat;
 use App\Http\Controllers\CustomPageController;
+use App\Http\Controllers\PollOptionController;
 use App\Enums\ViewPaths\Admin\BusinessSettings;
 use App\Enums\ViewPaths\Admin\EmergencyContact;
 use App\Enums\ViewPaths\Admin\PushNotification;
@@ -199,6 +201,21 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['admin']],
             Route::post('status', [ArticleCategoryController::class, 'ArticleCategoryStatus'])->name('status');
             Route::post('delete', [ArticleCategoryController::class, 'destroy'])->name('delete');
         });
+    });
+
+
+    Route::group(['prefix' => 'poll', 'as' => 'poll.'], function () {
+        Route::get('list', [PollController::class, 'index'])->name('list');
+        Route::post('store', [PollController::class, 'store'])->name('store');
+        Route::get('edit/{id}', [PollController::class, 'edit'])->name('edit');
+        Route::post('update', [PollController::class, 'update'])->name('update');
+        Route::post('status', [PollController::class, 'PollStatus'])->name('status');
+        Route::get('delete/{id}', [PollController::class, 'destroy'])->name('delete');
+
+        Route::group(['prefix' => 'option', 'as' => 'option.'], function () {
+            Route::get('delete/{id}', [PollOptionController::class, 'destroy'])->name('delete');
+        });
+        
     });
 
 
