@@ -41,6 +41,9 @@
     @endif
     <meta property="twitter:url" content="{{route('product',[$product->slug])}}">
 @endpush
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
+</head>
 
 @section('content')
 
@@ -260,7 +263,7 @@
                                                 </a>
                                             </div>
                                             <div class="d-lg-none d-xl-none">
-                                                <a href="{{ getValidImage(path: 'storage/app/public/product/'.$photo, type:'product') }}" id="galleryImage" class="gallery-trigger">
+                                                <a href="{{ getValidImage(path: 'storage/app/public/product/'.$photo, type:'product') }}" id="galleryImage" class="gallery-trigger" data-fancybox="gallery" data-caption="Caption for Image 1">
                                                     <img loading="lazy" alt="{{ translate('product') }}" src="{{ getValidImage(path: 'storage/app/public/product/'.$photo, type:'product') }}">
                                                   </a>
                                             </div>
@@ -1118,5 +1121,21 @@
 @endsection
 
 @push('script')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+<script>
+     $(document).ready(function() {
+    $('.gallery-trigger').fancybox({
+      loop: true, 
+      buttons: [
+        'slideShow',
+        'fullScreen',
+        'thumbs',
+        'close'
+      ],
+      protect: true, 
+    });
+  });
+</script>
     <script src="{{ theme_asset('assets/js/product-details.js') }}"></script>
 @endpush

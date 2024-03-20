@@ -7283,4 +7283,5 @@
   '' => '',
   'Customer Login' => 'Customer Login',
   'Customer Register' => 'Customer Register',
+  'my_child' => 'My child',
 );
