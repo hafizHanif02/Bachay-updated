@@ -270,13 +270,18 @@ class CustomPageController extends Controller
 
         CustomPageData::where('id', $request->id)->update([
             'custom_page_id' => $CustomPage->id,
-            'image' => $filename,
             'tags' => json_encode($tagsArray),
             'url' => $request->url,
             'width' => $request->width,
             'margin_bottom' => $request->margin_bottom,
             'margin_right' => $request->margin_right,
         ]);
+        if ($filename) {
+            CustomPageData::where('id', $request->id)->update([
+                'image' => $filename,
+            ]);
+        }
+        
 
         Toastr::success('Your Image Has Been Updated Into Your Page');
             return redirect()->back();

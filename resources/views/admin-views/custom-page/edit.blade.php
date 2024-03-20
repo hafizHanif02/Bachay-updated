@@ -303,7 +303,7 @@
                                     <input type="hidden" value="{{ $page_data->id }}" name="id">
                                     <div class="col-md-12">
                                         <label for="image" class="form-label">Image</label>
-                                        <input type="file" value="{{ $page_data->image }}" name="image" class="form-control" id="image">
+                                        <input type="file" value="{{ Null }}" name="image" class="form-control" id="image">
                                     </div>
                                     <div class="row mt-3">
                                         <div class="col-md-12">
