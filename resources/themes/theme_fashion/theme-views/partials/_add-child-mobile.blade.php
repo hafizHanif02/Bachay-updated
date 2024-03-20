@@ -28,20 +28,14 @@
     #slider_part {
         display: flex;
     }
-    .slider_child p{
+    .slider_child p , .slider_child button p , .slider_child form button{
         font-size: 10px;
         text-align: center;
         font-weight: 600;
         margin: 0;
         color: #000;
     }
-    .slider_child button p{
-        font-size: 10px;
-        text-align: center;
-        font-weight: 600;
-        margin: 0;
-        color: #000;
-    }
+    
     .child_mobile_btn{
         background: transparent;
         border: none;
