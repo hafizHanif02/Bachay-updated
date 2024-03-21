@@ -47,7 +47,8 @@
                 <i class="bi bi-person custom-icon"></i>
                 <span>{{ translate('profile') }}</span>
             </a> --}}
-            <a href="{{ route('user-profile') }}"
+            <a href="{{ Request::is('user-profile') ? 'javascript:void(0)' : route('user-profile') }}"
+            {{-- <a href="{{ route('user-profile') }}" --}}
                 class="d-flex align-items-center {{ Request::is('/user-profile') || Request::is('user-profile') ? 'active' : '' }} flex-column gap-0 py-1">
                 @if(Request::is('/user-profile') || Request::is('user-profile'))
                     <i class="bi bi-person-fill custom-icon"></i>
@@ -60,17 +61,23 @@
         </li>
     @else
         <li>
-            <a href="javascript:"
-                class="d-flex align-items-center {{ Request::is('/user-profile') || Request::is('user-profile') ? 'active' : '' }}   flex-column gap-0 py-1 customer_login_register_modal">
+            <a href="{{ Request::is('customer/auth/login') ? 'javascript:void(0)' : route('customer.auth.login') }}"
+            {{-- <a href="{{ route('customer.auth.login') }}" --}}
+                class="d-flex align-items-center {{ Request::is('/user-profile') || Request::is('user-profile') ? 'active' : '' }}   flex-column gap-0 py-1">
                 <i class="bi bi-person custom-icon"></i>
                 <span>{{ translate('profile') }}</span>
             </a>
         </li>
     @endif
+    
     <li>
-        <a href="{{ route('home') }}"
+        <a href="{{ Request::is('home') || Request::is('home') ? 'javascript:void(0)' : route('home') }}"
             class="d-flex align-items-center {{ Request::is('/home') || Request::is('home') ? 'active' : '' }} flex-column gap-0 py-1">
-            <i class="bi bi-list custom-icon"></i>
+            @if(Request::is('/home') || Request::is('home'))
+                <i class="bi bi-grid-fill custom-icon"></i>
+            @else
+                <i class="bi bi-grid custom-icon"></i>
+            @endif
             <span>{{ translate('menu') }}</span>
         </a>
     </li>
