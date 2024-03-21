@@ -587,48 +587,21 @@
     <div class="parenitng-option d-none d-xl-block"
         style="background-image: url('http://localhost/public/images/top-offer-bg.png');">
         <div class="container con">
+            @foreach($parent_article_categories as $category)
             <div class="parenting-drpdown-con">
                 <div class="parenting-drpdown">
-                    <a href="#" class="dropbtn">Pregnancy <i class="bi bi-chevron-down"></i></a>
+                    <a href="{{ route('parenting.article', $category->id) }}" class="dropbtn">{{ $category->name }}<i class="bi bi-chevron-down"></i></a>
+                    @forelse($category->child as $subcategory)
                     <ul class="parenting-drpdown-content">
-                        <li><a href="#">Getting pregnant</a></li>
-                        <li><a href="#">paregnancy</a></li>
+                        <li><a href="{{ route('parenting.article', $category->id) }}">{{ $subcategory->name }}</a></li>
                     </ul>
+                    @empty
+                    @endforelse
                 </div>
             </div>
+            @endforeach
 
-            <div class="parenting-drpdown-con">
-                <div class="parenting-drpdown">
-                    <a href="#" class="dropbtn">Baby & Toddler <i class="bi bi-chevron-down"></i></a>
-                    <ul class="parenting-drpdown-content">
-                        <li><a href="#">Baby</a></li>
-                        <li><a href="#">Toddler</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="parenting-drpdown-con">
-                <div class="parenting-drpdown">
-                    <a href="#" class="dropbtn">Preschooler & Kid <i class="bi bi-chevron-down"></i></a>
-                    <ul class="parenting-drpdown-content">
-                        <li><a href="#">Preschooler</a></li>
-                        <li><a href="#">Big kid</a></li>
-                    </ul>
-                </div>
-            </div>
 
-            <div class="parenting-drpdown-con">
-                <div class="parenting-drpdown">
-                    <a href="#" class="dropbtn">Magazine <i class="bi bi-chevron-down"></i></a>
-                    <ul class="parenting-drpdown-content">
-                        <li><a href="#">Beauty & Fashion</a></li>
-                        <li><a href="#">Health & Wellness
-                        <li><a href="#">Entertainment</a></li>
-                        <li><a href="#">Relationships</a></li>
-                        <li><a href="#">Life & Work</a></li>
-                        <li><a href="#">Recipes</a></li>
-                    </ul>
-                </div>
-            </div>
             <div class="parenting-drpdown-con">
                 <div class="parenting-drpdown">
                     <a href="#" class="dropbtn">Tools <i class="bi bi-chevron-down"></i></a>

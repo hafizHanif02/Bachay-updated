@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\QnaQuestion;
 use Illuminate\Http\Request;
+use App\Models\ParentArticleCategory;
 
 class QnaController extends Controller
 {
@@ -30,6 +31,11 @@ class QnaController extends Controller
             }
         }
         return view('admin-views.qna.list', compact('questions'));
+    }
+
+    public function QnaHome(){
+        $parent_article_categories = ParentArticleCategory::where('status', 1)->with('child')->latest()->take(5)->get();
+        return view('theme-views.question-answer.question-answer', compact('parent_article_categories'));
     }
 
     /**

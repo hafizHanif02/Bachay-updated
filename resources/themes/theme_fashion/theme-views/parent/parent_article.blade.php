@@ -1,4 +1,5 @@
-@extends('theme-views.layouts.app')
+@extends('theme-views.layouts.parenting-header')
+
 @push('css_or_js')
     <link href='https://fonts.googleapis.com/css?family=Outfit' rel='stylesheet'>
     <meta property="og:image" content="{{ asset('storage/app/public/company') }}/{{ $web_config['web_logo']->value }}" />
@@ -14,7 +15,6 @@
     <meta property="twitter:description"
         content="{{ substr(strip_tags(str_replace('&nbsp;', ' ', $web_config['about']->value)), 0, 160) }}">
 @endpush
-
 <head>
     <style>
         *,
@@ -83,10 +83,6 @@
             margin: 0;
         }
 
-        .custom {
-            width: 80%;
-        }
-
         .title {
             /* font-family: var(--titlefont); */
             font-family: var(--Aristotelica);
@@ -94,7 +90,7 @@
 
         .btn1,
         .btn2 {
-            padding: 1rem 1rem;
+            padding: 1rem 2rem;
             border-radius: 10px;
             text-align: center;
             border: 0;
@@ -161,7 +157,9 @@
             color: transparent;
         }
 
-
+        .btnWidth {
+            width: 100%;
+        }
 
         .articleHeader section span {
             position: absolute;
@@ -225,10 +223,6 @@
             column-count: 2;
             gap: 20px 10px;
             flex: 0 0 70%;
-        }
-
-        .btnWidth {
-            width: 100%;
         }
 
         .right_content {
@@ -682,31 +676,31 @@
             background-color: #b8bca7;
         }
 
+        .custom {
+            width: 80%;
+        }
+
         .hidden {
             display: none;
         }
+        .capitalize {
+            text-transform: capitalize;
+        }
+
     </style>
 </head>
 
 @section('content')
 
     <body>
-        <!--HEADER-->
-        <!-- <header
-                                                                                          style="background: linear-gradient(rgba(1, 1, 1, 0.5), rgba(1, 1, 1, 0.5)),
-          url(../images/#);"> -->
-        {{-- <section
-            style="background: linear-gradient( 90.27deg, #845dc2 -27.96%, #f99327 -27.94%, #d55fad 28.41%, #845dc2 82.13%, #845dc2 130.57% ),
-        url(../images/#);">
-            <section>
-                <h1 class="title">Articles</h1>
-                <span><a href="#">Home</a> <i class="fa fa-angle-double-right"></i>
-                    <a href="#" class="active">Articles</a></span>
-            </section>
-        </section> --}}
-
         <div class="articleHeader container-xxl">
-            <h1 class="title">Articles</h1>
+            {{-- <h1 class="title">
+                Category: {{ translate($parent_category->name) }}
+                Articles
+            </h1> --}}
+            <h1 class="title">
+                Category: <span class="capitalize">{{ $parent_category->name }}</span> Articles
+            </h1>
         </div>
 
         <!--BLOG SECTION-->
@@ -715,53 +709,46 @@
                 <div class="left_content">
                     <!--MAIN CARD BEGINING-->
                     <div class="blog_card">
-                    @if($latest_article)
-                        <a href="{{ route('article', $latest_article->id) }}" class="figure">
-                            <img src="{{ asset('public/assets/images/articles/thumbnail/' . $latest_article->thumbnail) }}"
+                        {{-- <a href="{{ route('article', $parent_category->id) }}" class="figure">
+                            <img src="{{ asset('public/assets/images/parent_articles/category/thumbnail/' . $parent_category->image) }}"
                                 alt="" loading="lazy" />
-                            {{-- <span class="tag">Date Posted: {{ date_format($latest_article->created_at, 'd-M-Y') }}</span><br>
-                            <span class="tag">at {{ date_format($latest_article->created_at, 'h:i:s A') }}</span>--}}
-                            <span class="tag">{{ date_format($latest_article->created_at, 'd-M-Y h:i:s A') }}</span>
-                        </a>
+                            <span class="tag">{{ date_format($parent_category->created_at, 'd-M-Y h:i:s A') }}</span>
+                        </a> --}}
+                        <div class="figure">
+                            <img src="{{ asset('public/assets/images/parent_articles/category/thumbnail/' . $parent_category->image) }}" alt="" loading="lazy" />
+                            <span class="tag">{{ date_format($parent_category->created_at, 'd-M-Y h:i:s A') }}</span>
+                        </div>                        
                         <section>
-                            <a href="{{ route('article', $latest_article->id) }}"
-                                class="title">{{ $latest_article->title }}</a>
+                            {{-- <a href="{{ route('article', $parent_category->id) }}"
+                                class="title">{{ $parent_category->name }}</a> --}}
+                            <span class="title">{{ $parent_category->name }}</span>
+                            <div class="article-category">
                                 <p>
-                                    @php
-                                        $decodedText = json_decode($latest_article->text);
-                                    @endphp
-
-                                    @if (is_array($decodedText))
-                                        {!! mb_strimwidth(strip_tags($decodedText[0]), 0, 300, '...') !!}
-                                    @else
-                                        Unable to display the article text.
-                                    @endif
-                                    <a href="{{ route('article', $latest_article->id) }}">Read more</a>
-                                </p> 
+                                    <span id="visible_text">{{ mb_strimwidth($parent_category->tag_line, 0, 127, '...') }}</span>
+                                    <span id="remaining_text" style="display: none;">{{ mb_substr($parent_category->tag_line, 127) }}</span>
+                                    <a href="#" id="read_more_link" onclick="toggleRemainingText(); return false;">Read more</a>
+                                </p>
+                            </div>                            
+                            
                         </section>
-                    @endif
                     </div>
                     <!--CARD ENDS-->
-                    @foreach ($all_articles as $article)
+                    @foreach ($parent_category->articles as $article)
                         <!--CARD BEGINING-->
                         <div class="blog_card{{ $loop->index >= 6 ? ' additional-card hidden' : '' }}">
                             <a href="{{ route('article', $article->id) }}" class="figure">
-                                <img src="{{ asset('public/assets/images/articles/thumbnail/' . $article->thumbnail) }}"
+                                <img src="{{ asset('public/assets/images/parent_articles/thumbnail/' . $article->thumbnail) }}"
                                     alt="" loading="lazy" />
-                                <span class="tag">{{ date_format($latest_article->created_at, 'd-M-Y h:i:s A') }}</span>
+                                <span class="tag">{{ date_format($article->created_at, 'd-M-Y h:i:s A') }}</span>
                             </a>
                             <section>
                                 <a href="{{ route('article', $article->id) }}" class="title">{{ $article->title }}</a>
                                 <p>
                                     {{-- @php
-                                        $words = str_word_count($article->text, 1);
-                                        $limitedText = implode(' ', array_slice($words, 0, 34));
-                                        echo $limitedText . (count($words) > 34 ? '...' : '');
-                                    @endphp --}}
-                                    {{-- @php
-                                        $words = str_word_count($article->text, 1);
-                                        $limitedText = implode(' ', array_slice($words, 0, 34));
-                                        echo $limitedText . (count($words) > 34 ? '... <a href="' . route('article', $article->id) . '">Read more</a>' : '');
+                                        $text = $article->text;
+                                        $wordCount = str_word_count($text);
+                                        $limitedText = implode(' ', array_slice(str_word_count($text, 1), 0, 34));
+                                        echo $limitedText . ($wordCount > 34 ? "..." : "");
                                     @endphp --}}
                                     @php
                                         $words = str_word_count($article->text, 1);
@@ -771,6 +758,7 @@
                                 </p>
                             </section>
                         </div>
+                        <!--CARD ENDS-->
                     @endforeach
                 </div>
                 <button class="btn1 load-btn">Load more</button>
@@ -782,7 +770,7 @@
                     <section class="search">
                         <form>
                             <div class="field custom">
-                                <input type="text" name="search" placeholder="Search Articles..." maxlength="100"
+                                <input type="text" name="search" placeholder="Search..." maxlength="100"
                                     required="" />
                             </div>
                             <div class="field">
@@ -799,10 +787,10 @@
                     <span class="title">New Books
                         <a href="#" title="Explore More"><i class="fa fa-share"></i></a></span>
                     <section>
-                        @foreach ($slidder_article as $article)
+                        @foreach ($parent_category->articles as $article)
                             <div class="cards">
                                 <div class="card_part card_part-{{ $loop->iteration }}"
-                                    style="background-image: url({{ asset('public/assets/images/articles/thumbnail/' . $article->thumbnail) }});">
+                                    style="background-image: url({{ asset('public/assets/images/parent_articles/thumbnail/' . $article->thumbnail) }});">
                                 </div>
                         @endforeach
                 </div>
@@ -813,8 +801,8 @@
             <div class="columns categories">
                 <span class="title">Categories</span>
                 <section>
-                    @foreach ($categories as $category)
-                        <a href="{{ route('articles.category', $category->id) }}">{{ $category->name }}</a>
+                    @foreach ($parent_article_categories as $category)
+                        <a href="{{ route('parenting.article', $category->id) }}">{{ $category->name }}</a>
                     @endforeach
                 </section>
             </div>
@@ -824,14 +812,13 @@
                 <span class="title">Recent Posts
                     <a href="#" title="Explore More"><i class="fa fa-share"></i></a></span>
                 <section>
-                    @foreach ($slidder_article as $article)
+                    @foreach ($parent_category->articles as $article)
                         <a href="#"><img
-                                src="{{ asset('public/assets/images/articles/thumbnail/' . $article->thumbnail) }}"
+                                src="{{ asset('public/assets/images/parent_articles/thumbnail/' . $article->thumbnail) }}"
                                 alt="" loading="lazy" />
                             <p>{{ $article->title }}</p>
                         </a>
                     @endforeach
-
                 </section>
             </div>
             <!--POSTS COLUMN ENDS-->
@@ -875,19 +862,6 @@
         </div>
         </div>
     </body>
-    {{-- <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const loadBtn = document.querySelector('.load-btn');
-            const hiddenCards = document.querySelectorAll('.additional-card');
-
-            loadBtn.addEventListener('click', function() {
-                hiddenCards.forEach(card => {
-                    card.classList.remove('hidden');
-                });
-                loadBtn.style.display = 'none'; // Hide the button after loading additional cards
-            });
-        });
-    </script> --}}
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const loadBtn = document.querySelector('.load-btn');
@@ -909,4 +883,19 @@
             });
         });
     </script>
+    <script>
+        function toggleRemainingText() {
+            var visibleText = document.getElementById('visible_text');
+            var remainingText = document.getElementById('remaining_text');
+            var readMoreLink = document.getElementById('read_more_link');
+            
+            if (remainingText.style.display === 'none') {
+                remainingText.style.display = 'inline'; // Show the remaining text
+                readMoreLink.style.display = 'none'; // Hide the "Read more" link
+            } else {
+                remainingText.style.display = 'none'; // Hide the remaining text
+            }
+        }
+    </script>
+    
 @endsection

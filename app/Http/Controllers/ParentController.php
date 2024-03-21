@@ -25,6 +25,7 @@ use App\Models\ShippingAddress;
 use Illuminate\Support\Facades\DB;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Support\Facades\Auth;
+use App\Models\ParentArticleCategory;
 use App\Models\VaccinationSubmission;
 use Illuminate\Support\Facades\Validator;
 
@@ -77,11 +78,11 @@ class ParentController extends Controller
         $theme_name = theme_root_path();
         $main_banner = $this->banner->where(['banner_type'=>'Parent Banner', 'theme'=>$theme_name, 'published'=> 1])->latest()->get();
         $main_section_banner = $this->banner->where(['banner_type'=> 'Main Section Banner', 'theme'=>$theme_name, 'published'=> 1])->orderBy('id', 'desc')->latest()->first();
-       
+        $parent_article_categories = ParentArticleCategory::where('status', 1)->with('child')->latest()->take(5)->get();
         return view(VIEW_FILE_NAMES['parenting-user'],
         
             compact(
-                'main_section_banner', 'main_banner',
+                'main_section_banner', 'main_banner','parent_article_categories'
             )
         );
         

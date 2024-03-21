@@ -39,6 +39,12 @@ class ParentArticleController extends Controller
         return view('admin-views.parent-article.article', compact('articles', 'categories'));
     }
 
+    public function parentArticle($id){
+        $parent_article_categories = ParentArticleCategory::where('status', 1)->with('child')->latest()->take(5)->get();
+        $parent_category = ParentArticleCategory::where('id', $id)->with('articles','child')->first();
+        return view('theme-views.parent.parent_article', compact('parent_article_categories','parent_category'));
+    }
+
     public function CategoryArticle($id)
     {
         $article_category = ParentArticleCategory::where('id', $id)->with('articles')->first();
