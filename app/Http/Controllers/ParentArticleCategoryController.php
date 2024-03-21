@@ -50,6 +50,7 @@ class ParentArticleCategoryController extends Controller
             'name' => $request->name,
             'tag_line' => $request->tag_line,
             'image' => ($filename ?? ''),
+            'parent_id' => ($request->parent_id ?? ''),
         ]);
         Toastr::success('Parent Article Category Added');
         return back();
@@ -68,8 +69,9 @@ class ParentArticleCategoryController extends Controller
      */
     public function edit($id)
     {
-        $category = ParentArticleCategory::where('id',$id)->first();
-        return view('admin-views.parent-article-category.edit',compact('category'));
+        $category = ParentArticleCategory::where('id',$id)->with('child')->first();
+        $categories = ParentArticleCategory::get();
+        return view('admin-views.parent-article-category.edit',compact(['category','categories']));
     }
 
     /**
@@ -92,6 +94,7 @@ class ParentArticleCategoryController extends Controller
             'name' => $request->name,
             'tag_line' => $request->tag_line,
             'image' => ($filename ?? ''),
+            'parent_id' => ($request->parent_id ?? ''),
         ]);
         Toastr::success('Parent Article Category Updated');
         return redirect()->route('admin.parent_article.category.list');

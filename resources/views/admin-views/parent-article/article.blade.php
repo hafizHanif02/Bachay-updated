@@ -33,7 +33,7 @@
                                     <div class="form-group">
                                         <label class="title-color text-capitalize"
                                                for="exampleFormControlInput1">Title </label>
-                                        <input type="text" name="title" class="form-control"
+                                        <input type="text" placeholder="Enter Title" name="title" class="form-control"
                                                required>
                                     </div>
                                     <div class="form-group">
@@ -219,6 +219,17 @@
                     <div class="col-md-12">
                         <label class="form-label" for="categoryName">Tag Line</label>
                         <input type="text" class="form-control" placeholder="Article Category Tag Line" id="tag_line" name="tag_line" required>
+                    </div>
+                </div>
+                <div class="row mt-5">
+                    <div class="col-md-12">
+                        <label class="form-label" for="categoryName">Parent Category</label>
+                        <select name="parent_id" class="form-control" id="parent_id">
+                            <option value="">Select Parent Category</option>
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
                 <div class="row mt-5">

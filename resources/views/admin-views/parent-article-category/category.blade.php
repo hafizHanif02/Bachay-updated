@@ -43,6 +43,17 @@
                                 </div>
                             </div>
                             <div class="row mt-5">
+                                <div class="col-md-12">
+                                    <label class="form-label" for="categoryName">Parent Category</label>
+                                    <select name="parent_id" class="form-control" id="parent_id">
+                                        <option value="">Select Parent Category</option>
+                                        @foreach ($categories as $category)
+                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row mt-5">
             
                             </div>
                             <br>

@@ -7295,4 +7295,6 @@
   'no_Configuration_Found' => 'No configuration found',
   'No_Gender' => 'No Gender',
   'Articles' => 'Articles',
+  'Article' => 'Article',
+  'Article_category' => 'Article category',
 );
