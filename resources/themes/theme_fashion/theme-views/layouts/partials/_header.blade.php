@@ -2092,7 +2092,7 @@
                         <ul class="activityList">
                             <li>
                                 <a href="https://bachay.com/categories/detail/Baby%20Care" class="ps-3 text-dark">
-                                    <i class="bi bi-house me-3"></i>
+                                    <i class="bi bi-emoji-smile me-3"></i>
                                     Baby Care
                                 </a>
                             </li>
@@ -2104,37 +2104,37 @@
                             </li>
                             <li>
                                 <a href="https://bachay.com/categories/detail/Girls%20Fashion" class="ps-3 text-dark">
-                                    <i class="bi bi-house me-3"></i>
+                                    <i class="bi bi-universal-access me-3"></i>
                                     Girls Fashion
                                 </a>
                             </li>
                             <li>
                                 <a href="https://bachay.com/categories/detail/Toys" class="ps-3 text-dark">
-                                    <i class="bi bi-house me-3"></i>
+                                    <i class="bi bi-car-front me-3"></i>
                                     Toys
                                 </a>
                             </li>
                             <li>
                                 <a href="" class="ps-3 text-dark">
-                                    <i class="bi bi-house me-3"></i>
+                                    <i class="bi bi-flower1 me-3"></i>
                                     Beauty
                                 </a>
                             </li>
                             <li>
                                 <a href="" class="ps-3 text-dark">
-                                    <i class="bi bi-house me-3"></i>
+                                    <i class="bi bi-droplet me-3"></i>
                                     Diaper
                                 </a>
                             </li>
                             <li>
                                 <a href="" class="ps-3 text-dark">
-                                    <i class="bi bi-house me-3"></i>
+                                    <i class="bi bi-lungs me-3"></i>
                                     Health & Safety
                                 </a>
                             </li>
                             <li>
                                 <a href="" class="ps-3 text-dark">
-                                    <i class="bi bi-house me-3"></i>
+                                    <i class="bi bi-book me-3"></i>
                                     Books & School
                                 </a>
                             </li>

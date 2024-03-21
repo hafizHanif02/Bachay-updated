@@ -9,7 +9,7 @@
                 <img loading="lazy" src="{{asset('/resources/themes/theme_fashion/public/assets/img/deal/dd-3.png')}}"
                      alt="{{ translate('deal_of_the_day') }}" class="d-shape-3">
                 <div class="deal-left">
-                    <h6 class="subtitle text-capitalize">{{translate("don't_miss_todays_deal")}}!</h6>
+                    <h6 class="subtitle text-capitalize">{{translate("don’t_miss_todays_deal")}}!</h6>
                     <h3 class="title">{{ translate('Today’s_Best_Deal') }}</h3>
                     @if (isset($deal_of_the_day->product) && $deal_of_the_day->product->discount > 0)
                         <span class="deal-badge bg-base secondary-color">
