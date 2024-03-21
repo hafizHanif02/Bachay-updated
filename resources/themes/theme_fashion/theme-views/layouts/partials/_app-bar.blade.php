@@ -48,7 +48,6 @@
                 <span>{{ translate('profile') }}</span>
             </a> --}}
             <a href="{{ Request::is('user-profile') ? 'javascript:void(0)' : route('user-profile') }}"
-            {{-- <a href="{{ route('user-profile') }}" --}}
                 class="d-flex align-items-center {{ Request::is('/user-profile') || Request::is('user-profile') ? 'active' : '' }} flex-column gap-0 py-1">
                 @if(Request::is('/user-profile') || Request::is('user-profile'))
                     <i class="bi bi-person-fill custom-icon"></i>
@@ -62,8 +61,7 @@
     @else
         <li>
             <a href="{{ Request::is('customer/auth/login') ? 'javascript:void(0)' : route('customer.auth.login') }}"
-            {{-- <a href="{{ route('customer.auth.login') }}" --}}
-                class="d-flex align-items-center {{ Request::is('/user-profile') || Request::is('user-profile') ? 'active' : '' }}   flex-column gap-0 py-1">
+                class="d-flex align-items-center {{ Request::is('customer/auth/login') || Request::is('user-profile') ? 'active' : '' }}   flex-column gap-0 py-1">
                 <i class="bi bi-person custom-icon"></i>
                 <span>{{ translate('profile') }}</span>
             </a>

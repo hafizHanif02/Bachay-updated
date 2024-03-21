@@ -624,7 +624,10 @@
                                 </div>
                             </a>
                         @else
-                            <a href="javascript:" class="customer_login_register_modal">
+                            <a href="{{ route('customer.auth.login') }}">
+                            {{-- for not reloading page when clicking whishlist heart icon before login --}}
+                            {{-- <a href="{{ Request::is('customer/auth/login') ? 'javascript:void(0)' : route('customer.auth.login') }}"> --}}
+                            {{-- <a href="javascript:" class="customer_login_register_modal"> --}}
                                 <div class="position-relative mt-1 px-8px">
                                     <i class="bi bi-heart nav-ul_text" style="font-size: 16px !important;"></i>
                                     <span class="btn-status">{{ translate('0') }}</span>
