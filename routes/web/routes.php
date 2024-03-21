@@ -63,6 +63,9 @@ Route::group(['namespace' => 'Web', 'middleware' => ['maintenance_mode', 'guestC
 
 Route::get('parenting', 'ParentController@parenting_tools')->name('parenting');
 Route::get('Q&A', [ QnaController::class, 'QnaHome'])->name('Q&A');
+Route::get('vaccination-growth-tracker', function () {
+    return view('theme-views.vaccination-growth.vaccination-growth-tracker');
+})->name('vaccination-growth-tracker');
 
 Route::get('custom_page',[ CustomPageController::class,'CustomPageHome'])->name('custom_page');
 Route::get('explore',[ ExploreController::class,'explore'])->name('explore');
