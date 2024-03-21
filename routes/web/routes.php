@@ -60,6 +60,10 @@ Route::group(['namespace' => 'Web', 'middleware' => ['maintenance_mode', 'guestC
 });
 
 Route::get('parenting', 'ParentController@parenting_tools')->name('parenting');
+Route::get('parenting.question/answer', function () {
+    return view('theme-views.question-answer.question-answer');
+});
+
 Route::get('custom_page',[ CustomPageController::class,'CustomPageHome'])->name('custom_page');
 Route::get('explore',[ ExploreController::class,'explore'])->name('explore');
 
