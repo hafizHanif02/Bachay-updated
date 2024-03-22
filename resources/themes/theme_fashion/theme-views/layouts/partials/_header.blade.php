@@ -625,9 +625,9 @@
                             </a>
                         @else
                             <a href="{{ route('customer.auth.login') }}">
-                            {{-- for not reloading page when clicking whishlist heart icon before login --}}
-                            {{-- <a href="{{ Request::is('customer/auth/login') ? 'javascript:void(0)' : route('customer.auth.login') }}"> --}}
-                            {{-- <a href="javascript:" class="customer_login_register_modal"> --}}
+                                {{-- for not reloading page when clicking whishlist heart icon before login --}}
+                                {{-- <a href="{{ Request::is('customer/auth/login') ? 'javascript:void(0)' : route('customer.auth.login') }}"> --}}
+                                {{-- <a href="javascript:" class="customer_login_register_modal"> --}}
                                 <div class="position-relative mt-1 px-8px">
                                     <i class="bi bi-heart nav-ul_text" style="font-size: 16px !important;"></i>
                                     <span class="btn-status">{{ translate('0') }}</span>
@@ -2088,7 +2088,10 @@
                         </ul>
                     </div>
                     <div class="custom-border">
-                        <span class="ps-3 toggleActivity fw-bold">Shop By Category</span>
+                        <span class="ps-3 toggleActivity fw-bold">Shop By Category
+                            <i class="arrow-down bi bi-caret-down-fill"></i>
+                            <i class="arrow-up bi bi-caret-right-fill d-none"></i>
+                        </span>
                         <ul class="activityList">
                             <li>
                                 <a href="https://bachay.com/categories/detail/Baby%20Care" class="ps-3 text-dark">
@@ -2207,10 +2210,21 @@
         lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
     }, false);
 </script>
-<script>
+{{-- <script>
     $(document).ready(function() {
         $(".toggleActivity").click(function() {
             $(this).next(".activityList").toggle();
+        });
+    });
+</script> --}}
+<script>
+    $(document).ready(function() {
+        $(".toggleActivity").click(function() {
+            // Toggle visibility of .activityList
+            $(this).next(".activityList").toggle();
+
+            // Toggle classes for the arrow icons
+            $(this).find(".bi-caret-down-fill, .bi-caret-right-fill").toggleClass("d-none");
         });
     });
 </script>

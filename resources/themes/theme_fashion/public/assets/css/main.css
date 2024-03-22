@@ -1303,12 +1303,26 @@ textarea.theme-input-style {
   block-size: auto;
 }
 
-input:-webkit-autofill,
+/* input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 2.1428571429rem var(--body-bg) inset !important;
   -webkit-text-fill-color: var(--title) !important;
+} */
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 2.1428571429rem var(--body-bg) inset !important;
+  -webkit-text-fill-color: var(--title) !important;
+}
+
+input:-webkit-autofill {
+  -webkit-text-fill-color: #000 !important;
+}
+input:-webkit-autofill:hover{
+  -webkit-text-fill-color: #949191 !important;
+}
+input:-webkit-autofill:focus{
+  -webkit-text-fill-color: #835ec1 !important;
 }
 
 .form-check-input:not(:checked) {
@@ -8440,7 +8454,7 @@ input[type=number]::-webkit-outer-spin-button {
   position: absolute;
   z-index: 1;
   line-height: 40px;
-  height: 85%;
+  height: 80%;
   width: 100%;
   overflow: scroll;
 }
