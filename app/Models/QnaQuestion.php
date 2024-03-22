@@ -13,7 +13,8 @@ class QnaQuestion extends Model
     protected $table = 'qna_question';
     protected $fillable = [
         'question',
-        'user_id'
+        'user_id',
+        'child_id',
     ];
 
 

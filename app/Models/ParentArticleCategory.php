@@ -27,6 +27,6 @@ class ParentArticleCategory extends Model
 
     public function child()
     {
-        return $this->hasMany(ParentArticleCategory::class,'id','parent_id');
+        return $this->hasMany(ParentArticleCategory::class,'parent_id','id');
     }
 }

@@ -138,47 +138,67 @@
                     tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content pb-2 ps-2 pe-2">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Ask a Question</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body" style="background-color: #f5f5f5;">
-                                <div class="write-comment-container">
-                                    <textarea id="post_answer_text" rows="4" cols="50" class="comment-box" placeholder="Write your Answer here"></textarea>
-                                    <p class="text-start">This question is being
-                                        asked for: </p>
-
-                                    <div class="outer_child_container text-start">
-                                        <label class="child_inner_container">
-                                            <input type="radio" class="dev_radiobuttons custom-radio-button"
-                                                name="child_selection" value="child1" style="width: fit-content;">
-                                            <span class="child-info-ask-quest"><span class="R14_42">Ali</span><span
-                                                    class="R11_75"> 1 yr old</span></span>
-                                        </label>
-                                        <label class="child_inner_container">
-                                            <input type="radio" class="dev_radiobuttons custom-radio-button"
-                                                name="child_selection" value="child2" style="width: fit-content;">
-                                            <span class="child-info-ask-quest"><span class="R14_42">Ali</span><span
-                                                    class="R11_75"> 1 yr old</span></span>
-                                        </label>
-                                        <label class="child_inner_container">
-                                            <input type="radio" class="dev_radiobuttons custom-radio-button"
-                                                name="child_selection" value="child3" style="width: fit-content;">
-                                            <span class="child-info-ask-quest"><span class="R14_42">Ali</span><span
-                                                    class="R11_75"> 1 yr old</span></span>
-                                        </label>
-
-                                    </div>
-
-
-                                    <p class="your-identity text-start">Your identity will not be revealed</p>
-
+                            <form action="{{ route('Q&A.store') }}" method="POST">
+                                @csrf
+                                @auth('customer')
+                                <input type="hidden" name="user_id" value="{{ Auth::guard('customer')->user()->id }}">
+                                @endauth
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Ask a Question</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
                                 </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn_clr ps-5 pe-5">Post</button>
-                            </div>
+                                <div class="modal-body" style="background-color: #f5f5f5;">
+                                    <div class="write-comment-container">
+                                        <textarea id="post_answer_text" name="question" rows="4" cols="50" class="comment-box" placeholder="Write your Answer here"></textarea>
+                                        <p class="text-start">This question is being
+                                            asked for: </p>
+    
+                                        @auth('customer')
+                                        <?php
+                                         $childs = \App\Models\FamilyRelation::where('user_id', Auth::guard('customer')->user()->id)->get();
+                                         ?>
+                                          
+                                        <div class="outer_child_container text-start">
+                                            @if(!$childs->isEmpty())
+                                          @foreach($childs as $child)
+                                          <?php $childDob = \Carbon\Carbon::parse($child->dob);
+                                          $diff = $childDob->diff(\Carbon\Carbon::now());
+                                          $formattedAge = '';
+                                          
+                                          if ($diff->y > 0) {
+                                              $formattedAge .= $diff->y . 'Y';
+                                          }
+                                      
+                                          if ($diff->m > 0) {
+                                              $formattedAge .= ($formattedAge ? ' ' : '') . $diff->m . 'M';
+                                          }
+                                      
+                                          // If the age is less than a month, display "New Born"
+                                          if ($diff->y == 0 && $diff->m == 0) {
+                                              $formattedAge = 'New Born';
+                                          }
+                                          ?>
+                                            <label class="child_inner_container">
+                                                <input type="radio" class="dev_radiobuttons custom-radio-button"
+                                                    name="child_selection" name="child_id" value="{{ $child->id }}" style="width: fit-content;">
+                                                <span class="child-info-ask-quest"><span class="R14_42">{{ $child->name }}</span><span
+                                                        class="R11_75"> {{ $formattedAge }}</span></span>
+                                            </label>
+                                            @endforeach
+                                        </div>
+                                        @endif
+                                        @endauth
+    
+    
+                                        <p class="your-identity text-start">Your identity will not be revealed</p>
+    
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn_clr ps-5 pe-5">Post</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -204,6 +224,9 @@
                         aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content pb-2 ps-2 pe-2">
+                                <form action="{{ route('Q&A.answer.store') }}">
+                                    
+                                </form>
                                 <div class="modal-header">
                                     <h1 class="modal-title fs-5" id="exampleModalLabel">Add An Answer</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
@@ -1113,11 +1136,6 @@
 
 
             </div>
-
-
-
-
-
         </div>
 
     </div>

@@ -65,6 +65,10 @@ Route::group(['namespace' => 'Web', 'middleware' => ['maintenance_mode', 'guestC
 
 Route::get('parenting', 'ParentController@parenting_tools')->name('parenting');
 Route::get('Q&A', [ QnaController::class, 'QnaHome'])->name('Q&A');
+Route::group(['prefix' => 'Q&A', 'as' => 'Q&A.'], function () {
+    Route::post('store', [ QnaController::class, 'store'])->name('store');
+    Route::post('answer.store', [ QnaAnswerController::class, 'store'])->name('answer.store');
+});
 Route::get('vaccination-growth-tracker', [ VaccineController::class, 'Vaccination_home'])->name('vaccination-growth-tracker');
 
 Route::get('custom_page',[ CustomPageController::class,'CustomPageHome'])->name('custom_page');
