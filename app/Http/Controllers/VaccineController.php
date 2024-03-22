@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ParentArticleCategory;
 use App\Models\Vaccination;
-use Illuminate\Http\Request;
 use Brian2694\Toastr\Facades\Toastr;
+use Illuminate\Http\Request;
 
 class VaccineController extends Controller
 {
@@ -20,7 +21,10 @@ class VaccineController extends Controller
         }
         return view('admin-views.vaccine.list', compact('vaccines'));
     }
-
+    public function Vaccination_home(){
+        $parent_article_categories = ParentArticleCategory::where('status', 1)->with('child')->latest()->take(5)->get();
+        return view('theme-views.vaccination-growth.vaccination-growth-tracker', compact('parent_article_categories'));
+    }
     /**
      * Show the form for creating a new resource.
      */
