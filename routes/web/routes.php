@@ -72,7 +72,10 @@ Route::get('explore',[ ExploreController::class,'explore'])->name('explore');
 
 Route::get('parenting-user', 'ParentController@parentuser')->name('parenting-user');
 Route::group(['prefix' => 'parenting', 'as' => 'parenting.'], function () {
-    Route::get('article/{id}', [ParentArticleController::class,'parentArticle'])->name('article');
+    Route::group(['prefix' => 'article', 'as' => 'article.'], function () {
+        Route::get('/{id}', [ParentArticleController::class,'parentArticle'])->name('detail');
+        Route::get('category/{id}', [ParentArticleController::class,'parentArticleCategory'])->name('category');
+    });
 });
 Route::get('article/{id}', 'ArticleController@article')->name('article');
 Route::get('articles', 'ArticleController@articles')->name('articles');

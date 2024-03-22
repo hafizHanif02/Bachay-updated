@@ -1,5 +1,4 @@
 @extends('theme-views.layouts.parenting-header')
-
 @push('css_or_js')
     <link href='https://fonts.googleapis.com/css?family=Outfit' rel='stylesheet'>
     <meta property="og:image" content="{{ asset('storage/app/public/company') }}/{{ $web_config['web_logo']->value }}" />
@@ -15,6 +14,7 @@
     <meta property="twitter:description"
         content="{{ substr(strip_tags(str_replace('&nbsp;', ' ', $web_config['about']->value)), 0, 160) }}">
 @endpush
+
 <head>
     <style>
         *,
@@ -736,13 +736,13 @@
                     @foreach ($parent_category->articles as $article)
                         <!--CARD BEGINING-->
                         <div class="blog_card{{ $loop->index >= 6 ? ' additional-card hidden' : '' }}">
-                            <a href="{{ route('article', $article->id) }}" class="figure">
+                            <a href="{{ route('parenting.article.detail', $article->id) }}" class="figure">
                                 <img src="{{ asset('public/assets/images/parent_articles/thumbnail/' . $article->thumbnail) }}"
                                     alt="" loading="lazy" />
                                 <span class="tag">{{ date_format($article->created_at, 'd-M-Y h:i:s A') }}</span>
                             </a>
                             <section>
-                                <a href="{{ route('article', $article->id) }}" class="title">{{ $article->title }}</a>
+                                <a href="{{ route('parenting.article.detail', $article->id) }}" class="title">{{ $article->title }}</a>
                                 <p>
                                     {{-- @php
                                         $text = $article->text;
@@ -753,7 +753,7 @@
                                     @php
                                         $words = str_word_count($article->text, 1);
                                         $limitedText = implode(' ', array_slice($words, 0, 34));
-                                        echo $limitedText . (count($words) > 34 ? '...' : '') . ' <a href="' . route('article', $article->id) . '">Read more</a>';
+                                        echo $limitedText . (count($words) > 34 ? '...' : '') . ' <a href="' . route('parenting.article.detail', $article->id) . '">Read more</a>';
                                     @endphp
                                 </p>
                             </section>
@@ -802,7 +802,7 @@
                 <span class="title">Categories</span>
                 <section>
                     @foreach ($parent_article_categories as $category)
-                        <a href="{{ route('parenting.article', $category->id) }}">{{ $category->name }}</a>
+                        <a href="{{ route('parenting.article.category', $category->id) }}">{{ $category->name }}</a>
                     @endforeach
                 </section>
             </div>
@@ -819,6 +819,7 @@
                             <p>{{ $article->title }}</p>
                         </a>
                     @endforeach
+
                 </section>
             </div>
             <!--POSTS COLUMN ENDS-->

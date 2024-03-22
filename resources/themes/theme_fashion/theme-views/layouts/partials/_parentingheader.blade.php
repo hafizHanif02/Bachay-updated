@@ -590,10 +590,10 @@
             @foreach($parent_article_categories as $category)
             <div class="parenting-drpdown-con">
                 <div class="parenting-drpdown">
-                    <a href="{{ route('parenting.article', $category->id) }}" class="dropbtn">{{ $category->name }}<i class="bi bi-chevron-down"></i></a>
+                    <a href="{{ route('parenting.article.category', $category->id) }}" class="dropbtn">{{ $category->name }}<i class="bi bi-chevron-down"></i></a>
                     @forelse($category->child as $subcategory)
                     <ul class="parenting-drpdown-content">
-                        <li><a href="{{ route('parenting.article', $category->id) }}">{{ $subcategory->name }}</a></li>
+                        <li><a href="{{ route('parenting.article.category', $category->id) }}">{{ $subcategory->name }}</a></li>
                     </ul>
                     @empty
                     @endforelse
