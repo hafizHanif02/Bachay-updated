@@ -2070,7 +2070,12 @@
                 </li>
                 <div>
                     <div class="custom-border">
-                        <span class="ps-3 toggleActivity fw-bold">My Activity</span>
+                        <span class="px-3 toggleActivity fw-bold d-flex justify-content-between">My Activity
+                            <div>
+                                <i class="arrow-down bi bi-chevron-down"></i>
+                                <i class="arrow-up bi bi-chevron-right d-none"></i>
+                            </div>
+                        </span>
                         <ul class="activityList">
                             <li><a href="{{ route('home') }}" class="ps-3 text-dark"><i
                                         class="bi bi-eye me-3"></i>{{ translate('Recently_viewed') }}</a>
@@ -2088,9 +2093,11 @@
                         </ul>
                     </div>
                     <div class="custom-border">
-                        <span class="ps-3 toggleActivity fw-bold">Shop By Category
-                            <i class="arrow-down bi bi-caret-down-fill"></i>
-                            <i class="arrow-up bi bi-caret-right-fill d-none"></i>
+                        <span class="px-3 toggleActivity fw-bold d-flex justify-content-between">Shop By Category
+                            <div>
+                                <i class="arrow-down bi bi-chevron-down"></i>
+                                <i class="arrow-up bi bi-chevron-right d-none"></i>
+                            </div>
                         </span>
                         <ul class="activityList">
                             <li>
@@ -2224,7 +2231,7 @@
             $(this).next(".activityList").toggle();
 
             // Toggle classes for the arrow icons
-            $(this).find(".bi-caret-down-fill, .bi-caret-right-fill").toggleClass("d-none");
+            $(this).find(".bi-chevron-down, .bi-chevron-right").toggleClass("d-none");
         });
     });
 </script>
