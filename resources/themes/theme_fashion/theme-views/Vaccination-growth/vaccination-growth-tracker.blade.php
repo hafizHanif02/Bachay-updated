@@ -31,9 +31,11 @@
         border-radius: 3px;
         padding: 0 10px 10px 10px;
     }
-    .vaccine_main{
+
+    .vaccine_main {
         margin: 10px 0 0 0;
     }
+
     .downloadApp-right {
         width: 30%;
         border: 1px solid #ededed;
@@ -163,35 +165,57 @@
         font-family: 'poppins';
         font-weight: 400;
     }
-    .Add_child_gr tr td input{
-        border-bottom: 1px solid #000;
-        border-top: none; border-left: none; border-right: none;
-    }
-    .Add_child_gr tr td input:focus-visible{
-        border-bottom: 1px solid #000;
-        border-top: none; border-left: none; border-right: none;
-    }
-    .Add_child_gr tr td input:focus {
-    border-bottom: 1px solid #000;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-}
 
-    .Add_child_gr tr td select{
+    .Add_child_gr tr td input {
+        border-bottom: 1px solid #000;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+    }
+
+    .Add_child_gr tr td input:focus-visible {
+        border-bottom: 1px solid #000;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+    }
+
+    .Add_child_gr tr td input:focus {
+        border-bottom: 1px solid #000;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+    }
+
+    .view_sample_cart {
+        background-color: #fff;
+        border: 1px solid #e0e0e0;
+        font-size: 11px;
+        border-radius: 3px;
+        text-align: center;
+        padding: 2px 8px 0 8px;
+        color: #000;
+    }
+
+    .Add_child_gr tr td select {
         border: none;
     }
+
     @media only screen and (max-width: 768px) {
         .vaccination-growth-container {
             margin: 0 0 100px 0;
         }
-        .vaccination-mainp{
+
+        .vaccination-mainp {
             width: 100%;
         }
-        .downloadApp-right{
+
+        .downloadApp-right {
             display: none;
         }
-        .view_vc_tr a , .view_gr_tr a{
+
+        .view_vc_tr a,
+        .view_gr_tr a {
             width: fit-content;
         }
     }
@@ -230,20 +254,21 @@
                                     </div>
                                     <div class="up_vc_title">
                                         <div class="up_vc_child">
-                                            <p class="ms-4 pb-3" style="font-size: 16px;  border-bottom: 1px solid #ededed;">
+                                            <p class="ms-4 pb-3"
+                                                style="font-size: 16px;  border-bottom: 1px solid #ededed;">
                                                 Upcoming vaccinations
-    
+
                                             </p>
                                             <ul class="mt-4">
                                                 <li class="d-flex justify-content-between ps-5 pe-5 mb-4">
                                                     <div class="up_vcs_nam gap-3">
                                                         <span class="me-4">
-    
+
                                                             <i class="bi bi-heart-pulse-fill"></i>
-    
+
                                                         </span>
                                                         <span class="custom-dt-clr">4/4</span>
-    
+
                                                     </div>
                                                     <div class="vc_dt_main">
                                                         <span class="custom-dt-clr">24 Mar 2024</span>
@@ -252,12 +277,12 @@
                                                 <li class="d-flex justify-content-between ps-5 pe-5 mb-4">
                                                     <div class="up_vcs_nam gap-3">
                                                         <span class="me-4">
-    
+
                                                             <i class="bi bi-heart-pulse-fill"></i>
-    
+
                                                         </span>
                                                         <span class="custom-dt-clr">4/4</span>
-    
+
                                                     </div>
                                                     <div class="vc_dt_main">
                                                         <span class="custom-dt-clr">24 Mar 2024</span>
@@ -266,24 +291,25 @@
                                                 <li class="d-flex justify-content-between ps-5 pe-5 mb-4">
                                                     <div class="up_vcs_nam gap-3">
                                                         <span class="me-4">
-    
+
                                                             <i class="bi bi-heart-pulse-fill"></i>
-    
+
                                                         </span>
                                                         <span class="custom-dt-clr">4/4</span>
-    
+
                                                     </div>
                                                     <div class="vc_dt_main">
                                                         <span class="custom-dt-clr">24 Mar 2024</span>
                                                     </div>
                                                 </li>
-    
+
                                             </ul>
                                         </div>
                                         <div class="up_vc_child mt-4">
-                                            <p class="ms-4 pb-3" style="font-size: 16px;  border-bottom: 1px solid #ededed;">
+                                            <p class="ms-4 pb-3"
+                                                style="font-size: 16px;  border-bottom: 1px solid #ededed;">
                                                 Vaccinations summary
-    
+
                                             </p>
                                             <div class="d-flex justify-content-evenly">
                                                 <a href="#">
@@ -295,9 +321,9 @@
                                                     </div>
                                                     <p class="text-center custom-dt-clr mt-2">Overdue</p>
                                                 </a>
-    
+
                                                 <a href="#">
-    
+
                                                     <div class="vc_upcoming">
                                                         <div
                                                             class="vc_upcoming-child d-flex justify-content-center align-items-center">
@@ -305,9 +331,9 @@
                                                         </div>
                                                     </div>
                                                     <p class="text-center custom-dt-clr mt-2">Upcoming</p>
-    
+
                                                 </a>
-    
+
                                                 <a href="#">
                                                     <div class="vc_comppleted">
                                                         <div
@@ -316,20 +342,20 @@
                                                         </div>
                                                     </div>
                                                     <p class="text-center custom-dt-clr mt-2">Done</p>
-    
+
                                                 </a>
-    
+
                                             </div>
                                             <div class="view_vc_tr text-center mt-4 mb-4">
                                                 <a href="#">view vaccination tracker</a>
                                             </div>
                                         </div>
                                     </div>
-    
-    
-    
+
+
+
                                 </div>
-    
+
                             </div>
                             <div class="p-3 pt-0">
                                 <div class="vaccination_tr">
@@ -341,24 +367,26 @@
                                     <div class="up_vc_title">
                                         <div
                                             class="gr_trc_measr_top d-flex justify-content-between align-items-center ps-4 pe-4">
-                                            <span><i class="bi bi-stopwatch" style="font-size: 15px; margin-right: 2px;"></i>
+                                            <span><i class="bi bi-stopwatch"
+                                                    style="font-size: 15px; margin-right: 2px;"></i>
                                                 Updated on 26th Oct 2023</span>
                                             <!-- Button trigger modal -->
                                             <button type="button" class="Add_growth_child border-0" data-bs-toggle="modal"
                                                 data-bs-target="#exampleModal">
                                                 Add Growth Details
                                             </button>
-    
+
                                             <!-- Add Growth Details Modal -->
                                             <div class="modal fade" id="exampleModal" tabindex="-1"
                                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Add Growth Details
+                                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Add Growth
+                                                                Details
                                                             </h1>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                                aria-label="Close"></button>
+                                                            <button type="button" class="btn-close"
+                                                                data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body">
                                                             <table class="w-100">
@@ -366,21 +394,26 @@
                                                                     <tr>
                                                                         <td>Date</td>
                                                                         <td>
-                                                                            <input type="date" name="markdate" id="markdate" value="2024-03-22">
+                                                                            <input type="date" name="markdate"
+                                                                                id="markdate" value="2024-03-22">
                                                                         </td>
                                                                         <td>
-                                                                            <button class="calendar_icon" id="markdatedatepicker" aria-label="Pick a Date"></button>
+                                                                            <button class="calendar_icon"
+                                                                                id="markdatedatepicker"
+                                                                                aria-label="Pick a Date"></button>
                                                                         </td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td colspan="3">
-                                                                            <span id="dobErrMsg" class="error_message"></span>
+                                                                            <span id="dobErrMsg"
+                                                                                class="error_message"></span>
                                                                         </td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Weight</td>
                                                                         <td>
-                                                                            <input type="text" name="weight" id="weight" maxlength="5">
+                                                                            <input type="text" name="weight"
+                                                                                id="weight" maxlength="5">
                                                                         </td>
                                                                         <td>
                                                                             <span>kg</span>
@@ -388,13 +421,15 @@
                                                                     </tr>
                                                                     <tr>
                                                                         <td colspan="3">
-                                                                            <span id="errmsgweight" class="error_message"></span>
+                                                                            <span id="errmsgweight"
+                                                                                class="error_message"></span>
                                                                         </td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Height</td>
                                                                         <td>
-                                                                            <input type="text" name="height" id="height" maxlength="5">
+                                                                            <input type="text" name="height"
+                                                                                id="height" maxlength="5">
                                                                         </td>
                                                                         <td>
                                                                             <select name="htut" id="htut">
@@ -405,13 +440,15 @@
                                                                     </tr>
                                                                     <tr>
                                                                         <td colspan="3">
-                                                                            <span id="errmsgheight" class="error_message"></span>
+                                                                            <span id="errmsgheight"
+                                                                                class="error_message"></span>
                                                                         </td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Head Circ.</td>
                                                                         <td>
-                                                                            <input type="text" name="hc" id="hc" maxlength="5">
+                                                                            <input type="text" name="hc"
+                                                                                id="hc" maxlength="5">
                                                                         </td>
                                                                         <td>
                                                                             <select name="hcut" id="hcut">
@@ -422,7 +459,8 @@
                                                                     </tr>
                                                                     <tr>
                                                                         <td colspan="3">
-                                                                            <span id="errmsgheightcirc" class="error_message"></span>
+                                                                            <span id="errmsgheightcirc"
+                                                                                class="error_message"></span>
                                                                         </td>
                                                                     </tr>
                                                                 </tbody>
@@ -432,12 +470,12 @@
                                                             <button type="button" class="border-0 bg-transparent"
                                                                 data-bs-dismiss="modal">CANCEL</button>
                                                             <button type="button" class="Add_growth_child border-0">SAVE
-                                                                </button>
+                                                            </button>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-    
+
                                         </div>
                                         <div class="ps-4 pe-4">
                                             <table class="w-100 mt-3" style="line-height: 40px;">
@@ -466,29 +504,29 @@
                                                     </tr>
                                                 </tbody>
                                             </table>
-    
+
                                         </div>
                                         <div class="view_gr_tr text-center mt-4 mb-4">
                                             <a href="#">view growth chart</a>
                                         </div>
-    
-    
+
+
                                     </div>
-    
-    
-    
+
+
+
                                 </div>
-    
+
                             </div>
                         </div>
-    
+
                     </div>
                     <div class="vaccine_main">
                         <div class="vacci-growthB">
                             <div class="vaccine_child">
                                 <div class="child-profile d-flex align-items-center gap-4">
-                                    <img class="rounded-pill" src="{{ asset('public/images/vacci.png') }}" alt=""
-                                        width="102px" height="102px">
+                                    <img class="rounded-pill" src="{{ asset('public/images/vacci.png') }}"
+                                        alt="" width="102px" height="102px">
                                     <div>
                                         <h6>Hannan</h6>
                                         <p class="m-0">2 yr 9 m old Boy</p>
@@ -504,20 +542,21 @@
                                     </div>
                                     <div class="up_vc_title">
                                         <div class="up_vc_child">
-                                            <p class="ms-4 pb-3" style="font-size: 16px;  border-bottom: 1px solid #ededed;">
+                                            <p class="ms-4 pb-3"
+                                                style="font-size: 16px;  border-bottom: 1px solid #ededed;">
                                                 Upcoming vaccinations
-    
+
                                             </p>
                                             <ul class="mt-4">
                                                 <li class="d-flex justify-content-between ps-5 pe-5 mb-4">
                                                     <div class="up_vcs_nam gap-3">
                                                         <span class="me-4">
-    
+
                                                             <i class="bi bi-heart-pulse-fill"></i>
-    
+
                                                         </span>
                                                         <span class="custom-dt-clr">4/4</span>
-    
+
                                                     </div>
                                                     <div class="vc_dt_main">
                                                         <span class="custom-dt-clr">24 Mar 2024</span>
@@ -526,12 +565,12 @@
                                                 <li class="d-flex justify-content-between ps-5 pe-5 mb-4">
                                                     <div class="up_vcs_nam gap-3">
                                                         <span class="me-4">
-    
+
                                                             <i class="bi bi-heart-pulse-fill"></i>
-    
+
                                                         </span>
                                                         <span class="custom-dt-clr">4/4</span>
-    
+
                                                     </div>
                                                     <div class="vc_dt_main">
                                                         <span class="custom-dt-clr">24 Mar 2024</span>
@@ -540,24 +579,25 @@
                                                 <li class="d-flex justify-content-between ps-5 pe-5 mb-4">
                                                     <div class="up_vcs_nam gap-3">
                                                         <span class="me-4">
-    
+
                                                             <i class="bi bi-heart-pulse-fill"></i>
-    
+
                                                         </span>
                                                         <span class="custom-dt-clr">4/4</span>
-    
+
                                                     </div>
                                                     <div class="vc_dt_main">
                                                         <span class="custom-dt-clr">24 Mar 2024</span>
                                                     </div>
                                                 </li>
-    
+
                                             </ul>
                                         </div>
                                         <div class="up_vc_child mt-4">
-                                            <p class="ms-4 pb-3" style="font-size: 16px;  border-bottom: 1px solid #ededed;">
+                                            <p class="ms-4 pb-3"
+                                                style="font-size: 16px;  border-bottom: 1px solid #ededed;">
                                                 Vaccinations summary
-    
+
                                             </p>
                                             <div class="d-flex justify-content-evenly">
                                                 <a href="#">
@@ -569,9 +609,9 @@
                                                     </div>
                                                     <p class="text-center custom-dt-clr mt-2">Overdue</p>
                                                 </a>
-    
+
                                                 <a href="#">
-    
+
                                                     <div class="vc_upcoming">
                                                         <div
                                                             class="vc_upcoming-child d-flex justify-content-center align-items-center">
@@ -579,9 +619,9 @@
                                                         </div>
                                                     </div>
                                                     <p class="text-center custom-dt-clr mt-2">Upcoming</p>
-    
+
                                                 </a>
-    
+
                                                 <a href="#">
                                                     <div class="vc_comppleted">
                                                         <div
@@ -590,20 +630,20 @@
                                                         </div>
                                                     </div>
                                                     <p class="text-center custom-dt-clr mt-2">Done</p>
-    
+
                                                 </a>
-    
+
                                             </div>
                                             <div class="view_vc_tr text-center mt-4 mb-4">
                                                 <a href="#">view vaccination tracker</a>
                                             </div>
                                         </div>
                                     </div>
-    
-    
-    
+
+
+
                                 </div>
-    
+
                             </div>
                             <div class="p-3 pt-0">
                                 <div class="vaccination_tr">
@@ -615,24 +655,26 @@
                                     <div class="up_vc_title">
                                         <div
                                             class="gr_trc_measr_top d-flex justify-content-between align-items-center ps-4 pe-4">
-                                            <span><i class="bi bi-stopwatch" style="font-size: 15px; margin-right: 2px;"></i>
+                                            <span><i class="bi bi-stopwatch"
+                                                    style="font-size: 15px; margin-right: 2px;"></i>
                                                 Updated on 26th Oct 2023</span>
                                             <!-- Button trigger modal -->
-                                            <button type="button" class="Add_growth_child border-0" data-bs-toggle="modal"
-                                                data-bs-target="#exampleModal">
+                                            <button type="button" class="Add_growth_child border-0"
+                                                data-bs-toggle="modal" data-bs-target="#exampleModal">
                                                 Add Growth Details
                                             </button>
-    
+
                                             <!-- Add Growth Details Modal -->
                                             <div class="modal fade" id="exampleModal" tabindex="-1"
                                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title
+                                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal
+                                                                title
                                                             </h1>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                                aria-label="Close"></button>
+                                                            <button type="button" class="btn-close"
+                                                                data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body">
                                                             ...
@@ -646,7 +688,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-    
+
                                         </div>
                                         <div class="ps-4 pe-4">
                                             <table class="w-100 mt-3" style="line-height: 40px;">
@@ -675,29 +717,29 @@
                                                     </tr>
                                                 </tbody>
                                             </table>
-    
+
                                         </div>
                                         <div class="view_gr_tr text-center mt-4 mb-4">
                                             <a href="#">view growth chart</a>
                                         </div>
-    
-    
+
+
                                     </div>
-    
-    
-    
+
+
+
                                 </div>
-    
+
                             </div>
                         </div>
-    
+
                     </div>
                     <div class="vaccine_main">
                         <div class="vacci-growthB">
                             <div class="vaccine_child">
                                 <div class="child-profile d-flex align-items-center gap-4">
-                                    <img class="rounded-pill" src="{{ asset('public/images/vacci.png') }}" alt=""
-                                        width="102px" height="102px">
+                                    <img class="rounded-pill" src="{{ asset('public/images/vacci.png') }}"
+                                        alt="" width="102px" height="102px">
                                     <div>
                                         <h6>Hannan</h6>
                                         <p class="m-0">2 yr 9 m old Boy</p>
@@ -713,20 +755,21 @@
                                     </div>
                                     <div class="up_vc_title">
                                         <div class="up_vc_child">
-                                            <p class="ms-4 pb-3" style="font-size: 16px;  border-bottom: 1px solid #ededed;">
+                                            <p class="ms-4 pb-3"
+                                                style="font-size: 16px;  border-bottom: 1px solid #ededed;">
                                                 Upcoming vaccinations
-    
+
                                             </p>
                                             <ul class="mt-4">
                                                 <li class="d-flex justify-content-between ps-5 pe-5 mb-4">
                                                     <div class="up_vcs_nam gap-3">
                                                         <span class="me-4">
-    
+
                                                             <i class="bi bi-heart-pulse-fill"></i>
-    
+
                                                         </span>
                                                         <span class="custom-dt-clr">4/4</span>
-    
+
                                                     </div>
                                                     <div class="vc_dt_main">
                                                         <span class="custom-dt-clr">24 Mar 2024</span>
@@ -735,12 +778,12 @@
                                                 <li class="d-flex justify-content-between ps-5 pe-5 mb-4">
                                                     <div class="up_vcs_nam gap-3">
                                                         <span class="me-4">
-    
+
                                                             <i class="bi bi-heart-pulse-fill"></i>
-    
+
                                                         </span>
                                                         <span class="custom-dt-clr">4/4</span>
-    
+
                                                     </div>
                                                     <div class="vc_dt_main">
                                                         <span class="custom-dt-clr">24 Mar 2024</span>
@@ -749,24 +792,25 @@
                                                 <li class="d-flex justify-content-between ps-5 pe-5 mb-4">
                                                     <div class="up_vcs_nam gap-3">
                                                         <span class="me-4">
-    
+
                                                             <i class="bi bi-heart-pulse-fill"></i>
-    
+
                                                         </span>
                                                         <span class="custom-dt-clr">4/4</span>
-    
+
                                                     </div>
                                                     <div class="vc_dt_main">
                                                         <span class="custom-dt-clr">24 Mar 2024</span>
                                                     </div>
                                                 </li>
-    
+
                                             </ul>
                                         </div>
                                         <div class="up_vc_child mt-4">
-                                            <p class="ms-4 pb-3" style="font-size: 16px;  border-bottom: 1px solid #ededed;">
+                                            <p class="ms-4 pb-3"
+                                                style="font-size: 16px;  border-bottom: 1px solid #ededed;">
                                                 Vaccinations summary
-    
+
                                             </p>
                                             <div class="d-flex justify-content-evenly">
                                                 <a href="#">
@@ -778,9 +822,9 @@
                                                     </div>
                                                     <p class="text-center custom-dt-clr mt-2">Overdue</p>
                                                 </a>
-    
+
                                                 <a href="#">
-    
+
                                                     <div class="vc_upcoming">
                                                         <div
                                                             class="vc_upcoming-child d-flex justify-content-center align-items-center">
@@ -788,9 +832,9 @@
                                                         </div>
                                                     </div>
                                                     <p class="text-center custom-dt-clr mt-2">Upcoming</p>
-    
+
                                                 </a>
-    
+
                                                 <a href="#">
                                                     <div class="vc_comppleted">
                                                         <div
@@ -799,107 +843,52 @@
                                                         </div>
                                                     </div>
                                                     <p class="text-center custom-dt-clr mt-2">Done</p>
-    
+
                                                 </a>
-    
+
                                             </div>
                                             <div class="view_vc_tr text-center mt-4 mb-4">
                                                 <a href="#">view vaccination tracker</a>
                                             </div>
                                         </div>
                                     </div>
-    
-    
-    
+
+
+
                                 </div>
-    
+
                             </div>
                             <div class="p-3 pt-0">
                                 <div class="vaccination_tr">
-                                    <div class="vc_title">
+                                    <div class="vc_title d-flex justify-content-between align-items-center">
                                         <h6>
                                             Growth tracker
                                         </h6>
+                                        <a class="view_sample_cart" href="{{ route('view-sample-cart') }}">
+                                            View Sample Chart
+                                        </a>
                                     </div>
                                     <div class="up_vc_title">
-                                        <div
-                                            class="gr_trc_measr_top d-flex justify-content-between align-items-center ps-4 pe-4">
-                                            <span><i class="bi bi-stopwatch" style="font-size: 15px; margin-right: 2px;"></i>
-                                                Updated on 26th Oct 2023</span>
-                                            <!-- Button trigger modal -->
-                                            <button type="button" class="Add_growth_child border-0" data-bs-toggle="modal"
-                                                data-bs-target="#exampleModal">
-                                                Add Growth Details
-                                            </button>
-    
-                                            <!-- Add Growth Details Modal -->
-                                            <div class="modal fade" id="exampleModal" tabindex="-1"
-                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title
-                                                            </h1>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                                aria-label="Close"></button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            ...
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary"
-                                                                data-bs-dismiss="modal">Close</button>
-                                                            <button type="button" class="btn btn-primary">Save
-                                                                changes</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-    
+                                        <p class="ms-4 pb-3" style="font-size: 16px;  border-bottom: 1px solid #ededed;">
+                                            Use our growth tracker to measure your child's growth over time &
+
+                                        </p>
+                                        
+                                            
+
                                         </div>
-                                        <div class="ps-4 pe-4">
-                                            <table class="w-100 mt-3" style="line-height: 40px;">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Measurements</th>
-                                                        <th>Ali Info</th>
-                                                        <th>Ideal Range</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody class="vaccination-table-growth">
-                                                    <tr>
-                                                        <td>Weight</td>
-                                                        <td>12 kg</td>
-                                                        <td>7.3 - 11.6 kg</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Height</td>
-                                                        <td>----</td>
-                                                        <td>----</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Head Circumference</td>
-                                                        <td>25 cm</td>
-                                                        <td>42.6 - 47.7 cm</td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-    
-                                        </div>
-                                        <div class="view_gr_tr text-center mt-4 mb-4">
-                                            <a href="#">view growth chart</a>
-                                        </div>
-    
-    
+                                       
+
+
                                     </div>
-    
-    
-    
+
+
+
                                 </div>
-    
+
                             </div>
                         </div>
-    
+
                     </div>
                 </div>
                 <div class="downloadApp-right">

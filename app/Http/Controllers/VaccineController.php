@@ -25,6 +25,10 @@ class VaccineController extends Controller
         $parent_article_categories = ParentArticleCategory::where('status', 1)->with('child')->latest()->take(5)->get();
         return view('theme-views.vaccination-growth.vaccination-growth-tracker', compact('parent_article_categories'));
     }
+    public function view_sample_cart(){
+        $parent_article_categories = ParentArticleCategory::where('status', 1)->with('child')->latest()->take(5)->get();
+        return view('theme-views.vaccination-growth.view_sample_cart', compact('parent_article_categories'));
+    }   
     /**
      * Show the form for creating a new resource.
      */

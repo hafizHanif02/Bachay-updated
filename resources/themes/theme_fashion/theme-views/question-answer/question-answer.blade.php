@@ -603,8 +603,6 @@
                             </li>
                         </ul>
                     </div>
-
-
                 </div>
                 <hr>
                 <div class="d-flex justify-content-between">
