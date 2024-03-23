@@ -401,7 +401,7 @@
                     </div>
 
                 </div>
-
+                <a class="ps-2 pe-2 pt-1 pb-1 mb-4 btn_clr" href="{{ route('view-more-answer') }}">View More Answers</a>
 
 
             </div>

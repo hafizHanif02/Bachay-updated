@@ -42,7 +42,11 @@ class QnaController extends Controller
         $questions = QnaQuestion::with('answers.user', 'user')->get();
         return view('theme-views.question-answer.question-answer', compact('parent_article_categories','questions'));
     }
-
+    public function View_more_answer(){
+        $parent_article_categories = ParentArticleCategory::where('status', 1)->with('child')->latest()->take(5)->get();
+        $questions = QnaQuestion::with('answers.user', 'user')->get();
+        return view('theme-views.question-answer.view-more-answer', compact('parent_article_categories','questions'));
+    }
     /**
      * Show the form for creating a new resource.
      */
