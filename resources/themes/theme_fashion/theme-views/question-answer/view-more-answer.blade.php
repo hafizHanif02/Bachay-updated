@@ -134,15 +134,15 @@
                     <div class="d-flex justify-content-between">
                         <div class="d-flex gap-3">
                             <span>
-                                <img class="rounded-circle" src="{{ asset('public/images/01-Infant.jpg') }}" alt=""
+                                <img class="rounded-circle" src="{{ asset('storage/app/public/profile/'.$answer->user->image) }}" alt=""
                                     width="50px" height="50px">
                             </span>
                             <div>
-                                <p class="m-0 fw-bold">Author of question</p>
-                                <p class="m-0 quesion-icon">Mom of a 4 yr 2 m old boy</p>
+                                <p class="m-0 fw-bold">{{ $answer->user->f_name. ' '. $answer->user->l_name }}</p>
+                                {{-- <p class="m-0 quesion-icon">Mom of a 4 yr 2 m old boy</p> --}}
                             </div>
                         </div>
-                        <p class="quesion-icon">1 Year ago</p>
+                        <p class="quesion-icon">{{ $answer->created_at->diffForHumans() }}</p>
                     </div>
                     <p class="fw-medium mt-2"><span class="quesion-icon">{{ $loop->iteration }}</span> {{ $answer->answer }} </p>
                     <div class="answer-parent-container d-flex justify-content-between mt-3">

@@ -219,7 +219,7 @@
                         ?>
                         <p class="quesion-icon">{{ $question->child->relation_type }} of a {{ $formattedAge }} old {{ $question->child->gender == 'male' ? 'boy' : 'girl' }}</p>
                     @endif   
-                    <p class="quesion-icon">1 Year ago</p>
+                    <p class="quesion-icon">{{ $question->created_at->diffForHumans() }}</p>
                 </div>
                 <p class="fw-bold"><span class="quesion-icon">Q.</span> {{ $question->question }}
                 </p>
@@ -290,7 +290,7 @@
                                 {{-- <p class="m-0 quesion-icon">Mom of a 4 yr 2 m old boy</p> --}}
                             </div>
                         </div>
-                        <p class="quesion-icon">1 Year ago</p>
+                        <p class="quesion-icon">{{ $answer->created_at->diffForHumans() }}</p>
                     </div>
                     <p class="fw-medium mt-2"><span class="quesion-icon">A.</span> {{ $answer->answer }} </p>
                     <div class="answer-parent-container d-flex justify-content-between mt-3">
