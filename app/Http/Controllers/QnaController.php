@@ -39,7 +39,7 @@ class QnaController extends Controller
 
     public function QnaHome(){
         $parent_article_categories = ParentArticleCategory::where('status', 1)->with('child')->latest()->take(5)->get();
-        $questions = QnaQuestion::with('answers.user', 'user')->get();
+        $questions = QnaQuestion::with('answers.user', 'user','child')->get();
         return view('theme-views.question-answer.question-answer', compact('parent_article_categories','questions'));
     }
     public function View_more_answer($id){
@@ -65,6 +65,11 @@ class QnaController extends Controller
             'question' => 'required',
             'user_id' => 'required',
         ]);
+
+        if (!$request->has('user_id') || !$validator->passes()) {
+            Toastr::error('Please login first.'); 
+            return redirect()->route('customer.auth.login'); 
+        }
 
         if ($validator->fails()) {
             Toastr::error($validator->errors()->first()); 

@@ -42,6 +42,11 @@ class QnaAnswerController extends Controller
             'question_id' => 'required',
         ]);
 
+        if (!$request->has('user_id') || !$validator->passes()) {
+            Toastr::error('Please login first.'); 
+            return redirect()->route('customer.auth.login'); 
+        }
+
         if ($validator->fails()) {
             Toastr::error($validator->errors()->first()); 
             return back(); 

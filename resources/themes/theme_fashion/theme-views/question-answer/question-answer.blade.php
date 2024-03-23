@@ -170,8 +170,6 @@
                                                         if ($diff->m > 0) {
                                                             $formattedAge .= ($formattedAge ? ' ' : '') . $diff->m . 'M';
                                                         }
-                                                        
-                                                        // If the age is less than a month, display "New Born"
                                                         if ($diff->y == 0 && $diff->m == 0) {
                                                             $formattedAge = 'New Born';
                                                         }
@@ -204,8 +202,23 @@
             </div>
             @foreach ($questions as $question)
             <div class="question-block mt-3 pb-0">
-                <div class="d-flex justify-content-between">
-                    <p class="quesion-icon">Mom of a 4 yr 2 m old boy</p>
+                <div class="d-flex justify-content-between">     
+                    @if($question->child != null)
+                    <?php $childDob = \Carbon\Carbon::parse($question->child->dob);
+                        $diff = $childDob->diff(\Carbon\Carbon::now());
+                        $formattedAge = '';
+                        if ($diff->y > 0) {
+                           $formattedAge .= $diff->y . ' yr';
+                        }
+                        if ($diff->m > 0) {
+                           $formattedAge .= ($formattedAge ? ' ' : '') . $diff->m . ' m';
+                        }
+                        if ($diff->y == 0 && $diff->m == 0) {
+                           $formattedAge = 'New Born';
+                        }
+                        ?>
+                        <p class="quesion-icon">{{ $question->child->relation_type }} of a {{ $formattedAge }} old {{ $question->child->gender == 'male' ? 'boy' : 'girl' }}</p>
+                    @endif   
                     <p class="quesion-icon">1 Year ago</p>
                 </div>
                 <p class="fw-bold"><span class="quesion-icon">Q.</span> {{ $question->question }}
@@ -264,16 +277,17 @@
                 </div>
                 <hr>
                 @foreach($question->answers->take(2) as $answer)
+                {{-- {{ dd( $answer) }} --}}
                 <div class="mb-3">
                     <div class="d-flex justify-content-between">
                         <div class="d-flex gap-3">
                             <span>
-                                <img class="rounded-circle" src="{{ asset('public/images/01-Infant.jpg') }}" alt=""
+                                <img class="rounded-circle" src="{{ asset('storage/app/public/profile/'.$answer->user->image) }}" alt=""
                                     width="50px" height="50px">
                             </span>
                             <div>
-                                <p class="m-0 fw-bold">Author of question</p>
-                                <p class="m-0 quesion-icon">Mom of a 4 yr 2 m old boy</p>
+                                <p class="m-0 fw-bold">{{ $answer->user->f_name. ' '. $answer->user->l_name }}</p>
+                                {{-- <p class="m-0 quesion-icon">Mom of a 4 yr 2 m old boy</p> --}}
                             </div>
                         </div>
                         <p class="quesion-icon">1 Year ago</p>
