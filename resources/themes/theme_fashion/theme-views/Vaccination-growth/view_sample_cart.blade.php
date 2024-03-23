@@ -22,7 +22,7 @@
     }
 
     .vaccination-growth-container {
-        margin: 0 100px 100px 100px;
+        margin: 0 70px 100px 70px;
     }
 
     .vaccination-mainp {
