@@ -223,13 +223,8 @@
 @section('content')
     <div class="container">
         <div class="vaccination-growth-container">
-            <nav class="mt-3 mb-3 quesion-icon" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ route('parenting-user') }}">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page"> Child Vaccine & Baby Growth Tracker</li>
-                </ol>
-            </nav>
-            <h3>Child Immunization & Baby Growth Tracker</h3>
+
+            <h3 class="mt-4">Child Immunization & Baby Growth Tracker</h3>
             <hr>
             <div class="vaccination-growth-child-container d-flex">
                 <div class="vaccination-mainp">
@@ -873,34 +868,58 @@
                                             Use our growth tracker to measure your child's growth over time &
 
                                         </p>
-                                        
-                                            
 
-                                        </div>
-                                       
 
 
                                     </div>
-
+                                    <div class="gr_features">
+                                        <table class="w-100">
+                                            <tbody>
+                                              <tr>
+                                                <td>
+                                                    <i class="bi bi-journal-text"></i>
+                                                </td>
+                                                <td valign="bottom" class="R14_42">Get age/gender wise growth chart</td>
+                                              </tr>
+                                              <tr>
+                                                <td><span class="vc_gr_icons icon" data-icon-com="B"></span></td>
+                                                <td valign="bottom" class="R14_42">Compare with WHO standards</td>
+                                              </tr>
+                                              <tr>
+                                                <td><span class="vc_gr_icons icon" data-icon-com="5"></span></td>
+                                                <td valign="bottom" class="R14_42">Get reminders at regular intervals</td>
+                                              </tr>
+                                              <tr>
+                                                <td><span class="vc_gr_icons icon" data-icon-com="."></span></td>
+                                                <td valign="bottom" class="R14_42">Maintain Digital Records</td>
+                                              </tr>
+                                            </tbody>
+                                          </table>
+                                          
+                                    </div>
 
 
                                 </div>
 
-                            </div>
-                        </div>
 
+
+                            </div>
+
+                        </div>
                     </div>
-                </div>
-                <div class="downloadApp-right">
 
                 </div>
             </div>
+            <div class="downloadApp-right">
 
-
-
-
-
+            </div>
         </div>
+
+
+
+
+
+    </div>
 
     </div>
 @endsection

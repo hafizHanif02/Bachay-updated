@@ -22,7 +22,7 @@
     }
 
     .qna-main {
-        margin: 0 150px 100px 150px; 
+        margin: 0 150px 100px 150px;
     }
 
     .ask-question {
@@ -108,22 +108,18 @@
     .liked .like-icon {
         color: blue;
     }
+
     @media only screen and (max-width: 768px) {
         .qna-main {
-        margin: 0 0 100px 0; 
+            margin: 0 0 100px 0;
+        }
     }
-  }
 </style>
 @section('content')
     <div class="container">
         <div class="qna-main">
-            <nav class="mt-3 mb-3 quesion-icon" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ route('parenting-user') }}">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Questions & Answers</li>
-                </ol>
-            </nav>
-            <h3>Q&A</h3>
+
+            <h3 class="mt-4">Q&A</h3>
             <hr>
             <div class="ask-question text-center mt-5">
                 <h6 class="font-poppins mb-2">Want to share your parenting queries and get answers</h6>
@@ -141,7 +137,7 @@
                             <form action="{{ route('Q&A.store') }}" method="POST">
                                 @csrf
                                 @auth('customer')
-                                <input type="hidden" name="user_id" value="{{ Auth::guard('customer')->user()->id }}">
+                                    <input type="hidden" name="user_id" value="{{ Auth::guard('customer')->user()->id }}">
                                 @endauth
                                 <div class="modal-header">
                                     <h1 class="modal-title fs-5" id="staticBackdropLabel">Ask a Question</h1>
@@ -150,49 +146,52 @@
                                 </div>
                                 <div class="modal-body" style="background-color: #f5f5f5;">
                                     <div class="write-comment-container">
-                                        <textarea id="post_answer_text" name="question" rows="4" cols="50" class="comment-box" placeholder="Write your Answer here"></textarea>
+                                        <textarea id="post_answer_text" name="question" rows="4" cols="50" class="comment-box"
+                                            placeholder="Write your Answer here"></textarea>
                                         <p class="text-start">This question is being
                                             asked for: </p>
-    
+
                                         @auth('customer')
-                                        <?php
-                                         $childs = \App\Models\FamilyRelation::where('user_id', Auth::guard('customer')->user()->id)->get();
-                                         ?>
-                                          
-                                        <div class="outer_child_container text-start">
-                                            @if(!$childs->isEmpty())
-                                          @foreach($childs as $child)
-                                          <?php $childDob = \Carbon\Carbon::parse($child->dob);
-                                          $diff = $childDob->diff(\Carbon\Carbon::now());
-                                          $formattedAge = '';
-                                          
-                                          if ($diff->y > 0) {
-                                              $formattedAge .= $diff->y . 'Y';
-                                          }
-                                      
-                                          if ($diff->m > 0) {
-                                              $formattedAge .= ($formattedAge ? ' ' : '') . $diff->m . 'M';
-                                          }
-                                      
-                                          // If the age is less than a month, display "New Born"
-                                          if ($diff->y == 0 && $diff->m == 0) {
-                                              $formattedAge = 'New Born';
-                                          }
-                                          ?>
-                                            <label class="child_inner_container">
-                                                <input type="radio" class="dev_radiobuttons custom-radio-button"
-                                                    name="child_selection" name="child_id" value="{{ $child->id }}" style="width: fit-content;">
-                                                <span class="child-info-ask-quest"><span class="R14_42">{{ $child->name }}</span><span
-                                                        class="R11_75"> {{ $formattedAge }}</span></span>
-                                            </label>
-                                            @endforeach
-                                        </div>
-                                        @endif
+                                            <?php
+                                            $childs = \App\Models\FamilyRelation::where('user_id', Auth::guard('customer')->user()->id)->get();
+                                            ?>
+
+                                            <div class="outer_child_container text-start">
+                                                @if (!$childs->isEmpty())
+                                                    @foreach ($childs as $child)
+                                                        <?php $childDob = \Carbon\Carbon::parse($child->dob);
+                                                        $diff = $childDob->diff(\Carbon\Carbon::now());
+                                                        $formattedAge = '';
+                                                        
+                                                        if ($diff->y > 0) {
+                                                            $formattedAge .= $diff->y . 'Y';
+                                                        }
+                                                        
+                                                        if ($diff->m > 0) {
+                                                            $formattedAge .= ($formattedAge ? ' ' : '') . $diff->m . 'M';
+                                                        }
+                                                        
+                                                        // If the age is less than a month, display "New Born"
+                                                        if ($diff->y == 0 && $diff->m == 0) {
+                                                            $formattedAge = 'New Born';
+                                                        }
+                                                        ?>
+                                                        <label class="child_inner_container">
+                                                            <input type="radio" class="dev_radiobuttons custom-radio-button"
+                                                                name="child_selection" name="child_id"
+                                                                value="{{ $child->id }}" style="width: fit-content;">
+                                                            <span class="child-info-ask-quest"><span
+                                                                    class="R14_42">{{ $child->name }}</span><span
+                                                                    class="R11_75"> {{ $formattedAge }}</span></span>
+                                                        </label>
+                                                    @endforeach
+                                            </div>
+                                            @endif
                                         @endauth
-    
-    
+
+
                                         <p class="your-identity text-start">Your identity will not be revealed</p>
-    
+
                                     </div>
                                 </div>
                                 <div class="modal-footer">
@@ -203,6 +202,10 @@
                     </div>
                 </div>
             </div>
+
+
+
+
             <div class="question-block mt-5">
                 <p class="last-online-time text-end quesion-icon">5 months ago</p>
                 <p class="fw-bold"><span class="quesion-icon">Q.</span> My Daughter is 5 year 10 months old. She talks to
@@ -225,7 +228,7 @@
                         <div class="modal-dialog">
                             <div class="modal-content pb-2 ps-2 pe-2">
                                 <form action="{{ route('Q&A.answer.store') }}">
-                                    
+
                                 </form>
                                 <div class="modal-header">
                                     <h1 class="modal-title fs-5" id="exampleModalLabel">Add An Answer</h1>
@@ -263,7 +266,7 @@
 
 
             </div>
-            <div class="question-block mt-3">
+            <div class="question-block mt-3 pb-0">
                 <div class="d-flex justify-content-between">
                     <p class="quesion-icon">Mom of a 4 yr 2 m old boy</p>
                     <p class="quesion-icon">1 Year ago</p>
@@ -316,46 +319,88 @@
 
                 </div>
                 <hr>
-                <div class="d-flex justify-content-between">
-                    <div class="d-flex gap-3">
-                        <span>
-                            <img class="rounded-circle" src="{{ asset('public/images/01-Infant.jpg') }}" alt=""
-                                width="50px" height="50px">
-                        </span>
-                        <div>
-                            <p class="m-0 fw-bold">Author of question</p>
-                            <p class="m-0 quesion-icon">Mom of a 4 yr 2 m old boy</p>
+                <div class="mb-3">
+                    <div class="d-flex justify-content-between">
+                        <div class="d-flex gap-3">
+                            <span>
+                                <img class="rounded-circle" src="{{ asset('public/images/01-Infant.jpg') }}" alt=""
+                                    width="50px" height="50px">
+                            </span>
+                            <div>
+                                <p class="m-0 fw-bold">Author of question</p>
+                                <p class="m-0 quesion-icon">Mom of a 4 yr 2 m old boy</p>
+                            </div>
                         </div>
+                        <p class="quesion-icon">1 Year ago</p>
                     </div>
-                    <p class="quesion-icon">1 Year ago</p>
+                    <p class="fw-medium mt-2"><span class="quesion-icon">A.</span> Yes,apple is safe for kid. </p>
+                    <div class="answer-parent-container d-flex justify-content-between mt-3">
+    
+    
+                        <div class="like-button" onclick="toggleLike()">
+                            <i class="bi bi-hand-thumbs-up like-icon"></i>
+                            <span class="like-count quesion-icon">0</span>
+                            <span class="like-text quesion-icon"> Like</span>
+                        </div>
+    
+    
+    
+    
+                        <div class="dropdown">
+                            <button class="bg-transparent border-0 report-dropdown quesion-icon" type="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-three-dots-vertical" style="font-size: 20px;"></i>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end p-0">
+                                <li><a class="dropdown-item ps-3" href="#" style="font-size: 12px;">Report Abuse</a>
+                                </li>
+                            </ul>
+                        </div>
+    
+    
+                    </div>
+
                 </div>
-                <p class="fw-medium mt-2"><span class="quesion-icon">A.</span> Yes,apple is safe for kid. </p>
-                <div class="answer-parent-container d-flex justify-content-between mt-3">
-
-
-                    <div class="like-button" onclick="toggleLike()">
-                        <i class="bi bi-hand-thumbs-up like-icon"></i>
-                        <span class="like-count quesion-icon">0</span>
-                        <span class="like-text quesion-icon"> Like</span>
+                <div class="mb-3">
+                    <div class="d-flex justify-content-between">
+                        <div class="d-flex gap-3">
+                            <span>
+                                <img class="rounded-circle" src="http://localhost/public/images/01-Infant.jpg" alt="" width="50px" height="50px">
+                            </span>
+                            <div>
+                                <p class="m-0 fw-bold">Author of question</p>
+                                <p class="m-0 quesion-icon">Mom of a 4 yr 2 m old boy</p>
+                            </div>
+                        </div>
+                        <p class="quesion-icon">1 Year ago</p>
                     </div>
-
-
-
-
-                    <div class="dropdown">
-                        <button class="bg-transparent border-0 report-dropdown quesion-icon" type="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="bi bi-three-dots-vertical" style="font-size: 20px;"></i>
-                        </button>
-                        <ul class="dropdown-menu dropdown-menu-end p-0">
-                            <li><a class="dropdown-item ps-3" href="#" style="font-size: 12px;">Report Abuse</a>
-                            </li>
-                        </ul>
+                    <p class="fw-medium mt-2"><span class="quesion-icon">A.</span> Yes,apple is safe for kid. </p>
+                    <div class="answer-parent-container d-flex justify-content-between mt-3">
+    
+    
+                        <div class="like-button" onclick="toggleLike()">
+                            <i class="bi bi-hand-thumbs-up like-icon"></i>
+                            <span class="like-count quesion-icon">0</span>
+                            <span class="like-text quesion-icon"> Like</span>
+                        </div>
+    
+    
+    
+    
+                        <div class="dropdown">
+                            <button class="bg-transparent border-0 report-dropdown quesion-icon" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-three-dots-vertical" style="font-size: 20px;"></i>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end p-0">
+                                <li><a class="dropdown-item ps-3" href="#" style="font-size: 12px;">Report Abuse</a>
+                                </li>
+                            </ul>
+                        </div>
+    
+    
                     </div>
-
 
                 </div>
-
 
 
 
