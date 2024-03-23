@@ -129,6 +129,7 @@
             <div class="question-block mt-3 pb-0">
             
                 <hr>
+                @foreach($answers as $answer)
                 <div class="mb-3">
                     <div class="d-flex justify-content-between">
                         <div class="d-flex gap-3">
@@ -143,7 +144,7 @@
                         </div>
                         <p class="quesion-icon">1 Year ago</p>
                     </div>
-                    <p class="fw-medium mt-2"><span class="quesion-icon">A.</span> Yes,apple is safe for kid. </p>
+                    <p class="fw-medium mt-2"><span class="quesion-icon">{{ $loop->iteration }}</span> {{ $answer->answer }} </p>
                     <div class="answer-parent-container d-flex justify-content-between mt-3">
     
     
@@ -171,212 +172,8 @@
                     </div>
 
                 </div>
-                <div class="mb-3">
-                    <div class="d-flex justify-content-between">
-                        <div class="d-flex gap-3">
-                            <span>
-                                <img class="rounded-circle" src="http://localhost/public/images/01-Infant.jpg" alt="" width="50px" height="50px">
-                            </span>
-                            <div>
-                                <p class="m-0 fw-bold">Author of question</p>
-                                <p class="m-0 quesion-icon">Mom of a 4 yr 2 m old boy</p>
-                            </div>
-                        </div>
-                        <p class="quesion-icon">1 Year ago</p>
-                    </div>
-                    <p class="fw-medium mt-2"><span class="quesion-icon">A.</span> Yes,apple is safe for kid. </p>
-                    <div class="answer-parent-container d-flex justify-content-between mt-3">
-    
-    
-                        <div class="like-button" onclick="toggleLike()">
-                            <i class="bi bi-hand-thumbs-up like-icon"></i>
-                            <span class="like-count quesion-icon">0</span>
-                            <span class="like-text quesion-icon"> Like</span>
-                        </div>
-    
-    
-    
-    
-                        <div class="dropdown">
-                            <button class="bg-transparent border-0 report-dropdown quesion-icon" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="bi bi-three-dots-vertical" style="font-size: 20px;"></i>
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu-end p-0">
-                                <li><a class="dropdown-item ps-3" href="#" style="font-size: 12px;">Report Abuse</a>
-                                </li>
-                            </ul>
-                        </div>
-    
-    
-                    </div>
-
-                </div>
-                <div class="mb-3">
-                    <div class="d-flex justify-content-between">
-                        <div class="d-flex gap-3">
-                            <span>
-                                <img class="rounded-circle" src="{{ asset('public/images/01-Infant.jpg') }}" alt=""
-                                    width="50px" height="50px">
-                            </span>
-                            <div>
-                                <p class="m-0 fw-bold">Author of question</p>
-                                <p class="m-0 quesion-icon">Mom of a 4 yr 2 m old boy</p>
-                            </div>
-                        </div>
-                        <p class="quesion-icon">1 Year ago</p>
-                    </div>
-                    <p class="fw-medium mt-2"><span class="quesion-icon">A.</span> Yes,apple is safe for kid. </p>
-                    <div class="answer-parent-container d-flex justify-content-between mt-3">
-    
-    
-                        <div class="like-button" onclick="toggleLike()">
-                            <i class="bi bi-hand-thumbs-up like-icon"></i>
-                            <span class="like-count quesion-icon">0</span>
-                            <span class="like-text quesion-icon"> Like</span>
-                        </div>
-    
-    
-    
-    
-                        <div class="dropdown">
-                            <button class="bg-transparent border-0 report-dropdown quesion-icon" type="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="bi bi-three-dots-vertical" style="font-size: 20px;"></i>
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu-end p-0">
-                                <li><a class="dropdown-item ps-3" href="#" style="font-size: 12px;">Report Abuse</a>
-                                </li>
-                            </ul>
-                        </div>
-    
-    
-                    </div>
-
-                </div>
-                <div class="mb-3">
-                    <div class="d-flex justify-content-between">
-                        <div class="d-flex gap-3">
-                            <span>
-                                <img class="rounded-circle" src="http://localhost/public/images/01-Infant.jpg" alt="" width="50px" height="50px">
-                            </span>
-                            <div>
-                                <p class="m-0 fw-bold">Author of question</p>
-                                <p class="m-0 quesion-icon">Mom of a 4 yr 2 m old boy</p>
-                            </div>
-                        </div>
-                        <p class="quesion-icon">1 Year ago</p>
-                    </div>
-                    <p class="fw-medium mt-2"><span class="quesion-icon">A.</span> Yes,apple is safe for kid. </p>
-                    <div class="answer-parent-container d-flex justify-content-between mt-3">
-    
-    
-                        <div class="like-button" onclick="toggleLike()">
-                            <i class="bi bi-hand-thumbs-up like-icon"></i>
-                            <span class="like-count quesion-icon">0</span>
-                            <span class="like-text quesion-icon"> Like</span>
-                        </div>
-    
-    
-    
-    
-                        <div class="dropdown">
-                            <button class="bg-transparent border-0 report-dropdown quesion-icon" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="bi bi-three-dots-vertical" style="font-size: 20px;"></i>
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu-end p-0">
-                                <li><a class="dropdown-item ps-3" href="#" style="font-size: 12px;">Report Abuse</a>
-                                </li>
-                            </ul>
-                        </div>
-    
-    
-                    </div>
-
-                </div>
-                <div class="mb-3">
-                    <div class="d-flex justify-content-between">
-                        <div class="d-flex gap-3">
-                            <span>
-                                <img class="rounded-circle" src="{{ asset('public/images/01-Infant.jpg') }}" alt=""
-                                    width="50px" height="50px">
-                            </span>
-                            <div>
-                                <p class="m-0 fw-bold">Author of question</p>
-                                <p class="m-0 quesion-icon">Mom of a 4 yr 2 m old boy</p>
-                            </div>
-                        </div>
-                        <p class="quesion-icon">1 Year ago</p>
-                    </div>
-                    <p class="fw-medium mt-2"><span class="quesion-icon">A.</span> Yes,apple is safe for kid. </p>
-                    <div class="answer-parent-container d-flex justify-content-between mt-3">
-    
-    
-                        <div class="like-button" onclick="toggleLike()">
-                            <i class="bi bi-hand-thumbs-up like-icon"></i>
-                            <span class="like-count quesion-icon">0</span>
-                            <span class="like-text quesion-icon"> Like</span>
-                        </div>
-    
-    
-    
-    
-                        <div class="dropdown">
-                            <button class="bg-transparent border-0 report-dropdown quesion-icon" type="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="bi bi-three-dots-vertical" style="font-size: 20px;"></i>
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu-end p-0">
-                                <li><a class="dropdown-item ps-3" href="#" style="font-size: 12px;">Report Abuse</a>
-                                </li>
-                            </ul>
-                        </div>
-    
-    
-                    </div>
-
-                </div>
-                <div class="mb-3">
-                    <div class="d-flex justify-content-between">
-                        <div class="d-flex gap-3">
-                            <span>
-                                <img class="rounded-circle" src="http://localhost/public/images/01-Infant.jpg" alt="" width="50px" height="50px">
-                            </span>
-                            <div>
-                                <p class="m-0 fw-bold">Author of question</p>
-                                <p class="m-0 quesion-icon">Mom of a 4 yr 2 m old boy</p>
-                            </div>
-                        </div>
-                        <p class="quesion-icon">1 Year ago</p>
-                    </div>
-                    <p class="fw-medium mt-2"><span class="quesion-icon">A.</span> Yes,apple is safe for kid. </p>
-                    <div class="answer-parent-container d-flex justify-content-between mt-3">
-    
-    
-                        <div class="like-button" onclick="toggleLike()">
-                            <i class="bi bi-hand-thumbs-up like-icon"></i>
-                            <span class="like-count quesion-icon">0</span>
-                            <span class="like-text quesion-icon"> Like</span>
-                        </div>
-    
-    
-    
-    
-                        <div class="dropdown">
-                            <button class="bg-transparent border-0 report-dropdown quesion-icon" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="bi bi-three-dots-vertical" style="font-size: 20px;"></i>
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu-end p-0">
-                                <li><a class="dropdown-item ps-3" href="#" style="font-size: 12px;">Report Abuse</a>
-                                </li>
-                            </ul>
-                        </div>
-    
-    
-                    </div>
-
-                </div>
-
-
+                @endforeach
+                
             </div>
            
         </div>
