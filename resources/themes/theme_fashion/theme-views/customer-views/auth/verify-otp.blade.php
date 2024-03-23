@@ -33,22 +33,20 @@
                             </div>
                             <div class="text-base mt-3 resend_otp_custom">
                                 <div>{{translate('resend_code_within')}}</div>
-                                <strong class="verifyCounter" data-second="{{$time_count}}"></strong>s
+                                <strong class="verifyCounter" data-second="{{$time_count}}"></strong>
                             </div>
                         </div>
                         <form action="{{ route('customer.auth.otp-verification') }}" class="otp-form" method="POST"
                           id="customer_verify">
                             @csrf
                             <div class="d-flex gap-2 gap-sm-3 align-items-end justify-content-center">
-                                {{-- <input class="otp-field" type="text" name="opt-field[]" maxlength="1"
-                                    autocomplete="off">
-                                <input class="otp-field" type="text" name="opt-field[]" maxlength="1"
-                                    autocomplete="off">
-                                <input class="otp-field" type="text" name="opt-field[]" maxlength="1"
-                                    autocomplete="off">
-                                <input class="otp-field" type="text" name="opt-field[]" maxlength="1"
-                                    autocomplete="off"> --}}
-                                <input class="otp-field" inputmode="numeric" pattern="[0-9]*" type="text" name="opt-field[]" maxlength="1"
+                                <div class="d-flex gap-2 gap-sm-3 align-items-end justify-content-center">
+                                    <input id="otp1" class="otp-field" type="number" name="opt-field[]" maxlength="1" autocomplete="off">
+                                    <input id="otp2" class="otp-field" type="number" name="opt-field[]" maxlength="1" autocomplete="off">
+                                    <input id="otp3" class="otp-field" type="number" name="opt-field[]" maxlength="1" autocomplete="off">
+                                    <input id="otp4" class="otp-field" type="number" name="opt-field[]" maxlength="1" autocomplete="off">
+                                </div>
+                                {{-- <input class="otp-field" inputmode="numeric" pattern="[0-9]*" type="text" name="opt-field[]" maxlength="1"
                                 autocomplete="off">
                                 <input class="otp-field" inputmode="numeric" pattern="[0-9]*" type="text" name="opt-field[]" maxlength="1"
                                 autocomplete="off">
@@ -56,7 +54,7 @@
                                 autocomplete="off">
                                 <input class="otp-field" inputmode="numeric" pattern="[0-9]*" type="text" name="opt-field[]" maxlength="1"
                                 autocomplete="off">
-                            </div>
+                            </div> --}}
 
                             <input class="otp-value" type="hidden" name="otp">
                             <input class="identity" type="hidden" name="identity" value="{{ request('identity') }}">
@@ -76,4 +74,22 @@
 
 @push('script')
 <script src="{{ theme_asset('assets/js/customer-auth-reset-password.js') }}"></script>
+<script>
+    // Simulating receiving OTP from notification
+    const receivedOTP = getOTPFromNotification();
+    
+    // Fill input fields with received OTP or set input type to "text" if entered manually
+    if (receivedOTP.length === 4) {
+        document.getElementById('otp1').value = receivedOTP.charAt(0);
+        document.getElementById('otp2').value = receivedOTP.charAt(1);
+        document.getElementById('otp3').value = receivedOTP.charAt(2);
+        document.getElementById('otp4').value = receivedOTP.charAt(3);
+    } else {
+        // Set input type to "text" for manual entry
+        const otpFields = document.getElementsByClassName('otp-field');
+        for (let i = 0; i < otpFields.length; i++) {
+            otpFields[i].type = "text";
+        }
+    }
+    </script>
 @endpush

@@ -39,21 +39,22 @@ class ParentArticleController extends Controller
         return view('admin-views.parent-article.article', compact('articles', 'categories'));
     }
 
-    public function parentArticleCategory($id){
-        $parent_article_categories = ParentArticleCategory::where('status', 1)->with('child')->latest()->take(5)->get();
-        $parent_category = ParentArticleCategory::where('id', $id)->with('articles','child')->first();
-        return view('theme-views.parent.article_category', compact('parent_article_categories','parent_category'));
+    public function parentArticleCategory($id)
+    {
+        $parent_article_categories = ParentArticleCategory::where(['status' => 1, 'parent_id' => 0])->with('child')->latest()->take(5)->get();
+        $parent_category = ParentArticleCategory::where('id', $id)->with('articles', 'child')->first();
+        return view('theme-views.parent.article_category', compact('parent_article_categories', 'parent_category'));
     }
 
     public function parentArticle($id)
     {
-        $parent_article_categories = ParentArticleCategory::where('status', 1)->with('child')->latest()->take(5)->get();
+        $parent_article_categories = ParentArticleCategory::where(['status' => 1, 'parent_id' => 0])->with('child')->latest()->take(5)->get();
         $article = ParentArticle::where('status', '1')->where('id', $id)->first();
         $slidder_article = ParentArticle::orderBy('id', 'desc')->where('status', '1')->take(6)->get();
         $categories = ParentArticleCategory::where('status', '1')->get();
 
 
-        return view('theme-views.parent.article', compact('article', 'slidder_article', 'categories','parent_article_categories'));
+        return view('theme-views.parent.article', compact('article', 'slidder_article', 'categories', 'parent_article_categories'));
     }
 
     public function CategoryArticle($id)

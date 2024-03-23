@@ -44,8 +44,7 @@ class ParentController extends Controller
         private DeliveryMan $deliver_man,
         private ProductCompare $compare,
         private Wishlist $wishlist,
-    )
-    {
+    ) {
     }
     /**
      * Display a listing of the resource.
@@ -69,23 +68,25 @@ class ParentController extends Controller
     {
         return view(VIEW_FILE_NAMES['parenting']);
     }
-    
+
 
 
     public function parentuser()
     {
-        
+
         $theme_name = theme_root_path();
-        $main_banner = $this->banner->where(['banner_type'=>'Parent Banner', 'theme'=>$theme_name, 'published'=> 1])->latest()->get();
-        $main_section_banner = $this->banner->where(['banner_type'=> 'Main Section Banner', 'theme'=>$theme_name, 'published'=> 1])->orderBy('id', 'desc')->latest()->first();
-        $parent_article_categories = ParentArticleCategory::where('status', 1)->with('child')->latest()->take(5)->get();
-        return view(VIEW_FILE_NAMES['parenting-user'],
-        
+        $main_banner = $this->banner->where(['banner_type' => 'Parent Banner', 'theme' => $theme_name, 'published' => 1])->latest()->get();
+        $main_section_banner = $this->banner->where(['banner_type' => 'Main Section Banner', 'theme' => $theme_name, 'published' => 1])->orderBy('id', 'desc')->latest()->first();
+        $parent_article_categories = ParentArticleCategory::where(['status' => 1, 'parent_id' => 0])->with('child')->latest()->take(5)->get();
+        return view(
+            VIEW_FILE_NAMES['parenting-user'],
+
             compact(
-                'main_section_banner', 'main_banner','parent_article_categories'
+                'main_section_banner',
+                'main_banner',
+                'parent_article_categories'
             )
         );
-        
     }
 
     /**
@@ -102,8 +103,8 @@ class ParentController extends Controller
         ]);
 
         if ($validator->fails()) {
-            Toastr::error($validator->errors()->first()); 
-            return back(); 
+            Toastr::error($validator->errors()->first());
+            return back();
         } else {
             if ($request->hasFile('profile_picture')) {
                 $file = $request->file('profile_picture');
@@ -122,7 +123,7 @@ class ParentController extends Controller
                 'profile_picture' => ($filename ?? ''),
             ]);
             $Vaccinations = Vaccination::get();
-            foreach($Vaccinations as $vaccination){
+            foreach ($Vaccinations as $vaccination) {
                 $dateOfBirth = $request->dob;
                 $carbonDateOfBirth = Carbon::parse($dateOfBirth);
                 $resultDate = $carbonDateOfBirth->addWeeks($vaccination->age)->toDateString();
@@ -180,16 +181,13 @@ class ParentController extends Controller
      */
     public function destroy(string $id)
     {
-        if(Auth::guard('customer')->check()){
-            FamilyRelation::where(['id'=> $id, 'user_id'=> Auth::guard('customer')->id()])->delete();
+        if (Auth::guard('customer')->check()) {
+            FamilyRelation::where(['id' => $id, 'user_id' => Auth::guard('customer')->id()])->delete();
             Toastr::success('Child Deleted Successfully');
             return back();
-        }else{
+        } else {
             Toastr::error(translate('please_login_first'));
             return back();
         }
     }
-
-
-    
 }

@@ -8454,7 +8454,7 @@ input[type=number]::-webkit-outer-spin-button {
   position: absolute;
   z-index: 1;
   line-height: 40px;
-  height: 80%;
+  height: 78%;
   width: 100%;
   overflow: scroll;
 }

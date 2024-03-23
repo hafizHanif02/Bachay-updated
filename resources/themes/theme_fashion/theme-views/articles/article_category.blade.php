@@ -683,25 +683,28 @@
         .hidden {
             display: none;
         }
-        .capitalize {
-            text-transform: capitalize;
-        }
-
     </style>
 </head>
 
 @section('content')
-
     <body>
-        <div class="articleHeader container-xxl">
-            {{-- <h1 class="title">
-                Category: {{ translate($article_category->name) }}
-                Articles
-            </h1> --}}
+        {{-- <div class="articleHeader container-xxl">
             <h1 class="title">
-                Category: <span class="capitalize">{{ $article_category->name }}</span> Articles
+                @if (count($categories) > 0)
+                    Category: {{ $categories[0]->name }}
+                @else
+                    Articles
+                @endif
+            </h1>
+        </div> --}}
+        <div class="articleHeader container-xxl">
+            <h1 class="title">
+                @if (count($categories) > 0)
+                    Category: {{ $categories[0]->name }}
+                @endif
             </h1>
         </div>
+        
 
         <!--BLOG SECTION-->
         <div class="blog_container container-xxl">
@@ -709,55 +712,44 @@
                 <div class="left_content">
                     <!--MAIN CARD BEGINING-->
                     <div class="blog_card">
-                        {{-- <a href="{{ route('article', $article_category->id) }}" class="figure">
+                        <a href="{{ route('article', $article_category->id) }}" class="figure">
                             <img src="{{ asset('public/assets/images/articles/category/thumbnail/' . $article_category->image) }}"
                                 alt="" loading="lazy" />
                             <span class="tag">{{ date_format($article_category->created_at, 'd-M-Y h:i:s A') }}</span>
-                        </a> --}}
-                        <div class="figure">
-                            <img src="{{ asset('public/assets/images/articles/category/thumbnail/' . $article_category->image) }}" alt="" loading="lazy" />
-                            <span class="tag">{{ date_format($article_category->created_at, 'd-M-Y h:i:s A') }}</span>
-                        </div>                        
+                        </a>
                         <section>
-                            {{-- <a href="{{ route('article', $article_category->id) }}"
-                                class="title">{{ $article_category->name }}</a> --}}
-                            <span class="title">{{ $article_category->name }}</span>
-                            <div class="article-category">
-                                <p>
-                                    <span id="visible_text">{{ mb_strimwidth($article_category->tag_line, 0, 127, '...') }}</span>
-                                    <span id="remaining_text" style="display: none;">{{ mb_substr($article_category->tag_line, 127) }}</span>
-                                    <a href="#" id="read_more_link" onclick="toggleRemainingText(); return false;">Read more</a>
-                                </p>
-                            </div>                            
-                            
+                            <a href="{{ route('article', $article_category->id) }}" class="title">{{ $article_category->name }}</a>
+                            <p>
+                                {{ mb_strimwidth($article_category->tag_line, 0, 300, "...") }}
+                                <a href="{{ route('article', $article_category->id) }}">Read more</a>
+                            </p> 
                         </section>
                     </div>
                     <!--CARD ENDS-->
                     @foreach ($article_category->articles as $article)
                         <!--CARD BEGINING-->
-                        <div class="blog_card{{ $loop->index >= 6 ? ' additional-card hidden' : '' }}">
-                            <a href="{{ route('article', $article->id) }}" class="figure">
-                                <img src="{{ asset('public/assets/images/articles/thumbnail/' . $article->thumbnail) }}"
-                                    alt="" loading="lazy" />
-                                <span class="tag">{{ date_format($article->created_at, 'd-M-Y h:i:s A') }}</span>
-                            </a>
-                            <section>
-                                <a href="{{ route('article', $article->id) }}" class="title">{{ $article->title }}</a>
-                                <p>
-                                    {{-- @php
-                                        $text = $article->text;
-                                        $wordCount = str_word_count($text);
-                                        $limitedText = implode(' ', array_slice(str_word_count($text, 1), 0, 34));
-                                        echo $limitedText . ($wordCount > 34 ? "..." : "");
-                                    @endphp --}}
-                                    @php
-                                        $words = str_word_count($article->text, 1);
-                                        $limitedText = implode(' ', array_slice($words, 0, 34));
-                                        echo $limitedText . (count($words) > 34 ? '...' : '') . ' <a href="' . route('article', $article->id) . '">Read more</a>';
-                                    @endphp
-                                </p>
-                            </section>
-                        </div>
+                    <div class="blog_card{{ $loop->index >= 6 ? ' additional-card hidden' : '' }}">
+                        <a href="{{ route('article', $article->id) }}" class="figure">
+                            <img src="{{ asset('public/assets/images/articles/thumbnail/' . $article->thumbnail) }}" alt="" loading="lazy" />
+                            <span class="tag">{{ date_format($article->created_at,'d-M-Y h:i:s A') }}</span>
+                        </a>
+                        <section>
+                            <a href="{{ route('article', $article->id) }}" class="title">{{ $article->title }}</a>
+                            <p>
+                                {{-- @php
+                                    $text = $article->text;
+                                    $wordCount = str_word_count($text);
+                                    $limitedText = implode(' ', array_slice(str_word_count($text, 1), 0, 34));
+                                    echo $limitedText . ($wordCount > 34 ? "..." : "");
+                                @endphp --}}
+                                @php
+                                    $words = str_word_count($article->text, 1);
+                                    $limitedText = implode(' ', array_slice($words, 0, 34));
+                                    echo $limitedText . (count($words) > 34 ? '...' : '') . ' <a href="' . route('article', $article->id) . '">Read more</a>';
+                                @endphp  
+                            </p>
+                        </section>
+                    </div>                    
                         <!--CARD ENDS-->
                     @endforeach
                 </div>
@@ -884,19 +876,4 @@
             });
         });
     </script>
-    <script>
-        function toggleRemainingText() {
-            var visibleText = document.getElementById('visible_text');
-            var remainingText = document.getElementById('remaining_text');
-            var readMoreLink = document.getElementById('read_more_link');
-            
-            if (remainingText.style.display === 'none') {
-                remainingText.style.display = 'inline'; // Show the remaining text
-                readMoreLink.style.display = 'none'; // Hide the "Read more" link
-            } else {
-                remainingText.style.display = 'none'; // Hide the remaining text
-            }
-        }
-    </script>
-    
 @endsection

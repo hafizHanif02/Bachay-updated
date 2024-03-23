@@ -14,21 +14,23 @@ class VaccineController extends Controller
      */
     public function index(Request $request)
     {
-        if($request->search){
-            $vaccines = Vaccination::where('name', 'like', '%'.$request->search.'%')->get();
-        }else{
+        if ($request->search) {
+            $vaccines = Vaccination::where('name', 'like', '%' . $request->search . '%')->get();
+        } else {
             $vaccines = Vaccination::get();
         }
         return view('admin-views.vaccine.list', compact('vaccines'));
     }
-    public function Vaccination_home(){
-        $parent_article_categories = ParentArticleCategory::where('status', 1)->with('child')->latest()->take(5)->get();
+    public function Vaccination_home()
+    {
+        $parent_article_categories = ParentArticleCategory::where(['status' => 1, 'parent_id' => 0])->with('child')->latest()->take(5)->get();
         return view('theme-views.vaccination-growth.vaccination-growth-tracker', compact('parent_article_categories'));
     }
-    public function view_sample_cart(){
-        $parent_article_categories = ParentArticleCategory::where('status', 1)->with('child')->latest()->take(5)->get();
+    public function view_sample_cart()
+    {
+        $parent_article_categories = ParentArticleCategory::where(['status' => 1, 'parent_id' => 0])->with('child')->latest()->take(5)->get();
         return view('theme-views.vaccination-growth.view_sample_cart', compact('parent_article_categories'));
-    }   
+    }
     /**
      * Show the form for creating a new resource.
      */
@@ -64,7 +66,8 @@ class VaccineController extends Controller
     }
 
 
-    public function VaccineSubmissionCreate($id){
+    public function VaccineSubmissionCreate($id)
+    {
         return $id;
     }
 
