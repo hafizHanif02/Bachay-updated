@@ -34,13 +34,37 @@
     .vaccine_main{
         margin: 10px 0 0 0;
     }
+    .btn_clr {
+        background: #f56996;
+        border: none;
+        color: #fff;
+        border: 1px solid #f56996;
+        border-radius: 5px;
+        padding: 5px 10px;
+    }
+    .btn_clr:hover {
+        background: #fff;
+        border: 1px solid #f56996;
+        color: #f56996;
+    }
     .downloadApp-right {
         width: 30%;
         border: 1px solid #ededed;
         border-radius: 3px;
-        padding: 16px 20px 20px 19px;
+        padding: 16px 10px 20px 10px;
     }
-
+    .downloadApp-right {
+        padding-bottom: 0;
+        background-image: url(https://cdn.cdnparenting.com/brainbees/community/preact/public/media/Personalization_BG.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-origin: content-box;
+        background-position: bottom;
+        height: 98vh;
+        overflow-y: auto;
+        position: sticky;
+        top: 5px;
+    }
     .child-profile {
         width: 100%;
         background-color: #f5f5f5;
@@ -177,7 +201,12 @@
     border-left: none;
     border-right: none;
 }
-
+.downloadApp-right h6{
+        font-size: 14px;
+    font-weight: 600;
+    color: #424242;
+    text-align: center;
+    }
     .Add_child_gr tr td select{
         border: none;
     }
@@ -207,7 +236,22 @@
                     <img src="{{ asset('public/images/growth-chart-image.png') }}" alt="" width="100%">
                 </div>
                 <div class="downloadApp-right">
-
+                    
+                    <h6 class="font-poppins text-center mt-4">
+                        Join the largest community of parents and see parenting in a new way
+                    </h6>
+                    <h5 class="text-center mt-3 mb-3">Download our App</h5>
+                    <div class="d-flex gap-3">
+                        <button class="btn_clr w-50 p-2">
+                            <i class="bi bi-apple"></i>  Get for iOS
+                        </button>
+                        <button class="btn_clr w-50 p-2">
+                            <i class="bi bi-google-play"></i>  Get for Android
+                        </button>
+                    </div>
+                    <div class="mt-3">
+                        <img src="{{ asset('public/images/mobile-parenting.png') }}" alt="" width="100%">
+                    </div>
                 </div>
             </div>
 

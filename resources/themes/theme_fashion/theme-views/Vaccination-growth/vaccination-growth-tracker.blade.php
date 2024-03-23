@@ -22,7 +22,7 @@
     }
 
     .vaccination-growth-container {
-        margin: 0 100px 100px 100px;
+        margin: 0 70px 100px 70px;
     }
 
     .vaccination-mainp {
@@ -40,7 +40,7 @@
         width: 30%;
         border: 1px solid #ededed;
         border-radius: 3px;
-        padding: 16px 20px 20px 19px;
+        padding: 16px 10px 20px 10px;
     }
 
     .child-profile {
@@ -201,6 +201,50 @@
         border: none;
     }
 
+    .gr_features table tbody tr td i {
+        color: #9e9e9e;
+    }
+
+    .gr_features table tbody tr {
+        margin-bottom: 10px;
+        display: block;
+    }
+    .R14_42{
+        font-size: 14px;
+        color: #424242;
+    }
+    .btn_clr {
+        background: #f56996;
+        border: none;
+        color: #fff;
+        border: 1px solid #f56996;
+        border-radius: 5px;
+        padding: 5px 10px;
+    }
+    .btn_clr:hover {
+        background: #fff;
+        border: 1px solid #f56996;
+        color: #f56996;
+    }
+    .downloadApp-right h6{
+        font-size: 14px;
+    font-weight: 600;
+    color: #424242;
+    text-align: center;
+    }
+    
+    .downloadApp-right {
+        padding-bottom: 0;
+        background-image: url(https://cdn.cdnparenting.com/brainbees/community/preact/public/media/Personalization_BG.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-origin: content-box;
+        background-position: bottom;
+        height: 98vh;
+        overflow-y: auto;
+        position: sticky;
+        top: 5px;
+    }
     @media only screen and (max-width: 768px) {
         .vaccination-growth-container {
             margin: 0 0 100px 0;
@@ -872,31 +916,75 @@
 
 
                                     </div>
-                                    <div class="gr_features">
+                                    <div class="gr_features ms-4">
                                         <table class="w-100">
                                             <tbody>
-                                              <tr>
-                                                <td>
-                                                    <i class="bi bi-journal-text"></i>
-                                                </td>
-                                                <td valign="bottom" class="R14_42">Get age/gender wise growth chart</td>
-                                              </tr>
-                                              <tr>
-                                                <td><span class="vc_gr_icons icon" data-icon-com="B"></span></td>
-                                                <td valign="bottom" class="R14_42">Compare with WHO standards</td>
-                                              </tr>
-                                              <tr>
-                                                <td><span class="vc_gr_icons icon" data-icon-com="5"></span></td>
-                                                <td valign="bottom" class="R14_42">Get reminders at regular intervals</td>
-                                              </tr>
-                                              <tr>
-                                                <td><span class="vc_gr_icons icon" data-icon-com="."></span></td>
-                                                <td valign="bottom" class="R14_42">Maintain Digital Records</td>
-                                              </tr>
+                                                <tr>
+                                                    <td style="width: 35px;">
+                                                        <i class="bi bi-journal-text" style="font-size: 25px;"></i>
+                                                    </td>
+                                                    <td valign="bottom" class="R14_42">Get age/gender wise growth chart
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="width: 35px;">
+                                                        <i class="bi bi-journal-check" style="font-size: 25px;"></i>
+                                                    </td>
+                                                    <td valign="bottom" class="R14_42">Compare with WHO standards</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="width: 35px;">
+                                                        <i class="bi bi-bell" style="font-size: 25px;"></i>
+                                                    </td>
+                                                    <td valign="bottom" class="R14_42">Get reminders at regular intervals
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="width: 35px;">
+                                                        <i class="bi bi-journals" style="font-size: 25px;"></i>
+                                                    </td>
+                                                    <td valign="bottom" class="R14_42">Maintain Digital Records</td>
+                                                </tr>
                                             </tbody>
-                                          </table>
-                                          
+                                        </table>
                                     </div>
+                                    <div class="text-center">
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn_clr mb-3 mt-3"
+                                        data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                        Add Growth Details
+                                    </button>
+     
+                                    <!-- Add Growth Details Modal -->
+                                    <div class="modal fade" id="exampleModal" tabindex="-1"
+                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal
+                                                        title
+                                                    </h1>
+                                                    <button type="button" class="btn-close"
+                                                        data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    ...
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Close</button>
+                                                    <button type="button" class="btn btn-primary">Save
+                                                        changes</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    </div>
+
+
+
+
 
 
                                 </div>
@@ -907,12 +995,249 @@
 
                         </div>
                     </div>
+                    <div class="vaccine_main">
+                        <div class="vacci-growthB">
+                            <div class="vaccine_child">
+                                <div class="child-profile d-flex align-items-center gap-4">
+                                    <img class="rounded-pill" src="{{ asset('public/images/vacci.png') }}"
+                                        alt="" width="102px" height="102px">
+                                    <div>
+                                        <h6>Hannan</h6>
+                                        <p class="m-0">2 yr 9 m old Boy</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="p-3">
+                                <div class="vaccination_tr">
+                                    <div class="vc_title">
+                                        <h6>
+                                            vaccination tracker
+                                        </h6>
+                                    </div>
+                                    <div class="up_vc_title">
+                                        <div class="up_vc_child">
+                                            <p class="ms-4 pb-3"
+                                                style="font-size: 16px;  border-bottom: 1px solid #ededed;">
+                                                Upcoming vaccinations
 
+                                            </p>
+                                            <ul class="mt-4">
+                                                <li class="d-flex justify-content-between ps-5 pe-5 mb-4">
+                                                    <div class="up_vcs_nam gap-3">
+                                                        <span class="me-4">
+
+                                                            <i class="bi bi-heart-pulse-fill"></i>
+
+                                                        </span>
+                                                        <span class="custom-dt-clr">4/4</span>
+
+                                                    </div>
+                                                    <div class="vc_dt_main">
+                                                        <span class="custom-dt-clr">24 Mar 2024</span>
+                                                    </div>
+                                                </li>
+                                                <li class="d-flex justify-content-between ps-5 pe-5 mb-4">
+                                                    <div class="up_vcs_nam gap-3">
+                                                        <span class="me-4">
+
+                                                            <i class="bi bi-heart-pulse-fill"></i>
+
+                                                        </span>
+                                                        <span class="custom-dt-clr">4/4</span>
+
+                                                    </div>
+                                                    <div class="vc_dt_main">
+                                                        <span class="custom-dt-clr">24 Mar 2024</span>
+                                                    </div>
+                                                </li>
+                                                <li class="d-flex justify-content-between ps-5 pe-5 mb-4">
+                                                    <div class="up_vcs_nam gap-3">
+                                                        <span class="me-4">
+
+                                                            <i class="bi bi-heart-pulse-fill"></i>
+
+                                                        </span>
+                                                        <span class="custom-dt-clr">4/4</span>
+
+                                                    </div>
+                                                    <div class="vc_dt_main">
+                                                        <span class="custom-dt-clr">24 Mar 2024</span>
+                                                    </div>
+                                                </li>
+
+                                            </ul>
+                                        </div>
+                                        <div class="up_vc_child mt-4">
+                                            <p class="ms-4 pb-3"
+                                                style="font-size: 16px;  border-bottom: 1px solid #ededed;">
+                                                Vaccinations summary
+
+                                            </p>
+                                            <div class="d-flex justify-content-evenly">
+                                                <a href="#">
+                                                    <div class="overdue">
+                                                        <div
+                                                            class="overdue-child d-flex justify-content-center align-items-center">
+                                                            <p class="m-0 text-light vc_num_count">6</p>
+                                                        </div>
+                                                    </div>
+                                                    <p class="text-center custom-dt-clr mt-2">Overdue</p>
+                                                </a>
+
+                                                <a href="#">
+
+                                                    <div class="vc_upcoming">
+                                                        <div
+                                                            class="vc_upcoming-child d-flex justify-content-center align-items-center">
+                                                            <p class="m-0 text-light vc_num_count">6</p>
+                                                        </div>
+                                                    </div>
+                                                    <p class="text-center custom-dt-clr mt-2">Upcoming</p>
+
+                                                </a>
+
+                                                <a href="#">
+                                                    <div class="vc_comppleted">
+                                                        <div
+                                                            class="vc_comppleted-child d-flex justify-content-center align-items-center">
+                                                            <p class="m-0 text-light vc_num_count">6</p>
+                                                        </div>
+                                                    </div>
+                                                    <p class="text-center custom-dt-clr mt-2">Done</p>
+
+                                                </a>
+
+                                            </div>
+                                            <div class="view_vc_tr text-center mt-4 mb-4">
+                                                <a href="#">view vaccination tracker</a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+
+                            </div>
+                            <div class="p-3 pt-0">
+                                <div class="vaccination_tr">
+                                    <div class="vc_title d-flex justify-content-between align-items-center">
+                                        <h6>
+                                            Growth tracker
+                                        </h6>
+                                        <a class="view_sample_cart" href="{{ route('view-sample-cart') }}">
+                                            View Sample Chart
+                                        </a>
+                                    </div>
+                                    <div class="up_vc_title">
+                                        <p class="ms-4 pb-3" style="font-size: 16px;  border-bottom: 1px solid #ededed;">
+                                            Use our growth tracker to measure your child's growth over time &
+
+                                        </p>
+
+
+
+                                    </div>
+                                    <div class="gr_features ms-4">
+                                        <table class="w-100">
+                                            <tbody>
+                                                <tr>
+                                                    <td style="width: 35px;">
+                                                        <i class="bi bi-journal-text" style="font-size: 25px;"></i>
+                                                    </td>
+                                                    <td valign="bottom" class="R14_42">Get age/gender wise growth chart
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="width: 35px;">
+                                                        <i class="bi bi-journal-check" style="font-size: 25px;"></i>
+                                                    </td>
+                                                    <td valign="bottom" class="R14_42">Compare with WHO standards</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="width: 35px;">
+                                                        <i class="bi bi-bell" style="font-size: 25px;"></i>
+                                                    </td>
+                                                    <td valign="bottom" class="R14_42">Get reminders at regular intervals
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="width: 35px;">
+                                                        <i class="bi bi-journals" style="font-size: 25px;"></i>
+                                                    </td>
+                                                    <td valign="bottom" class="R14_42">Maintain Digital Records</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="text-center">
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn_clr mb-3 mt-3"
+                                        data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                        Add Growth Details
+                                    </button>
+     
+                                    <!-- Add Growth Details Modal -->
+                                    <div class="modal fade" id="exampleModal" tabindex="-1"
+                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal
+                                                        title
+                                                    </h1>
+                                                    <button type="button" class="btn-close"
+                                                        data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    ...
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Close</button>
+                                                    <button type="button" class="btn btn-primary">Save
+                                                        changes</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    </div>
+
+
+
+
+
+
+                                </div>
+
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="downloadApp-right">
+                    
+                    <h6 class="font-poppins text-center mt-4">
+                        Join the largest community of parents and see parenting in a new way
+                    </h6>
+                    <h5 class="text-center mt-3 mb-3">Download our App</h5>
+                    <div class="d-flex gap-3">
+                        <button class="btn_clr w-50 p-2">
+                            <i class="bi bi-apple"></i>  Get for iOS
+                        </button>
+                        <button class="btn_clr w-50 p-2">
+                            <i class="bi bi-google-play"></i>  Get for Android
+                        </button>
+                    </div>
+                    <div class="mt-3">
+                        <img src="{{ asset('public/images/mobile-parenting.png') }}" alt="" width="100%">
+                    </div>
                 </div>
             </div>
-            <div class="downloadApp-right">
-
-            </div>
+            
         </div>
 
 
