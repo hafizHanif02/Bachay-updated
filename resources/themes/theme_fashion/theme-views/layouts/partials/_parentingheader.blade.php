@@ -583,7 +583,9 @@
             </div>
         </div>
     </div>
-
+    <?php $parent_article_categories = \App\Models\ParentArticleCategory::where(['status' => 1, 'parent_id' => 0])
+                ->take(6)
+                ->get(); ?>
     <div class="parenitng-option d-none d-xl-block"
         style="background-image: url('http://localhost/public/images/top-offer-bg.png');">
         <div class="container con">
