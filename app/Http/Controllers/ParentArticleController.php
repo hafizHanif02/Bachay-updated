@@ -30,10 +30,10 @@ class ParentArticleController extends Controller
     }
     public function index(Request $request)
     {
-        $articles = ParentArticle::with('articlecategory')->orderBy('id', 'desc')->paginate(10);
+        $articles = ParentArticle::with('articlecategory')->orderBy('id', 'desc')->paginate(100);
         $categories = ParentArticleCategory::where('status', '1')->get();
         if ($request->search) {
-            $articles = ParentArticle::with('articlecategory')->where('title', 'like', '%' . $request->search . '%')->orderBy('id', 'desc')->paginate(10);
+            $articles = ParentArticle::with('articlecategory')->where('title', 'like', '%' . $request->search . '%')->orderBy('id', 'desc')->paginate(100);
         }
         // $categories = ArticleCategory::with('articles')->get();
         return view('admin-views.parent-article.article', compact('articles', 'categories'));

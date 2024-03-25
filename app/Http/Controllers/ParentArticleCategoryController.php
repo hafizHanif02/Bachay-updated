@@ -14,9 +14,9 @@ class ParentArticleCategoryController extends Controller
      */
     public function index(Request $request)
     {
-        $categories = ParentArticleCategory::paginate(10);
+        $categories = ParentArticleCategory::paginate(100);
         if($request->search){
-            $categories = ParentArticleCategory::where('name','like','%'.$request->search.'%')->orderBy('id','desc')->paginate(10);
+            $categories = ParentArticleCategory::where('name','like','%'.$request->search.'%')->orderBy('id','desc')->paginate(100);
         }
         return view('admin-views.parent-article-category.category',compact('categories'));
     }
@@ -38,7 +38,7 @@ class ParentArticleCategoryController extends Controller
         $request->validate([
             'name' => 'required|string',
             'tag_line' => 'required|string|max:255',
-            'image' => 'image|mimes:jpeg,png,jpg,gif',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,webp',
         ]);
         if ($request->file('image')) {
             $file = $request->file('image');
