@@ -231,7 +231,7 @@
     .parenting-drpdown:hover .dropbtn:after {
         background-color: #845DC2;
         width: 100%;
-        /* top: 30px; */
+        top: 22px;
     }
 
     .parenting-drpdown .dropbtn:after {
@@ -592,7 +592,7 @@
             @foreach($parent_article_categories as $category)
             <div class="parenting-drpdown-con">
                 <div class="parenting-drpdown">
-                    <a href="{{ route('parenting.article.category', $category->id) }}" class="dropbtn">{{ $category->name }}<i class="bi bi-chevron-down"></i></a>
+                    <a href="{{ route('parenting.article.category', $category->id) }}" class="dropbtn">{{ $category->name }} <i class="bi bi-chevron-down" style="margin-left: 3px;"></i></a>
                     @if($category->child->count() > 0)
                     <ul class="parenting-drpdown-content">
                         @forelse($category->child as $subcategory)
@@ -605,7 +605,7 @@
             </div>
             @endforeach
 
-
+{{-- 
             <div class="parenting-drpdown-con">
                 <div class="parenting-drpdown">
                     <a href="#" class="dropbtn">Tools <i class="bi bi-chevron-down"></i></a>
@@ -621,13 +621,13 @@
                         <li><a href="#">Pregnancy Tools</a></li>
                     </ul>
                 </div>
-            </div>
+            </div> --}}
 
-            <div class="parenting-drpdown-con">
+            {{-- <div class="parenting-drpdown-con">
                 <div class="parenting-drpdown">
                     <a href="#" class="dropbtn">Baby Names</a>
                 </div>
-            </div>
+            </div> --}}
             <div class="parenting-drpdown-con">
                 <div class="parenting-drpdown">
                     <a href="{{ route('Q&A') }}" class="dropbtn">Q&A</a>
@@ -636,7 +636,7 @@
 
             <div class="parenting-drpdown-con">
                 <div class="parenting-drpdown">
-                    <a href="#" class="dropbtn">Coloring Pages</a>
+                    <a href="{{ route('vaccination-growth-tracker') }}" class="dropbtn">Child Vaccination & Growth Tracker</a>
                 </div>
             </div>
             <div class="parenting-drpdown-con">
