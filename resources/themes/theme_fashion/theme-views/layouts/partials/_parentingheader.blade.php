@@ -231,7 +231,7 @@
     .parenting-drpdown:hover .dropbtn:after {
         background-color: #845DC2;
         width: 100%;
-        top: 30px;
+        /* top: 30px; */
     }
 
     .parenting-drpdown .dropbtn:after {
@@ -263,7 +263,7 @@
         color: #000;
         text-transform: capitalize;
         font-weight: 600;
-        font-family: 'Aristotelica';
+        font-family: 'poppins';
     }
 
     .parenting-drpdown-content {
