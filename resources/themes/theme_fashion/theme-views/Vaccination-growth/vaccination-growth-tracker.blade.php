@@ -1,5 +1,4 @@
 @extends('theme-views.layouts.parenting-header')
-
 @push('css_or_js')
     <link href='https://fonts.googleapis.com/css?family=Outfit' rel='stylesheet'>
     <meta property="og:image" content="{{ asset('storage/app/public/company') }}/{{ $web_config['web_logo']->value }}" />
