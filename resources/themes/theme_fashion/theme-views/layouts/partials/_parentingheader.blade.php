@@ -272,6 +272,7 @@
         background-color: #ebf4fc;
         padding: 10px;
         min-width: 160px;
+        left: -10px;
         box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
         z-index: 1;
     }
@@ -287,7 +288,7 @@
     }
 
     .parenting-drpdown-con {
-        margin: 10px;
+        margin: 10px 0;
     }
 
     .parenitng-option {
