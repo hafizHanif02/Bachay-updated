@@ -263,7 +263,7 @@
         color: #000;
         text-transform: capitalize;
         font-weight: 600;
-        font-family: 'poppins';
+        font-family: 'Aristotelica';
     }
 
     .parenting-drpdown-content {
