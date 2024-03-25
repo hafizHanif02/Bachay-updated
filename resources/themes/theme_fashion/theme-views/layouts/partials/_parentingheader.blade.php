@@ -583,7 +583,7 @@
             </div>
         </div>
     </div>
-    <?php $parent_article_categories = \App\Models\ParentArticleCategory::where(['status' => 1, 'parent_id' => 0])
+    <?php $parent_article_categories = \App\Models\ParentArticleCategory::where(['status' => 1, 'parent_id' => 0])->orderBy('id','desc')
                 ->take(6)
                 ->get(); ?>
     <div class="parenitng-option d-none d-xl-block"
