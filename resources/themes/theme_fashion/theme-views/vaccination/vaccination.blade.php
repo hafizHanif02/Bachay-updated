@@ -264,6 +264,7 @@
     }
 </style>
 @section('content')
+{{-- {{ dd($childerens) }} --}}
     <div class="container">
         <div class="vaccination-growth-container">
 
@@ -271,6 +272,24 @@
             <hr>
             <div class="vaccination-growth-child-container d-flex">
                 <div class="vaccination-mainp">
+                    @foreach($childerens as $child)
+                    <?php $childDob = \Carbon\Carbon::parse($child->dob);
+                    $diff = $childDob->diff(\Carbon\Carbon::now());
+                    $formattedAge = '';
+                    
+                    if ($diff->y > 0) {
+                        $formattedAge .= $diff->y . ' yr';
+                    }
+                
+                    if ($diff->m > 0) {
+                        $formattedAge .= ($formattedAge ? ' ' : '') . $diff->m . ' m';
+                    }
+                
+                    // If the age is less than a month, display "New Born"
+                    if ($diff->y == 0 && $diff->m == 0) {
+                        $formattedAge = 'New Born';
+                    }
+                    ?>
                     <div class="vaccine_main">
                         <div class="vacci-growthB">
                             <div class="vaccine_child">
@@ -278,8 +297,8 @@
                                     <img class="rounded-pill" src="{{ asset('public/images/vacci.png') }}" alt=""
                                         width="102px" height="102px">
                                     <div>
-                                        <h6>Hannan</h6>
-                                        <p class="m-0">2 yr 9 m old Boy</p>
+                                        <h6>{{ $child->name }}</h6>
+                                        <p class="m-0">{{ $formattedAge }} old {{ $child->gender == 'male' ? 'boy' : 'girl' }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -354,7 +373,7 @@
                                                     <div class="overdue">
                                                         <div
                                                             class="overdue-child d-flex justify-content-center align-items-center">
-                                                            <p class="m-0 text-light vc_num_count">6</p>
+                                                            <p class="m-0 text-light vc_num_count">{{ $child->vaccination_status['overdue'] }}</p>
                                                         </div>
                                                     </div>
                                                     <p class="text-center custom-dt-clr mt-2">Overdue</p>
@@ -365,7 +384,7 @@
                                                     <div class="vc_upcoming">
                                                         <div
                                                             class="vc_upcoming-child d-flex justify-content-center align-items-center">
-                                                            <p class="m-0 text-light vc_num_count">6</p>
+                                                            <p class="m-0 text-light vc_num_count">{{ $child->vaccination_status['upcomming'] }}</p>
                                                         </div>
                                                     </div>
                                                     <p class="text-center custom-dt-clr mt-2">Upcoming</p>
@@ -376,7 +395,7 @@
                                                     <div class="vc_comppleted">
                                                         <div
                                                             class="vc_comppleted-child d-flex justify-content-center align-items-center">
-                                                            <p class="m-0 text-light vc_num_count">6</p>
+                                                            <p class="m-0 text-light vc_num_count">{{ $child->vaccination_status['completed'] }}</p>
                                                         </div>
                                                     </div>
                                                     <p class="text-center custom-dt-clr mt-2">Done</p>
@@ -559,7 +578,8 @@
                         </div>
 
                     </div>
-                    <div class="vaccine_main">
+                    @endforeach
+                    {{-- <div class="vaccine_main">
                         <div class="vacci-growthB">
                             <div class="vaccine_child">
                                 <div class="child-profile d-flex align-items-center gap-4">
@@ -1215,7 +1235,7 @@
                             </div>
 
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="downloadApp-right">
                     
