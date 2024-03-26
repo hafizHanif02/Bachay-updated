@@ -82,6 +82,8 @@ return [
     'my-milestones' => 'theme-views.parenting.profile.my-milestones',
     'my-quick-reads' => 'theme-views.parenting.profile.my-quick-reads',
     'my-topics' => 'theme-views.parenting.profile.my-topics',
+    'parenting-question' => 'theme-views.parenting.profile.my-question',
+    'parenting-answer' => 'theme-views.parenting.profile.my-answer',
     'user_coupons' => 'theme-views.users-profile.coupons',
     'pay_offline_method_list_partials' => 'theme-views.partials._pay_offline_method_list_fields',
     'digital_product_order_otp_verify' => 'theme-views.layouts.partials.modal._digital-product-order-otp-verify',

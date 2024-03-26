@@ -7312,4 +7312,8 @@
   'Memory' => 'Memory',
   'Follower' => 'Follower',
   'Following' => 'Following',
+  'my_questions' => 'My questions',
+  'my_answers' => 'My answers',
+  'my_topics' => 'My topics',
+  'my_favourite_names' => 'My favourite names',
 );

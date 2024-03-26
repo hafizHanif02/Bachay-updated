@@ -77,8 +77,8 @@ class ParentController extends Controller
     public function edit_profile(Request $request)
     {
         // $country_restrict_status = Helpers::get_business_settings('delivery_country_restriction');
-        $customerDetail = User::where('id', auth('customer')->id())->first();
-        return view(VIEW_FILE_NAMES['edit-profile'], compact('customerDetail'));
+        $customer_detail = User::where('id', auth('customer')->id())->first();
+        return view(VIEW_FILE_NAMES['edit-profile'], compact('customer_detail'));
     }
     public function faourite_names()
     {
