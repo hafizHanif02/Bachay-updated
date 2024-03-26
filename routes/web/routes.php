@@ -88,6 +88,8 @@ Route::get('parenting-memories','ParentController@parenting_memories')->name('pa
 Route::get('parenting-milestones','ParentController@parenting_milestones')->name('parenting-milestones');
 Route::get('parenting-quick-reads','ParentController@quick_reads')->name('parenting-quick-reads');
 Route::get('parenting-topics','ParentController@parenting_topics')->name('parenting-topics');
+Route::get('quiz','QuizController@quiz_index')->name('quiz');
+
 
 
 

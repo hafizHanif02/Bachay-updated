@@ -25,7 +25,17 @@ class QuizController extends Controller
         }
         return view('admin-views.quiz.list', compact('quizes','quiz_categories'));
     }
-
+    public function quiz_index(){
+        $quizes = Quiz::with(['quiz_category'])->get();
+        $quiz_categories = QuizCategory::get();
+        foreach($quiz_categories as $quiz_category){
+            $quiz_category->image = asset('public/assets/images/quiz/category/'.$quiz_category->image);
+        }
+        foreach($quizes as $quiz){
+            $quiz->image = asset('public/assets/images/quiz/'.$quiz->image);
+        }
+        return view('theme-views.quiz.quiz', compact('quizes','quiz_categories'));
+    }
     /**
      * Show the form for creating a new resource.
      */

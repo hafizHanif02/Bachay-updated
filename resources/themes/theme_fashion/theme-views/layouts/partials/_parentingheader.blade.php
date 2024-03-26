@@ -642,7 +642,7 @@
             </div>
             <div class="parenting-drpdown-con">
                 <div class="parenting-drpdown">
-                    <a href="{{ route('home') }}" class="dropbtn">Shop</a>
+                    <a href="{{ route('quiz') }}" class="dropbtn">Quiz</a>
                 </div>
             </div>
 
