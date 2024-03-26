@@ -28,13 +28,13 @@
             </li> --}}
                 <li class="nav-item">
                     <a href="{{ route('parenting-profile') }}"
-                        class="nav-link {{ Request::is('parenting-question') || Request::is('parenting-question') || Request::is('parenting-question') ? 'active' : '' }}">{{ translate('profile') }}
+                        class="nav-link {{ Request::is('parenting-profile') || Request::is('parenting-profile') ? 'active' : '' }}">{{ translate('profile') }}
                     </a>
                 </li>
 
                 <li class="nav-item">
                     <a href="{{ route('parenting-question') }}"
-                        class="nav-link {{ Request::is('parenting-question') || Request::is('parenting-question') || Request::is('parenting-question') ? 'active' : '' }}">{{ translate('my_questions') }}
+                        class="nav-link {{ Request::is('parenting-question') || Request::is('parenting-question') ? 'active' : '' }}">{{ translate('my_questions') }}
                     </a>
                 </li>
                 <li class="nav-item">

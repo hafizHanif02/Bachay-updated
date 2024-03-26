@@ -34,18 +34,18 @@
 
                 <li class="nav-item">
                     <a href="{{ route('parenting-question') }}"
-                        class="nav-link {{ Request::is('parenting-question') || Request::is('parenting-question') || Request::is('parenting-question') ? 'active' : '' }}">{{ translate('my_question') }}
+                        class="nav-link {{ Request::is('parenting-question') || Request::is('parenting-question') || Request::is('parenting-question') ? 'active' : '' }}">{{ translate('my_questions') }}
                     </a>
                 </li>
                 <li class="nav-item">
 
                     <a href="{{ route('parenting-answer') }}"
-                        class="nav-link {{ Request::is('parenting-answer') ? 'active' : '' }}">{{ translate('my_answer') }}
+                        class="nav-link {{ Request::is('parenting-answer') ? 'active' : '' }}">{{ translate('my_answers') }}
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('parenting-topics') }}"
-                        class="nav-link {{ Request::is('parenting-topics') ? 'active' : '' }}">{{ translate('my_topic') }}</a>
+                        class="nav-link {{ Request::is('parenting-topics') ? 'active' : '' }}">{{ translate('my_topics') }}</a>
                 </li>
                 {{-- @if ($web_config['wallet_status'] == 1)
                 <li class="nav-item">
@@ -85,7 +85,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('favourite-names-parenting') }}"
-                        class="nav-link {{ Request::is('user-coupons') || Request::is('user-coupons*') ? 'active' : '' }}">{{ translate('my_favourite_name') }}</a>
+                        class="nav-link {{ Request::is('user-coupons') || Request::is('user-coupons*') ? 'active' : '' }}">{{ translate('my_favourite_names') }}</a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('parenting-bookmarks') }}"
@@ -96,36 +96,79 @@
             </ul>
         </div>
 
+        {{-- <div class="container mt-5">
+            <h1 class="text-center mb-4">My Topics</h1>
+
+            <div class="row justify-content-center">
+                <div class="col-md-6 text-center">
+                    <h2 class="mb-3 text-decoration-underline cursor-pointer" id="commentedHeading" onclick="toggleSection('commented')">Commented</h2>
+                    <img src="{{ asset('public/images/no-comment.PNG') }}" alt="Image for Commented" class="img-fluid" id="commentedImage" style="display: block;">
+                    <p class="alert alert-info d-block" id="commentedInfo">Seems like you haven't commented on any topic on Discussions</p>
+                </div>
+            
+                <div class="col-md-6 text-center">
+                    <h2 class="mb-3 cursor-pointer" id="followedHeading" onclick="toggleSection('followed')">Followed</h2>
+                    <img src="{{ asset('public/images/no-comment.PNG') }}" alt="Image for Followed" class="img-fluid" id="followedImage" style="display: none;">
+                    <p class="alert alert-info d-none" id="followedInfo">Seems like you haven't followed on any topic on Discussions</p>
+                </div>
+            </div>
+        </div>
+
+        <script>
+             function toggleSection(section) {
+                var sectionInfo = document.getElementById(section + "Info");
+                var sectionImage = document.getElementById(section + "Image");
+                var otherSection = (section === "commented") ? "followed" : "commented";
+                var otherSectionInfo = document.getElementById(otherSection + "Info");
+                var otherSectionImage = document.getElementById(otherSection + "Image");
+
+                sectionInfo.classList.remove("d-none");
+                sectionImage.style.display = "block";
+                otherSectionInfo.classList.add("d-none");
+                otherSectionImage.style.display = "none";
+
+                document.getElementById(section + "Heading").classList.add("text-decoration-underline");
+                document.getElementById(otherSection + "Heading").classList.remove("text-decoration-underline");
+            }
+        </script> --}}
         <div class="container mt-5">
             <h1 class="text-center mb-4">My Topics</h1>
 
             <div class="row justify-content-center">
-                <!-- Commented Column -->
-                <div class="col-md-6 text-center">
-                    <h2 class="mb-3 {{ Request::is('parenting-bumpie') ? 'text-decoration-underline' : '' }}">Commented
+                <div class="col-lg-6 col-md-6 col-sm-12 text-center mb-3">
+                    <h2 class="mb-3 cursor-pointer" id="commentedHeading" onclick="toggleSection('commented')">Commented
                     </h2>
-                    <!-- Your commented topics content goes here -->
+                    <img src="{{ asset('public/images/no-comment.PNG') }}" alt="Image for Commented" class="img-fluid"
+                        id="commentedImage" style="display: inline-block;">
+                    <p class="alert alert-info d-block" id="commentedInfo">Seems like you haven't commented on any topic on
+                        Discussions</p>
                 </div>
 
-                <!-- Followed Column -->
-                <div class="col-md-6 text-center">
-                    <h2 class="mb-3 {{ !Request::is('parenting-topics') ? 'text-decoration-underline' : '' }}">Followed</h2>
-                    <!-- Your followed topics content goes here -->
-                    <p class="alert alert-info {{ Request::is('parenting-topics') ? 'd-none' : 'd-block' }}" id="followedInfo">Seems like you haven't followed on any topic on Discussions</p>
+                <div class="col-lg-6 col-md-6 col-sm-12 text-center mb-3">
+                    <h2 class="mb-3 cursor-pointer" id="followedHeading" onclick="toggleSection('followed')">Followed</h2>
+                    <img src="{{ asset('public/images/no-comment.PNG') }}" alt="Image for Followed" class="img-fluid"
+                        id="followedImage" style="display: none;">
+                    <p class="alert alert-info d-none" id="followedInfo">Seems like you haven't followed on any topic on
+                        Discussions</p>
                 </div>
             </div>
         </div>
-    </div>
-    <script>
-        $(document).ready(function() {
-            // Hide the paragraph by default
-            $('#followedInfo').hide();
-    
-            // Toggle the visibility and underline of the paragraph when the h2 is clicked
-            $('.mb-3').click(function() {
-                $('#followedInfo').toggle();
-                $(this).toggleClass('text-decoration-underline');
-            });
-        });
-    </script>
-@endsection
+        <script>
+            function toggleSection(section) {
+                var sectionInfo = document.getElementById(section + "Info");
+                var sectionImage = document.getElementById(section + "Image");
+                var otherSection = (section === "commented") ? "followed" : "commented";
+                var otherSectionInfo = document.getElementById(otherSection + "Info");
+                var otherSectionImage = document.getElementById(otherSection + "Image");
+
+                sectionInfo.classList.remove("d-none");
+                sectionImage.style.display = "inline-block";
+                otherSectionInfo.classList.add("d-none");
+                otherSectionImage.style.display = "none";
+
+                // Add underline to the clicked section and remove underline from the other section
+                document.getElementById(section + "Heading").style.textDecoration = "underline";
+                document.getElementById(otherSection + "Heading").style.textDecoration = "none";
+            }
+        </script>
+    @endsection

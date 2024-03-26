@@ -94,18 +94,18 @@
 
                 <li class="nav-item">
                     <a href="{{ route('parenting-question') }}"
-                        class="nav-link {{ Request::is('parenting-question') || Request::is('parenting-question') || Request::is('parenting-question') ? 'active' : '' }}">{{ translate('my_question') }}
+                        class="nav-link {{ Request::is('parenting-question') || Request::is('parenting-question') || Request::is('parenting-question') ? 'active' : '' }}">{{ translate('my_questions') }}
                     </a>
                 </li>
                 <li class="nav-item">
 
                     <a href="{{ route('parenting-answer') }}"
-                        class="nav-link {{ Request::is('parenting-answer') ? 'active' : '' }}">{{ translate('my_answer') }}
+                        class="nav-link {{ Request::is('parenting-answer') ? 'active' : '' }}">{{ translate('my_answers') }}
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('parenting-topics') }}"
-                        class="nav-link {{ Request::is('product-compare/index') ? 'active' : '' }}">{{ translate('my_topic') }}</a>
+                        class="nav-link {{ Request::is('product-compare/index') ? 'active' : '' }}">{{ translate('my_topics') }}</a>
                 </li>
                 {{-- @if ($web_config['wallet_status'] == 1)
                     <li class="nav-item">
@@ -145,7 +145,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('favourite-names-parenting') }}"
-                        class="nav-link {{ Request::is('user-coupons') || Request::is('user-coupons*') ? 'active' : '' }}">{{ translate('my_favourite_name') }}</a>
+                        class="nav-link {{ Request::is('user-coupons') || Request::is('user-coupons*') ? 'active' : '' }}">{{ translate('my_favourite_names') }}</a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('parenting-bookmarks') }}"

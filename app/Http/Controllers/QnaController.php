@@ -36,7 +36,15 @@ class QnaController extends Controller
         }
         return view('admin-views.qna.list', compact('questions'));
     }
+    public function parenting_question()
+    {
+        return view(VIEW_FILE_NAMES['parenting-question']);
+    }
 
+    public function parenting_answer()
+    {
+        return view(VIEW_FILE_NAMES['parenting-answer']);
+    }
     public function QnaHome(){
         $parent_article_categories = ParentArticleCategory::where('status', 1)->with('child')->latest()->take(5)->get();
         $questions = QnaQuestion::with('answers.user', 'user','child')->get();
