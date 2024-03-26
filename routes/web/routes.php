@@ -77,6 +77,20 @@ Route::get('vaccination-growth-tracker', [ VaccineController::class, 'Vaccinatio
 Route::get('custom_page',[ CustomPageController::class,'CustomPageHome'])->name('custom_page');
 Route::get('explore',[ ExploreController::class,'explore'])->name('explore');
 
+Route::get('parenting-profile','ParentController@parenting_profile')->name('parenting-profile');
+Route::get('parenting-question','ParentController@parenting_question')->name('parenting-question');
+Route::get('parenting-answer','ParentController@parenting_answer')->name('parenting-answer');
+Route::get('edit-profile-parenting','ParentController@edit_profile')->name('edit-profile-parenting');
+Route::get('favourite-names-parenting','ParentController@faourite_names')->name('favourite-names-parenting');
+Route::get('parenting-bookmarks','ParentController@parenting_bookmarks')->name('parenting-bookmarks');
+Route::get('parenting-bumpie','ParentController@parenting_bumpie')->name('parenting-bumpie');
+Route::get('parenting-memories','ParentController@parenting_memories')->name('parenting-memories');
+Route::get('parenting-milestones','ParentController@parenting_milestones')->name('parenting-milestones');
+Route::get('parenting-quick-reads','ParentController@quick_reads')->name('parenting-quick-reads');
+Route::get('parenting-topics','ParentController@parenting_topics')->name('parenting-topics');
+
+
+
 Route::get('parenting-user', 'ParentController@parentuser')->name('parenting-user');
 Route::group(['prefix' => 'parenting', 'as' => 'parenting.'], function () {
     Route::group(['prefix' => 'article', 'as' => 'article.'], function () {

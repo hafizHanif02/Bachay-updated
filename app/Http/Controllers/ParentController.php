@@ -69,8 +69,45 @@ class ParentController extends Controller
         return view(VIEW_FILE_NAMES['parenting']);
     }
 
-
-
+    public function parenting_profile()
+    {
+        $customer_detail = User::where('id', auth('customer')->id())->first();
+        return view(VIEW_FILE_NAMES['profile'], compact('customer_detail'));
+    }
+    public function edit_profile(Request $request)
+    {
+        // $country_restrict_status = Helpers::get_business_settings('delivery_country_restriction');
+        $customerDetail = User::where('id', auth('customer')->id())->first();
+        return view(VIEW_FILE_NAMES['edit-profile'], compact('customerDetail'));
+    }
+    public function faourite_names()
+    {
+        return view(VIEW_FILE_NAMES['favourite-names']);
+    }
+    public function parenting_bookmarks()
+    {
+        return view(VIEW_FILE_NAMES['my-bookmarks']);
+    }
+    public function parenting_bumpie()
+    {
+        return view(VIEW_FILE_NAMES['my-bookmarks']);
+    }
+    public function parenting_memories()
+    {
+        return view(VIEW_FILE_NAMES['my-memories']);
+    }
+    public function parenting_milestones()
+    {
+        return view(VIEW_FILE_NAMES['my-milestones']);
+    }
+    public function quick_reads()
+    {
+        return view(VIEW_FILE_NAMES['my-quick-reads']);
+    }
+    public function parenting_topics()
+    {
+        return view(VIEW_FILE_NAMES['my-topics']);
+    }
     public function parentuser()
     {
 
