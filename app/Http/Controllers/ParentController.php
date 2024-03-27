@@ -90,7 +90,7 @@ class ParentController extends Controller
     }
     public function parenting_bumpie()
     {
-        return view(VIEW_FILE_NAMES['my-bookmarks']);
+        return view(VIEW_FILE_NAMES['my-bumpie']);
     }
     public function parenting_memories()
     {
