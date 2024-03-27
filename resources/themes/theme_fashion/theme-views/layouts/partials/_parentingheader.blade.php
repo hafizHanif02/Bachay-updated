@@ -247,6 +247,9 @@
         transform: translateZ(0);
         transition: width .2s ease;
     }
+    li::marker {
+        content: "";
+    }
 </style>
 <style>
     .parenting-drpdown {
@@ -372,7 +375,7 @@
                 <i class="bi bi-x-lg"></i>
             </div>
             <form class="search-form sidebar-search-form" action="{{ route('products') }}" type="submit">
-                <div class="input-group search_input_group">
+                <div class="input-group search_input_group mt-4">
                     <select class="select2-init header-select2 text-capitalize" id="search_category_value_mobile"
                         name="search_category_value">
                         <option value="all">{{ translate('all_categories') }}</option>
@@ -446,7 +449,23 @@
             </ul>
         </div> --}}
         <div class="header-wrapper">
-            <a href="{{ route('home') }}" class="logo">
+            <div class="d-lg-none d-xl-none">
+                <li class="me-2 me-sm-0">
+                    <a href="javascript:" class="add_child_con nav-ul_text d-flex align-items-center pe-0">
+                        <img class="rounded-circle me-2" src="http://localhost/public/images/all.jpg" alt=""
+                            width="30px" height="30px">
+                        <div>
+                            Shop for
+                            <p class="heading_for_profile">All <i class="bi bi-chevron-down"></i></p>
+                        </div>
+                    </a>
+                </li>
+
+
+
+
+            </div>
+            <a href="{{ route('parenting-user') }}" class="logo">
                 <img loading="lazy" class="d-sm-none mobile-logo-cs"
                     src="{{ asset('public/images/bachay-parenting.png') }}" alt="{{ translate('logo') }}">
                 <img loading="lazy" class="d-none d-sm-block" src="{{ asset('public/images/bachay-parenting.png') }}"
@@ -455,12 +474,7 @@
             <div class="container d-none d-xl-block col-5">
                 <form class="search-form m-0 p-0" action="{{ route('products') }}" type="submit">
                     <div class="input-group search_input_group">
-                        {{-- <select class="select2-init" id="search_category_value_web" name="search_category_value">
-                            <option value="all">{{translate('all_Categories')}}</option>
-                            @foreach ($web_config['main_categories'] as $category)
-                            <option value="{{ $category->id }}" {{ $category->id == request('search_category_value') ? 'selected':'' }}>{{$category['name']}}</option>
-                            @endforeach
-                        </select> --}}
+                       
                         <input type="text" class="form-control" id="input-value-web" name="name"
                             value="{{ request('name') }}" placeholder="{{ translate('search_for_items_or_store') }}"
                             style="color: #000;">
@@ -551,7 +565,7 @@
                         </li>
                     @endif
                     @if (auth('customer')->check())
-                        <li class="me-2 me-sm-0">
+                        <li class="me-2 me-sm-0 d-none">
                             <a href="javascript:">
                                 {{-- <i class="bi bi-person d-none d-xl-inline-block nav-ul_text"
                                     style="font-size: 16px !important"></i> --}}
@@ -633,7 +647,9 @@
                 </ul>
             </div>
         </div>
+        
     </div>
+
     <?php $parent_article_categories = \App\Models\ParentArticleCategory::where(['status' => 1, 'parent_id' => 0])
         ->orderBy('id', 'desc')
         ->take(6)
@@ -709,6 +725,7 @@
 
     </div>
 </header>
+@include('theme-views.partials._add-child-mobile')
 
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
     <div class="offcanvas-header justify-content-end">
@@ -766,16 +783,14 @@
 
 
                 <li>
-                    <a href="{{ route('Q&A') }}"
-                        class="nav-ul_text">{{ translate('Q&A') }}</a>
+                    <a href="{{ route('Q&A') }}" class="nav-ul_text">{{ translate('Q&A') }}</a>
                 </li>
                 <li>
                     <a href="{{ route('vaccination-growth-tracker') }}"
                         class="nav-ul_text">{{ translate('Child Vaccination & Growth Tracker') }}</a>
                 </li>
                 <li>
-                    <a href="{{ route('quiz') }}"
-                        class="nav-ul_text">{{ translate('Quiz') }}</a>
+                    <a href="{{ route('quiz') }}" class="nav-ul_text">{{ translate('Quiz') }}</a>
                 </li>
             </ul>
         </div>
@@ -786,7 +801,6 @@
 </div>
 
 <script>
-   
     function toggleAccordion(header) {
         const content = header.nextElementSibling;
         content.classList.toggle('open');
