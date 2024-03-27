@@ -302,6 +302,56 @@
     li a:hover {
         color: #845dc2 !important;
     }
+
+    .accordion {
+        max-width: 400px;
+        margin: 0 auto;
+        /* border: 1px solid #ccc; */
+        border-radius: 5px;
+        overflow: hidden;
+    }
+
+    .accordion-item {
+        background: transparent;
+        border: none !important;
+    }
+
+    .accordion-header {
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 21px;
+    }
+
+    .accordion-item-content {
+        padding: 10px 20px;
+        display: none;
+    }
+
+    .accordion-item-content.open {
+        display: block;
+    }
+
+    #offcanvasRight {
+        background: -moz-linear-gradient(top, #ef779d 0%, #db1a4d 100%);
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ef779d), color-stop(100%, #db1a4d));
+        background: -webkit-linear-gradient(top, #ef779d 0%, #db1a4d 100%);
+        background: -o-linear-gradient(top, #ef779d 0%, #db1a4d 100%);
+        background: -ms-linear-gradient(top, #ef779d 0%, #db1a4d 100%);
+        background: linear-gradient(to bottom, #ef779d 0%, #db1a4d 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ef779d', endColorstr='#db1a4d', GradientType=0);
+    }
+
+    .offcanvas {
+        width: 100% !important;
+    }
+
+    .offcanvas-body .menu li a {
+        font-size: 21px !important;
+        color: #fff !important;
+        padding: 0;
+    }
 </style>
 @if (isset($web_config['announcement']) && $web_config['announcement']['status'] == 1)
     <div class="offer-bar" data-bg-img="{{ theme_asset('assets/img/media/top-offer-bg.png') }}">
@@ -584,29 +634,34 @@
             </div>
         </div>
     </div>
-    <?php $parent_article_categories = \App\Models\ParentArticleCategory::where(['status' => 1, 'parent_id' => 0])->orderBy('id','desc')
-                ->take(6)
-                ->get(); ?>
+    <?php $parent_article_categories = \App\Models\ParentArticleCategory::where(['status' => 1, 'parent_id' => 0])
+        ->orderBy('id', 'desc')
+        ->take(6)
+        ->get(); ?>
     <div class="parenitng-option d-none d-xl-block"
         style="background-image: url('http://localhost/public/images/top-offer-bg.png');">
         <div class="container con">
-            @foreach($parent_article_categories as $category)
-            <div class="parenting-drpdown-con">
-                <div class="parenting-drpdown">
-                    <a href="{{ route('parenting.article.category', $category->id) }}" class="dropbtn">{{ $category->name }} <i class="bi bi-chevron-down" style="margin-left: 3px;"></i></a>
-                    @if($category->child->count() > 0)
-                    <ul class="parenting-drpdown-content">
-                        @forelse($category->child as $subcategory)
-                        <li><a href="{{ route('parenting.article.category', $subcategory->id) }}">{{ $subcategory->name }}</a></li>
-                        @empty
-                        @endforelse
-                    </ul>
-                    @endif
+            @foreach ($parent_article_categories as $category)
+                <div class="parenting-drpdown-con">
+                    <div class="parenting-drpdown">
+                        <a href="{{ route('parenting.article.category', $category->id) }}"
+                            class="dropbtn">{{ $category->name }} <i class="bi bi-chevron-down"
+                                style="margin-left: 3px;"></i></a>
+                        @if ($category->child->count() > 0)
+                            <ul class="parenting-drpdown-content">
+                                @forelse($category->child as $subcategory)
+                                    <li><a
+                                            href="{{ route('parenting.article.category', $subcategory->id) }}">{{ $subcategory->name }}</a>
+                                    </li>
+                                @empty
+                                @endforelse
+                            </ul>
+                        @endif
+                    </div>
                 </div>
-            </div>
             @endforeach
 
-{{-- 
+            {{-- 
             <div class="parenting-drpdown-con">
                 <div class="parenting-drpdown">
                     <a href="#" class="dropbtn">Tools <i class="bi bi-chevron-down"></i></a>
@@ -637,7 +692,8 @@
 
             <div class="parenting-drpdown-con">
                 <div class="parenting-drpdown">
-                    <a href="{{ route('vaccination-growth-tracker') }}" class="dropbtn">Child Vaccination & Growth Tracker</a>
+                    <a href="{{ route('vaccination-growth-tracker') }}" class="dropbtn">Child Vaccination & Growth
+                        Tracker</a>
                 </div>
             </div>
             <div class="parenting-drpdown-con">
@@ -658,174 +714,91 @@
     <div class="offcanvas-header justify-content-end">
         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
-    <div class="offcanvas-body text-capitalize d-flex flex-column">
+    <div class="offcanvas-body text-capitalize d-flex flex-column p-0">
         <div>
-            <ul class="menu scrollY-60 ">
-                <li>
-                    <a href="{{ route('home') }}"class="nav-ul_text">{{ translate('home') }}</a>
-                </li>
-                {{-- <li>
-                    <a href="javascript:">{{ translate('all_categories') }}</a>
-                    <ul class="submenu">
-                        @foreach ($categories as $key => $category)
-                            @if ($key <= 10)
-                                <li>
-                                    <a class="py-2"
-                                        href="{{ route('products', ['id' => $category['id'], 'data_from' => 'category', 'page' => 1]) }}">{{ $category['name'] }}</a>
-                                </li>
-                            @endif
-                        @endforeach
-
-                        @if ($categories->count() > 10)
-                            <li>
-                                <a href="{{ route('products') }}" class="btn-text">{{ translate('view_all') }}</a>
-                            </li>
-                        @endif
-                    </ul>
-                </li> --}}
-                {{-- @if ($web_config['brand_setting'])
-                    <li>
-                        <a href="{{ route('brands') }}">{{ translate('all_brand') }}</a>
-                    </li>
-                @endif --}}
-                @auth('customer')
-                    <li>
-                        <a href="{{ route('account-address-add') }}" class="nav-ul_text">
-                            {{-- <img src="{{ asset('public/images/location.gif') }}" alt="" width="20px" height="20px"> --}}
-
-                            {{ translate('location') }}
-                        </a>
-                    </li>
+            <ul class="menu scrollY-60 p-4">
+                @if (auth('customer')->check())
+                    <div class="d-flex justify-content-center mb-2 pb-3 mt-auto">
+                        <a href="{{ route('customer.auth.logout') }}"
+                            class="btn btn-base w-100">{{ translate('logout') }}</a>
+                    </div>
                 @else
-                    <li>
-                        <a href="{{ route('account-address-add') }}" class="nav-ul_text">
-                            {{-- <img src="{{ asset('public/images/location.gif') }}" alt="" width="20px" height="20px"> --}}
-
-                            {{ translate('location') }}
+                    <div class="d-flex justify-content-center mb-2 pb-3 mt-auto">
+                        <a href="javascript:" class="btn btn-base w-100 customer_login_register_modal">
+                            {{ translate('login') }} / {{ translate('register') }}
                         </a>
-                    </li>
-                @endauth
-                {{-- <li>
-                    <a class="d-flex align-items-center gap-2"
-                        href="{{ route('products', ['data_from' => 'discounted', 'page' => 1]) }}">
-                        {{ translate('offers') }}
-                        <div
-                            class="offer-count flower-bg d-flex justify-content-center align-items-center offer-count-custom">
-                            {{ $web_config['total_discount_products'] < 100 ? $web_config['total_discount_products'] : '99+' }}
+                    </div>
+                @endif
+                <?php $parent_article_categories = \App\Models\ParentArticleCategory::where(['status' => 1, 'parent_id' => 0])
+                    ->orderBy('id', 'desc')
+                    ->take(6)
+                    ->get(); ?>
+
+
+
+                @foreach ($parent_article_categories as $category)
+                    <div class="accordion">
+                        <div class="accordion-item">
+                            <div class="accordion-header text-light fw-bolder" onclick="toggleAccordion(this)">
+                                <a class="text-light"
+                                    href="{{ route('parenting.article.category', $category->id) }}">
+                                    {{ $category->name }}
+                                </a>
+                                <i class="bi bi-chevron-right accordion-header-icon"></i>
+                            </div>
+
+                            <div class="accordion-item-content">
+                                @if ($category->child->count() > 0)
+                                    @forelse($category->child as $subcategory)
+                                        <li><a
+                                                href="{{ route('parenting.article.category', $subcategory->id) }}">{{ $subcategory->name }}</a>
+                                        </li>
+                                    @empty
+                                    @endforelse
+                                @endif
+                            </div>
                         </div>
-                    </a>
-                </li> --}}
-                @if ($web_config['business_mode'] == 'multi')
-                    <li>
-                        <a href="{{ route('vendors') }}"
-                            class="{{ Request::is('vendors') ? 'active' : '' }} nav-ul_text">{{ translate('shops') }}</a>
-                    </li>
-                @endif
-                {{-- @if ($web_config['business_mode'] == 'multi')
-                    <li>
-                        <a href="{{ route('vendors') }}">{{ translate('vendors') }}</a>
-                    </li>
 
-                    @if ($web_config['seller_registration'])
-                        <li class="d-sm-none">
-                            <a href="{{ route('shop.apply') }}">{{ translate('vendor_reg') . '.' }}</a>
-                        </li>
-                    @endif
-                @endif --}}
-                @auth('customer')
-                    <li>
-                        <a href="{{ route('account-tickets') }}" class="nav-ul_text">{{ translate('Support') }}</a>
-                    </li>
-                @else
-                    <li>
-                        <a href="{{ route('account-tickets') }}" class="nav-ul_text">{{ translate('Support') }}</a>
-                    </li>
-                @endauth
-                @if ($web_config['brand_setting'])
-                    <li>
-                        <a href="{{ route('brands') }}"
-                            class="{{ Request::is('brands') ? 'active' : '' }} nav-ul_text">{{ translate('brand') }}</a>
-                    </li>
-                @endif
+                    </div>
+                @endforeach
+
+
+
+
                 <li>
-                    <a href="{{ route('track-order.index') }}"
-                        class="nav-ul_text">{{ translate('track_order') }}</a>
+                    <a href="{{ route('Q&A') }}"
+                        class="nav-ul_text">{{ translate('Q&A') }}</a>
                 </li>
                 <li>
-                    @if (auth('customer')->check())
-                        <a href="{{ route('wishlists') }}">
-                            <div class="nav-ul_text">
-                                <span>Wishlist</span>
-                                {{-- <i class="bi bi-heart nav-ul_text" style="font-size: 16px !important;"></i> --}}
-
-                                {{-- <span
-                                        class="btn-status wishlist_count_status">{{ session()->has('wish_list') ? count(session('wish_list')) : 0 }}</span> --}}
-                            </div>
-                        </a>
-                    @else
-                        <a href="javascript:" class="customer_login_register_modal">
-                            <div class="nav-ul_text">
-                                <span>Wishlist</span>
-                                {{-- <i class="bi bi-heart nav-ul_text" style="font-size: 16px !important;"></i> --}}
-                                {{-- <span class="btn-status">{{ translate('0') }}</span> --}}
-                            </div>
-                        </a>
-                    @endif
+                    <a href="{{ route('vaccination-growth-tracker') }}"
+                        class="nav-ul_text">{{ translate('Child Vaccination & Growth Tracker') }}</a>
                 </li>
                 <li>
-                    @if (auth('customer')->check())
-                        <a href="{{ route('shop-cart') }}">
-                            <div class="nav-ul_text">
-                                <span>My Cart</span>
-                                {{-- <i class="bi bi-heart nav-ul_text" style="font-size: 16px !important;"></i> --}}
-
-                                {{-- <span
-                                        class="btn-status wishlist_count_status">{{ session()->has('wish_list') ? count(session('wish_list')) : 0 }}</span> --}}
-                            </div>
-                        </a>
-                    @else
-                        <a href="javascript:" class="customer_login_register_modal">
-                            <div class="nav-ul_text">
-                                <span>My Cart</span>
-                                {{-- <i class="bi bi-heart nav-ul_text" style="font-size: 16px !important;"></i> --}}
-                                {{-- <span class="btn-status">{{ translate('0') }}</span> --}}
-                            </div>
-                        </a>
-                    @endif
+                    <a href="{{ route('quiz') }}"
+                        class="nav-ul_text">{{ translate('Quiz') }}</a>
                 </li>
             </ul>
         </div>
 
-        {{-- <div class="d-flex align-items-center gap-2 justify-content-between py-4 mt-3">
-            <span class="text-dark">{{ translate('theme_mode') }}</span>
-            <div class="theme-bar">
-                <button class="light_button active">
-                    <img loading="lazy" class="svg" src="{{ theme_asset('assets/img/icons/light.svg') }}"
-                        alt="{{ translate('light_Mode') }}">
-                </button>
-                <button class="dark_button">
-                    <img loading="lazy" class="svg" src="{{ theme_asset('assets/img/icons/dark.svg') }}"
-                        alt="{{ translate('dark_Mode') }}">
-                </button>
-            </div>
-        </div> --}}
 
-        @if (auth('customer')->check())
-            <div class="d-flex justify-content-center mb-2 pb-3 mt-auto px-4">
-                <a href="{{ route('customer.auth.logout') }}"
-                    class="btn btn-base w-100">{{ translate('logout') }}</a>
-            </div>
-        @else
-            <div class="d-flex justify-content-center mb-2 pb-3 mt-auto px-4">
-                <a href="javascript:" class="btn btn-base w-100 customer_login_register_modal">
-                    {{ translate('login') }} / {{ translate('register') }}
-                </a>
-            </div>
-        @endif
+
     </div>
 </div>
 
 <script>
+   
+    function toggleAccordion(header) {
+        const content = header.nextElementSibling;
+        content.classList.toggle('open');
+        const icon = header.querySelector('.accordion-header-icon');
+        if (content.classList.contains('open')) {
+            icon.classList.remove('bi-chevron-right');
+            icon.classList.add('bi-chevron-down');
+        } else {
+            icon.classList.remove('bi-chevron-down');
+            icon.classList.add('bi-chevron-right');
+        }
+    }
     let lastScrollTop = 0;
     const threshold = window.innerHeight * 0.9;
 

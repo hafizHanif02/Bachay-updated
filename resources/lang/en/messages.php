@@ -7316,4 +7316,7 @@
   'my_answers' => 'My answers',
   'my_topics' => 'My topics',
   'my_favourite_names' => 'My favourite names',
+  'Q&A' => 'Q&A',
+  'Child Vaccination & Growth Tracker' => 'Child Vaccination & Growth Tracker',
+  'Quiz' => 'Quiz',
 );
