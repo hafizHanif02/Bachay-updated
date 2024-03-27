@@ -247,6 +247,7 @@
         transform: translateZ(0);
         transition: width .2s ease;
     }
+
     li::marker {
         content: "";
     }
@@ -474,7 +475,7 @@
             <div class="container d-none d-xl-block col-5">
                 <form class="search-form m-0 p-0" action="{{ route('products') }}" type="submit">
                     <div class="input-group search_input_group">
-                       
+
                         <input type="text" class="form-control" id="input-value-web" name="name"
                             value="{{ request('name') }}" placeholder="{{ translate('search_for_items_or_store') }}"
                             style="color: #000;">
@@ -491,6 +492,60 @@
             </div>
             <div class="menu-area text-capitalize">
                 <ul class="menu me-xl-2 font-poppins">
+                    @if (session('switch_user'))
+                        <?php $child = session('switch_user'); ?>
+                        <li>
+                            <a href="javascript:" class="switchuser nav-ul_text d-flex align-items-center pe-0">
+                                <img class="rounded-circle me-2"
+                                    src="{{ asset('public/assets/images/customers/child/' . $child->profile_picture) }}"
+                                    alt="" width="30px" height="30px">
+                                <div>
+                                    Shop for
+                                    <p class="heading_for_profile">{{ $child->name }} <i
+                                            class="bi bi-chevron-down"></i></p>
+
+                                </div>
+
+
+                            </a>
+                        </li>
+                    @elseif(session('switch_female'))
+                        <li>
+                            <a href="javascript:" class="switchuser nav-ul_text d-flex align-items-center pe-0">
+                                <img class="rounded-circle me-2" src="{{ asset('public/images/girl.jpg') }}"
+                                    alt="" width="30px" height="30px">
+                                <div>
+                                    Shop for
+                                    <p class="heading_for_profile">Girl <i class="bi bi-chevron-down"></i></p>
+
+                                </div>
+                            </a>
+                        </li>
+                    @elseif(session('switch_male'))
+                        <li>
+                            <a href="javascript:" class="switchuser nav-ul_text d-flex align-items-center pe-0">
+                                <img class="rounded-circle me-2" src="{{ asset('public/images/boy.jpg') }}"
+                                    alt="" width="30px" height="30px">
+                                <div>
+                                    Shop for
+                                    <p class="heading_for_profile">Boy <i class="bi bi-chevron-down"></i></p>
+
+                                </div>
+                            </a>
+                        </li>
+                    @else
+                        <li class="me-2 me-sm-0">
+                            <a href="javascript:" class="switchuser nav-ul_text d-flex align-items-center pe-0">
+                                <img class="rounded-circle me-2" src="{{ asset('public/images/all.jpg') }}"
+                                    alt="" width="30px" height="30px">
+                                <div>
+                                    Shop for
+                                    <p class="heading_for_profile">All <i class="bi bi-chevron-down"></i></p>
+
+                                </div>
+                            </a>
+                        </li>
+                    @endif
                     <li>
                         <a href="{{ route('home') }}" class="nav-ul_text" style="color: #6D3CF7 !important;">
                             <img src="{{ asset('public/images/shopping.gif') }}" alt="" width="30px"
@@ -498,8 +553,8 @@
                     </li>
                     <li>
                         <a href="#" class="nav-ul_text" style="color: #a866ed !important;">
-                            <img class="align-items-center" src="http://localhost/public/images/book.gif" alt=""
-                                width="22px" height="22px">
+                            <img class="align-items-center" src="http://localhost/public/images/book.gif"
+                                alt="" width="22px" height="22px">
                             {{ translate('Education') }}
                         </a>
                     </li>
@@ -522,15 +577,8 @@
                 </ul>
 
                 <ul class="header-right-icons">
-                    <li class="me-2 me-sm-0">
-                        <a href="javascript:" class="switchuser">
-
-                            <span
-                                class="mx-1 d-none d-md-block nav-ul_text
-                            ">{{ translate('Switch User') }}</span>
-                        </a>
-                    </li>
-                    <li class="d-xl-none">
+                   
+                    <li class="d-xl-none ">
                         <a href="javascript:" class="search-toggle">
                             <i class="bi bi-search" style="color: #000;"></i>
                         </a>
@@ -647,7 +695,7 @@
                 </ul>
             </div>
         </div>
-        
+
     </div>
 
     <?php $parent_article_categories = \App\Models\ParentArticleCategory::where(['status' => 1, 'parent_id' => 0])

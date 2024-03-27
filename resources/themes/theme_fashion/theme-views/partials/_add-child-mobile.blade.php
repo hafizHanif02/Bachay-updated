@@ -22,7 +22,7 @@
         top: 0;
         right: 5px;
         cursor: pointer;
-        z-index: 1000;
+        z-index: 999;
     }
 
     #slider_part {
