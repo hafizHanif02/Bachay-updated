@@ -28,7 +28,7 @@
   <body>
    <div class="coming-soon">
 
-     <img src="{{ asset('public/images/comingsoon.jpg') }}" alt="">
+     <img src="{{ asset('public/images/coming-soon1.jpg') }}" alt="">
    </div>
    
   </body>
