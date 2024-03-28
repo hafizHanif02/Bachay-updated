@@ -11,9 +11,9 @@
         </a>
     </li>
     <li>
-        <a href="{{ Request::is('/categories*') || Request::is('categories*') ? 'javascript:void(0)' : route('categories.list') }}"
-            class="d-flex align-items-center {{ Request::is('/categories*') || Request::is('categories*') ? 'active' : '' }} flex-column gap-0 py-1">
-            @if(Request::is('/categories*') || Request::is('categories*'))
+        <a href="{{ Request::is('explore_page') || Request::is('explore_page') ? 'javascript:void(0)' : route('explore_page') }}"
+            class="d-flex align-items-center {{ Request::is('explore_page') || Request::is('explore_page') ? 'active' : '' }} flex-column gap-0 py-1">
+            @if(Request::is('explore_page') || Request::is('explore_page'))
                 <i class="bi bi-collection-play-fill custom-icon"></i>
             @else
                 <i class="bi bi-collection-play custom-icon"></i>

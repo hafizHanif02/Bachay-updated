@@ -70,6 +70,8 @@ return [
     'articles' => 'theme-views.articles.articles',
     'article-category' => 'theme-views.articles.article_category',
     'parenting' => 'theme-views.parenting.parentingTools',
+    'explore_page' => 'theme-views.explore_page.explore',
+
     'custom_page' => 'theme-views.custom_page.custom_page',
     'explore' => 'theme-views.explore.explore',
     'parenting-user' => 'theme-views.parenting.parenting-user',

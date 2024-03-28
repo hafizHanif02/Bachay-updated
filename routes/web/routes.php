@@ -89,7 +89,7 @@ Route::get('parenting-milestones','ParentController@parenting_milestones')->name
 Route::get('parenting-quick-reads','ParentController@quick_reads')->name('parenting-quick-reads');
 Route::get('parenting-topics','ParentController@parenting_topics')->name('parenting-topics');
 Route::get('quiz','QuizController@quiz_index')->name('quiz');
-
+Route::get('explore_page', [WebController::class,'explore_page'])->name('explore_page');
 
 
 

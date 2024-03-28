@@ -63,4 +63,5 @@ return [
     'pay_offline_method_list_partials'=>'web-views.partials._pay-offline-method-list-field',
     'digital_product_order_otp_verify'=>'layouts.front-end.partials._digital-product-order-otp-verify',
     'digital_product_order_otp_verify_failed'=>'layouts.front-end.partials._digital-product-order-otp-verify-failed',
+    
 ];
