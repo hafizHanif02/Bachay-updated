@@ -132,6 +132,10 @@ class WebController extends Controller
         $categories = Category::all();
         return view(VIEW_FILE_NAMES['explore_page'], compact('categories'));
     }
+    public function menu(){
+        $categories = Category::all();
+        return view(VIEW_FILE_NAMES['menu'], compact('categories'));
+    }
     public function categories_by_category($id)
     {
         $category = Category::with(['childes.childes'])->where('id', $id)->first();

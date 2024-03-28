@@ -90,6 +90,8 @@ Route::get('parenting-quick-reads','ParentController@quick_reads')->name('parent
 Route::get('parenting-topics','ParentController@parenting_topics')->name('parenting-topics');
 Route::get('quiz','QuizController@quiz_index')->name('quiz');
 Route::get('explore_page', [WebController::class,'explore_page'])->name('explore_page');
+Route::get('menu', [WebController::class,'menu'])->name('menu');
+
 
 
 

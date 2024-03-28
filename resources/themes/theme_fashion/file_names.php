@@ -71,6 +71,8 @@ return [
     'article-category' => 'theme-views.articles.article_category',
     'parenting' => 'theme-views.parenting.parentingTools',
     'explore_page' => 'theme-views.explore_page.explore',
+    'menu' => 'theme-views.menu.menu',
+
 
     'custom_page' => 'theme-views.custom_page.custom_page',
     'explore' => 'theme-views.explore.explore',
