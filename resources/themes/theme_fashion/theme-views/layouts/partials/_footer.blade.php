@@ -1,6 +1,7 @@
 <footer class="footer">
     <div class="container">
-        <div class="newsletter-wrapper" style="background: linear-gradient(90.27deg, #845dc2 -27.96%, #f99327 -27.94%, #d55fad 28.41%, #845dc2 82.13%, #845dc2 130.57%);">
+        <div class="newsletter-wrapper"
+            style="background: linear-gradient(90.27deg, #845dc2 -27.96%, #f99327 -27.94%, #d55fad 28.41%, #845dc2 82.13%, #845dc2 130.57%);">
             <div class="newsletter-wrapper-inner">
                 <div class="cont">
                     <h5 class="title">{{ translate('newsletter') }}</h5>
@@ -233,7 +234,7 @@
                 </div>
             </div>
         </div>
-        <div class="bg-base py-4">
+        <div class="bg-base py-4 footer-content">
             <div class="container">
                 <div class="d-flex justify-content-evenly gap-4 justify-content-md-between flex-wrap">
                     <div class="text-center text-white">
@@ -290,7 +291,13 @@
     </div>
 </footer>
 <style>
-    .__btn-outline:hover{
+    .__btn-outline:hover {
         color: #fff !important;
+    }
+
+    @media (max-width: 768px) {
+        .footer-content {
+            padding-bottom: 70px !important;
+        }
     }
 </style>
