@@ -69,9 +69,9 @@
     @endif
     
     <li>
-        <a href="{{ Request::is('home') || Request::is('home') ? 'javascript:void(0)' : route('home') }}"
-            class="d-flex align-items-center {{ Request::is('/home') || Request::is('home') ? 'active' : '' }} flex-column gap-0 py-1">
-            @if(Request::is('/home') || Request::is('home'))
+        <a href="{{ Request::is('menu') || Request::is('menu') ? 'javascript:void(0)' : route('menu') }}"
+            class="d-flex align-items-center {{ Request::is('/menu') || Request::is('menu') ? 'active' : '' }} flex-column gap-0 py-1">
+            @if(Request::is('/menu') || Request::is('menu'))
                 <i class="bi bi-grid-fill custom-icon"></i>
             @else
                 <i class="bi bi-grid custom-icon"></i>
