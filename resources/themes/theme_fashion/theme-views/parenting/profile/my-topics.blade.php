@@ -22,10 +22,6 @@
     <div class="container">
         <div class="user-profile-wrapper bg-section text-capitalize">
             <ul class="nav nav-tabs nav--tabs-3 justify-content-start mb-0 d-none d-md-flex gap-2">
-                {{-- <li class="nav-item">
-                <a href="{{ route('user-profile') }}"
-                    class="nav-link {{ Request::is('user-profile') || Request::is('user-account') || Request::is('account-address-*') ? 'active' : '' }}">{{ translate('profile') }}</a>
-            </li> --}}
                 <li class="nav-item">
                     <a href="{{ route('parenting-profile') }}"
                         class="nav-link {{ Request::is('parenting-question') || Request::is('parenting-question') || Request::is('parenting-question') ? 'active' : '' }}">{{ translate('profile') }}
@@ -47,18 +43,6 @@
                     <a href="{{ route('parenting-topics') }}"
                         class="nav-link {{ Request::is('parenting-topics') ? 'active' : '' }}">{{ translate('my_topics') }}</a>
                 </li>
-                {{-- @if ($web_config['wallet_status'] == 1)
-                <li class="nav-item">
-                    <a href="{{ route('wallet') }}"
-                        class="nav-link {{ Request::is('wallet') || Request::is('loyalty') ? 'active' : '' }} ">{{ translate('my_wallet') }}</a>
-                </li>
-            @endif
-            @if ($web_config['loyalty_point_status'] == 1 && $web_config['wallet_status'] != 1)
-                <li class="nav-item">
-                    <a href="{{ route('loyalty') }}"
-                        class="nav-link {{ Request::is('loyalty') ? 'active' : '' }} ">{{ translate('my_wallet') }}</a>
-                </li>
-            @endif --}}
                 <li class="nav-item">
                     <a href="{{ route('parenting-memories') }}"
                         class="nav-link {{ Request::is('parenting-memories') || Request::is('parenting-memories') ? 'active' : '' }}">{{ translate('my_memories') }}</a>
@@ -71,14 +55,6 @@
                     <a href="{{ route('parenting-milestones') }}"
                         class="nav-link {{ Request::is('parenting-milestones') || Request::is('parenting-milestones') ? 'active' : '' }}">{{ translate('my_milestons') }}</a>
                 </li>
-
-                {{-- @if ($web_config['ref_earning_status'])
-                <li class="nav-item">
-                    <a href="{{ route('refer-earn') }}"
-                        class="nav-link {{ Request::is('refer-earn') || Request::is('refer-earn*') ? 'active' : '' }}">{{ translate('refer_&_Earn') }}</a>
-                </li>
-            @endif --}}
-
                 <li class="nav-item">
                     <a href="{{ route('parenting-bumpie') }}"
                         class="nav-link {{ Request::is('parenting-bumpie') || Request::is('parenting-bumpie') ? 'active' : '' }}">{{ translate('my_bumpie') }}</a>
@@ -91,49 +67,10 @@
                     <a href="{{ route('parenting-bookmarks') }}"
                         class="nav-link {{ Request::is('parenting-bookmarks') || Request::is('parenting-bookmarks') ? 'active' : '' }}">{{ translate('my_bookmarks') }}</a>
                 </li>
-
-
             </ul>
         </div>
-
-        {{-- <div class="container mt-5">
-            <h1 class="text-center mb-4">My Topics</h1>
-
-            <div class="row justify-content-center">
-                <div class="col-md-6 text-center">
-                    <h2 class="mb-3 text-decoration-underline cursor-pointer" id="commentedHeading" onclick="toggleSection('commented')">Commented</h2>
-                    <img src="{{ asset('public/images/no-comment.PNG') }}" alt="Image for Commented" class="img-fluid" id="commentedImage" style="display: block;">
-                    <p class="alert alert-info d-block" id="commentedInfo">Seems like you haven't commented on any topic on Discussions</p>
-                </div>
-            
-                <div class="col-md-6 text-center">
-                    <h2 class="mb-3 cursor-pointer" id="followedHeading" onclick="toggleSection('followed')">Followed</h2>
-                    <img src="{{ asset('public/images/no-comment.PNG') }}" alt="Image for Followed" class="img-fluid" id="followedImage" style="display: none;">
-                    <p class="alert alert-info d-none" id="followedInfo">Seems like you haven't followed on any topic on Discussions</p>
-                </div>
-            </div>
-        </div>
-
-        <script>
-             function toggleSection(section) {
-                var sectionInfo = document.getElementById(section + "Info");
-                var sectionImage = document.getElementById(section + "Image");
-                var otherSection = (section === "commented") ? "followed" : "commented";
-                var otherSectionInfo = document.getElementById(otherSection + "Info");
-                var otherSectionImage = document.getElementById(otherSection + "Image");
-
-                sectionInfo.classList.remove("d-none");
-                sectionImage.style.display = "block";
-                otherSectionInfo.classList.add("d-none");
-                otherSectionImage.style.display = "none";
-
-                document.getElementById(section + "Heading").classList.add("text-decoration-underline");
-                document.getElementById(otherSection + "Heading").classList.remove("text-decoration-underline");
-            }
-        </script> --}}
         <div class="container mt-5">
             <h1 class="text-center mb-4">My Topics</h1>
-
             <div class="row justify-content-center">
                 <div class="col-lg-6 col-md-6 col-sm-12 text-center mb-3">
                     <h2 class="mb-3 cursor-pointer" id="commentedHeading" onclick="toggleSection('commented')">Commented
@@ -143,7 +80,6 @@
                     <p class="alert alert-info d-block" id="commentedInfo">Seems like you haven't commented on any topic on
                         Discussions</p>
                 </div>
-
                 <div class="col-lg-6 col-md-6 col-sm-12 text-center mb-3">
                     <h2 class="mb-3 cursor-pointer" id="followedHeading" onclick="toggleSection('followed')">Followed</h2>
                     <img src="{{ asset('public/images/no-comment.PNG') }}" alt="Image for Followed" class="img-fluid"
@@ -160,7 +96,6 @@
                 var otherSection = (section === "commented") ? "followed" : "commented";
                 var otherSectionInfo = document.getElementById(otherSection + "Info");
                 var otherSectionImage = document.getElementById(otherSection + "Image");
-
                 sectionInfo.classList.remove("d-none");
                 sectionImage.style.display = "inline-block";
                 otherSectionInfo.classList.add("d-none");

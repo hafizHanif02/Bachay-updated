@@ -163,71 +163,7 @@
 
                 </ul>
             </div>
-
-
-            {{-- <div class="offcanvas offcanvas-end text-capitalize" tabindex="-1" id="offcanvasProfile"
-                aria-labelledby="offcanvasProfileLabel">
-                <div class="offcanvas-header justify-content-end">
-                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                </div>
-                <div class="offcanvas-body">
-                    <ul class="nav nav-tabs nav--tabs-3 p-2 flex-column">
-                        <li class="nav-item">
-                            <a href="{{ route('user-profile') }}"
-                                class="nav-link {{ Request::is('user-profile') || Request::is('user-account') || Request::is('account-address-*') ? 'active' : '' }}">{{ translate('profile') }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('account-oder') }}"
-                                class="nav-link {{ Request::is('account-oder*') || Request::is('account-order-details*') || Request::is('refund-details*') || Request::is('track-order/order-wise-result-view*') ? 'active' : '' }}">{{ translate('my_order') }}
-                                ({{ auth('customer')->user()->orders->count() }})</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('wishlists') }}"
-                                class="nav-link {{ Request::is('wishlists') ? 'active' : '' }}">{{ translate('my_wishlist') }}
-                                ({{ $wish_list_count }})
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('product-compare.index') }}"
-                                class="nav-link {{ Request::is('product-compare/index') ? 'active' : '' }}">{{ translate('my_compare_list') }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('wallet') }}"
-                                class="nav-link {{ Request::is('wallet') || Request::is('loyalty') ? 'active' : '' }} ">{{ translate('my_wallet') }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('chat', ['type' => 'seller']) }}"
-                                class="nav-link {{ Request::is('chat/seller') || Request::is('chat/delivery-man') ? 'active' : '' }}">{{ translate('inbox') }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('account-tickets') }}"
-                                class="nav-link {{ Request::is('account-tickets') || Request::is('support-ticket*') ? 'active' : '' }}">{{ translate('support') }}</a>
-                        </li>
-                        @if ($web_config['ref_earning_status'])
-                            <li class="nav-item">
-                                <a href="{{ route('refer-earn') }}"
-                                    class="nav-link {{ Request::is('refer-earn') || Request::is('refer-earn*') ? 'active' : '' }}">{{ translate('refer_&_Earn') }}</a>
-                            </li>
-                        @endif
-    
-                        <li class="nav-item">
-                            <a href="{{ route('user-coupons') }}"
-                                class="nav-link {{ Request::is('user-coupons') || Request::is('user-coupons*') ? 'active' : '' }}">{{ translate('coupons') }}</a>
-                        </li>
-    
-                        <li class="d-lg-none nav-item">
-                            <a href="javascript:" class="nav-link route_alert_function"
-                                data-routename="{{ route('account-delete', [$customer_info['id']]) }}"
-                                data-message="{{ translate('want_to_delete_this_account?') }}" data-typename="">
-                                {{ translate('Delete_My_Account') }}
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div> --}}
-
             <div class="tab-content">
-
                 <div class="tab-pane fade show active __chat-area">
                     <div class="personal-details mb-4">
                         <div
@@ -272,24 +208,6 @@
                                                 value="{{ $customer_detail['email'] }}"
                                                 placeholder="{{ translate('enter_email_number') }}" readonly>
                                         </div>
-                                        {{-- <div class="col-sm-6">
-                                            <label class="form--label mb-2">{{translate('password')}}</label>
-                                            <div class="position-relative">
-                                                <input type="password" minlength="6" id="password2" class="form-control"
-                                                       name="password" placeholder="{{translate('ex:_7+_characters')}}">
-                                                <div class="js-password-toggle"><i class="bi bi-eye-fill"></i></div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6 position-relative text-capitalize">
-                                            <label class="form--label mb-2">{{translate('confirm_password')}}</label>
-                                            <div class="position-relative">
-                                                <input type="password" minlength="6" id="confirm_password2"
-                                                       name="confirm_password" class="form-control"
-                                                       placeholder="{{translate('ex:_7+_characters')}}">
-                                                <div class="js-password-toggle"><i class="bi bi-eye-fill"></i></div>
-                                            </div>
-                                            <div id='message'></div>
-                                        </div> --}}
                                         <div class="d-flex flex-wrap align-items-center">
                                             <div class="upload-wrapper">
                                                 <div class="thumb">
@@ -315,7 +233,6 @@
                                                 </small>
                                             </div>
                                         </div>
-
                                         <div class="col-sm-12">
                                             <div
                                                 class="d-flex flex-column flex-sm-row jusitfy-content-between align-items-center gap-3 ">
@@ -340,13 +257,10 @@
         </div>
     </section>
 @endsection
-
 @push('script')
     <script src="{{ theme_asset('assets/js/user-profile-edit.js') }}"></script>
-
     <script>
         "use strict";
-
         function checkPasswordMatch() {
             var password = $("#password2").val();
             var confirmPassword = $("#confirm_password2").val();

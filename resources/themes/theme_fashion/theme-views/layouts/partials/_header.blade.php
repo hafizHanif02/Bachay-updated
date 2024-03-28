@@ -418,12 +418,7 @@
                         </a>
                     </li>
                 @endif
-
-
-
-
             </div>
-
             <a href="{{ route('home') }}" class="logo">
                 <img loading="lazy" class="d-sm-none mobile-logo-cs"
                     src="{{ getValidImage(path: 'storage/app/public/company/' . $web_config['mob_logo']->value, type: 'logo') }}"
@@ -531,13 +526,6 @@
                             </a>
                         </li>
                     @endauth
-
-
-
-
-
-
-
                     {{-- @if ($web_config['business_mode'] == 'multi')
                         <li>
                             <a href="{{ route('vendors') }}"
@@ -555,8 +543,6 @@
                     {{-- <li>
                         <a href="{{ route('home') }}" class="nav-ul_text">{{ translate('Support') }}</a>
                     </li> --}}
-
-
                     @auth('customer')
                         <li>
                             <a href="{{ route('account-tickets') }}" class="nav-ul_text">{{ translate('Support') }}</a>
@@ -566,8 +552,6 @@
                             <a href="{{ route('account-tickets') }}" class="nav-ul_text">{{ translate('Support') }}</a>
                         </li>
                     @endauth
-
-
                     {{-- @php($categories = \App\Utils\CategoryManager::get_categories_with_counting())
                     <li>
                         <a href="javascript:" class="nav-ul_text">{{ translate('categories') }}</a>
@@ -609,11 +593,7 @@
                         <a href="{{ route('track-order.index') }}"
                             class="nav-ul_text">{{ translate('track_order') }}</a>
                     </li>
-
-
-
                 </ul>
-
                 <ul class="header-right-icons">
                     <li class="d-xl-block">
                         @if (auth('customer')->check())
@@ -636,15 +616,9 @@
                             </a>
                         @endif
                     </li>
-
-
-
                     <li id="cart_items" class="d-xl-block">
                         @include('theme-views.layouts.partials._cart')
                     </li>
-
-
-
                     {{-- currency --}}
                     {{-- <li class="d-none d-sm-block">
                         <a href="javascript:">
@@ -746,7 +720,6 @@
                             </a>
                         </li>
                     @endif
-
                     {{-- darkMode-switcher  --}}
                     {{-- <div class="darkLight-switcher d-none d-xl-block">
                         <button type="button" title="{{ translate('Dark_Mode') }}" class="dark_button">
@@ -796,7 +769,6 @@
                                     <li class="collection-item">
                                         <h4>SHOP BY CATEGORY</h4>
                                     </li>
-
                                     <li><a href="#">Sets & Suits <span class="color">NEW</span></a></li>
                                     <li><a href="#">T-shirts <span class="color">NEW</span></a></li>
                                     <li><a href="">Nightwear</a></li>
@@ -931,7 +903,6 @@
                 </li>
                 <li> <a href="{{ route('products', ['data_from' => 'discounted', 'page' => 1]) }}"
                         class="drp-btn active">
-
                         <img class="align-items-center mb-2 me-1" src="{{ asset('public/images/fire.gif') }}"
                             alt="" width="17px" height="24px"> <span style="color: #ff6b00; ">Hot
                             Deals</span>
@@ -1086,7 +1057,6 @@
                     </a>
 
                 </li> --}}
-
                 @auth('customer')
                     <li class="me-2 me-sm-0">
                         <a href="{{ url('/parenting-user') }}" class="drp-btn active"
@@ -1105,14 +1075,11 @@
                         </a>
                     </li>
                 @endauth
-
-
                 <li> <a href="#" class="drp-btn active" style="margin-left: -15px; !important">
 
                         <img class="align-items-center" src="{{ asset('public/images/book.gif') }}" alt=""
                             width="22px" height="22px"> <span style="color: #a866ed;">Education</span>
                     </a>
-
                 </li>
                 <li><a href="{{ url('/products?id=1&data_from=category&page=1') }}" class="drp-btn">Boys Fashion</a>
                     <div class="mega-menu-container">
@@ -1255,7 +1222,6 @@
                     </div>
                 </li>
                 <li><a href="{{ url('/products?id=2&data_from=category&page=1') }}" class="drp-btn">Girls Fashion</a>
-
                     <div class="mega-menu-container">
                         <div class="mega-menu-grid">
                             <div class="sub-nav-column">
@@ -1335,7 +1301,6 @@
                     </div>
                 </li>
                 <li><a href="{{ url('/products?id=4&data_from=category&page=1') }}" class="drp-btn">Baby Care</a>
-
                     <div class="mega-menu-container">
                         <div class="mega-menu-grid">
                             <div class="sub-nav-column">
@@ -1459,7 +1424,6 @@
                     </div>
                 </li>
                 <li><a href="{{ url('/products?id=3&data_from=category&page=1') }}" class="drp-btn">Toys</a>
-
                     <div class="mega-menu-container">
                         <div class="mega-menu-grid">
                             <div class="sub-nav-column">
@@ -1583,7 +1547,6 @@
                     </div>
                 </li>
                 <li><a href="{{ url('/articles') }}" class="drp-btn">Articles</a>
-
                     {{-- <div class="mega-menu-container">
                         <div class="mega-menu-grid">
                             <div class="sub-nav-column">
@@ -1830,7 +1793,6 @@
                         </div>
                     </div>
                 </li>
-
                 @if ($web_config['business_mode'] == 'multi' && $web_config['seller_registration'])
                     <li class="me-2 me-xl-0 d-none d-sm-block">
                         <a href="{{ route('shop.apply') }}" class=" drp-btn seller_reg p-3"
@@ -1838,10 +1800,7 @@
                     </li>
                 @endif
                 {{-- <li><a href="#" class="drp-btn bg-info pt-2 pb-2">Health & Safety</a>
-
                 </li> --}}
-
-
             </ul>
         </div>
     </div>
@@ -1849,7 +1808,6 @@
 
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
     <div class="offcanvas-header justify-content-end pb-0">
-
         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="text-capitalize d-flex flex-column custom-gap pt-0">
@@ -2081,12 +2039,10 @@
                             <li><a href="{{ route('home') }}" class="ps-3 text-dark"><i
                                         class="bi bi-eye me-3"></i>{{ translate('Recently_viewed') }}</a>
                             </li>
-
                             <li>
                                 <a href="{{ route('home') }}" class="ps-3 text-dark"><i
                                         class="bi bi-heart me-3"></i>{{ translate('My_shortlist') }}</a>
                             </li>
-
                             <li>
                                 <a href="{{ route('home') }}" class="ps-3 text-dark"><i
                                         class="bi bi-cart me-3"></i>{{ translate(' Quick_reorder') }}</a>
@@ -2170,7 +2126,6 @@
                 </div>
             </ul>
         </div>
-
         {{-- <div class="d-flex align-items-center gap-2 justify-content-between py-4 mt-3">
             <span class="text-dark">{{ translate('theme_mode') }}</span>
             <div class="theme-bar">
@@ -2199,7 +2154,6 @@
         @endif --}}
     </div>
 </div>
-
 <script>
     let lastScrollTop = 0;
     const threshold = window.innerHeight * 0.9;
@@ -2218,13 +2172,6 @@
         lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
     }, false);
 </script>
-{{-- <script>
-    $(document).ready(function() {
-        $(".toggleActivity").click(function() {
-            $(this).next(".activityList").toggle();
-        });
-    });
-</script> --}}
 <script>
     $(document).ready(function() {
         $(".toggleActivity").click(function() {

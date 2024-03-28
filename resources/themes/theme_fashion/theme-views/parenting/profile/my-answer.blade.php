@@ -54,23 +54,17 @@
     <div class="container">
         <div class="user-profile-wrapper bg-section text-capitalize">
             <ul class="nav nav-tabs nav--tabs-3 justify-content-start mb-0 d-none d-md-flex gap-2">
-                {{-- <li class="nav-item">
-                <a href="{{ route('user-profile') }}"
-                    class="nav-link {{ Request::is('user-profile') || Request::is('user-account') || Request::is('account-address-*') ? 'active' : '' }}">{{ translate('profile') }}</a>
-            </li> --}}
                 <li class="nav-item">
                     <a href="{{ route('parenting-profile') }}"
                         class="nav-link {{ Request::is('parenting-profile') || Request::is('parenting-profile') || Request::is('parenting-question') ? 'active' : '' }}">{{ translate('profile') }}
                     </a>
                 </li>
-
                 <li class="nav-item">
                     <a href="{{ route('parenting-question') }}"
                         class="nav-link {{ Request::is('parenting-question') || Request::is('parenting-question') || Request::is('parenting-question') ? 'active' : '' }}">{{ translate('my_questions') }}
                     </a>
                 </li>
                 <li class="nav-item">
-
                     <a href="{{ route('parenting-answer') }}"
                         class="nav-link {{ Request::is('parenting-answer') ? 'active' : '' }}">{{ translate('my_answers') }}
                     </a>
@@ -79,18 +73,6 @@
                     <a href="{{ route('parenting-topics') }}"
                         class="nav-link {{ Request::is('parenting-topics') ? 'active' : '' }}">{{ translate('my_topics') }}</a>
                 </li>
-                {{-- @if ($web_config['wallet_status'] == 1)
-                <li class="nav-item">
-                    <a href="{{ route('wallet') }}"
-                        class="nav-link {{ Request::is('wallet') || Request::is('loyalty') ? 'active' : '' }} ">{{ translate('my_wallet') }}</a>
-                </li>
-            @endif
-            @if ($web_config['loyalty_point_status'] == 1 && $web_config['wallet_status'] != 1)
-                <li class="nav-item">
-                    <a href="{{ route('loyalty') }}"
-                        class="nav-link {{ Request::is('loyalty') ? 'active' : '' }} ">{{ translate('my_wallet') }}</a>
-                </li>
-            @endif --}}
                 <li class="nav-item">
                     <a href="{{ route('parenting-memories') }}"
                         class="nav-link {{ Request::is('parenting-memories') || Request::is('parenting-memories') ? 'active' : '' }}">{{ translate('my_memories') }}</a>
@@ -103,14 +85,6 @@
                     <a href="{{ route('parenting-milestones') }}"
                         class="nav-link {{ Request::is('parenting-milestones') || Request::is('parenting-milestones') ? 'active' : '' }}">{{ translate('my_milestons') }}</a>
                 </li>
-
-                {{-- @if ($web_config['ref_earning_status'])
-                <li class="nav-item">
-                    <a href="{{ route('refer-earn') }}"
-                        class="nav-link {{ Request::is('refer-earn') || Request::is('refer-earn*') ? 'active' : '' }}">{{ translate('refer_&_Earn') }}</a>
-                </li>
-            @endif --}}
-
                 <li class="nav-item">
                     <a href="{{ route('parenting-bumpie') }}"
                         class="nav-link {{ Request::is('parenting-bumpie') || Request::is('parenting-bumpie') ? 'active' : '' }}">{{ translate('my_bumpie') }}</a>
@@ -123,8 +97,6 @@
                     <a href="{{ route('parenting-bookmarks') }}"
                         class="nav-link {{ Request::is('parenting-bookmarks') || Request::is('parenting-bookmarks') ? 'active' : '' }}">{{ translate('my_bookmarks') }}</a>
                 </li>
-
-
             </ul>
         </div>
         <div class="my-ans">
@@ -167,12 +139,10 @@
                                     </div>
                                     <p class="text-start mt-3">This question is being
                                         asked for: </p>
-
                                     @auth('customer')
                                         <?php
                                         $childs = \App\Models\FamilyRelation::where('user_id', Auth::guard('customer')->user()->id)->get();
                                         ?>
-
                                         <div class="outer_child_container text-start">
                                             @if (!$childs->isEmpty())
                                                 @foreach ($childs as $child)
@@ -203,10 +173,7 @@
                                         </div>
                                         @endif
                                     @endauth
-
-
                                     <p class="your-identity text-start">Your identity will not be revealed</p>
-
                                 </div>
                             </div>
                             <div class="modal-footer">

@@ -59,14 +59,12 @@
                         class="nav-link {{ Request::is('parenting-profile') ? 'active' : '' }}">{{ translate('profile') }}
                     </a>
                 </li>
-
                 <li class="nav-item">
                     <a href="{{ route('parenting-question') }}"
                         class="nav-link {{ Request::is('parenting-question') ? 'active' : '' }}">{{ translate('my_questions') }}
                     </a>
                 </li>
                 <li class="nav-item">
-
                     <a href="{{ route('parenting-answer') }}"
                         class="nav-link {{ Request::is('parenting-answer') ? 'active' : '' }}">{{ translate('my_answers') }}
                     </a>
@@ -102,7 +100,6 @@
             </ul>
         </div>
         <div class="my-memory">
-
             <h3 class="mt-4">My Memories</h3>
             <hr>
             <div class="ask-question">
@@ -167,8 +164,6 @@
                         </div>
                     </div>
                 </div>
-
-
             </div>
         </div>
     </div>

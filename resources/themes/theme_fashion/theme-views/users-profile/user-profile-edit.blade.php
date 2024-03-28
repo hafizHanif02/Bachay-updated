@@ -1,7 +1,5 @@
 @extends('theme-views.layouts.app')
-
 @section('title', translate('edit_my_profile') . ' | ' . $web_config['name']->value . ' ' . translate('ecommerce'))
-
 @section('content')
     <section class="user-profile-section section-gap pt-0">
         <div class="container">
@@ -117,13 +115,10 @@
         </div>
     </section>
 @endsection
-
 @push('script')
     <script src="{{ theme_asset('assets/js/user-profile-edit.js') }}"></script>
-
     <script>
         "use strict";
-
         function checkPasswordMatch() {
             var password = $("#password2").val();
             var confirmPassword = $("#confirm_password2").val();
@@ -147,7 +142,6 @@
                 $("#message").attr("style", "color:green");
             }
         }
-
         $(".reset_button").on('click', function() {
             $('.thumb').empty().html(
                 `<img src="{{ theme_asset('assets/img/upload-img.png') }}" alt="{{ translate('upload') }}">`);

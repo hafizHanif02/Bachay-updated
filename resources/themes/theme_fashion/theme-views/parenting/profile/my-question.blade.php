@@ -102,7 +102,6 @@
             </ul>
         </div>
         <div class="my-ques">
-
             <h3 class="mt-4">My Questions</h3>
             <hr>
             <div class="ask-question text-center mt-5">
@@ -143,12 +142,10 @@
                                         </div>
                                         <p class="text-start mt-3">This question is being
                                             asked for: </p>
-
                                         @auth('customer')
                                             <?php
                                             $childs = \App\Models\FamilyRelation::where('user_id', Auth::guard('customer')->user()->id)->get();
                                             ?>
-
                                             <div class="outer_child_container text-start">
                                                 @if (!$childs->isEmpty())
                                                     @foreach ($childs as $child)
@@ -179,10 +176,7 @@
                                             </div>
                                             @endif
                                         @endauth
-
-
                                         <p class="your-identity text-start">Your identity will not be revealed</p>
-
                                     </div>
                                 </div>
                                 <div class="modal-footer">

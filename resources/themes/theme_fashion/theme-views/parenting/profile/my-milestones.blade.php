@@ -59,14 +59,12 @@
                         class="nav-link {{ Request::is('parenting-profile') ? 'active' : '' }}">{{ translate('profile') }}
                     </a>
                 </li>
-
                 <li class="nav-item">
                     <a href="{{ route('parenting-question') }}"
                         class="nav-link {{ Request::is('parenting-question') ? 'active' : '' }}">{{ translate('my_questions') }}
                     </a>
                 </li>
                 <li class="nav-item">
-
                     <a href="{{ route('parenting-answer') }}"
                         class="nav-link {{ Request::is('parenting-answer') ? 'active' : '' }}">{{ translate('my_answers') }}
                     </a>
