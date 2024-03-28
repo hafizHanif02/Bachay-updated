@@ -69,35 +69,28 @@
                     <div class="user-order-count {{ !Request::is('user-profile') ? 'd-none d-md-flex' : '' }}">
                         <div class="user-order-count-item">
                             <h3 class="subtitle">{{ auth('customer')->user()->orders->count() }}</h3>
-                            <span>{{ translate('Memory') }}</span>
+                            <span>{{ translate('Total_child') }}</span>
                         </div>
 
                         @php
-                            $wish_list_count = \App\Models\Wishlist::where(
-                                'customer_id',
-                                auth('customer')->user()->id,
-                            )
+                            $wish_list_count = \App\Models\Wishlist::where('customer_id', auth('customer')->user()->id)
                                 ->whereHas('wishlistProduct')
                                 ->count();
                         @endphp
                         <div class="user-order-count-item">
                             <h3 class="subtitle wishlist_count_status">{{ $wish_list_count }}</h3>
-                            <span>{{ translate('Follower') }}</span>
+                            <span>{{ translate('Total_questions') }}</span>
                         </div>
                         <div class="user-order-count-item">
                             <h3 class="subtitle">{{ auth('customer')->user()->compare_list->count() }}</h3>
-                            <span>{{ translate('Following') }}</span>
+                            <span>{{ translate('Total_answers') }}</span>
                         </div>
                     </div>
                 </div>
-                <ul class="nav nav-tabs nav--tabs-3 justify-content-start mb-0 d-none d-md-flex gap-2">
-                    {{-- <li class="nav-item">
-                        <a href="{{ route('user-profile') }}"
-                            class="nav-link {{ Request::is('user-profile') || Request::is('user-account') || Request::is('account-address-*') ? 'active' : '' }}">{{ translate('profile') }}</a>
-                    </li> --}}
+
+                <ul class="nav nav-tabs nav--tabs-3 justify-content-start mb-0 d-none d-md-flex">
                     <li class="nav-item">
-                        <a href="{{ route('parenting-profile') }}"
-                            class="nav-link active">{{ translate('profile') }}</a>
+                        <a href="{{ route('parenting-profile') }}" class="nav-link active">{{ translate('profile') }}</a>
                     </li>
 
                     <li class="nav-item">
@@ -111,10 +104,10 @@
                             class="nav-link {{ Request::is('parenting-answer') ? 'active' : '' }}">{{ translate('my_answers') }}
                         </a>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a href="{{ route('parenting-topics') }}"
                             class="nav-link {{ Request::is('product-compare/index') ? 'active' : '' }}">{{ translate('my_topics') }}</a>
-                    </li>
+                    </li> --}}
                     {{-- @if ($web_config['wallet_status'] == 1)
                         <li class="nav-item">
                             <a href="{{ route('wallet') }}"
@@ -131,14 +124,14 @@
                         <a href="{{ route('parenting-memories') }}"
                             class="nav-link {{ Request::is('parenting-memories') || Request::is('parenting-memories') ? 'active' : '' }}">{{ translate('my_memories') }}</a>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a href="{{ route('parenting-quick-reads') }}"
                             class="nav-link {{ Request::is('parenting-quick-reads') || Request::is('parenting-quick-reads') ? 'active' : '' }}">{{ translate('my_quick_reads') }}</a>
                     </li>
                     <li class="nav-item">
                         <a href="{{ route('parenting-milestones') }}"
                             class="nav-link {{ Request::is('parenting-milestones') || Request::is('parenting-milestones') ? 'active' : '' }}">{{ translate('my_milestons') }}</a>
-                    </li>
+                    </li> --}}
 
                     {{-- @if ($web_config['ref_earning_status'])
                         <li class="nav-item">
@@ -147,10 +140,10 @@
                         </li>
                     @endif --}}
 
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a href="{{ route('parenting-bumpie') }}"
                             class="nav-link {{ Request::is('parenting-bumpie') || Request::is('parenting-bumpie') ? 'active' : '' }}">{{ translate('my_bumpie') }}</a>
-                    </li>
+                    </li> --}}
                     <li class="nav-item">
                         <a href="{{ route('favourite-names-parenting') }}"
                             class="nav-link {{ Request::is('user-coupons') || Request::is('user-coupons*') ? 'active' : '' }}">{{ translate('my_favourite_names') }}</a>
@@ -182,16 +175,15 @@
                                         <div class="col-sm-6 text-capitalize">
                                             <label class="form--label mb-2"
                                                 for="f-name">{{ translate('first_name') }}</label>
-                                            <input type="text" value="{{ $customer_detail['f_name'] }}"
-                                                name="f_name" class="form-control"
+                                            <input type="text" value="{{ $customer_detail['f_name'] }}" name="f_name"
+                                                class="form-control"
                                                 placeholder="{{ translate('ex') }} : {{ translate('Jhone') }}">
                                         </div>
                                         <div class="col-sm-6 text-capitalize">
                                             <label class="form--label mb-2"
                                                 for="l-name">{{ translate('last_name') }}</label>
-                                            <input type="text" id="l-name"
-                                                value="{{ $customer_detail['l_name'] }}" name="l_name"
-                                                class="form-control"
+                                            <input type="text" id="l-name" value="{{ $customer_detail['l_name'] }}"
+                                                name="l_name" class="form-control"
                                                 placeholder="{{ translate('ex') }} : {{ translate('Doe') }}">
                                         </div>
                                         <div class="col-sm-6">
@@ -256,11 +248,63 @@
             </div>
         </div>
     </section>
+    <div class="offcanvas offcanvas-end text-capitalize" tabindex="-1" id="offcanvasProfile"
+        aria-labelledby="offcanvasProfileLabel">
+        <div class="offcanvas-header justify-content-end">
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="nav nav-tabs nav--tabs-3 p-2 flex-column">
+                <li class="nav-item">
+                    <a href="{{ route('parenting-profile') }}" class="nav-link active">{{ translate('profile') }}</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('parenting-question') }}"
+                        class="nav-link {{ Request::is('parenting-question') || Request::is('parenting-question') || Request::is('parenting-question') ? 'active' : '' }}">{{ translate('my_questions') }}
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('parenting-answer') }}"
+                        class="nav-link {{ Request::is('parenting-answer') ? 'active' : '' }}">{{ translate('my_answers') }}
+                    </a>
+                </li>
+                {{-- <li class="nav-item">
+                    <a href="{{ route('parenting-topics') }}"
+                        class="nav-link {{ Request::is('product-compare/index') ? 'active' : '' }}">{{ translate('my_topics') }}</a>
+                </li> --}}
+                <li class="nav-item">
+                    <a href="{{ route('parenting-memories') }}"
+                        class="nav-link {{ Request::is('parenting-memories') || Request::is('parenting-memories') ? 'active' : '' }}">{{ translate('my_memories') }}</a>
+                </li>
+                {{-- <li class="nav-item">
+                    <a href="{{ route('parenting-quick-reads') }}"
+                        class="nav-link {{ Request::is('parenting-quick-reads') || Request::is('parenting-quick-reads') ? 'active' : '' }}">{{ translate('my_quick_reads') }}</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('parenting-milestones') }}"
+                        class="nav-link {{ Request::is('parenting-milestones') || Request::is('parenting-milestones') ? 'active' : '' }}">{{ translate('my_milestons') }}</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('parenting-bumpie') }}"
+                        class="nav-link {{ Request::is('parenting-bumpie') || Request::is('parenting-bumpie') ? 'active' : '' }}">{{ translate('my_bumpie') }}</a>
+                </li> --}}
+                <li class="nav-item">
+                    <a href="{{ route('favourite-names-parenting') }}"
+                        class="nav-link {{ Request::is('user-coupons') || Request::is('user-coupons*') ? 'active' : '' }}">{{ translate('my_favourite_names') }}</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('parenting-bookmarks') }}"
+                        class="nav-link {{ Request::is('parenting-bookmarks') || Request::is('parenting-bookmarks') ? 'active' : '' }}">{{ translate('my_bookmarks') }}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
 @endsection
 @push('script')
     <script src="{{ theme_asset('assets/js/user-profile-edit.js') }}"></script>
     <script>
         "use strict";
+
         function checkPasswordMatch() {
             var password = $("#password2").val();
             var confirmPassword = $("#confirm_password2").val();
@@ -287,7 +331,8 @@
 
         $(".reset_button").on('click', function() {
             $('.thumb').empty().html(
-                `<img src="{{ theme_asset('assets/img/upload-img.png') }}" alt="{{ translate('upload') }}">`);
+                `<img src="{{ theme_asset('assets/img/upload-img.png') }}" alt="{{ translate('upload') }}">`
+            );
             $('.remove-img').addClass('d-none')
         })
     </script>

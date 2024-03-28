@@ -7319,4 +7319,6 @@
   'Q&A' => 'Q&A',
   'Child Vaccination & Growth Tracker' => 'Child Vaccination & Growth Tracker',
   'Quiz' => 'Quiz',
+  'Total_questions' => 'Total questions',
+  'Total_answers' => 'Total answers',
 );
