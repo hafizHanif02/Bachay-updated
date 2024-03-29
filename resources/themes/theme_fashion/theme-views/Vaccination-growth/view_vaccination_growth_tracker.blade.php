@@ -715,7 +715,7 @@
                                                     <span class="vc_date_in left">27 Sep 2022</span>
         
                                                     <div class="vc_mark_done">
-                                                        <a href="#">
+                                                        <a href="{{ route('vaccination-mark-done') }}">
                                                             <span class="R13_9e" id="devviewdetails">View details</span>
                                                         </a>
                                                     </div>
@@ -728,7 +728,7 @@
                                                     <span class="vc_date_in left">27 Sep 2022</span>
         
                                                     <div class="vc_mark_done">
-                                                        <a href="#">
+                                                        <a href="{{ route('vaccination-mark-done') }}">
                                                             <span class="R13_9e" id="devviewdetails">View details</span>
                                                         </a>
                                                     </div>
@@ -766,7 +766,7 @@
                                                     <span class="vc_date_in left">27 Sep 2022</span>
         
                                                     <div class="vc_mark_done">
-                                                        <a href="#">
+                                                        <a href="{{ route('vaccination-mark-done') }}">
                                                             <span class="R13_9e" id="devviewdetails">View details</span>
                                                         </a>
                                                     </div>
@@ -779,7 +779,7 @@
                                                     <span class="vc_date_in left">27 Sep 2022</span>
         
                                                     <div class="vc_mark_done">
-                                                        <a href="#">
+                                                        <a href="{{ route('vaccination-mark-done') }}">
                                                             <span class="R13_9e" id="devviewdetails">View details</span>
                                                         </a>
                                                     </div>
@@ -860,7 +860,7 @@
                                                     <span class="vc_date_in left">27 Sep 2022</span>
         
                                                     <div class="vc_mark_done">
-                                                        <a href="#">
+                                                        <a href="{{ route('vaccination-mark-done') }}">
                                                             <span class="R13_9e" id="devviewdetails">View details</span>
                                                         </a>
                                                     </div>
@@ -873,7 +873,7 @@
                                                     <span class="vc_date_in left">27 Sep 2022</span>
         
                                                     <div class="vc_mark_done">
-                                                        <a href="#">
+                                                        <a href="{{ route('vaccination-mark-done') }}">
                                                             <span class="R13_9e" id="devviewdetails">View details</span>
                                                         </a>
                                                     </div>
@@ -911,7 +911,7 @@
                                                     <span class="vc_date_in left">27 Sep 2022</span>
         
                                                     <div class="vc_mark_done">
-                                                        <a href="#">
+                                                        <a href="{{ route('vaccination-mark-done') }}">
                                                             <span class="R13_9e" id="devviewdetails">View details</span>
                                                         </a>
                                                     </div>
@@ -924,7 +924,7 @@
                                                     <span class="vc_date_in left">27 Sep 2022</span>
         
                                                     <div class="vc_mark_done">
-                                                        <a href="#">
+                                                        <a href="{{ route('vaccination-mark-done') }}">
                                                             <span class="R13_9e" id="devviewdetails">View details</span>
                                                         </a>
                                                     </div>
@@ -1005,7 +1005,7 @@
                                                     <span class="vc_date_in left">27 Sep 2022</span>
         
                                                     <div class="vc_mark_done">
-                                                        <a href="#">
+                                                        <a href="{{ route('vaccination-mark-done') }}">
                                                             <span class="R13_9e" id="devviewdetails">View details</span>
                                                         </a>
                                                     </div>
@@ -1018,7 +1018,7 @@
                                                     <span class="vc_date_in left">27 Sep 2022</span>
         
                                                     <div class="vc_mark_done">
-                                                        <a href="#">
+                                                        <a href="{{ route('vaccination-mark-done') }}">
                                                             <span class="R13_9e" id="devviewdetails">View details</span>
                                                         </a>
                                                     </div>
@@ -1056,7 +1056,7 @@
                                                     <span class="vc_date_in left">27 Sep 2022</span>
         
                                                     <div class="vc_mark_done">
-                                                        <a href="#">
+                                                        <a href="{{ route('vaccination-mark-done') }}">
                                                             <span class="R13_9e" id="devviewdetails">View details</span>
                                                         </a>
                                                     </div>
@@ -1069,7 +1069,7 @@
                                                     <span class="vc_date_in left">27 Sep 2022</span>
         
                                                     <div class="vc_mark_done">
-                                                        <a href="#">
+                                                        <a href="{{ route('vaccination-mark-done') }}">
                                                             <span class="R13_9e" id="devviewdetails">View details</span>
                                                         </a>
                                                     </div>
@@ -1150,7 +1150,7 @@
                                                     <span class="vc_date_in left">27 Sep 2022</span>
         
                                                     <div class="vc_mark_done">
-                                                        <a href="#">
+                                                        <a href="{{ route('vaccination-mark-done') }}">
                                                             <span class="R13_9e" id="devviewdetails">View details</span>
                                                         </a>
                                                     </div>
@@ -1163,7 +1163,7 @@
                                                     <span class="vc_date_in left">27 Sep 2022</span>
         
                                                     <div class="vc_mark_done">
-                                                        <a href="#">
+                                                        <a href="{{ route('vaccination-mark-done') }}">
                                                             <span class="R13_9e" id="devviewdetails">View details</span>
                                                         </a>
                                                     </div>
@@ -1201,7 +1201,7 @@
                                                     <span class="vc_date_in left">27 Sep 2022</span>
         
                                                     <div class="vc_mark_done">
-                                                        <a href="#">
+                                                        <a href="{{ route('vaccination-mark-done') }}">
                                                             <span class="R13_9e" id="devviewdetails">View details</span>
                                                         </a>
                                                     </div>
@@ -1214,7 +1214,7 @@
                                                     <span class="vc_date_in left">27 Sep 2022</span>
         
                                                     <div class="vc_mark_done">
-                                                        <a href="#">
+                                                        <a href="{{ route('vaccination-mark-done') }}">
                                                             <span class="R13_9e" id="devviewdetails">View details</span>
                                                         </a>
                                                     </div>
@@ -1295,7 +1295,7 @@
                                                     <span class="vc_date_in left">27 Sep 2022</span>
         
                                                     <div class="vc_mark_done">
-                                                        <a href="#">
+                                                        <a href="{{ route('vaccination-mark-done') }}">
                                                             <span class="R13_9e" id="devviewdetails">View details</span>
                                                         </a>
                                                     </div>
@@ -1308,7 +1308,7 @@
                                                     <span class="vc_date_in left">27 Sep 2022</span>
         
                                                     <div class="vc_mark_done">
-                                                        <a href="#">
+                                                        <a href="{{ route('vaccination-mark-done') }}">
                                                             <span class="R13_9e" id="devviewdetails">View details</span>
                                                         </a>
                                                     </div>
@@ -1346,7 +1346,7 @@
                                                     <span class="vc_date_in left">27 Sep 2022</span>
         
                                                     <div class="vc_mark_done">
-                                                        <a href="#">
+                                                        <a href="{{ route('vaccination-mark-done') }}">
                                                             <span class="R13_9e" id="devviewdetails">View details</span>
                                                         </a>
                                                     </div>
@@ -1359,7 +1359,7 @@
                                                     <span class="vc_date_in left">27 Sep 2022</span>
         
                                                     <div class="vc_mark_done">
-                                                        <a href="#">
+                                                        <a href="{{ route('vaccination-mark-done') }}">
                                                             <span class="R13_9e" id="devviewdetails">View details</span>
                                                         </a>
                                                     </div>
@@ -1440,7 +1440,7 @@
                                                     <span class="vc_date_in left">27 Sep 2022</span>
         
                                                     <div class="vc_mark_done">
-                                                        <a href="#">
+                                                        <a href="{{ route('vaccination-mark-done') }}">
                                                             <span class="R13_9e" id="devviewdetails">View details</span>
                                                         </a>
                                                     </div>
@@ -1453,7 +1453,7 @@
                                                     <span class="vc_date_in left">27 Sep 2022</span>
         
                                                     <div class="vc_mark_done">
-                                                        <a href="#">
+                                                        <a href="{{ route('vaccination-mark-done') }}">
                                                             <span class="R13_9e" id="devviewdetails">View details</span>
                                                         </a>
                                                     </div>
@@ -1491,7 +1491,7 @@
                                                     <span class="vc_date_in left">27 Sep 2022</span>
         
                                                     <div class="vc_mark_done">
-                                                        <a href="#">
+                                                        <a href="{{ route('vaccination-mark-done') }}">
                                                             <span class="R13_9e" id="devviewdetails">View details</span>
                                                         </a>
                                                     </div>
@@ -1504,7 +1504,7 @@
                                                     <span class="vc_date_in left">27 Sep 2022</span>
         
                                                     <div class="vc_mark_done">
-                                                        <a href="#">
+                                                        <a href="{{ route('vaccination-mark-done') }}">
                                                             <span class="R13_9e" id="devviewdetails">View details</span>
                                                         </a>
                                                     </div>
@@ -1586,7 +1586,7 @@
                                                     <span class="vc_date_in left">27 Sep 2022</span>
         
                                                     <div class="vc_mark_done">
-                                                        <a href="#">
+                                                        <a href="{{ route('vaccination-mark-done') }}">
                                                             <span class="R13_9e" id="devviewdetails">View details</span>
                                                         </a>
                                                     </div>
@@ -1599,7 +1599,7 @@
                                                     <span class="vc_date_in left">27 Sep 2022</span>
         
                                                     <div class="vc_mark_done">
-                                                        <a href="#">
+                                                        <a href="{{ route('vaccination-mark-done') }}">
                                                             <span class="R13_9e" id="devviewdetails">View details</span>
                                                         </a>
                                                     </div>
@@ -1637,7 +1637,7 @@
                                                     <span class="vc_date_in left">27 Sep 2022</span>
         
                                                     <div class="vc_mark_done">
-                                                        <a href="#">
+                                                        <a href="{{ route('vaccination-mark-done') }}">
                                                             <span class="R13_9e" id="devviewdetails">View details</span>
                                                         </a>
                                                     </div>
@@ -1650,7 +1650,7 @@
                                                     <span class="vc_date_in left">27 Sep 2022</span>
         
                                                     <div class="vc_mark_done">
-                                                        <a href="#">
+                                                        <a href="{{ route('vaccination-mark-done') }}">
                                                             <span class="R13_9e" id="devviewdetails">View details</span>
                                                         </a>
                                                     </div>

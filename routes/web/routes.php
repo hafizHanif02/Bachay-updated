@@ -74,6 +74,7 @@ Route::group(['prefix' => 'Q&A', 'as' => 'Q&A.'], function () {
 });
 Route::get('vaccination-growth-tracker', [ VaccineController::class, 'Vaccination_home'])->name('vaccination-growth-tracker');
 Route::get('view-vaccination-growth-tracker', [ VaccineController::class, 'Vaccination_growth_tracker'])->name('view-vaccination-growth-tracker');
+Route::get('vaccination-mark-done', [ VaccineController::class, 'Vaccination_mark_done'])->name('vaccination-mark-done');
 
 Route::get('custom_page',[ CustomPageController::class,'CustomPageHome'])->name('custom_page');
 Route::get('explore',[ ExploreController::class,'explore'])->name('explore');
