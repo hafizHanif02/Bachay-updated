@@ -317,6 +317,7 @@
 
                                             </p>
                                             <ul class="mt-4">
+                                                @forelse($child->uppcomingVaccine as $vaccine)
                                                 <li class="d-flex justify-content-between ps-5 pe-5 mb-4">
                                                     <div class="up_vcs_nam gap-3">
                                                         <span class="me-4">
@@ -324,42 +325,15 @@
                                                             <i class="bi bi-heart-pulse-fill"></i>
 
                                                         </span>
-                                                        <span class="custom-dt-clr">4/4</span>
+                                                        <span class="custom-dt-clr">{{ $vaccine->vaccination->name }}</span>
 
                                                     </div>
                                                     <div class="vc_dt_main">
-                                                        <span class="custom-dt-clr">24 Mar 2024</span>
+                                                        <span class="custom-dt-clr">{{ date("d M Y", strtotime($vaccine->vaccination_date)) }}</span>
                                                     </div>
                                                 </li>
-                                                <li class="d-flex justify-content-between ps-5 pe-5 mb-4">
-                                                    <div class="up_vcs_nam gap-3">
-                                                        <span class="me-4">
-
-                                                            <i class="bi bi-heart-pulse-fill"></i>
-
-                                                        </span>
-                                                        <span class="custom-dt-clr">4/4</span>
-
-                                                    </div>
-                                                    <div class="vc_dt_main">
-                                                        <span class="custom-dt-clr">24 Mar 2024</span>
-                                                    </div>
-                                                </li>
-                                                <li class="d-flex justify-content-between ps-5 pe-5 mb-4">
-                                                    <div class="up_vcs_nam gap-3">
-                                                        <span class="me-4">
-
-                                                            <i class="bi bi-heart-pulse-fill"></i>
-
-                                                        </span>
-                                                        <span class="custom-dt-clr">4/4</span>
-
-                                                    </div>
-                                                    <div class="vc_dt_main">
-                                                        <span class="custom-dt-clr">24 Mar 2024</span>
-                                                    </div>
-                                                </li>
-
+                                                @empty
+                                                @endforelse
                                             </ul>
                                         </div>
                                         <div class="up_vc_child mt-4">
@@ -404,7 +378,7 @@
 
                                             </div>
                                             <div class="view_vc_tr text-center mt-4 mb-4">
-                                                <a href="#">view vaccination tracker</a>
+                                                <a href="{{ route('view-vaccination-growth-tracker', $child->id) }}">view vaccination tracker</a>
                                             </div>
                                         </div>
                                     </div>
