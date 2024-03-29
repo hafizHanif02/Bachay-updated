@@ -527,27 +527,46 @@
         border-radius: 3px;
         padding: 2px 6px;
     }
+
     .vc_date_in {
         text-transform: uppercase;
-    color: #fc88af;
-    font-weight: 600;
-    font-size: 12px;
-}
-    .vc_due{
+        color: #fc88af;
+        font-weight: 600;
+        font-size: 12px;
+    }
+
+    .vc_due {
         font-weight: 600;
     }
+
     .R13_9e {
-    color: #9e9e9e;
-}
-.vaccination__child{
-    border: 1px solid #ededed;
-    margin: 10px 0 0 0;
+        color: #9e9e9e;
+    }
+
+    .vaccination__child {
+        border: 1px solid #ededed;
+        margin: 10px 0 0 0;
+
+    }
+
+    .child__main_vcc_container {
+        height: 90vh;
+        overflow-y: scroll;
+    }
+    #select-option{
+        width: 100%;
+        padding: 10px;
+        border: none;
+        font-size: 24px;
+    font-weight: 600;
+    color: #f56996;
     
-}
-.child__main_vcc_container{
-    height: 90vh;
-    overflow-y: scroll;
-}
+    }
+    #select-option option{
+    font-size: 15px;
+    font-weight: 400;
+
+    }
 </style>
 @section('content')
     <div class="container">
@@ -557,6 +576,20 @@
             <hr>
             <div class="vaccination-growth-child-container d-flex">
                 <div class="vaccination-mainp">
+                    <div class="parent-div">
+                        <div class="select-div">
+                            <select id="select-option">
+                                <option value="option1">
+                          
+                                    
+                                    Hannan<span>'s Vaccination</span>
+                                </option>
+                                <option value="option2">Shahoon<span>'s Vaccination</span></option>
+                                <option value="option3"> Talha<span>'s Vaccination</span></option>
+
+                            </select>
+                        </div>
+                    </div>
                     <div class="train_container">
                         <div class="train_main">
                             <div class="child_stage_main_chain">
@@ -698,7 +731,7 @@
                                 <div class="accordion-main">
                                     <div class="accordion-header" onclick="toggleAccordion(this)">
                                         <h3 class="accordion-heading">
-        
+
                                             <div class="vc_name">
                                                 <i class="bi bi-heart-pulse-fill"></i>
                                                 <span class="M15_42">1/1</span>
@@ -713,43 +746,47 @@
                                                 <div class="vc_date d-flex justify-content-between align-items-center">
                                                     <span class="vc_due left R13_42">Due on</span>
                                                     <span class="vc_date_in left">27 Sep 2022</span>
-        
+
                                                     <div class="vc_mark_done">
                                                         <a href="{{ route('vaccination-mark-done') }}">
                                                             <span class="R13_9e" id="devviewdetails">View details</span>
                                                         </a>
                                                     </div>
-        
+
                                                 </div>
                                             </li>
                                             <li>
                                                 <div class="vc_date d-flex justify-content-between align-items-center">
                                                     <span class="vc_due left R13_42">Due on</span>
                                                     <span class="vc_date_in left">27 Sep 2022</span>
-        
+
                                                     <div class="vc_mark_done">
                                                         <a href="{{ route('vaccination-mark-done') }}">
                                                             <span class="R13_9e" id="devviewdetails">View details</span>
                                                         </a>
                                                     </div>
-        
+
                                                 </div>
                                             </li>
                                         </ul>
-                                        <p>The BCG (Bacillus Calmette–Guérin) vaccine provides immunity against Tuberculosis (TB) -
-                                            an infectious bacterial disease that usually affects the lungs. BCG is also used to
+                                        <p>The BCG (Bacillus Calmette–Guérin) vaccine provides immunity against Tuberculosis
+                                            (TB) -
+                                            an infectious bacterial disease that usually affects the lungs. BCG is also used
+                                            to
                                             treat bladder tumours and cancer. After vaccination, it is recommended that the
-                                            vaccination site is loosely covered and kept dry & clean for 24 hours i.e. until the
-                                            local reaction disappears. Your child may experience "flu-like" symptoms for 24–48 hours
+                                            vaccination site is loosely covered and kept dry & clean for 24 hours i.e. until
+                                            the
+                                            local reaction disappears. Your child may experience "flu-like" symptoms for
+                                            24–48 hours
                                             following this vaccination</p>
                                     </div>
-        
+
                                 </div>
-        
+
                                 <div class="accordion-main">
                                     <div class="accordion-header" onclick="toggleAccordion(this)">
                                         <h3 class="accordion-heading">
-        
+
                                             <div class="vc_name">
                                                 <i class="bi bi-heart-pulse-fill"></i>
                                                 <span class="M15_42">1/1</span>
@@ -764,36 +801,40 @@
                                                 <div class="vc_date d-flex justify-content-between align-items-center">
                                                     <span class="vc_due left R13_42">Due on</span>
                                                     <span class="vc_date_in left">27 Sep 2022</span>
-        
+
                                                     <div class="vc_mark_done">
                                                         <a href="{{ route('vaccination-mark-done') }}">
                                                             <span class="R13_9e" id="devviewdetails">View details</span>
                                                         </a>
                                                     </div>
-        
+
                                                 </div>
                                             </li>
                                             <li>
                                                 <div class="vc_date d-flex justify-content-between align-items-center">
                                                     <span class="vc_due left R13_42">Due on</span>
                                                     <span class="vc_date_in left">27 Sep 2022</span>
-        
+
                                                     <div class="vc_mark_done">
                                                         <a href="{{ route('vaccination-mark-done') }}">
                                                             <span class="R13_9e" id="devviewdetails">View details</span>
                                                         </a>
                                                     </div>
-        
+
                                                 </div>
                                             </li>
                                         </ul>
-                                        <p>The BCG (Bacillus Calmette–Guérin) vaccine provides immunity against Tuberculosis (TB) -
-                                            an infectious bacterial disease that usually affects the lungs. BCG is also used to
+                                        <p>The BCG (Bacillus Calmette–Guérin) vaccine provides immunity against Tuberculosis
+                                            (TB) -
+                                            an infectious bacterial disease that usually affects the lungs. BCG is also used
+                                            to
                                             treat bladder tumours and cancer. After vaccination, it is recommended that the
-                                            vaccination site is loosely covered and kept dry & clean for 24 hours i.e. until the
-                                            local reaction disappears. Your child may experience "flu-like" symptoms for 24–48 hours
+                                            vaccination site is loosely covered and kept dry & clean for 24 hours i.e. until
+                                            the
+                                            local reaction disappears. Your child may experience "flu-like" symptoms for
+                                            24–48 hours
                                             following this vaccination</p>
-        
+
                                     </div>
                                 </div>
                                 <div class="add_gr_det_btn">
@@ -804,7 +845,7 @@
                                     </p>
                                 </div>
                             </div>
-    
+
                         </div>
                         <div class="vaccination__child">
                             <div class="vacc_main_con">
@@ -843,7 +884,7 @@
                                 <div class="accordion-main">
                                     <div class="accordion-header" onclick="toggleAccordion(this)">
                                         <h3 class="accordion-heading">
-        
+
                                             <div class="vc_name">
                                                 <i class="bi bi-heart-pulse-fill"></i>
                                                 <span class="M15_42">1/1</span>
@@ -858,43 +899,47 @@
                                                 <div class="vc_date d-flex justify-content-between align-items-center">
                                                     <span class="vc_due left R13_42">Due on</span>
                                                     <span class="vc_date_in left">27 Sep 2022</span>
-        
+
                                                     <div class="vc_mark_done">
                                                         <a href="{{ route('vaccination-mark-done') }}">
                                                             <span class="R13_9e" id="devviewdetails">View details</span>
                                                         </a>
                                                     </div>
-        
+
                                                 </div>
                                             </li>
                                             <li>
                                                 <div class="vc_date d-flex justify-content-between align-items-center">
                                                     <span class="vc_due left R13_42">Due on</span>
                                                     <span class="vc_date_in left">27 Sep 2022</span>
-        
+
                                                     <div class="vc_mark_done">
                                                         <a href="{{ route('vaccination-mark-done') }}">
                                                             <span class="R13_9e" id="devviewdetails">View details</span>
                                                         </a>
                                                     </div>
-        
+
                                                 </div>
                                             </li>
                                         </ul>
-                                        <p>The BCG (Bacillus Calmette–Guérin) vaccine provides immunity against Tuberculosis (TB) -
-                                            an infectious bacterial disease that usually affects the lungs. BCG is also used to
+                                        <p>The BCG (Bacillus Calmette–Guérin) vaccine provides immunity against Tuberculosis
+                                            (TB) -
+                                            an infectious bacterial disease that usually affects the lungs. BCG is also used
+                                            to
                                             treat bladder tumours and cancer. After vaccination, it is recommended that the
-                                            vaccination site is loosely covered and kept dry & clean for 24 hours i.e. until the
-                                            local reaction disappears. Your child may experience "flu-like" symptoms for 24–48 hours
+                                            vaccination site is loosely covered and kept dry & clean for 24 hours i.e. until
+                                            the
+                                            local reaction disappears. Your child may experience "flu-like" symptoms for
+                                            24–48 hours
                                             following this vaccination</p>
                                     </div>
-        
+
                                 </div>
-        
+
                                 <div class="accordion-main">
                                     <div class="accordion-header" onclick="toggleAccordion(this)">
                                         <h3 class="accordion-heading">
-        
+
                                             <div class="vc_name">
                                                 <i class="bi bi-heart-pulse-fill"></i>
                                                 <span class="M15_42">1/1</span>
@@ -909,36 +954,40 @@
                                                 <div class="vc_date d-flex justify-content-between align-items-center">
                                                     <span class="vc_due left R13_42">Due on</span>
                                                     <span class="vc_date_in left">27 Sep 2022</span>
-        
+
                                                     <div class="vc_mark_done">
                                                         <a href="{{ route('vaccination-mark-done') }}">
                                                             <span class="R13_9e" id="devviewdetails">View details</span>
                                                         </a>
                                                     </div>
-        
+
                                                 </div>
                                             </li>
                                             <li>
                                                 <div class="vc_date d-flex justify-content-between align-items-center">
                                                     <span class="vc_due left R13_42">Due on</span>
                                                     <span class="vc_date_in left">27 Sep 2022</span>
-        
+
                                                     <div class="vc_mark_done">
                                                         <a href="{{ route('vaccination-mark-done') }}">
                                                             <span class="R13_9e" id="devviewdetails">View details</span>
                                                         </a>
                                                     </div>
-        
+
                                                 </div>
                                             </li>
                                         </ul>
-                                        <p>The BCG (Bacillus Calmette–Guérin) vaccine provides immunity against Tuberculosis (TB) -
-                                            an infectious bacterial disease that usually affects the lungs. BCG is also used to
+                                        <p>The BCG (Bacillus Calmette–Guérin) vaccine provides immunity against Tuberculosis
+                                            (TB) -
+                                            an infectious bacterial disease that usually affects the lungs. BCG is also used
+                                            to
                                             treat bladder tumours and cancer. After vaccination, it is recommended that the
-                                            vaccination site is loosely covered and kept dry & clean for 24 hours i.e. until the
-                                            local reaction disappears. Your child may experience "flu-like" symptoms for 24–48 hours
+                                            vaccination site is loosely covered and kept dry & clean for 24 hours i.e. until
+                                            the
+                                            local reaction disappears. Your child may experience "flu-like" symptoms for
+                                            24–48 hours
                                             following this vaccination</p>
-        
+
                                     </div>
                                 </div>
                                 <div class="add_gr_det_btn">
@@ -949,7 +998,7 @@
                                     </p>
                                 </div>
                             </div>
-    
+
                         </div>
                         <div class="vaccination__child">
                             <div class="vacc_main_con">
@@ -988,7 +1037,7 @@
                                 <div class="accordion-main">
                                     <div class="accordion-header" onclick="toggleAccordion(this)">
                                         <h3 class="accordion-heading">
-        
+
                                             <div class="vc_name">
                                                 <i class="bi bi-heart-pulse-fill"></i>
                                                 <span class="M15_42">1/1</span>
@@ -1003,43 +1052,47 @@
                                                 <div class="vc_date d-flex justify-content-between align-items-center">
                                                     <span class="vc_due left R13_42">Due on</span>
                                                     <span class="vc_date_in left">27 Sep 2022</span>
-        
+
                                                     <div class="vc_mark_done">
                                                         <a href="{{ route('vaccination-mark-done') }}">
                                                             <span class="R13_9e" id="devviewdetails">View details</span>
                                                         </a>
                                                     </div>
-        
+
                                                 </div>
                                             </li>
                                             <li>
                                                 <div class="vc_date d-flex justify-content-between align-items-center">
                                                     <span class="vc_due left R13_42">Due on</span>
                                                     <span class="vc_date_in left">27 Sep 2022</span>
-        
+
                                                     <div class="vc_mark_done">
                                                         <a href="{{ route('vaccination-mark-done') }}">
                                                             <span class="R13_9e" id="devviewdetails">View details</span>
                                                         </a>
                                                     </div>
-        
+
                                                 </div>
                                             </li>
                                         </ul>
-                                        <p>The BCG (Bacillus Calmette–Guérin) vaccine provides immunity against Tuberculosis (TB) -
-                                            an infectious bacterial disease that usually affects the lungs. BCG is also used to
+                                        <p>The BCG (Bacillus Calmette–Guérin) vaccine provides immunity against Tuberculosis
+                                            (TB) -
+                                            an infectious bacterial disease that usually affects the lungs. BCG is also used
+                                            to
                                             treat bladder tumours and cancer. After vaccination, it is recommended that the
-                                            vaccination site is loosely covered and kept dry & clean for 24 hours i.e. until the
-                                            local reaction disappears. Your child may experience "flu-like" symptoms for 24–48 hours
+                                            vaccination site is loosely covered and kept dry & clean for 24 hours i.e. until
+                                            the
+                                            local reaction disappears. Your child may experience "flu-like" symptoms for
+                                            24–48 hours
                                             following this vaccination</p>
                                     </div>
-        
+
                                 </div>
-        
+
                                 <div class="accordion-main">
                                     <div class="accordion-header" onclick="toggleAccordion(this)">
                                         <h3 class="accordion-heading">
-        
+
                                             <div class="vc_name">
                                                 <i class="bi bi-heart-pulse-fill"></i>
                                                 <span class="M15_42">1/1</span>
@@ -1054,36 +1107,40 @@
                                                 <div class="vc_date d-flex justify-content-between align-items-center">
                                                     <span class="vc_due left R13_42">Due on</span>
                                                     <span class="vc_date_in left">27 Sep 2022</span>
-        
+
                                                     <div class="vc_mark_done">
                                                         <a href="{{ route('vaccination-mark-done') }}">
                                                             <span class="R13_9e" id="devviewdetails">View details</span>
                                                         </a>
                                                     </div>
-        
+
                                                 </div>
                                             </li>
                                             <li>
                                                 <div class="vc_date d-flex justify-content-between align-items-center">
                                                     <span class="vc_due left R13_42">Due on</span>
                                                     <span class="vc_date_in left">27 Sep 2022</span>
-        
+
                                                     <div class="vc_mark_done">
                                                         <a href="{{ route('vaccination-mark-done') }}">
                                                             <span class="R13_9e" id="devviewdetails">View details</span>
                                                         </a>
                                                     </div>
-        
+
                                                 </div>
                                             </li>
                                         </ul>
-                                        <p>The BCG (Bacillus Calmette–Guérin) vaccine provides immunity against Tuberculosis (TB) -
-                                            an infectious bacterial disease that usually affects the lungs. BCG is also used to
+                                        <p>The BCG (Bacillus Calmette–Guérin) vaccine provides immunity against Tuberculosis
+                                            (TB) -
+                                            an infectious bacterial disease that usually affects the lungs. BCG is also used
+                                            to
                                             treat bladder tumours and cancer. After vaccination, it is recommended that the
-                                            vaccination site is loosely covered and kept dry & clean for 24 hours i.e. until the
-                                            local reaction disappears. Your child may experience "flu-like" symptoms for 24–48 hours
+                                            vaccination site is loosely covered and kept dry & clean for 24 hours i.e. until
+                                            the
+                                            local reaction disappears. Your child may experience "flu-like" symptoms for
+                                            24–48 hours
                                             following this vaccination</p>
-        
+
                                     </div>
                                 </div>
                                 <div class="add_gr_det_btn">
@@ -1094,7 +1151,7 @@
                                     </p>
                                 </div>
                             </div>
-    
+
                         </div>
                         <div class="vaccination__child">
                             <div class="vacc_main_con">
@@ -1133,7 +1190,7 @@
                                 <div class="accordion-main">
                                     <div class="accordion-header" onclick="toggleAccordion(this)">
                                         <h3 class="accordion-heading">
-        
+
                                             <div class="vc_name">
                                                 <i class="bi bi-heart-pulse-fill"></i>
                                                 <span class="M15_42">1/1</span>
@@ -1148,43 +1205,47 @@
                                                 <div class="vc_date d-flex justify-content-between align-items-center">
                                                     <span class="vc_due left R13_42">Due on</span>
                                                     <span class="vc_date_in left">27 Sep 2022</span>
-        
+
                                                     <div class="vc_mark_done">
                                                         <a href="{{ route('vaccination-mark-done') }}">
                                                             <span class="R13_9e" id="devviewdetails">View details</span>
                                                         </a>
                                                     </div>
-        
+
                                                 </div>
                                             </li>
                                             <li>
                                                 <div class="vc_date d-flex justify-content-between align-items-center">
                                                     <span class="vc_due left R13_42">Due on</span>
                                                     <span class="vc_date_in left">27 Sep 2022</span>
-        
+
                                                     <div class="vc_mark_done">
                                                         <a href="{{ route('vaccination-mark-done') }}">
                                                             <span class="R13_9e" id="devviewdetails">View details</span>
                                                         </a>
                                                     </div>
-        
+
                                                 </div>
                                             </li>
                                         </ul>
-                                        <p>The BCG (Bacillus Calmette–Guérin) vaccine provides immunity against Tuberculosis (TB) -
-                                            an infectious bacterial disease that usually affects the lungs. BCG is also used to
+                                        <p>The BCG (Bacillus Calmette–Guérin) vaccine provides immunity against Tuberculosis
+                                            (TB) -
+                                            an infectious bacterial disease that usually affects the lungs. BCG is also used
+                                            to
                                             treat bladder tumours and cancer. After vaccination, it is recommended that the
-                                            vaccination site is loosely covered and kept dry & clean for 24 hours i.e. until the
-                                            local reaction disappears. Your child may experience "flu-like" symptoms for 24–48 hours
+                                            vaccination site is loosely covered and kept dry & clean for 24 hours i.e. until
+                                            the
+                                            local reaction disappears. Your child may experience "flu-like" symptoms for
+                                            24–48 hours
                                             following this vaccination</p>
                                     </div>
-        
+
                                 </div>
-        
+
                                 <div class="accordion-main">
                                     <div class="accordion-header" onclick="toggleAccordion(this)">
                                         <h3 class="accordion-heading">
-        
+
                                             <div class="vc_name">
                                                 <i class="bi bi-heart-pulse-fill"></i>
                                                 <span class="M15_42">1/1</span>
@@ -1199,36 +1260,40 @@
                                                 <div class="vc_date d-flex justify-content-between align-items-center">
                                                     <span class="vc_due left R13_42">Due on</span>
                                                     <span class="vc_date_in left">27 Sep 2022</span>
-        
+
                                                     <div class="vc_mark_done">
                                                         <a href="{{ route('vaccination-mark-done') }}">
                                                             <span class="R13_9e" id="devviewdetails">View details</span>
                                                         </a>
                                                     </div>
-        
+
                                                 </div>
                                             </li>
                                             <li>
                                                 <div class="vc_date d-flex justify-content-between align-items-center">
                                                     <span class="vc_due left R13_42">Due on</span>
                                                     <span class="vc_date_in left">27 Sep 2022</span>
-        
+
                                                     <div class="vc_mark_done">
                                                         <a href="{{ route('vaccination-mark-done') }}">
                                                             <span class="R13_9e" id="devviewdetails">View details</span>
                                                         </a>
                                                     </div>
-        
+
                                                 </div>
                                             </li>
                                         </ul>
-                                        <p>The BCG (Bacillus Calmette–Guérin) vaccine provides immunity against Tuberculosis (TB) -
-                                            an infectious bacterial disease that usually affects the lungs. BCG is also used to
+                                        <p>The BCG (Bacillus Calmette–Guérin) vaccine provides immunity against Tuberculosis
+                                            (TB) -
+                                            an infectious bacterial disease that usually affects the lungs. BCG is also used
+                                            to
                                             treat bladder tumours and cancer. After vaccination, it is recommended that the
-                                            vaccination site is loosely covered and kept dry & clean for 24 hours i.e. until the
-                                            local reaction disappears. Your child may experience "flu-like" symptoms for 24–48 hours
+                                            vaccination site is loosely covered and kept dry & clean for 24 hours i.e. until
+                                            the
+                                            local reaction disappears. Your child may experience "flu-like" symptoms for
+                                            24–48 hours
                                             following this vaccination</p>
-        
+
                                     </div>
                                 </div>
                                 <div class="add_gr_det_btn">
@@ -1239,7 +1304,7 @@
                                     </p>
                                 </div>
                             </div>
-    
+
                         </div>
                         <div class="vaccination__child">
                             <div class="vacc_main_con">
@@ -1278,7 +1343,7 @@
                                 <div class="accordion-main">
                                     <div class="accordion-header" onclick="toggleAccordion(this)">
                                         <h3 class="accordion-heading">
-        
+
                                             <div class="vc_name">
                                                 <i class="bi bi-heart-pulse-fill"></i>
                                                 <span class="M15_42">1/1</span>
@@ -1293,43 +1358,47 @@
                                                 <div class="vc_date d-flex justify-content-between align-items-center">
                                                     <span class="vc_due left R13_42">Due on</span>
                                                     <span class="vc_date_in left">27 Sep 2022</span>
-        
+
                                                     <div class="vc_mark_done">
                                                         <a href="{{ route('vaccination-mark-done') }}">
                                                             <span class="R13_9e" id="devviewdetails">View details</span>
                                                         </a>
                                                     </div>
-        
+
                                                 </div>
                                             </li>
                                             <li>
                                                 <div class="vc_date d-flex justify-content-between align-items-center">
                                                     <span class="vc_due left R13_42">Due on</span>
                                                     <span class="vc_date_in left">27 Sep 2022</span>
-        
+
                                                     <div class="vc_mark_done">
                                                         <a href="{{ route('vaccination-mark-done') }}">
                                                             <span class="R13_9e" id="devviewdetails">View details</span>
                                                         </a>
                                                     </div>
-        
+
                                                 </div>
                                             </li>
                                         </ul>
-                                        <p>The BCG (Bacillus Calmette–Guérin) vaccine provides immunity against Tuberculosis (TB) -
-                                            an infectious bacterial disease that usually affects the lungs. BCG is also used to
+                                        <p>The BCG (Bacillus Calmette–Guérin) vaccine provides immunity against Tuberculosis
+                                            (TB) -
+                                            an infectious bacterial disease that usually affects the lungs. BCG is also used
+                                            to
                                             treat bladder tumours and cancer. After vaccination, it is recommended that the
-                                            vaccination site is loosely covered and kept dry & clean for 24 hours i.e. until the
-                                            local reaction disappears. Your child may experience "flu-like" symptoms for 24–48 hours
+                                            vaccination site is loosely covered and kept dry & clean for 24 hours i.e. until
+                                            the
+                                            local reaction disappears. Your child may experience "flu-like" symptoms for
+                                            24–48 hours
                                             following this vaccination</p>
                                     </div>
-        
+
                                 </div>
-        
+
                                 <div class="accordion-main">
                                     <div class="accordion-header" onclick="toggleAccordion(this)">
                                         <h3 class="accordion-heading">
-        
+
                                             <div class="vc_name">
                                                 <i class="bi bi-heart-pulse-fill"></i>
                                                 <span class="M15_42">1/1</span>
@@ -1344,36 +1413,40 @@
                                                 <div class="vc_date d-flex justify-content-between align-items-center">
                                                     <span class="vc_due left R13_42">Due on</span>
                                                     <span class="vc_date_in left">27 Sep 2022</span>
-        
+
                                                     <div class="vc_mark_done">
                                                         <a href="{{ route('vaccination-mark-done') }}">
                                                             <span class="R13_9e" id="devviewdetails">View details</span>
                                                         </a>
                                                     </div>
-        
+
                                                 </div>
                                             </li>
                                             <li>
                                                 <div class="vc_date d-flex justify-content-between align-items-center">
                                                     <span class="vc_due left R13_42">Due on</span>
                                                     <span class="vc_date_in left">27 Sep 2022</span>
-        
+
                                                     <div class="vc_mark_done">
                                                         <a href="{{ route('vaccination-mark-done') }}">
                                                             <span class="R13_9e" id="devviewdetails">View details</span>
                                                         </a>
                                                     </div>
-        
+
                                                 </div>
                                             </li>
                                         </ul>
-                                        <p>The BCG (Bacillus Calmette–Guérin) vaccine provides immunity against Tuberculosis (TB) -
-                                            an infectious bacterial disease that usually affects the lungs. BCG is also used to
+                                        <p>The BCG (Bacillus Calmette–Guérin) vaccine provides immunity against Tuberculosis
+                                            (TB) -
+                                            an infectious bacterial disease that usually affects the lungs. BCG is also used
+                                            to
                                             treat bladder tumours and cancer. After vaccination, it is recommended that the
-                                            vaccination site is loosely covered and kept dry & clean for 24 hours i.e. until the
-                                            local reaction disappears. Your child may experience "flu-like" symptoms for 24–48 hours
+                                            vaccination site is loosely covered and kept dry & clean for 24 hours i.e. until
+                                            the
+                                            local reaction disappears. Your child may experience "flu-like" symptoms for
+                                            24–48 hours
                                             following this vaccination</p>
-        
+
                                     </div>
                                 </div>
                                 <div class="add_gr_det_btn">
@@ -1384,7 +1457,7 @@
                                     </p>
                                 </div>
                             </div>
-    
+
                         </div>
                         <div class="vaccination__child">
                             <div class="vacc_main_con">
@@ -1423,7 +1496,7 @@
                                 <div class="accordion-main">
                                     <div class="accordion-header" onclick="toggleAccordion(this)">
                                         <h3 class="accordion-heading">
-        
+
                                             <div class="vc_name">
                                                 <i class="bi bi-heart-pulse-fill"></i>
                                                 <span class="M15_42">1/1</span>
@@ -1438,43 +1511,47 @@
                                                 <div class="vc_date d-flex justify-content-between align-items-center">
                                                     <span class="vc_due left R13_42">Due on</span>
                                                     <span class="vc_date_in left">27 Sep 2022</span>
-        
+
                                                     <div class="vc_mark_done">
                                                         <a href="{{ route('vaccination-mark-done') }}">
                                                             <span class="R13_9e" id="devviewdetails">View details</span>
                                                         </a>
                                                     </div>
-        
+
                                                 </div>
                                             </li>
                                             <li>
                                                 <div class="vc_date d-flex justify-content-between align-items-center">
                                                     <span class="vc_due left R13_42">Due on</span>
                                                     <span class="vc_date_in left">27 Sep 2022</span>
-        
+
                                                     <div class="vc_mark_done">
                                                         <a href="{{ route('vaccination-mark-done') }}">
                                                             <span class="R13_9e" id="devviewdetails">View details</span>
                                                         </a>
                                                     </div>
-        
+
                                                 </div>
                                             </li>
                                         </ul>
-                                        <p>The BCG (Bacillus Calmette–Guérin) vaccine provides immunity against Tuberculosis (TB) -
-                                            an infectious bacterial disease that usually affects the lungs. BCG is also used to
+                                        <p>The BCG (Bacillus Calmette–Guérin) vaccine provides immunity against Tuberculosis
+                                            (TB) -
+                                            an infectious bacterial disease that usually affects the lungs. BCG is also used
+                                            to
                                             treat bladder tumours and cancer. After vaccination, it is recommended that the
-                                            vaccination site is loosely covered and kept dry & clean for 24 hours i.e. until the
-                                            local reaction disappears. Your child may experience "flu-like" symptoms for 24–48 hours
+                                            vaccination site is loosely covered and kept dry & clean for 24 hours i.e. until
+                                            the
+                                            local reaction disappears. Your child may experience "flu-like" symptoms for
+                                            24–48 hours
                                             following this vaccination</p>
                                     </div>
-        
+
                                 </div>
-        
+
                                 <div class="accordion-main">
                                     <div class="accordion-header" onclick="toggleAccordion(this)">
                                         <h3 class="accordion-heading">
-        
+
                                             <div class="vc_name">
                                                 <i class="bi bi-heart-pulse-fill"></i>
                                                 <span class="M15_42">1/1</span>
@@ -1489,36 +1566,40 @@
                                                 <div class="vc_date d-flex justify-content-between align-items-center">
                                                     <span class="vc_due left R13_42">Due on</span>
                                                     <span class="vc_date_in left">27 Sep 2022</span>
-        
+
                                                     <div class="vc_mark_done">
                                                         <a href="{{ route('vaccination-mark-done') }}">
                                                             <span class="R13_9e" id="devviewdetails">View details</span>
                                                         </a>
                                                     </div>
-        
+
                                                 </div>
                                             </li>
                                             <li>
                                                 <div class="vc_date d-flex justify-content-between align-items-center">
                                                     <span class="vc_due left R13_42">Due on</span>
                                                     <span class="vc_date_in left">27 Sep 2022</span>
-        
+
                                                     <div class="vc_mark_done">
                                                         <a href="{{ route('vaccination-mark-done') }}">
                                                             <span class="R13_9e" id="devviewdetails">View details</span>
                                                         </a>
                                                     </div>
-        
+
                                                 </div>
                                             </li>
                                         </ul>
-                                        <p>The BCG (Bacillus Calmette–Guérin) vaccine provides immunity against Tuberculosis (TB) -
-                                            an infectious bacterial disease that usually affects the lungs. BCG is also used to
+                                        <p>The BCG (Bacillus Calmette–Guérin) vaccine provides immunity against Tuberculosis
+                                            (TB) -
+                                            an infectious bacterial disease that usually affects the lungs. BCG is also used
+                                            to
                                             treat bladder tumours and cancer. After vaccination, it is recommended that the
-                                            vaccination site is loosely covered and kept dry & clean for 24 hours i.e. until the
-                                            local reaction disappears. Your child may experience "flu-like" symptoms for 24–48 hours
+                                            vaccination site is loosely covered and kept dry & clean for 24 hours i.e. until
+                                            the
+                                            local reaction disappears. Your child may experience "flu-like" symptoms for
+                                            24–48 hours
                                             following this vaccination</p>
-        
+
                                     </div>
                                 </div>
                                 <div class="add_gr_det_btn">
@@ -1529,9 +1610,9 @@
                                     </p>
                                 </div>
                             </div>
-    
+
                         </div>
-    
+
                         <div class="vaccination__child">
                             <div class="vacc_main_con">
                                 <div class="vc_sub_con d-flex justify-content-between">
@@ -1569,7 +1650,7 @@
                                 <div class="accordion-main">
                                     <div class="accordion-header" onclick="toggleAccordion(this)">
                                         <h3 class="accordion-heading">
-        
+
                                             <div class="vc_name">
                                                 <i class="bi bi-heart-pulse-fill"></i>
                                                 <span class="M15_42">1/1</span>
@@ -1584,43 +1665,47 @@
                                                 <div class="vc_date d-flex justify-content-between align-items-center">
                                                     <span class="vc_due left R13_42">Due on</span>
                                                     <span class="vc_date_in left">27 Sep 2022</span>
-        
+
                                                     <div class="vc_mark_done">
                                                         <a href="{{ route('vaccination-mark-done') }}">
                                                             <span class="R13_9e" id="devviewdetails">View details</span>
                                                         </a>
                                                     </div>
-        
+
                                                 </div>
                                             </li>
                                             <li>
                                                 <div class="vc_date d-flex justify-content-between align-items-center">
                                                     <span class="vc_due left R13_42">Due on</span>
                                                     <span class="vc_date_in left">27 Sep 2022</span>
-        
+
                                                     <div class="vc_mark_done">
                                                         <a href="{{ route('vaccination-mark-done') }}">
                                                             <span class="R13_9e" id="devviewdetails">View details</span>
                                                         </a>
                                                     </div>
-        
+
                                                 </div>
                                             </li>
                                         </ul>
-                                        <p>The BCG (Bacillus Calmette–Guérin) vaccine provides immunity against Tuberculosis (TB) -
-                                            an infectious bacterial disease that usually affects the lungs. BCG is also used to
+                                        <p>The BCG (Bacillus Calmette–Guérin) vaccine provides immunity against Tuberculosis
+                                            (TB) -
+                                            an infectious bacterial disease that usually affects the lungs. BCG is also used
+                                            to
                                             treat bladder tumours and cancer. After vaccination, it is recommended that the
-                                            vaccination site is loosely covered and kept dry & clean for 24 hours i.e. until the
-                                            local reaction disappears. Your child may experience "flu-like" symptoms for 24–48 hours
+                                            vaccination site is loosely covered and kept dry & clean for 24 hours i.e. until
+                                            the
+                                            local reaction disappears. Your child may experience "flu-like" symptoms for
+                                            24–48 hours
                                             following this vaccination</p>
                                     </div>
-        
+
                                 </div>
-        
+
                                 <div class="accordion-main">
                                     <div class="accordion-header" onclick="toggleAccordion(this)">
                                         <h3 class="accordion-heading">
-        
+
                                             <div class="vc_name">
                                                 <i class="bi bi-heart-pulse-fill"></i>
                                                 <span class="M15_42">1/1</span>
@@ -1635,36 +1720,40 @@
                                                 <div class="vc_date d-flex justify-content-between align-items-center">
                                                     <span class="vc_due left R13_42">Due on</span>
                                                     <span class="vc_date_in left">27 Sep 2022</span>
-        
+
                                                     <div class="vc_mark_done">
                                                         <a href="{{ route('vaccination-mark-done') }}">
                                                             <span class="R13_9e" id="devviewdetails">View details</span>
                                                         </a>
                                                     </div>
-        
+
                                                 </div>
                                             </li>
                                             <li>
                                                 <div class="vc_date d-flex justify-content-between align-items-center">
                                                     <span class="vc_due left R13_42">Due on</span>
                                                     <span class="vc_date_in left">27 Sep 2022</span>
-        
+
                                                     <div class="vc_mark_done">
                                                         <a href="{{ route('vaccination-mark-done') }}">
                                                             <span class="R13_9e" id="devviewdetails">View details</span>
                                                         </a>
                                                     </div>
-        
+
                                                 </div>
                                             </li>
                                         </ul>
-                                        <p>The BCG (Bacillus Calmette–Guérin) vaccine provides immunity against Tuberculosis (TB) -
-                                            an infectious bacterial disease that usually affects the lungs. BCG is also used to
+                                        <p>The BCG (Bacillus Calmette–Guérin) vaccine provides immunity against Tuberculosis
+                                            (TB) -
+                                            an infectious bacterial disease that usually affects the lungs. BCG is also used
+                                            to
                                             treat bladder tumours and cancer. After vaccination, it is recommended that the
-                                            vaccination site is loosely covered and kept dry & clean for 24 hours i.e. until the
-                                            local reaction disappears. Your child may experience "flu-like" symptoms for 24–48 hours
+                                            vaccination site is loosely covered and kept dry & clean for 24 hours i.e. until
+                                            the
+                                            local reaction disappears. Your child may experience "flu-like" symptoms for
+                                            24–48 hours
                                             following this vaccination</p>
-        
+
                                     </div>
                                 </div>
                                 <div class="add_gr_det_btn">
@@ -1675,20 +1764,13 @@
                                     </p>
                                 </div>
                             </div>
-    
+
                         </div>
                     </div>
-                   
+
 
 
                 </div>
-
-
-
-
-
-
-
 
 
                 <div class="downloadApp-right">
