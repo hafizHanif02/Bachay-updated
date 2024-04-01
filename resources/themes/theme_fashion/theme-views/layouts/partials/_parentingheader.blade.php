@@ -776,7 +776,7 @@
 
     </div>
 </header>
-@include('theme-views.partials._add-child-mobile')
+{{-- @include('theme-views.partials._add-child-mobile') --}}
 
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
     <div class="offcanvas-header justify-content-end">
