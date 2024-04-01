@@ -613,7 +613,7 @@
                         </li>
                     @endif
                     @if (auth('customer')->check())
-                        <li class="me-2 me-sm-0 d-none">
+                        <li class="me-2 me-sm-0 d-none d-xl-inline-block">
                             <a href="javascript:">
                                 {{-- <i class="bi bi-person d-none d-xl-inline-block nav-ul_text"
                                     style="font-size: 16px !important"></i> --}}
