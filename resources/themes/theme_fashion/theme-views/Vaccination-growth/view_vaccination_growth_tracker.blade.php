@@ -604,15 +604,12 @@
                                                     style="stroke: rgb(158, 158, 158); stroke-width: 4"></line>
                                             </svg>
                                         </div>
-                                        @if(!empty($birth))
                                         <div class="train_bogi_1 act" id="bg_1" rel="1">
                                             <span class="M13_42">Birth</span>
                                             <div class="train_bogi_tire_1 sub-act"></div>
                                             <div class="train_bogi_tire_2 sub-act"></div>
                                         </div>
-                                        @endif
                                     </div>
-                                    @if(!empty($twoMonth))
                                     <div class="train_bogi_sub">
                                         <div class="train_con">
                                             <svg height="10" width="10">
@@ -626,8 +623,6 @@
                                             <div class="train_bogi_tire_2"></div>
                                         </div>
                                     </div>
-                                    @endif
-                                    @if($fourMonth)
                                     <div class="train_bogi_sub">
                                         <div class="train_con">
                                             <svg height="10" width="10">
@@ -641,8 +636,6 @@
                                             <div class="train_bogi_tire_2"></div>
                                         </div>
                                     </div>
-                                    @endif
-                                    @if($sixMonth)
                                     <div class="train_bogi_sub">
                                         <div class="train_con">
                                             <svg height="10" width="10">
@@ -656,8 +649,6 @@
                                             <div class="train_bogi_tire_2"></div>
                                         </div>
                                     </div>
-                                    @endif
-                                    @if($twelveMonth)
                                     <div class="train_bogi_sub">
                                         <div class="train_con">
                                             <svg height="10" width="10">
@@ -671,8 +662,6 @@
                                             <div class="train_bogi_tire_2"></div>
                                         </div>
                                     </div>
-                                    @endif
-                                    @if($eighteenMonth)
                                     <div class="train_bogi_sub">
                                         <div class="train_con">
                                             <svg height="10" width="10">
@@ -686,8 +675,6 @@
                                             <div class="train_bogi_tire_2"></div>
                                         </div>
                                     </div>
-                                    @endif
-                                    @if($fiveYear)
                                     <div class="train_bogi_sub">
                                         <div class="train_con">
                                             <svg height="10" width="10">
@@ -701,7 +688,6 @@
                                             <div class="train_bogi_tire_2"></div>
                                         </div>
                                     </div>
-                                    @endif
                                 </div>
                             </div>
                         </div>
