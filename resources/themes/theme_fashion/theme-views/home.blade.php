@@ -18,7 +18,7 @@
 
 @section('content')
 
-
+@include('theme-views.partials._add-child-mobile')
 @include('theme-views.partials._custom-page')
 
     @include('theme-views.partials._banner-section')
