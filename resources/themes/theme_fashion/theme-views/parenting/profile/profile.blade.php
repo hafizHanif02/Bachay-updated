@@ -131,8 +131,16 @@
             <div class="personal-details mb-4">
                 <div class="d-flex flex-wrap justify-content-between align-items-center column-gap-4 row-gap-2 mb-4">
                     <h4 class="subtitle m-0 text-capitalize">{{ translate('personal_details') }}</h4>
-                    <a href="{{ route('edit-profile-parenting') }}"
-                        class="cmn-btn __btn-outline rounded-full text-capitalize">{{ translate('edit_profile') }}</a>
+                    <div>
+                        <a href="{{ route('edit-profile-parenting') }}"
+                            class="cmn-btn __btn-outline rounded-full text-capitalize">{{ translate('edit_profile') }}
+                            @include('theme-views.partials.icons._profile-edit')
+                        </a>
+                        <a href="{{ route('user-profile') }}"
+                            class="cmn-btn __btn-outline rounded-full text-capitalize">{{ translate('shopping profile') }}
+                            @include('theme-views.partials.icons._profile-edit')
+                        </a>
+                    </div>
                 </div>
                 <ul class="personal-details-info">
                     <li>

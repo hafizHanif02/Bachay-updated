@@ -7323,4 +7323,9 @@
   'Total_answers' => 'Total answers',
   923123456789 => '923123456789',
   '16th_St _D.H.A._Phase 8_Defence_Housing Authority _Karachi _Sindh_75600' => '16th St  D.H.A. Phase 8 Defence Housing Authority  Karachi  Sindh 75600',
+  'parenting_profile' => 'Parenting profile',
+  'parent_profile' => 'Parent profile',
+  'user-profile' => 'User-profile',
+  'user profile' => 'User profile',
+  'shopping profile' => 'Shopping profile',
 );

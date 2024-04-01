@@ -356,6 +356,9 @@
         color: #fff !important;
         padding: 0;
     }
+    .__dropdown-menu .language li.custom-padding{
+        padding: 5px 10px;
+    }
 </style>
 @if (isset($web_config['announcement']) && $web_config['announcement']['status'] == 1)
     <div class="offer-bar" data-bg-img="{{ theme_asset('assets/img/media/top-offer-bg.png') }}">
@@ -551,13 +554,13 @@
                             <img src="{{ asset('public/images/shopping.gif') }}" alt="" width="30px"
                                 height="30px"> {{ translate('Shopping') }}</a>
                     </li>
-                    <li>
+                    {{-- <li>
                         <a href="#" class="nav-ul_text" style="color: #a866ed !important;">
                             <img class="align-items-center" src="http://localhost/public/images/book.gif"
                                 alt="" width="22px" height="22px">
                             {{ translate('Education') }}
                         </a>
-                    </li>
+                    </li> --}}
 
                     @auth('customer')
                         <li>
@@ -631,18 +634,18 @@
                             </a>
                             <div class="dropdown-menu __dropdown-menu">
                                 <ul class="language">
-                                    <li class="thisIsALinkElement" data-linkpath="{{ route('account-oder') }}">
+                                    <li class="thisIsALinkElement custom-padding" data-linkpath="{{ route('account-oder') }}">
                                         <img loading="lazy"
                                             src="{{ theme_asset('assets/img/user/shopping-bag.svg') }}"
                                             alt="{{ translate('user') }}">
                                         <span>{{ translate('my_order') }}</span>
                                     </li>
-                                    <li class="thisIsALinkElement" data-linkpath="{{ route('user-profile') }}">
+                                    <li class="thisIsALinkElement custom-padding" data-linkpath="{{ route('parenting-profile') }}">
                                         <img loading="lazy" src="{{ theme_asset('assets/img/user/profile.svg') }}"
                                             alt="{{ translate('user') }}">
-                                        <span>{{ translate('my_profile') }}</span>
+                                        <span>{{ translate('parent_profile') }}</span>
                                     </li>
-                                    <li class="thisIsALinkElement"
+                                    <li class="thisIsALinkElement custom-padding"
                                         data-linkpath="{{ route('customer.auth.logout') }}">
                                         <img loading="lazy" src="{{ theme_asset('assets/img/user/logout.svg') }}"
                                             alt="{{ translate('user') }}">
