@@ -155,9 +155,9 @@ class VaccineController extends Controller
             $eighteenMonth = [];
             $fiveYear = [];
             foreach ($vaccines as $vaccine) {
-                $vaccineDate = Carbon::parse($vaccine->vaccination_date);
-                $childDOB = Carbon::parse($child->dob);
-                $ageAtVaccination = $vaccineDate->diffInMonths($childDOB);
+                // $vaccineDate = Carbon::parse($vaccine->vaccination_date);
+                // $childDOB = Carbon::parse($child->dob);
+                $ageAtVaccination = $vaccine->vaccination->age;
                 if ($ageAtVaccination >= 0 && $ageAtVaccination < 2) {
                     $birth[] = $vaccine;
                 } elseif ($ageAtVaccination >= 2 && $ageAtVaccination < 4) {
