@@ -579,14 +579,13 @@
                     <div class="parent-div">
                         <div class="select-div">
                             <select id="select-option">
-                                <option value="option1">
-                          
-                                    
-                                    Hannan<span>'s Vaccination</span>
-                                </option>
-                                <option value="option2">Shahoon<span>'s Vaccination</span></option>
-                                <option value="option3"> Talha<span>'s Vaccination</span></option>
+                                @forelse($childerens as $child)
+                                <a href="{{ route('view-vaccination-growth-tracker', $child->id) }}">
+                                    <option value="option{{ $loop->iteration }}">{{ $child->name }}<span>'s Vaccination</span></option>
+                                </a>
+                                @empty
 
+                                @endforelse 
                             </select>
                         </div>
                     </div>

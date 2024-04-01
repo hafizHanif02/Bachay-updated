@@ -73,7 +73,7 @@ Route::group(['prefix' => 'Q&A', 'as' => 'Q&A.'], function () {
     Route::post('answer.store', [ QnaAnswerController::class, 'store'])->name('answer.store');
 });
 Route::get('vaccination-growth-tracker', [ VaccineController::class, 'Vaccination_home'])->name('vaccination-growth-tracker');
-Route::get('view-vaccination-growth-tracker', [ VaccineController::class, 'Vaccination_growth_tracker'])->name('view-vaccination-growth-tracker');
+Route::get('view-vaccination-growth-tracker/{id}', [ VaccineController::class, 'Vaccination_growth_tracker'])->name('view-vaccination-growth-tracker');
 Route::get('vaccination-mark-done', [ VaccineController::class, 'Vaccination_mark_done'])->name('vaccination-mark-done');
 
 Route::get('custom_page',[ CustomPageController::class,'CustomPageHome'])->name('custom_page');
