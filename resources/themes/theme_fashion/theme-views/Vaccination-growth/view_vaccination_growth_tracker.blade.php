@@ -24,7 +24,7 @@
         width: 70%;
         border: 1px solid #ededed;
         border-radius: 3px;
-        padding: 10px;
+        padding: 0 10px 10px 10px;
     }
 
     .vaccine_main {
@@ -553,72 +553,21 @@
         height: 90vh;
         overflow-y: scroll;
     }
-
-    #select-option {
+    #select-option{
         width: 100%;
         padding: 10px;
         border: none;
         font-size: 24px;
-        font-weight: 600;
-        color: #f56996;
-
+    font-weight: 600;
+    color: #f56996;
+    
     }
-
-    #select-option option {
-        font-size: 15px;
-        font-weight: 400;
+    #select-option option{
+    font-size: 15px;
+    font-weight: 400;
 
     }
 </style>
-
-
-<style>
-    .select-child-option {
-        background-color: #f9f9f9;
-        color: #333;
-        cursor: pointer;
-        padding: 18px;
-        width: 100%;
-        border: none;
-        text-align: left;
-        outline: none;
-    }
-  
-    .select-child-option:after {
-        content: '\02795';
-        font-size: 13px;
-        float: right;
-        margin-left: 5px;
-    }
-  
-    .active:after {
-        content: "\2796";
-    }
-  
-    .panel {
-       
-        display: none;
-        background-color: white;
-        overflow: hidden;
-        transition: max-height 0.5s ease-out;
-    }
-  
-    .panel button {
-        padding: 18px !important;
-        display: block;
-        width: 100%;
-        
-        margin: 5px 0;
-        border: none;
-        cursor: pointer;
-        transition: background-color 0.3s;
-        text-align: left;
-    }
-  
-    .panel button:hover {
-        background-color: #ccc;
-    }
-  </style>
 @section('content')
     <div class="container">
         <div class="vaccination-growth-container">
@@ -628,7 +577,7 @@
             <div class="vaccination-growth-child-container d-flex">
                 <div class="vaccination-mainp">
                     <div class="parent-div">
-                        {{-- <div class="select-div">
+                        <div class="select-div">
                             <select id="select-option">
                                 @forelse($childerens as $child)
                                 <a href="{{ route('view-vaccination-growth-tracker', $child->id) }}">
@@ -638,15 +587,7 @@
 
                                 @endforelse 
                             </select>
-                        </div> --}}
-                        <button class="select-child-option">Shahoon</button>
-                        <div class="panel">
-                            <button onclick="selectOption(this)">Ahmed</button>
-                            <button onclick="selectOption(this)">Aryan</button>
-                            <button onclick="selectOption(this)">Talha</button>
-                            <button onclick="selectOption(this)">Ali</button>
                         </div>
-
                     </div>
                     <div class="train_container">
                         <div class="train_main">
@@ -663,14 +604,15 @@
                                                     style="stroke: rgb(158, 158, 158); stroke-width: 4"></line>
                                             </svg>
                                         </div>
-                                        @if (!empty($birth))
-                                            <div class="train_bogi_1 act" id="bg_1" rel="1">
-                                                <span class="M13_42">Birth</span>
-                                                <div class="train_bogi_tire_1 sub-act"></div>
-                                                <div class="train_bogi_tire_2 sub-act"></div>
-                                            </div>
+                                        @if(!empty($birth))
+                                        <div class="train_bogi_1 act" id="bg_1" rel="1">
+                                            <span class="M13_42">Birth</span>
+                                            <div class="train_bogi_tire_1 sub-act"></div>
+                                            <div class="train_bogi_tire_2 sub-act"></div>
+                                        </div>
                                         @endif
                                     </div>
+                                    @if(!empty($twoMonth))
                                     <div class="train_bogi_sub">
                                         <div class="train_con">
                                             <svg height="10" width="10">
@@ -684,6 +626,8 @@
                                             <div class="train_bogi_tire_2"></div>
                                         </div>
                                     </div>
+                                    @endif
+                                    @if($fourMonth)
                                     <div class="train_bogi_sub">
                                         <div class="train_con">
                                             <svg height="10" width="10">
@@ -697,6 +641,8 @@
                                             <div class="train_bogi_tire_2"></div>
                                         </div>
                                     </div>
+                                    @endif
+                                    @if($sixMonth)
                                     <div class="train_bogi_sub">
                                         <div class="train_con">
                                             <svg height="10" width="10">
@@ -710,6 +656,8 @@
                                             <div class="train_bogi_tire_2"></div>
                                         </div>
                                     </div>
+                                    @endif
+                                    @if($twelveMonth)
                                     <div class="train_bogi_sub">
                                         <div class="train_con">
                                             <svg height="10" width="10">
@@ -723,6 +671,8 @@
                                             <div class="train_bogi_tire_2"></div>
                                         </div>
                                     </div>
+                                    @endif
+                                    @if($eighteenMonth)
                                     <div class="train_bogi_sub">
                                         <div class="train_con">
                                             <svg height="10" width="10">
@@ -736,6 +686,8 @@
                                             <div class="train_bogi_tire_2"></div>
                                         </div>
                                     </div>
+                                    @endif
+                                    @if($fiveYear)
                                     <div class="train_bogi_sub">
                                         <div class="train_con">
                                             <svg height="10" width="10">
@@ -749,178 +701,91 @@
                                             <div class="train_bogi_tire_2"></div>
                                         </div>
                                     </div>
+                                    @endif
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="child__main_vcc_container">
-                        @if (!empty($birth))
-                            <div class="vaccination__child">
-                                <div class="vacc_main_con">
-                                    <div class="vc_sub_con d-flex justify-content-between">
-                                        <i class="bi bi-activity" style="font-size: 80px; color: #fff;"></i>
-                                        <h3 class="text-light d-flex align-items-center font-poppins">Birth</h3>
-                                        <div class="status_main">
-                                            <div class="status_overdue">
-                                                <div class="overdue_crl" style="background-color: #e9514e;">
-                                                    <p>00</p>
-                                                </div>
-                                                <div class="overdue_txt">
-                                                    <span class="R12_white">overdue</span>
-                                                </div>
+                        @if(!empty($birth))
+                        <div class="vaccination__child">
+                            <div class="vacc_main_con">
+                                <div class="vc_sub_con d-flex justify-content-between">
+                                    <i class="bi bi-activity" style="font-size: 80px; color: #fff;"></i>
+                                    <h3 class="text-light d-flex align-items-center font-poppins">Birth</h3>
+                                    <div class="status_main">
+                                        <div class="status_overdue">
+                                            <div class="overdue_crl" style="background-color: #e9514e;">
+                                                <p>00</p>
                                             </div>
-                                            <div class="status_overdue">
-                                                <div class="overdue_crl" style="background-color: #feb134;">
-                                                    <p>00</p>
-                                                </div>
-                                                <div class="overdue_txt">
-                                                    <span class="R12_white">upcoming</span>
-                                                </div>
+                                            <div class="overdue_txt">
+                                                <span class="R12_white">overdue</span>
                                             </div>
-                                            <div class="status_overdue">
-                                                <div class="overdue_crl" style="background-color: #8cbc59;">
-                                                    <p>2</p>
-                                                </div>
-                                                <div class="overdue_txt">
-                                                    <span class="R12_white">done</span>
-                                                </div>
+                                        </div>
+                                        <div class="status_overdue">
+                                            <div class="overdue_crl" style="background-color: #feb134;">
+                                                <p>00</p>
+                                            </div>
+                                            <div class="overdue_txt">
+                                                <span class="R12_white">upcoming</span>
+                                            </div>
+                                        </div>
+                                        <div class="status_overdue">
+                                            <div class="overdue_crl" style="background-color: #8cbc59;">
+                                                <p>2</p>
+                                            </div>
+                                            <div class="overdue_txt">
+                                                <span class="R12_white">done</span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="vcc_main_acc">
-                                    <div class="accordion-main">
-                                        <div class="accordion-header" onclick="toggleAccordion(this)">
-                                            <h3 class="accordion-heading">
-
-                                                <div class="vc_name">
-                                                    <i class="bi bi-heart-pulse-fill"></i>
-                                                    <span class="M15_42">1/1</span>
-                                                    <span class="R12_75">(1/1)</span>
-                                                </div>
-                                            </h3>
-                                            <div class="accordion-icon" id="accordion-icon">+</div>
-                                        </div>
-                                        <div class="accordion-content">
-                                            <ul>
-                                                <li>
-                                                    <div class="vc_date d-flex justify-content-between align-items-center">
-                                                        <span class="vc_due left R13_42">Due on</span>
-                                                        <span class="vc_date_in left">27 Sep 2022</span>
-
-                                                        <div class="vc_mark_done">
-                                                            <a href="{{ route('vaccination-mark-done') }}">
-                                                                <span class="R13_9e" id="devviewdetails">View
-                                                                    details</span>
-                                                            </a>
-                                                        </div>
-
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="vc_date d-flex justify-content-between align-items-center">
-                                                        <span class="vc_due left R13_42">Due on</span>
-                                                        <span class="vc_date_in left">27 Sep 2022</span>
-
-                                                        <div class="vc_mark_done">
-                                                            <a href="{{ route('vaccination-mark-done') }}">
-                                                                <span class="R13_9e" id="devviewdetails">View
-                                                                    details</span>
-                                                            </a>
-                                                        </div>
-
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                            <p>The BCG (Bacillus Calmette–Guérin) vaccine provides immunity against
-                                                Tuberculosis
-                                                (TB) -
-                                                an infectious bacterial disease that usually affects the lungs. BCG is also
-                                                used
-                                                to
-                                                treat bladder tumours and cancer. After vaccination, it is recommended that
-                                                the
-                                                vaccination site is loosely covered and kept dry & clean for 24 hours i.e.
-                                                until
-                                                the
-                                                local reaction disappears. Your child may experience "flu-like" symptoms for
-                                                24–48 hours
-                                                following this vaccination</p>
-                                        </div>
-
-                                    </div>
-
-                                    <div class="accordion-main">
-                                        <div class="accordion-header" onclick="toggleAccordion(this)">
-                                            <h3 class="accordion-heading">
-
-                                                <div class="vc_name">
-                                                    <i class="bi bi-heart-pulse-fill"></i>
-                                                    <span class="M15_42">1/1</span>
-                                                    <span class="R12_75">(1/4)</span>
-                                                </div>
-                                            </h3>
-                                            <div class="accordion-icon" id="accordion-icon">+</div>
-                                        </div>
-                                        <div class="accordion-content">
-                                            <ul>
-                                                <li>
-                                                    <div class="vc_date d-flex justify-content-between align-items-center">
-                                                        <span class="vc_due left R13_42">Due on</span>
-                                                        <span class="vc_date_in left">27 Sep 2022</span>
-
-                                                        <div class="vc_mark_done">
-                                                            <a href="{{ route('vaccination-mark-done') }}">
-                                                                <span class="R13_9e" id="devviewdetails">View
-                                                                    details</span>
-                                                            </a>
-                                                        </div>
-
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="vc_date d-flex justify-content-between align-items-center">
-                                                        <span class="vc_due left R13_42">Due on</span>
-                                                        <span class="vc_date_in left">27 Sep 2022</span>
-
-                                                        <div class="vc_mark_done">
-                                                            <a href="{{ route('vaccination-mark-done') }}">
-                                                                <span class="R13_9e" id="devviewdetails">View
-                                                                    details</span>
-                                                            </a>
-                                                        </div>
-
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                            <p>The BCG (Bacillus Calmette–Guérin) vaccine provides immunity against
-                                                Tuberculosis
-                                                (TB) -
-                                                an infectious bacterial disease that usually affects the lungs. BCG is also
-                                                used
-                                                to
-                                                treat bladder tumours and cancer. After vaccination, it is recommended that
-                                                the
-                                                vaccination site is loosely covered and kept dry & clean for 24 hours i.e.
-                                                until
-                                                the
-                                                local reaction disappears. Your child may experience "flu-like" symptoms for
-                                                24–48 hours
-                                                following this vaccination</p>
-
-                                        </div>
-                                    </div>
-                                    <div class="add_gr_det_btn">
-                                        <p class="view-growth-details text-end">
-                                            <a href="#">
-                                                View growth details for Birth
-                                            </a>
-                                        </p>
-                                    </div>
-                                </div>
-
                             </div>
+                            <div class="vcc_main_acc">
+                                @foreach($birth as $vaccine_data)
+                                    <div class="accordion-main">
+                                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                                            <h3 class="accordion-heading">
+
+                                                <div class="vc_name">
+                                                    <i class="bi bi-heart-pulse-fill"></i>
+                                                    <span class="M15_42">{{ $vaccine_data->vaccination->name }}</span>
+                                                </div>
+                                            </h3>
+                                            <div class="accordion-icon" id="accordion-icon">+</div>
+                                        </div>
+                                        <div class="accordion-content">
+                                            <ul>
+                                                <li>
+                                                    <div class="vc_date d-flex justify-content-between align-items-center">
+                                                        <span class="vc_due left R13_42">Vaccine Date</span>
+                                                        <span class="vc_date_in left">{{ \Carbon\Carbon::parse($vaccine_data->vaccination_date)->format('d M Y') }}</span>
+
+                                                        <div class="vc_mark_done">
+                                                            <a href="{{ route('vaccination-mark-done') }}">
+                                                                <span class="R13_9e" id="devviewdetails">View details</span>
+                                                            </a>
+                                                        </div>
+
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                            <p>{{ $vaccine_data->vaccination->how }}</p>
+                                        </div>  
+                                    </div>
+                                @endforeach    
+                                <div class="add_gr_det_btn">
+                                    <p class="view-growth-details text-end">
+                                        <a href="#">
+                                            View growth details for Birth
+                                        </a>
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
                         @endif
+                        @if(!empty($twoMonth))
                         <div class="vaccination__child">
                             <div class="vacc_main_con">
                                 <div class="vc_sub_con d-flex justify-content-between">
@@ -955,115 +820,38 @@
                                 </div>
                             </div>
                             <div class="vcc_main_acc">
-                                <div class="accordion-main">
-                                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                                        <h3 class="accordion-heading">
+                                @foreach($twoMonth as $vaccine_data)
+                                    <div class="accordion-main">
+                                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                                            <h3 class="accordion-heading">
 
-                                            <div class="vc_name">
-                                                <i class="bi bi-heart-pulse-fill"></i>
-                                                <span class="M15_42">1/1</span>
-                                                <span class="R12_75">(1/1)</span>
-                                            </div>
-                                        </h3>
-                                        <div class="accordion-icon" id="accordion-icon">+</div>
-                                    </div>
-                                    <div class="accordion-content">
-                                        <ul>
-                                            <li>
-                                                <div class="vc_date d-flex justify-content-between align-items-center">
-                                                    <span class="vc_due left R13_42">Due on</span>
-                                                    <span class="vc_date_in left">27 Sep 2022</span>
-
-                                                    <div class="vc_mark_done">
-                                                        <a href="{{ route('vaccination-mark-done') }}">
-                                                            <span class="R13_9e" id="devviewdetails">View details</span>
-                                                        </a>
-                                                    </div>
-
+                                                <div class="vc_name">
+                                                    <i class="bi bi-heart-pulse-fill"></i>
+                                                    <span class="M15_42">{{ $vaccine_data->vaccination->name }}</span>
                                                 </div>
-                                            </li>
-                                            <li>
-                                                <div class="vc_date d-flex justify-content-between align-items-center">
-                                                    <span class="vc_due left R13_42">Due on</span>
-                                                    <span class="vc_date_in left">27 Sep 2022</span>
+                                            </h3>
+                                            <div class="accordion-icon" id="accordion-icon">+</div>
+                                        </div>
+                                        <div class="accordion-content">
+                                            <ul>
+                                                <li>
+                                                    <div class="vc_date d-flex justify-content-between align-items-center">
+                                                        <span class="vc_due left R13_42">Vaccine Date</span>
+                                                        <span class="vc_date_in left">{{ \Carbon\Carbon::parse($vaccine_data->vaccination_date)->format('d M Y') }}</span>
 
-                                                    <div class="vc_mark_done">
-                                                        <a href="{{ route('vaccination-mark-done') }}">
-                                                            <span class="R13_9e" id="devviewdetails">View details</span>
-                                                        </a>
+                                                        <div class="vc_mark_done">
+                                                            <a href="{{ route('vaccination-mark-done') }}">
+                                                                <span class="R13_9e" id="devviewdetails">View details</span>
+                                                            </a>
+                                                        </div>
+
                                                     </div>
-
-                                                </div>
-                                            </li>
-                                        </ul>
-                                        <p>The BCG (Bacillus Calmette–Guérin) vaccine provides immunity against Tuberculosis
-                                            (TB) -
-                                            an infectious bacterial disease that usually affects the lungs. BCG is also used
-                                            to
-                                            treat bladder tumours and cancer. After vaccination, it is recommended that the
-                                            vaccination site is loosely covered and kept dry & clean for 24 hours i.e. until
-                                            the
-                                            local reaction disappears. Your child may experience "flu-like" symptoms for
-                                            24–48 hours
-                                            following this vaccination</p>
+                                                </li>
+                                            </ul>
+                                            <p>{{ $vaccine_data->vaccination->how }}</p>
+                                        </div>  
                                     </div>
-
-                                </div>
-
-                                <div class="accordion-main">
-                                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                                        <h3 class="accordion-heading">
-
-                                            <div class="vc_name">
-                                                <i class="bi bi-heart-pulse-fill"></i>
-                                                <span class="M15_42">1/1</span>
-                                                <span class="R12_75">(1/4)</span>
-                                            </div>
-                                        </h3>
-                                        <div class="accordion-icon" id="accordion-icon">+</div>
-                                    </div>
-                                    <div class="accordion-content">
-                                        <ul>
-                                            <li>
-                                                <div class="vc_date d-flex justify-content-between align-items-center">
-                                                    <span class="vc_due left R13_42">Due on</span>
-                                                    <span class="vc_date_in left">27 Sep 2022</span>
-
-                                                    <div class="vc_mark_done">
-                                                        <a href="{{ route('vaccination-mark-done') }}">
-                                                            <span class="R13_9e" id="devviewdetails">View details</span>
-                                                        </a>
-                                                    </div>
-
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="vc_date d-flex justify-content-between align-items-center">
-                                                    <span class="vc_due left R13_42">Due on</span>
-                                                    <span class="vc_date_in left">27 Sep 2022</span>
-
-                                                    <div class="vc_mark_done">
-                                                        <a href="{{ route('vaccination-mark-done') }}">
-                                                            <span class="R13_9e" id="devviewdetails">View details</span>
-                                                        </a>
-                                                    </div>
-
-                                                </div>
-                                            </li>
-                                        </ul>
-                                        <p>The BCG (Bacillus Calmette–Guérin) vaccine provides immunity against Tuberculosis
-                                            (TB) -
-                                            an infectious bacterial disease that usually affects the lungs. BCG is also used
-                                            to
-                                            treat bladder tumours and cancer. After vaccination, it is recommended that the
-                                            vaccination site is loosely covered and kept dry & clean for 24 hours i.e. until
-                                            the
-                                            local reaction disappears. Your child may experience "flu-like" symptoms for
-                                            24–48 hours
-                                            following this vaccination</p>
-
-                                    </div>
-                                </div>
+                                @endforeach    
                                 <div class="add_gr_det_btn">
                                     <p class="view-growth-details text-end">
                                         <a href="#">
@@ -1074,6 +862,8 @@
                             </div>
 
                         </div>
+                        @endif
+                        @if(!empty($fourMonth))
                         <div class="vaccination__child">
                             <div class="vacc_main_con">
                                 <div class="vc_sub_con d-flex justify-content-between">
@@ -1108,115 +898,38 @@
                                 </div>
                             </div>
                             <div class="vcc_main_acc">
-                                <div class="accordion-main">
-                                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                                        <h3 class="accordion-heading">
+                                @foreach($fourMonth as $vaccine_data)
+                                    <div class="accordion-main">
+                                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                                            <h3 class="accordion-heading">
 
-                                            <div class="vc_name">
-                                                <i class="bi bi-heart-pulse-fill"></i>
-                                                <span class="M15_42">1/1</span>
-                                                <span class="R12_75">(1/1)</span>
-                                            </div>
-                                        </h3>
-                                        <div class="accordion-icon" id="accordion-icon">+</div>
-                                    </div>
-                                    <div class="accordion-content">
-                                        <ul>
-                                            <li>
-                                                <div class="vc_date d-flex justify-content-between align-items-center">
-                                                    <span class="vc_due left R13_42">Due on</span>
-                                                    <span class="vc_date_in left">27 Sep 2022</span>
-
-                                                    <div class="vc_mark_done">
-                                                        <a href="{{ route('vaccination-mark-done') }}">
-                                                            <span class="R13_9e" id="devviewdetails">View details</span>
-                                                        </a>
-                                                    </div>
-
+                                                <div class="vc_name">
+                                                    <i class="bi bi-heart-pulse-fill"></i>
+                                                    <span class="M15_42">{{ $vaccine_data->vaccination->name }}</span>
                                                 </div>
-                                            </li>
-                                            <li>
-                                                <div class="vc_date d-flex justify-content-between align-items-center">
-                                                    <span class="vc_due left R13_42">Due on</span>
-                                                    <span class="vc_date_in left">27 Sep 2022</span>
+                                            </h3>
+                                            <div class="accordion-icon" id="accordion-icon">+</div>
+                                        </div>
+                                        <div class="accordion-content">
+                                            <ul>
+                                                <li>
+                                                    <div class="vc_date d-flex justify-content-between align-items-center">
+                                                        <span class="vc_due left R13_42">Vaccine Date</span>
+                                                        <span class="vc_date_in left">{{ \Carbon\Carbon::parse($vaccine_data->vaccination_date)->format('d M Y') }}</span>
 
-                                                    <div class="vc_mark_done">
-                                                        <a href="{{ route('vaccination-mark-done') }}">
-                                                            <span class="R13_9e" id="devviewdetails">View details</span>
-                                                        </a>
+                                                        <div class="vc_mark_done">
+                                                            <a href="{{ route('vaccination-mark-done') }}">
+                                                                <span class="R13_9e" id="devviewdetails">View details</span>
+                                                            </a>
+                                                        </div>
+
                                                     </div>
-
-                                                </div>
-                                            </li>
-                                        </ul>
-                                        <p>The BCG (Bacillus Calmette–Guérin) vaccine provides immunity against Tuberculosis
-                                            (TB) -
-                                            an infectious bacterial disease that usually affects the lungs. BCG is also used
-                                            to
-                                            treat bladder tumours and cancer. After vaccination, it is recommended that the
-                                            vaccination site is loosely covered and kept dry & clean for 24 hours i.e. until
-                                            the
-                                            local reaction disappears. Your child may experience "flu-like" symptoms for
-                                            24–48 hours
-                                            following this vaccination</p>
+                                                </li>
+                                            </ul>
+                                            <p>{{ $vaccine_data->vaccination->how }}</p>
+                                        </div>  
                                     </div>
-
-                                </div>
-
-                                <div class="accordion-main">
-                                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                                        <h3 class="accordion-heading">
-
-                                            <div class="vc_name">
-                                                <i class="bi bi-heart-pulse-fill"></i>
-                                                <span class="M15_42">1/1</span>
-                                                <span class="R12_75">(1/4)</span>
-                                            </div>
-                                        </h3>
-                                        <div class="accordion-icon" id="accordion-icon">+</div>
-                                    </div>
-                                    <div class="accordion-content">
-                                        <ul>
-                                            <li>
-                                                <div class="vc_date d-flex justify-content-between align-items-center">
-                                                    <span class="vc_due left R13_42">Due on</span>
-                                                    <span class="vc_date_in left">27 Sep 2022</span>
-
-                                                    <div class="vc_mark_done">
-                                                        <a href="{{ route('vaccination-mark-done') }}">
-                                                            <span class="R13_9e" id="devviewdetails">View details</span>
-                                                        </a>
-                                                    </div>
-
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="vc_date d-flex justify-content-between align-items-center">
-                                                    <span class="vc_due left R13_42">Due on</span>
-                                                    <span class="vc_date_in left">27 Sep 2022</span>
-
-                                                    <div class="vc_mark_done">
-                                                        <a href="{{ route('vaccination-mark-done') }}">
-                                                            <span class="R13_9e" id="devviewdetails">View details</span>
-                                                        </a>
-                                                    </div>
-
-                                                </div>
-                                            </li>
-                                        </ul>
-                                        <p>The BCG (Bacillus Calmette–Guérin) vaccine provides immunity against Tuberculosis
-                                            (TB) -
-                                            an infectious bacterial disease that usually affects the lungs. BCG is also used
-                                            to
-                                            treat bladder tumours and cancer. After vaccination, it is recommended that the
-                                            vaccination site is loosely covered and kept dry & clean for 24 hours i.e. until
-                                            the
-                                            local reaction disappears. Your child may experience "flu-like" symptoms for
-                                            24–48 hours
-                                            following this vaccination</p>
-
-                                    </div>
-                                </div>
+                                @endforeach    
                                 <div class="add_gr_det_btn">
                                     <p class="view-growth-details text-end">
                                         <a href="#">
@@ -1227,6 +940,8 @@
                             </div>
 
                         </div>
+                        @endif
+                        @if(!empty($sixMonth))
                         <div class="vaccination__child">
                             <div class="vacc_main_con">
                                 <div class="vc_sub_con d-flex justify-content-between">
@@ -1261,115 +976,38 @@
                                 </div>
                             </div>
                             <div class="vcc_main_acc">
-                                <div class="accordion-main">
-                                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                                        <h3 class="accordion-heading">
+                                @foreach($sixMonth as $vaccine_data)
+                                    <div class="accordion-main">
+                                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                                            <h3 class="accordion-heading">
 
-                                            <div class="vc_name">
-                                                <i class="bi bi-heart-pulse-fill"></i>
-                                                <span class="M15_42">1/1</span>
-                                                <span class="R12_75">(1/1)</span>
-                                            </div>
-                                        </h3>
-                                        <div class="accordion-icon" id="accordion-icon">+</div>
-                                    </div>
-                                    <div class="accordion-content">
-                                        <ul>
-                                            <li>
-                                                <div class="vc_date d-flex justify-content-between align-items-center">
-                                                    <span class="vc_due left R13_42">Due on</span>
-                                                    <span class="vc_date_in left">27 Sep 2022</span>
-
-                                                    <div class="vc_mark_done">
-                                                        <a href="{{ route('vaccination-mark-done') }}">
-                                                            <span class="R13_9e" id="devviewdetails">View details</span>
-                                                        </a>
-                                                    </div>
-
+                                                <div class="vc_name">
+                                                    <i class="bi bi-heart-pulse-fill"></i>
+                                                    <span class="M15_42">{{ $vaccine_data->vaccination->name }}</span>
                                                 </div>
-                                            </li>
-                                            <li>
-                                                <div class="vc_date d-flex justify-content-between align-items-center">
-                                                    <span class="vc_due left R13_42">Due on</span>
-                                                    <span class="vc_date_in left">27 Sep 2022</span>
+                                            </h3>
+                                            <div class="accordion-icon" id="accordion-icon">+</div>
+                                        </div>
+                                        <div class="accordion-content">
+                                            <ul>
+                                                <li>
+                                                    <div class="vc_date d-flex justify-content-between align-items-center">
+                                                        <span class="vc_due left R13_42">Vaccine Date</span>
+                                                        <span class="vc_date_in left">{{ \Carbon\Carbon::parse($vaccine_data->vaccination_date)->format('d M Y') }}</span>
 
-                                                    <div class="vc_mark_done">
-                                                        <a href="{{ route('vaccination-mark-done') }}">
-                                                            <span class="R13_9e" id="devviewdetails">View details</span>
-                                                        </a>
+                                                        <div class="vc_mark_done">
+                                                            <a href="{{ route('vaccination-mark-done') }}">
+                                                                <span class="R13_9e" id="devviewdetails">View details</span>
+                                                            </a>
+                                                        </div>
+
                                                     </div>
-
-                                                </div>
-                                            </li>
-                                        </ul>
-                                        <p>The BCG (Bacillus Calmette–Guérin) vaccine provides immunity against Tuberculosis
-                                            (TB) -
-                                            an infectious bacterial disease that usually affects the lungs. BCG is also used
-                                            to
-                                            treat bladder tumours and cancer. After vaccination, it is recommended that the
-                                            vaccination site is loosely covered and kept dry & clean for 24 hours i.e. until
-                                            the
-                                            local reaction disappears. Your child may experience "flu-like" symptoms for
-                                            24–48 hours
-                                            following this vaccination</p>
+                                                </li>
+                                            </ul>
+                                            <p>{{ $vaccine_data->vaccination->how }}</p>
+                                        </div>  
                                     </div>
-
-                                </div>
-
-                                <div class="accordion-main">
-                                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                                        <h3 class="accordion-heading">
-
-                                            <div class="vc_name">
-                                                <i class="bi bi-heart-pulse-fill"></i>
-                                                <span class="M15_42">1/1</span>
-                                                <span class="R12_75">(1/4)</span>
-                                            </div>
-                                        </h3>
-                                        <div class="accordion-icon" id="accordion-icon">+</div>
-                                    </div>
-                                    <div class="accordion-content">
-                                        <ul>
-                                            <li>
-                                                <div class="vc_date d-flex justify-content-between align-items-center">
-                                                    <span class="vc_due left R13_42">Due on</span>
-                                                    <span class="vc_date_in left">27 Sep 2022</span>
-
-                                                    <div class="vc_mark_done">
-                                                        <a href="{{ route('vaccination-mark-done') }}">
-                                                            <span class="R13_9e" id="devviewdetails">View details</span>
-                                                        </a>
-                                                    </div>
-
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="vc_date d-flex justify-content-between align-items-center">
-                                                    <span class="vc_due left R13_42">Due on</span>
-                                                    <span class="vc_date_in left">27 Sep 2022</span>
-
-                                                    <div class="vc_mark_done">
-                                                        <a href="{{ route('vaccination-mark-done') }}">
-                                                            <span class="R13_9e" id="devviewdetails">View details</span>
-                                                        </a>
-                                                    </div>
-
-                                                </div>
-                                            </li>
-                                        </ul>
-                                        <p>The BCG (Bacillus Calmette–Guérin) vaccine provides immunity against Tuberculosis
-                                            (TB) -
-                                            an infectious bacterial disease that usually affects the lungs. BCG is also used
-                                            to
-                                            treat bladder tumours and cancer. After vaccination, it is recommended that the
-                                            vaccination site is loosely covered and kept dry & clean for 24 hours i.e. until
-                                            the
-                                            local reaction disappears. Your child may experience "flu-like" symptoms for
-                                            24–48 hours
-                                            following this vaccination</p>
-
-                                    </div>
-                                </div>
+                                @endforeach    
                                 <div class="add_gr_det_btn">
                                     <p class="view-growth-details text-end">
                                         <a href="#">
@@ -1380,6 +1018,8 @@
                             </div>
 
                         </div>
+                        @endif
+                        @if(!empty($twelveMonth))
                         <div class="vaccination__child">
                             <div class="vacc_main_con">
                                 <div class="vc_sub_con d-flex justify-content-between">
@@ -1414,115 +1054,38 @@
                                 </div>
                             </div>
                             <div class="vcc_main_acc">
-                                <div class="accordion-main">
-                                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                                        <h3 class="accordion-heading">
+                                @foreach($twelveMonth as $vaccine_data)
+                                    <div class="accordion-main">
+                                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                                            <h3 class="accordion-heading">
 
-                                            <div class="vc_name">
-                                                <i class="bi bi-heart-pulse-fill"></i>
-                                                <span class="M15_42">1/1</span>
-                                                <span class="R12_75">(1/1)</span>
-                                            </div>
-                                        </h3>
-                                        <div class="accordion-icon" id="accordion-icon">+</div>
-                                    </div>
-                                    <div class="accordion-content">
-                                        <ul>
-                                            <li>
-                                                <div class="vc_date d-flex justify-content-between align-items-center">
-                                                    <span class="vc_due left R13_42">Due on</span>
-                                                    <span class="vc_date_in left">27 Sep 2022</span>
-
-                                                    <div class="vc_mark_done">
-                                                        <a href="{{ route('vaccination-mark-done') }}">
-                                                            <span class="R13_9e" id="devviewdetails">View details</span>
-                                                        </a>
-                                                    </div>
-
+                                                <div class="vc_name">
+                                                    <i class="bi bi-heart-pulse-fill"></i>
+                                                    <span class="M15_42">{{ $vaccine_data->vaccination->name }}</span>
                                                 </div>
-                                            </li>
-                                            <li>
-                                                <div class="vc_date d-flex justify-content-between align-items-center">
-                                                    <span class="vc_due left R13_42">Due on</span>
-                                                    <span class="vc_date_in left">27 Sep 2022</span>
+                                            </h3>
+                                            <div class="accordion-icon" id="accordion-icon">+</div>
+                                        </div>
+                                        <div class="accordion-content">
+                                            <ul>
+                                                <li>
+                                                    <div class="vc_date d-flex justify-content-between align-items-center">
+                                                        <span class="vc_due left R13_42">Vaccine Date</span>
+                                                        <span class="vc_date_in left">{{ \Carbon\Carbon::parse($vaccine_data->vaccination_date)->format('d M Y') }}</span>
 
-                                                    <div class="vc_mark_done">
-                                                        <a href="{{ route('vaccination-mark-done') }}">
-                                                            <span class="R13_9e" id="devviewdetails">View details</span>
-                                                        </a>
+                                                        <div class="vc_mark_done">
+                                                            <a href="{{ route('vaccination-mark-done') }}">
+                                                                <span class="R13_9e" id="devviewdetails">View details</span>
+                                                            </a>
+                                                        </div>
+
                                                     </div>
-
-                                                </div>
-                                            </li>
-                                        </ul>
-                                        <p>The BCG (Bacillus Calmette–Guérin) vaccine provides immunity against Tuberculosis
-                                            (TB) -
-                                            an infectious bacterial disease that usually affects the lungs. BCG is also used
-                                            to
-                                            treat bladder tumours and cancer. After vaccination, it is recommended that the
-                                            vaccination site is loosely covered and kept dry & clean for 24 hours i.e. until
-                                            the
-                                            local reaction disappears. Your child may experience "flu-like" symptoms for
-                                            24–48 hours
-                                            following this vaccination</p>
+                                                </li>
+                                            </ul>
+                                            <p>{{ $vaccine_data->vaccination->how }}</p>
+                                        </div>  
                                     </div>
-
-                                </div>
-
-                                <div class="accordion-main">
-                                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                                        <h3 class="accordion-heading">
-
-                                            <div class="vc_name">
-                                                <i class="bi bi-heart-pulse-fill"></i>
-                                                <span class="M15_42">1/1</span>
-                                                <span class="R12_75">(1/4)</span>
-                                            </div>
-                                        </h3>
-                                        <div class="accordion-icon" id="accordion-icon">+</div>
-                                    </div>
-                                    <div class="accordion-content">
-                                        <ul>
-                                            <li>
-                                                <div class="vc_date d-flex justify-content-between align-items-center">
-                                                    <span class="vc_due left R13_42">Due on</span>
-                                                    <span class="vc_date_in left">27 Sep 2022</span>
-
-                                                    <div class="vc_mark_done">
-                                                        <a href="{{ route('vaccination-mark-done') }}">
-                                                            <span class="R13_9e" id="devviewdetails">View details</span>
-                                                        </a>
-                                                    </div>
-
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="vc_date d-flex justify-content-between align-items-center">
-                                                    <span class="vc_due left R13_42">Due on</span>
-                                                    <span class="vc_date_in left">27 Sep 2022</span>
-
-                                                    <div class="vc_mark_done">
-                                                        <a href="{{ route('vaccination-mark-done') }}">
-                                                            <span class="R13_9e" id="devviewdetails">View details</span>
-                                                        </a>
-                                                    </div>
-
-                                                </div>
-                                            </li>
-                                        </ul>
-                                        <p>The BCG (Bacillus Calmette–Guérin) vaccine provides immunity against Tuberculosis
-                                            (TB) -
-                                            an infectious bacterial disease that usually affects the lungs. BCG is also used
-                                            to
-                                            treat bladder tumours and cancer. After vaccination, it is recommended that the
-                                            vaccination site is loosely covered and kept dry & clean for 24 hours i.e. until
-                                            the
-                                            local reaction disappears. Your child may experience "flu-like" symptoms for
-                                            24–48 hours
-                                            following this vaccination</p>
-
-                                    </div>
-                                </div>
+                                @endforeach    
                                 <div class="add_gr_det_btn">
                                     <p class="view-growth-details text-end">
                                         <a href="#">
@@ -1533,6 +1096,8 @@
                             </div>
 
                         </div>
+                        @endif
+                        @if(!empty($eighteenMonth))
                         <div class="vaccination__child">
                             <div class="vacc_main_con">
                                 <div class="vc_sub_con d-flex justify-content-between">
@@ -1567,115 +1132,38 @@
                                 </div>
                             </div>
                             <div class="vcc_main_acc">
-                                <div class="accordion-main">
-                                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                                        <h3 class="accordion-heading">
+                                @foreach($eighteenMonth as $vaccine_data)
+                                    <div class="accordion-main">
+                                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                                            <h3 class="accordion-heading">
 
-                                            <div class="vc_name">
-                                                <i class="bi bi-heart-pulse-fill"></i>
-                                                <span class="M15_42">1/1</span>
-                                                <span class="R12_75">(1/1)</span>
-                                            </div>
-                                        </h3>
-                                        <div class="accordion-icon" id="accordion-icon">+</div>
-                                    </div>
-                                    <div class="accordion-content">
-                                        <ul>
-                                            <li>
-                                                <div class="vc_date d-flex justify-content-between align-items-center">
-                                                    <span class="vc_due left R13_42">Due on</span>
-                                                    <span class="vc_date_in left">27 Sep 2022</span>
-
-                                                    <div class="vc_mark_done">
-                                                        <a href="{{ route('vaccination-mark-done') }}">
-                                                            <span class="R13_9e" id="devviewdetails">View details</span>
-                                                        </a>
-                                                    </div>
-
+                                                <div class="vc_name">
+                                                    <i class="bi bi-heart-pulse-fill"></i>
+                                                    <span class="M15_42">{{ $vaccine_data->vaccination->name }}</span>
                                                 </div>
-                                            </li>
-                                            <li>
-                                                <div class="vc_date d-flex justify-content-between align-items-center">
-                                                    <span class="vc_due left R13_42">Due on</span>
-                                                    <span class="vc_date_in left">27 Sep 2022</span>
+                                            </h3>
+                                            <div class="accordion-icon" id="accordion-icon">+</div>
+                                        </div>
+                                        <div class="accordion-content">
+                                            <ul>
+                                                <li>
+                                                    <div class="vc_date d-flex justify-content-between align-items-center">
+                                                        <span class="vc_due left R13_42">Vaccine Date</span>
+                                                        <span class="vc_date_in left">{{ \Carbon\Carbon::parse($vaccine_data->vaccination_date)->format('d M Y') }}</span>
 
-                                                    <div class="vc_mark_done">
-                                                        <a href="{{ route('vaccination-mark-done') }}">
-                                                            <span class="R13_9e" id="devviewdetails">View details</span>
-                                                        </a>
+                                                        <div class="vc_mark_done">
+                                                            <a href="{{ route('vaccination-mark-done') }}">
+                                                                <span class="R13_9e" id="devviewdetails">View details</span>
+                                                            </a>
+                                                        </div>
+
                                                     </div>
-
-                                                </div>
-                                            </li>
-                                        </ul>
-                                        <p>The BCG (Bacillus Calmette–Guérin) vaccine provides immunity against Tuberculosis
-                                            (TB) -
-                                            an infectious bacterial disease that usually affects the lungs. BCG is also used
-                                            to
-                                            treat bladder tumours and cancer. After vaccination, it is recommended that the
-                                            vaccination site is loosely covered and kept dry & clean for 24 hours i.e. until
-                                            the
-                                            local reaction disappears. Your child may experience "flu-like" symptoms for
-                                            24–48 hours
-                                            following this vaccination</p>
+                                                </li>
+                                            </ul>
+                                            <p>{{ $vaccine_data->vaccination->how }}</p>
+                                        </div>  
                                     </div>
-
-                                </div>
-
-                                <div class="accordion-main">
-                                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                                        <h3 class="accordion-heading">
-
-                                            <div class="vc_name">
-                                                <i class="bi bi-heart-pulse-fill"></i>
-                                                <span class="M15_42">1/1</span>
-                                                <span class="R12_75">(1/4)</span>
-                                            </div>
-                                        </h3>
-                                        <div class="accordion-icon" id="accordion-icon">+</div>
-                                    </div>
-                                    <div class="accordion-content">
-                                        <ul>
-                                            <li>
-                                                <div class="vc_date d-flex justify-content-between align-items-center">
-                                                    <span class="vc_due left R13_42">Due on</span>
-                                                    <span class="vc_date_in left">27 Sep 2022</span>
-
-                                                    <div class="vc_mark_done">
-                                                        <a href="{{ route('vaccination-mark-done') }}">
-                                                            <span class="R13_9e" id="devviewdetails">View details</span>
-                                                        </a>
-                                                    </div>
-
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="vc_date d-flex justify-content-between align-items-center">
-                                                    <span class="vc_due left R13_42">Due on</span>
-                                                    <span class="vc_date_in left">27 Sep 2022</span>
-
-                                                    <div class="vc_mark_done">
-                                                        <a href="{{ route('vaccination-mark-done') }}">
-                                                            <span class="R13_9e" id="devviewdetails">View details</span>
-                                                        </a>
-                                                    </div>
-
-                                                </div>
-                                            </li>
-                                        </ul>
-                                        <p>The BCG (Bacillus Calmette–Guérin) vaccine provides immunity against Tuberculosis
-                                            (TB) -
-                                            an infectious bacterial disease that usually affects the lungs. BCG is also used
-                                            to
-                                            treat bladder tumours and cancer. After vaccination, it is recommended that the
-                                            vaccination site is loosely covered and kept dry & clean for 24 hours i.e. until
-                                            the
-                                            local reaction disappears. Your child may experience "flu-like" symptoms for
-                                            24–48 hours
-                                            following this vaccination</p>
-
-                                    </div>
-                                </div>
+                                @endforeach    
                                 <div class="add_gr_det_btn">
                                     <p class="view-growth-details text-end">
                                         <a href="#">
@@ -1686,7 +1174,8 @@
                             </div>
 
                         </div>
-
+                        @endif
+                        @if(!empty($fiveYear))
                         <div class="vaccination__child">
                             <div class="vacc_main_con">
                                 <div class="vc_sub_con d-flex justify-content-between">
@@ -1721,115 +1210,38 @@
                                 </div>
                             </div>
                             <div class="vcc_main_acc">
-                                <div class="accordion-main">
-                                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                                        <h3 class="accordion-heading">
+                                @foreach($fiveYear as $vaccine_data)
+                                    <div class="accordion-main">
+                                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                                            <h3 class="accordion-heading">
 
-                                            <div class="vc_name">
-                                                <i class="bi bi-heart-pulse-fill"></i>
-                                                <span class="M15_42">1/1</span>
-                                                <span class="R12_75">(1/1)</span>
-                                            </div>
-                                        </h3>
-                                        <div class="accordion-icon" id="accordion-icon">+</div>
-                                    </div>
-                                    <div class="accordion-content">
-                                        <ul>
-                                            <li>
-                                                <div class="vc_date d-flex justify-content-between align-items-center">
-                                                    <span class="vc_due left R13_42">Due on</span>
-                                                    <span class="vc_date_in left">27 Sep 2022</span>
-
-                                                    <div class="vc_mark_done">
-                                                        <a href="{{ route('vaccination-mark-done') }}">
-                                                            <span class="R13_9e" id="devviewdetails">View details</span>
-                                                        </a>
-                                                    </div>
-
+                                                <div class="vc_name">
+                                                    <i class="bi bi-heart-pulse-fill"></i>
+                                                    <span class="M15_42">{{ $vaccine_data->vaccination->name }}</span>
                                                 </div>
-                                            </li>
-                                            <li>
-                                                <div class="vc_date d-flex justify-content-between align-items-center">
-                                                    <span class="vc_due left R13_42">Due on</span>
-                                                    <span class="vc_date_in left">27 Sep 2022</span>
+                                            </h3>
+                                            <div class="accordion-icon" id="accordion-icon">+</div>
+                                        </div>
+                                        <div class="accordion-content">
+                                            <ul>
+                                                <li>
+                                                    <div class="vc_date d-flex justify-content-between align-items-center">
+                                                        <span class="vc_due left R13_42">Vaccine Date</span>
+                                                        <span class="vc_date_in left">{{ \Carbon\Carbon::parse($vaccine_data->vaccination_date)->format('d M Y') }}</span>
 
-                                                    <div class="vc_mark_done">
-                                                        <a href="{{ route('vaccination-mark-done') }}">
-                                                            <span class="R13_9e" id="devviewdetails">View details</span>
-                                                        </a>
+                                                        <div class="vc_mark_done">
+                                                            <a href="{{ route('vaccination-mark-done') }}">
+                                                                <span class="R13_9e" id="devviewdetails">View details</span>
+                                                            </a>
+                                                        </div>
+
                                                     </div>
-
-                                                </div>
-                                            </li>
-                                        </ul>
-                                        <p>The BCG (Bacillus Calmette–Guérin) vaccine provides immunity against Tuberculosis
-                                            (TB) -
-                                            an infectious bacterial disease that usually affects the lungs. BCG is also used
-                                            to
-                                            treat bladder tumours and cancer. After vaccination, it is recommended that the
-                                            vaccination site is loosely covered and kept dry & clean for 24 hours i.e. until
-                                            the
-                                            local reaction disappears. Your child may experience "flu-like" symptoms for
-                                            24–48 hours
-                                            following this vaccination</p>
+                                                </li>
+                                            </ul>
+                                            <p>{{ $vaccine_data->vaccination->how }}</p>
+                                        </div>  
                                     </div>
-
-                                </div>
-
-                                <div class="accordion-main">
-                                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                                        <h3 class="accordion-heading">
-
-                                            <div class="vc_name">
-                                                <i class="bi bi-heart-pulse-fill"></i>
-                                                <span class="M15_42">1/1</span>
-                                                <span class="R12_75">(1/4)</span>
-                                            </div>
-                                        </h3>
-                                        <div class="accordion-icon" id="accordion-icon">+</div>
-                                    </div>
-                                    <div class="accordion-content">
-                                        <ul>
-                                            <li>
-                                                <div class="vc_date d-flex justify-content-between align-items-center">
-                                                    <span class="vc_due left R13_42">Due on</span>
-                                                    <span class="vc_date_in left">27 Sep 2022</span>
-
-                                                    <div class="vc_mark_done">
-                                                        <a href="{{ route('vaccination-mark-done') }}">
-                                                            <span class="R13_9e" id="devviewdetails">View details</span>
-                                                        </a>
-                                                    </div>
-
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="vc_date d-flex justify-content-between align-items-center">
-                                                    <span class="vc_due left R13_42">Due on</span>
-                                                    <span class="vc_date_in left">27 Sep 2022</span>
-
-                                                    <div class="vc_mark_done">
-                                                        <a href="{{ route('vaccination-mark-done') }}">
-                                                            <span class="R13_9e" id="devviewdetails">View details</span>
-                                                        </a>
-                                                    </div>
-
-                                                </div>
-                                            </li>
-                                        </ul>
-                                        <p>The BCG (Bacillus Calmette–Guérin) vaccine provides immunity against Tuberculosis
-                                            (TB) -
-                                            an infectious bacterial disease that usually affects the lungs. BCG is also used
-                                            to
-                                            treat bladder tumours and cancer. After vaccination, it is recommended that the
-                                            vaccination site is loosely covered and kept dry & clean for 24 hours i.e. until
-                                            the
-                                            local reaction disappears. Your child may experience "flu-like" symptoms for
-                                            24–48 hours
-                                            following this vaccination</p>
-
-                                    </div>
-                                </div>
+                                @endforeach    
                                 <div class="add_gr_det_btn">
                                     <p class="view-growth-details text-end">
                                         <a href="#">
@@ -1840,6 +1252,7 @@
                             </div>
 
                         </div>
+                        @endif
                     </div>
 
 
@@ -1875,20 +1288,6 @@
 
     </div>
     <script>
-        var acc = document.querySelector('.select-child-option');
-        var panel = document.querySelector('.panel');
-
-        acc.addEventListener('click', function() {
-            this.classList.toggle('active');
-            panel.style.display === 'block' ? panel.style.display = 'none' : panel.style.display = 'block';
-        });
-
-        function selectOption(button) {
-            acc.textContent = button.textContent;
-            panel.style.display = 'none';
-        }
-
-
         function toggleAccordion(header) {
             const content = header.nextElementSibling;
             const icon = header.querySelector(".accordion-icon");
