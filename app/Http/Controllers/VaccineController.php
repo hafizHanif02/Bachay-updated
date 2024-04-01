@@ -147,17 +147,17 @@ class VaccineController extends Controller
             $vaccines = VaccinationSubmission::where(['user_id' => Auth::guard('customer')->id(), 'child_id' => $id])->with('vaccination')->get();
             $child = FamilyRelation::where(['user_id'=> Auth::guard('customer')->id(), 'id' => $id])->first();
             $childerens = DB::table('family_relation')->where('user_id', Auth::guard('customer')->id())->get(); 
+            $birth = [];
+            $twoMonth = [];
+            $fourMonth = [];
+            $sixMonth = [];
+            $twelveMonth = [];
+            $eighteenMonth = [];
+            $fiveYear = [];
             foreach ($vaccines as $vaccine) {
                 $vaccineDate = Carbon::parse($vaccine->vaccination_date);
                 $childDOB = Carbon::parse($child->dob);
                 $ageAtVaccination = $vaccineDate->diffInMonths($childDOB);
-                $birth = [];
-                $twoMonth = [];
-                $fourMonth = [];
-                $sixMonth = [];
-                $twelveMonth = [];
-                $eighteenMonth = [];
-                $fiveYear = [];
                 if ($ageAtVaccination >= 0 && $ageAtVaccination < 2) {
                     $birth[] = $vaccine;
                 } elseif ($ageAtVaccination >= 2 && $ageAtVaccination < 4) {
