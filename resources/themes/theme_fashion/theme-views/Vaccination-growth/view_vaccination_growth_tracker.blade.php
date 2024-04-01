@@ -604,11 +604,13 @@
                                                     style="stroke: rgb(158, 158, 158); stroke-width: 4"></line>
                                             </svg>
                                         </div>
+                                        @if(!empty($birth))
                                         <div class="train_bogi_1 act" id="bg_1" rel="1">
                                             <span class="M13_42">Birth</span>
                                             <div class="train_bogi_tire_1 sub-act"></div>
                                             <div class="train_bogi_tire_2 sub-act"></div>
                                         </div>
+                                        @endif
                                     </div>
                                     <div class="train_bogi_sub">
                                         <div class="train_con">
@@ -693,6 +695,7 @@
                         </div>
                     </div>
                     <div class="child__main_vcc_container">
+                        @if(!empty($birth))
                         <div class="vaccination__child">
                             <div class="vacc_main_con">
                                 <div class="vc_sub_con d-flex justify-content-between">
@@ -846,6 +849,7 @@
                             </div>
 
                         </div>
+                        @endif
                         <div class="vaccination__child">
                             <div class="vacc_main_con">
                                 <div class="vc_sub_con d-flex justify-content-between">

@@ -36,16 +36,8 @@ class VaccineController extends Controller
         if(Auth::guard('customer')->check()){
             $user =  Auth::guard('customer')->user();
             $childerens = DB::table('family_relation')->where('user_id', Auth::guard('customer')->id())->get();
-            // foreach($childerens as $child){
-            //     if($child->profile_picture != null){
-            //         $childImageUrl = url('public/assets/images/customers/child/' . $child->profile_picture);
-            //         $child->avatar = $childImageUrl;
-            //     }
-            // }
-
-
-
-            foreach ($childerens as $child) {
+            if(count($childerens) > 0){
+                foreach ($childerens as $child) {
                 if ($child->profile_picture != null) {
                     $childImageUrl = url('public/assets/images/customers/child/' . $child->profile_picture);
                     $child->avatar = $childImageUrl;
@@ -132,7 +124,14 @@ class VaccineController extends Controller
                 $child->uppcomingVaccine = $uppcomingVaccine;
 
             }
-            return view('theme-views.vaccination.vaccination', compact(['parent_article_categories','childerens']));
+                return view('theme-views.vaccination.vaccination', compact(['parent_article_categories','childerens']));
+            }
+            else{
+                Toastr::error('Please Add Child First !');
+                return redirect()->back();
+
+            }
+            
         }else{
             Toastr::error('Please Login First !');
             return redirect()->route('customer.auth.login');
@@ -147,8 +146,39 @@ class VaccineController extends Controller
             $user =  Auth::guard('customer')->user();
             $vaccines = VaccinationSubmission::where(['user_id' => Auth::guard('customer')->id(), 'child_id' => $id])->with('vaccination')->get();
             $child = FamilyRelation::where(['user_id'=> Auth::guard('customer')->id(), 'id' => $id])->first();
-            $childerens = DB::table('family_relation')->where('user_id', Auth::guard('customer')->id())->get();
-            return view('theme-views.Vaccination-growth.view_vaccination_growth_tracker', compact(['parent_article_categories','childerens','child','vaccines']));
+            $childerens = DB::table('family_relation')->where('user_id', Auth::guard('customer')->id())->get(); 
+            foreach ($vaccines as $vaccine) {
+                $vaccineDate = Carbon::parse($vaccine->vaccination_date);
+                $childDOB = Carbon::parse($child->dob);
+                $ageAtVaccination = $vaccineDate->diffInMonths($childDOB);
+                $birth = [];
+                $twoMonth = [];
+                $fourMonth = [];
+                $sixMonth = [];
+                $twelveMonth = [];
+                $eighteenMonth = [];
+                $fiveYear = [];
+                if ($ageAtVaccination >= 0 && $ageAtVaccination < 2) {
+                    $birth[] = $vaccine;
+                } elseif ($ageAtVaccination >= 2 && $ageAtVaccination < 4) {
+                    $twoMonth[] = $vaccine;
+                } elseif ($ageAtVaccination >= 4 && $ageAtVaccination < 6) {
+                    $fourMonth[] = $vaccine;
+                } elseif ($ageAtVaccination >= 6 && $ageAtVaccination < 12) {
+                    $sixMonth[] = $vaccine;
+                } elseif ($ageAtVaccination >= 12 && $ageAtVaccination < 18) {
+                    $twelveMonth[] = $vaccine;
+                } elseif ($ageAtVaccination >= 18 && $ageAtVaccination < 24) {
+                    $eighteenMonth[] = $vaccine;
+                } elseif ($ageAtVaccination >= 60 && $ageAtVaccination < 72) {
+                    $fiveYear[] = $vaccine;
+                }
+            }
+            return view('theme-views.Vaccination-growth.view_vaccination_growth_tracker', 
+            compact([
+                'parent_article_categories','childerens','child','vaccines',
+                'birth','twoMonth','fourMonth','sixMonth','twelveMonth','eighteenMonth','fiveYear'
+            ]));
         }else{
             Toastr::error('Please Login First !');
             return redirect()->route('customer.auth.login');
