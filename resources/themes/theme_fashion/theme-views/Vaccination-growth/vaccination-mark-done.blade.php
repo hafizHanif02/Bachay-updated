@@ -317,73 +317,73 @@
                                     data-bs-target="#exampleModal">
                                     <i class="bi bi-pencil" style="border-bottom: 1px solid;"></i>
                                 </button>
-    
-                                <!-- Growth deatils Modal -->
-                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                                    aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form id="growth_data_form" action="{{ route('growth-submit', $vaccination_submission->id) }}" method="POST">
-                                                    @csrf
-                                                    <div class="row mb-3 mt-3">
-                                                        <label for="weight" class="form-label">Weight</label>
-                                                        <input type="text" class="form-control" name="weight" placeholder="Enter Weight">
-                                                    </div>
-                                                    <div class="row mb-3 mt-3">
-                                                        <label for="height" class="form-label">Height</label>
-                                                        <input type="text" class="form-control" name="height" placeholder="Enter Height">
-                                                    </div>
-                                                    <div class="row mb-3 mt-3">
-                                                        <label for="head_circle" class="form-label">Head Circle</label>
-                                                        <input type="text" class="form-control" name="head_circle" placeholder="Enter Head Circle">
-                                                    </div>
-                                                    
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary"
-                                                        data-bs-dismiss="modal">Close</button>
-                                                        <button type="button" onclick="growthForm()" class="btn btn-primary">Save changes</button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-    
-    
                             </div>
                             <hr>
                             <div class="gr_fields ms-5 me-5">
+                                @if(!empty($growth_data))
                                 <table class="w-100">
                                     <tbody style="line-height: 30px; font-size: 14px;">
                                         <tr>
                                             <td class="mesr R14_42">Weight</td>
                                             <td class="mesr_ipt"></td>
-                                            <td class="pqr text-end">6 kg</td>
+                                            <td class="pqr text-end">{{ ($growth_data->weight ?? 'N/A') }}</td>
                                         </tr>
                                         <tr>
                                             <td class="mesr">Height</td>
                                             <td class="mesr_ipt"></td>
-                                            <td class="pqr text-end">25 CM</td>
+                                            <td class="pqr text-end">{{ ($growth_data->height ?? 'N/A') }}</td>
                                         </tr>
                                         <tr>
                                             <td class="mes R14_42">Head Circ.</td>
                                             <td class="mesr_ipt"></td>
-                                            <td class="pqr text-end">85 CM</td>
+                                            <td class="pqr text-end">{{ ($growth_data->head_circle ?? 'N/A') }}</td>
                                         </tr>
                                     </tbody>
                                 </table>
+                                @endif
                             </div>
                             <textarea class="add_comment R14_75" id="add_comment" maxlength="250" placeholder="Add your comments about the vaccine or mention details of the pediatrician here for future reference in 250 characters"></textarea>
                             <button type="button" onclick="SubmitForm()" class="btn_clr mt-4 ps-5 pe-5 pt-2 pb-2 fw-bold">
                                 SAVE
                             </button>
                         </div>
+                    </form>
+                        <!-- Growth deatils Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form  action="{{ route('growth-submit', $child->id) }}" method="POST">
+                                        @csrf
+                                        <div class="row mb-3 mt-3">
+                                            <label for="weight" class="form-label">Weight</label>
+                                            <input type="text" class="form-control" name="weight" placeholder="Enter Weight">
+                                        </div>
+                                        <div class="row mb-3 mt-3">
+                                            <label for="height" class="form-label">Height</label>
+                                            <input type="text" class="form-control" name="height" placeholder="Enter Height">
+                                        </div>
+                                        <div class="row mb-3 mt-3">
+                                            <label for="head_circle" class="form-label">Head Circle</label>
+                                            <input type="text" class="form-control" name="head_circle" placeholder="Enter Head Circle">
+                                        </div>
+                                        
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Close</button>
+                                            <button type="submit"  class="btn btn-primary">Save changes</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     </div>
     
     
@@ -412,7 +412,7 @@
                         </div>
                     </div>
                 </div>
-            </form>
+            {{-- </form> --}}
 
 
 
@@ -427,7 +427,8 @@
             document.getElementById("vaccination_form").submit();
         }
         function growthForm(){
-            document.getElementById("growth_data_form").submit();
+            cosnole.log("hello");
+            // document.getElementById("growth_data_form").submit();
         }
     </script>
 @endsection

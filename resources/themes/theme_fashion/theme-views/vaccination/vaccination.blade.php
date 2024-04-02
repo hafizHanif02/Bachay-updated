@@ -388,8 +388,10 @@
                                 </div>
 
                             </div>
+                            <?php $latest_growth = \App\Models\Growth::where('child_id', $child->id)->latest()->first(); ?>
                             <div class="p-3 pt-0">
                                 <div class="vaccination_tr">
+                                    @if($latest_growth != null) 
                                     <div class="vc_title">
                                         <h6>
                                             Growth tracker
@@ -400,7 +402,7 @@
                                             class="gr_trc_measr_top d-flex justify-content-between align-items-center ps-4 pe-4">
                                             <span><i class="bi bi-stopwatch"
                                                     style="font-size: 15px; margin-right: 2px;"></i>
-                                                Updated on 26th Oct 2023</span>
+                                                Updated on {{ date("d M Y", strtotime($latest_growth->created_at)) }}</span>
                                             <!-- Button trigger modal -->
                                             <button type="button" class="Add_growth_child border-0" data-bs-toggle="modal"
                                                 data-bs-target="#exampleModal">
@@ -520,17 +522,17 @@
                                                 <tbody class="vaccination-table-growth">
                                                     <tr>
                                                         <td>Weight</td>
-                                                        <td>12 kg</td>
+                                                        <td>{{ $latest_growth->weight }}</td>
                                                         <td>7.3 - 11.6 kg</td>
                                                     </tr>
                                                     <tr>
                                                         <td>Height</td>
-                                                        <td>----</td>
+                                                        <td>{{ $latest_growth->height }}</td>
                                                         <td>----</td>
                                                     </tr>
                                                     <tr>
                                                         <td>Head Circumference</td>
-                                                        <td>25 cm</td>
+                                                        <td>{{ $latest_growth->head_circle }}</td>
                                                         <td>42.6 - 47.7 cm</td>
                                                     </tr>
                                                 </tbody>
@@ -543,6 +545,7 @@
 
 
                                     </div>
+                                    @endif
 
 
 

@@ -35,7 +35,7 @@ class VaccineController extends Controller
         $parent_article_categories = ParentArticleCategory::where(['status' => 1, 'parent_id' => 0])->with('child')->latest()->take(5)->get();
         if(Auth::guard('customer')->check()){
             $user =  Auth::guard('customer')->user();
-            $childerens = DB::table('family_relation')->where('user_id', Auth::guard('customer')->id())->get();
+            $childerens = FamilyRelation::where('user_id', Auth::guard('customer')->id())->get();
             if(count($childerens) > 0){
                 foreach ($childerens as $child) {
                 if ($child->profile_picture != null) {
@@ -176,7 +176,7 @@ class VaccineController extends Controller
             }
             return view('theme-views.Vaccination-growth.view_vaccination_growth_tracker', 
             compact([
-                'parent_article_categories','childerens','child','vaccines',
+                'parent_article_categories','childerens','child','vaccines','growth_data',
                 'birth','twoMonth','fourMonth','sixMonth','twelveMonth','eighteenMonth','fiveYear'
             ]));
         }else{
@@ -188,9 +188,10 @@ class VaccineController extends Controller
         if(Auth::guard('customer')->check()){
             $user =  Auth::guard('customer')->user();
             $child = DB::table('family_relation')->where(['user_id'=> Auth::guard('customer')->id(),'id' => $child_id])->first();
+            $growth_data = Growth::where(['user_id'=> Auth::guard('customer')->id(),'child_id' => $child_id])->latest()->first();
             $vaccination_submission = VaccinationSubmission::where(['id'=> $id,'user_id' => Auth::guard('customer')->id(), 'child_id' => $child_id])->with('vaccination')->first();
             if($vaccination_submission != null){
-                return view('theme-views.Vaccination-growth.vaccination-mark-done', compact(['vaccination_submission','child']));
+                return view('theme-views.Vaccination-growth.vaccination-mark-done', compact(['vaccination_submission','child','growth_data']));
             }
             else{
                 Toastr::success('Vaccination is not available !');
@@ -233,8 +234,28 @@ class VaccineController extends Controller
         }
         
     }
-    public function GrowthSubmit(Request $request){
-        dd($request->all());
+    public function GrowthSubmit(Request $request, $child_id){
+        if(Auth::guard('customer')->check()){
+            $user =  Auth::guard('customer')->user();
+            $child = DB::table('family_relation')->where(['user_id'=> Auth::guard('customer')->id(),'id' => $child_id])->first();
+            if($child != null){
+                Growth::create([
+                    'user_id' => Auth::guard('customer')->id(),
+                    'child_id' => $child_id,
+                    'weight' => $request->weight,
+                    'height' => $request->height,
+                    'head_circle' => $request->head_circle,
+                ]);
+                Toastr::success('Your Growth has been Updated!');
+                return redirect()->back();
+            }else{
+                Toastr::error('Child Not Found !');
+                return redirect()->back();
+            }
+        }else{
+            Toastr::error('Please Login First !');
+            return redirect()->route('customer.auth.login');
+        }
     }
     public function view_sample_cart()
     {
