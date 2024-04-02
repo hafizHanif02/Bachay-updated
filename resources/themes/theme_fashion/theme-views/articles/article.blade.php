@@ -604,7 +604,7 @@
 
             .right_content {
                 flex: 0 0 100%;
-                order: 1;
+                /* order: 1; */
                 padding: 1rem;
             }
 

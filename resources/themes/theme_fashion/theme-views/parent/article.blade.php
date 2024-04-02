@@ -593,7 +593,7 @@
 
             .blog_content {
                 padding: 0;
-                order: 2;
+                /* order: 2; */
             }
 
             .left_content {
