@@ -244,7 +244,7 @@
         color: #fff;
         padding: 10px 0;
         transition: top 0.5s;
-        z-index: 1000;
+        z-index: 998;
     }
 
     .custom-style {
@@ -1804,6 +1804,7 @@
             </ul>
         </div>
     </div>
+    
 </header>
 
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">

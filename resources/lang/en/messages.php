@@ -7328,4 +7328,6 @@
   'user-profile' => 'User-profile',
   'user profile' => 'User profile',
   'shopping profile' => 'Shopping profile',
+  'My_Questions' => 'My Questions',
+  'My_Answers' => 'My Answers',
 );

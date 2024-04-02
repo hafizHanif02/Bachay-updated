@@ -6,6 +6,7 @@
     .show-div {
         /* visibility: hidden; */
         position: relative;
+        z-index: 999;
         top: 0;
         left: 0;
         width: 100%;
@@ -14,7 +15,7 @@
         box-sizing: border-box;
         padding-top: 24px;
         transition: top 0.3s ease;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3) !important;
+        box-shadow: 0px 13px 15px 0px #dad5d596 !important;
     }
 
     .close-btn-add {
@@ -245,6 +246,7 @@
             var anchorRect = anchor.getBoundingClientRect();
             // div.style.top = (anchorRect.bottom + window.scrollY) + 'px';
             div.style.display = 'block';
+            
             isShownDiv = true;
         } else {
             hideDiv();

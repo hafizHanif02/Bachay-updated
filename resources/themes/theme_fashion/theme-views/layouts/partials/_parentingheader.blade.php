@@ -223,7 +223,7 @@
         width: 100%;
         background-color: #333;
         color: #fff;
-        padding: 10px 0;
+        /* padding: 10px 0; */
         transition: top 0.5s;
         z-index: 1000;
     }
@@ -453,7 +453,7 @@
             </ul>
         </div> --}}
         <div class="header-wrapper">
-            <div class="d-lg-none d-xl-none">
+            {{-- <div class="d-lg-none d-xl-none">
                 <li class="me-2 me-sm-0">
                     <a href="javascript:" class="add_child_con nav-ul_text d-flex align-items-center pe-0">
                         <img class="rounded-circle me-2" src="http://localhost/public/images/all.jpg" alt=""
@@ -468,14 +468,14 @@
 
 
 
-            </div>
+            </div> --}}
             <a href="{{ route('parenting-user') }}" class="logo">
                 <img loading="lazy" class="d-sm-none mobile-logo-cs"
                     src="{{ asset('public/images/bachay-parenting.png') }}" alt="{{ translate('logo') }}">
                 <img loading="lazy" class="d-none d-sm-block" src="{{ asset('public/images/bachay-parenting.png') }}"
                     alt="{{ translate('logo') }}">
             </a>
-            <div class="container d-none d-xl-block col-5">
+            <div class="container d-none d-xl-block col-4">
                 <form class="search-form m-0 p-0" action="{{ route('products') }}" type="submit">
                     <div class="input-group search_input_group">
 
@@ -495,7 +495,7 @@
             </div>
             <div class="menu-area text-capitalize">
                 <ul class="menu me-xl-2 font-poppins">
-                    @if (session('switch_user'))
+                    {{-- @if (session('switch_user'))
                         <?php $child = session('switch_user'); ?>
                         <li>
                             <a href="javascript:" class="switchuser nav-ul_text d-flex align-items-center pe-0">
@@ -548,11 +548,20 @@
                                 </div>
                             </a>
                         </li>
-                    @endif
+                    @endif --}}
+                    
                     <li>
                         <a href="{{ route('home') }}" class="nav-ul_text" style="color: #6D3CF7 !important;">
                             <img src="{{ asset('public/images/shopping.gif') }}" alt="" width="30px"
                                 height="30px"> {{ translate('Shopping') }}</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('parenting-question') }}" class="nav-ul_text">
+                           {{ translate('My_Questions') }}</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('parenting-answer') }}" class="nav-ul_text">
+                           {{ translate('My_Answers') }}</a>
                     </li>
                     {{-- <li>
                         <a href="#" class="nav-ul_text" style="color: #a866ed !important;">
@@ -616,7 +625,7 @@
                         </li>
                     @endif
                     @if (auth('customer')->check())
-                        <li class="me-2 me-sm-0 d-none d-xl-inline-block">
+                        <li class="me-2 me-sm-0 d-xl-inline-block">
                             <a href="javascript:">
                                 {{-- <i class="bi bi-person d-none d-xl-inline-block nav-ul_text"
                                     style="font-size: 16px !important"></i> --}}
@@ -657,7 +666,7 @@
                     @else
                         <li class="me-2 me-sm-0">
                             <a href="javascript:" class="customer_login_register_modal">
-                                <i class="bi bi-person d-none d-xl-inline-block nav-ul_text"
+                                <i class="bi bi-person d-xl-inline-block nav-ul_text"
                                     style="font-size: 16px !important;"></i>
                                 <i class="bi bi-person-circle d-xl-none nav-ul_text"
                                     style="font-size: 16px !important;"></i>

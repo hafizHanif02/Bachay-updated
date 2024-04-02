@@ -598,13 +598,13 @@
 
             .left_content {
                 flex: 0 0 100%;
-                order: 2;
+                
                 padding: 1rem;
             }
 
             .right_content {
                 flex: 0 0 100%;
-                order: 1;
+                
                 padding: 1rem;
             }
 
@@ -757,8 +757,8 @@
                                     style="background-image: url({{ asset('public/assets/images/parent_articles/thumbnail/' . $article->thumbnail) }});">
                                 </div>
                         @endforeach
+                    </section>
                 </div>
-                </section>
             </div>
 
             <div class="columns categories">
@@ -820,6 +820,6 @@
                 <a href="#" title="Telegram"><i class="fa fa-telegram"></i></a>
             </div>
         </div>
-        </div>
+      
     </body>
 @endsection

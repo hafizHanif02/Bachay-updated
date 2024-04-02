@@ -604,7 +604,7 @@
 
             .right_content {
                 flex: 0 0 100%;
-                order: 1;
+            
                 padding: 1rem;
             }
 
@@ -805,8 +805,8 @@
                                     style="background-image: url({{ asset('public/assets/images/articles/thumbnail/' . $article->thumbnail) }});">
                                 </div>
                         @endforeach
+                    </section>
                 </div>
-                </section>
             </div>
             <!--BOOKS COLUMN ENDS-->
             <!--CATEGORIES COLUMN BEGINING-->
@@ -873,7 +873,7 @@
             </div>
             <!--SOCIAL MEDIA ICONS ENDS-->
         </div>
-        </div>
+        
     </body>
     {{-- <script>
         document.addEventListener("DOMContentLoaded", function() {

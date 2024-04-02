@@ -25,7 +25,7 @@
 </style>
 
 <div class="container">
-    <div class="custom-main-container mt-2 mb-2 d-lg-none d-xl-none ">
+    <div class="custom-main-container mt-3 mb-2 d-lg-none d-xl-none ">
         @foreach ($custom_pages->take(4) as $custom_page)
         <div class="column">
             <a href="{{ route('custom_page', ['id' => $custom_page->id]) }}">
