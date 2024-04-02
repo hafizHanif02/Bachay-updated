@@ -184,113 +184,57 @@ class VaccineController extends Controller
             return redirect()->route('customer.auth.login');
         }
     }
-    public function Vaccination_mark_done(){
-        $parent_article_categories = ParentArticleCategory::where(['status' => 1, 'parent_id' => 0])->with('child')->latest()->take(5)->get();
+    public function Vaccination_mark_done($id, $child_id){
         if(Auth::guard('customer')->check()){
             $user =  Auth::guard('customer')->user();
-            $childerens = DB::table('family_relation')->where('user_id', Auth::guard('customer')->id())->get();
-            // foreach($childerens as $child){
-            //     if($child->profile_picture != null){
-            //         $childImageUrl = url('public/assets/images/customers/child/' . $child->profile_picture);
-            //         $child->avatar = $childImageUrl;
-            //     }
-            // }
-
-
-
-            foreach ($childerens as $child) {
-                if ($child->profile_picture != null) {
-                    $childImageUrl = url('public/assets/images/customers/child/' . $child->profile_picture);
-                    $child->avatar = $childImageUrl;
-
-                    // Calculate age based on 'dob'
-                    $dob = new DateTime($child->dob);
-                    $now = new DateTime();
-                    $ageInterval = $dob->diff($now);
-
-                    // Format age as text
-                    $ageText = '';
-
-                    if ($ageInterval->y > 0) {
-                        $ageText .= $ageInterval->y . ' Year ';
-                    }
-                    if ($ageInterval->m > 0) {
-                        $ageText .= $ageInterval->m . ' Mon ';
-                    }
-                    if ($ageText == '' && $ageInterval->d > 0) {
-                        $ageText .= $ageInterval->d . ' days ';
-                    }
-
-                    $child->format_age = trim($ageText). ' Old';
-                }
-
-                $growth = Growth::where('child_id',$child->id)->first();
-
-                $child->growth = $growth;
-
+            $child = DB::table('family_relation')->where(['user_id'=> Auth::guard('customer')->id(),'id' => $child_id])->first();
+            $vaccination_submission = VaccinationSubmission::where(['id'=> $id,'user_id' => Auth::guard('customer')->id(), 'child_id' => $child_id])->with('vaccination')->first();
+            if($vaccination_submission != null){
+                return view('theme-views.Vaccination-growth.vaccination-mark-done', compact(['vaccination_submission','child']));
             }
-
-            $overdueCounts = [];
-            foreach ($childerens as $child) {
-                $countUpcoming = 0;
-                $vaccination_submissions = VaccinationSubmission::
-                    where([
-                        'child_id' => $child->id,
-                        'user_id' => Auth::guard('customer')->id(),
-                        'is_taken' => 0
-                    ])->with('vaccination')->get();
-
-                $vaccination_submission_completed = VaccinationSubmission::
-                where([
-                    'child_id' => $child->id,
-                    'user_id' => Auth::guard('customer')->id(),
-                    'is_taken' => 1
-                ])->with('vaccination')->get();
-
-                //$child->vaccination = $vaccination_submissions;
-                $overdue = 0;
-                $uppcoming = 0;
-                $today = 0;
-                $uppcomingVaccine = [];
-                foreach ($vaccination_submissions as $vaccination_submission) {
-                    $vaccinationDate = Carbon::parse($vaccination_submission->vaccination_date);
-                    $currentDate = Carbon::now();
-                    $difference = ($vaccinationDate->diffInDays($currentDate->format('Y-m-d')));
-                    //array_push($uppcomingVaccine, $difference);
-                    if($vaccinationDate > $currentDate){
-                        $uppcoming += 1;
-                        //$uppcomingVaccine = $vaccination_submission->vaccination;
-                        if($countUpcoming < 2){
-                            array_push($uppcomingVaccine, $vaccination_submission);
-                            $countUpcoming++;
-                        }
-
-                    }elseif($vaccinationDate < $currentDate){
-                        $overdue += 1;
-                    } else{
-                        $today += 1;
-                    }
-
-                    // if ($difference < 0) {
-                    //     $overdue += 1;
-                    // } elseif ($difference > 0) {
-                    //     $uppcoming += 1;
-                    //     //$uppcomingVaccine = $vaccination_submission->vaccination;
-                    //     array_push($uppcomingVaccine, $vaccination_submission->vaccination);
-                    // } elseif ($difference == 0 && $vaccinationDate->isSameDay(now())) {
-                    //     $today += 1;
-                    // }
-                }
-                $child->vaccination_status = ['upcomming' => $uppcoming,'today' =>  $today,'overdue' =>   $overdue,'completed' => count($vaccination_submission_completed)];
-                $child->uppcomingVaccine = $uppcomingVaccine;
-
+            else{
+                Toastr::success('Vaccination is not available !');
+                return redirect()->back();
             }
-            return view('theme-views.Vaccination-growth.vaccination-mark-done', compact(['parent_article_categories','childerens']));
-        }else{
+        }
+        else{
             Toastr::error('Please Login First !');
             return redirect()->route('customer.auth.login');
             
         }
+    }
+
+    public function Vaccination_mark_done_submit(Request $request){
+        // dd($request->all());
+        $request->validate([
+            'submission_date' => 'required|date',
+        ]);
+
+        if ($request->file('image')) {
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $filename = $file->getClientOriginalName();
+            $file->move(public_path('assets/images/vaccine/submission/'), $filename);
+        }else{
+            $filename = null;
+        }
+
+        if(Auth::guard('customer')->check()){
+            VaccinationSubmission::where('id', $request->vaccination_id)->update([
+                'submission_date' => $request->submission_date,
+                'is_taken' => 1,
+                'picture' => $filename,
+            ]);
+            Toastr::error('Your Vaccination is marked as done !');
+            return redirect()->back();
+        }else{
+            Toastr::error('Please Login First !');
+            return redirect()->route('customer.auth.login');
+        }
+        
+    }
+    public function GrowthSubmit(Request $request){
+        dd($request->all());
     }
     public function view_sample_cart()
     {

@@ -748,8 +748,8 @@
                                                         <span class="vc_date_in left">{{ \Carbon\Carbon::parse($vaccine_data->vaccination_date)->format('d M Y') }}</span>
 
                                                         <div class="vc_mark_done">
-                                                            <a href="{{ route('vaccination-mark-done') }}">
-                                                                <span class="R13_9e" id="devviewdetails">View details</span>
+                                                            <a href="{{ route('vaccination-mark-done', [$vaccine_data->id, $child->id]) }}">
+                                                                <span class="R13_9e" id="devviewdetails">Mark As Done</span>
                                                             </a>
                                                         </div>
 
@@ -826,8 +826,8 @@
                                                         <span class="vc_date_in left">{{ \Carbon\Carbon::parse($vaccine_data->vaccination_date)->format('d M Y') }}</span>
 
                                                         <div class="vc_mark_done">
-                                                            <a href="{{ route('vaccination-mark-done') }}">
-                                                                <span class="R13_9e" id="devviewdetails">View details</span>
+                                                            <a href="{{ route('vaccination-mark-done', [$vaccine_data->id, $child->id]) }}">
+                                                                <span class="R13_9e" id="devviewdetails">Mark As Done</span>
                                                             </a>
                                                         </div>
 
@@ -904,8 +904,8 @@
                                                         <span class="vc_date_in left">{{ \Carbon\Carbon::parse($vaccine_data->vaccination_date)->format('d M Y') }}</span>
 
                                                         <div class="vc_mark_done">
-                                                            <a href="{{ route('vaccination-mark-done') }}">
-                                                                <span class="R13_9e" id="devviewdetails">View details</span>
+                                                            <a href="{{ route('vaccination-mark-done', [$vaccine_data->id, $child->id]) }}">
+                                                                <span class="R13_9e" id="devviewdetails">Mark As Done</span>
                                                             </a>
                                                         </div>
 
@@ -982,8 +982,8 @@
                                                         <span class="vc_date_in left">{{ \Carbon\Carbon::parse($vaccine_data->vaccination_date)->format('d M Y') }}</span>
 
                                                         <div class="vc_mark_done">
-                                                            <a href="{{ route('vaccination-mark-done') }}">
-                                                                <span class="R13_9e" id="devviewdetails">View details</span>
+                                                            <a href="{{ route('vaccination-mark-done', [$vaccine_data->id, $child->id]) }}">
+                                                                <span class="R13_9e" id="devviewdetails">Mark As Done</span>
                                                             </a>
                                                         </div>
 
@@ -1060,8 +1060,8 @@
                                                         <span class="vc_date_in left">{{ \Carbon\Carbon::parse($vaccine_data->vaccination_date)->format('d M Y') }}</span>
 
                                                         <div class="vc_mark_done">
-                                                            <a href="{{ route('vaccination-mark-done') }}">
-                                                                <span class="R13_9e" id="devviewdetails">View details</span>
+                                                            <a href="{{ route('vaccination-mark-done', [$vaccine_data->id, $child->id]) }}">
+                                                                <span class="R13_9e" id="devviewdetails">Mark As Done</span>
                                                             </a>
                                                         </div>
 
@@ -1138,8 +1138,8 @@
                                                         <span class="vc_date_in left">{{ \Carbon\Carbon::parse($vaccine_data->vaccination_date)->format('d M Y') }}</span>
 
                                                         <div class="vc_mark_done">
-                                                            <a href="{{ route('vaccination-mark-done') }}">
-                                                                <span class="R13_9e" id="devviewdetails">View details</span>
+                                                            <a href="{{ route('vaccination-mark-done', [$vaccine_data->id, $child->id]) }}">
+                                                                <span class="R13_9e" id="devviewdetails">Mark As Done</span>
                                                             </a>
                                                         </div>
 
@@ -1216,8 +1216,8 @@
                                                         <span class="vc_date_in left">{{ \Carbon\Carbon::parse($vaccine_data->vaccination_date)->format('d M Y') }}</span>
 
                                                         <div class="vc_mark_done">
-                                                            <a href="{{ route('vaccination-mark-done') }}">
-                                                                <span class="R13_9e" id="devviewdetails">View details</span>
+                                                            <a href="{{ route('vaccination-mark-done', [$vaccine_data->id, $child->id]) }}">
+                                                                <span class="R13_9e" id="devviewdetails">Mark As Done</span>
                                                             </a>
                                                         </div>
 
