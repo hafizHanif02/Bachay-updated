@@ -226,7 +226,7 @@ class VaccineController extends Controller
                 'is_taken' => 1,
                 'picture' => $filename,
             ]);
-            Toastr::error('Your Vaccination is marked as done !');
+            Toastr::success('Your Vaccination is marked as done !');
             return redirect()->back();
         }else{
             Toastr::error('Please Login First !');
