@@ -604,7 +604,7 @@
 
             .right_content {
                 flex: 0 0 100%;
-                
+                order: 1;
                 padding: 1rem;
             }
 
@@ -715,14 +715,14 @@
                                 @php
                                     $decodedText = json_decode($article->text);
                                 @endphp
-
+                            
                                 @if ($decodedText !== null)
                                     {!! $decodedText[0] !!}
                                 @else
-                                    {{ $article->text }}
+                                    {{ $article->text }} 
                                 @endif
                             </p>
-
+                            
                         </section>
                     </div>
 
@@ -757,69 +757,69 @@
                                     style="background-image: url({{ asset('public/assets/images/articles/thumbnail/' . $article->thumbnail) }});">
                                 </div>
                         @endforeach
-
-                    </section>
                 </div>
-
-                <div class="columns categories">
-                    <span class="title">Categories</span>
-                    <section>
-                        @foreach ($categories as $category)
-                            <a href="{{ route('articles.category', $category->id) }}">{{ $category->name }}</a>
-                        @endforeach
-                    </section>
-                </div>
-
-                <div class="columns posts">
-                    <span class="title">Recent Posts
-                        <a href="#" title="Explore More"><i class="fa fa-share"></i></a></span>
-                    <section>
-                        @foreach ($slidder_article as $article)
-                            <a href="#"><img
-                                    src="{{ asset('public/assets/images/articles/thumbnail/' . $article->thumbnail) }}"
-                                    alt="" loading="lazy" />
-                                <p>{{ $article->title }}</p>
-                            </a>
-                        @endforeach
-
-                    </section>
-                </div>
-
-                <div class="columns comments">
-                    <span class="title">
-                        Recent Comments
-                        <a href="#" title="Explore More"><i class="fa fa-share"></i></a></span>
-                    <section>
-                        <marquee direction="up" scrollamount="4" onMouseOver="this.stop()" onMouseOut="this.start()"
-                            class="marquee2">
-                            <p>
-                                <span class="bi bi-chat-right-dots me-2"></span>
-                                Remember, torn clothes should not be left at home. Dispose of
-                                them out. Buying new clothes like towels.
-                            </p>
-                            <p>
-                                <span class="bi bi-chat-right-dots me-2"></span>
-                                wearing clothes, bedsheets are like inviting good luck to the
-                                home.
-                            </p>
-                            <p>
-                                <span class="bi bi-chat-right-dots me-2"></span>
-                                Arrange doormats before every door and please change the
-                                doormats once in 6/8 months or maximum within 1 year. For More
-                                Daily
-                            </p>
-                        </marquee>
-                    </section>
-                </div>
-
-                <div class="columns social_icons">
-                    <a href="#" title="Facebook"><i class="fa fa-facebook"></i></a>
-                    <a href="#" title="Instagram"><i class="fa fa-instagram"></i></a>
-                    <a href="#" title="Youtube"><i class="fa fa-youtube"></i></a>
-                    <a href="#" title="Whatsapp"><i class="fa fa-whatsapp"></i></a>
-                    <a href="#" title="Telegram"><i class="fa fa-telegram"></i></a>
-                </div>
+                </section>
             </div>
+
+            <div class="columns categories">
+                <span class="title">Categories</span>
+                <section>
+                    @foreach ($categories as $category)
+                        <a href="{{ route('articles.category', $category->id) }}">{{ $category->name }}</a>
+                    @endforeach
+                </section>
+            </div>
+
+            <div class="columns posts">
+                <span class="title">Recent Posts
+                    <a href="#" title="Explore More"><i class="fa fa-share"></i></a></span>
+                <section>
+                    @foreach ($slidder_article as $article)
+                        <a href="#"><img
+                                src="{{ asset('public/assets/images/articles/thumbnail/' . $article->thumbnail) }}"
+                                alt="" loading="lazy" />
+                            <p>{{ $article->title }}</p>
+                        </a>
+                    @endforeach
+
+                </section>
+            </div>
+
+            <div class="columns comments">
+                <span class="title">
+                    Recent Comments
+                    <a href="#" title="Explore More"><i class="fa fa-share"></i></a></span>
+                <section>
+                    <marquee direction="up" scrollamount="4" onMouseOver="this.stop()" onMouseOut="this.start()"
+                        class="marquee2">
+                        <p>
+                            <span class="bi bi-chat-right-dots me-2"></span>
+                            Remember, torn clothes should not be left at home. Dispose of
+                            them out. Buying new clothes like towels.
+                        </p>
+                        <p>
+                            <span class="bi bi-chat-right-dots me-2"></span>
+                            wearing clothes, bedsheets are like inviting good luck to the
+                            home.
+                        </p>
+                        <p>
+                            <span class="bi bi-chat-right-dots me-2"></span>
+                            Arrange doormats before every door and please change the
+                            doormats once in 6/8 months or maximum within 1 year. For More
+                            Daily
+                        </p>
+                    </marquee>
+                </section>
+            </div>
+
+            <div class="columns social_icons">
+                <a href="#" title="Facebook"><i class="fa fa-facebook"></i></a>
+                <a href="#" title="Instagram"><i class="fa fa-instagram"></i></a>
+                <a href="#" title="Youtube"><i class="fa fa-youtube"></i></a>
+                <a href="#" title="Whatsapp"><i class="fa fa-whatsapp"></i></a>
+                <a href="#" title="Telegram"><i class="fa fa-telegram"></i></a>
+            </div>
+        </div>
         </div>
     </body>
 @endsection

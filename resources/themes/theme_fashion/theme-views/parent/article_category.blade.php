@@ -587,7 +587,7 @@
 
             .blog_content {
                 padding: 0;
-               
+                order: 2;
             }
 
             .left_content {
@@ -598,7 +598,7 @@
 
             .right_content {
                 flex: 0 0 100%;
-               
+                order: 1;
                 padding: 1rem;
             }
 
@@ -793,8 +793,8 @@
                                     style="background-image: url({{ asset('public/assets/images/parent_articles/thumbnail/' . $article->thumbnail) }});">
                                 </div>
                         @endforeach
-                    </section>
                 </div>
+                </section>
             </div>
             <!--BOOKS COLUMN ENDS-->
             <!--CATEGORIES COLUMN BEGINING-->
@@ -861,7 +861,7 @@
             </div>
             <!--SOCIAL MEDIA ICONS ENDS-->
         </div>
-    
+        </div>
     </body>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
