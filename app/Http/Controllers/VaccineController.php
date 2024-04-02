@@ -176,7 +176,7 @@ class VaccineController extends Controller
             }
             return view('theme-views.Vaccination-growth.view_vaccination_growth_tracker', 
             compact([
-                'parent_article_categories','childerens','child','vaccines','growth_data',
+                'parent_article_categories','childerens','child','vaccines',
                 'birth','twoMonth','fourMonth','sixMonth','twelveMonth','eighteenMonth','fiveYear'
             ]));
         }else{
