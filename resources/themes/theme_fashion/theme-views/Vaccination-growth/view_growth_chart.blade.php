@@ -30,7 +30,7 @@
         width: 70%;
         border: 1px solid #ededed;
         border-radius: 3px;
-        padding: 0 10px 10px 10px;
+        /* padding: 0 10px 10px 10px; */
     }
 
     .vaccine_main {
@@ -97,7 +97,7 @@
     }
 
     .vacci-growthB,
-    .vaccination_tr {
+    .vaccination_tr , .table_growth_chart {
         border: 1px solid #ededed;
 
     }
@@ -227,6 +227,10 @@
         border: none;
     }
 
+    .panel-heading , .panel-title  {
+        background: #EEEEEE;
+    }
+
     @media only screen and (max-width: 768px) {
         .vaccination-growth-container {
             margin: 0 0 100px 0;
@@ -246,6 +250,8 @@
         }
     }
 </style>
+{{-- <canvas id="heightChart"></canvas>
+<canvas id="headAreaChart"></canvas> --}}
 @section('content')
     <div class="container">
         <div class="vaccination-growth-container">
@@ -255,14 +261,90 @@
             <div class="vaccination-growth-child-container d-flex">
                 <div class="vaccination-mainp">
 
-{{-- 
-                    <div style="width: 700px; margin: 0 auto;">
+
+                    {{-- <div style="width: 700px; margin: 0 auto;">
                         <canvas id="weightChart"></canvas>
                         <canvas id="heightChart"></canvas>
                         <canvas id="headAreaChart"></canvas>
                     </div> --}}
 
+                    <div class="panel-heading p-3">
+                        <h6 class="panel-title font-poppins fw-bold">
+                            Weight (12 kg)
+                        </h6>
+                    </div>
+                    <div class="panel-body">
+                        <div class="p-3">
+                            <span>
+                                Updated Weight On
+                            </span>
+                            <span class="fw-bold">
+                                26th Oct 2023 : 12 kg
+                            </span>
 
+                        </div>
+                        <h6 class="p-3 font-poppins fw-bold">
+                            WEIGHT (kg)
+                        </h6>
+                        <div style="width: 700px; margin: 0 auto;">
+                            <canvas id="weightChart"></canvas>
+
+                        </div>
+
+                    </div>
+                    <div class="table_growth_chart m-3">
+                        <div class="panel-headin">
+                            <h6 class="panel-title p-3 font-poppins fw-bold">
+                                Measurement
+                            </h6>
+                        </div>
+                        <table class="table table-borderless">
+                            <thead style="background-color: #C4C4C4; ">
+                                <tr>
+                                    <th scope="col" class="M14_42">Date</th>
+                                    <th scope="col" class="M14_42">Age</th>
+                                    <th scope="col" class="M14_42">Weight</th>
+                                    <th scope="col" class="M14_42"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="R14_75" scope="row">27th Sep 2022</td>
+                                    <td class="R14_75">Birth</td>
+                                    <td class="R14_75">5 kg</td>
+                                    <td>
+                                        <i class="bi bi-pencil"></i>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="R14_75" scope="row">27th Sep 2022</td>
+                                    <td class="R14_75">Birth</td>
+                                    <td class="R14_75">----</td>
+                                    <td>
+                                        Add
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="R14_75" scope="row">08th Nov 2022</td>
+                                    <td class="R14_75">6 Weeks</td>
+                                    <td class="R14_75">----</td>
+                                    <td>
+                                        Add
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="R14_75" scope="row">06th Dec 2022</td>
+                                    <td class="R14_75">10 Weeks</td>
+                                    <td class="R14_75">----</td>
+                                    <td>
+                                        Add
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                    
 
 
 
