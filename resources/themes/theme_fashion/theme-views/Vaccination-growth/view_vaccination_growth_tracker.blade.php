@@ -924,7 +924,6 @@
                                     </p>
                                 </div>
                             </div>
-
                         </div>
                         @endif
                         @if(!empty($sixMonth))
