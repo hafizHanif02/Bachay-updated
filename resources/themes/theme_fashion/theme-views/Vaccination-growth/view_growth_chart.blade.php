@@ -97,7 +97,8 @@
     }
 
     .vacci-growthB,
-    .vaccination_tr , .table_growth_chart {
+    .vaccination_tr,
+    .table_growth_chart {
         border: 1px solid #ededed;
 
     }
@@ -227,7 +228,8 @@
         border: none;
     }
 
-    .panel-heading , .panel-title  {
+    .panel-heading,
+    .panel-title {
         background: #EEEEEE;
     }
 
@@ -267,103 +269,888 @@
                         <canvas id="heightChart"></canvas>
                         <canvas id="headAreaChart"></canvas>
                     </div> --}}
-
-                    <div class="panel-heading p-3">
-                        <h6 class="panel-title font-poppins fw-bold">
-                            Weight (12 kg)
-                        </h6>
-                    </div>
-                    <div class="panel-body">
-                        <div class="p-3">
-                            <span>
-                                Updated Weight On
-                            </span>
-                            <span class="fw-bold">
-                                26th Oct 2023 : 12 kg
-                            </span>
-
-                        </div>
-                        <h6 class="p-3 font-poppins fw-bold">
-                            WEIGHT (kg)
-                        </h6>
-                        <div style="width: 700px; margin: 0 auto;">
-                            <canvas id="weightChart"></canvas>
-
-                        </div>
-
-                    </div>
-                    <div class="table_growth_chart m-3">
-                        <div class="panel-headin">
-                            <h6 class="panel-title p-3 font-poppins fw-bold">
-                                Measurement
+                    <div class="weight_growth_chart">
+                        <div class="panel-heading p-3">
+                            <h6 class="panel-title font-poppins fw-bold">
+                                Weight (12 kg)
                             </h6>
                         </div>
-                        <table class="table table-borderless">
-                            <thead style="background-color: #C4C4C4; ">
-                                <tr>
-                                    <th scope="col" class="M14_42">Date</th>
-                                    <th scope="col" class="M14_42">Age</th>
-                                    <th scope="col" class="M14_42">Weight</th>
-                                    <th scope="col" class="M14_42"></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="R14_75" scope="row">27th Sep 2022</td>
-                                    <td class="R14_75">Birth</td>
-                                    <td class="R14_75">5 kg</td>
-                                    <td>
-                                        <i class="bi bi-pencil"></i>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="R14_75" scope="row">27th Sep 2022</td>
-                                    <td class="R14_75">Birth</td>
-                                    <td class="R14_75">----</td>
-                                    <td>
-                                        Add
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="R14_75" scope="row">08th Nov 2022</td>
-                                    <td class="R14_75">6 Weeks</td>
-                                    <td class="R14_75">----</td>
-                                    <td>
-                                        Add
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="R14_75" scope="row">06th Dec 2022</td>
-                                    <td class="R14_75">10 Weeks</td>
-                                    <td class="R14_75">----</td>
-                                    <td>
-                                        Add
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div class="panel-body">
+                            <div class="p-3">
+                                <span>
+                                    Updated Weight On
+                                </span>
+                                <span class="fw-bold">
+                                    26th Oct 2023 : 12 kg
+                                </span>
+
+                            </div>
+                            <h6 class="p-3 font-poppins fw-bold">
+                                WEIGHT (kg)
+                            </h6>
+                            <div style="width: 700px; margin: 0 auto;">
+                                <canvas id="weightChart"></canvas>
+
+                            </div>
+
+                        </div>
+                        <div class="table_growth_chart m-3">
+                            <div class="panel-headin">
+                                <h6 class="panel-title p-3 font-poppins fw-bold">
+                                    Measurement
+                                </h6>
+                            </div>
+                            <table class="table table-borderless">
+                                <thead style="background-color: #C4C4C4; ">
+                                    <tr>
+                                        <th scope="col" class="M14_42">Date</th>
+                                        <th scope="col" class="M14_42">Age</th>
+                                        <th scope="col" class="M14_42">Weight</th>
+                                        <th scope="col" class="M14_42"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="R14_75" scope="row">27th Sep 2022</td>
+                                        <td class="R14_75">Birth</td>
+                                        <td class="R14_75">5 kg</td>
+                                        <td>
+                                            <button type="button" class="Add_growth_child border-0" data-bs-toggle="modal"
+                                                data-bs-target="#exampleModal">
+                                                <i class="bi bi-pencil"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="R14_75" scope="row">27th Sep 2022</td>
+                                        <td class="R14_75">Birth</td>
+                                        <td class="R14_75">----</td>
+                                        <td>
+                                            <!-- Button trigger modal -->
+                                            <button type="button" class="Add_growth_child border-0" data-bs-toggle="modal"
+                                                data-bs-target="#exampleModal">
+                                                Add
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="R14_75" scope="row">08th Nov 2022</td>
+                                        <td class="R14_75">6 Weeks</td>
+                                        <td class="R14_75">----</td>
+                                        <td>
+                                            <button type="button" class="Add_growth_child border-0" data-bs-toggle="modal"
+                                                data-bs-target="#exampleModal">
+                                                Add
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="R14_75" scope="row">06th Dec 2022</td>
+                                        <td class="R14_75">10 Weeks</td>
+                                        <td class="R14_75">----</td>
+                                        <td>
+                                            <button type="button" class="Add_growth_child border-0" data-bs-toggle="modal"
+                                                data-bs-target="#exampleModal">
+                                                Add
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="R14_75" scope="row">27th Sep 2022</td>
+                                        <td class="R14_75">Birth</td>
+                                        <td class="R14_75">----</td>
+                                        <td>
+                                            <!-- Button trigger modal -->
+                                            <button type="button" class="Add_growth_child border-0" data-bs-toggle="modal"
+                                                data-bs-target="#exampleModal">
+                                                Add
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="R14_75" scope="row">08th Nov 2022</td>
+                                        <td class="R14_75">6 Weeks</td>
+                                        <td class="R14_75">----</td>
+                                        <td>
+                                            <button type="button" class="Add_growth_child border-0" data-bs-toggle="modal"
+                                                data-bs-target="#exampleModal">
+                                                Add
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="R14_75" scope="row">06th Dec 2022</td>
+                                        <td class="R14_75">10 Weeks</td>
+                                        <td class="R14_75">----</td>
+                                        <td>
+                                            <button type="button" class="Add_growth_child border-0" data-bs-toggle="modal"
+                                                data-bs-target="#exampleModal">
+                                                Add
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="R14_75" scope="row">27th Sep 2022</td>
+                                        <td class="R14_75">Birth</td>
+                                        <td class="R14_75">----</td>
+                                        <td>
+                                            <!-- Button trigger modal -->
+                                            <button type="button" class="Add_growth_child border-0"
+                                                data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                Add
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="R14_75" scope="row">08th Nov 2022</td>
+                                        <td class="R14_75">6 Weeks</td>
+                                        <td class="R14_75">----</td>
+                                        <td>
+                                            <button type="button" class="Add_growth_child border-0"
+                                                data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                Add
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="R14_75" scope="row">06th Dec 2022</td>
+                                        <td class="R14_75">10 Weeks</td>
+                                        <td class="R14_75">----</td>
+                                        <td>
+                                            <button type="button" class="Add_growth_child border-0"
+                                                data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                Add
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="R14_75" scope="row">27th Sep 2022</td>
+                                        <td class="R14_75">Birth</td>
+                                        <td class="R14_75">----</td>
+                                        <td>
+                                            <!-- Button trigger modal -->
+                                            <button type="button" class="Add_growth_child border-0"
+                                                data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                Add
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="R14_75" scope="row">08th Nov 2022</td>
+                                        <td class="R14_75">6 Weeks</td>
+                                        <td class="R14_75">----</td>
+                                        <td>
+                                            <button type="button" class="Add_growth_child border-0"
+                                                data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                Add
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="R14_75" scope="row">06th Dec 2022</td>
+                                        <td class="R14_75">10 Weeks</td>
+                                        <td class="R14_75">----</td>
+                                        <td>
+                                            <button type="button" class="Add_growth_child border-0"
+                                                data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                Add
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+
+
+
+                        </div>
+
 
                     </div>
-                    
+                    <div class="height_growth_chart">
+                        <div class="panel-heading p-3">
+                            <h6 class="panel-title font-poppins fw-bold">
+                                Height (0 CM)
+                            </h6>
+                        </div>
+                        <div class="panel-body">
+                            <div class="p-3">
+                                <span>
+                                    Updated Height On :
+                                </span>
+                                <span class="fw-bold">
+                                    26th Oct 2023 : 0 CM(0 In)
+                                </span>
+
+                            </div>
+                            <h6 class="p-3 font-poppins fw-bold">
+                                HEIGHT (CM)
+                            </h6>
+                            <div style="width: 700px; margin: 0 auto;">
+                                <canvas id="heightChart"></canvas>
+
+                            </div>
+
+                        </div>
+                        <div class="table_growth_chart m-3">
+                            <div class="panel-headin">
+                                <h6 class="panel-title p-3 font-poppins fw-bold">
+                                    Measurement
+                                </h6>
+                            </div>
+                            <table class="table table-borderless">
+                                <thead style="background-color: #C4C4C4; ">
+                                    <tr>
+                                        <th scope="col" class="M14_42">Date</th>
+                                        <th scope="col" class="M14_42">Age</th>
+                                        <th scope="col" class="M14_42">Weight</th>
+                                        <th scope="col" class="M14_42"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="R14_75" scope="row">27th Sep 2022</td>
+                                        <td class="R14_75">Birth</td>
+                                        <td class="R14_75">5 kg</td>
+                                        <td>
+                                            <button type="button" class="Add_growth_child border-0"
+                                                data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                <i class="bi bi-pencil"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="R14_75" scope="row">27th Sep 2022</td>
+                                        <td class="R14_75">Birth</td>
+                                        <td class="R14_75">----</td>
+                                        <td>
+                                            <!-- Button trigger modal -->
+                                            <button type="button" class="Add_growth_child border-0"
+                                                data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                Add
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="R14_75" scope="row">08th Nov 2022</td>
+                                        <td class="R14_75">6 Weeks</td>
+                                        <td class="R14_75">----</td>
+                                        <td>
+                                            <button type="button" class="Add_growth_child border-0"
+                                                data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                Add
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="R14_75" scope="row">06th Dec 2022</td>
+                                        <td class="R14_75">10 Weeks</td>
+                                        <td class="R14_75">----</td>
+                                        <td>
+                                            <button type="button" class="Add_growth_child border-0"
+                                                data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                Add
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="R14_75" scope="row">27th Sep 2022</td>
+                                        <td class="R14_75">Birth</td>
+                                        <td class="R14_75">----</td>
+                                        <td>
+                                            <!-- Button trigger modal -->
+                                            <button type="button" class="Add_growth_child border-0"
+                                                data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                Add
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="R14_75" scope="row">08th Nov 2022</td>
+                                        <td class="R14_75">6 Weeks</td>
+                                        <td class="R14_75">----</td>
+                                        <td>
+                                            <button type="button" class="Add_growth_child border-0"
+                                                data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                Add
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="R14_75" scope="row">06th Dec 2022</td>
+                                        <td class="R14_75">10 Weeks</td>
+                                        <td class="R14_75">----</td>
+                                        <td>
+                                            <button type="button" class="Add_growth_child border-0"
+                                                data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                Add
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="R14_75" scope="row">27th Sep 2022</td>
+                                        <td class="R14_75">Birth</td>
+                                        <td class="R14_75">----</td>
+                                        <td>
+                                            <!-- Button trigger modal -->
+                                            <button type="button" class="Add_growth_child border-0"
+                                                data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                Add
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="R14_75" scope="row">08th Nov 2022</td>
+                                        <td class="R14_75">6 Weeks</td>
+                                        <td class="R14_75">----</td>
+                                        <td>
+                                            <button type="button" class="Add_growth_child border-0"
+                                                data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                Add
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="R14_75" scope="row">06th Dec 2022</td>
+                                        <td class="R14_75">10 Weeks</td>
+                                        <td class="R14_75">----</td>
+                                        <td>
+                                            <button type="button" class="Add_growth_child border-0"
+                                                data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                Add
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="R14_75" scope="row">27th Sep 2022</td>
+                                        <td class="R14_75">Birth</td>
+                                        <td class="R14_75">----</td>
+                                        <td>
+                                            <!-- Button trigger modal -->
+                                            <button type="button" class="Add_growth_child border-0"
+                                                data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                Add
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="R14_75" scope="row">08th Nov 2022</td>
+                                        <td class="R14_75">6 Weeks</td>
+                                        <td class="R14_75">----</td>
+                                        <td>
+                                            <button type="button" class="Add_growth_child border-0"
+                                                data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                Add
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="R14_75" scope="row">06th Dec 2022</td>
+                                        <td class="R14_75">10 Weeks</td>
+                                        <td class="R14_75">----</td>
+                                        <td>
+                                            <button type="button" class="Add_growth_child border-0"
+                                                data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                Add
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
 
 
+                            <!-- Add Growth Details Modal -->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Add Growth
+                                                Details
+                                            </h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <table class="w-100">
+                                                <tbody class="Add_child_gr">
+                                                    <tr>
+                                                        <td>Date</td>
+                                                        <td>
+                                                            <input type="date" name="markdate" id="markdate"
+                                                                value="2024-03-22">
+                                                        </td>
+                                                        <td>
+                                                            <button class="calendar_icon" id="markdatedatepicker"
+                                                                aria-label="Pick a Date"></button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="3">
+                                                            <span id="dobErrMsg" class="error_message"></span>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Weight</td>
+                                                        <td>
+                                                            <input type="text" name="weight" id="weight"
+                                                                maxlength="5">
+                                                        </td>
+                                                        <td>
+                                                            <span>kg</span>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="3">
+                                                            <span id="errmsgweight" class="error_message"></span>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Height</td>
+                                                        <td>
+                                                            <input type="text" name="height" id="height"
+                                                                maxlength="5">
+                                                        </td>
+                                                        <td>
+                                                            <select name="htut" id="htut">
+                                                                <option value="cm">CM</option>
+                                                                <option value="inc">In.</option>
+                                                            </select>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="3">
+                                                            <span id="errmsgheight" class="error_message"></span>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Head Circ.</td>
+                                                        <td>
+                                                            <input type="text" name="hc" id="hc"
+                                                                maxlength="5">
+                                                        </td>
+                                                        <td>
+                                                            <select name="hcut" id="hcut">
+                                                                <option value="cm">CM</option>
+                                                                <option value="inc">In.</option>
+                                                            </select>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="3">
+                                                            <span id="errmsgheightcirc" class="error_message"></span>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="border-0 bg-transparent"
+                                                data-bs-dismiss="modal">CANCEL</button>
+                                            <button type="button" class="Add_growth_child border-0">SAVE
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
 
 
+                    </div>
+                    <div class="headarea_growth_chart">
+                        <div class="panel-heading p-3">
+                            <h6 class="panel-title font-poppins fw-bold">
+
+                                Head Circ. (25 CM )
+
+                            </h6>
+                        </div>
+                        <div class="panel-body">
+                            <div class="p-3">
+                                <span>
+                                    Updated Head Circ On :
+                                </span>
+                                <span class="fw-bold">
+                                    26th Oct 2023 : 25 CM (9.84 In)
+                                </span>
+
+                            </div>
+                            <h6 class="p-3 font-poppins fw-bold">
+                                HEAD CIR.(CM)
+                            </h6>
+                            <div style="width: 700px; margin: 0 auto;">
+                                <canvas id="headAreaChart"></canvas>
+
+                            </div>
+
+                        </div>
+                        <div class="table_growth_chart m-3">
+                            <div class="panel-headin">
+                                <h6 class="panel-title p-3 font-poppins fw-bold">
+                                    Measurement
+                                </h6>
+                            </div>
+                            <table class="table table-borderless">
+                                <thead style="background-color: #C4C4C4; ">
+                                    <tr>
+                                        <th scope="col" class="M14_42">Date</th>
+                                        <th scope="col" class="M14_42">Age</th>
+                                        <th scope="col" class="M14_42">Weight</th>
+                                        <th scope="col" class="M14_42"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="R14_75" scope="row">27th Sep 2022</td>
+                                        <td class="R14_75">Birth</td>
+                                        <td class="R14_75">5 kg</td>
+                                        <td>
+                                            <button type="button" class="Add_growth_child border-0"
+                                                data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                <i class="bi bi-pencil"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="R14_75" scope="row">27th Sep 2022</td>
+                                        <td class="R14_75">Birth</td>
+                                        <td class="R14_75">----</td>
+                                        <td>
+                                            <!-- Button trigger modal -->
+                                            <button type="button" class="Add_growth_child border-0"
+                                                data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                Add
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="R14_75" scope="row">08th Nov 2022</td>
+                                        <td class="R14_75">6 Weeks</td>
+                                        <td class="R14_75">----</td>
+                                        <td>
+                                            <button type="button" class="Add_growth_child border-0"
+                                                data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                Add
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="R14_75" scope="row">06th Dec 2022</td>
+                                        <td class="R14_75">10 Weeks</td>
+                                        <td class="R14_75">----</td>
+                                        <td>
+                                            <button type="button" class="Add_growth_child border-0"
+                                                data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                Add
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="R14_75" scope="row">27th Sep 2022</td>
+                                        <td class="R14_75">Birth</td>
+                                        <td class="R14_75">----</td>
+                                        <td>
+                                            <!-- Button trigger modal -->
+                                            <button type="button" class="Add_growth_child border-0"
+                                                data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                Add
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="R14_75" scope="row">08th Nov 2022</td>
+                                        <td class="R14_75">6 Weeks</td>
+                                        <td class="R14_75">----</td>
+                                        <td>
+                                            <button type="button" class="Add_growth_child border-0"
+                                                data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                Add
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="R14_75" scope="row">06th Dec 2022</td>
+                                        <td class="R14_75">10 Weeks</td>
+                                        <td class="R14_75">----</td>
+                                        <td>
+                                            <button type="button" class="Add_growth_child border-0"
+                                                data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                Add
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="R14_75" scope="row">27th Sep 2022</td>
+                                        <td class="R14_75">Birth</td>
+                                        <td class="R14_75">----</td>
+                                        <td>
+                                            <!-- Button trigger modal -->
+                                            <button type="button" class="Add_growth_child border-0"
+                                                data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                Add
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="R14_75" scope="row">08th Nov 2022</td>
+                                        <td class="R14_75">6 Weeks</td>
+                                        <td class="R14_75">----</td>
+                                        <td>
+                                            <button type="button" class="Add_growth_child border-0"
+                                                data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                Add
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="R14_75" scope="row">06th Dec 2022</td>
+                                        <td class="R14_75">10 Weeks</td>
+                                        <td class="R14_75">----</td>
+                                        <td>
+                                            <button type="button" class="Add_growth_child border-0"
+                                                data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                Add
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="R14_75" scope="row">27th Sep 2022</td>
+                                        <td class="R14_75">Birth</td>
+                                        <td class="R14_75">----</td>
+                                        <td>
+                                            <!-- Button trigger modal -->
+                                            <button type="button" class="Add_growth_child border-0"
+                                                data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                Add
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="R14_75" scope="row">08th Nov 2022</td>
+                                        <td class="R14_75">6 Weeks</td>
+                                        <td class="R14_75">----</td>
+                                        <td>
+                                            <button type="button" class="Add_growth_child border-0"
+                                                data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                Add
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="R14_75" scope="row">06th Dec 2022</td>
+                                        <td class="R14_75">10 Weeks</td>
+                                        <td class="R14_75">----</td>
+                                        <td>
+                                            <button type="button" class="Add_growth_child border-0"
+                                                data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                Add
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
 
 
+                            <!-- Add Growth Details Modal -->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Add Growth
+                                                Details
+                                            </h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <table class="w-100">
+                                                <tbody class="Add_child_gr">
+                                                    <tr>
+                                                        <td>Date</td>
+                                                        <td>
+                                                            <input type="date" name="markdate" id="markdate"
+                                                                value="2024-03-22">
+                                                        </td>
+                                                        <td>
+                                                            <button class="calendar_icon" id="markdatedatepicker"
+                                                                aria-label="Pick a Date"></button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="3">
+                                                            <span id="dobErrMsg" class="error_message"></span>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Weight</td>
+                                                        <td>
+                                                            <input type="text" name="weight" id="weight"
+                                                                maxlength="5">
+                                                        </td>
+                                                        <td>
+                                                            <span>kg</span>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="3">
+                                                            <span id="errmsgweight" class="error_message"></span>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Height</td>
+                                                        <td>
+                                                            <input type="text" name="height" id="height"
+                                                                maxlength="5">
+                                                        </td>
+                                                        <td>
+                                                            <select name="htut" id="htut">
+                                                                <option value="cm">CM</option>
+                                                                <option value="inc">In.</option>
+                                                            </select>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="3">
+                                                            <span id="errmsgheight" class="error_message"></span>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Head Circ.</td>
+                                                        <td>
+                                                            <input type="text" name="hc" id="hc"
+                                                                maxlength="5">
+                                                        </td>
+                                                        <td>
+                                                            <select name="hcut" id="hcut">
+                                                                <option value="cm">CM</option>
+                                                                <option value="inc">In.</option>
+                                                            </select>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="3">
+                                                            <span id="errmsgheightcirc" class="error_message"></span>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="border-0 bg-transparent"
+                                                data-bs-dismiss="modal">CANCEL</button>
+                                            <button type="button" class="Add_growth_child border-0">SAVE
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
 
 
+                    </div>
+                    <!-- Add Growth Details Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Add Growth
+                                        Details
+                                    </h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <table class="w-100">
+                                        <tbody class="Add_child_gr">
+                                            <tr>
+                                                <td>Date</td>
+                                                <td>
+                                                    <input type="date" name="markdate" id="markdate"
+                                                        value="2024-03-22">
+                                                </td>
+                                                <td>
+                                                    <button class="calendar_icon" id="markdatedatepicker"
+                                                        aria-label="Pick a Date"></button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3">
+                                                    <span id="dobErrMsg" class="error_message"></span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Weight</td>
+                                                <td>
+                                                    <input type="text" name="weight" id="weight" maxlength="5">
+                                                </td>
+                                                <td>
+                                                    <span>kg</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3">
+                                                    <span id="errmsgweight" class="error_message"></span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Height</td>
+                                                <td>
+                                                    <input type="text" name="height" id="height" maxlength="5">
+                                                </td>
+                                                <td>
+                                                    <select name="htut" id="htut">
+                                                        <option value="cm">CM</option>
+                                                        <option value="inc">In.</option>
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3">
+                                                    <span id="errmsgheight" class="error_message"></span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Head Circ.</td>
+                                                <td>
+                                                    <input type="text" name="hc" id="hc" maxlength="5">
+                                                </td>
+                                                <td>
+                                                    <select name="hcut" id="hcut">
+                                                        <option value="cm">CM</option>
+                                                        <option value="inc">In.</option>
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3">
+                                                    <span id="errmsgheightcirc" class="error_message"></span>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="border-0 bg-transparent"
+                                        data-bs-dismiss="modal">CANCEL</button>
+                                    <button type="button" class="Add_growth_child border-0">SAVE
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-
-
-
+                    <div class="text-center">
+                        <!-- Button trigger modal -->
+                        <button class="btn_clr ps-5 pe-5 m-3" type="button" class="Add_growth_child border-0"
+                            data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            Add growth details
+                        </button>
+                    </div>
                 </div>
-
-
-
-
-
-
                 <div class="downloadApp-right">
 
                     <h6 class="font-poppins text-center mt-4">
