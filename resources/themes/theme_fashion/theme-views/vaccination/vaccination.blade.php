@@ -455,7 +455,7 @@
                                                                         id="height" maxlength="5">
                                                                 </td>
                                                                 <td>
-                                                                    <select name="htut" id="htut">
+                                                                    <select name="height_unit" id="htut">
                                                                         <option value="cm">CM</option>
                                                                         <option value="inc">In.</option>
                                                                     </select>
@@ -474,7 +474,7 @@
                                                                         id="hc" maxlength="5">
                                                                 </td>
                                                                 <td>
-                                                                    <select name="hcut" id="hcut">
+                                                                    <select name="head_circle_unit" id="hcut">
                                                                         <option value="cm">CM</option>
                                                                         <option value="inc">In.</option>
                                                                     </select>
@@ -608,7 +608,7 @@
                                                                         id="height" maxlength="5">
                                                                 </td>
                                                                 <td>
-                                                                    <select name="htut" id="htut">
+                                                                    <select  name="height_unit" id="htut">
                                                                         <option value="cm">CM</option>
                                                                         <option value="inc">In.</option>
                                                                     </select>
@@ -627,7 +627,7 @@
                                                                         id="hc" maxlength="5">
                                                                 </td>
                                                                 <td>
-                                                                    <select name="hcut" id="hcut">
+                                                                    <select  name="head_circle_unit" id="hcut">
                                                                         <option value="cm">CM</option>
                                                                         <option value="inc">In.</option>
                                                                     </select>
