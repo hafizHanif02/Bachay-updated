@@ -252,8 +252,7 @@
         }
     }
 </style>
-{{-- <canvas id="heightChart"></canvas>
-<canvas id="headAreaChart"></canvas> --}}
+
 @section('content')
     <div class="container">
         <div class="vaccination-growth-container">
@@ -264,11 +263,7 @@
                 <div class="vaccination-mainp">
 
 
-                    {{-- <div style="width: 700px; margin: 0 auto;">
-                        <canvas id="weightChart"></canvas>
-                        <canvas id="heightChart"></canvas>
-                        <canvas id="headAreaChart"></canvas>
-                    </div> --}}
+                   
                     <div class="weight_growth_chart">
                         <div class="panel-heading p-3">
                             <h6 class="panel-title font-poppins fw-bold">
@@ -1184,9 +1179,12 @@
     <script>
         // Sample data
         const ageData = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-        const weightData = [10, 12, 14, 16, 18, 20, 22, 24, 26, 28];
-        const heightData = [70, 75, 80, 85, 90, 95, 100, 105, 110, 115];
-        const headAreaData = [30, 32, 34, 36, 38, 40, 42, 44, 46, 48];
+        const weightData = {!! json_encode($weightarray) !!};
+        const heightData = {!! json_encode($heightarray) !!};
+        const headAreaData = {!! json_encode($headarray) !!}; 
+
+        // const heightData = [70, 75, 80, 85, 90, 95, 100, 105, 110, 115];
+        // const headAreaData = [30, 32, 34, 36, 38, 40, 42, 44, 46, 48];
         const idealWeightRange = [14, 24];
         const idealHeightRange = [80, 100];
         const idealHeadAreaRange = [32, 44];

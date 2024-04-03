@@ -545,7 +545,7 @@
 
                                         </div>
                                         <div class="view_gr_tr text-center mt-4 mb-4">
-                                            <a href="#">view growth chart</a>
+                                            <a href="{{ route('view-growth-chart', $child->id) }}">view growth chart</a>
                                         </div>
 
 

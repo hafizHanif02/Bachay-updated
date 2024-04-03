@@ -266,10 +266,13 @@ class VaccineController extends Controller
         $parent_article_categories = ParentArticleCategory::where(['status' => 1, 'parent_id' => 0])->with('child')->latest()->take(5)->get();
         return view('theme-views.vaccination-growth.view_sample_cart', compact('parent_article_categories'));
     }
-    public function view_growth_chart()
+    public function view_growth_chart($id)
     {
         $parent_article_categories = ParentArticleCategory::where(['status' => 1, 'parent_id' => 0])->with('child')->latest()->take(5)->get();
-        return view('theme-views.vaccination-growth.view_growth_chart', compact('parent_article_categories'));
+        $weightarray = Growth::where('child_id', $id)->pluck('weight')->toArray();
+        $heightarray = Growth::where('child_id', $id)->pluck('height')->toArray();
+        $headarray = Growth::where('child_id', $id)->pluck('head_circle')->toArray();
+        return view('theme-views.vaccination-growth.view_growth_chart', compact(['parent_article_categories','weightarray','heightarray','headarray']));
     }
     /**
      * Show the form for creating a new resource.
