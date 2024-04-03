@@ -104,7 +104,10 @@ class VaccineController extends Controller
                             $countUpcoming++;
                         }
 
-                    }elseif($vaccinationDate < $currentDate){
+                    }elseif($vaccinationDate <= $currentDate){
+                        $uppcoming += 1;
+                    }
+                    elseif($vaccinationDate < $currentDate){
                         $overdue += 1;
                     } else{
                         $today += 1;
@@ -190,11 +193,12 @@ class VaccineController extends Controller
             $child = DB::table('family_relation')->where(['user_id'=> Auth::guard('customer')->id(),'id' => $child_id])->first();
             $growth_data = Growth::where(['user_id'=> Auth::guard('customer')->id(),'child_id' => $child_id])->latest()->first();
             $vaccination_submission = VaccinationSubmission::where(['id'=> $id,'user_id' => Auth::guard('customer')->id(), 'child_id' => $child_id])->with('vaccination')->first();
+            // dd($vaccination_submission, $id , $child_id);
             if($vaccination_submission != null){
                 return view('theme-views.Vaccination-growth.vaccination-mark-done', compact(['vaccination_submission','child','growth_data']));
             }
             else{
-                Toastr::success('Vaccination is not available !');
+                Toastr::error('Vaccination is not available !');
                 return redirect()->back();
             }
         }
