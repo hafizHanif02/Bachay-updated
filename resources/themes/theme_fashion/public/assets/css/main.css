@@ -901,7 +901,9 @@ footer .footer-top {
     font-weight: 700;
     text-decoration: none;
 }
-
+.modal-dialog{
+    top: 25vh !important;
+}
 @media (max-width: 767px) {
     .articleHeader .title {
         font-size: 16px !important;

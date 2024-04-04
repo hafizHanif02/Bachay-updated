@@ -263,7 +263,7 @@
                 <div class="vaccination-mainp">
 
 
-                   
+
                     <div class="weight_growth_chart">
                         <div class="panel-heading p-3">
                             <h6 class="panel-title font-poppins fw-bold">
@@ -283,9 +283,11 @@
                             <h6 class="p-3 font-poppins fw-bold">
                                 WEIGHT (kg)
                             </h6>
-                            <div style="width: 700px; margin: 0 auto;">
-                                <canvas id="weightChart"></canvas>
+                            <div style="width: 100%; overflow-x: auto;">
+                                <div style="width: 700px; margin: 0 auto;">
+                                    <canvas id="weightChart"></canvas>
 
+                                </div>
                             </div>
 
                         </div>
@@ -378,8 +380,8 @@
                                         <td class="R14_75">10 Weeks</td>
                                         <td class="R14_75">----</td>
                                         <td>
-                                            <button type="button" class="Add_growth_child border-0" data-bs-toggle="modal"
-                                                data-bs-target="#exampleModal">
+                                            <button type="button" class="Add_growth_child border-0"
+                                                data-bs-toggle="modal" data-bs-target="#exampleModal">
                                                 Add
                                             </button>
                                         </td>
@@ -481,9 +483,11 @@
                             <h6 class="p-3 font-poppins fw-bold">
                                 HEIGHT (CM)
                             </h6>
-                            <div style="width: 700px; margin: 0 auto;">
-                                <canvas id="heightChart"></canvas>
+                            <div style="width: 100%; overflow-x: auto;">
+                                <div style="width: 700px; margin: 0 auto;">
+                                    <canvas id="heightChart"></canvas>
 
+                                </div>
                             </div>
 
                         </div>
@@ -774,9 +778,11 @@
                             <h6 class="p-3 font-poppins fw-bold">
                                 HEAD CIR.(CM)
                             </h6>
-                            <div style="width: 700px; margin: 0 auto;">
-                                <canvas id="headAreaChart"></canvas>
+                            <div style="width: 100%; overflow-x: auto;">
+                                <div style="width: 700px; margin: 0 auto;">
+                                    <canvas id="headAreaChart"></canvas>
 
+                                </div>
                             </div>
 
                         </div>
@@ -1181,7 +1187,7 @@
         const ageData = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
         const weightData = {!! json_encode($weightarray) !!};
         const heightData = {!! json_encode($heightarray) !!};
-        const headAreaData = {!! json_encode($headarray) !!}; 
+        const headAreaData = {!! json_encode($headarray) !!};
 
         // const heightData = [70, 75, 80, 85, 90, 95, 100, 105, 110, 115];
         // const headAreaData = [30, 32, 34, 36, 38, 40, 42, 44, 46, 48];
