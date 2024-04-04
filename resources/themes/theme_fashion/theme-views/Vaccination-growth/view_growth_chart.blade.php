@@ -257,8 +257,54 @@
     <div class="container">
         <div class="vaccination-growth-container">
 
-            <h3 class="mt-4">Ali Growth Tracker</h3>
-            <hr>
+            <h3 class="mt-4">{{ $child->name }} Growth Tracker</h3>
+            <?php
+                // Assuming $child->dob contains the date of birth in 'Y-m-d' format
+                $dob = new DateTime($child->dob);
+                $interval = new DateInterval('P1M'); // 1 month interval
+
+                // Initialize an array to store dates and ages
+                $dateAgeArray = array();
+
+                // Get 18 dates after the date of birth with 1 month gap and calculate age for each date
+                for ($i = 0; $i < 19; $i++) {
+                    $date = $dob->add($interval);
+                    $currentDate = new DateTime();
+                    $ageInterval = $dob->diff($currentDate);
+                    
+                    // Format the age
+                    $age = '';
+                    if ($ageInterval->y > 0) {
+                        $age .= $ageInterval->y . ' year';
+                        if ($ageInterval->y > 1) {
+                            $age .= 's';
+                        }
+                        if ($ageInterval->m > 0) {
+                            $age .= ', ' . $ageInterval->m . ' month';
+                            if ($ageInterval->m > 1) {
+                                $age .= 's';
+                            }
+                        }
+                    } elseif ($ageInterval->m > 0) {
+                        $age .= $ageInterval->m . ' month';
+                        if ($ageInterval->m > 1) {
+                            $age .= 's';
+                        }
+                    } elseif ($ageInterval->d > 0) {
+                        $age .= $ageInterval->d . ' day';
+                        if ($ageInterval->d > 1) {
+                            $age .= 's';
+                        }
+                    }
+                    $dateAgeArray[] = array(
+                        'date' => $date->format('Y-m-d'),
+                        'age' => $age
+                    );
+                }
+                ?>
+                <hr>
+
+
             <div class="vaccination-growth-child-container d-flex">
                 <div class="vaccination-mainp">
 
@@ -307,10 +353,13 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach($dateAgeArray as $date)
+                                    <?php $growth = \App\Models\Growth::where('child_id', $child->id)->where('date', $date['date'])->first();
+                                    ?>
                                     <tr>
-                                        <td class="R14_75" scope="row">27th Sep 2022</td>
-                                        <td class="R14_75">Birth</td>
-                                        <td class="R14_75">5 kg</td>
+                                        <td class="R14_75" scope="row">{{ date_create($date['date'])->format('jS M Y') }}                                        </td>
+                                        <td class="R14_75">{{ $date['age'] }}</td>
+                                        <td class="R14_75">{{ ($growth ? $growth->weight : '-') }}</td>
                                         <td>
                                             <button type="button" class="Add_growth_child border-0" data-bs-toggle="modal"
                                                 data-bs-target="#exampleModal">
@@ -318,7 +367,8 @@
                                             </button>
                                         </td>
                                     </tr>
-                                    <tr>
+                                    @endforeach
+                                    {{-- <tr>
                                         <td class="R14_75" scope="row">27th Sep 2022</td>
                                         <td class="R14_75">Birth</td>
                                         <td class="R14_75">----</td>
@@ -329,131 +379,8 @@
                                                 Add
                                             </button>
                                         </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="R14_75" scope="row">08th Nov 2022</td>
-                                        <td class="R14_75">6 Weeks</td>
-                                        <td class="R14_75">----</td>
-                                        <td>
-                                            <button type="button" class="Add_growth_child border-0" data-bs-toggle="modal"
-                                                data-bs-target="#exampleModal">
-                                                Add
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="R14_75" scope="row">06th Dec 2022</td>
-                                        <td class="R14_75">10 Weeks</td>
-                                        <td class="R14_75">----</td>
-                                        <td>
-                                            <button type="button" class="Add_growth_child border-0" data-bs-toggle="modal"
-                                                data-bs-target="#exampleModal">
-                                                Add
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="R14_75" scope="row">27th Sep 2022</td>
-                                        <td class="R14_75">Birth</td>
-                                        <td class="R14_75">----</td>
-                                        <td>
-                                            <!-- Button trigger modal -->
-                                            <button type="button" class="Add_growth_child border-0" data-bs-toggle="modal"
-                                                data-bs-target="#exampleModal">
-                                                Add
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="R14_75" scope="row">08th Nov 2022</td>
-                                        <td class="R14_75">6 Weeks</td>
-                                        <td class="R14_75">----</td>
-                                        <td>
-                                            <button type="button" class="Add_growth_child border-0" data-bs-toggle="modal"
-                                                data-bs-target="#exampleModal">
-                                                Add
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="R14_75" scope="row">06th Dec 2022</td>
-                                        <td class="R14_75">10 Weeks</td>
-                                        <td class="R14_75">----</td>
-                                        <td>
-                                            <button type="button" class="Add_growth_child border-0"
-                                                data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                Add
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="R14_75" scope="row">27th Sep 2022</td>
-                                        <td class="R14_75">Birth</td>
-                                        <td class="R14_75">----</td>
-                                        <td>
-                                            <!-- Button trigger modal -->
-                                            <button type="button" class="Add_growth_child border-0"
-                                                data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                Add
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="R14_75" scope="row">08th Nov 2022</td>
-                                        <td class="R14_75">6 Weeks</td>
-                                        <td class="R14_75">----</td>
-                                        <td>
-                                            <button type="button" class="Add_growth_child border-0"
-                                                data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                Add
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="R14_75" scope="row">06th Dec 2022</td>
-                                        <td class="R14_75">10 Weeks</td>
-                                        <td class="R14_75">----</td>
-                                        <td>
-                                            <button type="button" class="Add_growth_child border-0"
-                                                data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                Add
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="R14_75" scope="row">27th Sep 2022</td>
-                                        <td class="R14_75">Birth</td>
-                                        <td class="R14_75">----</td>
-                                        <td>
-                                            <!-- Button trigger modal -->
-                                            <button type="button" class="Add_growth_child border-0"
-                                                data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                Add
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="R14_75" scope="row">08th Nov 2022</td>
-                                        <td class="R14_75">6 Weeks</td>
-                                        <td class="R14_75">----</td>
-                                        <td>
-                                            <button type="button" class="Add_growth_child border-0"
-                                                data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                Add
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="R14_75" scope="row">06th Dec 2022</td>
-                                        <td class="R14_75">10 Weeks</td>
-                                        <td class="R14_75">----</td>
-                                        <td>
-                                            <button type="button" class="Add_growth_child border-0"
-                                                data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                Add
-                                            </button>
-                                        </td>
-                                    </tr>
+                                    </tr> --}}
+                                   
                                 </tbody>
                             </table>
 
@@ -502,158 +429,39 @@
                                     <tr>
                                         <th scope="col" class="M14_42">Date</th>
                                         <th scope="col" class="M14_42">Age</th>
-                                        <th scope="col" class="M14_42">Weight</th>
+                                        <th scope="col" class="M14_42">Height</th>
                                         <th scope="col" class="M14_42"></th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach($dateAgeArray as $date)
+                                    <?php $growth = \App\Models\Growth::where('child_id', $child->id)->where('date', $date['date'])->first();
+                                    ?>
                                     <tr>
-                                        <td class="R14_75" scope="row">27th Sep 2022</td>
-                                        <td class="R14_75">Birth</td>
-                                        <td class="R14_75">5 kg</td>
+                                        <td class="R14_75" scope="row">{{ date_create($date['date'])->format('jS M Y') }}                                        </td>
+                                        <td class="R14_75">{{ $date['age'] }}</td>
+                                        <td class="R14_75">{{ ($growth ? $growth->height : '-') }}</td>
                                         <td>
-                                            <button type="button" class="Add_growth_child border-0"
-                                                data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                            <button type="button" class="Add_growth_child border-0" data-bs-toggle="modal"
+                                                data-bs-target="#exampleModal">
                                                 <i class="bi bi-pencil"></i>
                                             </button>
                                         </td>
                                     </tr>
-                                    <tr>
+                                    @endforeach
+                                    {{-- <tr>
                                         <td class="R14_75" scope="row">27th Sep 2022</td>
                                         <td class="R14_75">Birth</td>
                                         <td class="R14_75">----</td>
                                         <td>
                                             <!-- Button trigger modal -->
-                                            <button type="button" class="Add_growth_child border-0"
-                                                data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                            <button type="button" class="Add_growth_child border-0" data-bs-toggle="modal"
+                                                data-bs-target="#exampleModal">
                                                 Add
                                             </button>
                                         </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="R14_75" scope="row">08th Nov 2022</td>
-                                        <td class="R14_75">6 Weeks</td>
-                                        <td class="R14_75">----</td>
-                                        <td>
-                                            <button type="button" class="Add_growth_child border-0"
-                                                data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                Add
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="R14_75" scope="row">06th Dec 2022</td>
-                                        <td class="R14_75">10 Weeks</td>
-                                        <td class="R14_75">----</td>
-                                        <td>
-                                            <button type="button" class="Add_growth_child border-0"
-                                                data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                Add
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="R14_75" scope="row">27th Sep 2022</td>
-                                        <td class="R14_75">Birth</td>
-                                        <td class="R14_75">----</td>
-                                        <td>
-                                            <!-- Button trigger modal -->
-                                            <button type="button" class="Add_growth_child border-0"
-                                                data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                Add
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="R14_75" scope="row">08th Nov 2022</td>
-                                        <td class="R14_75">6 Weeks</td>
-                                        <td class="R14_75">----</td>
-                                        <td>
-                                            <button type="button" class="Add_growth_child border-0"
-                                                data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                Add
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="R14_75" scope="row">06th Dec 2022</td>
-                                        <td class="R14_75">10 Weeks</td>
-                                        <td class="R14_75">----</td>
-                                        <td>
-                                            <button type="button" class="Add_growth_child border-0"
-                                                data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                Add
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="R14_75" scope="row">27th Sep 2022</td>
-                                        <td class="R14_75">Birth</td>
-                                        <td class="R14_75">----</td>
-                                        <td>
-                                            <!-- Button trigger modal -->
-                                            <button type="button" class="Add_growth_child border-0"
-                                                data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                Add
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="R14_75" scope="row">08th Nov 2022</td>
-                                        <td class="R14_75">6 Weeks</td>
-                                        <td class="R14_75">----</td>
-                                        <td>
-                                            <button type="button" class="Add_growth_child border-0"
-                                                data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                Add
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="R14_75" scope="row">06th Dec 2022</td>
-                                        <td class="R14_75">10 Weeks</td>
-                                        <td class="R14_75">----</td>
-                                        <td>
-                                            <button type="button" class="Add_growth_child border-0"
-                                                data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                Add
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="R14_75" scope="row">27th Sep 2022</td>
-                                        <td class="R14_75">Birth</td>
-                                        <td class="R14_75">----</td>
-                                        <td>
-                                            <!-- Button trigger modal -->
-                                            <button type="button" class="Add_growth_child border-0"
-                                                data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                Add
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="R14_75" scope="row">08th Nov 2022</td>
-                                        <td class="R14_75">6 Weeks</td>
-                                        <td class="R14_75">----</td>
-                                        <td>
-                                            <button type="button" class="Add_growth_child border-0"
-                                                data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                Add
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="R14_75" scope="row">06th Dec 2022</td>
-                                        <td class="R14_75">10 Weeks</td>
-                                        <td class="R14_75">----</td>
-                                        <td>
-                                            <button type="button" class="Add_growth_child border-0"
-                                                data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                Add
-                                            </button>
-                                        </td>
-                                    </tr>
+                                    </tr> --}}
+                                   
                                 </tbody>
                             </table>
 
@@ -797,158 +605,39 @@
                                     <tr>
                                         <th scope="col" class="M14_42">Date</th>
                                         <th scope="col" class="M14_42">Age</th>
-                                        <th scope="col" class="M14_42">Weight</th>
+                                        <th scope="col" class="M14_42">Head Cricle</th>
                                         <th scope="col" class="M14_42"></th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach($dateAgeArray as $date)
+                                    <?php $growth = \App\Models\Growth::where('child_id', $child->id)->where('date', $date['date'])->first();
+                                    ?>
                                     <tr>
-                                        <td class="R14_75" scope="row">27th Sep 2022</td>
-                                        <td class="R14_75">Birth</td>
-                                        <td class="R14_75">5 kg</td>
+                                        <td class="R14_75" scope="row">{{ date_create($date['date'])->format('jS M Y') }}                                        </td>
+                                        <td class="R14_75">{{ $date['age'] }}</td>
+                                        <td class="R14_75">{{ ($growth ? $growth->head_circle : '-') }}</td>
                                         <td>
-                                            <button type="button" class="Add_growth_child border-0"
-                                                data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                            <button type="button" class="Add_growth_child border-0" data-bs-toggle="modal"
+                                                data-bs-target="#exampleModal">
                                                 <i class="bi bi-pencil"></i>
                                             </button>
                                         </td>
                                     </tr>
-                                    <tr>
+                                    @endforeach
+                                    {{-- <tr>
                                         <td class="R14_75" scope="row">27th Sep 2022</td>
                                         <td class="R14_75">Birth</td>
                                         <td class="R14_75">----</td>
                                         <td>
                                             <!-- Button trigger modal -->
-                                            <button type="button" class="Add_growth_child border-0"
-                                                data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                            <button type="button" class="Add_growth_child border-0" data-bs-toggle="modal"
+                                                data-bs-target="#exampleModal">
                                                 Add
                                             </button>
                                         </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="R14_75" scope="row">08th Nov 2022</td>
-                                        <td class="R14_75">6 Weeks</td>
-                                        <td class="R14_75">----</td>
-                                        <td>
-                                            <button type="button" class="Add_growth_child border-0"
-                                                data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                Add
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="R14_75" scope="row">06th Dec 2022</td>
-                                        <td class="R14_75">10 Weeks</td>
-                                        <td class="R14_75">----</td>
-                                        <td>
-                                            <button type="button" class="Add_growth_child border-0"
-                                                data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                Add
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="R14_75" scope="row">27th Sep 2022</td>
-                                        <td class="R14_75">Birth</td>
-                                        <td class="R14_75">----</td>
-                                        <td>
-                                            <!-- Button trigger modal -->
-                                            <button type="button" class="Add_growth_child border-0"
-                                                data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                Add
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="R14_75" scope="row">08th Nov 2022</td>
-                                        <td class="R14_75">6 Weeks</td>
-                                        <td class="R14_75">----</td>
-                                        <td>
-                                            <button type="button" class="Add_growth_child border-0"
-                                                data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                Add
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="R14_75" scope="row">06th Dec 2022</td>
-                                        <td class="R14_75">10 Weeks</td>
-                                        <td class="R14_75">----</td>
-                                        <td>
-                                            <button type="button" class="Add_growth_child border-0"
-                                                data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                Add
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="R14_75" scope="row">27th Sep 2022</td>
-                                        <td class="R14_75">Birth</td>
-                                        <td class="R14_75">----</td>
-                                        <td>
-                                            <!-- Button trigger modal -->
-                                            <button type="button" class="Add_growth_child border-0"
-                                                data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                Add
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="R14_75" scope="row">08th Nov 2022</td>
-                                        <td class="R14_75">6 Weeks</td>
-                                        <td class="R14_75">----</td>
-                                        <td>
-                                            <button type="button" class="Add_growth_child border-0"
-                                                data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                Add
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="R14_75" scope="row">06th Dec 2022</td>
-                                        <td class="R14_75">10 Weeks</td>
-                                        <td class="R14_75">----</td>
-                                        <td>
-                                            <button type="button" class="Add_growth_child border-0"
-                                                data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                Add
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="R14_75" scope="row">27th Sep 2022</td>
-                                        <td class="R14_75">Birth</td>
-                                        <td class="R14_75">----</td>
-                                        <td>
-                                            <!-- Button trigger modal -->
-                                            <button type="button" class="Add_growth_child border-0"
-                                                data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                Add
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="R14_75" scope="row">08th Nov 2022</td>
-                                        <td class="R14_75">6 Weeks</td>
-                                        <td class="R14_75">----</td>
-                                        <td>
-                                            <button type="button" class="Add_growth_child border-0"
-                                                data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                Add
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="R14_75" scope="row">06th Dec 2022</td>
-                                        <td class="R14_75">10 Weeks</td>
-                                        <td class="R14_75">----</td>
-                                        <td>
-                                            <button type="button" class="Add_growth_child border-0"
-                                                data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                Add
-                                            </button>
-                                        </td>
-                                    </tr>
+                                    </tr> --}}
+                                   
                                 </tbody>
                             </table>
 
@@ -1105,7 +794,7 @@
                                                 <td>
                                                     <select name="htut" id="htut">
                                                         <option value="cm">CM</option>
-                                                        <option value="inc">In.</option>
+                                                        {{-- <option value="inc">In.</option> --}}
                                                     </select>
                                                 </td>
                                             </tr>
@@ -1122,7 +811,7 @@
                                                 <td>
                                                     <select name="hcut" id="hcut">
                                                         <option value="cm">CM</option>
-                                                        <option value="inc">In.</option>
+                                                        {{-- <option value="inc">In.</option> --}}
                                                     </select>
                                                 </td>
                                             </tr>
@@ -1182,12 +871,30 @@
 
 
 
+                 
     <script>
-        // Sample data
         const ageData = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-        const weightData = {!! json_encode($weightarray) !!};
-        const heightData = {!! json_encode($heightarray) !!};
-        const headAreaData = {!! json_encode($headarray) !!};
+        var weightData1 = {!! json_encode($weightarray) !!};
+        var heightData1 = {!! json_encode($heightarray) !!};
+        var headAreaData1 = {!! json_encode($headarray) !!};
+
+        var weightData = weightData1.map(value => {
+            return value.replace(/\D/g, '');
+        });
+
+        var heightData = heightData1.map(value => {
+            return value.replace(/\D/g, '');
+        });
+
+        var headAreaData = headAreaData1.map(value => {
+            return value.replace(/\D/g, '');
+        });
+
+        var weightData = weightData1.map(value => parseFloat(value));
+        var heightData = heightData1.map(value => parseFloat(value));
+        var headAreaData = headAreaData1.map(value => parseFloat(value));
+
+        
 
         // const heightData = [70, 75, 80, 85, 90, 95, 100, 105, 110, 115];
         // const headAreaData = [30, 32, 34, 36, 38, 40, 42, 44, 46, 48];
