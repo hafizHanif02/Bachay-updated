@@ -361,7 +361,8 @@
                                         <td class="R14_75">{{ $date['age'] }}</td>
                                         <td class="R14_75">{{ ($growth ? $growth->weight : '-') }}</td>
                                         <td>
-                                            <button type="button" class="Add_growth_child border-0" data-bs-toggle="modal"
+                                            <?php $formattedDate = date_create($date['date'])->format('Y-m-d'); ?>
+                                            <button type="button" onclick="DateChange('{{ $formattedDate }}')" class="Add_growth_child border-0" data-bs-toggle="modal"
                                                 data-bs-target="#exampleModal">
                                                 <i class="bi bi-pencil"></i>
                                             </button>
@@ -442,11 +443,13 @@
                                         <td class="R14_75">{{ $date['age'] }}</td>
                                         <td class="R14_75">{{ ($growth ? $growth->height : '-') }}</td>
                                         <td>
-                                            <button type="button" class="Add_growth_child border-0" data-bs-toggle="modal"
+                                            <?php $formattedDate = date_create($date['date'])->format('Y-m-d'); ?>
+                                            <button type="button" onclick="DateChange('{{ $formattedDate }}')" class="Add_growth_child border-0" data-bs-toggle="modal"
                                                 data-bs-target="#exampleModal">
                                                 <i class="bi bi-pencil"></i>
                                             </button>
                                         </td>
+                                        
                                     </tr>
                                     @endforeach
                                     {{-- <tr>
@@ -481,11 +484,12 @@
                                         <div class="modal-body">
                                             <table class="w-100">
                                                 <tbody class="Add_child_gr">
+                                                <form  action="{{ route('growth-submit', $child->id) }}" method="POST">
+                                                    @csrf
                                                     <tr>
                                                         <td>Date</td>
                                                         <td>
-                                                            <input type="date" name="markdate" id="markdate"
-                                                                value="2024-03-22">
+                                                            <input type="date" name="date"  id="markdate" >
                                                         </td>
                                                         <td>
                                                             <button class="calendar_icon" id="markdatedatepicker"
@@ -519,7 +523,7 @@
                                                                 maxlength="5">
                                                         </td>
                                                         <td>
-                                                            <select name="htut" id="htut">
+                                                            <select name="height_unit" id="htut">
                                                                 <option value="cm">CM</option>
                                                                 <option value="inc">In.</option>
                                                             </select>
@@ -533,11 +537,11 @@
                                                     <tr>
                                                         <td>Head Circ.</td>
                                                         <td>
-                                                            <input type="text" name="hc" id="hc"
+                                                            <input type="text" name="head_circle" id="hc"
                                                                 maxlength="5">
                                                         </td>
                                                         <td>
-                                                            <select name="hcut" id="hcut">
+                                                            <select name="head_circle_unit" id="hcut">
                                                                 <option value="cm">CM</option>
                                                                 <option value="inc">In.</option>
                                                             </select>
@@ -554,8 +558,9 @@
                                         <div class="modal-footer">
                                             <button type="button" class="border-0 bg-transparent"
                                                 data-bs-dismiss="modal">CANCEL</button>
-                                            <button type="button" class="Add_growth_child border-0">SAVE
+                                            <button type="submit" class="Add_growth_child border-0">SAVE
                                             </button>
+                                        </form>
                                         </div>
                                     </div>
                                 </div>
@@ -618,7 +623,8 @@
                                         <td class="R14_75">{{ $date['age'] }}</td>
                                         <td class="R14_75">{{ ($growth ? $growth->head_circle : '-') }}</td>
                                         <td>
-                                            <button type="button" class="Add_growth_child border-0" data-bs-toggle="modal"
+                                            <?php $formattedDate = date_create($date['date'])->format('m-Y-d'); ?>
+                                            <button type="button" onclick="DateChange('{{ $formattedDate }}')" class="Add_growth_child border-0" data-bs-toggle="modal"
                                                 data-bs-target="#exampleModal">
                                                 <i class="bi bi-pencil"></i>
                                             </button>
@@ -684,7 +690,15 @@
 
 
 
-                 
+            
+    <script>
+        function DateChange(date){
+            console.log(date, $('#markdate').val());
+            $('#markdate').val('');
+            $('#markdate').val(date);
+        }
+    </script>
+    
     <script>
         const ageData = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
         var weightData1 = {!! json_encode($weightarray) !!};

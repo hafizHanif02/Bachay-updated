@@ -19,6 +19,7 @@ class Growth extends Model
         'head_circle',
         'height',
         'weight',   
+        'date',   
     ];
 
     public function vaccination(){

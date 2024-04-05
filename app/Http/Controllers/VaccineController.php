@@ -249,6 +249,7 @@ class VaccineController extends Controller
                     'weight' => $request->weight,
                     'height' => $request->height.' '.($request->height_unit ?? ''),
                     'head_circle' => $request->head_circle.' '.($request->head_circle_unit ?? ''),
+                    'date' => ($request->date ? $request->date : date('Y-m-d')),
                 ]);
                 Toastr::success('Your Growth has been Updated!');
                 return redirect()->back();
