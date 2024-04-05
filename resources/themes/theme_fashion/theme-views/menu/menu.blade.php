@@ -67,21 +67,21 @@
         <div class="acc-header">
             <div class="img-box" id="img00">
                 <div class="acc-images">
-                    <img src="{{ asset('public/images/f.jpg') }}" alt="Shop By Category" title="Shop By Category" />
+                    <a href="https://bachay.com/categories/detail/Boys%20Fashion"><img src="{{ asset('public/images/f.jpg') }}" alt="Shop By Category" title="Shop By Category" /></a>
                 </div>
-                <p class="img-label">Shop By Category</p>
+                <p class="img-label">Category</p>
             </div>
 
             <div class="img-box" id="img01">
                 <div class="acc-images">
-                    <img src="{{ asset('public/images/s.jpg') }}" alt="Boutiques" title="Boutiques" />
+                    <a href="https://bachay.com/vendors"><img src="{{ asset('public/images/s.jpg') }}" alt="Boutiques" title="Boutiques" /></a>
                 </div>
-                <p class="img-label">Boutiques</p>
+                <p class="img-label">Shops</p>
             </div>
 
             <div class="img-box" id="img02">
                 <div class="acc-images">
-                    <img src="{{ asset('public/images/t.jpg') }}" alt="Parenting" title="Parenting" />
+                    <a href="https://bachay.com/parenting"><img src="{{ asset('public/images/t.jpg') }}" alt="Parenting" title="Parenting" /></a>
                 </div>
                 <p class="img-label">Parenting</p>
             </div>
@@ -101,27 +101,27 @@
         <div class="acc-header">
             <div class="img-box" id="img00">
                 <div class="acc-images">
-                    <img src="{{ asset('public/images/preschool.jpg') }}" alt="Shop By Category"
-                        title="Shop By Category" />
+                    <a href="https://bachay.com/products"><img src="{{ asset('public/images/preschool.jpg') }}" alt="Shop By Category"
+                        title="Shop By Category" /></a>
                 </div>
-                <p class="img-label">Pre School</p>
+                <p class="img-label">Product</p>
             </div>
 
             <div class="img-box" id="img01">
                 <div class="acc-images">
-                    <img src="{{ asset('public/images/OfferZone.jpg') }}" alt="Boutiques" title="Boutiques" />
+                    <a href="https://bachay.com/products?data_from=category&id=3&page=1"><img src="{{ asset('public/images/OfferZone.jpg') }}" alt="Boutiques" title="Boutiques" /></a>
                 </div>
                 <p class="img-label">Offers</p>
             </div>
 
             <div class="img-box" id="img02">
                 <div class="acc-images">
-                    <img src="{{ asset('public/images/sellwithus.jpg') }}" alt="Parenting" title="Parenting" />
+                    <a href="https://bachay.com/articles"><img src="{{ asset('public/images/sellwithus.jpg') }}" alt="Parenting" title="Parenting" /></a>
                 </div>
-                <p class="img-label">Sell With Us</p>
+                <p class="img-label">Articles</p>
             </div>
         </div>
-        <div class="acc-header">
+        {{-- <div class="acc-header">
             <div class="img-box" id="img00">
                 <div class="acc-images">
                     <img src="{{ asset('public/images/f.jpg') }}" alt="Shop By Category" title="Shop By Category" />
@@ -164,7 +164,7 @@
                 </div>
                 <p class="img-label">Parenting</p>
             </div>
-        </div>
+        </div> --}}
 
     </div>
     <script>
