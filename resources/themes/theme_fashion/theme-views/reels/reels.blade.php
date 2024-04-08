@@ -15,7 +15,7 @@
       * {
         margin: 0;
         box-sizing: border-box;
-        border-radius: 10px;
+        
       }
 
       html {
@@ -222,10 +222,10 @@
     <div class="app__videos">
     
 
-      <div class="video">
+      {{-- <div class="video">
         <video class="video__player" src="{{ asset('public/images/baby.mp4') }}"></video>
 
-        <!-- product cards -->
+       
         <div class="parent_card_scroll">
           <div class="scroll-container">
             <span class="child_container_product">
@@ -316,12 +316,12 @@
           
           </div>
         </div>
-      </div>
+      </div> --}}
 
-      <div class="video">
+      {{-- <div class="video">
         <video class="video__player" src="{{ asset('public/images/smiling_baby.mp4') }}"></video>
 
-        <!-- product cards -->
+      
         <div class="parent_card_scroll">
           <div class="scroll-container">
             <span class="child_container_product">
@@ -411,11 +411,11 @@
           
           </div>
         </div>
-      </div>
+      </div> --}}
       <div class="video">
-        <video class="video__player" src="{{ asset('public/images/supra_sound.mp4') }}"></video>
+        <video class="video__player" src="{{ asset('public/images/videos/1.mp4') }}"></video>
 
-        <!-- product cards -->
+       
         <div class="parent_card_scroll">
           <div class="scroll-container">
             <span class="child_container_product">
