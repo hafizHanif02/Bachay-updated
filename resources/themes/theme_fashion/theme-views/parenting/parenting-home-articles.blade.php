@@ -203,6 +203,7 @@
                     </h6>
                     <div class="blog_items_inside gap-5 mt-4">
                         <?php $parent_article = $category->articles->sortByDesc('id')->take(6); ?>
+                        @if(isset($parent_article[0]))
                         <div class="blog_item">
                             <a class="text-decoration-none" href="">
                                 <img src="{{ asset('public/assets/images/parent_articles/thumbnail/'.$parent_article[0]->image) }}" alt="" width="100%" />
@@ -215,6 +216,8 @@
                                 </p>
                             </a>
                         </div>
+                        @endif
+                        @if(isset($parent_article[1]))
                         <div class="blog_item">
                             <a class="text-decoration-none" href="">
                                 <img src="{{ asset('public/assets/images/parent_articles/thumbnail/'.$parent_article[1]->image) }}" alt="" width="100%" />
@@ -228,6 +231,7 @@
                                 </p>
                             </a>
                         </div>
+                        @endif
                     </div>
                     <div class="td_module_wrap">
                         <?php $lates_article = $parent_article->sortByDesc('id')->skip(4); ?>
