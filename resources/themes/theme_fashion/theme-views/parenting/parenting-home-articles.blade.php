@@ -155,7 +155,7 @@
             <div class="parenting_blog_container mt-3">
                 <div class="blog_item">
                     <div class="position-relative overflow-hidden">
-                        <img class="img_blogs" src="{{ asset('public/assets/images/parent_articles/thumbnail/'.$latest_category[0]->image) }}"
+                        <img class="img_blogs" src="{{ asset('public/assets/images/parent_articles/category/thumbnail/'.$latest_category[0]->image) }}"
                             alt="" width="100%" />
                         <div class="tag_line position-absolute bottom-0 text-light">
                             <h1 class="text-light first_blog_title">{{ $latest_category[0]->name }}</h1>
@@ -166,7 +166,7 @@
                 <div class="blog_item">
                     @if(isset($latest_category[1]))
                     <div class="position-relative overflow-hidden">
-                        <img class="img_blogs" src="{{ asset('public/assets/images/parent_articles/thumbnail/'.$latest_category[1]->image) }}"
+                        <img class="img_blogs" src="{{ asset('public/assets/images/parent_articles/category/thumbnail/'.$latest_category[1]->image) }}"
                             alt="" width="100%" />
                         <div class="tag_line position-absolute bottom-0 text-light">
                             <h3 class="text-light">{{ $latest_category[1]->name }}</h3>
@@ -176,7 +176,7 @@
                     <div class="d-flex">
                         @if(isset($latest_category[2]))
                         <div class="blog_item position-relative overflow-hidden">
-                            <img class="img_blogs" src="{{ asset('public/assets/images/parent_articles/thumbnail/'.$latest_category[2]->image) }}"
+                            <img class="img_blogs" src="{{ asset('public/assets/images/parent_articles/category/thumbnail/'.$latest_category[2]->image) }}"
                                 alt="" width="100%" />
                             <div class="tag_line position-absolute bottom-0 text-light">
                                 <h6 class="text-light">{{ $latest_category[2]->name }}</h6>
@@ -185,7 +185,7 @@
                         @endif
                         @if(isset($latest_category[3]))
                         <div class="blog_item position-relative overflow-hidden">
-                            <img class="img_blogs" src="{{ asset('public/assets/images/parent_articles/thumbnail/'.$latest_category[3]->image) }}"
+                            <img class="img_blogs" src="{{ asset('public/assets/images/parent_articles/category/thumbnail/'.$latest_category[3]->image) }}"
                                 alt="" width="100%" />
                             <div class="tag_line position-absolute bottom-0 text-light">
                                 <h6 class="text-light">{{ $latest_category[3]->name }}</h6>
@@ -206,7 +206,7 @@
                         @if(isset($parent_article[0]))
                         <div class="blog_item">
                             <a class="text-decoration-none" href="">
-                                <img src="{{ asset('public/assets/images/parent_articles/thumbnail/'.$parent_article[0]->image) }}" alt="" width="100%" />
+                                <img src="{{ asset('public/assets/images/parent_articles/category/thumbnail/'.$parent_article[0]->image) }}" alt="" width="100%" />
                                 <h5 class="mt-2 text-dark">
                                     {{ $parent_article[0]->title }}
                                 </h5>
@@ -220,7 +220,7 @@
                         @if(isset($parent_article[1]))
                         <div class="blog_item">
                             <a class="text-decoration-none" href="">
-                                <img src="{{ asset('public/assets/images/parent_articles/thumbnail/'.$parent_article[1]->image) }}" alt="" width="100%" />
+                                <img src="{{ asset('public/assets/images/parent_articles/category/thumbnail/'.$parent_article[1]->image) }}" alt="" width="100%" />
                                 <h5 class="mt-2 text-dark">
                                     {{ $parent_article[1]->title }}
                                 </h5>
@@ -238,7 +238,7 @@
                         @foreach($lates_article as $article)
                         <div class="">
                             <a class="text-decoration-none d-flex align-items-center gap-4" href="">
-                                <img src="{{ asset('public/assets/images/parent_articles/thumbnail/'.$article->image) }}" alt="" width="100" height="70" />
+                                <img src="{{ asset('public/assets/images/parent_articles/category/thumbnail/'.$article->image) }}" alt="" width="100" height="70" />
                                 <div>
                                     <h6 class="text-dark m-0">
                                         {{ $article->title }}
@@ -280,7 +280,7 @@
                     @foreach($articles as $article)
                     <div class="mt-4">
                         <a class="text-decoration-none d-flex align-items-center gap-3" href="">
-                            <img src="{{ asset('public/assets/images/parent_articles/thumbnail/'.$article->image) }}" alt="" width="80" height="60" />
+                            <img src="{{ asset('public/assets/images/parent_articles/category/thumbnail/'.$article->image) }}" alt="" width="80" height="60" />
                             <div>
                                 <h6 class="m-0 aside_blog_title text-dark">
                                     {{ $article->title }}
