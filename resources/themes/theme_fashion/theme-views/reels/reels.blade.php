@@ -54,6 +54,7 @@
             width: 100%;
             background-color: white;
             scroll-snap-align: start;
+            
         }
 
         .video__player {
@@ -191,7 +192,7 @@
 
         .parent_card_scroll {
             position: absolute;
-            bottom: 15%;
+            bottom: 10%;
             width: 100%;
             padding-left: 3%;
         }
@@ -240,7 +241,7 @@
 <body>
     <div class="app__videos">
 
-        <div class="video">
+        <div class="video" id="hassan">
             <video class="video__player" src="{{ asset('public/images/videos/2.mp4') }}"></video>
 
 
