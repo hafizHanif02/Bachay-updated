@@ -70,7 +70,7 @@ return [
     'articles' => 'theme-views.articles.articles',
     'article-category' => 'theme-views.articles.article_category',
     'parenting' => 'theme-views.parenting.parentingTools',
-    'explore_page' => 'theme-views.explore_page.explore',
+    'explore_page' => 'theme-views.reels.reels',
     'menu' => 'theme-views.menu.menu',
 
 
