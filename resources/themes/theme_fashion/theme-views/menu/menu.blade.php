@@ -67,21 +67,21 @@
         <div class="acc-header">
             <div class="img-box" id="img00">
                 <div class="acc-images">
-                    <a href="https://bachay.com/categories/detail/Boys%20Fashion"><img src="{{ asset('public/images/f.jpg') }}" alt="Shop By Category" title="Shop By Category" /></a>
+                    <a href="{{ route('categories') }}"><img src="{{ asset('public/images/f.jpg') }}" alt="Category" title="Category" /></a>
                 </div>
                 <p class="img-label">Category</p>
             </div>
 
             <div class="img-box" id="img01">
                 <div class="acc-images">
-                    <a href="https://bachay.com/vendors"><img src="{{ asset('public/images/s.jpg') }}" alt="Boutiques" title="Boutiques" /></a>
+                    <a href="{{ route('vendors') }}"><img src="{{ asset('public/images/s.jpg') }}" alt="Shops" title="Shops" /></a>
                 </div>
                 <p class="img-label">Shops</p>
             </div>
 
             <div class="img-box" id="img02">
                 <div class="acc-images">
-                    <a href="https://bachay.com/parenting"><img src="{{ asset('public/images/t.jpg') }}" alt="Parenting" title="Parenting" /></a>
+                    <a href="{{ route('parenting') }}"><img src="{{ asset('public/images/t.jpg') }}" alt="Parenting" title="Parenting" /></a>
                 </div>
                 <p class="img-label">Parenting</p>
             </div>
@@ -101,71 +101,72 @@
         <div class="acc-header">
             <div class="img-box" id="img00">
                 <div class="acc-images">
-                    <a href="https://bachay.com/products"><img src="{{ asset('public/images/preschool.jpg') }}" alt="Shop By Category"
-                        title="Shop By Category" /></a>
+                    <a href="https://bachay.com/products"><img src="{{ asset('public/images/preschool.jpg') }}" alt="Product"
+                        title="Product" /></a>
                 </div>
                 <p class="img-label">Product</p>
             </div>
 
             <div class="img-box" id="img01">
                 <div class="acc-images">
-                    <a href="https://bachay.com/products?data_from=category&id=3&page=1"><img src="{{ asset('public/images/OfferZone.jpg') }}" alt="Boutiques" title="Boutiques" /></a>
+                    <a href="{{ route('products', ['data_from' => 'category', 'id' => 3, 'page' => 1]) }}"><img src="{{ asset('public/images/OfferZone.jpg') }}" alt="Offers" title="Offers" /></a>
                 </div>
                 <p class="img-label">Offers</p>
             </div>
 
             <div class="img-box" id="img02">
                 <div class="acc-images">
-                    <a href="https://bachay.com/articles"><img src="{{ asset('public/images/sellwithus.jpg') }}" alt="Parenting" title="Parenting" /></a>
+                    <a href="{{ route('articles') }}"><img src="{{ asset('public/images/sellwithus.jpg') }}" alt="Articles" title="Articles" /></a>
                 </div>
                 <p class="img-label">Articles</p>
-            </div>
-        </div>
-        {{-- <div class="acc-header">
-            <div class="img-box" id="img00">
-                <div class="acc-images">
-                    <img src="{{ asset('public/images/f.jpg') }}" alt="Shop By Category" title="Shop By Category" />
-                </div>
-                <p class="img-label">Shop By Category</p>
-            </div>
-
-            <div class="img-box" id="img01">
-                <div class="acc-images">
-                    <img src="{{ asset('public/images/s.jpg') }}" alt="Boutiques" title="Boutiques" />
-                </div>
-                <p class="img-label">Boutiques</p>
-            </div>
-
-            <div class="img-box" id="img02">
-                <div class="acc-images">
-                    <img src="{{ asset('public/images/t.jpg') }}" alt="Parenting" title="Parenting" />
-                </div>
-                <p class="img-label">Parenting</p>
             </div>
         </div>
         <div class="acc-header">
             <div class="img-box" id="img00">
                 <div class="acc-images">
-                    <img src="{{ asset('public/images/f.jpg') }}" alt="Shop By Category" title="Shop By Category" />
+                    <a href="{{ route('categories.detail', 'Boys%20Fashion') }}"><img src="{{ asset('storage/app/public/category/2024-03-06-65e8660377e7a.webp') }}" alt="Boy Fashion"
+                        title="Boy Fashion" /></a>
                 </div>
-                <p class="img-label">Shop By Category</p>
+                <p class="img-label">Boy Fashion</p>
             </div>
 
             <div class="img-box" id="img01">
                 <div class="acc-images">
-                    <img src="{{ asset('public/images/s.jpg') }}" alt="Boutiques" title="Boutiques" />
+                    <a href="{{ route('categories.detail', 'Girls%20Fashion') }}"><img src="{{ asset('storage/app/public/category/2024-03-06-65e866fc061fe.webp') }}" alt="Girls Fashion" title="Girls Fashion" /></a>
                 </div>
-                <p class="img-label">Boutiques</p>
+                <p class="img-label">Girls Fashion</p>
             </div>
 
             <div class="img-box" id="img02">
                 <div class="acc-images">
-                    <img src="{{ asset('public/images/t.jpg') }}" alt="Parenting" title="Parenting" />
+                    <a href="{{ route('categories.detail', 'Baby%20Care') }}"><img src="{{ asset('storage/app/public/category/2024-03-06-65e867c367979.webp') }}" alt="Baby Care" title="Baby Care" /></a>
                 </div>
-                <p class="img-label">Parenting</p>
+                <p class="img-label">Baby Care</p>
             </div>
-        </div> --}}
+        </div>
+        <div class="acc-header">
+            <div class="img-box" id="img00">
+                <div class="acc-images">
+                    <a href="{{ route('brands') }}"><img src="{{ asset('storage/app/public/brand/2024-02-04-65be977148ab5.webp') }}" alt="Brands"
+                        title="Shop By Category" /></a>
+                </div>
+                <p class="img-label">Brands</p>
+            </div>
 
+            <div class="img-box" id="img01">
+                <div class="acc-images">
+                    <a href="{{ route('explore_page') }}"><img src="{{ asset('public/images/explore1.webp') }}" alt="Explore" title="Explore" /></a>
+                </div>
+                <p class="img-label">Explore</p>
+            </div>
+
+            <div class="img-box" id="img02">
+                <div class="acc-images">
+                    <a href="{{ route('categories.detail', 'Toys') }}"><img src="{{ asset('storage/app/public/category/2024-03-06-65e8632f7eb7d.webp') }}" alt="Toys" title="Toys" /></a>
+                </div>
+                <p class="img-label">Toys</p>
+            </div>
+        </div>
     </div>
     <script>
         document.getElementById("img00").addEventListener("click", function() {
