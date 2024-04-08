@@ -18,6 +18,7 @@
 
 @section('content')
 
+{{-- @include('theme-views.layouts.partials._polls') --}}
 @include('theme-views.partials._add-child-mobile')
 @include('theme-views.partials._custom-page')
 
