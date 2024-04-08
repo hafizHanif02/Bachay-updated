@@ -248,7 +248,7 @@
             <div class="parent_card_scroll">
                 <div class="scroll-container">
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/bumzee-half-sleeves-unicorn-print-pack-of-2-tee-2-bottom-set-navy-pink-DTrcdl">
 
                             <img src="{{ asset('public/images/explore_images/1.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -260,7 +260,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/zero-half-sleeves-tee-shorts-text-print-krNnsV
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/2.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -272,7 +273,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/bumzee-full-sleeves-abstract-design-printed-zipper-hooded-sweatshirt-Lh5jq2
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/3.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -284,7 +286,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/first-smile-interlock-full-sleeves-t-shirt-lounge-pant-set-with-penguin-applique-mulberry-blue-njTAGq
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/4.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -296,7 +299,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/babyhug-100-cotton-knit-half-sleeves-t-shirts-with-lion-bear-graphics-pack-of-7-VN3gpR
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/5.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -308,7 +312,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/doodle-poodle-100-cotton-knit-full-sleeves-floral-tex-printed-frock-HyuZAM
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/6.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -320,7 +325,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/anthrilo-full-sleeves-color-blocked-fleece-hoodie-jogger-set-TF6qVJ
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/7.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -332,7 +338,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/toonyport-full-sleeves-space-theme-astronaut-printed-looper-knitted-sweatshirt-joggers-set-ChB0pU
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/8.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -344,7 +351,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/babyhug-cotton-knit-full-length-diaper-pants-striped-car-print-pack-of-3-17hZz0
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/9.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -356,7 +364,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/kookie-kids-full-sleeves-hoodies-hjytFq
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/10.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -368,7 +377,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/kookie-kids-full-sleeves-crab-printed-legged-swimsuit-with-attached-float-cap-pink-xfbh26
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/11.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -380,7 +390,7 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/babyhug-organic-cotton-knit-full-sleeves-sweater-set-with-cap-nw6YzR">
 
                             <img src="{{ asset('public/images/explore_images/12.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -402,7 +412,7 @@
             <div class="parent_card_scroll">
                 <div class="scroll-container">
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/bumzee-half-sleeves-unicorn-print-pack-of-2-tee-2-bottom-set-navy-pink-DTrcdl">
 
                             <img src="{{ asset('public/images/explore_images/1.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -414,7 +424,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/zero-half-sleeves-tee-shorts-text-print-krNnsV
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/2.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -426,7 +437,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/bumzee-full-sleeves-abstract-design-printed-zipper-hooded-sweatshirt-Lh5jq2
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/3.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -438,7 +450,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/first-smile-interlock-full-sleeves-t-shirt-lounge-pant-set-with-penguin-applique-mulberry-blue-njTAGq
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/4.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -450,7 +463,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/babyhug-100-cotton-knit-half-sleeves-t-shirts-with-lion-bear-graphics-pack-of-7-VN3gpR
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/5.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -462,7 +476,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/doodle-poodle-100-cotton-knit-full-sleeves-floral-tex-printed-frock-HyuZAM
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/6.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -474,7 +489,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/anthrilo-full-sleeves-color-blocked-fleece-hoodie-jogger-set-TF6qVJ
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/7.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -486,7 +502,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/toonyport-full-sleeves-space-theme-astronaut-printed-looper-knitted-sweatshirt-joggers-set-ChB0pU
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/8.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -498,7 +515,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/babyhug-cotton-knit-full-length-diaper-pants-striped-car-print-pack-of-3-17hZz0
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/9.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -510,7 +528,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/kookie-kids-full-sleeves-hoodies-hjytFq
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/10.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -522,7 +541,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/kookie-kids-full-sleeves-crab-printed-legged-swimsuit-with-attached-float-cap-pink-xfbh26
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/11.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -534,7 +554,7 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/babyhug-organic-cotton-knit-full-sleeves-sweater-set-with-cap-nw6YzR">
 
                             <img src="{{ asset('public/images/explore_images/12.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -556,7 +576,7 @@
             <div class="parent_card_scroll">
                 <div class="scroll-container">
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/bumzee-half-sleeves-unicorn-print-pack-of-2-tee-2-bottom-set-navy-pink-DTrcdl">
 
                             <img src="{{ asset('public/images/explore_images/1.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -568,7 +588,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/zero-half-sleeves-tee-shorts-text-print-krNnsV
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/2.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -580,7 +601,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/bumzee-full-sleeves-abstract-design-printed-zipper-hooded-sweatshirt-Lh5jq2
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/3.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -592,7 +614,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/first-smile-interlock-full-sleeves-t-shirt-lounge-pant-set-with-penguin-applique-mulberry-blue-njTAGq
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/4.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -604,7 +627,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/babyhug-100-cotton-knit-half-sleeves-t-shirts-with-lion-bear-graphics-pack-of-7-VN3gpR
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/5.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -616,7 +640,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/doodle-poodle-100-cotton-knit-full-sleeves-floral-tex-printed-frock-HyuZAM
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/6.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -628,7 +653,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/anthrilo-full-sleeves-color-blocked-fleece-hoodie-jogger-set-TF6qVJ
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/7.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -640,7 +666,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/toonyport-full-sleeves-space-theme-astronaut-printed-looper-knitted-sweatshirt-joggers-set-ChB0pU
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/8.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -652,7 +679,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/babyhug-cotton-knit-full-length-diaper-pants-striped-car-print-pack-of-3-17hZz0
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/9.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -664,7 +692,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/kookie-kids-full-sleeves-hoodies-hjytFq
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/10.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -676,7 +705,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/kookie-kids-full-sleeves-crab-printed-legged-swimsuit-with-attached-float-cap-pink-xfbh26
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/11.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -688,7 +718,7 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/babyhug-organic-cotton-knit-full-sleeves-sweater-set-with-cap-nw6YzR">
 
                             <img src="{{ asset('public/images/explore_images/12.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -710,7 +740,7 @@
             <div class="parent_card_scroll">
                 <div class="scroll-container">
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/bumzee-half-sleeves-unicorn-print-pack-of-2-tee-2-bottom-set-navy-pink-DTrcdl">
 
                             <img src="{{ asset('public/images/explore_images/1.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -722,7 +752,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/zero-half-sleeves-tee-shorts-text-print-krNnsV
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/2.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -734,7 +765,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/bumzee-full-sleeves-abstract-design-printed-zipper-hooded-sweatshirt-Lh5jq2
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/3.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -746,7 +778,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/first-smile-interlock-full-sleeves-t-shirt-lounge-pant-set-with-penguin-applique-mulberry-blue-njTAGq
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/4.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -758,7 +791,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/babyhug-100-cotton-knit-half-sleeves-t-shirts-with-lion-bear-graphics-pack-of-7-VN3gpR
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/5.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -770,7 +804,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/doodle-poodle-100-cotton-knit-full-sleeves-floral-tex-printed-frock-HyuZAM
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/6.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -782,7 +817,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/anthrilo-full-sleeves-color-blocked-fleece-hoodie-jogger-set-TF6qVJ
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/7.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -794,7 +830,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/toonyport-full-sleeves-space-theme-astronaut-printed-looper-knitted-sweatshirt-joggers-set-ChB0pU
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/8.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -806,7 +843,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/babyhug-cotton-knit-full-length-diaper-pants-striped-car-print-pack-of-3-17hZz0
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/9.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -818,7 +856,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/kookie-kids-full-sleeves-hoodies-hjytFq
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/10.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -830,7 +869,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/kookie-kids-full-sleeves-crab-printed-legged-swimsuit-with-attached-float-cap-pink-xfbh26
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/11.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -842,7 +882,7 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/babyhug-organic-cotton-knit-full-sleeves-sweater-set-with-cap-nw6YzR">
 
                             <img src="{{ asset('public/images/explore_images/12.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -864,7 +904,7 @@
             <div class="parent_card_scroll">
                 <div class="scroll-container">
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/bumzee-half-sleeves-unicorn-print-pack-of-2-tee-2-bottom-set-navy-pink-DTrcdl">
 
                             <img src="{{ asset('public/images/explore_images/1.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -876,7 +916,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/zero-half-sleeves-tee-shorts-text-print-krNnsV
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/2.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -888,7 +929,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/bumzee-full-sleeves-abstract-design-printed-zipper-hooded-sweatshirt-Lh5jq2
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/3.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -900,7 +942,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/first-smile-interlock-full-sleeves-t-shirt-lounge-pant-set-with-penguin-applique-mulberry-blue-njTAGq
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/4.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -912,7 +955,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/babyhug-100-cotton-knit-half-sleeves-t-shirts-with-lion-bear-graphics-pack-of-7-VN3gpR
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/5.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -924,7 +968,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/doodle-poodle-100-cotton-knit-full-sleeves-floral-tex-printed-frock-HyuZAM
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/6.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -936,7 +981,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/anthrilo-full-sleeves-color-blocked-fleece-hoodie-jogger-set-TF6qVJ
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/7.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -948,7 +994,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/toonyport-full-sleeves-space-theme-astronaut-printed-looper-knitted-sweatshirt-joggers-set-ChB0pU
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/8.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -960,7 +1007,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/babyhug-cotton-knit-full-length-diaper-pants-striped-car-print-pack-of-3-17hZz0
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/9.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -972,7 +1020,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/kookie-kids-full-sleeves-hoodies-hjytFq
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/10.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -984,7 +1033,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/kookie-kids-full-sleeves-crab-printed-legged-swimsuit-with-attached-float-cap-pink-xfbh26
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/11.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -996,7 +1046,7 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/babyhug-organic-cotton-knit-full-sleeves-sweater-set-with-cap-nw6YzR">
 
                             <img src="{{ asset('public/images/explore_images/12.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -1018,7 +1068,7 @@
             <div class="parent_card_scroll">
                 <div class="scroll-container">
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/bumzee-half-sleeves-unicorn-print-pack-of-2-tee-2-bottom-set-navy-pink-DTrcdl">
 
                             <img src="{{ asset('public/images/explore_images/1.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -1030,7 +1080,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/zero-half-sleeves-tee-shorts-text-print-krNnsV
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/2.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -1042,7 +1093,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/bumzee-full-sleeves-abstract-design-printed-zipper-hooded-sweatshirt-Lh5jq2
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/3.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -1054,7 +1106,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/first-smile-interlock-full-sleeves-t-shirt-lounge-pant-set-with-penguin-applique-mulberry-blue-njTAGq
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/4.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -1066,7 +1119,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/babyhug-100-cotton-knit-half-sleeves-t-shirts-with-lion-bear-graphics-pack-of-7-VN3gpR
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/5.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -1078,7 +1132,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/doodle-poodle-100-cotton-knit-full-sleeves-floral-tex-printed-frock-HyuZAM
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/6.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -1090,7 +1145,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/anthrilo-full-sleeves-color-blocked-fleece-hoodie-jogger-set-TF6qVJ
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/7.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -1102,7 +1158,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/toonyport-full-sleeves-space-theme-astronaut-printed-looper-knitted-sweatshirt-joggers-set-ChB0pU
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/8.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -1114,7 +1171,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/babyhug-cotton-knit-full-length-diaper-pants-striped-car-print-pack-of-3-17hZz0
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/9.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -1126,7 +1184,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/kookie-kids-full-sleeves-hoodies-hjytFq
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/10.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -1138,7 +1197,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/kookie-kids-full-sleeves-crab-printed-legged-swimsuit-with-attached-float-cap-pink-xfbh26
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/11.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -1150,7 +1210,7 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/babyhug-organic-cotton-knit-full-sleeves-sweater-set-with-cap-nw6YzR">
 
                             <img src="{{ asset('public/images/explore_images/12.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -1172,7 +1232,7 @@
             <div class="parent_card_scroll">
                 <div class="scroll-container">
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/bumzee-half-sleeves-unicorn-print-pack-of-2-tee-2-bottom-set-navy-pink-DTrcdl">
 
                             <img src="{{ asset('public/images/explore_images/1.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -1184,7 +1244,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/zero-half-sleeves-tee-shorts-text-print-krNnsV
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/2.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -1196,7 +1257,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/bumzee-full-sleeves-abstract-design-printed-zipper-hooded-sweatshirt-Lh5jq2
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/3.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -1208,7 +1270,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/first-smile-interlock-full-sleeves-t-shirt-lounge-pant-set-with-penguin-applique-mulberry-blue-njTAGq
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/4.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -1220,7 +1283,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/babyhug-100-cotton-knit-half-sleeves-t-shirts-with-lion-bear-graphics-pack-of-7-VN3gpR
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/5.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -1232,7 +1296,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/doodle-poodle-100-cotton-knit-full-sleeves-floral-tex-printed-frock-HyuZAM
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/6.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -1244,7 +1309,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/anthrilo-full-sleeves-color-blocked-fleece-hoodie-jogger-set-TF6qVJ
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/7.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -1256,7 +1322,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/toonyport-full-sleeves-space-theme-astronaut-printed-looper-knitted-sweatshirt-joggers-set-ChB0pU
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/8.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -1268,7 +1335,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/babyhug-cotton-knit-full-length-diaper-pants-striped-car-print-pack-of-3-17hZz0
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/9.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -1280,7 +1348,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/kookie-kids-full-sleeves-hoodies-hjytFq
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/10.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -1292,7 +1361,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/kookie-kids-full-sleeves-crab-printed-legged-swimsuit-with-attached-float-cap-pink-xfbh26
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/11.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -1304,7 +1374,7 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/babyhug-organic-cotton-knit-full-sleeves-sweater-set-with-cap-nw6YzR">
 
                             <img src="{{ asset('public/images/explore_images/12.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -1325,7 +1395,7 @@
             <div class="parent_card_scroll">
                 <div class="scroll-container">
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/bumzee-half-sleeves-unicorn-print-pack-of-2-tee-2-bottom-set-navy-pink-DTrcdl">
 
                             <img src="{{ asset('public/images/explore_images/1.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -1337,7 +1407,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/zero-half-sleeves-tee-shorts-text-print-krNnsV
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/2.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -1349,7 +1420,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/bumzee-full-sleeves-abstract-design-printed-zipper-hooded-sweatshirt-Lh5jq2
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/3.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -1361,7 +1433,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/first-smile-interlock-full-sleeves-t-shirt-lounge-pant-set-with-penguin-applique-mulberry-blue-njTAGq
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/4.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -1373,7 +1446,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/babyhug-100-cotton-knit-half-sleeves-t-shirts-with-lion-bear-graphics-pack-of-7-VN3gpR
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/5.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -1385,7 +1459,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/doodle-poodle-100-cotton-knit-full-sleeves-floral-tex-printed-frock-HyuZAM
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/6.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -1397,7 +1472,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/anthrilo-full-sleeves-color-blocked-fleece-hoodie-jogger-set-TF6qVJ
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/7.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -1409,7 +1485,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/toonyport-full-sleeves-space-theme-astronaut-printed-looper-knitted-sweatshirt-joggers-set-ChB0pU
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/8.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -1421,7 +1498,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/babyhug-cotton-knit-full-length-diaper-pants-striped-car-print-pack-of-3-17hZz0
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/9.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -1433,7 +1511,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/kookie-kids-full-sleeves-hoodies-hjytFq
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/10.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -1445,7 +1524,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/kookie-kids-full-sleeves-crab-printed-legged-swimsuit-with-attached-float-cap-pink-xfbh26
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/11.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -1457,7 +1537,7 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/babyhug-organic-cotton-knit-full-sleeves-sweater-set-with-cap-nw6YzR">
 
                             <img src="{{ asset('public/images/explore_images/12.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -1479,7 +1559,7 @@
             <div class="parent_card_scroll">
                 <div class="scroll-container">
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/bumzee-half-sleeves-unicorn-print-pack-of-2-tee-2-bottom-set-navy-pink-DTrcdl">
 
                             <img src="{{ asset('public/images/explore_images/1.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -1491,7 +1571,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/zero-half-sleeves-tee-shorts-text-print-krNnsV
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/2.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -1503,7 +1584,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/bumzee-full-sleeves-abstract-design-printed-zipper-hooded-sweatshirt-Lh5jq2
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/3.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -1515,7 +1597,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/first-smile-interlock-full-sleeves-t-shirt-lounge-pant-set-with-penguin-applique-mulberry-blue-njTAGq
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/4.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -1527,7 +1610,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/babyhug-100-cotton-knit-half-sleeves-t-shirts-with-lion-bear-graphics-pack-of-7-VN3gpR
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/5.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -1539,7 +1623,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/doodle-poodle-100-cotton-knit-full-sleeves-floral-tex-printed-frock-HyuZAM
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/6.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -1551,7 +1636,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/anthrilo-full-sleeves-color-blocked-fleece-hoodie-jogger-set-TF6qVJ
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/7.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -1563,7 +1649,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/toonyport-full-sleeves-space-theme-astronaut-printed-looper-knitted-sweatshirt-joggers-set-ChB0pU
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/8.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -1575,7 +1662,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/babyhug-cotton-knit-full-length-diaper-pants-striped-car-print-pack-of-3-17hZz0
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/9.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -1587,7 +1675,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/kookie-kids-full-sleeves-hoodies-hjytFq
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/10.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -1599,7 +1688,8 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/kookie-kids-full-sleeves-crab-printed-legged-swimsuit-with-attached-float-cap-pink-xfbh26
+                        ">
 
                             <img src="{{ asset('public/images/explore_images/11.webp') }}" alt="" width="100px"
                                 height="100px" />
@@ -1611,7 +1701,7 @@
 
                     </span>
                     <span class="child_container_product">
-                        <a href="">
+                        <a href="https://bachay.com/product/babyhug-organic-cotton-knit-full-sleeves-sweater-set-with-cap-nw6YzR">
 
                             <img src="{{ asset('public/images/explore_images/12.webp') }}" alt="" width="100px"
                                 height="100px" />
