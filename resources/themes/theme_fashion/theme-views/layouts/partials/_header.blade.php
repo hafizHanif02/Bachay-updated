@@ -507,7 +507,7 @@
                             </a>
                         </li>
                     @endif
-                    
+
                     @auth('customer')
                         <li>
                             <a href="{{ route('account-address-add') }}" class="nav-ul_text">
@@ -1804,7 +1804,7 @@
             </ul>
         </div>
     </div>
-    
+
 </header>
 
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
@@ -1846,7 +1846,7 @@
                 </li>
             @else
                 <li>
-                    <a href="{{ Request::is('customer/auth/login') ? 'javascript:void(0)' : route('customer.auth.login') }}"
+                    <a href="{{ Request::is('customer/auth/login') ? '{{-- javascript:void(0) --}}' : route('customer.auth.login') }}"
                         {{-- <a href="javascript:" --}}
                         class="d-flex align-items-center {{ Request::is('/user-account') || Request::is('user-account') ? 'active' : '' }} flex-column gap-1 ">
                         <i class="bi bi bi-person custom-icon"></i>
@@ -1868,8 +1868,9 @@
                 </li>
             @else
                 <li>
-                    <a href="javascript:"
-                        class="d-flex align-items-center customer_login_register_modal {{ Request::is('/account-oder') || Request::is('account-oder') ? 'active' : '' }} flex-column gap-1">
+                    <a href="{{ Request::is('customer/auth/login') ? '{{-- javascript:void(0) --}}' : route('customer.auth.login') }}"
+                        {{-- <a href="javascript:" --}}
+                        class="d-flex align-items-center {{-- customer_login_register_modal --}} {{ Request::is('/account-oder') || Request::is('account-oder') ? 'active' : '' }} flex-column gap-1">
                         <i class="bi bi-box-seam custom-icon"></i>
                         <span>{{ translate('order_history') }}</span>
                     </a>
@@ -1889,8 +1890,9 @@
                 </li>
             @else
                 <li>
-                    <a href="javascript:"
-                        class="d-flex align-items-center customer_login_register_modal {{ Request::is('/track-order') || Request::is('track-order') ? 'active' : '' }} flex-column gap-1">
+                    <a href="{{ Request::is('customer/auth/login') ? '{{-- javascript:void(0) --}}' : route('customer.auth.login') }}"
+                        {{-- <a href="javascript:" --}}
+                        class="d-flex align-items-center {{-- customer_login_register_modal --}} {{ Request::is('/track-order') || Request::is('track-order') ? 'active' : '' }} flex-column gap-1">
                         <i class="bi bi-truck custom-icon"></i>
                         <span>{{ translate('track_order') }}</span>
                     </a>
@@ -1910,8 +1912,9 @@
                 </li>
             @else
                 <li>
-                    <a href="javascript:"
-                        class="d-flex align-items-center customer_login_register_modal {{ Request::is('/refund-policy') || Request::is('refund-policy') ? 'active' : '' }} flex-column gap-1">
+                    <a href="{{ Request::is('customer/auth/login') ? '{{-- javascript:void(0) --}}' : route('customer.auth.login') }}"
+                        {{-- <a href="javascript:" --}}
+                        class="d-flex align-items-center {{-- customer_login_register_modal --}} {{ Request::is('/refund-policy') || Request::is('refund-policy') ? 'active' : '' }} flex-column gap-1">
                         <i class="bi bi-arrow-repeat custom-icon"></i>
                         <span>{{ translate('cash_refund') }}</span>
                     </a>

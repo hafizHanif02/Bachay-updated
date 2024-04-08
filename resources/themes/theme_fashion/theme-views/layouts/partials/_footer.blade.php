@@ -15,7 +15,8 @@
                             <input type="text" placeholder="{{ translate('enter_your_email') }}" class="form-control"
                                 name="subscription_email" required>
                         </label>
-                        <button type="submit" class="btn btn-base">{{ translate('submit') }}</button>
+                        {{-- added seller_reg class for submit hover --}}
+                        <button type="submit" class="btn btn-base seller_reg">{{ translate('submit') }}</button>
                     </div>
                 </form>
             </div>

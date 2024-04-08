@@ -97,7 +97,7 @@ Route::get('quiz','QuizController@quiz_index')->name('quiz');
 Route::get('explore_page', [WebController::class,'explore_page'])->name('explore_page');
 Route::get('menu', [WebController::class,'menu'])->name('menu');
 
-
+Route::get('reels','ReelsController@reels')->name('reels');
 
 
 Route::get('parenting-user', 'ParentController@parentuser')->name('parenting-user');

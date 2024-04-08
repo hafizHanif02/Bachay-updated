@@ -137,8 +137,10 @@
                             @include('theme-views.partials.icons._profile-edit')
                         </a>
                         <a href="{{ route('user-profile') }}"
-                            class="cmn-btn __btn-outline rounded-full text-capitalize">{{ translate('shopping profile') }}
-                            @include('theme-views.partials.icons._profile-edit')
+                            class="cmn-btn __btn-outline rounded-full text-capitalize">
+                            <i class="bi bi-person-fill"></i>
+                            {{ translate('shopping_profile') }}
+                            {{-- @include('theme-views.partials.icons._profile-edit') --}}
                         </a>
                     </div>
                 </div>

@@ -227,9 +227,9 @@
     }
     .downloadApp-right h6{
         font-size: 14px;
-    font-weight: 600;
-    color: #424242;
-    text-align: center;
+        font-weight: 600;
+        color: #424242;
+        text-align: center;
     }
     
     .downloadApp-right {
@@ -261,6 +261,13 @@
         .view_gr_tr a {
             width: fit-content;
         }
+        .vaccination-mainp {
+            padding: 0;
+        }
+
+        .Add_growth_child {
+            font-size: 12px;
+        }
     }
 </style>
 @section('content')
@@ -268,7 +275,7 @@
     <div class="container">
         <div class="vaccination-growth-container">
 
-            <h3 class="mt-4">Child Immunization & Baby Growth Tracker</h3>
+            <h3 class="mt-4 mt-md-5 lh-xl-5 lh-lg">Child Immunization & Baby Growth Tracker</h3>
             <hr>
             <div class="vaccination-growth-child-container d-flex">
                 <div class="vaccination-mainp">
@@ -302,7 +309,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="p-3">
+                            <div class="p-2 p-sm-3 p-md-3 pt-md-0 p-lg-3 pt-lg-0 p-xl-3 pt-xl-0">
                                 <div class="vaccination_tr">
                                     <div class="vc_title">
                                         <h6>
@@ -389,7 +396,7 @@
 
                             </div>
                             <?php $latest_growth = \App\Models\Growth::where('child_id', $child->id)->latest()->first(); ?>
-                            <div class="p-3 pt-0">
+                            <div class="pt-0 p-2 p-sm-3 p-md-3 pt-md-0 p-lg-3 pt-lg-0 p-xl-3 pt-xl-0">
                                 <div class="vaccination_tr">
                                     <div class="vc_title">
                                         <h6>
@@ -502,7 +509,7 @@
                                     @if($latest_growth != null) 
                                     <div class="up_vc_title">
                                         <div
-                                            class="gr_trc_measr_top d-flex justify-content-between align-items-center ps-4 pe-4">
+                                            class="gr_trc_measr_top d-flex justify-content-between align-items-center gr_trc_measr_top d-flex justify-content-between align-items-center ps-2 pe-1 ps-sm-2 pe-sm-2 ps-md-3 pe-md-3 ps-lg-4 pe-lg-4 ps-xl-4 pe-xl-4">
                                             <span><i class="bi bi-stopwatch"
                                                     style="font-size: 15px; margin-right: 2px;"></i>
                                                 Updated on {{ date("d M Y", strtotime($latest_growth->created_at)) }}</span>
@@ -515,7 +522,7 @@
                                             
 
                                         </div>
-                                        <div class="ps-4 pe-4">
+                                        <div class="ps-2 pe-1 ps-sm-2 pe-sm-2 ps-md-3 pe-md-3 ps-lg-4 pe-lg-4 ps-xl-4 pe-xl-4">
                                             <table class="w-100 mt-3" style="line-height: 40px;">
                                                 <thead>
                                                     <tr>

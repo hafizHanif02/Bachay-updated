@@ -22,9 +22,10 @@
                                 </a>
                                 <a href="{{ route('parenting-profile') }}"
                                     class="cmn-btn __btn-outline rounded-full text-capitalize">
+                                    <i class="bi bi-people-fill"></i>
                                     {{ translate('parenting_profile') }}
-                                    @include('theme-views.partials.icons._profile-edit')
-                                </a>
+                                    {{-- @include('theme-views.partials.icons._profile-edit') --}}
+                                </a>                                
                             </div>
                         </div>
                         <ul class="personal-details-info">
