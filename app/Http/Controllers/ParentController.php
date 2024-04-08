@@ -115,13 +115,15 @@ class ParentController extends Controller
         $main_banner = $this->banner->where(['banner_type' => 'Parent Banner', 'theme' => $theme_name, 'published' => 1])->latest()->get();
         $main_section_banner = $this->banner->where(['banner_type' => 'Main Section Banner', 'theme' => $theme_name, 'published' => 1])->orderBy('id', 'desc')->latest()->first();
         $parent_article_categories = ParentArticleCategory::where(['status' => 1, 'parent_id' => 0])->with('child')->latest()->take(5)->get();
+        $all_parent_categories = ParentArticleCategory::where(['status' => 1, 'parent_id' => 0])->with(['child','articles'])->get();
         return view(
             VIEW_FILE_NAMES['parenting-user'],
 
             compact(
                 'main_section_banner',
                 'main_banner',
-                'parent_article_categories'
+                'parent_article_categories',
+                'all_parent_categories'
             )
         );
     }
