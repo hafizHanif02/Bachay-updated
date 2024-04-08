@@ -76,7 +76,7 @@ return [
 
     'custom_page' => 'theme-views.custom_page.custom_page',
     'explore' => 'theme-views.explore.explore',
-    'parenting-user' => 'theme-views.parenting.parenting-user',
+    'parenting-user' => 'theme-views.parenting.parenting-home-articles',
     'profile' => 'theme-views.parenting.profile.profile',
     'edit-profile' => 'theme-views.parenting.profile.edit-profile',
     'favourite-names' => 'theme-views.parenting.profile.favourite-names',
