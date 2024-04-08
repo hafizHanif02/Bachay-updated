@@ -253,18 +253,26 @@
                     <h6 class="category_heading text-light font-poppins">
                         <span class="trending_now_heading"> TRENDING </span>
                     </h6>
+                    @if(isset($category->child[0]))
                     <div class="position-relative mt-4">
                         <a class="text-decoration-none" href="">
                             <img src="{{ asset('public/images/parenting_home/aside_tiger.jpg') }}" alt="" width="100%" />
                             <div class="position-absolute bottom-0 text-light tag_line">
                                 <h6 class="m-0 text-light">
-                                    {{ $category->child->name }}
+                                    {{ $category->child[0]->name }}
                                 </h6>
                                 <span></span> <span>{{ $category->child[0]->created_at->format('F d, Y') }}</span>
                             </div>
                         </a>
                     </div>
-                    <?php $articles = /App/Models/ParentArticle::where('category_id', $category->child[0]->id)->orderBy('id', 'desc')->take(4)->get(); ?>
+                    @endif
+                    @php
+                        $articles = \App\Models\ParentArticle::where('category_id', $category->child[0]->id)
+                                                            ->orderBy('id', 'desc')
+                                                            ->take(4)
+                                                            ->get();
+                    @endphp
+
                     @foreach($articles as $article)
                     <div class="mt-4">
                         <a class="text-decoration-none d-flex align-items-center gap-3" href="">
@@ -284,167 +292,6 @@
                 </div>
             </div>
             @endforeach
-            {{-- <div class="categories_blogs mt-5 gap-5">
-                <div class="child_categories_blogs">
-                    <h6 class="category_heading text-light font-poppins">
-                        <span class="trending_now_heading"> PREGNANT </span>
-                    </h6>
-                    <div class="blog_items_inside gap-5 mt-4">
-                        <div class="blog_item">
-                            <a class="text-decoration-none" href="">
-                                <img src="{{ asset('public/images/parenting_home/cate.jpg') }}" alt="" width="100%" />
-                                <h5 class="mt-2 text-dark">
-                                    Is Your Child Fasting This Ramadan? 5 Nutritional Tips to
-                                    Follow...
-                                </h5>
-                                <span class="me-3 text-dark fw-bold">Mahak Arora</span>
-                                <span class="text_clr_title">April 18, 2018</span>
-                                <p class="text_clr_title">
-                                    Are your kids fasting this Ramadan? Here is what you need to
-                                    know about maintaining their health while fasting! As is well
-                                    known to Muslims across...
-                                </p>
-                            </a>
-                        </div>
-                        <div class="blog_item">
-                            <a class="text-decoration-none" href="">
-                                <img src="{{ asset('public/images/parenting_home/categ1.jpg') }}" alt="" width="100%" />
-                                <h5 class="mt-2 text-dark">
-                                    Easy and Innovative Greeting Card Making Ideas for Kids
-                                </h5>
-                                <span class="me-3 text-dark fw-bold">Mahak Arora</span>
-                                <span class="text_clr_title">April 18, 2018</span>
-                                <p class="text_clr_title">
-                                    Your child is bored of drawing some figures and sketches on
-                                    paper and pass it off as greeting cards. After the age of 6...
-                                </p>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="td_module_wrap">
-                        <div class="">
-                            <a class="text-decoration-none d-flex align-items-center gap-4" href="">
-                                <img src="{{ asset('public/images/parenting_home/category-child.jpg') }}" alt="" width="100" height="70" />
-                                <div>
-                                    <h6 class="text-dark m-0">
-                                        Ramadan Recipes for Kids – Best Iftar & Suhoor Dishes
-                                    </h6>
-                                    <p class="text_clr_title m-0">April 16, 2020</p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="">
-                            <a class="text-decoration-none d-flex align-items-center gap-4" href="">
-                                <img src="{{ asset('public/images/parenting_home/category-child.jpg') }}" alt="" width="100" height="70" />
-                                <div>
-                                    <h6 class="text-dark m-0">
-                                        Ramadan Recipes for Kids – Best Iftar & Suhoor Dishes
-                                    </h6>
-                                    <p class="text_clr_title m-0">April 16, 2020</p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="">
-                            <a class="text-decoration-none d-flex align-items-center gap-4" href="">
-                                <img src="{{ asset('public/images/parenting_home/category-child.jpg') }}" alt="" width="100" height="70" />
-                                <div>
-                                    <h6 class="text-dark m-0">
-                                        Ramadan Recipes for Kids – Best Iftar & Suhoor Dishes
-                                    </h6>
-                                    <p class="text_clr_title m-0">April 16, 2020</p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="">
-                            <a class="text-decoration-none d-flex align-items-center gap-4" href="">
-                                <img src="{{ asset('public/images/parenting_home/category-child.jpg') }}" alt="" width="100" height="70" />
-                                <div>
-                                    <h6 class="text-dark m-0">
-                                        Ramadan Recipes for Kids – Best Iftar & Suhoor Dishes
-                                    </h6>
-                                    <p class="text_clr_title m-0">April 16, 2020</p>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="float-end see_all_blogs">
-                        <a class="text-decoration-none" href="#">See All</a>
-                    </div>
-                </div>
-                <div class="child_categories_blogs_aside">
-                    <h6 class="category_heading text-light font-poppins">
-                        <span class="trending_now_heading"> TRENDING </span>
-                    </h6>
-                    <div class="position-relative mt-4">
-                        <a class="text-decoration-none" href="">
-                            <img src="{{ asset('public/images/parenting_home/aside_tiger.jpg') }}" alt="" width="100%" />
-                            <div class="position-absolute bottom-0 text-light tag_line">
-                                <h6 class="m-0 text-light">
-                                    Interesting Tiger Facts & Information for Kids
-                                </h6>
-                                <span>Bachay Editorial</span> <span>June 29, 2021</span>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="mt-4">
-                        <a class="text-decoration-none d-flex align-items-center gap-3" href="">
-                            <img src="{{ asset('public/images/parenting_home/aside1.jpg') }}" alt="" width="80" height="60" />
-                            <div>
-                                <h6 class="m-0 aside_blog_title text-dark">
-                                    Importance and Tips to Go Plastic Free with Your Kids
-                                </h6>
-
-                                <p class="m-0 aside_blog_title" style="color: #767676">
-                                    June 29, 2021
-                                </p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="mt-4">
-                        <a class="text-decoration-none d-flex align-items-center gap-3" href="">
-                            <img src="{{ asset('public/images/parenting_home/asie2.jpg') }}" alt="" width="80" height="60" />
-                            <div>
-                                <h6 class="m-0 aside_blog_title text-dark">
-                                    Importance and Tips to Go Plastic Free with Your Kids
-                                </h6>
-
-                                <p class="m-0 aside_blog_title" style="color: #767676">
-                                    June 29, 2021
-                                </p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="mt-4">
-                        <a class="text-decoration-none d-flex align-items-center gap-3" href="">
-                            <img src="{{ asset('public/images/parenting_home/aside3.jpg') }}" alt="" width="80" height="60" />
-                            <div>
-                                <h6 class="m-0 aside_blog_title text-dark">
-                                    Importance and Tips to Go Plastic Free with Your Kids
-                                </h6>
-
-                                <p class="m-0 aside_blog_title" style="color: #767676">
-                                    June 29, 2021
-                                </p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="mt-4">
-                        <a class="text-decoration-none d-flex align-items-center gap-3" href="">
-                            <img src="{{ asset('public/images/parenting_home/aside3.jpg') }}" alt="" width="80" height="60" />
-                            <div>
-                                <h6 class="m-0 aside_blog_title text-dark">
-                                    Importance and Tips to Go Plastic Free with Your Kids
-                                </h6>
-
-                                <p class="m-0 aside_blog_title" style="color: #767676">
-                                    June 29, 2021
-                                </p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div> --}}
-            
         </div>
     </div>
 @endsection
