@@ -271,7 +271,7 @@
                     </div>
                     @endif
                     @php
-                        $articles = \App\Models\ParentArticle::where('category_id', $category->child[0]->id)
+                        $articles = \App\Models\ParentArticle::where('article_category_id', $category->child[0]->id)
                                                             ->orderBy('id', 'desc')
                                                             ->take(4)
                                                             ->get();
