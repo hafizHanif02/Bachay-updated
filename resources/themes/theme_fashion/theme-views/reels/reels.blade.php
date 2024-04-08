@@ -205,7 +205,7 @@
         .price_product {
             margin: 0;
             font-weight: 600;
-            font-size: 14px;
+            font-size: 12px;
             text-align: center;
             overflow: hidden;
             background-color: #fff;
@@ -220,6 +220,7 @@
             margin: 0 5px 0 0;
             background: orange;
             color: #fff;
+            font-size: 12px;
             padding: 5px;
             border-bottom-left-radius: 7px;
             border-bottom-right-radius: 7px;
@@ -248,8 +249,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/1.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/1.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -260,8 +261,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/2.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/2.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -272,8 +273,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/3.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/3.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -284,8 +285,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/4.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/4.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -296,8 +297,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/5.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/5.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -308,8 +309,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/6.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/6.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -320,8 +321,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/7.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/7.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -332,8 +333,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/8.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/8.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -344,8 +345,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/9.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/9.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -356,8 +357,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/10.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/10.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -368,8 +369,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/11.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/11.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -380,8 +381,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/12.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/12.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -402,8 +403,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/1.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/1.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -414,8 +415,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/2.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/2.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -426,8 +427,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/3.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/3.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -438,8 +439,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/4.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/4.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -450,8 +451,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/5.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/5.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -462,8 +463,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/6.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/6.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -474,8 +475,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/7.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/7.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -486,8 +487,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/8.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/8.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -498,8 +499,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/9.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/9.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -510,8 +511,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/10.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/10.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -522,8 +523,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/11.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/11.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -534,8 +535,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/12.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/12.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -556,8 +557,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/1.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/1.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -568,8 +569,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/2.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/2.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -580,8 +581,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/3.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/3.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -592,8 +593,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/4.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/4.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -604,8 +605,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/5.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/5.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -616,8 +617,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/6.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/6.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -628,8 +629,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/7.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/7.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -640,8 +641,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/8.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/8.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -652,8 +653,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/9.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/9.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -664,8 +665,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/10.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/10.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -676,8 +677,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/11.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/11.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -688,8 +689,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/12.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/12.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -710,8 +711,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/1.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/1.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -722,8 +723,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/2.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/2.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -734,8 +735,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/3.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/3.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -746,8 +747,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/4.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/4.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -758,8 +759,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/5.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/5.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -770,8 +771,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/6.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/6.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -782,8 +783,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/7.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/7.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -794,8 +795,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/8.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/8.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -806,8 +807,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/9.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/9.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -818,8 +819,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/10.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/10.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -830,8 +831,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/11.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/11.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -842,8 +843,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/12.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/12.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -864,8 +865,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/1.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/1.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -876,8 +877,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/2.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/2.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -888,8 +889,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/3.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/3.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -900,8 +901,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/4.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/4.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -912,8 +913,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/5.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/5.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -924,8 +925,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/6.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/6.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -936,8 +937,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/7.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/7.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -948,8 +949,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/8.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/8.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -960,8 +961,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/9.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/9.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -972,8 +973,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/10.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/10.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -984,8 +985,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/11.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/11.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -996,8 +997,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/12.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/12.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -1018,8 +1019,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/1.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/1.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -1030,8 +1031,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/2.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/2.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -1042,8 +1043,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/3.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/3.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -1054,8 +1055,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/4.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/4.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -1066,8 +1067,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/5.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/5.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -1078,8 +1079,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/6.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/6.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -1090,8 +1091,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/7.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/7.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -1102,8 +1103,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/8.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/8.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -1114,8 +1115,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/9.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/9.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -1126,8 +1127,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/10.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/10.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -1138,8 +1139,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/11.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/11.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -1150,8 +1151,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/12.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/12.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -1172,8 +1173,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/1.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/1.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -1184,8 +1185,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/2.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/2.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -1196,8 +1197,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/3.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/3.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -1208,8 +1209,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/4.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/4.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -1220,8 +1221,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/5.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/5.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -1232,8 +1233,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/6.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/6.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -1244,8 +1245,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/7.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/7.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -1256,8 +1257,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/8.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/8.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -1268,8 +1269,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/9.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/9.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -1280,8 +1281,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/10.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/10.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -1292,8 +1293,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/11.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/11.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -1304,8 +1305,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/12.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/12.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -1325,8 +1326,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/1.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/1.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -1337,8 +1338,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/2.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/2.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -1349,8 +1350,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/3.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/3.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -1361,8 +1362,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/4.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/4.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -1373,8 +1374,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/5.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/5.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -1385,8 +1386,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/6.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/6.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -1397,8 +1398,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/7.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/7.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -1409,8 +1410,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/8.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/8.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -1421,8 +1422,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/9.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/9.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -1433,8 +1434,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/10.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/10.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -1445,8 +1446,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/11.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/11.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -1457,8 +1458,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/12.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/12.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -1479,8 +1480,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/1.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/1.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -1491,8 +1492,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/2.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/2.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -1503,8 +1504,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/3.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/3.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -1515,8 +1516,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/4.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/4.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -1527,8 +1528,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/5.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/5.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -1539,8 +1540,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/6.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/6.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -1551,8 +1552,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/7.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/7.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -1563,8 +1564,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/8.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/8.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -1575,8 +1576,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/9.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/9.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -1587,8 +1588,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/10.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/10.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -1599,8 +1600,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/11.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/11.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
@@ -1611,8 +1612,8 @@
                     <span class="child_container_product">
                         <a href="">
 
-                            <img src="{{ asset('public/images/explore_images/12.webp') }}" alt="" width="130px"
-                                height="130px" />
+                            <img src="{{ asset('public/images/explore_images/12.webp') }}" alt="" width="100px"
+                                height="100px" />
                             <p class="price_product m-0">
                                 Rs 548.39 <span class="before_discount">899</span>
                             </p>
