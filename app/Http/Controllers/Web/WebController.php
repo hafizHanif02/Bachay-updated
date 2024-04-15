@@ -13,6 +13,7 @@ use App\Models\Seller;
 use App\Utils\Convert;
 use App\Utils\Helpers;
 use App\Models\Contact;
+use App\Models\Explore;
 use App\Models\Product;
 use App\Models\Setting;
 use App\Models\Category;
@@ -130,7 +131,9 @@ class WebController extends Controller
     public function explore_page()
     {
         $categories = Category::all();
-        return view(VIEW_FILE_NAMES['explore_page'], compact('categories'));
+        $explores = Explore::with('items.product')->get();
+
+        return view(VIEW_FILE_NAMES['explore_page'], compact(['categories','explores']));
     }
     public function menu(){
         $categories = Category::all();
