@@ -433,7 +433,7 @@
                             </a>
                         </div>
                         <div class="blog_item">
-                            <a class="text-decoration-none" href="https://bachay.com/parenting/article/65">
+                            <a class="text-decoration-none" href="https://bachay.com/parenting/article/82">
                                 <img src="https://bachay.com/public/assets/images/parent_articles/thumbnail/vczvxcbxcvb.jpg" alt="" width="100%" />
                                 <h5 class="mt-2 text-dark">
                                     Worm Infection in Babies – Causes, Symptoms & Treatment

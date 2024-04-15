@@ -128,10 +128,10 @@
                                 class="nav-link {{ Request::is('loyalty') ? 'active' : '' }} ">{{ translate('my_wallet') }}</a>
                         </li>
                     @endif --}}
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a href="{{ route('parenting-memories') }}"
                             class="nav-link {{ Request::is('parenting-memories') || Request::is('parenting-memories') ? 'active' : '' }}">{{ translate('my_memories') }}</a>
-                    </li>
+                    </li> --}}
                     {{-- <li class="nav-item">
                         <a href="{{ route('parenting-quick-reads') }}"
                             class="nav-link {{ Request::is('parenting-quick-reads') || Request::is('parenting-quick-reads') ? 'active' : '' }}">{{ translate('my_quick_reads') }}</a>
