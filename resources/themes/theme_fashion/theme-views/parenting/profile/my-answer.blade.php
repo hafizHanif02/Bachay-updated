@@ -191,7 +191,7 @@
                                     <input type="hidden" name="user_id" value="{{ Auth::guard('customer')->user()->id }}">
                                 @endauth
                                 <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Ask a Question</h1>
+                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Answer a question</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                 </div>
@@ -202,7 +202,7 @@
                                                 placeholder="Write your Question here"></textarea>
                                             <input type="file" id="attachment" name="attachment"
                                                 class="position-absolute start-0 opacity-0"
-                                                style="height: 100%; width: 100%;">
+                                                style="height: 0%; width: 100%;">
                                             <label for="attachment"
                                                 class="btn btn-outline-primary position-absolute bottom-0 start-0 mb-2 me-2"
                                                 style="border: none; color: inherit; background-color: transparent;"> <i
