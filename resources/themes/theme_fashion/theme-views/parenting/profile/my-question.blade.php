@@ -237,26 +237,6 @@
                         class="nav-link {{ Request::is('parenting-answer') ? 'active' : '' }}">{{ translate('my_answers') }}
                     </a>
                 </li>
-                {{-- <li class="nav-item">
-                    <a href="{{ route('parenting-topics') }}"
-                        class="nav-link {{ Request::is('parenting-topics') ? 'active' : '' }}">{{ translate('my_topics') }}</a>
-                </li> --}}
-                {{-- <li class="nav-item">
-                    <a href="{{ route('parenting-memories') }}"
-                        class="nav-link {{ Request::is('parenting-memories') ? 'active' : '' }}">{{ translate('my_memories') }}</a>
-                </li> --}}
-                {{-- <li class="nav-item">
-                    <a href="{{ route('parenting-quick-reads') }}"
-                        class="nav-link {{ Request::is('parenting-quick-reads') ? 'active' : '' }}">{{ translate('my_quick_reads') }}</a>
-                </li> --}}
-                {{-- <li class="nav-item">
-                    <a href="{{ route('parenting-milestones') }}"
-                        class="nav-link {{ Request::is('parenting-milestones') ? 'active' : '' }}">{{ translate('my_milestons') }}</a>
-                </li> --}}
-                {{-- <li class="nav-item">
-                    <a href="{{ route('parenting-bumpie') }}"
-                        class="nav-link {{ Request::is('parenting-bumpie') ? 'active' : '' }}">{{ translate('my_bumpie') }}</a>
-                </li> --}}
                 <li class="nav-item">
                     <a href="{{ route('favourite-names-parenting') }}"
                         class="nav-link {{ Request::is('favourite-names-parenting') ? 'active' : '' }}">{{ translate('my_favourite_names') }}</a>
