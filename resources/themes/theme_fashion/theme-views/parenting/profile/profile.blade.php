@@ -60,23 +60,30 @@
                         </button>
                     </div>
                 </div>
+                @php
+                        $child = \App\Models\FamilyRelation::where('user_id', auth('customer')->id())
+                            ->count();
+                    @endphp
                 <div class="user-order-count {{ !Request::is('user-profile') ? 'd-none d-md-flex' : '' }}">
                     <div class="user-order-count-item">
-                        <h3 class="subtitle">{{ auth('customer')->user()->orders->count() }}</h3>
+                        <h3 class="subtitle">{{ $child }}</h3>
                         <span>{{ translate('Total_child') }}</span>
                     </div>
 
                     @php
-                        $wish_list_count = \App\Models\Wishlist::where('customer_id', auth('customer')->user()->id)
-                            ->whereHas('wishlistProduct')
+                        $questions = \App\Models\QnaQuestion::where('user_id', auth('customer')->id())
                             ->count();
                     @endphp
                     <div class="user-order-count-item">
-                        <h3 class="subtitle wishlist_count_status">{{ $wish_list_count }}</h3>
+                        <h3 class="subtitle wishlist_count_status">{{ $questions }}</h3>
                         <span>{{ translate('Total_questions') }}</span>
                     </div>
+                    @php
+                        $answers = \App\Models\QnaAnswer::where('user_id', auth('customer')->id())
+                            ->count();
+                    @endphp
                     <div class="user-order-count-item">
-                        <h3 class="subtitle">{{ auth('customer')->user()->compare_list->count() }}</h3>
+                        <h3 class="subtitle">{{ $answers }}</h3>
                         <span>{{ translate('Total_answers') }}</span>
                     </div>
                 </div>
