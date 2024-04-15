@@ -249,7 +249,7 @@
                         <span class="child_container_product">
                             <a href="{{ route('product',$item->product->slug) }}">
                                 
-                                <img src="{{ asset('resources/themes/theme_fashion/public/assets/img/'.$item->product->thumbnail) }}" alt="" width="100px"
+                                <img src="{{ asset('/storage/app/public/product/thumbnail/'.$item->product->thumbnail) }}" alt="" width="100px"
                                 height="100px" />
                                 <p class="price_product m-0">
                                     Rs {{ $item->product->unit_price }} <span class="before_discount"></span>
