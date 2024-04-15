@@ -175,6 +175,7 @@
         <div class="ask-question text-center mt-5">
             <h4 class="mt-4 mb-2">No Questions asked, yet!</h4>
         </div>
+<<<<<<< HEAD
     </div>
     @else
     <div class="my-ques">
@@ -206,6 +207,91 @@
                                 {{ $question->child->gender == 'male' ? 'boy' : 'girl' }}</p>
                         @endif
                         <p class="quesion-icon">{{ $question->created_at->diffForHumans() }}</p>
+=======
+        <div class="my-ques">
+            <h3 class="mt-4">My Questions</h3>
+            <hr>
+            <div class="ask-question text-center mt-5">
+                <h4 class="mt-4 mb-2">No Questions asked, yet!</h4>
+                <p class="font-poppins mb-2">Share your queries on Parenting or Shopping for your kids and allow
+                    parents like you to promptly help you with solutions.</p>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn_clr" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    Ask a Question
+                </button>
+                <!-- Ask a Question Modal -->
+                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                    tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content pb-2 ps-2 pe-2">
+                            <form action="{{ route('Q&A.store') }}" method="POST">
+                                @csrf
+                                @auth('customer')
+                                    <input type="hidden" name="user_id" value="{{ Auth::guard('customer')->user()->id }}">
+                                @endauth
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Ask a Question</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body" style="background-color: #f5f5f5;">
+                                    <div class="write-comment-container">
+                                        <div class="form-group position-relative">
+                                            <textarea id="post_answer_text" name="question" rows="4" cols="50" class="form-control comment-box"
+                                                placeholder="Write your Question here"></textarea>
+                                            <input type="file" id="attachment" name="attachment"
+                                                class="position-absolute start-0 opacity-0"
+                                                style="height: 0%; width: 100%;">
+                                            <label for="attachment"
+                                                class="btn btn-outline-primary position-absolute bottom-0 start-0 mb-2 me-2"
+                                                style="border: none; color: inherit; background-color: transparent;"> <i
+                                                    class="bi bi-paperclip"></i> Attach File</label>
+                                        </div>
+                                        <p class="text-start mt-3">This question is being
+                                            asked for: </p>
+                                        @auth('customer')
+                                            <?php
+                                            $childs = \App\Models\FamilyRelation::where('user_id', Auth::guard('customer')->user()->id)->get();
+                                            ?>
+                                            <div class="outer_child_container text-start">
+                                                @if (!$childs->isEmpty())
+                                                    @foreach ($childs as $child)
+                                                        <?php $childDob = \Carbon\Carbon::parse($child->dob);
+                                                        $diff = $childDob->diff(\Carbon\Carbon::now());
+                                                        $formattedAge = '';
+                                                        
+                                                        if ($diff->y > 0) {
+                                                            $formattedAge .= $diff->y . 'Y';
+                                                        }
+                                                        
+                                                        if ($diff->m > 0) {
+                                                            $formattedAge .= ($formattedAge ? ' ' : '') . $diff->m . 'M';
+                                                        }
+                                                        if ($diff->y == 0 && $diff->m == 0) {
+                                                            $formattedAge = 'New Born';
+                                                        }
+                                                        ?>
+                                                        <label class="child_inner_container">
+                                                            <input type="radio" class="dev_radiobuttons custom-radio-button"
+                                                                name="child_selection" name="child_id"
+                                                                value="{{ $child->id }}" style="width: fit-content;">
+                                                            <span class="child-info-ask-quest"><span
+                                                                    class="R14_42">{{ $child->name }}</span><span
+                                                                    class="R11_75"> {{ $formattedAge }}</span></span>
+                                                        </label>
+                                                    @endforeach
+                                            </div>
+                                            @endif
+                                        @endauth
+                                        <p class="your-identity text-start">Your identity will not be revealed</p>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn_clr ps-5 pe-5">Post</button>
+                                </div>
+                            </form>
+                        </div>
+>>>>>>> b27bc9fe6f9dcaa192c2491934af4b0997eb4077
                     </div>
                     <p class="fw-bold"><span class="quesion-icon">Q.</span> {{ $question->question['question'] }}
                     </p>
