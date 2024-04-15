@@ -556,7 +556,7 @@
                         
                     </li> --}}
                     <li>
-                        <a href="{{ route('home') }}" class="nav-ul_text" style="background: linear-gradient(90.27deg, rgb(132, 93, 194) -27.96%, rgb(249, 147, 39) -27.94%, rgb(213, 95, 173) 28.41%, rgb(132, 93, 194) 82.13%, rgb(132, 93, 194) 130.57%); -webkit-background-clip: text; background-clip: text; color: transparent !important; font-weight: bold;">
+                        <a href="{{ route('my-child.list') }}" class="nav-ul_text" style="background: linear-gradient(90.27deg, rgb(132, 93, 194) -27.96%, rgb(249, 147, 39) -27.94%, rgb(213, 95, 173) 28.41%, rgb(132, 93, 194) 82.13%, rgb(132, 93, 194) 130.57%); -webkit-background-clip: text; background-clip: text; color: transparent !important; font-weight: bold;">
                             <img class="rounded-circle me-2" src="{{ asset('public/images/baby-thumbs-up.gif') }}" alt="" width="30px" height="30px">
                             <span style="color: transparent;">{{ translate('Add child') }}</span>
                         </a>
