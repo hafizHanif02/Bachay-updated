@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use DateTime;
-use Carbon\Carbon;
+use Illuminate\Support\Carbon;
 use App\Models\Growth;
 use App\Models\Vaccination;
 use Illuminate\Http\Request;
@@ -297,8 +297,8 @@ class VaccineController extends Controller
             'to_be_give' => 'required|string',
             'how' => 'required|string',
         ]);
-
-        Vaccination::create([
+        
+        $vaccination = Vaccination::create([
             'name' => $request->name,
             'age' => $request->age,
             'disease' => $request->disease,
@@ -306,6 +306,24 @@ class VaccineController extends Controller
             'to_be_give' => $request->to_be_give,
             'how' => $request->how,
         ]);
+        $all_childs =  FamilyRelation::all();
+        foreach ($all_childs as $child) {
+                $dateOfBirth = $child->dob;
+                $carbonDateOfBirth = Carbon::parse($dateOfBirth);
+                $resultDate = $carbonDateOfBirth->addWeeks($request->age)->toDateString();
+                VaccinationSubmission::create([
+                    'user_id' => $child->user_id,
+                    'child_id' => $child->id,
+                    'vaccination_id' => $vaccination->id,
+                    'vaccination_date' => $resultDate,
+                ]);
+                Growth::create([
+                    'user_id' => $child->user_id,
+                    'child_id' => $child->id,
+                    'vaccination_id' => $vaccination->id,
+                ]);
+        }
+    
         Toastr::success('Vaccine Added');
         return back();
     }
