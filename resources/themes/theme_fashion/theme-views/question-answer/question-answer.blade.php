@@ -277,12 +277,11 @@
                 </div>
                 <hr>
                 @foreach($question->answers->take(2) as $answer)
-                {{ dd( $answer) }}
                 <div class="mb-3">
                     <div class="d-flex justify-content-between">
                         <div class="d-flex gap-3">
                             <span>
-                                <img class="rounded-circle" src="{{ asset('storage/app/public/profile/'.($answer->user->image ?? '')) }}" alt=""
+                                <img class="rounded-circle" src="{{ asset('storage/app/public/profile/'.$answer->user->image) }}" alt=""
                                     width="50px" height="50px">
                             </span>
                             <div>
