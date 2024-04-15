@@ -203,7 +203,7 @@
                                                 placeholder="Write your Question here"></textarea>
                                             <input type="file" id="attachment" name="attachment"
                                                 class="position-absolute start-0 opacity-0"
-                                                style="height: 100%; width: 100%;">
+                                                style="height: 0%; width: 100%;">
                                             <label for="attachment"
                                                 class="btn btn-outline-primary position-absolute bottom-0 start-0 mb-2 me-2"
                                                 style="border: none; color: inherit; background-color: transparent;"> <i
