@@ -171,6 +171,7 @@
         <div class="my-ans">
             <h3 class="mt-4">My Answers</h3>
             <hr>
+            @if(empty($myanswers))
             <div class="ask-question text-center mt-5">
                 <h4 class="mt-4 mb-2">No Answers posted, yet!</h4>
                 <p class="font-poppins mb-2">Parents like you are looking for help on their parenting problems. Your answers
@@ -180,7 +181,7 @@
                     Answer a Question
                 </button>
                 <!-- Ask a Question Modal -->
-                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                {{-- <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
                     tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content pb-2 ps-2 pe-2">
@@ -252,8 +253,54 @@
                             </form>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
+            @else
+                @foreach($myanswers as $answer)
+                <div class="mb-3">
+                    <div class="d-flex justify-content-between">
+                        <div class="d-flex gap-3">
+                            <span>
+                                <img class="rounded-circle" src="{{ asset('storage/app/public/profile/'.$answer->user->image) }}" alt=""
+                                    width="50px" height="50px">
+                            </span>
+                            <div>
+                                <p class="m-0 fw-bold">{{ $answer->user->f_name. ' '. $answer->user->l_name }}</p>
+                                {{-- <p class="m-0 quesion-icon">Mom of a 4 yr 2 m old boy</p> --}}
+                            </div>
+                        </div>
+                        <p class="quesion-icon">{{ $answer->created_at->diffForHumans() }}</p>
+                    </div>
+                    <p class="fw-medium mt-2"><span class="quesion-icon">A.</span> {{ $answer->answer }} </p>
+                    <div class="answer-parent-container d-flex justify-content-between mt-3">
+    
+    
+                        <div class="like-button" onclick="toggleLike()">
+                            <i class="bi bi-hand-thumbs-up like-icon"></i>
+                            <span class="like-count quesion-icon">0</span>
+                            <span class="like-text quesion-icon"> Like</span>
+                        </div>
+    
+    
+    
+    
+                        <div class="dropdown">
+                            <button class="bg-transparent border-0 report-dropdown quesion-icon" type="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-three-dots-vertical" style="font-size: 20px;"></i>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end p-0">
+                                <li><a class="dropdown-item ps-3" href="#" style="font-size: 12px;">Report Abuse</a>
+                                </li>
+                            </ul>
+                        </div>
+    
+    
+                    </div>
+
+                </div>
+                @endforeach
+            @endif
         </div>
     </div>
     <div class="offcanvas offcanvas-end text-capitalize" tabindex="-1" id="offcanvasProfile"

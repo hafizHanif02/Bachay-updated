@@ -38,12 +38,14 @@ class QnaController extends Controller
     }
     public function parenting_question()
     {
-        return view(VIEW_FILE_NAMES['parenting-question']);
+        $myquestions = QnaAnswer::where('user_id', auth('customer')->id())->get();
+        return view(VIEW_FILE_NAMES['parenting-question'], compact('myquestions'));
     }
 
     public function parenting_answer()
     {
-        return view(VIEW_FILE_NAMES['parenting-answer']);
+        $myanswers = QnaAnswer::where('user_id', auth('customer')->id())->get();
+        return view(VIEW_FILE_NAMES['parenting-answer'], compact('myanswers'));
     }
     public function QnaHome(){
         $parent_article_categories = ParentArticleCategory::where('status', 1)->with('child')->latest()->take(5)->get();
