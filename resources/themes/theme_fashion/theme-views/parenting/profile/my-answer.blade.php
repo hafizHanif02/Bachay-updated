@@ -184,7 +184,7 @@
                     tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content pb-2 ps-2 pe-2">
-                            <form action="{{ route('Q&A.store') }}" method="POST">
+                            <form action="{{ route('Q&A.answer.store') }}" method="POST">
                                 @csrf
                                 @auth('customer')
                                     <input type="hidden" name="user_id" value="{{ Auth::guard('customer')->user()->id }}">

@@ -7331,4 +7331,5 @@
   'My_Questions' => 'My Questions',
   'My_Answers' => 'My Answers',
   'shopping_profile' => 'Shopping profile',
+  'Add child' => 'Add child',
 );
