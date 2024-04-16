@@ -92,18 +92,20 @@
         display: flex;
 
     }
-    .first_blog_title{
+
+    .first_blog_title {
         font-size: 20px;
     }
-    .tag_line h3{
+
+    .tag_line h3 {
         font-size: 16px;
 
     }
-    .tag_line h6{
+
+    .tag_line h6 {
         font-size: 15px;
 
     }
-    
 </style>
 
 @section('content')
