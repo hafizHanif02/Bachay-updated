@@ -2404,7 +2404,7 @@ a:not(:focus) ~ .__dropdown-menu {
     .banner-slide {
         flex-wrap: nowrap;
         padding-bottom: 0rem;
-        padding-inline-start: 10px;
+        /* padding-inline-start: 10px; */
     }
     .banner-slide img {
         height: auto;

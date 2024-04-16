@@ -16,9 +16,48 @@
         content="{{ substr(strip_tags(str_replace('&nbsp;', ' ', $web_config['about']->value)), 0, 160) }}">
 @endpush
 <style>
-    .banner-section{
+    .banner-section {
         background: #fff !important;
-        margin: 30px 0 0 0 ;
+        margin: 30px 0 0 0;
+    }
+</style>
+<style>
+    .scroll-container {
+        overflow-x: auto;
+        white-space: nowrap;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    .scroll-container::-webkit-scrollbar {
+        display: none;
+    }
+
+    .newCatLanding img {
+        width: 122px;
+        margin: 10px 0 10px 5px;
+        height: 175px;
+    }
+
+    .brand-container img {
+
+        width: 250px;
+        height: 357px;
+        margin: 10px 0 10px 5px;
+    }
+
+    .newArrival img {
+        width: 248px;
+        height: 156px;
+        margin: 10px 0 10px 5px;
+
+    }
+
+    .parenting-blogs img {
+        width: 251px;
+        height: 358px;
+        margin: 10px 0 10px 5px;
+
     }
 </style>
 
@@ -39,29 +78,29 @@
                                 src="{{ getValidImage(path: 'storage/app/public/banner/' . $banner['mobile_photo'], type: 'product') }}">
 
                             <!-- @if ($banner['title'] && $banner['sub_title'])
-     <div class="content">
-                                <h1 class="title mb-3">{{ $banner['title'] }} <br><span class="subtxt">{{ $banner['sub_title'] }}</span> </h1>
-                                @if ($banner['button_text'])
-     <div class="info">
-                                     <a href="{{ $banner['url'] ?? 'javascript:' }}" class="btn btn-base">{{ $banner['button_text'] }}</a>
-                                </div>
-        @endif
-                            </div>
-        @endif -->
+    <div class="content">
+                                        <h1 class="title mb-3">{{ $banner['title'] }} <br><span class="subtxt">{{ $banner['sub_title'] }}</span> </h1>
+                                        @if ($banner['button_text'])
+    <div class="info">
+                                             <a href="{{ $banner['url'] ?? 'javascript:' }}" class="btn btn-base">{{ $banner['button_text'] }}</a>
+                                        </div>
+    @endif
+                                    </div>
+    @endif -->
 
                             <!-- <svg width="16" height="44" viewBox="0 0 16 44" fill="none" xmlns="http://www.w3.org/2000/svg" class="shapes d-sm-none">
-                            <g filter="url(#filter0_b_3844_38351)">
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M0.987292 43.5471C2.37783 38.4513 6.40927 34.0997 10.2104 29.9969C10.7306 29.4354 11.2464 28.8785 11.7506 28.3251C12.3698 27.6454 12.9261 26.9375 13.4285 26.2154C15.7758 22.8419 15.7065 18.2693 13.2818 14.9509C12.1188 13.3593 10.7689 11.9386 9.18884 10.7511C5.58277 8.04099 1.99367 4.63569 0.853516 0.455078L0.987292 43.5471Z" fill="var(--base)"/>
-                            </g>
-                            <defs>
-                            <filter id="filter0_b_3844_38351" x="-46.9791" y="-47.3775" width="109.958" height="138.757" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-                            <feGaussianBlur in="BackgroundImageFix" stdDeviation="23.9163"/>
-                            <feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_3844_38351"/>
-                            <feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur_3844_38351" result="shape"/>
-                            </filter>
-                            </defs>
-                        </svg> -->
+                                    <g filter="url(#filter0_b_3844_38351)">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M0.987292 43.5471C2.37783 38.4513 6.40927 34.0997 10.2104 29.9969C10.7306 29.4354 11.2464 28.8785 11.7506 28.3251C12.3698 27.6454 12.9261 26.9375 13.4285 26.2154C15.7758 22.8419 15.7065 18.2693 13.2818 14.9509C12.1188 13.3593 10.7689 11.9386 9.18884 10.7511C5.58277 8.04099 1.99367 4.63569 0.853516 0.455078L0.987292 43.5471Z" fill="var(--base)"/>
+                                    </g>
+                                    <defs>
+                                    <filter id="filter0_b_3844_38351" x="-46.9791" y="-47.3775" width="109.958" height="138.757" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                                    <feGaussianBlur in="BackgroundImageFix" stdDeviation="23.9163"/>
+                                    <feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_3844_38351"/>
+                                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur_3844_38351" result="shape"/>
+                                    </filter>
+                                    </defs>
+                                </svg> -->
                             @if ($main_banner->count() > 1)
                                 <img src="{{ theme_asset('assets/img/arrow-icon.png') }}" class="banner-arrow d-sm-none"
                                     alt="{{ translate('banner') }}" loading="lazy">
@@ -71,11 +110,11 @@
                 </div>
 
             </section>
-          @else
+        @else
             <section class="promo-page-header">
                 <div class="product_blank_banner"></div>
             </section>
-         @endif
+        @endif
 
 
 
@@ -94,6 +133,132 @@
 
         </a>
 
+    </div>
+    <div>
+        <img src="{{ asset('public/images/explore1.webp') }}" alt="" width="100%">
+    </div>
+
+    <div class="scroll-container newCatLanding ps-2">
+        <a href="">
+            <img src="{{ asset('public/images/explore-fashion.webp') }}" alt="">
+
+        </a>
+        <a href="">
+
+            <img src="{{ asset('public/images/explore-partywear.webp') }}" alt="">
+
+        </a>
+        <a href="">
+
+            <img src="{{ asset('public/images/explore-beautycare.webp') }}" alt="">
+        </a>
+        <a href="">
+
+            <img src="{{ asset('public/images/explore-toys.webp') }}" alt="">
+        </a>
+
+    </div>
+    <div>
+        <img src="{{ asset('public/images/summer.webp') }}" alt="" width="100%">
+    </div>
+    <div class="scroll-container brand-container ps-2">
+        <a href="">
+            <img src="{{ asset('public/images/1girl.webp') }}" alt="">
+
+        </a>
+        <a href="">
+
+            <img src="{{ asset('public/images/2boy.webp') }}" alt="">
+
+        </a>
+        <a href="">
+
+            <img src="{{ asset('public/images/3-child.webp') }}" alt="">
+        </a>
+        <a href="">
+
+            <img src="{{ asset('public/images/4-boy.webp') }}" alt="">
+        </a>
+        <a href="">
+
+            <img src="{{ asset('public/images/5-girl.webp') }}" alt="">
+        </a>
+    </div>
+    <div>
+        <img src="{{ asset('public/images/special-summer.webp') }}" alt="" width="100%">
+    </div>
+
+    <div class="scroll-container newArrival ps-2">
+        <a href="">
+            <img src="{{ asset('public/images/sum1.webp') }}" alt="">
+            <p class="text-center m-0 text-secondary fw-bold">SUNNY DAY OUTFITS</p>
+            <p class="text-center m-0 text-secondary">SHOP NOW</p>
+
+        </a>
+        <a href="">
+
+            <img src="{{ asset('public/images/sum2.webp') }}" alt="">
+            <p class="text-center m-0 text-secondary fw-bold">MUST HAVE LOOKS</p>
+            <p class="text-center m-0 text-secondary">SHOP NOW</p>
+
+
+        </a>
+        <a href="">
+
+            <img src="{{ asset('public/images/3sum.webp') }}" alt="">
+            <p class="text-center m-0 text-secondary fw-bold">TINY EXPLORERS</p>
+            <p class="text-center m-0 text-secondary">SHOP NOW</p>
+
+
+        </a>
+        <a href="">
+
+            <img src="{{ asset('public/images/4sum.webp') }}" alt="">
+            <p class="text-center m-0 text-secondary fw-bold">OUTDOOR ADVENTURES</p>
+            <p class="text-center m-0 text-secondary">SHOP NOW</p>
+
+        </a>
+
+    </div>
+    <div class="mt-2">
+        <img src="{{ asset('public/images/change-ming.webp') }}" alt="" width="100%">
+    </div>
+    <div>
+        <img src="{{ asset('public/images/parenting-explore.webp') }}" alt="" width="100%">
+    </div>
+    <div class="scroll-container parenting-blogs ps-2">
+        <a href="">
+            <img src="{{ asset('public/images/parenting-blog1.webp') }}" alt="">
+
+        </a>
+        <a href="">
+
+            <img src="{{ asset('public/images/parenting-blog2.webp') }}" alt="">
+
+        </a>
+        <a href="">
+
+            <img src="{{ asset('public/images/parenting-blog3.webp') }}" alt="">
+        </a>
+        <a href="">
+
+            <img src="{{ asset('public/images/parenting-blog4.webp') }}" alt="">
+        </a>
+        <a href="">
+
+            <img src="{{ asset('public/images/parenting-blog5.webp') }}" alt="">
+        </a>
+        <a href="">
+
+            <img src="{{ asset('public/images/parenting-blog6.webp') }}" alt="">
+        </a>
+        <a href="">
+
+            <img src="{{ asset('public/images/parenting-blog7.webp') }}" alt="">
+        </a>
+    </div>
+    <div>
+        <img src="{{ asset('public/images/ex-footer.webp') }}" alt="" width="100%">
     </div>
 
 @endsection
