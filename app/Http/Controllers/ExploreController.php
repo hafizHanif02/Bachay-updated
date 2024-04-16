@@ -37,6 +37,7 @@ class ExploreController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request->all());
         $request->validate([
             'title' => 'required|string|max:255',
             'media' => 'required|file',
