@@ -46,7 +46,6 @@ class ExploreController extends Controller
             $extension = $file->getClientOriginalExtension();
             $filename = $file->getClientOriginalName();
             $file->move(public_path('assets/images/explore/media'), $filename);
-            
         }
         $explore = Explore::create([
             'title' => $request->title,
