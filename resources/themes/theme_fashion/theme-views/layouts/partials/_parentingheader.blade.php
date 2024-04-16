@@ -683,7 +683,7 @@
                     @else
                         <li class="me-2 me-sm-0">
                             <a href="javascript:" class="customer_login_register_modal">
-                                <i class="bi bi-person d-xl-inline-block nav-ul_text"
+                                <i class="bi bi-person d-none d-xl-inline-block nav-ul_text"
                                     style="font-size: 16px !important;"></i>
                                 <i class="bi bi-person-circle d-xl-none nav-ul_text"
                                     style="font-size: 16px !important;"></i>
