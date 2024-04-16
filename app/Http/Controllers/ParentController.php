@@ -18,6 +18,7 @@ use App\Models\Vaccination;
 use App\Models\DealOfTheDay;
 use App\Models\MostDemanded;
 use Illuminate\Http\Request;
+use App\Models\ParentArticle;
 use App\Models\FamilyRelation;
 use App\Models\ProductCompare;
 use Illuminate\Support\Carbon;
@@ -115,7 +116,8 @@ class ParentController extends Controller
         $main_banner = $this->banner->where(['banner_type' => 'Parent Banner', 'theme' => $theme_name, 'published' => 1])->latest()->get();
         $main_section_banner = $this->banner->where(['banner_type' => 'Main Section Banner', 'theme' => $theme_name, 'published' => 1])->orderBy('id', 'desc')->latest()->first();
         $parent_article_categories = ParentArticleCategory::where(['status' => 1, 'parent_id' => 0])->with('child')->latest()->take(5)->get();
-        $all_parent_categories = ParentArticleCategory::where(['status' => 1, 'parent_id' => 0])->with(['child','articles'])->get();
+        $all_parent_categories = ParentArticleCategory::where(['status' => 1, 'parent_id' => 0])->orderBy('id', 'desc')->with(['child','articles'])->get();
+        $all_parent_articles = ParentArticle::where('status', '1')->orderBy('id', 'desc')->get();
        
         $userAgent = $request->header('User-Agent');
         if (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Android') !== false) 
@@ -129,7 +131,8 @@ class ParentController extends Controller
                     'main_section_banner',
                     'main_banner',
                     'parent_article_categories',
-                    'all_parent_categories'
+                    'all_parent_categories',
+                    'all_parent_articles'
                 )
             );
         }

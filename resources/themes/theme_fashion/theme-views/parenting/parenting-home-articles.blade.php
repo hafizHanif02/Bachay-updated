@@ -154,15 +154,18 @@
             <h6 class="category_heading text-light font-poppins ms-4">
                 <span class="trending_now_heading"> TRENDING NOW </span>
             </h6>
+            <?php $first_article = $all_parent_articles->first(); ?>
+            <?php $second_article = $all_parent_articles->skip(1)->first(); ?>
+            <?php $third_article = $all_parent_articles->skip(2)->first(); ?>
+            <?php $fourth_article = $all_parent_articles->skip(3)->first(); ?>
             <div class="parenting_blog_container mt-3">
                 <div class="blog_item">
                     <a href="https://bachay.com/parenting/article/66" style="width: 100%; text-decoration:none;">
                         <div class="position-relative overflow-hidden">
-                            <img class="img_blogs" src="{{ asset('public/images/parenting_home/parent-blogs.jpg') }}"
+                            <img class="img_blogs" src="{{ asset('public/assets/images/parent_articles/thumbnail/'.$first_article->thumbnail) }}"
                                 alt="" width="100%" />
                             <div class="tag_line position-absolute bottom-0 text-light">
-                                <h1 class="text-light first_blog_title">7 Delicious Recipes for Ramadan You Should Try for
-                                    Your Family and Friends
+                                <h1 class="text-light first_blog_title">{{$first_article->title}}
                                     </p>
                             </div>
                         </div>
@@ -171,29 +174,29 @@
                 <div class="blog_item">
                     <a href="https://bachay.com/parenting/article/67" style="width: 100%; text-decoration:none;">
                         <div class="position-relative overflow-hidden">
-                            <img class="img_blogs" src="{{ asset('public/images/parenting_home/parenting-eid.jpg') }}"
+                            <img class="img_blogs" src="{{ asset('public/assets/images/parent_articles/thumbnail/'.$second_article->thumbnail) }}"
                                 alt="" width="100%" />
                             <div class="tag_line position-absolute bottom-0 text-light">
-                                <h3 class="text-light">Ramadan – How to Explain the Holy Month to Your Kids </h3>
+                                <h3 class="text-light">{{ $second_article->title }} </h3>
                             </div>
                     </a>
                 </div>
                 <div class="d-flex">
                     <div class="blog_item position-relative overflow-hidden">
                         <a href="https://bachay.com/parenting/article/93"style="width: 100%; text-decoration:none;">
-                            <img class="img_blogs" src="{{ asset('public/images/parenting_home/parenting-world.jpg') }}"
+                            <img class="img_blogs" src="{{ asset('public/assets/images/parent_articles/thumbnail/'.$third_article->thumbnail) }}"
                                 alt="" width="100%" />
                             <div class="tag_line position-absolute bottom-0 text-light">
-                                <h6 class="text-light">Your 18 Week Old Baby – Development, Milestones & Care</h6>
+                                <h6 class="text-light">{{ $third_article->title }}</h6>
                             </div>
                         </a>
                     </div>
                     <div class="blog_item position-relative overflow-hidden">
                         <a href="https://bachay.com/parenting/article/99"style="width: 100%; text-decoration:none;">
-                            <img class="img_blogs" src="{{ asset('public/images/parenting_home/parenting-crowd.jpg') }}"
+                            <img class="img_blogs" src="{{ asset('public/assets/images/parent_articles/thumbnail/'.$fourth_article->thumbnail) }}"
                                 alt="" width="100%" />
                             <div class="tag_line position-absolute bottom-0 text-light">
-                                <h6 class="text-light">Impact of Television (TV) on Children – Positive & Negative Effects
+                                <h6 class="text-light">{{ $fourth_article->title }}
                                 </h6>
                             </div>
                         </a>
