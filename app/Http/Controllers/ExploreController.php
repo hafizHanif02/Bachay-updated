@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Models\ExploreItem;
 use Illuminate\Http\Request;
 use Brian2694\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Storage;
 
 class ExploreController extends Controller
 {
@@ -132,7 +133,7 @@ class ExploreController extends Controller
         $explore = Explore::find($id);
         $filePath = public_path('assets/images/explore/media') . '/' . $explore->media;
         if (file_exists($filePath)) {
-            unlink($filePath);
+            Storage::delete($filePath);
         }
         $explore->delete();
         Toastr::success('Explore has Been Deleted !');
