@@ -122,7 +122,15 @@ class ParentController extends Controller
         $userAgent = $request->header('User-Agent');
         if (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Android') !== false) 
         {
-            return 'Mobile';
+            return view(
+                VIEW_FILE_NAMES['parenting-mobile'],
+                compact(
+                    'main_section_banner',
+                    'main_banner',
+                    'parent_article_categories',
+                    'all_parent_categories'
+                )
+            );
         }
         else{
             return view(

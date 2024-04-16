@@ -145,6 +145,7 @@
         .tag_line h6 {
             font-size: 10px;
         }
+        
     }
 </style>
 
