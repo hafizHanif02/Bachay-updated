@@ -744,12 +744,6 @@
                             <section>
                                 <a href="{{ route('parenting.article.detail', $article->id) }}" class="title">{{ $article->title }}</a>
                                 <p>
-                                    {{-- @php
-                                        $text = $article->text;
-                                        $wordCount = str_word_count($text);
-                                        $limitedText = implode(' ', array_slice(str_word_count($text, 1), 0, 34));
-                                        echo $limitedText . ($wordCount > 34 ? "..." : "");
-                                    @endphp --}}
                                     @php
                                         $words = str_word_count($article->text, 1);
                                         $limitedText = implode(' ', array_slice($words, 0, 34));
