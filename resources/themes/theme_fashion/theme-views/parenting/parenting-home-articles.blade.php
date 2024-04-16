@@ -22,7 +22,7 @@
     }
 
     .tag_line {
-        padding: 20px;
+        padding: 7px 15px;
         background-color: rgba(0, 0, 0, 0.5);
         width: 100%
     }
@@ -85,7 +85,7 @@
 
     .parenting_blog_container {
         display: flex;
-        height: 400px;
+        height: 450px;
     }
 
     .blog_items_inside {
