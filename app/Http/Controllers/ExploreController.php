@@ -37,10 +37,9 @@ class ExploreController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
         $request->validate([
             'title' => 'required|string|max:255',
-            'media' => 'required',
+            'media' => 'required|file',
         ]);
         if ($request->file('media')) {
             $file = $request->file('media');
@@ -67,9 +66,7 @@ class ExploreController extends Controller
         return back();
     }
 
-    /**
-     * Display the specified resource.
-     */
+
     public function show(string $id)
     {
         //
