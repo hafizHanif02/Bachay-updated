@@ -85,68 +85,25 @@
 
     .parenting_blog_container {
         display: flex;
+        height: 500px;
     }
 
     .blog_items_inside {
         display: flex;
 
     }
-
-    @media only screen and (max-width: 767px) {
-        .main_con_articles {
-            padding: 0;
-        }
-
-        .parenting_blog_container {
-            display: block !important;
-        }
-
-        .blog_item {
-            width: 100%;
-        }
-
-        .categories_blogs {
-            display: block !important;
-        }
-
-        .child_categories_blogs {
-            width: 100%;
-        }
-
-        .blog_items_inside {
-            display: block !important;
-        }
-
-        .td_module_wrap {
-            display: block !important;
-
-        }
-
-        .child_categories_blogs_aside {
-            width: 100%;
-            margin-top: 20px;
-        }
-
-        .see_all_blogs {
-            margin: 0 !important;
-        }
-
-        .parenting_blog_container {
-            display: block;
-        }
-
-        .blog_items_inside {
-            display: block;
-        }
-
-        .first_blog_title ,.tag_line h3 {
-            font-size: 14px;
-        }
-        .tag_line h6 {
-            font-size: 10px;
-        }
-        
+    .first_blog_title{
+        font-size: 20px;
     }
+    .tag_line h3{
+        font-size: 16px;
+
+    }
+    .tag_line h6{
+        font-size: 15px;
+
+    }
+    
 </style>
 
 @section('content')
@@ -161,52 +118,61 @@
             <?php $fourth_article = $all_parent_articles->skip(3)->first(); ?>
             <div class="parenting_blog_container mt-3">
                 <div class="blog_item">
-                    <a href="{{ route('parenting.article.detail',$first_article->id) }}" style="width: 100%; text-decoration:none;">
+                    <a href="{{ route('parenting.article.detail', $first_article->id) }}"
+                        style="width: 100%; text-decoration:none;">
                         <div class="position-relative overflow-hidden">
-                            <img class="img_blogs" src="{{ asset('public/assets/images/parent_articles/thumbnail/'.$first_article->thumbnail) }}"
+                            <img class="img_blogs"
+                                src="{{ asset('public/assets/images/parent_articles/thumbnail/' . $first_article->thumbnail) }}"
                                 alt="" width="100%" />
                             <div class="tag_line position-absolute bottom-0 text-light">
-                                <h1 class="text-light first_blog_title">{{$first_article->title}}
+                                <h1 class="text-light first_blog_title">{{ $first_article->title }}
                                     </p>
                             </div>
                         </div>
                     </a>
                 </div>
                 <div class="blog_item">
-                    <a href="{{ route('parenting.article.detail',$second_article->id) }}" style="width: 100%; text-decoration:none;">
-                        <div class="position-relative overflow-hidden">
-                            <img class="img_blogs" src="{{ asset('public/assets/images/parent_articles/thumbnail/'.$second_article->thumbnail) }}"
+                    <a href="{{ route('parenting.article.detail', $second_article->id) }}"
+                        style="width: 100%; text-decoration:none;">
+                        <div class="position-relative overflow-hidden h-50">
+                            <img class="img_blogs"
+                                src="{{ asset('public/assets/images/parent_articles/thumbnail/' . $second_article->thumbnail) }}"
                                 alt="" width="100%" />
                             <div class="tag_line position-absolute bottom-0 text-light">
                                 <h3 class="text-light">{{ $second_article->title }} </h3>
                             </div>
+                        </div>
                     </a>
-                </div>
-                <div class="d-flex">
-                    <div class="blog_item position-relative overflow-hidden">
-                        <a href="{{ route('parenting.article.detail',$third_article->id) }}"style="width: 100%; text-decoration:none;">
-                            <img class="img_blogs" src="{{ asset('public/assets/images/parent_articles/thumbnail/'.$third_article->thumbnail) }}"
-                                alt="" width="100%" />
-                            <div class="tag_line position-absolute bottom-0 text-light">
-                                <h6 class="text-light">{{ $third_article->title }}</h6>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="blog_item position-relative overflow-hidden">
-                        <a href="{{ route('parenting.article.detail',$fourth_article->id) }}"style="width: 100%; text-decoration:none;">
-                            <img class="img_blogs" src="{{ asset('public/assets/images/parent_articles/thumbnail/'.$fourth_article->thumbnail) }}"
-                                alt="" width="100%" />
-                            <div class="tag_line position-absolute bottom-0 text-light">
-                                <h6 class="text-light">{{ $fourth_article->title }}
-                                </h6>
-                            </div>
-                        </a>
+                    <div class="d-flex h-50">
+                        <div class="blog_item position-relative overflow-hidden h-100">
+                            <a
+                                href="{{ route('parenting.article.detail', $third_article->id) }}"style="width: 100%; text-decoration:none;">
+                                <img class="img_blogs"
+                                    src="{{ asset('public/assets/images/parent_articles/thumbnail/' . $third_article->thumbnail) }}"
+                                    alt="" width="100%" />
+                                <div class="tag_line position-absolute bottom-0 text-light">
+                                    <h6 class="text-light">{{ $third_article->title }}</h6>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="blog_item position-relative overflow-hidden h-100">
+                            <a
+                                href="{{ route('parenting.article.detail', $fourth_article->id) }}"style="width: 100%; text-decoration:none;">
+                                <img class="img_blogs"
+                                    src="{{ asset('public/assets/images/parent_articles/thumbnail/' . $fourth_article->thumbnail) }}"
+                                    alt="" width="100%" />
+                                <div class="tag_line position-absolute bottom-0 text-light">
+                                    <h6 class="text-light">{{ $fourth_article->title }}
+                                    </h6>
+                                </div>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        @foreach($all_parent_categories as $category)
+        @foreach ($all_parent_categories as $category)
             <div class="categories_blogs mt-5 gap-5">
                 <div class="child_categories_blogs">
                     <h6 class="category_heading text-light font-poppins">
@@ -215,42 +181,44 @@
                     <div class="blog_items_inside gap-5 mt-4">
                         <?php $articles = $category->articles->take(2); ?>
                         <?php $small_article = $category->articles->skip(2)->take(2); ?>
-                        @foreach($articles as $article)
-                        <div class="blog_item">
-                            <a class="text-decoration-none" href="{{ route('parenting.article.detail',$article->id) }}">
-                                <img src="{{ asset('public/assets/images/parent_articles/thumbnail/'.$article->thumbnail) }}" alt=""
-                                    width="100%" />
-                                <h5 class="mt-2 text-dark">
-                                    {{ $article->title }}
-                                </h5>
-                                {{-- <span class="me-3 text-dark fw-bold">Mahak Arora</span> --}}
-                                <span class="text_clr_title">{{ $article->created_at->format('F d, Y') }}</span>
-                                <p class="text_clr_title">
-                                    {{ Illuminate\Support\Str::limit($article->text, $limit = 100, $end = '...') }}
-                                </p>
-                            </a>
-                        </div>
+                        @foreach ($articles as $article)
+                            <div class="blog_item">
+                                <a class="text-decoration-none"
+                                    href="{{ route('parenting.article.detail', $article->id) }}">
+                                    <img src="{{ asset('public/assets/images/parent_articles/thumbnail/' . $article->thumbnail) }}"
+                                        alt="" width="100%" />
+                                    <h5 class="mt-2 text-dark">
+                                        {{ $article->title }}
+                                    </h5>
+                                    {{-- <span class="me-3 text-dark fw-bold">Mahak Arora</span> --}}
+                                    <span class="text_clr_title">{{ $article->created_at->format('F d, Y') }}</span>
+                                    <p class="text_clr_title">
+                                        {{ Illuminate\Support\Str::limit($article->text, $limit = 100, $end = '...') }}
+                                    </p>
+                                </a>
+                            </div>
                         @endforeach
                     </div>
                     <div class="td_module_wrap">
-                        @foreach($small_article as $article)
-                        <div class="">
-                            <a class="text-decoration-none d-flex align-items-center gap-4"
-                                href="{{ route('parenting.article.detail',$article->id) }}">
-                                <img src="{{ asset('public/assets/images/parent_articles/thumbnail/'.$article->thumbnail) }}"
-                                    alt="" width="100" height="70" />
-                                <div>
-                                    <h6 class="text-dark m-0">
-                                        {{ $article->title }}
-                                    </h6>
-                                    <p class="text_clr_title m-0">{{ $article->created_at->format('F d, Y') }}</p>
-                                </div>
-                            </a>
-                        </div>
+                        @foreach ($small_article as $article)
+                            <div class="">
+                                <a class="text-decoration-none d-flex align-items-center gap-4"
+                                    href="{{ route('parenting.article.detail', $article->id) }}">
+                                    <img src="{{ asset('public/assets/images/parent_articles/thumbnail/' . $article->thumbnail) }}"
+                                        alt="" width="100" height="70" />
+                                    <div>
+                                        <h6 class="text-dark m-0">
+                                            {{ $article->title }}
+                                        </h6>
+                                        <p class="text_clr_title m-0">{{ $article->created_at->format('F d, Y') }}</p>
+                                    </div>
+                                </a>
+                            </div>
                         @endforeach
                     </div>
                     <div class="float-end see_all_blogs">
-                        <a class="text-decoration-none" href="{{ route('parenting.article.category', $category->id) }}">See All</a>
+                        <a class="text-decoration-none" href="{{ route('parenting.article.category', $category->id) }}">See
+                            All</a>
                     </div>
                 </div>
                 <div class="child_categories_blogs_aside">
@@ -260,8 +228,9 @@
                     <?php $sub_category = $category->child->first(); ?>
                     <?php $article = $sub_category->articles->first(); ?>
                     <div class="position-relative mt-4">
-                        <a class="text-decoration-none" href="{{ route('parenting.article.category', $sub_category->id) }}">
-                            <img src="{{ asset('public/assets/images/parent_articles/category/thumbnail/'.$sub_category->image) }}"
+                        <a class="text-decoration-none"
+                            href="{{ route('parenting.article.category', $sub_category->id) }}">
+                            <img src="{{ asset('public/assets/images/parent_articles/category/thumbnail/' . $sub_category->image) }}"
                                 alt="" width="100%" />
                             <div class="position-absolute bottom-0 text-light tag_line">
                                 <h6 class="m-0 text-light">
@@ -271,23 +240,23 @@
                             </div>
                         </a>
                     </div>
-                    @if($article)
-                    <div class="mt-4">
-                        <a class="text-decoration-none d-flex align-items-center gap-3"
-                         href="{{ route('parenting.article.detail',$article->id) }}">
-                            <img src="{{ asset('public/assets/images/parent_articles/thumbnail/'.$article->thumbnail) }}"
-                                alt="" width="80" height="60" />
-                            <div>
-                                <h6 class="m-0 aside_blog_title text-dark">
-                                    {{ $article->title }}
-                                </h6>
+                    @if ($article)
+                        <div class="mt-4">
+                            <a class="text-decoration-none d-flex align-items-center gap-3"
+                                href="{{ route('parenting.article.detail', $article->id) }}">
+                                <img src="{{ asset('public/assets/images/parent_articles/thumbnail/' . $article->thumbnail) }}"
+                                    alt="" width="80" height="60" />
+                                <div>
+                                    <h6 class="m-0 aside_blog_title text-dark">
+                                        {{ $article->title }}
+                                    </h6>
 
-                                <p class="m-0 aside_blog_title" style="color: #767676">
-                                    {{ $article->created_at->format('F d, Y') }}
-                                </p>
-                            </div>
-                        </a>
-                    </div>
+                                    <p class="m-0 aside_blog_title" style="color: #767676">
+                                        {{ $article->created_at->format('F d, Y') }}
+                                    </p>
+                                </div>
+                            </a>
+                        </div>
                     @endif
                 </div>
             </div>
