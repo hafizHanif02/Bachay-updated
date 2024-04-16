@@ -40,30 +40,42 @@ class ExploreController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'media' => 'required|file',
+            'products' => 'required|array', // Assuming products is an array
+            'products.*' => 'exists:products,id', // Assuming products exist in your database
         ]);
-        if ($request->file('media')) {
+    
+        // Ensure file upload is successful before moving
+        if ($request->file('media')->isValid()) {
             $file = $request->file('media');
-            $extension = $file->getClientOriginalExtension();
-            $filename = $file->getClientOriginalName();
+            $filename = uniqid().'.'.$file->getClientOriginalExtension(); // Generating a unique filename
             $file->move(public_path('assets/images/explore/media'), $filename);
+        } else {
+            // Handle file upload failure
+            return back()->withErrors(['media' => 'Failed to upload media']);
         }
+    
+        // Create Explore record
         $explore = Explore::create([
             'title' => $request->title,
             'media' => $filename,
             'tags' => $request->tags,
         ]);
+    
         $exploreId = $explore->id;
-
-        foreach($request->products as $product){
+    
+        // Create ExploreItem records for each product
+        foreach ($request->products as $product) {
             ExploreItem::create([
                 'explore_id' => $exploreId,
-                'product_id' => $product
+                'product_id' => $product,
             ]);
         }
-
+    
+        // Assuming Toastr is properly configured, otherwise replace with appropriate logic
         Toastr::success('Explore has Been Added !');
         return back();
     }
+    
 
 
     public function show(string $id)
