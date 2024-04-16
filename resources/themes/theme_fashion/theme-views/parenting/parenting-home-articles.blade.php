@@ -85,7 +85,7 @@
 
     .parenting_blog_container {
         display: flex;
-        height: 500px;
+        height: 400px;
     }
 
     .blog_items_inside {
@@ -123,7 +123,7 @@
                         <div class="position-relative overflow-hidden">
                             <img class="img_blogs"
                                 src="{{ asset('public/assets/images/parent_articles/thumbnail/' . $first_article->thumbnail) }}"
-                                alt="" width="100%" />
+                                alt="" width="100%" height="100%" />
                             <div class="tag_line position-absolute bottom-0 text-light">
                                 <h1 class="text-light first_blog_title">{{ $first_article->title }}
                                     </p>
@@ -137,7 +137,7 @@
                         <div class="position-relative overflow-hidden h-50">
                             <img class="img_blogs"
                                 src="{{ asset('public/assets/images/parent_articles/thumbnail/' . $second_article->thumbnail) }}"
-                                alt="" width="100%" />
+                                alt="" width="100%" height="100%" />
                             <div class="tag_line position-absolute bottom-0 text-light">
                                 <h3 class="text-light">{{ $second_article->title }} </h3>
                             </div>
@@ -149,7 +149,7 @@
                                 href="{{ route('parenting.article.detail', $third_article->id) }}"style="width: 100%; text-decoration:none;">
                                 <img class="img_blogs"
                                     src="{{ asset('public/assets/images/parent_articles/thumbnail/' . $third_article->thumbnail) }}"
-                                    alt="" width="100%" />
+                                    alt="" width="100%" height="100%" />
                                 <div class="tag_line position-absolute bottom-0 text-light">
                                     <h6 class="text-light">{{ $third_article->title }}</h6>
                                 </div>
@@ -160,7 +160,7 @@
                                 href="{{ route('parenting.article.detail', $fourth_article->id) }}"style="width: 100%; text-decoration:none;">
                                 <img class="img_blogs"
                                     src="{{ asset('public/assets/images/parent_articles/thumbnail/' . $fourth_article->thumbnail) }}"
-                                    alt="" width="100%" />
+                                    alt="" width="100%" height="100%" />
                                 <div class="tag_line position-absolute bottom-0 text-light">
                                     <h6 class="text-light">{{ $fourth_article->title }}
                                     </h6>
