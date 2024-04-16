@@ -67,7 +67,7 @@
         <div class="acc-header">
             <div class="img-box" id="img00">
                 <div class="acc-images">
-                    <a href="{{ route('categories') }}"><img src="{{ asset('public/images/f.jpg') }}" alt="Category" title="Category" /></a>
+                    <img src="{{ asset('public/images/f.jpg') }}" alt="Category" title="Category" />
                 </div>
                 <p class="img-label">Category</p>
             </div>

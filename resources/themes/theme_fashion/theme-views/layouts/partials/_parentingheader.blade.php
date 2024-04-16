@@ -258,7 +258,7 @@
         display: inline-block;
     }
 
-    .parenting-drpdown a i {
+    .parenting-drpdown a i , .add_child_parenting_btn{
         font-size: 10px;
     }
 
@@ -597,9 +597,19 @@
 
                 <ul class="header-right-icons">
                    
-                    <li class="d-xl-none ">
-                        <a href="javascript:" class="search-toggle">
+                    <li class="d-xl-none fw-bold">
+                        {{-- <a href="javascript:" class="search-toggle">
                             <i class="bi bi-search" style="color: #000;"></i>
+                        </a> --}}
+                        <a  href="{{ route('my-child.list') }}" style="color: #000;"> 
+                            <div class="text-center"> 
+                                <img class="rounded-circle" src="{{ asset('public/images/all.jpg') }}" alt="" width="30" height="30">
+                                <p class="m-0 add_child_parenting_btn">
+
+                                    Add Child
+                                </p>
+                            </div>
+                           
                         </a>
                     </li>
                     @if (session('switch_user'))
