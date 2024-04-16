@@ -707,6 +707,10 @@
                             <span class="tag">{{ date_format($article->created_at, 'd-M-Y h:i:s A') }}</span>
                         </div>
                         <section>
+                            {{-- <a href="#" class="title">{{ $article->title }}</a> --}}
+                            {{-- <p class="textArea">
+                                {{ $article->text }}
+                            </p> --}}
                             <p class="textArea">
                                 @php
                                     $decodedText = json_decode($article->text);
@@ -715,7 +719,7 @@
                                 @if ($decodedText !== null)
                                     {!! $decodedText[0] !!}
                                 @else
-                                {!! $article->text !!}
+                                    {{ $article->text }} 
                                 @endif
                             </p>
                             
@@ -774,7 +778,7 @@
                         <a href="#"><img
                                 src="{{ asset('public/assets/images/parent_articles/thumbnail/' . $article->thumbnail) }}"
                                 alt="" loading="lazy" />
-                                <p>{!! $article->text !!}</p>
+                            <p>{{ $article->title }}</p>
                         </a>
                     @endforeach
 
