@@ -7331,5 +7331,9 @@
   'My_Questions' => 'My Questions',
   'My_Answers' => 'My Answers',
   'shopping_profile' => 'Shopping profile',
+  'check_your_email_or_whatsapp_for_OTP' => 'Check your email or whatsapp for OTP',
+  'please_verify_that_its_you.' => 'Please verify that its you.',
+  'icons' => 'Icons',
+  'user_verify' => 'User verify',
   'Add child' => 'Add child',
 );

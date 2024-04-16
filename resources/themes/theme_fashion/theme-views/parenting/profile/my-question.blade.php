@@ -178,43 +178,44 @@
     </div>
     @else
     <div class="my-ques">
-        <h3 class="mt-4">My Questions</h3>
+        <div class="container">
+            <h3 class="mt-4">My Questions</h3>
+            <div class="qna-main">
+                @foreach ($myquestions as $question)
+                    <div class="question-block mt-3 pb-0">
+                        <div class="d-flex justify-content-between">
+                            @if ($question->child != null)
+                                <?php $childDob = \Carbon\Carbon::parse($question->child->dob);
+                                $diff = $childDob->diff(\Carbon\Carbon::now());
+                                $formattedAge = '';
+                                if ($diff->y > 0) {
+                                    $formattedAge .= $diff->y . ' yr';
+                                }
+                                if ($diff->m > 0) {
+                                    $formattedAge .= ($formattedAge ? ' ' : '') . $diff->m . ' m';
+                                }
+                                if ($diff->y == 0 && $diff->m == 0) {
+                                    $formattedAge = 'New Born';
+                                }
+                                ?>
+                                <p class="quesion-icon">{{ $question->child->relation_type }} of a {{ $formattedAge }} old
+                                    {{ $question->child->gender == 'male' ? 'boy' : 'girl' }}</p>
+                            @endif
+                            <p class="quesion-icon">{{ $question->created_at->diffForHumans() }}</p>
+                        </div>
+                        <p class="fw-bold"><span class="quesion-icon">Q.</span> {{ $question->question['question'] }}
+                        </p>
+                    </div>
+                @endforeach
+    
+            </div>
+    
+        </div>
     </div>
     @endif
     </div>
 
-    <div class="container">
-        <div class="qna-main">
-            @foreach ($myquestions as $question)
-                <div class="question-block mt-3 pb-0">
-                    <div class="d-flex justify-content-between">
-                        @if ($question->child != null)
-                            <?php $childDob = \Carbon\Carbon::parse($question->child->dob);
-                            $diff = $childDob->diff(\Carbon\Carbon::now());
-                            $formattedAge = '';
-                            if ($diff->y > 0) {
-                                $formattedAge .= $diff->y . ' yr';
-                            }
-                            if ($diff->m > 0) {
-                                $formattedAge .= ($formattedAge ? ' ' : '') . $diff->m . ' m';
-                            }
-                            if ($diff->y == 0 && $diff->m == 0) {
-                                $formattedAge = 'New Born';
-                            }
-                            ?>
-                            <p class="quesion-icon">{{ $question->child->relation_type }} of a {{ $formattedAge }} old
-                                {{ $question->child->gender == 'male' ? 'boy' : 'girl' }}</p>
-                        @endif
-                        <p class="quesion-icon">{{ $question->created_at->diffForHumans() }}</p>
-                    </div>
-                    <p class="fw-bold"><span class="quesion-icon">Q.</span> {{ $question->question['question'] }}
-                    </p>
-                </div>
-            @endforeach
-
-        </div>
-
-    </div>
+    
     <div class="offcanvas offcanvas-end text-capitalize" tabindex="-1" id="offcanvasProfile"
         aria-labelledby="offcanvasProfileLabel">
         <div class="offcanvas-header justify-content-end">

@@ -36,40 +36,40 @@
         type="image/x-icon" />
 
     @stack('css_or_js')
-    @if((session('switch_user')))
-    <?php $child = session('switch_user'); ?>
-        @if($child['gender'] == 'male')
+    @if (session('switch_user'))
+        <?php $child = session('switch_user'); ?>
+        @if ($child['gender'] == 'male')
+            <style>
+                body {
+                    background-color: rgb(221, 240, 248) !important;
+                }
+            </style>
+        @endif
+        @if ($child['gender'] == 'female')
+            <style>
+                body {
+                    background-color: rgb(251, 237, 239) !important;
+                }
+            </style>
+        @endif
+    @endif
+
+    @if (session('switch_male'))
         <style>
             body {
                 background-color: rgb(221, 240, 248) !important;
             }
-        </style>    
-        @endif
-        @if($child['gender'] == 'female')
+        </style>
+    @endif
+
+    @if (session('switch_female'))
         <style>
             body {
                 background-color: rgb(251, 237, 239) !important;
             }
         </style>
-        @endif
     @endif
 
-    @if((session('switch_male')))
-        <style>
-            body {
-                background-color: rgb(221, 240, 248) !important;
-            }
-        </style>    
-    @endif
-
-    @if((session('switch_female')))
-    <style>
-        body {
-            background-color: rgb(251, 237, 239) !important;
-        }
-    </style>    
-@endif
-    
 
     <style>
         :root {
@@ -111,8 +111,6 @@
             --bs-btn-disabled-bg: transparent;
             --bs-btn-disabled-border-color: {{ $web_config['secondary_color'] }}75;
         }
-
-       
     </style>
 
     <script src="{{ theme_asset('assets/js/jquery-3.7.1.min.js') }}"></script>
@@ -167,6 +165,32 @@
                 src="https://www.facebook.com/tr?id={{ $pixel_analytics_user_code }}&ev=PageView&noscript=1" />
         </noscript>
     @endif
+    <!-- Meta Pixel Code -->
+    <script>
+        ! function(f, b, e, v, n, t, s) {
+            if (f.fbq) return;
+            n = f.fbq = function() {
+                n.callMethod ?
+                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n;
+            n.push = n;
+            n.loaded = !0;
+            n.version = '2.0';
+            n.queue = [];
+            t = b.createElement(e);
+            t.async = !0;
+            t.src = v;
+            s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window, document, 'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '443567208351713');
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+            src="https://www.facebook.com/tr?id=443567208351713&ev=PageView&noscript=1" /></noscript>
+    <!-- End Meta Pixel Code -->
 </head>
 
 <body>
@@ -201,7 +225,7 @@
     @include('theme-views.layouts.partials.modal._quick-view')
     <div id="login-and-register-modal-section"></div>
     <div id="child-modal-section"></div>
-   
+
 
     <div class="d-none d-md-block">
         @if (!auth('customer')->id())
@@ -235,7 +259,7 @@
     @include('theme-views.layouts.partials._footer')
 
     {{-- @auth('customer') --}}
-        <span id="switch-user" data-route="{{ route('switch-user') }}"></span>
+    <span id="switch-user" data-route="{{ route('switch-user') }}"></span>
     {{-- @endauth --}}
     <span id="get-login-modal-data" data-route="{{ route('customer.auth.get-login-modal-data') }}"></span>
     {{-- <span id="get-child" data-route="{{ route('customer.auth.get-child') }}"></span> --}}
@@ -364,47 +388,58 @@
         @endif
     </script>
     <script>
-            var cards = document.getElementsByClassName("card_animation");
+        var cards = document.getElementsByClassName("card_animation");
 
-            var mouseHover = false;
-            var mousePosition = { x: 0, y: 0 };
-            var cardSize = { width: 0, height: 0 };
-            var SCALE_X = 4;
-            var SCALE_Y = 8;
+        var mouseHover = false;
+        var mousePosition = {
+            x: 0,
+            y: 0
+        };
+        var cardSize = {
+            width: 0,
+            height: 0
+        };
+        var SCALE_X = 4;
+        var SCALE_Y = 8;
 
-            function handleMouseMove(e) {
+        function handleMouseMove(e) {
             if (!mouseHover) return;
             var rect = this.getBoundingClientRect();
             var x = e.clientX - rect.left;
             var y = e.clientY - rect.top;
-            mousePosition = { x, y };
-            cardSize = { width: this.offsetWidth || 0, height: this.offsetHeight || 0 };
+            mousePosition = {
+                x,
+                y
+            };
+            cardSize = {
+                width: this.offsetWidth || 0,
+                height: this.offsetHeight || 0
+            };
             this.style.transition = "transform 0.3s ease"; // Smooth transition on hover
             this.style.transform = `perspective(1000px) rotateX(${
                 (mousePosition.y / cardSize.height) * -(SCALE_Y * 5) + SCALE_Y
             }deg) rotateY(${
                 (mousePosition.x / cardSize.width) * (SCALE_X * 5) - SCALE_X
             }deg) translateZ(10px)`;
-            }
+        }
 
-            function handleMouseOut() {
+        function handleMouseOut() {
             mouseHover = false;
             this.style.transition = "transform 0.3s ease"; // Smooth transition on mouse out
             this.style.transform =
                 "perspective(600px) rotateX(0deg) rotateY(0deg) translateZ(0px)";
-            }
+        }
 
-            function handleMouseOver() {
+        function handleMouseOver() {
             mouseHover = true;
-            }
+        }
 
-            for (var i = 0; i < cards.length; i++) {
+        for (var i = 0; i < cards.length; i++) {
             cards[i].addEventListener("mousemove", handleMouseMove);
             cards[i].addEventListener("mouseout", handleMouseOut);
             cards[i].addEventListener("mouseover", handleMouseOver);
-            }
-      
-    </script> 
+        }
+    </script>
 
     @stack('script')
 </body>
