@@ -190,11 +190,6 @@ class ParentController extends Controller
                     'vaccination_id' => $vaccination->id,
                     'vaccination_date' => $resultDate,
                 ]);
-                Growth::create([
-                    'user_id' => $request->user_id,
-                    'child_id' => $childId,
-                    'vaccination_id' => $vaccination->id,
-                ]);
             }
             Toastr::success('Child Added Successfully');
             return back();
