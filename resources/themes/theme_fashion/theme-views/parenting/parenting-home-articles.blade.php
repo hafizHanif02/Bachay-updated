@@ -68,6 +68,7 @@
     .text_clr_title {
         color: #767676;
         font-size: 12px;
+        line-height: 17px; 
     }
 
     .aside_blog_title {
@@ -137,8 +138,8 @@
         border-bottom: 3px solid #ef3b74;
     }
     .article_title_cus{
-        width: 60%;
-    font-size: 12px;
+        width: 65%;
+    font-size: 14px;
     line-height: 17px;
     }
 </style>
