@@ -274,7 +274,7 @@ class VaccineController extends Controller
         $heightarray = Growth::where('child_id', $id)->pluck('height')->toArray();
         $headarray = Growth::where('child_id', $id)->pluck('head_circle')->toArray();
         $child = FamilyRelation::where('id', $id)->first();
-        return view('theme-views.vaccination-growth.view_growth_chart', compact(['parent_article_categories','weightarray','heightarray','headarray','child']));
+        return view('theme-views.vaccination.view_growth_chart', compact(['parent_article_categories','weightarray','heightarray','headarray','child']));
     }
     /**
      * Show the form for creating a new resource.
