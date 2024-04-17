@@ -51,7 +51,7 @@
 
     .child_categories_blogs {
         width: 66.66666667%;
-        margin-bottom: 40px;
+        margin-bottom: 20px;
 }
     
 
@@ -141,7 +141,7 @@
 @section('content')
     <div class="container mt-5">
         <div class="main_con_articles">
-            <h6 class="category_heading font-poppins ms-4">
+            <h6 class="category_heading font-poppins ms-4 custom_b_b">
                  TRENDING NOW 
             </h6>
             <?php $first_article = $all_parent_articles->first(); ?>
@@ -286,8 +286,8 @@
                     
                 </div>
                 <div class="child_categories_blogs_aside">
-                    <h6 class="category_heading text-light font-poppins">
-                        <span class="trending_now_heading"> SUBCATEGORIES </span>
+                    <h6 class="category_heading font-poppins custom_b_b">
+                         SUBCATEGORIES 
                     </h6>
                     <?php $sub_category = $category->child->first(); ?>
                     <?php $article = $sub_category->articles->first(); ?>
