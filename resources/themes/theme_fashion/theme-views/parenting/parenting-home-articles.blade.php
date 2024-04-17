@@ -23,7 +23,8 @@
 
     .tag_line {
         padding: 7px 15px;
-        background-color: rgba(0, 0, 0, 0.5);
+        /* background-color: rgba(0, 0, 0, 0.5); */
+        z-index: 1;
         width: 100%
     }
 
@@ -106,6 +107,19 @@
         font-size: 15px;
 
     }
+
+    .bg_filter_clr::before {
+        bottom: 0;
+        content: "";
+        display: block;
+        height: 70%;
+        width: 100%;
+        position: absolute;
+        z-index: 1;
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(40%, rgba(0, 0, 0, 0)), color-stop(100%, rgba(0, 0, 0, 0.7)));
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#b3000000', GradientType=0);
+
+    }
 </style>
 
 @section('content')
@@ -120,7 +134,7 @@
             <?php $fourth_article = $all_parent_articles->skip(3)->first(); ?>
             <div class="parenting_blog_container mt-3">
                 <div class="blog_item">
-                    <a href="{{ route('parenting.article.detail', $first_article->id) }}"
+                    <a class="bg_filter_clr" href="{{ route('parenting.article.detail', $first_article->id) }}"
                         style="width: 100%; text-decoration:none;">
                         <div class="position-relative overflow-hidden">
                             <img class="img_blogs"
@@ -134,7 +148,7 @@
                     </a>
                 </div>
                 <div class="blog_item">
-                    <a href="{{ route('parenting.article.detail', $second_article->id) }}"
+                    <a class="bg_filter_clr" href="{{ route('parenting.article.detail', $second_article->id) }}"
                         style="width: 100%; text-decoration:none;">
                         <div class="position-relative overflow-hidden h-50">
                             <img class="img_blogs"
@@ -147,7 +161,7 @@
                     </a>
                     <div class="d-flex h-50">
                         <div class="blog_item position-relative overflow-hidden h-100">
-                            <a
+                            <a class="bg_filter_clr"
                                 href="{{ route('parenting.article.detail', $third_article->id) }}"style="width: 100%; text-decoration:none;">
                                 <img class="img_blogs"
                                     src="{{ asset('public/assets/images/parent_articles/thumbnail/' . $third_article->thumbnail) }}"
@@ -158,7 +172,7 @@
                             </a>
                         </div>
                         <div class="blog_item position-relative overflow-hidden h-100">
-                            <a
+                            <a class="bg_filter_clr"
                                 href="{{ route('parenting.article.detail', $fourth_article->id) }}"style="width: 100%; text-decoration:none;">
                                 <img class="img_blogs"
                                     src="{{ asset('public/assets/images/parent_articles/thumbnail/' . $fourth_article->thumbnail) }}"
