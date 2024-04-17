@@ -16,10 +16,10 @@
         content="{{ substr(strip_tags(str_replace('&nbsp;', ' ', $web_config['about']->value)), 0, 160) }}">
 @endpush
 <style>
-    .main_con_articles {
+    /* .main_con_articles {
         padding: 0 60px;
 
-    }
+    } */
 
     .tag_line {
         padding: 7px 15px;
