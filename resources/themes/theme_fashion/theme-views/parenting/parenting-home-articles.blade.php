@@ -87,6 +87,7 @@
     .parenting_blog_container {
         display: flex;
         height: 450px;
+      
     }
 
     .blog_items_inside {
@@ -112,7 +113,7 @@
         bottom: 0;
         content: "";
         display: block;
-        height: 70%;
+        height: 100%;
         width: 100%;
         position: absolute;
         z-index: 1;
@@ -132,7 +133,7 @@
             <?php $second_article = $all_parent_articles->skip(1)->first(); ?>
             <?php $third_article = $all_parent_articles->skip(2)->first(); ?>
             <?php $fourth_article = $all_parent_articles->skip(3)->first(); ?>
-            <div class="parenting_blog_container mt-3">
+            <div class="parenting_blog_container gap-2 mt-3">
                 <div class="blog_item">
                     <a class="bg_filter_clr" href="{{ route('parenting.article.detail', $first_article->id) }}"
                         style="width: 100%; text-decoration:none;">
@@ -159,7 +160,7 @@
                             </div>
                         </div>
                     </a>
-                    <div class="d-flex h-50">
+                    <div class="d-flex h-50 gap-2 pt-2">
                         <div class="blog_item position-relative overflow-hidden h-100">
                             <a class="bg_filter_clr"
                                 href="{{ route('parenting.article.detail', $third_article->id) }}"style="width: 100%; text-decoration:none;">
