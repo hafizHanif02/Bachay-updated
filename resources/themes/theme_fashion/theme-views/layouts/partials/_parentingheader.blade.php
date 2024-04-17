@@ -228,11 +228,11 @@
         z-index: 1000;
     }
 
-    .parenting-drpdown:hover .dropbtn:after {
+    /* .parenting-drpdown:hover .dropbtn:after {
         background-color: #845DC2;
         width: 100%;
         top: 22px;
-    }
+    } */
 
     .parenting-drpdown .dropbtn:after {
         background-color: transparent;
@@ -285,6 +285,7 @@
 
     .parenting-drpdown:hover .parenting-drpdown-content {
         display: block;
+        line-height: 30px;
     }
 
     .con {
@@ -302,7 +303,7 @@
     }
 
     .dropbtn:hover {
-        color: #845dc2 !important;
+        color: #d55fad !important;
     }
 
     li a:hover {
