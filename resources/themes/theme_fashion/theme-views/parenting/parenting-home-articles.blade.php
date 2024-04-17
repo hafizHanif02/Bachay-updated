@@ -16,14 +16,15 @@
         content="{{ substr(strip_tags(str_replace('&nbsp;', ' ', $web_config['about']->value)), 0, 160) }}">
 @endpush
 <style>
-    .main_con_articles {
+    /* .main_con_articles {
         padding: 0 60px;
 
-    }
+    } */
 
     .tag_line {
         padding: 7px 15px;
-        background-color: rgba(0, 0, 0, 0.5);
+        /* background-color: rgba(0, 0, 0, 0.5); */
+        z-index: 1;
         width: 100%
     }
 
@@ -86,6 +87,7 @@
     .parenting_blog_container {
         display: flex;
         height: 450px;
+
     }
 
     .blog_items_inside {
@@ -106,6 +108,25 @@
         font-size: 15px;
 
     }
+
+    .bg_filter_clr::before {
+        bottom: 0;
+        content: "";
+        display: block;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        z-index: 1;
+        border-radius: 8px;
+
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(40%, rgba(0, 0, 0, 0)), color-stop(100%, rgb(0 0 0 / 95%)));
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#b3000000', GradientType=0);
+
+    }
+
+    .border_w_r {
+        border-radius: 8px;
+    }
 </style>
 
 @section('content')
@@ -118,54 +139,82 @@
             <?php $second_article = $all_parent_articles->skip(1)->first(); ?>
             <?php $third_article = $all_parent_articles->skip(2)->first(); ?>
             <?php $fourth_article = $all_parent_articles->skip(3)->first(); ?>
-            <div class="parenting_blog_container mt-3">
+            <div class="parenting_blog_container gap-2 mt-3">
                 <div class="blog_item">
-                    <a href="{{ route('parenting.article.detail', $first_article->id) }}"
+                    <a class="bg_filter_clr" href="{{ route('parenting.article.detail', $first_article->id) }}"
                         style="width: 100%; text-decoration:none;">
-                        <div class="position-relative overflow-hidden">
+                        <div class="position-relative overflow-hidden border_w_r">
                             <img class="img_blogs"
                                 src="{{ asset('public/assets/images/parent_articles/thumbnail/' . $first_article->thumbnail) }}"
                                 alt="" width="100%" height="100%" />
                             <div class="tag_line position-absolute bottom-0 text-light">
-                                <h1 class="text-light first_blog_title">{{ $first_article->title }}
-                                    </p>
+                                {{-- <h1 class="text-light first_blog_title">{{ $first_article->title }}
+                                </h1> --}}
+                                @if (strlen($first_article->title) <= 70)
+                                    <h1 class="text-light first_blog_title">{{ $first_article->title }}</h1>
+                                @else
+                                    <h1 class="text-light first_blog_title">{{ substr($first_article->title, 0, 70) }} ...
+                                    </h1>
+                                @endif
+
                             </div>
                         </div>
                     </a>
                 </div>
                 <div class="blog_item">
-                    <a href="{{ route('parenting.article.detail', $second_article->id) }}"
+
+                    <a class="bg_filter_clr" href="{{ route('parenting.article.detail', $second_article->id) }}"
                         style="width: 100%; text-decoration:none;">
-                        <div class="position-relative overflow-hidden h-50">
+                        <div class="position-relative overflow-hidden h-50  border_w_r">
                             <img class="img_blogs"
                                 src="{{ asset('public/assets/images/parent_articles/thumbnail/' . $second_article->thumbnail) }}"
                                 alt="" width="100%" height="100%" />
                             <div class="tag_line position-absolute bottom-0 text-light">
-                                <h3 class="text-light">{{ $second_article->title }} </h3>
+                                {{-- <h3 class="text-light">{{ $second_article->title }} </h3> --}}
+                                @if (strlen($second_article->title) <= 40)
+                                    <h3 class="text-light">{{ $second_article->title }}</h3>
+                                @else
+                                    <h3 class="text-light">{{ substr($second_article->title, 0, 40) }} ...</h3>
+                                @endif
+
                             </div>
                         </div>
                     </a>
-                    <div class="d-flex h-50">
-                        <div class="blog_item position-relative overflow-hidden h-100">
-                            <a
+
+
+                    <div class="d-flex h-50 gap-2 pt-2">
+                        <div class="blog_item position-relative overflow-hidden h-100 border_w_r">
+                            <a class="bg_filter_clr"
                                 href="{{ route('parenting.article.detail', $third_article->id) }}"style="width: 100%; text-decoration:none;">
                                 <img class="img_blogs"
                                     src="{{ asset('public/assets/images/parent_articles/thumbnail/' . $third_article->thumbnail) }}"
                                     alt="" width="100%" height="100%" />
                                 <div class="tag_line position-absolute bottom-0 text-light">
-                                    <h6 class="text-light">{{ $third_article->title }}</h6>
+                                    {{-- <h6 class="text-light">{{ $third_article->title }}</h6> --}}
+                                    @if (strlen($third_article->title) <= 40)
+                                        <h6 class="text-light">{{ $third_article->title }}</h6>
+                                    @else
+                                        <h6 class="text-light">{{ substr($third_article->title, 0, 60) }}...</h6>
+                                    @endif
+
                                 </div>
                             </a>
                         </div>
-                        <div class="blog_item position-relative overflow-hidden h-100">
-                            <a
+                        <div class="blog_item position-relative overflow-hidden h-100 border_w_r">
+                            <a class="bg_filter_clr"
                                 href="{{ route('parenting.article.detail', $fourth_article->id) }}"style="width: 100%; text-decoration:none;">
                                 <img class="img_blogs"
                                     src="{{ asset('public/assets/images/parent_articles/thumbnail/' . $fourth_article->thumbnail) }}"
                                     alt="" width="100%" height="100%" />
                                 <div class="tag_line position-absolute bottom-0 text-light">
-                                    <h6 class="text-light">{{ $fourth_article->title }}
-                                    </h6>
+                                    {{-- <h6 class="text-light">{{ $fourth_article->title }}
+                                    </h6> --}}
+                                    @if (strlen($fourth_article->title) <= 40)
+                                        <h6 class="text-light">{{ $fourth_article->title }}</h6>
+                                    @else
+                                        <h6 class="text-light">{{ substr($fourth_article->title, 0, 60) }}...</h6>
+                                    @endif
+
                                 </div>
                             </a>
                         </div>
@@ -219,7 +268,8 @@
                         @endforeach
                     </div>
                     <div class="float-end see_all_blogs">
-                        <a class="text-decoration-none" href="{{ route('parenting.article.category', $category->id) }}">See
+                        <a class="text-decoration-none"
+                            href="{{ route('parenting.article.category', $category->id) }}">See
                             All</a>
                     </div>
                 </div>
