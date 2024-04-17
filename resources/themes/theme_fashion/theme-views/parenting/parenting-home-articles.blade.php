@@ -52,8 +52,8 @@
     .child_categories_blogs {
         width: 66.66666667%;
         margin-bottom: 20px;
-}
-    
+    }
+
 
     .child_categories_blogs_aside {
         width: 33.33333333%;
@@ -68,7 +68,7 @@
     .text_clr_title {
         color: #767676;
         font-size: 12px;
-        line-height: 17px; 
+        line-height: 17px;
     }
 
     .aside_blog_title {
@@ -83,6 +83,7 @@
     .see_all_blogs a:hover {
         color: #ef3b74;
     }
+
     .see_all_blogs a {
         color: #000;
     }
@@ -134,13 +135,20 @@
     .border_w_r {
         border-radius: 8px;
     }
-    .custom_b_b{    
+
+    .custom_b_b {
         border-bottom: 3px solid #ef3b74;
     }
-    .article_title_cus{
+
+    .article_title_cus {
         width: 65%;
-    font-size: 14px;
-    line-height: 17px;
+        font-size: 14px;
+        line-height: 17px;
+    }
+
+    .article_title_small {
+        font-size: 14px;
+        line-height: 17px;
     }
 </style>
 
@@ -148,7 +156,7 @@
     <div class="container mt-5">
         <div class="main_con_articles">
             <h6 class="category_heading font-poppins custom_b_b">
-                 TRENDING NOW 
+                TRENDING NOW
             </h6>
             <?php $first_article = $all_parent_articles->first(); ?>
             <?php $second_article = $all_parent_articles->skip(1)->first(); ?>
@@ -243,7 +251,7 @@
                 <div class="child_categories_blogs">
                     <div class="d-flex justify-content-between custom_b_b">
                         <h6 class="category_heading font-poppins">
-                             {{ $category->name }}
+                            {{ $category->name }}
                         </h6>
                         <div class="float-end see_all_blogs">
                             <a class="text-decoration-none"
@@ -258,16 +266,17 @@
                             <div class="blog_item">
                                 <a class="text-decoration-none"
                                     href="{{ route('parenting.article.detail', $article->id) }}">
-                                    <img class="border_w_r" src="{{ asset('public/assets/images/parent_articles/thumbnail/' . $article->thumbnail) }}"
+                                    <img class="border_w_r"
+                                        src="{{ asset('public/assets/images/parent_articles/thumbnail/' . $article->thumbnail) }}"
                                         alt="" width="100%" />
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <h5 class="mt-4 mb-2 text-dark article_title_cus">
-                                                {{ $article->title }}
-                                            </h5>
-                                            {{-- <span class="me-3 text-dark fw-bold">Mahak Arora</span> --}}
-                                            <span class="text_clr_title">{{ $article->created_at->format('F d, Y') }}</span>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <h5 class="mt-4 mb-2 text-dark article_title_cus">
+                                            {{ $article->title }}
+                                        </h5>
+                                        {{-- <span class="me-3 text-dark fw-bold">Mahak Arora</span> --}}
+                                        <span class="text_clr_title">{{ $article->created_at->format('F d, Y') }}</span>
 
-                                        </div>
+                                    </div>
                                     <p class="text_clr_title">
                                         {{ Illuminate\Support\Str::limit($article->text, $limit = 100, $end = '...') }}
                                     </p>
@@ -280,10 +289,11 @@
                             <div class="">
                                 <a class="text-decoration-none d-flex align-items-center gap-4"
                                     href="{{ route('parenting.article.detail', $article->id) }}">
-                                    <img class="border_w_r" src="{{ asset('public/assets/images/parent_articles/thumbnail/' . $article->thumbnail) }}"
+                                    <img class="border_w_r"
+                                        src="{{ asset('public/assets/images/parent_articles/thumbnail/' . $article->thumbnail) }}"
                                         alt="" width="100" height="70" />
                                     <div>
-                                        <h6 class="text-dark m-0">
+                                        <h6 class="article_title_small text-dark m-0">
                                             {{ $article->title }}
                                         </h6>
                                         <p class="text_clr_title m-0">{{ $article->created_at->format('F d, Y') }}</p>
@@ -292,18 +302,19 @@
                             </div>
                         @endforeach
                     </div>
-                    
+
                 </div>
                 <div class="child_categories_blogs_aside">
                     <h6 class="category_heading font-poppins custom_b_b">
-                         SUBCATEGORIES 
+                        SUBCATEGORIES
                     </h6>
                     <?php $sub_category = $category->child->first(); ?>
                     <?php $article = $sub_category->articles->first(); ?>
                     <div class="position-relative mt-4">
                         <a class="text-decoration-none"
                             href="{{ route('parenting.article.category', $sub_category->id) }}">
-                            <img class="border_w_r" src="{{ asset('public/assets/images/parent_articles/category/thumbnail/' . $sub_category->image) }}"
+                            <img class="border_w_r"
+                                src="{{ asset('public/assets/images/parent_articles/category/thumbnail/' . $sub_category->image) }}"
                                 alt="" width="100%" />
                             <div class="position-absolute bottom-0 text-light tag_line">
                                 <h6 class="m-0 text-light">
@@ -317,7 +328,8 @@
                         <div class="mt-4">
                             <a class="text-decoration-none d-flex align-items-center gap-3"
                                 href="{{ route('parenting.article.detail', $article->id) }}">
-                                <img class="border_w_r" src="{{ asset('public/assets/images/parent_articles/thumbnail/' . $article->thumbnail) }}"
+                                <img class="border_w_r"
+                                    src="{{ asset('public/assets/images/parent_articles/thumbnail/' . $article->thumbnail) }}"
                                     alt="" width="80" height="60" />
                                 <div>
                                     <h6 class="m-0 aside_blog_title text-dark">
