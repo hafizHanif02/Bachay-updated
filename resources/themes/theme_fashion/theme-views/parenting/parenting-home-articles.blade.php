@@ -236,7 +236,7 @@
                             <div class="blog_item">
                                 <a class="text-decoration-none"
                                     href="{{ route('parenting.article.detail', $article->id) }}">
-                                    <img src="{{ asset('public/assets/images/parent_articles/thumbnail/' . $article->thumbnail) }}"
+                                    <img class="border_w_r" src="{{ asset('public/assets/images/parent_articles/thumbnail/' . $article->thumbnail) }}"
                                         alt="" width="100%" />
                                     <h5 class="mt-2 text-dark">
                                         {{ $article->title }}
@@ -255,7 +255,7 @@
                             <div class="">
                                 <a class="text-decoration-none d-flex align-items-center gap-4"
                                     href="{{ route('parenting.article.detail', $article->id) }}">
-                                    <img src="{{ asset('public/assets/images/parent_articles/thumbnail/' . $article->thumbnail) }}"
+                                    <img class="border_w_r" src="{{ asset('public/assets/images/parent_articles/thumbnail/' . $article->thumbnail) }}"
                                         alt="" width="100" height="70" />
                                     <div>
                                         <h6 class="text-dark m-0">
@@ -282,7 +282,7 @@
                     <div class="position-relative mt-4">
                         <a class="text-decoration-none"
                             href="{{ route('parenting.article.category', $sub_category->id) }}">
-                            <img src="{{ asset('public/assets/images/parent_articles/category/thumbnail/' . $sub_category->image) }}"
+                            <img class="border_w_r" src="{{ asset('public/assets/images/parent_articles/category/thumbnail/' . $sub_category->image) }}"
                                 alt="" width="100%" />
                             <div class="position-absolute bottom-0 text-light tag_line">
                                 <h6 class="m-0 text-light">
@@ -296,7 +296,7 @@
                         <div class="mt-4">
                             <a class="text-decoration-none d-flex align-items-center gap-3"
                                 href="{{ route('parenting.article.detail', $article->id) }}">
-                                <img src="{{ asset('public/assets/images/parent_articles/thumbnail/' . $article->thumbnail) }}"
+                                <img class="border_w_r" src="{{ asset('public/assets/images/parent_articles/thumbnail/' . $article->thumbnail) }}"
                                     alt="" width="80" height="60" />
                                 <div>
                                     <h6 class="m-0 aside_blog_title text-dark">
