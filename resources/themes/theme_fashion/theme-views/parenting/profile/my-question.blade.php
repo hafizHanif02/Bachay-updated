@@ -122,7 +122,7 @@
         <ul class="nav nav-tabs nav--tabs-3 justify-content-start mb-0 d-none d-md-flex">
             <li class="nav-item">
                 <a href="{{ route('parenting-profile') }}"
-                    class="nav-link {{ Request::is('parenting-profile') ? 'active' : '' }}">{{ translate('profile') }}
+                    class="nav-link {{ Request::is('parenting-profile') ? 'active' : '' }}">Overview
                 </a>
             </li>
 
@@ -225,7 +225,7 @@
             <ul class="nav nav-tabs nav--tabs-3 p-2 flex-column">
                 <li class="nav-item">
                     <a href="{{ route('parenting-profile') }}"
-                        class="nav-link {{ Request::is('parenting-profile') ? 'active' : '' }}">{{ translate('profile') }}
+                        class="nav-link {{ Request::is('parenting-profile') ? 'active' : '' }}">Overview
                     </a>
                 </li>
                 <li class="nav-item">
@@ -245,6 +245,10 @@
                 <li class="nav-item">
                     <a href="{{ route('parenting-bookmarks') }}"
                         class="nav-link {{ Request::is('parenting-bookmarks') ? 'active' : '' }}">{{ translate('my_bookmarks') }}</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('parenting-my-child') }}"
+                        class="nav-link {{ Request::is('parenting-my-child') ? 'active' : '' }}">My Childs</a>
                 </li>
             </ul>
         </div>

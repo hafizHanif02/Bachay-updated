@@ -40,6 +40,8 @@ Route::group(['namespace' => 'RestAPI\v1', 'prefix' => 'v1', 'middleware' => ['a
         Route::get('/', 'ConfigController@configuration');
     });
 
+    Route::get('home', 'ConfigController@home')->name('home');
+
     Route::group(['prefix' => 'shipping-method','middleware'=>'apiGuestCheck'], function () {
         Route::get('detail/{id}', 'ShippingMethodController@get_shipping_method_info');
         Route::get('by-seller/{id}/{seller_is}', 'ShippingMethodController@shipping_methods_by_seller');
@@ -95,6 +97,7 @@ Route::group(['namespace' => 'RestAPI\v1', 'prefix' => 'v1', 'middleware' => ['a
         Route::post('reviews/submit', 'ProductController@submit_product_review')->middleware('auth:api');
     });
 
+    Route::get('products/list', 'ProductController@list');
     Route::group(['middleware' => 'apiGuestCheck'], function () {
         Route::group(['prefix' => 'products'], function () {
             Route::get('latest', 'ProductController@get_latest_products');

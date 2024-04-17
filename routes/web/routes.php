@@ -83,6 +83,7 @@ Route::get('custom_page',[ CustomPageController::class,'CustomPageHome'])->name(
 Route::get('explore',[ ExploreController::class,'explore'])->name('explore');
 
 Route::get('parenting-profile','ParentController@parenting_profile')->name('parenting-profile');
+Route::get('parenting-my-child','ParentController@parenting_child')->name('parenting-my-child');
 Route::get('parenting-question','QnaController@parenting_question')->name('parenting-question');
 Route::get('parenting-answer','QnaController@parenting_answer')->name('parenting-answer');
 Route::get('edit-profile-parenting','ParentController@edit_profile')->name('edit-profile-parenting');

@@ -7,7 +7,6 @@
     <meta property="og:url" content="{{ config('app.url') }}">
     <meta property="og:description"
         content="{{ substr(strip_tags(str_replace('&nbsp;', ' ', $web_config['about']->value)), 0, 160) }}">
-
     <meta property="twitter:card"
         content="{{ asset('storage/app/public/company') }}/{{ $web_config['web_logo']->value }}" />
     <meta property="twitter:title" content="Welcome To {{ $web_config['name']->value }} Home" />
@@ -18,38 +17,6 @@
 @php
     $customer_info = \App\Utils\customer_info();
 @endphp
-<style>
-    .my-bumpie {
-        margin: 0 150px 100px 150px;
-    }
-
-    .ask-question {
-        border: 1px solid #ededed;
-        border-radius: 3px;
-        padding: 16px 20px 20px 19px;
-    }
-
-    .btn_clr {
-        background: #f56996;
-        border: none;
-        color: #fff;
-        border: 1px solid #f56996;
-        border-radius: 5px;
-        padding: 5px 10px;
-    }
-
-    .btn_clr:hover {
-        background: #fff;
-        border: 1px solid #f56996;
-        color: #f56996;
-    }
-
-    @media only screen and (max-width: 768px) {
-        .my-bumpie {
-            margin: 0 0 100px 0;
-        }
-    }
-</style>
 @section('content')
     <div class="container">
         <div class="user-profile-wrapper bg-section text-capitalize">
@@ -93,7 +60,7 @@
                         </button>
                     </div>
                 </div>
-                    @php
+                @php
                         $child = \App\Models\FamilyRelation::where('user_id', auth('customer')->id())
                             ->count();
                     @endphp
@@ -121,66 +88,68 @@
                     </div>
                 </div>
             </div>
-        </div>
             <ul class="nav nav-tabs nav--tabs-3 justify-content-start mb-0 d-none d-md-flex">
                 <li class="nav-item">
-                    <a href="{{ route('parenting-profile') }}"
-                        class="nav-link {{ Request::is('parenting-profile') ? 'active' : '' }}">Overview
-                    </a>
+                    <a href="{{ route('parenting-profile') }}" class="nav-link active">Overview</a>
                 </li>
+
                 <li class="nav-item">
                     <a href="{{ route('parenting-question') }}"
-                        class="nav-link {{ Request::is('parenting-question') ? 'active' : '' }}">{{ translate('my_questions') }}
+                        class="nav-link {{ Request::is('parenting-question') || Request::is('parenting-question') || Request::is('parenting-question') ? 'active' : '' }}">{{ translate('my_questions') }}
                     </a>
                 </li>
                 <li class="nav-item">
+
                     <a href="{{ route('parenting-answer') }}"
                         class="nav-link {{ Request::is('parenting-answer') ? 'active' : '' }}">{{ translate('my_answers') }}
                     </a>
                 </li>
-                {{-- <li class="nav-item">
-                    <a href="{{ route('parenting-topics') }}"
-                        class="nav-link {{ Request::is('parenting-topics') ? 'active' : '' }}">{{ translate('my_topics') }}</a>
-                </li> --}}
-                <li class="nav-item">
-                    <a href="{{ route('parenting-memories') }}"
-                        class="nav-link {{ Request::is('parenting-memories') ? 'active' : '' }}">{{ translate('my_memories') }}</a>
-                </li>
-                {{-- <li class="nav-item">
-                    <a href="{{ route('parenting-quick-reads') }}"
-                        class="nav-link {{ Request::is('parenting-quick-reads') ? 'active' : '' }}">{{ translate('my_quick_reads') }}</a>
-                </li> --}}
-                {{-- <li class="nav-item">
-                    <a href="{{ route('parenting-milestones') }}"
-                        class="nav-link {{ Request::is('parenting-milestones') ? 'active' : '' }}">{{ translate('my_milestons') }}</a>
-                </li> --}}
-                {{-- <li class="nav-item">
-                    <a href="{{ route('parenting-bumpie') }}"
-                        class="nav-link {{ Request::is('parenting-bumpie') ? 'active' : '' }}">{{ translate('my_bumpie') }}</a>
-                </li> --}}
                 <li class="nav-item">
                     <a href="{{ route('favourite-names-parenting') }}"
-                        class="nav-link {{ Request::is('favourite-names-parenting') ? 'active' : '' }}">{{ translate('my_favourite_names') }}</a>
+                        class="nav-link {{ Request::is('user-coupons') || Request::is('user-coupons*') ? 'active' : '' }}">{{ translate('my_favourite_names') }}</a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('parenting-bookmarks') }}"
-                        class="nav-link {{ Request::is('parenting-bookmarks') ? 'active' : '' }}">{{ translate('my_bookmarks') }}</a>
+                        class="nav-link {{ Request::is('parenting-bookmarks') || Request::is('parenting-bookmarks') ? 'active' : '' }}">{{ translate('my_bookmarks') }}</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('parenting-bookmarks') }}"
+                        class="nav-link {{ Request::is('parenting-bookmarks') || Request::is('parenting-bookmarks') ? 'active' : '' }}">My Child</a>
                 </li>
             </ul>
         </div>
-        <div class="my-bumpie">
-            <h3 class="mt-4">My Bumpie</h3>
-            <hr>
-            <div class="ask-question text-center mt-5">
-                <img src="{{ asset('public/images/memory.PNG') }}" alt="Image for Followed" class="img-fluid">
-                <h4 class="mt-4 mb-2">No Bumpies Uploaded, yet!</h4>
-                <p class="font-poppins mb-2">Seems like you haven't uploaded any photos on My Bumpie, please upload one ...
-                </p>
-                <!-- Button trigger modal -->
-                <button type="button" class="btn_clr " data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                    <i class="bi bi-upload"></i>
-                    Upload Your Bumpie
-                </button>
+        <div id="profileTab" class="tab-pane fade show active pb-4">
+            <div class="personal-details mb-4">
+                <div class="d-flex flex-wrap justify-content-between align-items-center column-gap-4 row-gap-2 mb-4">
+                    <h4 class="subtitle m-0 text-capitalize">{{ translate('personal_details') }}</h4>
+                    <div>
+                        <a href="{{ route('edit-profile-parenting') }}"
+                            class="cmn-btn __btn-outline rounded-full text-capitalize">{{ translate('edit_profile') }}
+                            @include('theme-views.partials.icons._profile-edit')
+                        </a>
+                        <a href="{{ route('user-profile') }}"
+                            class="cmn-btn __btn-outline rounded-full text-capitalize">
+                            <i class="bi bi-person-fill"></i>
+                            {{ translate('shopping_profile') }}
+                        </a>
+                    </div>
+                </div>
+                <ul class="personal-details-info">
+                    <li>
+                        <span class="name">{{ translate('name') }}</span> <span class="clone">:</span>
+                        <strong>{{ $customer_detail['f_name'] }} {{ $customer_detail['l_name'] }}</strong>
+                    </li>
+                    <li class="d-md-block d-none"></li>
+                    <li>
+                        <span class="name">{{ translate('phone') }}</span> <span class="clone">:</span>
+                        <strong>{{ $customer_detail['phone'] }}</strong>
+                    </li>
+                    <li class="d-md-block d-none"></li>
+                    <li>
+                        <span class="name">{{ translate('email') }}</span> <span class="clone">:</span>
+                        <strong>{{ $customer_detail['email'] }}</strong>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
@@ -206,26 +175,10 @@
                         class="nav-link {{ Request::is('parenting-answer') ? 'active' : '' }}">{{ translate('my_answers') }}
                     </a>
                 </li>
-                {{-- <li class="nav-item">
-                    <a href="{{ route('parenting-topics') }}"
-                        class="nav-link {{ Request::is('parenting-topics') ? 'active' : '' }}">{{ translate('my_topics') }}</a>
-                </li> --}}
-                {{-- <li class="nav-item">
+                <li class="nav-item">
                     <a href="{{ route('parenting-memories') }}"
                         class="nav-link {{ Request::is('parenting-memories') ? 'active' : '' }}">{{ translate('my_memories') }}</a>
-                </li> --}}
-                {{-- <li class="nav-item">
-                    <a href="{{ route('parenting-quick-reads') }}"
-                        class="nav-link {{ Request::is('parenting-quick-reads') ? 'active' : '' }}">{{ translate('my_quick_reads') }}</a>
-                </li> --}}
-                {{-- <li class="nav-item">
-                    <a href="{{ route('parenting-milestones') }}"
-                        class="nav-link {{ Request::is('parenting-milestones') ? 'active' : '' }}">{{ translate('my_milestons') }}</a>
-                </li> --}}
-                {{-- <li class="nav-item">
-                    <a href="{{ route('parenting-bumpie') }}"
-                        class="nav-link {{ Request::is('parenting-bumpie') ? 'active' : '' }}">{{ translate('my_bumpie') }}</a>
-                </li> --}}
+                </li>
                 <li class="nav-item">
                     <a href="{{ route('favourite-names-parenting') }}"
                         class="nav-link {{ Request::is('favourite-names-parenting') ? 'active' : '' }}">{{ translate('my_favourite_names') }}</a>
@@ -233,6 +186,10 @@
                 <li class="nav-item">
                     <a href="{{ route('parenting-bookmarks') }}"
                         class="nav-link {{ Request::is('parenting-bookmarks') ? 'active' : '' }}">{{ translate('my_bookmarks') }}</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('parenting-my-child') }}"
+                        class="nav-link {{ Request::is('parenting-my-child') ? 'active' : '' }}">My Childs</a>
                 </li>
             </ul>
         </div>
