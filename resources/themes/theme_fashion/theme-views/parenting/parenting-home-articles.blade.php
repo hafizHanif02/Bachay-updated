@@ -117,9 +117,14 @@
         width: 100%;
         position: absolute;
         z-index: 1;
+        border-radius: 8px;
+
         background: -webkit-gradient(linear, left top, left bottom, color-stop(40%, rgba(0, 0, 0, 0)), color-stop(100%, rgba(0, 0, 0, 0.7)));
         filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#b3000000', GradientType=0);
 
+    }
+    .border_w_r{
+        border-radius: 8px;
     }
 </style>
 
@@ -137,7 +142,7 @@
                 <div class="blog_item">
                     <a class="bg_filter_clr" href="{{ route('parenting.article.detail', $first_article->id) }}"
                         style="width: 100%; text-decoration:none;">
-                        <div class="position-relative overflow-hidden">
+                        <div class="position-relative overflow-hidden border_w_r">
                             <img class="img_blogs"
                                 src="{{ asset('public/assets/images/parent_articles/thumbnail/' . $first_article->thumbnail) }}"
                                 alt="" width="100%" height="100%" />
@@ -149,19 +154,22 @@
                     </a>
                 </div>
                 <div class="blog_item">
-                    <a class="bg_filter_clr" href="{{ route('parenting.article.detail', $second_article->id) }}"
-                        style="width: 100%; text-decoration:none;">
-                        <div class="position-relative overflow-hidden h-50">
-                            <img class="img_blogs"
-                                src="{{ asset('public/assets/images/parent_articles/thumbnail/' . $second_article->thumbnail) }}"
-                                alt="" width="100%" height="100%" />
-                            <div class="tag_line position-absolute bottom-0 text-light">
-                                <h3 class="text-light">{{ $second_article->title }} </h3>
+                   
+                        <a class="bg_filter_clr" href="{{ route('parenting.article.detail', $second_article->id) }}"
+                            style="width: 100%; text-decoration:none;">
+                            <div class="position-relative overflow-hidden h-50  border_w_r">
+                                <img class="img_blogs"
+                                    src="{{ asset('public/assets/images/parent_articles/thumbnail/' . $second_article->thumbnail) }}"
+                                    alt="" width="100%" height="100%" />
+                                <div class="tag_line position-absolute bottom-0 text-light">
+                                    <h3 class="text-light">{{ $second_article->title }} </h3>
+                                </div>
                             </div>
-                        </div>
-                    </a>
+                        </a>
+
+                  
                     <div class="d-flex h-50 gap-2 pt-2">
-                        <div class="blog_item position-relative overflow-hidden h-100">
+                        <div class="blog_item position-relative overflow-hidden h-100 border_w_r">
                             <a class="bg_filter_clr"
                                 href="{{ route('parenting.article.detail', $third_article->id) }}"style="width: 100%; text-decoration:none;">
                                 <img class="img_blogs"
@@ -172,7 +180,7 @@
                                 </div>
                             </a>
                         </div>
-                        <div class="blog_item position-relative overflow-hidden h-100">
+                        <div class="blog_item position-relative overflow-hidden h-100 border_w_r">
                             <a class="bg_filter_clr"
                                 href="{{ route('parenting.article.detail', $fourth_article->id) }}"style="width: 100%; text-decoration:none;">
                                 <img class="img_blogs"
