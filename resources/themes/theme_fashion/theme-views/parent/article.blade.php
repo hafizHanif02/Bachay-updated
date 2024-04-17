@@ -150,15 +150,11 @@
         }
 
         .articleHeader .title {
-            font-size: 3em;
-            font-family: 'Aristotelica';
-            padding: 2rem;
-            padding-bottom: 5px;
-            background: linear-gradient(90.27deg, #845dc2 -27.96%, #f99327 -27.94%, #d55fad 28.41%, #845dc2 82.13%, #845dc2 130.57%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            color: transparent;
+            font-size: 26px;
+            font-family: 'poppins';
+            /* padding: 2rem;
+            padding-bottom: 5px; */
+            
         }
 
 
@@ -338,7 +334,7 @@
         .columns {
             display: block;
             margin-bottom: 4vh;
-            background-color: var(--white);
+            /* background-color: var(--white); */
             border-radius: 10px;
         }
 
@@ -347,22 +343,22 @@
         }
 
         .columns .title {
-            /* background-color: var(--purple); */
-            background: linear-gradient(90.27deg, #845dc2 -27.96%, #f99327 -27.94%, #d55fad 28.41%, #845dc2 82.13%, #845dc2 130.57%);
-            /* color: var(--white); */
-            color: #fff;
-            padding: 1rem;
+            margin: 10px;
+            /* padding: 1rem; */
+            padding-bottom: 5px;
+            font-weight: 600;
             text-align: left;
             width: 100%;
             display: block;
             transition: 0.2s;
-            border-left: 0px solid var(--dark);
-            border-radius: 10px;
+            /* border-left: 0px solid var(--dark);
+            border-radius: 10px; */
+            border-bottom: 3px solid #ef3b74;
         }
 
         .columns:hover>.title {
             /* border-left: 5px solid var(--dark); */
-            border-left: 5px solid #835ec1;
+            /* border-left: 5px solid #835ec1; */
         }
 
         .columns .title a {
@@ -691,13 +687,14 @@
 @section('content')
 
     <body>
-        <div class="articleHeader container-xxl">
-            <h1 class="title ">{{ $article->title }}</h1>
-        </div>
+       
 
         <!--BLOG SECTION-->
         <div class="blog_container container-xxl">
             <div class="blog_content">
+                <div class="articleHeader mt-4 mb-3">
+                    <h1 class="title ">{{ $article->title }}</h1>
+                </div>
                 <div class="left_content">
 
                     <div class="blog_card">
@@ -749,7 +746,9 @@
 
                 <div class="columns books">
                     <span class="title">New Books
-                        <a href="#" title="Explore More"><i class="fa fa-share"></i></a></span>
+                        {{-- <a href="#" title="Explore More"><i class="fa fa-share"></i></a> --}}
+                    
+                    </span>
                     <section>
                         @foreach ($slidder_article as $article)
                             <div class="cards">
@@ -772,7 +771,8 @@
 
             <div class="columns posts">
                 <span class="title">Recent Posts
-                    <a href="#" title="Explore More"><i class="fa fa-share"></i></a></span>
+                    {{-- <a href="#" title="Explore More"><i class="fa fa-share"></i></a> --}}
+                </span>
                 <section>
                     @foreach ($slidder_article as $article)
                         <a href="#"><img
@@ -788,7 +788,8 @@
             <div class="columns comments">
                 <span class="title">
                     Recent Comments
-                    <a href="#" title="Explore More"><i class="fa fa-share"></i></a></span>
+                    {{-- <a href="#" title="Explore More"><i class="fa fa-share"></i></a> --}}
+                </span>
                 <section>
                     <marquee direction="up" scrollamount="4" onMouseOver="this.stop()" onMouseOut="this.start()"
                         class="marquee2">
