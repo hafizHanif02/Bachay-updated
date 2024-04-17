@@ -67,7 +67,7 @@
 
     .text_clr_title {
         color: #767676;
-        font-size: 15px;
+        font-size: 12px;
     }
 
     .aside_blog_title {
@@ -136,12 +136,17 @@
     .custom_b_b{    
         border-bottom: 3px solid #ef3b74;
     }
+    .article_title_cus{
+        width: 60%;
+    font-size: 12px;
+    line-height: 17px;
+    }
 </style>
 
 @section('content')
     <div class="container mt-5">
         <div class="main_con_articles">
-            <h6 class="category_heading font-poppins ms-4 custom_b_b">
+            <h6 class="category_heading font-poppins custom_b_b">
                  TRENDING NOW 
             </h6>
             <?php $first_article = $all_parent_articles->first(); ?>
@@ -254,11 +259,14 @@
                                     href="{{ route('parenting.article.detail', $article->id) }}">
                                     <img class="border_w_r" src="{{ asset('public/assets/images/parent_articles/thumbnail/' . $article->thumbnail) }}"
                                         alt="" width="100%" />
-                                    <h5 class="mt-2 text-dark">
-                                        {{ $article->title }}
-                                    </h5>
-                                    {{-- <span class="me-3 text-dark fw-bold">Mahak Arora</span> --}}
-                                    <span class="text_clr_title">{{ $article->created_at->format('F d, Y') }}</span>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <h5 class="mt-4 mb-2 text-dark article_title_cus">
+                                                {{ $article->title }}
+                                            </h5>
+                                            {{-- <span class="me-3 text-dark fw-bold">Mahak Arora</span> --}}
+                                            <span class="text_clr_title">{{ $article->created_at->format('F d, Y') }}</span>
+
+                                        </div>
                                     <p class="text_clr_title">
                                         {{ Illuminate\Support\Str::limit($article->text, $limit = 100, $end = '...') }}
                                     </p>
