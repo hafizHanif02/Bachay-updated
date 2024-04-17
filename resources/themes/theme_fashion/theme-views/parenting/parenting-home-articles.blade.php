@@ -44,13 +44,16 @@
     }
 
     .category_heading {
-        border-bottom: 3px solid #ef3b74;
+        /* border-bottom: 3px solid #ef3b74; */
         padding: 5px 5px 5px 0 !important;
+        font-weight: 600;
     }
 
     .child_categories_blogs {
         width: 66.66666667%;
-    }
+        margin-bottom: 40px;
+}
+    
 
     .child_categories_blogs_aside {
         width: 33.33333333%;
@@ -76,8 +79,11 @@
         margin: 10px 0 0 0;
     }
 
-    .see_all_blogs a {
+    .see_all_blogs a:hover {
         color: #ef3b74;
+    }
+    .see_all_blogs a {
+        color: #000;
     }
 
     .categories_blogs {
@@ -127,13 +133,16 @@
     .border_w_r {
         border-radius: 8px;
     }
+    .custom_b_b{    
+        border-bottom: 3px solid #ef3b74;
+    }
 </style>
 
 @section('content')
     <div class="container mt-5">
         <div class="main_con_articles">
-            <h6 class="category_heading text-light font-poppins ms-4">
-                <span class="trending_now_heading"> TRENDING NOW </span>
+            <h6 class="category_heading font-poppins ms-4">
+                 TRENDING NOW 
             </h6>
             <?php $first_article = $all_parent_articles->first(); ?>
             <?php $second_article = $all_parent_articles->skip(1)->first(); ?>
@@ -226,9 +235,16 @@
         @foreach ($all_parent_categories as $category)
             <div class="categories_blogs mt-5 gap-5">
                 <div class="child_categories_blogs">
-                    <h6 class="category_heading text-light font-poppins">
-                        <span class="trending_now_heading"> {{ $category->name }} </span>
-                    </h6>
+                    <div class="d-flex justify-content-between custom_b_b">
+                        <h6 class="category_heading font-poppins">
+                             {{ $category->name }}
+                        </h6>
+                        <div class="float-end see_all_blogs">
+                            <a class="text-decoration-none"
+                                href="{{ route('parenting.article.category', $category->id) }}">See
+                                All</a>
+                        </div>
+                    </div>
                     <div class="blog_items_inside gap-5 mt-4">
                         <?php $articles = $category->articles->take(2); ?>
                         <?php $small_article = $category->articles->skip(2)->take(2); ?>
@@ -267,11 +283,7 @@
                             </div>
                         @endforeach
                     </div>
-                    <div class="float-end see_all_blogs">
-                        <a class="text-decoration-none"
-                            href="{{ route('parenting.article.category', $category->id) }}">See
-                            All</a>
-                    </div>
+                    
                 </div>
                 <div class="child_categories_blogs_aside">
                     <h6 class="category_heading text-light font-poppins">
