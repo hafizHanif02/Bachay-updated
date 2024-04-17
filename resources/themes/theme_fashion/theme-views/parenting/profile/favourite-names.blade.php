@@ -79,8 +79,11 @@
                             src="{{ getValidImage(path: 'storage/app/public/profile/' . $customer_info->image, type: 'avatar') }}">
                         <div class="content">
                             <h4 class="name mb-lg-2">{{ $customer_info->f_name }} {{ $customer_info->l_name }}</h4>
-                            <span>{{ translate('joined') }}
-                                {{ date('d M, Y', strtotime($customer_info->created_at)) }}</span>
+                            <?php 
+                            $boys = \App\Models\FamilyRelation::where(['user_id'=> auth('customer')->id(),'gender'=> 'male'])->count();
+                            $girls = \App\Models\FamilyRelation::where(['user_id'=> auth('customer')->id(),'gender'=> 'female'])->count();
+                        ?>
+                        <span>Parent of {{ ($boys > 0 ? $boys.' Boys'.($girls > 0 ? ' & ' : '') : '') }}{{ ($girls > 0 ? $girls.' Girls' : '') }}</span>
                         </div>
                     </div>
                     <div class="d-md-none">
@@ -164,6 +167,10 @@
                 <li class="nav-item">
                     <a href="{{ route('parenting-bookmarks') }}"
                         class="nav-link {{ Request::is('parenting-bookmarks') ? 'active' : '' }}">{{ translate('my_bookmarks') }}</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('parenting-my-child') }}"
+                        class="nav-link {{ Request::is('parenting-my-child') ? 'active' : '' }}">My Childs</a>
                 </li>
             </ul>
         </div>

@@ -77,8 +77,23 @@ class ParentController extends Controller
     }
 
     public function parenting_child(){
-        $customer_detail = User::where('id', auth('customer')->id())->first();
-        return view(VIEW_FILE_NAMES['my_child'], compact('customer_detail'));
+        if(Auth::guard('customer')->check()){
+            $wishlists = $this->wishlist->whereHas('wishlistProduct', function ($q) {
+                return $q;
+            })->where('customer_id', auth('customer')->id())->count();
+            $total_order = $this->order->where('customer_id', auth('customer')->id())->count();
+            $total_loyalty_point = auth('customer')->user()->loyalty_point;
+            $total_wallet_balance = auth('customer')->user()->wallet_balance;
+            $addresses = ShippingAddress::where('customer_id', auth('customer')->id())->latest()->get();
+            $customer_detail = User::where('id', auth('customer')->id())->first();
+            $childs = FamilyRelation::where('user_id', Auth::guard('customer')->user()->id)->get();
+            $customer_detail = User::where('id', auth('customer')->id())->first();
+            return view(VIEW_FILE_NAMES['my_child'], compact('customer_detail','childs','customer_detail', 'addresses', 'wishlists', 'total_order', 'total_loyalty_point', 'total_wallet_balance'));
+            
+        }else{
+            Toastr::success('Please Login First');
+            return redirect()->route('customer.auth.login');
+        }
     }
     public function edit_profile(Request $request)
     {
