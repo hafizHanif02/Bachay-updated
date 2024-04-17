@@ -266,10 +266,12 @@
         font-size: 12px;
         color: #000;
         text-transform: capitalize;
-        font-weight: 600;
-        font-family: 'Aristotelica';
+       
     }
+    .dropbtn{
+        font-family: 'Aristotelica';
 
+    }
     .parenting-drpdown-content {
         display: none;
         position: absolute;
