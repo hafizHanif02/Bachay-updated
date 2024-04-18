@@ -23,6 +23,7 @@ use App\Models\FamilyRelation;
 use App\Models\ProductCompare;
 use Illuminate\Support\Carbon;
 use App\Models\ShippingAddress;
+use App\Models\ParentMobileData;
 use Illuminate\Support\Facades\DB;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Support\Facades\Auth;
@@ -142,13 +143,28 @@ class ParentController extends Controller
         $userAgent = $request->header('User-Agent');
         if (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Android') !== false) 
         {
+            $top_banner = ParentMobileData::where(['status'=> '1', 'type' => 'top_banner'])->get();
+            $scroll_one = ParentMobileData::where(['status'=> '1', 'type' => 'scroll_one'])->get();
+            $scroll_two = ParentMobileData::where(['status'=> '1', 'type' => 'scroll_two'])->get();
+            $scroll_three = ParentMobileData::where(['status'=> '1', 'type' => 'scroll_three'])->get();
+            $middle_banner = ParentMobileData::where(['status'=> '1', 'type' => 'middle_banner'])->get();
+            $scroll_four = ParentMobileData::where(['status'=> '1', 'type' => 'scroll_four'])->get();
+            $bottom_banner = ParentMobileData::where(['status'=> '1', 'type' => 'bottom_banner'])->get();
+
             return view(
                 VIEW_FILE_NAMES['parenting-mobile'],
                 compact(
                     'main_section_banner',
                     'main_banner',
                     'parent_article_categories',
-                    'all_parent_categories'
+                    'all_parent_categories',
+                    'top_banner',
+                    'scroll_one',
+                    'scroll_two',
+                    'scroll_three',
+                    'middle_banner',
+                    'scroll_four',
+                    'bottom_banner'
                 )
             );
         }
@@ -160,7 +176,7 @@ class ParentController extends Controller
                     'main_banner',
                     'parent_article_categories',
                     'all_parent_categories',
-                    'all_parent_articles'
+                    'all_parent_articles',
                 )
             );
         }
