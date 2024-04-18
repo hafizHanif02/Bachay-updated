@@ -91,6 +91,7 @@ use App\Enums\ViewPaths\Admin\OfflinePaymentMethod;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\ArticleCategoryController;
 use App\Http\Controllers\Admin\Auth\LoginController;
+use App\Http\Controllers\ParentMobileDataController;
 use App\Http\Controllers\Admin\Order\OrderController;
 use App\Http\Controllers\Admin\OrderReportController;
 use App\Http\Controllers\Admin\Order\RefundController;
@@ -232,6 +233,21 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['admin']],
         Route::post('update', [PollController::class, 'update'])->name('update');
         Route::post('status', [PollController::class, 'PollStatus'])->name('status');
         Route::get('delete/{id}', [PollController::class, 'destroy'])->name('delete');
+
+        Route::group(['prefix' => 'option', 'as' => 'option.'], function () {
+            Route::get('delete/{id}', [PollOptionController::class, 'destroy'])->name('delete');
+        });
+        
+    });
+
+
+    Route::group(['prefix' => 'parent_mobile', 'as' => 'parent_mobile.'], function () {
+        Route::get('list', [ParentMobileDataController::class, 'index'])->name('list');
+        Route::post('store', [ParentMobileDataController::class, 'store'])->name('store');
+        Route::get('edit/{id}', [ParentMobileDataController::class, 'edit'])->name('edit');
+        Route::post('update', [ParentMobileDataController::class, 'update'])->name('update');
+        Route::post('status', [ParentMobileDataController::class, 'ParentMobileStatus'])->name('status');
+        Route::get('delete/{id}', [ParentMobileDataController::class, 'destroy'])->name('delete');
 
         Route::group(['prefix' => 'option', 'as' => 'option.'], function () {
             Route::get('delete/{id}', [PollOptionController::class, 'destroy'])->name('delete');
