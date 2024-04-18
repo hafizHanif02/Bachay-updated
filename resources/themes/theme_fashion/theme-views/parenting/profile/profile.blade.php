@@ -18,7 +18,7 @@
     $customer_info = \App\Utils\customer_info();
 @endphp
 @section('content')
-    <div class="container">
+    <div class="container mt-4 mt-md-0 mt-lg-0 mt-xl-0 mt-xxl-0">
         <div class="user-profile-wrapper bg-section text-capitalize">
             <div class="d-flex justify-content-end">
                 <div class="position-relative d-none d-md-block pb-2">
