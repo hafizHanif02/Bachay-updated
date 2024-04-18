@@ -16,7 +16,7 @@
 @endpush
 <style>
     .vaccination-growth-container {
-        margin: 0 70px 100px 70px;
+        margin: 0 0px 100px 0px;
     }
 
     .vaccination-mainp {
