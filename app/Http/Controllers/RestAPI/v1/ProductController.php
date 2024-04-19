@@ -346,6 +346,10 @@ class ProductController extends Controller
             unset($sizes[$preemie_key]);
             array_unshift($sizes, "Preemie", "New Born");
 
+            foreach ($products as $product) {
+                $product->thumbnail = asset('storage/app/public/product/thumbnail/' . $product->thumbnail);
+            }
+
             return response()->json([
                 'sizes'=> $sizes,
                 'products' => $products,
