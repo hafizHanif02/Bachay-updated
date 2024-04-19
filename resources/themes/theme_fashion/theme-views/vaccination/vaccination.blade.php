@@ -21,19 +21,19 @@
     }
 
     .vaccination-growth-container {
-        margin: 0 70px 100px 70px;
+        margin: 0 0px 100px 0px;
     }
 
     .vaccination-mainp {
         width: 70%;
-        border: 1px solid #ededed;
+        /* border: 1px solid #ededed; */
         border-radius: 3px;
-        padding: 0 10px 10px 10px;
+        /* padding: 0 10px 10px 10px; */
     }
 
-    .vaccine_main {
+    /* .vaccine_main {
         margin: 10px 0 0 0;
-    }
+    } */
 
     .downloadApp-right {
         width: 30%;
@@ -44,8 +44,6 @@
 
     .child-profile {
         width: 100%;
-        background-color: #f5f5f5;
-        border: 1px solid #ededed;
         padding: 24px 24px 19px 44px;
         overflow: hidden;
     }
@@ -55,13 +53,14 @@
     }
 
     .vc_title {
-        background-color: #f5f5f5;
+        background-color: #f56996 !important;
+        color: #fff;
         text-transform: capitalize;
         height: initial;
         margin-bottom: 16px;
         padding: 10px;
-        border-bottom: 1px solid #eee;
-        background: #eee;
+        /* border-bottom: 1px solid #eee; */
+        /* background: #eee; */
         border-radius: 3px;
 
     }
@@ -277,7 +276,7 @@
 
             <h3 class="mt-4 mt-md-5 lh-xl-5 lh-lg">Child Immunization & Baby Growth Tracker</h3>
             <hr>
-            <div class="vaccination-growth-child-container d-flex">
+            <div class="vaccination-growth-child-container d-flex gap-3">
                 <div class="vaccination-mainp">
                     @foreach($childerens as $child)
                     <?php $childDob = \Carbon\Carbon::parse($child->dob);
@@ -298,21 +297,21 @@
                     }
                     ?>
                     <div class="vaccine_main">
-                        <div class="vacci-growthB">
-                            <div class="vaccine_child">
-                                <div class="child-profile d-flex align-items-center gap-4">
+                        <div class="vacci-growthB rounded-5">
+                            <div class="vaccine_child mb-3">
+                                <div class="child-profile d-flex align-items-center gap-4 rounded-5">
                                     <img class="rounded-pill" src="{{ asset('public/images/vacci.png') }}" alt=""
                                         width="102px" height="102px">
                                     <div>
-                                        <h6>{{ $child->name }}</h6>
+                                        <h3>{{ $child->name }}</h3>
                                         <p class="m-0">{{ $formattedAge }} old {{ $child->gender == 'male' ? 'boy' : 'girl' }}</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="p-2 p-sm-3 p-md-3 pt-md-0 p-lg-3 pt-lg-0 p-xl-3 pt-xl-0">
-                                <div class="vaccination_tr">
-                                    <div class="vc_title">
-                                        <h6>
+                                <div class="vaccination_tr rounded-5">
+                                    <div class="vc_title  rounded-5">
+                                        <h6 class="text-light text-center">
                                             vaccination tracker
                                         </h6>
                                     </div>
@@ -397,9 +396,9 @@
                             </div>
                             <?php $latest_growth = \App\Models\Growth::where('child_id', $child->id)->latest()->first(); ?>
                             <div class="pt-0 p-2 p-sm-3 p-md-3 pt-md-0 p-lg-3 pt-lg-0 p-xl-3 pt-xl-0">
-                                <div class="vaccination_tr">
-                                    <div class="vc_title">
-                                        <h6>
+                                <div class="vaccination_tr rounded-5">
+                                    <div class="vc_title rounded-5">
+                                        <h6 class="text-light text-center">
                                             Growth tracker
                                         </h6>
                                     </div>
@@ -677,7 +676,7 @@
                     </div>
                     @endforeach
                 </div>
-                <div class="downloadApp-right">
+                <div class="downloadApp-right rounded-5">
                     
                     <h6 class="font-poppins text-center mt-4">
                         Join the largest community of parents and see parenting in a new way
