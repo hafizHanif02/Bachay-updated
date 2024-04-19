@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CustomPageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -97,6 +98,10 @@ Route::group(['namespace' => 'RestAPI\v1', 'prefix' => 'v1', 'middleware' => ['a
         Route::post('reviews/submit', 'ProductController@submit_product_review')->middleware('auth:api');
     });
 
+    Route::group(['prefix' => 'custom_page', 'as' => 'custom_page.'], function () {
+        Route::get('/', [CustomPageController::class, 'custom_page'])->name('list');
+        Route::get('/{id}', [CustomPageController::class, 'custom_page_detail'])->name('detail');
+    });
     Route::get('products/list', 'ProductController@list');
     Route::group(['middleware' => 'apiGuestCheck'], function () {
         Route::group(['prefix' => 'products'], function () {

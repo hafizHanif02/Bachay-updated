@@ -94,6 +94,31 @@ class CustomPageController extends Controller
         return response()->json(['success' => true, 'is_mobile' => $CustomPage->is_mobile]);
     }
 
+    public function custom_page(){
+        $custom_pages = CustomPage::get();
+        foreach($custom_pages as $custom_page){
+            $custom_page->image =  asset("public/assets/images/custom_page/" . $custom_page->image);
+        }
+
+        return response()->json($custom_pages, 200);
+    }
+
+    public function custom_page_detail($id){
+        $custom_page = CustomPage::where('id', $id)->with('page_data')->first();
+
+        if($custom_page != null){
+            $custom_page->image =  asset("public/assets/images/custom_page/" . $custom_page->image);
+
+            foreach($custom_page->page_data as $page_data){
+                $page_data->image =  asset("public/assets/images/custome_page/" . $page_data->image);
+            }
+    
+            return response()->json($custom_page, 200);
+        }else{
+            return response()->json('Custom page is not available', 200);
+        }
+    }
+
     public function EditCustomPage($id){
         $custom_page = CustomPage::where('id', $id)->with('page_data')->first();
         switch ($custom_page->resource_type) {
