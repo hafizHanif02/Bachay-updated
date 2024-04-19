@@ -23,7 +23,7 @@
     }
 
     .vaccination-growth-container {
-        margin: 0 70px 100px 70px;
+        margin: 0 0px 100px 0px;
     }
 
     .vaccination-mainp {
@@ -230,8 +230,10 @@
 
     .panel-heading,
     .panel-title {
-        background: #EEEEEE;
+       
+        background: #f56996;
     }
+    
 
     @media only screen and (max-width: 768px) {
         .vaccination-growth-container {
@@ -305,14 +307,14 @@
                 <hr>
 
 
-            <div class="vaccination-growth-child-container d-flex">
-                <div class="vaccination-mainp">
+            <div class="vaccination-growth-child-container gap-4 d-flex">
+                <div class="vaccination-mainp rounded-5">
 
 
 
                     <div class="weight_growth_chart">
-                        <div class="panel-heading p-3">
-                            <h6 class="panel-title font-poppins fw-bold">
+                        <div class="panel-heading p-3 rounded-5">
+                            <h6 class="panel-title font-poppins fw-bold text-light text-center">
                                 Weight (12 kg)
                             </h6>
                         </div>
@@ -337,9 +339,9 @@
                             </div>
 
                         </div>
-                        <div class="table_growth_chart m-3">
+                        <div class="table_growth_chart m-3 rounded-5">
                             <div class="panel-headin">
-                                <h6 class="panel-title p-3 font-poppins fw-bold">
+                                <h6 class="panel-title p-3 font-poppins fw-bold text-light rounded-5 mb-4 text-center">
                                     Measurement
                                 </h6>
                             </div>
@@ -393,8 +395,8 @@
 
                     </div>
                     <div class="height_growth_chart">
-                        <div class="panel-heading p-3">
-                            <h6 class="panel-title font-poppins fw-bold">
+                        <div class="panel-heading p-3 rounded-5">
+                            <h6 class="panel-title font-poppins fw-bold text-light text-center">
                                 Height (0 CM)
                             </h6>
                         </div>
@@ -419,9 +421,9 @@
                             </div>
 
                         </div>
-                        <div class="table_growth_chart m-3">
+                        <div class="table_growth_chart m-3 rounded-5">
                             <div class="panel-headin">
-                                <h6 class="panel-title p-3 font-poppins fw-bold">
+                                <h6 class="panel-title p-3 font-poppins fw-bold text-light text-center rounded-5 mb-4">
                                     Measurement
                                 </h6>
                             </div>
@@ -570,8 +572,8 @@
 
                     </div>
                     <div class="headarea_growth_chart">
-                        <div class="panel-heading p-3">
-                            <h6 class="panel-title font-poppins fw-bold">
+                        <div class="panel-heading p-3 rounded-5">
+                            <h6 class="panel-title font-poppins fw-bold text-light text-center">
 
                                 Head Circ. (25 CM )
 
@@ -600,7 +602,7 @@
                         </div>
                         <div class="table_growth_chart m-3">
                             <div class="panel-headin">
-                                <h6 class="panel-title p-3 font-poppins fw-bold">
+                                <h6 class="panel-title p-3 font-poppins fw-bold text-light text-center rounded-5 mb-4">
                                     Measurement
                                 </h6>
                             </div>
@@ -659,7 +661,7 @@
                         </button>
                     </div>
                 </div>
-                <div class="downloadApp-right">
+                <div class="downloadApp-right rounded-5">
 
                     <h6 class="font-poppins text-center mt-4">
                         Join the largest community of parents and see parenting in a new way
