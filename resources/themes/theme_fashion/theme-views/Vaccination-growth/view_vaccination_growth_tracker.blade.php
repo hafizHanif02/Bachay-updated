@@ -227,6 +227,7 @@
     .vc_sub_con {
         background: #f56996;
         padding: 10px;
+        border-radius: 15px;
     }
 
     .status_overdue {
@@ -545,6 +546,7 @@
     .vaccination__child {
         border: 1px solid #ededed;
         margin: 10px 0 0 0;
+        border-radius: 20px;
 
     }
 
@@ -573,8 +575,8 @@
 
             <h3 class="mt-5">View Vaccination Tracker</h3>
             <hr>
-            <div class="vaccination-growth-child-container d-flex">
-                <div class="vaccination-mainp">
+            <div class="vaccination-growth-child-container gap-4 d-flex">
+                <div class="vaccination-mainp rounded-5">
                     <div class="parent-div">
                         <div class="select-div">
                             <select id="select-option">
@@ -729,7 +731,7 @@
                             <div class="vcc_main_acc">
                                 @foreach($birth as $vaccine_data)
                                     <div class="accordion-main">
-                                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                                        <div class="accordion-header rounded-5" onclick="toggleAccordion(this)">
                                             <h3 class="accordion-heading">
 
                                                 <div class="vc_name">
@@ -807,7 +809,7 @@
                             <div class="vcc_main_acc">
                                 @foreach($twoMonth as $vaccine_data)
                                     <div class="accordion-main">
-                                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                                        <div class="accordion-header rounded-5" onclick="toggleAccordion(this)">
                                             <h3 class="accordion-heading">
 
                                                 <div class="vc_name">
@@ -885,7 +887,7 @@
                             <div class="vcc_main_acc">
                                 @foreach($fourMonth as $vaccine_data)
                                     <div class="accordion-main">
-                                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                                        <div class="accordion-header rounded-5" onclick="toggleAccordion(this)">
                                             <h3 class="accordion-heading">
 
                                                 <div class="vc_name">
@@ -962,7 +964,7 @@
                             <div class="vcc_main_acc">
                                 @foreach($sixMonth as $vaccine_data)
                                     <div class="accordion-main">
-                                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                                        <div class="accordion-header rounded-5" onclick="toggleAccordion(this)">
                                             <h3 class="accordion-heading">
 
                                                 <div class="vc_name">
@@ -1040,7 +1042,7 @@
                             <div class="vcc_main_acc">
                                 @foreach($twelveMonth as $vaccine_data)
                                     <div class="accordion-main">
-                                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                                        <div class="accordion-header rounded-5" onclick="toggleAccordion(this)">
                                             <h3 class="accordion-heading">
 
                                                 <div class="vc_name">
@@ -1118,7 +1120,7 @@
                             <div class="vcc_main_acc">
                                 @foreach($eighteenMonth as $vaccine_data)
                                     <div class="accordion-main">
-                                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                                        <div class="accordion-header rounded-5" onclick="toggleAccordion(this)">
                                             <h3 class="accordion-heading">
 
                                                 <div class="vc_name">
@@ -1196,7 +1198,7 @@
                             <div class="vcc_main_acc">
                                 @foreach($fiveYear as $vaccine_data)
                                     <div class="accordion-main">
-                                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                                        <div class="accordion-header rounded-5" onclick="toggleAccordion(this)">
                                             <h3 class="accordion-heading">
 
                                                 <div class="vc_name">
@@ -1244,7 +1246,7 @@
                 </div>
 
 
-                <div class="downloadApp-right">
+                <div class="downloadApp-right rounded-5">
 
                     <h6 class="font-poppins text-center mt-4">
                         Join the largest community of parents and see parenting in a new way

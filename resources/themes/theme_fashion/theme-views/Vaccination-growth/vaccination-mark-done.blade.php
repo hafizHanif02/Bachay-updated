@@ -227,7 +227,8 @@
     }
 
     .vaccine_name {
-        background-color: #ededed;
+        background-color: #f56996;
+        
         padding: 10px;
     }
 
@@ -283,11 +284,11 @@
             <form id="vaccination_form" action="{{ route('vaccination-mark-done-submit', $vaccination_submission->id) }}" enctype="multipart/form-data" method="POST">
                 @csrf
                 <input type="hidden" name="vaccination_id" value="{{ $vaccination_submission->id }}">
-                <div class="vaccination-growth-child-container d-flex">               
-                    <div class="vaccination-mainp">
+                <div class="vaccination-growth-child-container gap-4 d-flex">               
+                    <div class="vaccination-mainp rounded-5">
                         <div class="upd_dt">
-                            <div class="vaccine_name">
-                                <h6 class="font-poppins fw-bold">{{ $vaccination_submission->vaccination->name }}</h6>
+                            <div class="vaccine_name rounded-5">
+                                <h6 class="font-poppins text-light text-center fw-bold">{{ $vaccination_submission->vaccination->name }}</h6>
                             </div>
                             <div class="taken_on d-flex justify-content-between align-items-center mt-4">
                                 <span class="R15_21">Taken On</span>
@@ -342,7 +343,7 @@
                                 </table>
                                 @endif
                             </div>
-                            <textarea class="add_comment R14_75" id="add_comment" maxlength="250" placeholder="Add your comments about the vaccine or mention details of the pediatrician here for future reference in 250 characters"></textarea>
+                            <textarea class="add_comment R14_75 rounded-5" id="add_comment" maxlength="250" placeholder="Add your comments about the vaccine or mention details of the pediatrician here for future reference in 250 characters"></textarea>
                             <button type="button" onclick="SubmitForm()" class="btn_clr mt-4 ps-5 pe-5 pt-2 pb-2 fw-bold">
                                 SAVE
                             </button>
@@ -393,7 +394,7 @@
     
     
     
-                    <div class="downloadApp-right">
+                    <div class="downloadApp-right rounded-5">
     
                         <h6 class="font-poppins text-center mt-4">
                             Join the largest community of parents and see parenting in a new way
