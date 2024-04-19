@@ -112,7 +112,7 @@ class CustomPageController extends Controller
             foreach($custom_page->page_data as $page_data){
                 $page_data->image =  asset("public/assets/images/custome_page/" . $page_data->image);
             }
-    
+            
             return response()->json($custom_page, 200);
         }else{
             return response()->json('Custom page is not available', 200);

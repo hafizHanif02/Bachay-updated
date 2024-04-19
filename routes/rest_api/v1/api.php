@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomPageController;
+use App\Http\Controllers\FamilyRelationController;
+use App\Http\Controllers\RestAPI\v1\auth\PassportAuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,12 +15,13 @@ use App\Http\Controllers\CustomPageController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
  */
-
 Route::group(['namespace' => 'RestAPI\v1', 'prefix' => 'v1', 'middleware' => ['api_lang']], function () {
-
+    Route::group(['namespace' => 'Customer', 'prefix' => 'customer', 'as' => 'customer.'], function () {
+    
     Route::group(['prefix' => 'auth', 'namespace' => 'auth'], function () {
         Route::post('register', 'PassportAuthController@register');
-        Route::post('login', 'PassportAuthController@login');
+        Route::post('login', [PassportAuthController::class,'verifyToken']);
+        Route::post('token', [PassportAuthController::class,'TokenCheck']);
         Route::get('logout', 'PassportAuthController@logout')->middleware('auth:api');
 
         Route::post('check-phone', 'PhoneVerificationController@check_phone');
@@ -36,6 +39,8 @@ Route::group(['namespace' => 'RestAPI\v1', 'prefix' => 'v1', 'middleware' => ['a
         Route::post('social-login', 'SocialAuthController@social_login');
         Route::post('update-phone', 'SocialAuthController@update_phone');
     });
+});
+
 
     Route::group(['prefix' => 'config'], function () {
         Route::get('/', 'ConfigController@configuration');
@@ -74,6 +79,10 @@ Route::group(['namespace' => 'RestAPI\v1', 'prefix' => 'v1', 'middleware' => ['a
 
     Route::group(['prefix' => 'attributes'], function () {
         Route::get('/', 'AttributeController@get_attributes');
+    });
+
+    Route::group(['prefix' => 'attributes'], function () {
+        Route::get('/', [FamilyRelationController::class,'Childeren']);
     });
 
     Route::group(['prefix' => 'flash-deals'], function () {

@@ -11,6 +11,18 @@ use Carbon\CarbonInterval;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
+use App\Models\Wishlist;
+use App\Utils\SMS_module;
+use App\Models\FamilyRelation;
+use App\Models\ProductCompare;
+use Gregwar\Captcha\PhraseBuilder;
+use Illuminate\Support\Facades\DB;
+use Gregwar\Captcha\CaptchaBuilder;
+use Brian2694\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Auth;
+use App\Events\EmailVerificationEvent;
+use Illuminate\Support\Facades\Session;
+use App\Models\PhoneOrEmailVerification;
 
 class PassportAuthController extends Controller
 {
@@ -121,6 +133,8 @@ class PassportAuthController extends Controller
                 ], 401);
             }
 
+            
+
             if($user->is_active && auth()->attempt($data)){
                 $token = auth()->user()->createToken('LaravelAuthApp')->accessToken;
 
@@ -191,6 +205,197 @@ class PassportAuthController extends Controller
             return response()->json([
                 'errors' => $errors
             ], 401);
+        }
+    }
+
+    public function verifyToken(Request $request){
+        $emailServices_smtp = Helpers::get_business_settings('mail_config');
+        $user = User::where(['phone' => $request->user_id])->orWhere(['email' => $request->user_id])->first();
+        if($user != null){
+            $token = rand(1000, 9999);
+            DB::table('phone_or_email_verifications')->insert([
+                'phone_or_email' => $user['email'],
+                'token' => $token,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);    
+        }else{
+            Toastr::error(translate('Phone or Email has not properly entered'));
+            return redirect()->back();
+        }
+
+        
+
+        
+        $emailServices_smtp = Helpers::get_business_settings('mail_config');
+        
+        if ($emailServices_smtp['status'] == 1) {
+            $email =  EmailVerificationEvent::dispatch($user['email'], $token);
+        }
+        SMS_module::send($user->phone, $token);
+
+        return response()->json(translate('check_your_whatsapp_&_email_for_token'), 200);
+        
+    }
+
+    public function TokenCheck(Request $request)
+    {
+        $request->validate([
+            'user_id' => 'required',
+            'otp' => 'required',
+        ]);
+
+        $user = User::where(['phone' => $request->user_id])->orWhere(['email' => $request->user_id])->first();
+        $remember = ($request['remember']) ? true : false;
+
+        //login attempt check start
+        $max_login_hit = Helpers::get_business_settings('maximum_login_hit') ?? 5;
+        $temp_block_time = Helpers::get_business_settings('temporary_login_block_time') ?? 5; //seconds
+        if (isset($user) == false) {
+            if($request->ajax()) {
+                return response()->json([
+                    'status'=>'error',
+                    'message'=>translate('credentials_do_not_match_or_account_has_been_suspended'),
+                    'redirect_url'=>''
+                ]);
+            }else{
+                Toastr::error(translate('credentials_do_not_match_or_account_has_been_suspended'));
+                return back()->withInput();
+            }
+        }
+        //login attempt check end
+
+        //phone or email verification check start
+        $phone_verification = Helpers::get_business_settings('phone_verification');
+        $email_verification = Helpers::get_business_settings('email_verification');
+        if ($phone_verification && !$user->is_phone_verified) {
+                return response()->json(['message'=> 'Phone is not verified'], 403);            
+            }
+        if ($email_verification && !$user->is_email_verified) {
+            return response()->json(['message'=> 'Email is not verified'], 403);
+        }
+        //phone or email verification check end
+
+        if(isset($user->temp_block_time ) && Carbon::parse($user->temp_block_time)->DiffInSeconds() <= $temp_block_time){
+            $time = $temp_block_time - Carbon::parse($user->temp_block_time)->DiffInSeconds();
+
+            if($request->ajax()) {
+                return response()->json([
+                    'status'=>'error',
+                    'message'=>translate('please_try_again_after_') . CarbonInterval::seconds($time)->cascade()->forHumans(),
+                    'redirect_url'=>''
+                ]);
+            }else{
+                Toastr::error(translate('please_try_again_after_') . CarbonInterval::seconds($time)->cascade()->forHumans());
+                return back()->withInput();
+            }
+        }
+        $token = PhoneOrEmailVerification::where('phone_or_email', $user['email'])->latest()->first();
+        if($token->token == $request->otp){
+            Auth::guard('customer')->login($user);
+        }else{
+            Toastr::error(translate('Token_is_incorrect_please_enter_correct_token'));
+            return redirect()->back();
+        }
+        
+        if (isset($user) && $user->is_active && (Auth::guard('customer')->user() != null)) {
+            $wish_list = Wishlist::whereHas('wishlistProduct',function($q){
+               
+                return $q;
+            })->where('customer_id', auth('customer')->user()->id)->pluck('product_id')->toArray();
+
+            $compare_list = ProductCompare::where('user_id', auth('customer')->id())->pluck('product_id')->toArray();
+
+            session()->put('wish_list', $wish_list);
+            session()->put('compare_list', $compare_list);
+            Toastr::info(translate('welcome_to') .' '. Helpers::get_business_settings('company_name') . '!');
+            // CartManager::cart_to_db();
+
+            $user->login_hit_count = 0;
+            $user->is_temp_blocked = 0;
+            $user->temp_block_time = null;
+            $user->updated_at = now();
+            $user->save();
+
+
+            // $data = [
+            //     $request->user_id,
+            //     $request->otp,
+            // ];
+
+            // if($user->is_active && auth()->attempt($data)){
+            //     $token = auth()->user()->createToken('LaravelAuthApp')->accessToken;
+
+            //     $user->login_hit_count = 0;
+            //     $user->is_temp_blocked = 0;
+            //     $user->temp_block_time = null;
+            //     $user->updated_at = now();
+            //     $user->save();
+
+            //     // CartManager::cart_to_db($request);
+
+                return response()->json(['token' => $token], 200);
+            // }
+
+
+        }else{
+            if(isset($user->temp_block_time ) && Carbon::parse($user->temp_block_time)->diffInSeconds() <= $temp_block_time){
+                $time= $temp_block_time - Carbon::parse($user->temp_block_time)->diffInSeconds();
+
+                $ajax_message = [
+                    'status'=>'error',
+                    'message'=> translate('please_try_again_after_') . CarbonInterval::seconds($time)->cascade()->forHumans(),
+                    'redirect_url'=>''
+                ];
+                Toastr::error(translate('please_try_again_after_') . CarbonInterval::seconds($time)->cascade()->forHumans());
+
+            }elseif($user->is_temp_blocked == 1 && Carbon::parse($user->temp_block_time)->diffInSeconds() >= $temp_block_time){
+
+                $user->login_hit_count = 0;
+                $user->is_temp_blocked = 0;
+                $user->temp_block_time = null;
+                $user->updated_at = now();
+                $user->save();
+
+                $ajax_message = [
+                    'status'=>'error',
+                    'message'=> translate('credentials_do_not_match_or_account_has_been_suspended'),
+                    'redirect_url'=>''
+                ];
+                Toastr::error(translate('credentials_do_not_match_or_account_has_been_suspended'));
+
+            }elseif($user->login_hit_count >= $max_login_hit &&  $user->is_temp_blocked == 0){
+                $user->is_temp_blocked = 1;
+                $user->temp_block_time = now();
+                $user->updated_at = now();
+                $user->save();
+
+                $time= $temp_block_time - Carbon::parse($user->temp_block_time)->diffInSeconds();
+
+                $ajax_message = [
+                    'status'=>'error',
+                    'message'=> translate('too_many_attempts._please_try_again_after_'). CarbonInterval::seconds($time)->cascade()->forHumans(),
+                    'redirect_url'=>''
+                ];
+                Toastr::error(translate('too_many_attempts._please_try_again_after_'). CarbonInterval::seconds($time)->cascade()->forHumans());
+            }else{
+                $ajax_message = [
+                    'status'=>'error',
+                    'message'=> translate('credentials_do_not_match_or_account_has_been_suspended'),
+                    'redirect_url'=>''
+                ];
+                Toastr::error(translate('credentials_do_not_match_or_account_has_been_suspended'));
+
+                $user->login_hit_count += 1;
+                $user->save();
+            }
+            //login attempt check end
+
+            if($request->ajax()) {
+                return response()->json($ajax_message);
+            }else{
+                return back()->withInput();
+            }
         }
     }
 
