@@ -44,18 +44,20 @@ class BannerController extends Controller
         };
 
         $banners = Banner::whereIn('banner_type',$banner_array)->where(['published' => 1, 'theme'=>$theme_name])->get();
-        $pro_ids = [];
-        $data = [];
-        foreach ($banners as $banner) {
-            if ($banner['resource_type'] == 'product' && !in_array($banner['resource_id'], $pro_ids)) {
-                array_push($pro_ids,$banner['resource_id']);
-                $product = Product::find($banner['resource_id']);
-                $banner['product'] = Helpers::product_data_formatting($product);
-            }
-            $data[] = $banner;
-        }
+        // $pro_ids = [];
+        // $data = [];
+        // foreach ($banners as $banner) {
+        //     if ($banner['resource_type'] == 'product' && !in_array($banner['resource_id'], $pro_ids)) {
+        //         array_push($pro_ids,$banner['resource_id']);
+        //         $product = Product::find($banner['resource_id']);
+        //         $banner['product'] = Helpers::product_data_formatting($product);
+        //     }
+        //     $data[] = $banner;
+        // }
 
-        return response()->json($data, 200);
+        // return response()->json($data, 200);
+
+        return response()->json($banners, 200);
 
     }
 }
