@@ -44,6 +44,10 @@ class BannerController extends Controller
         };
 
         $banners = Banner::whereIn('banner_type',$banner_array)->where(['published' => 1, 'theme'=>$theme_name])->get();
+        foreach ($banners as $banner) {
+             $banner->image_url = asset('/storage/app/public/banner/' . $banner->photo);
+        }
+        
         // $pro_ids = [];
         // $data = [];
         // foreach ($banners as $banner) {
