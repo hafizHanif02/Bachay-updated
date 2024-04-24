@@ -126,6 +126,7 @@
     </div>
     <div class="offcanvas-body">
         <ul class="nav nav-tabs nav--tabs-3 p-2 flex-column">
+            
             <li class="nav-item">
                 <a href="{{ route('user-profile') }}"
                    class="nav-link {{Request::is('user-profile') || Request::is('user-account') ||Request::is('account-address-*') ? 'active' :''}}">{{ translate('profile') }}</a>
@@ -143,6 +144,10 @@
             <li class="nav-item">
                 <a href="{{route('product-compare.index')}}"
                    class="nav-link {{Request::is('product-compare/index') ? 'active' :''}}">{{ translate('my_compare_list') }}</a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ route('my-child.list') }}"
+                   class="nav-link {{Request::is('user-profile') || Request::is('user-account') ||Request::is('my-child.list') ? 'active' :''}}">My Child</a>
             </li>
             <li class="nav-item">
                 <a href="{{ route('wallet') }}"
