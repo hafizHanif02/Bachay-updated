@@ -115,7 +115,7 @@
 
 
 
-<div class="container show-div d-lg-none d-xl-none" id="showDiv">
+<div class=" mt-2 container show-div d-lg-none d-xl-none" id="showDiv">
     <span class="close-btn-add" onclick="hideDiv()"><i class="bi bi-x-lg"></i></span>
     <div class="mainCon">
         <div id="slider_part" class="scroll-cards">
