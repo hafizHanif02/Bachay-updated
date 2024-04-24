@@ -19,7 +19,7 @@ Route::group(['namespace' => 'RestAPI\v1', 'prefix' => 'v1', 'middleware' => ['a
     Route::group(['namespace' => 'Customer', 'prefix' => 'customer', 'as' => 'customer.'], function () {
     
     Route::group(['prefix' => 'auth', 'namespace' => 'auth'], function () {
-        Route::post('register', 'PassportAuthController@register');
+        Route::post('register', [PassportAuthController::class,'register']);
         Route::post('login', [PassportAuthController::class,'verifyToken']);
         Route::post('token', [PassportAuthController::class,'TokenCheck']);
         Route::get('logout', 'PassportAuthController@logout')->middleware('auth:api');
