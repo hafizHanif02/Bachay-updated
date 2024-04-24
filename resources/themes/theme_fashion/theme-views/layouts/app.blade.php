@@ -426,6 +426,9 @@
         if (/iPhone/i.test(userAgent) && !window.MSStream) {
             // Add a class to the body for styling
             document.body.classList.add('iphone-specific');
+        } else {
+            // Remove the class if the device is not an iPhone
+            document.body.classList.remove('iphone-specific');
         }
     </script>
     @stack('script')
