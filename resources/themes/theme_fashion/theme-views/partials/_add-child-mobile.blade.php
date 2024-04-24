@@ -6,7 +6,7 @@
     .show-div {
         /* visibility: hidden; */
         position: relative;
-        z-index: 999;
+        z-index: 997;
         top: 0;
         left: 0;
         width: 100%;
