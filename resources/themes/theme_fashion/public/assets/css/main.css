@@ -219,7 +219,7 @@ h6 {
     font-size: 44px;
 }
 .iphone-specific {
-    padding-top: 20px;
+    padding-top: 65px !important; 
   }
 /* header {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3) !important;
