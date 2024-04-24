@@ -218,6 +218,10 @@ h6 {
 .main-sec_heading {
     font-size: 44px;
 }
+.iphone-specific {
+    
+    background-color: #000;
+  }
 /* header {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3) !important;
 } */

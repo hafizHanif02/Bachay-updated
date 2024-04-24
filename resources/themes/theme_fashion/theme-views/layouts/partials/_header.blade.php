@@ -1815,7 +1815,7 @@
         <div class="ps-3 pe-3">
             <h3 class="font-poppins fs-6 mb-1 text-center">Welcome to Bachay</h3>
             @if (auth('customer')->check())               
-                <span class="text-center mb-2 mx-1 d-block d-md-none d-lg-none d-xl-none nav-ul_text">
+                <span class="text-center mb-2 mx-1 d-block d-md-none d-lg-none d-xl-none nav-ul_text">Hello,
                     {{ auth('customer')->user()->f_name }}
                     {{ auth('customer')->user()->l_name }}
                 </span>

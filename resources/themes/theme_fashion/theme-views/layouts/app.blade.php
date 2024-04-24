@@ -165,7 +165,7 @@
                 src="https://www.facebook.com/tr?id={{ $pixel_analytics_user_code }}&ev=PageView&noscript=1" />
         </noscript>
     @endif
-    
+
     <noscript><img height="1" width="1" style="display:none"
             src="https://www.facebook.com/tr?id=443567208351713&ev=PageView&noscript=1" /></noscript>
     <!-- End Meta Pixel Code -->
@@ -418,7 +418,14 @@
             cards[i].addEventListener("mouseover", handleMouseOver);
         }
     </script>
+    <script>
+        var userAgent = navigator.userAgent || navigator.vendor || window.opera;
 
+        if (/iPhone/i.test(userAgent)) {
+            // Add a class to the body for styling
+            document.body.classList.add('iphone-specific');
+        }
+    </script>
     @stack('script')
 </body>
 
