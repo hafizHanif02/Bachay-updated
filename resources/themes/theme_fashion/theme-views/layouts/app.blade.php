@@ -419,9 +419,11 @@
         }
     </script>
     <script>
+        // JavaScript to detect if the device is an iPhone
         var userAgent = navigator.userAgent || navigator.vendor || window.opera;
 
-        if (/iPhone/i.test(userAgent)) {
+        // Check if the user agent specifically contains "iPhone"
+        if (/iPhone/i.test(userAgent) && !window.MSStream) {
             // Add a class to the body for styling
             document.body.classList.add('iphone-specific');
         }
