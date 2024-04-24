@@ -47,6 +47,34 @@ Route::group(['namespace' => 'RestAPI\v1', 'prefix' => 'v1', 'middleware' => ['a
     });
 
     Route::get('home', 'ConfigController@home')->name('home');
+    Route::get('sizes', 'ConfigController@sizes')->name('sizes');
+    Route::get('latest_products', 'ConfigController@latest_products')->name('latest_products');
+    Route::get('deal_of_the_day', 'ConfigController@deal_of_the_day')->name('deal_of_the_day');
+    Route::get('top_sellers', 'ConfigController@top_sellers')->name('top_sellers');
+    Route::get('topRatedShops', 'ConfigController@topRatedShops')->name('topRatedShops');
+    Route::get('main_banner', 'ConfigController@main_banner')->name('main_banner');
+    Route::get('most_visited_categories', 'ConfigController@most_visited_categories')->name('most_visited_categories');
+    Route::get('random_product', 'ConfigController@random_product')->name('random_product');
+    Route::get('decimal_point_settings', 'ConfigController@decimal_point_settings')->name('decimal_point_settings');
+    Route::get('newSellers', 'ConfigController@newSellers')->name('newSellers');
+    Route::get('sidebar_banner', 'ConfigController@sidebar_banner')->name('sidebar_banner');
+    Route::get('top_side_banner', 'ConfigController@top_side_banner')->name('top_side_banner');
+    Route::get('recent_order_shops', 'ConfigController@recent_order_shops')->name('recent_order_shops');
+    Route::get('categories', 'ConfigController@categories')->name('categories');
+    Route::get('colors_in_shop', 'ConfigController@colors_in_shop')->name('colors_in_shop');
+    Route::get('all_products_info', 'ConfigController@all_products_info')->name('all_products_info');
+    Route::get('most_searching_product', 'ConfigController@most_searching_product')->name('most_searching_product');
+    Route::get('most_demanded_product', 'ConfigController@most_demanded_product')->name('most_demanded_product');
+    Route::get('featured_products', 'ConfigController@featured_products')->name('featured_products');
+    Route::get('promo_banner_left', 'ConfigController@promo_banner_left')->name('promo_banner_left');
+    Route::get('promo_banner_middle_bottom', 'ConfigController@promo_banner_middle_bottom')->name('promo_banner_middle_bottom');
+    Route::get('promo_banner_right', 'ConfigController@promo_banner_right')->name('promo_banner_right');
+    Route::get('promo_banner_bottom', 'ConfigController@promo_banner_bottom')->name('promo_banner_bottom');
+    Route::get('currentDate', 'ConfigController@currentDate')->name('currentDate');
+    Route::get('all_products', 'ConfigController@all_products')->name('all_products');
+    Route::get('featured_deals', 'ConfigController@featured_deals')->name('featured_deals');
+    Route::get('childerens', 'ConfigController@childerens')->name('childerens');
+
 
     Route::group(['prefix' => 'shipping-method','middleware'=>'apiGuestCheck'], function () {
         Route::get('detail/{id}', 'ShippingMethodController@get_shipping_method_info');
