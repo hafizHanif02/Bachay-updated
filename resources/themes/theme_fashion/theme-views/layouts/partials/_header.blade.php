@@ -1814,20 +1814,11 @@
     <div class="text-capitalize d-flex flex-column custom-gap pt-0">
         <div class="ps-3 pe-3">
             <h3 class="font-poppins fs-6 mb-1 text-center">Welcome to Bachay</h3>
-            {{-- <span class="mx-1 d-none d-md-block nav-ul_text">Hello,
-                {{ auth('customer')->user()->f_name }}</span> --}}
-
-
-            @if (auth('customer')->check())
-                {{-- <div class="d-flex justify-content-center mb-2 pb-3 mt-auto px-4"> --}}
-
-
-                <span class="text-center mx-1 d-block d-md-none d-lg-none d-xl-none nav-ul_text">
+            @if (auth('customer')->check())               
+                <span class="text-center mb-2 mx-1 d-block d-md-none d-lg-none d-xl-none nav-ul_text">
                     {{ auth('customer')->user()->f_name }}
                     {{ auth('customer')->user()->l_name }}
                 </span>
-
-
                 <div class="d-flex justify-content-center mt-auto mb-2">
                     <a href="{{ route('customer.auth.logout') }}"
                         class="btn btn-base w-100">{{ translate('logout') }}</a>
