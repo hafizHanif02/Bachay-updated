@@ -14,7 +14,7 @@
             <span class="btn-status">{{$cart->count()}}</span>
         </div>
     </a>
-    <div class="dropdown-menu __dropdown-menu __header-cart-menu">
+    <div class="dropdown-menu __dropdown-menu __header-cart-menu" id="header-cart-menu">
         @if($cart->count() > 0)
             <ul class="header-cart custom-header-cart __table">
                 @include('theme-views.layouts.partials._cart-data',['cart'=>$cart])
@@ -55,6 +55,6 @@
 
 <script>
 function getViewByOnclick() {
-    alert('hello');
+    document.getElementById("header-cart-menu").classList.toggle("__dropdown-menu-show");
 }
 </script>
