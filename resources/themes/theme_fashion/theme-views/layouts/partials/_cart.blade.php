@@ -9,7 +9,7 @@
 @endif
 <div class="d-block d-md-block">
     <a class="px-3" href="javascript:" style="
-    width: 100%;
+    width: 100px;
     border: 1px solid red;
     height: 40px;
     display: block;
