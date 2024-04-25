@@ -8,12 +8,7 @@
     @endforeach
 @endif
 <div class="d-block d-md-block">
-    <a class="px-3" href="javascript:" style="
-    width: 100px;
-    border: 1px solid red;
-    height: 40px;
-    display: block;
-">
+    <a class="px-3" href="javascript:" onclick="getViewByOnclick()">
         <div class="position-relative mt-1 px-8px">
             <i class="bi bi-cart-dash nav-ul_text" style="font-size: 16px !important;"></i>
             <span class="btn-status">{{$cart->count()}}</span>
@@ -57,3 +52,9 @@
         @endif
     </div>
 </div>
+
+<script>
+function getViewByOnclick() {
+    alert('hello');
+}
+</script>
