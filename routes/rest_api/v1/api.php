@@ -60,7 +60,7 @@ Route::group(['namespace' => 'RestAPI\v1', 'prefix' => 'v1', 'middleware' => ['a
     Route::get('sidebar_banner', 'ConfigController@sidebar_banner')->name('sidebar_banner');
     Route::get('top_side_banner', 'ConfigController@top_side_banner')->name('top_side_banner');
     Route::get('recent_order_shops', 'ConfigController@recent_order_shops')->name('recent_order_shops');
-    Route::get('categories', 'ConfigController@categories')->name('categories');
+    Route::get('categories-list', 'ConfigController@categories')->name('categories');
     Route::get('colors_in_shop', 'ConfigController@colors_in_shop')->name('colors_in_shop');
     Route::get('all_products_info', 'ConfigController@all_products_info')->name('all_products_info');
     Route::get('most_searching_product', 'ConfigController@most_searching_product')->name('most_searching_product');
