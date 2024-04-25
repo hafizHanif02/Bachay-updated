@@ -8,7 +8,12 @@
     @endforeach
 @endif
 <div class="d-block d-md-block">
-    <a class="px-3" href="javascript:">
+    <a class="px-3" href="javascript:" style="
+    width: 100%;
+    border: 1px solid red;
+    height: 40px;
+    display: block;
+">
         <div class="position-relative mt-1 px-8px">
             <i class="bi bi-cart-dash nav-ul_text" style="font-size: 16px !important;"></i>
             <span class="btn-status">{{$cart->count()}}</span>
