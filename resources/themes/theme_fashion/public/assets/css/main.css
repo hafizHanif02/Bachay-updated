@@ -1862,14 +1862,16 @@ header.bg-white {
     visibility: visible !important;
 }
 
-a:focus ~ .__dropdown-menu {
-    opacity: 1;
-    visibility: visible;
-}
+
 
 .__dropdown-menu {
     opacity: 0;
     visibility: hidden;
+}
+
+.__dropdown-menu-show {
+    opacity: 1 !important;
+    visibility: visible !important;
 }
 
 .__dropdown-menu {
