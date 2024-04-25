@@ -59,12 +59,20 @@
         margin: 10px 0 10px 5px;
 
     }
+
+    .parenting_nav_scroller {
+        margin: 0 10px 5px 0;
+    }
+
+    
 </style>
 
 @section('content')
-<section>
+    
+
+    <section>
         @if ($main_banner->count() > 0)
-            <section class="banner-section">
+            <section class="banner-section mt-2">
                 <div class="slider owl-theme owl-carousel custom-single-slider">
                     @foreach ($main_banner as $banner)
                         <div class="banner-slide">
@@ -79,28 +87,28 @@
 
                             <!-- @if ($banner['title'] && $banner['sub_title'])
     <div class="content">
-                                            <h1 class="title mb-3">{{ $banner['title'] }} <br><span class="subtxt">{{ $banner['sub_title'] }}</span> </h1>
-                                            @if ($banner['button_text'])
+                                                        <h1 class="title mb-3">{{ $banner['title'] }} <br><span class="subtxt">{{ $banner['sub_title'] }}</span> </h1>
+                                                        @if ($banner['button_text'])
     <div class="info">
-                                                 <a href="{{ $banner['url'] ?? 'javascript:' }}" class="btn btn-base">{{ $banner['button_text'] }}</a>
-                                            </div>
+                                                             <a href="{{ $banner['url'] ?? 'javascript:' }}" class="btn btn-base">{{ $banner['button_text'] }}</a>
+                                                        </div>
     @endif
-                                        </div>
+                                                    </div>
     @endif -->
 
                             <!-- <svg width="16" height="44" viewBox="0 0 16 44" fill="none" xmlns="http://www.w3.org/2000/svg" class="shapes d-sm-none">
-                                        <g filter="url(#filter0_b_3844_38351)">
-                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M0.987292 43.5471C2.37783 38.4513 6.40927 34.0997 10.2104 29.9969C10.7306 29.4354 11.2464 28.8785 11.7506 28.3251C12.3698 27.6454 12.9261 26.9375 13.4285 26.2154C15.7758 22.8419 15.7065 18.2693 13.2818 14.9509C12.1188 13.3593 10.7689 11.9386 9.18884 10.7511C5.58277 8.04099 1.99367 4.63569 0.853516 0.455078L0.987292 43.5471Z" fill="var(--base)"/>
-                                        </g>
-                                        <defs>
-                                        <filter id="filter0_b_3844_38351" x="-46.9791" y="-47.3775" width="109.958" height="138.757" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                                        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-                                        <feGaussianBlur in="BackgroundImageFix" stdDeviation="23.9163"/>
-                                        <feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_3844_38351"/>
-                                        <feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur_3844_38351" result="shape"/>
-                                        </filter>
-                                        </defs>
-                                    </svg> -->
+                                                    <g filter="url(#filter0_b_3844_38351)">
+                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M0.987292 43.5471C2.37783 38.4513 6.40927 34.0997 10.2104 29.9969C10.7306 29.4354 11.2464 28.8785 11.7506 28.3251C12.3698 27.6454 12.9261 26.9375 13.4285 26.2154C15.7758 22.8419 15.7065 18.2693 13.2818 14.9509C12.1188 13.3593 10.7689 11.9386 9.18884 10.7511C5.58277 8.04099 1.99367 4.63569 0.853516 0.455078L0.987292 43.5471Z" fill="var(--base)"/>
+                                                    </g>
+                                                    <defs>
+                                                    <filter id="filter0_b_3844_38351" x="-46.9791" y="-47.3775" width="109.958" height="138.757" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                                    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                                                    <feGaussianBlur in="BackgroundImageFix" stdDeviation="23.9163"/>
+                                                    <feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_3844_38351"/>
+                                                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur_3844_38351" result="shape"/>
+                                                    </filter>
+                                                    </defs>
+                                                </svg> -->
                             @if ($main_banner->count() > 1)
                                 <img src="{{ theme_asset('assets/img/arrow-icon.png') }}" class="banner-arrow d-sm-none"
                                     alt="{{ translate('banner') }}" loading="lazy">
@@ -118,29 +126,30 @@
 
 
 
-</section>
+    </section>
     <div class="banner_full_width">
-        @foreach($top_banner as $banner)
-        <a href="{{ $banner->link }}">
-            <img class="mb-1" src="{{ asset('public/assets/images/parent_mobile/'.$banner->image) }}" alt="" width="100%">
-        </a>
+        @foreach ($top_banner as $banner)
+            <a href="{{ $banner->link }}">
+                <img class="mb-1" src="{{ asset('public/assets/images/parent_mobile/' . $banner->image) }}"
+                    alt="" width="100%">
+            </a>
         @endforeach
     </div>
     <div class="scroll-container newCatLanding ps-2">
-        @foreach($scroll_one as $scroll_data)
-        <a href="{{ $scroll_data->link }}">
-            <img src="{{ asset('public/assets/images/parent_mobile/'.$scroll_data->image) }}" alt="">
-        </a>
+        @foreach ($scroll_one as $scroll_data)
+            <a href="{{ $scroll_data->link }}">
+                <img src="{{ asset('public/assets/images/parent_mobile/' . $scroll_data->image) }}" alt="">
+            </a>
         @endforeach
     </div>
     <div>
         <img src="{{ asset('public/images/summer.webp') }}" alt="" width="100%">
     </div>
     <div class="scroll-container brand-container ps-2">
-        @foreach($scroll_two as $scroll_data)
-        <a href="{{ $scroll_data->link }}">
-            <img src="{{ asset('public/assets/images/parent_mobile/'.$scroll_data->image) }}" alt="">
-        </a>
+        @foreach ($scroll_two as $scroll_data)
+            <a href="{{ $scroll_data->link }}">
+                <img src="{{ asset('public/assets/images/parent_mobile/' . $scroll_data->image) }}" alt="">
+            </a>
         @endforeach
     </div>
     <div>
@@ -148,34 +157,36 @@
     </div>
 
     <div class="scroll-container newArrival ps-2">
-        @foreach($scroll_three as $scroll_data)
-        <a href="{{ $scroll_data->link }}">
-            <img src="{{ asset('public/assets/images/parent_mobile/'.$scroll_data->image) }}" alt="">
-            <p class="text-center m-0 text-secondary fw-bold"></p>
-            <p class="text-center m-0 text-secondary">EXPLORE NOW</p>
+        @foreach ($scroll_three as $scroll_data)
+            <a href="{{ $scroll_data->link }}">
+                <img src="{{ asset('public/assets/images/parent_mobile/' . $scroll_data->image) }}" alt="">
+                <p class="text-center m-0 text-secondary fw-bold"></p>
+                <p class="text-center m-0 text-secondary">EXPLORE NOW</p>
 
-        </a>
+            </a>
         @endforeach
     </div>
-    @foreach($middle_banner as $banner)
-    <div class="mt-2">
-        <img src="{{ asset('public/assets/images/parent_mobile/'.$banner->image) }}" alt="" width="100%">
-    </div>
+    @foreach ($middle_banner as $banner)
+        <div class="mt-2">
+            <img src="{{ asset('public/assets/images/parent_mobile/' . $banner->image) }}" alt=""
+                width="100%">
+        </div>
     @endforeach
     <div>
         <img src="{{ asset('public/images/parenting-explore.webp') }}" alt="" width="100%">
     </div>
     <div class="scroll-container parenting-blogs ps-2">
-        @foreach($scroll_four as $scroll_data)
-        <a href="{{ $scroll_data->link }}">
-            <img src="{{ asset('public/assets/images/parent_mobile/'.$scroll_data->image) }}" alt="">
-        </a>
+        @foreach ($scroll_four as $scroll_data)
+            <a href="{{ $scroll_data->link }}">
+                <img src="{{ asset('public/assets/images/parent_mobile/' . $scroll_data->image) }}" alt="">
+            </a>
         @endforeach
     </div>
-    @foreach($bottom_banner as $banner)
-    <div>
-        <img src="{{ asset('public/assets/images/parent_mobile/'.$banner->image) }}" alt="" width="100%">
-    </div>
+    @foreach ($bottom_banner as $banner)
+        <div>
+            <img src="{{ asset('public/assets/images/parent_mobile/' . $banner->image) }}" alt=""
+                width="100%">
+        </div>
     @endforeach
 
 @endsection
