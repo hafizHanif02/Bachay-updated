@@ -256,23 +256,23 @@ function _defineProperty(e, t, r) {
             t(".dropdown-menu [data-toggle='dropdown']").on(
                 "click",
                 function (e) {
-                    alert("testing");
-                    e.preventDefault(),
-                        e.stopPropagation(),
-                        t(this).siblings().toggleClass("show"),
-                        t(this).next().hasClass("show") ||
-                            t(this)
-                                .parents(".dropdown-menu")
-                                .first()
-                                .find(".show")
-                                .removeClass("show"),
-                        t(this)
-                            .parents("li.nav-item.dropdown.show")
-                            .on("hidden.bs.dropdown", function () {
-                                t(".dropdown-submenu .show").removeClass(
-                                    "show"
-                                );
-                            });
+                    // alert("testing");
+                    // e.preventDefault(),
+                    //     e.stopPropagation(),
+                    //     t(this).siblings().toggleClass("show"),
+                    //     t(this).next().hasClass("show") ||
+                    //         t(this)
+                    //             .parents(".dropdown-menu")
+                    //             .first()
+                    //             .find(".show")
+                    //             .removeClass("show"),
+                    //     t(this)
+                    //         .parents("li.nav-item.dropdown.show")
+                    //         .on("hidden.bs.dropdown", function () {
+                    //             t(".dropdown-submenu .show").removeClass(
+                    //                 "show"
+                    //             );
+                    //         });
                 }
             );
         },
