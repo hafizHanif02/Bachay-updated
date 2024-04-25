@@ -1862,7 +1862,10 @@ header.bg-white {
     visibility: visible !important;
 }
 
-
+a:not(:focus) ~ .__dropdown-menu {
+    opacity: 0;
+    visibility: hidden;
+}
 
 .__dropdown-menu {
     display: block;
