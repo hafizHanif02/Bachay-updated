@@ -1859,12 +1859,12 @@ header.bg-white {
 
 .__dropdown-menu:hover {
     opacity: 1 !important;
-    /* visibility: visible */ !important;
+    visibility: visible !important;
 }
 
 a:not(:focus) ~ .__dropdown-menu {
-    opacity: 0;
-    visibility: hidden;
+    /* opacity: 0;
+     visibility: hidden; */
 }
 
 .__dropdown-menu {
