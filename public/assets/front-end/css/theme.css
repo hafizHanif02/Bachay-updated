@@ -16071,6 +16071,10 @@ a.badge-shadow:hover {
     .toast-container {
         padding-right: 1rem;
         padding-left: 1rem;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(50%);
+        right: none;
     }
 }
 
