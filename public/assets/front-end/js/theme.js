@@ -256,6 +256,7 @@ function _defineProperty(e, t, r) {
             t(".dropdown-menu [data-toggle='dropdown']").on(
                 "click",
                 function (e) {
+                    alert("testing");
                     e.preventDefault(),
                         e.stopPropagation(),
                         t(this).siblings().toggleClass("show"),
