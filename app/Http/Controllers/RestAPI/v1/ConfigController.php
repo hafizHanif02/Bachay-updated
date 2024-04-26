@@ -599,6 +599,10 @@ class ConfigController extends Controller
             $product['flash_deal_end_date'] = $flash_deal_end_date;
             return $product;
         });
+        
+        foreach($latest_products as $product){
+            $product->thumbnail = asset('storage/app/public/product/thumbnail/'.$product->thumbnail);
+        }
 
         return response()->json([
             'latest_products' => $latest_products
@@ -610,6 +614,9 @@ class ConfigController extends Controller
         $deal_of_the_day = $this->deal_of_the_day->with(['product'=>function($query){
             $query->active();
         }])->where('status', 1)->first();
+
+        $deal_of_the_day->product->thumbnail = asset('storage/app/public/product/thumbnail/'.$deal_of_the_day->product->thumbnail);
+        
 
         return response()->json([
             'deal_of_the_day' => $deal_of_the_day,
@@ -634,6 +641,13 @@ class ConfigController extends Controller
             $seller['rating_count'] = $seller->product->pluck('rating_count')->sum();
             $seller['average_rating'] = $seller['total_rating'] / ($seller['rating_count'] == 0 ? 1 : $seller['rating_count']);
         });
+
+        foreach($top_sellers as $seller){
+            // $seller->image = asset('storage/app/public/top_seller/thumbnail/'.$seller->image);
+            foreach($seller->product as $product){
+                $product->thumbnail = asset('storage/app/public/product/thumbnail/'.$product->thumbnail);
+            }
+        }
 
         return response()->json([
             'top_sellers' => $top_sellers
@@ -678,6 +692,11 @@ class ConfigController extends Controller
 
         $main_banner = Banner::where(['banner_type'=> 'Main Banner', 'published'=> 1, 'theme'=>$theme_name])->latest()->get();
 
+        foreach($main_banner as $banner){
+            $banner->photo = asset('storage/app/public/banner/'.$banner->photo);
+            $banner->mobile_photo = asset('storage/app/public/banner/'.$banner->mobile_photo);
+        }
+
         return response()->json([
             'main_banner' => $main_banner
         ]);
@@ -695,6 +714,10 @@ class ConfigController extends Controller
 
         $categories = $all_categories->get();
         $most_visited_categories = $all_categories->get();
+        
+        foreach($most_visited_categories as $category){
+            $category->icon = asset('storage/app/public/category/'.$category->icon);
+        }
 
 
         return response()->json([
@@ -705,6 +728,8 @@ class ConfigController extends Controller
 
     public function random_product(){
         $random_product =$this->product->active()->inRandomOrder()->first();
+
+        $random_product->thumbnail = asset('storage/app/public/product/thumbnail/'.$random_product->thumbnail);
        
         return response()->json([
             'random_product' => $random_product
@@ -728,6 +753,7 @@ class ConfigController extends Controller
                 $rating = 0;
                 $count = 0;
                 foreach ($seller->product as $item) {
+                        $item->thumbnail = asset('storage/app/public/product/thumbnail/'.$item->thumbnail);
                     foreach ($item->reviews as $review) {
                         $rating += $review->rating;
                         $count++;
@@ -744,6 +770,10 @@ class ConfigController extends Controller
                 return $seller;
             });
         $newSellers     =  $seller_list->sortByDesc('id')->take(12);
+
+        // foreach($newSellers as $seller){
+        //     $seller->image = asset('storage/app/public/profile/'.$seller->image);
+        // }
 
         return response()->json([
             'newSellers' => $newSellers
@@ -764,7 +794,10 @@ class ConfigController extends Controller
         $theme_name = theme_root_path();
 
         $top_side_banner = Banner::where(['banner_type'=> 'Top Side Banner','published'=> 1, 'theme'=>$theme_name])->orderBy('id', 'desc')->latest()->first();
-
+        if($top_side_banner){
+            $top_side_banner->photo = asset('storage/app/public/banner/'.$top_side_banner->photo);
+            $top_side_banner->mobile_photo = asset('storage/app/public/banner/'.$top_side_banner->mobile_photo);
+        }
         return response()->json([
             'top_side_banner' => $top_side_banner
         ]);
@@ -798,7 +831,10 @@ class ConfigController extends Controller
         ->where('position', 0);
 
         $categories = $all_categories->get();
-
+        
+        foreach($categories as  $category){
+            $category->icon = asset('storage/app/category/'.$category->icon);
+        }
         return response()->json([
             'categories' => $categories
         ]);
@@ -846,6 +882,8 @@ class ConfigController extends Controller
             return $query->active();
         })->first();
 
+        $most_demanded_product->product->thumbnail = asset('storage/app/public/product/thumbnail/'.$most_demanded_product->product->thumbnail);
+
         return response()->json([
             'most_demanded_product' => $most_demanded_product
         ]);
@@ -856,6 +894,9 @@ class ConfigController extends Controller
                             ->with(['wishList'=>function($query){
                                 return $query->where('customer_id', Auth::guard('customer')->user()->id ?? 0);
                             }])->latest()->take(20)->get();
+        foreach($featured_products as $product){
+            $product->thumbnail = asset('storage/app/public/product/thumbnail/'.$product->thumbnail);
+        }
         return response()->json([
             'featured_products' => $featured_products
         ]);
