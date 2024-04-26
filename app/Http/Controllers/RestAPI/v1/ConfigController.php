@@ -937,7 +937,7 @@ class ConfigController extends Controller
         });
 
         foreach($all_products as $product){
-            $product->thumbnail = asset('storage/app/product/thumbnail/'.$product->thumbnail);
+            $product->thumbnail = asset('storage/app/public/product/thumbnail/'.$product->thumbnail);
         }
 
         return response()->json([
