@@ -240,12 +240,9 @@ class PassportAuthController extends Controller
 
     public function TokenCheck(Request $request)
     {
-
-        // dd($request->all());
         $request->validate([
             'user_id' => 'required',
             'otp' => 'required',
-            // 'password' => 'required'
         ]);
 
         $user = User::where(['phone' => $request->user_id])->orWhere(['email' => $request->user_id])->first();
@@ -253,7 +250,7 @@ class PassportAuthController extends Controller
 
         //login attempt check start
         $max_login_hit = Helpers::get_business_settings('maximum_login_hit') ?? 5;
-        $temp_block_time = Helpers::get_business_settings('temporary_login_block_time') ?? 5; //seconds
+        $temp_block_time = Helpers::get_business_settings('temporary_login_block_time') ?? 5;
         if (isset($user) == false) {
             if ($request->ajax()) {
                 return response()->json([
@@ -329,8 +326,9 @@ class PassportAuthController extends Controller
                 $redirect_url = route('home');
             }
 
-                // Generate access token
-                $token = $user->createToken('LaravelAuthApp')->accessToken;
+            // Generate access token
+            $token = $user->createToken('LaravelAuthApp')->accessToken;
+            
             
                 // Reset user attributes
                 $user->login_hit_count = 0;
@@ -340,7 +338,7 @@ class PassportAuthController extends Controller
                 $user->save();
                 
                 // Return response with token
-                return response()->json(['token' => $token, 'message' => 'Login Success'], 200);
+                return response()->json([$token], 200);
              
             
 

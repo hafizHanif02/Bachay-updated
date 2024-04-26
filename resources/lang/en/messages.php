@@ -7337,4 +7337,5 @@
   'user_verify' => 'User verify',
   'Add child' => 'Add child',
   'check_your_whatsapp_&_email_for_token' => 'Check your whatsapp & email for token',
+  'too_many_attempts' => 'Too many attempts',
 );

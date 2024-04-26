@@ -105,6 +105,10 @@ Route::group(['namespace' => 'RestAPI\v1', 'prefix' => 'v1', 'middleware' => ['a
         Route::get('/seen', 'NotificationController@notification_seen')->middleware('auth:api');
     });
 
+    Route::group(['prefix' => 'child'], function () {
+       Route::get('/', [FamilyRelationController::class,'childHome']); 
+    });
+
     Route::group(['prefix' => 'attributes'], function () {
         Route::get('/', 'AttributeController@get_attributes');
     });
