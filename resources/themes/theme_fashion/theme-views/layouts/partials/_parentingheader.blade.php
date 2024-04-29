@@ -805,7 +805,10 @@
 
     </div>
 </header>
-@include('theme-views.layouts.partials.parenting_menu_scroller')
+<div class="d-block d-md-none d-lg-none d-xl-none">
+
+    @include('theme-views.layouts.partials.parenting_menu_scroller')
+</div>
 
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
     <div class="offcanvas-header justify-content-end">
