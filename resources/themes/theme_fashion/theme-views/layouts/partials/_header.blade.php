@@ -664,7 +664,7 @@
                     </li>
                     @if (auth('customer')->check())
                         <li class="me-2 me-sm-0 d-none d-xl-block">
-                            <a href="javascript:">
+                            <a href="javascript:" onclick="getViewByOnclickProfile()">
                                 {{-- <i class="bi bi-person d-none d-xl-inline-block nav-ul_text"
                                     style="font-size: 16px !important"></i> --}}
                                 {{-- <i class="bi bi-person-circle d-xl-none nav-ul_text"
@@ -684,7 +684,7 @@
                                     class="mx-1 d-none d-md-block nav-ul_text">{{ auth('customer')->user()->image }}</span> --}}
                                 <i class="ms-1 text-small bi bi-chevron-down d-none d-md-block nav-ul_text"></i>
                             </a>
-                            <div class="dropdown-menu __dropdown-menu">
+                            <div class="dropdown-menu __dropdown-menu header-profile-dropdown">
                                 <ul class="language">
                                     <li class="thisIsALinkElement" data-linkpath="{{ route('account-oder') }}">
                                         <img loading="lazy"
@@ -2189,4 +2189,10 @@
             $(this).find(".bi-chevron-down, .bi-chevron-right").toggleClass("d-none");
         });
     });
+
+    
+function getViewByOnclickProfile() {
+    document.getElementById("header-profile-dropdown").classList.toggle("__dropdown-menu-show");
+}
+
 </script>
