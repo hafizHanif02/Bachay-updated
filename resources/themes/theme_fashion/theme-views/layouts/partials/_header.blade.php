@@ -684,7 +684,7 @@
                                     class="mx-1 d-none d-md-block nav-ul_text">{{ auth('customer')->user()->image }}</span> --}}
                                 <i class="ms-1 text-small bi bi-chevron-down d-none d-md-block nav-ul_text"></i>
                             </a>
-                            <div class="dropdown-menu __dropdown-menu header-profile-dropdown">
+                            <div class="dropdown-menu __dropdown-menu" id="header-profile-dropdown">
                                 <ul class="language">
                                     <li class="thisIsALinkElement" data-linkpath="{{ route('account-oder') }}">
                                         <img loading="lazy"
