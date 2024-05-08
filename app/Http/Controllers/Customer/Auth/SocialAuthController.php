@@ -25,7 +25,7 @@ class SocialAuthController extends Controller
     {
         $user_data = Socialite::driver($service)->stateless()->user();
 
-        dd($user_data); 
+        //dd($user_data); 
         $user = User::where('email', $user_data->getEmail())->first();
 
         $name = explode(' ', $user_data['name']);
