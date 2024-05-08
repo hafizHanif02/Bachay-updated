@@ -9,7 +9,7 @@ return [
         "positionClass" => "toast-bottom-left",
         "preventDuplicates" => false,
         "onclick" => null,
-        "showDuration" => "300",
+        "showDuration" => "3",
         "hideDuration" => "1000",
         "timeOut" => "15000",
         "extendedTimeOut" => "1000",
