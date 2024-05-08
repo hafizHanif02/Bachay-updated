@@ -74,7 +74,7 @@
                     iconClasses: { error: "toast-error", info: "toast-info", success: "toast-success", warning: "toast-warning" },
                     iconClass: "toast-info",
                     positionClass: "toast-top-right",
-                    timeOut: 15000,
+                    timeOut: 15,
                     titleClass: "toast-title",
                     messageClass: "toast-message",
                     escapeHtml: !1,
