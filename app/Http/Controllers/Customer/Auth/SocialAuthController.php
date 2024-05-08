@@ -24,7 +24,7 @@ class SocialAuthController extends Controller
     public function handleProviderCallback($service)
     {
         $user_data = Socialite::driver($service)->stateless()->user();
-
+        return $user_data;
         $user = User::where('email', $user_data->getEmail())->first();
 
         $name = explode(' ', $user_data['name']);
