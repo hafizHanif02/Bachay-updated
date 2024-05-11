@@ -277,7 +277,7 @@
                 </div>
                 <hr>
                 @foreach($question->answers->take(2) as $answer)
-                {dd($answer)}
+                
                 <div class="mb-3">
                     <div class="d-flex justify-content-between">
                         <div class="d-flex gap-3">
