@@ -770,7 +770,7 @@
 
                                     <li class="nav-item">
                                         <a href="#comments" class="nav-link"
-                                           data-bs-toggle="tab">{{ translate('comment') }}
+                                           data-bs-toggle="tab">{{ translate('review') }}
                                             <sup>{{$product->reviews_count}}</sup></a>
                                     </li>
                                 </ul>
