@@ -29,7 +29,7 @@
         <div class="cont">
             <h6 class="title">
                 <a href="{{route('product',$product->slug)}}"
-                   title="{{ $product['name'] }}">{{ Str::limit($product['name'], 18) }}</a>
+                   title="{{ $product['name'] }}">{{ Str::limit($product['name'], 30) }}</a>
             </h6>
             <div class="d-flex align-items-center justify-content-between column-gap-2">
                 <h4 class="price flex-wrap">
