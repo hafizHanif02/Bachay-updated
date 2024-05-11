@@ -9,7 +9,7 @@
                 <span class="badge badge-title z-2">{{translate('new')}}</span>
             @endif
             <div class="hover-content d-flex justify-content-between">
-                <a href="javascript:">{{ \Illuminate\Support\Str::limit(isset($product->category) ? $product->category->name:'', 7) }}</a>
+                <a href="javascript:">{{ \Illuminate\Support\Str::limit(isset($product->category) ? $product->category->name:'', 10) }}</a>
                 <div class="d-flex flex-wrap justify-content-between align-items-center column-gap-3">
                     <a href="javascript:" data-id="{{$product->id}}" class="d-inline-flex quickView_action">
                         <i class="bi bi-eye"></i>
