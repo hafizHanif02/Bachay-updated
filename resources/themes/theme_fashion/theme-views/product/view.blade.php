@@ -96,10 +96,12 @@
     <div class="container">
         @include('theme-views.layouts.partials._search-form-partials')
     </div>
-    <section class="all-products-section pt-20px scroll_to_form_top">
+    <section class="all-products-section pt-20px scroll_to_form_top" style="
+    padding: 0 30px;
+">
         <form action="{{ route('ajax-filter-products') }}" method="POST" id="fashion_products_list_form">
             @csrf
-            <div class="container">
+            <div class="container-fluid">
                 <div class="section-title mb-4">
                     <div
                         class="d-flex flex-column flex-sm-row justify-content-between row-gap-3 column-gap-2 align-items-sm-center search-page-title">
