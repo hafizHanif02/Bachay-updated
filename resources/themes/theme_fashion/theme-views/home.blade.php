@@ -97,6 +97,7 @@
 
     @if ($promo_banner_bottom)
         <div class="container">
+            <div class="row">
         @foreach ($promo_banner_bottom as $key => $item)
             <div class="col-12 col-sm-6 col-md-4 col-lg-4">
                 <a href="{{ $item->url }}" target="_blank" class="d-block promotional-banner">
@@ -105,7 +106,7 @@
                 </a>
             </div>
         @endforeach
-            
+        </div>
         </div>
     @endif
 
