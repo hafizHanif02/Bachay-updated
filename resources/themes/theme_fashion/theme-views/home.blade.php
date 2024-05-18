@@ -97,12 +97,15 @@
 
     @if ($promo_banner_bottom)
         <div class="container">
-            <div class="mt-32px">
-                <a href="{{ $promo_banner_bottom->url }}" target="_blank" class="d-block promotional-banner">
+        @foreach ($promo_banner_bottom as $key => $item)
+            <div class="col-12 col-sm-6 col-md-4 col-lg-4">
+                <a href="{{ $item->url }}" target="_blank" class="d-block promotional-banner">
                     <img loading="lazy" class="w-100" alt="{{ translate('banner') }}"
-                         src="{{ getValidImage(path: 'storage/app/public/banner/'.$promo_banner_bottom['photo'], type:'banner') }}">
+                         src="{{ getValidImage(path: 'storage/app/public/banner/'.$item['photo'], type:'banner') }}">
                 </a>
             </div>
+        @endforeach
+            
         </div>
     @endif
 
