@@ -3830,7 +3830,7 @@ header.bg-white {
     display: flex;
     align-items: center;
     gap: 3rem;
-    margin: 5.7142857143rem 0;
+    /* margin: 5.7142857143rem 0; */
     padding: 0rem 2.8571428571rem 0rem 2.1428571429rem;
     background: var(--section-2);
 }
