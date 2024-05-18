@@ -81,7 +81,7 @@
     @endif
 
     @if ($promo_banner_right)
-        <div class="container d-sm-none overflow-hidden pt-4">
+        <div class="container overflow-hidden pt-4">
             <a href="{{ $promo_banner_right['url'] }}" target="_blank" class="d-block promotional-banner">
                 <img loading="lazy" src="{{ getValidImage(path: 'storage/app/public/banner/'.$promo_banner_right['photo'], type:'banner') }}"
                 class="w-100 img-fluid" alt="{{ translate('banner') }}">
