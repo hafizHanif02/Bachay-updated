@@ -41,7 +41,7 @@
                 @if (json_decode($product->variation) != null)
                     <span class="btn add-to-cart-btn">
                         <a href="javascript:" data-id="{{$product['id']}}" class="quickView_action">
-                            <i class="bi bi-cart"></i>
+                        <i class="bi bi-cart-plus"></i>
                         </a>
                     </span>
                 @else
