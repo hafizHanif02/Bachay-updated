@@ -5,11 +5,11 @@
                 <img loading="lazy" class="w-100" alt="{{ translate('product') }}"
                      src="{{ getValidImage(path: 'storage/app/public/product/thumbnail/'.$product['thumbnail'], type: 'product') }}">
             </a>
-            {{$product}}
+            {{$product->choice_options?->count() > 0 ? '<span class="badge badge-title z-2">{{translate('choice_options')}}</span>' : ''}}
             @if (isset($product->created_at) && $product->created_at->diffInMonths(\Carbon\Carbon::now()) < 1)
                 <span class="badge badge-title z-2">{{translate('new')}}</span>
             @endif
-            
+
             <div class="hover-content d-flex justify-content-between">
                 <a href="javascript:">{{ \Illuminate\Support\Str::limit(isset($product->category) ? $product->category->name:'', 15) }}</a>
                 <div class="d-flex flex-wrap justify-content-between align-items-center column-gap-3">
