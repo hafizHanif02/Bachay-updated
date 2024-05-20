@@ -4851,6 +4851,12 @@ header.bg-white {
     justify-content: center;
 }
 
+.add-to-cart-btn:hover {
+    border: 1px solid;
+    border-radius: 8px;
+    background: #835ec1;
+    color: white;
+}
 .add-to-cart-btn i {
     /* font-size: 18px;
   line-height: 18px; */
@@ -4858,6 +4864,9 @@ header.bg-white {
     color: black;
 }
 
+.add-to-cart-btn i:hover {
+    color: white;
+}
 .btn-soft-base {
     color: var(--base);
     background: rgba(var(--base-rgb), 0.04) !important;

@@ -72,7 +72,7 @@
             </div>
             @if ($product['product_type'] == 'physical')
                 <div class="sold-info d-flex">
-                    <span>{{ $product->order_details_sum_qty > 0 ? $product->order_details_sum_qty.'+ '.translate('sold').' /' : '' }}</span>
+                    <span>{{ $product->order_details_sum_qty > 0 ? $product->order_details_sum_qty.'+ '.translate('sold').' ' : '' }}</span>
                     <!-- <span>{{$product->order_details_sum_qty + $product->current_stock}} {{translate('item')}}</span> -->
                 </div>
             @else
