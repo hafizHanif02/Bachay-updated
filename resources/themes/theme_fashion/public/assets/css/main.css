@@ -4649,7 +4649,7 @@ header.bg-white {
 }
 
 .product-wrapper .product-card {
-    width: 25%;
+    width: 33%;
     padding: 0.5rem;
 }
 
@@ -4764,7 +4764,7 @@ header.bg-white {
 .product-card .cont .price del {
     font-weight: 400;
     font-size: 0.8235642857rem;
-    color: #b4b2b2;
+    color: #ff7272;
     line-height: 1rem;
 }
 
@@ -4840,7 +4840,7 @@ header.bg-white {
     }
 }
 .add-to-cart-btn {
-    background: rgba(137, 142, 147, 0.5) !important;
+    /* background: rgba(137, 142, 147, 0.5) !important; */
     border-radius: 0;
     padding: 0;
     height: 22px;
@@ -4854,8 +4854,8 @@ header.bg-white {
 .add-to-cart-btn i {
     /* font-size: 18px;
   line-height: 18px; */
-    font-size: 24px;
-    color: var(--white);
+    font-size: 29px;
+    color: black;
 }
 
 .btn-soft-base {
