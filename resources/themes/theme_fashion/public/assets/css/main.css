@@ -4731,7 +4731,7 @@ header.bg-white {
     font-weight: 500;
     font-size: 0.8571428571rem;
     line-height: 1rem;
-    margin-bottom: 0.8571428571rem;
+    /* margin-bottom: 0.8571428571rem; */
 }
 
 @media (max-width: 575px) {
@@ -4785,7 +4785,8 @@ header.bg-white {
 
 .product-card .cont .sold-info {
     color: #89939e;
-    font-size: 0.7749rem;
+    font-size: 0.9rem;
+    margin-top: -10px;
 }
 
 .product-card .cont .sold-info span {
@@ -4842,7 +4843,7 @@ header.bg-white {
 .add-to-cart-btn {
     /* background: rgba(137, 142, 147, 0.5) !important; */
     border-radius: 0;
-    padding: 0;
+    padding: 20px;
     height: 22px;
     width: 22px;
     border: none;
