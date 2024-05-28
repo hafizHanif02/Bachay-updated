@@ -90,7 +90,7 @@
 
     @include('theme-views.partials.__featured-product')
 
-    <!-- @include('theme-views.partials._all-products-home') -->
+    @include('theme-views.partials._all-products-home')
 
     @include('theme-views.partials._signature-product')
 
