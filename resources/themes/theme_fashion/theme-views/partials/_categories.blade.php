@@ -11,7 +11,7 @@
         <div class="most-visited-category-wrapper align-items-center row">
             @foreach ($most_visited_categories as $key => $item)
                 {{-- @if ($key != 0 && $key < 8) --}}
-                    <div class="col-6 col-sm-4 col-md-3 col-lg-3">
+                    <div class="col-3 col-sm-3 col-md-2 col-lg-2">
                         <a href="{{ route('categories.detail', $item->name) }}"
                             class="most-visited-item d-block text-center mb-4">
                             <img loading="lazy" alt="{{ translate('category') }}"

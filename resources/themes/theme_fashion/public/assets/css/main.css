@@ -4191,7 +4191,7 @@ header.bg-white {
     height: 17.7142857143rem;
 }
 .most-visited-category-wrapper a {
-    border-radius: 20px;
+    border-radius: 100%;
 }
 @media (min-width: 1199px) {
     .most-visited-category-wrapper > .most-visited-item {
@@ -4649,7 +4649,7 @@ header.bg-white {
 }
 
 .product-wrapper .product-card {
-    width: 33%;
+    width: 25%;
     padding: 0.5rem;
 }
 
