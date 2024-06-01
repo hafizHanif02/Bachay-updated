@@ -42,12 +42,10 @@
         @endforeach
     </div>
 
-    <div>
-        @foreach($main_banner as $banner)
-            <a href="{{ $banner['url'] ?? 'javascript:'}}" class="banner-link d-none d-lg-block d-xl-block">
-                <img src="{{ getValidImage(path: 'storage/app/public/banner/'.$banner['photo'], type:'product') }}" alt="{{ translate('banner') }}" loading="lazy">
-            </a>
-        @endforeach
+    <div class="grid-banner">
+        <a href="#">
+            <img src="{{theme_asset('assets/img/grid-banner.png')}}" alt="{{ translate('banner') }}" loading="lazy">
+        </a>
     </div>
 </section>
 @else
