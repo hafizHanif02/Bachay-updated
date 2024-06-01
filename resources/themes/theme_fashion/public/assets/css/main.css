@@ -10480,6 +10480,10 @@ a.img5:hover::before {
     width: 100%;
 }
 
+.grid-banner a {
+    height: 300px;
+    border-radius: 20px;
+}
 .g-10 {
     width: 10% !important;
 }
