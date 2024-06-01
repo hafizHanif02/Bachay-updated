@@ -45,6 +45,12 @@
     <div class="grid-banner">
         <a href="#">
             <img src="https://bachay.com/public/assets/images/staticImages/Frame.jpg" alt="{{ translate('banner') }}" loading="lazy">
+            <img src="https://bachay.com/public/assets/images/staticImages/Frame (1).jpg" alt="{{ translate('banner') }}" loading="lazy">
+            <img src="https://bachay.com/public/assets/images/staticImages/Frame2.jpg" alt="{{ translate('banner') }}" loading="lazy">
+            <img src="https://bachay.com/public/assets/images/staticImages/Frame3.jpg" alt="{{ translate('banner') }}" loading="lazy">
+            <img src="https://bachay.com/public/assets/images/staticImages/Frame4.jpg" alt="{{ translate('banner') }}" loading="lazy">
+            <img src="https://bachay.com/public/assets/images/staticImages/Frame5.jpg" alt="{{ translate('banner') }}" loading="lazy">
+            
         </a>
     </div>
 </section>
