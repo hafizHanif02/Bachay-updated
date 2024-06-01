@@ -10467,7 +10467,8 @@ a.img5:hover::before {
 }
 
 .grid-banner {
-    
+    background: white;
+    padding: 0 20px;
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
@@ -10479,11 +10480,14 @@ a.img5:hover::before {
     object-fit: fill;
     width: 100%;
     height: 100%;
+    padding: 3px;
+    border-radius: 25px;
 }
 
 .grid-banner a {
     height: 300px;
     border-radius: 20px;
+    border: 0px solid red;
 }
 .g-10 {
     width: 10% !important;
