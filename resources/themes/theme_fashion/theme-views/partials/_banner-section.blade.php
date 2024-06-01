@@ -42,6 +42,13 @@
         @endforeach
     </div>
 
+    <div>
+        @foreach($main_banner as $banner)
+            <a href="{{ $banner['url'] ?? 'javascript:'}}" class="banner-link d-none d-lg-block d-xl-block">
+                <img src="{{ getValidImage(path: 'storage/app/public/banner/'.$banner['photo'], type:'product') }}" alt="{{ translate('banner') }}" loading="lazy">
+            </a>
+        @endforeach
+    </div>
 </section>
 @else
     <section class="promo-page-header">
