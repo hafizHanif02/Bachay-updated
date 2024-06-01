@@ -44,7 +44,7 @@
 
     <div class="grid-banner">
         <a href="#">
-            <img src="{{asset('assets/img/grid-banner.png')}}" alt="{{ translate('banner') }}" loading="lazy">
+            <img src="https://bachay.com/public/assets/images/staticImages/Frame.jpg" alt="{{ translate('banner') }}" loading="lazy">
         </a>
     </div>
 </section>
