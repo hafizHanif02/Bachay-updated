@@ -44,7 +44,7 @@
 
     <div class="grid-banner">
         <a href="#">
-            <img src="{{theme_asset('assets/img/grid-banner.png')}}" alt="{{ translate('banner') }}" loading="lazy">
+            <img src="{{asset('assets/img/grid-banner.png')}}" alt="{{ translate('banner') }}" loading="lazy">
         </a>
     </div>
 </section>
