@@ -10478,6 +10478,7 @@ a.img5:hover::before {
 .grid-banner a img {
     object-fit: fill;
     width: 100%;
+    height: 100%;
 }
 
 .grid-banner a {
