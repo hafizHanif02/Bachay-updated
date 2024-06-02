@@ -2,24 +2,24 @@
 <section class="banner-section ">
     <div class="slider owl-theme owl-carousel custom-single-slider mobile-banner">
 
-    <a href="#" class="banner-slide" style="background: purple;height: 280px; object-fit:cover; width: 100%">
+    <a href="#" class="banner-slide" style="background: white;height: 280px; object-fit:cover; width: 100%">
             <img class="banner-slide-img" src="https://bachay.com/public/assets/images/staticImages/Frame.jpg" alt="{{ translate('banner') }}" loading="lazy">
         </a>
-        <a href="#" class="banner-slide" style="background: purple;height: 280px; object-fit:cover; width: 100%">
+        <a href="#" class="banner-slide" style="background: white;height: 280px; object-fit:cover; width: 100%">
             <img class="banner-slide-img" src="https://bachay.com/public/assets/images/staticImages/Frame (1).jpg" alt="{{ translate('banner') }}" loading="lazy">
         </a>
 
         
-        <a href="#" class="banner-slide" style="background: purple;height: 280px; object-fit:cover; width: 100%">
+        <a href="#" class="banner-slide" style="background: white;height: 280px; object-fit:cover; width: 100%">
             <img class="banner-slide-img" src="https://bachay.com/public/assets/images/staticImages/Frame2.jpeg" alt="{{ translate('banner') }}" loading="lazy">
         </a>
-        <a href="#" class="banner-slide" style="background: purple;height: 280px; object-fit:cover; width: 100%">
+        <a href="#" class="banner-slide" style="background: white;height: 280px; object-fit:cover; width: 100%">
             <img class="banner-slide-img" src="https://bachay.com/public/assets/images/staticImages/Frame3.jpeg" alt="{{ translate('banner') }}" loading="lazy">
         </a>
-        <a href="#" class="banner-slide" style="background: purple;height: 280px; object-fit:cover; width: 100%">
+        <a href="#" class="banner-slide" style="background: white;height: 280px; object-fit:cover; width: 100%">
             <img class="banner-slide-img" src="https://bachay.com/public/assets/images/staticImages/Frame4.jpeg" alt="{{ translate('banner') }}" loading="lazy">
         </a>
-        <a href="#" class="banner-slide" style="background: purple;height: 280px; object-fit:cover; width: 100%">
+        <a href="#" class="banner-slide" style="background: white;height: 280px; object-fit:cover; width: 100%">
             <img class="banner-slide-img" src="https://bachay.com/public/assets/images/staticImages/frame5.jpeg" alt="{{ translate('banner') }}" loading="lazy">
         </a>
 
