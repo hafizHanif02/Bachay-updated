@@ -1,6 +1,6 @@
 @if ($main_banner->count() > 0)
 <section class="banner-section ">
-    <div class="slider owl-theme owl-carousel custom-single-slider">
+    <div class="slider owl-theme owl-carousel custom-single-slider mobile-banner">
         @foreach($main_banner as $banner)
        
         <div class="banner-slide" style="background: {{ $banner['background_color'] }};">
