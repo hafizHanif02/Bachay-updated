@@ -10469,7 +10469,7 @@ a.img5:hover::before {
 
 .grid-banner {
     background: white;
-    display: block;
+    display: flex;
 }
 
 .grid-banner a img {
