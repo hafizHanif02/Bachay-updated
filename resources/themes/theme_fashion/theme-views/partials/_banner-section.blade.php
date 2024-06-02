@@ -47,7 +47,7 @@
         <a href="#" class="col-xl-4 col-lg-5">
             <img src="https://bachay.com/public/assets/images/staticImages/Frame.jpg" alt="{{ translate('banner') }}" loading="lazy">
         </a>
-        <a href="#" class="col-xl-6 col-lg-7">
+        <a href="#" class="col-xl-5 col-lg-7">
             <img src="https://bachay.com/public/assets/images/staticImages/Frame (1).jpg" alt="{{ translate('banner') }}" loading="lazy">
         </a>
 
@@ -61,7 +61,7 @@
         <a href="#" class="col-xl-4 col-lg-5">
             <img src="https://bachay.com/public/assets/images/staticImages/Frame4.jpeg" alt="{{ translate('banner') }}" loading="lazy">
         </a>
-        <a href="#" class="col-xl-6 col-lg-7">
+        <a href="#" class="col-xl-5 col-lg-7">
             <img src="https://bachay.com/public/assets/images/staticImages/frame5.jpeg" alt="{{ translate('banner') }}" loading="lazy">
         </a>
     </div>
