@@ -4206,7 +4206,7 @@ header.bg-white {
     overflow: hidden;
     /* position: relative; */
     color: #fff;
-    height: 248px;
+    height: 224px;
 }
 
 .most-visited-category-wrapper .most-visited-item img {
@@ -4247,7 +4247,7 @@ header.bg-white {
     transform: translate(-50%, -50%);
     transition: all ease 0.4s;
     max-width: 100%;
-    font-size: 22px;
+    font-size: 15px;
     font-weight: 600;
     background: rgba(0, 0, 0, 0);
 }
