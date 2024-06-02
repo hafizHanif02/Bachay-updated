@@ -4184,6 +4184,7 @@ header.bg-white {
 
 .most-visited-category-wrapper {
     display: flex;
+    position: relative;
     /* gap: 0.5714285714rem; */
 }
 
@@ -4192,7 +4193,7 @@ header.bg-white {
     height: 17.7142857143rem;
 }
 .most-visited-category-wrapper a {
-    border-radius: 100%;
+    /* border-radius: 100%; */
 }
 @media (min-width: 1199px) {
     .most-visited-category-wrapper > .most-visited-item {
@@ -4203,15 +4204,15 @@ header.bg-white {
     display: block;
     flex-grow: 1;
     overflow: hidden;
-    position: relative;
+    /* position: relative; */
     color: #fff;
 }
 
 .most-visited-category-wrapper .most-visited-item img {
-    width: 100%;
+    width: 64%;
     -o-object-fit: cover;
     object-fit: cover;
-    height: 100%;
+    height: auto;
     transition: all ease 0.3s;
 }
 
@@ -4240,7 +4241,7 @@ header.bg-white {
     text-transform: uppercase;
     color: #fff;
     position: absolute;
-    top: 50%;
+    bottom: 0%;
     left: 50%;
     transform: translate(-50%, -50%);
     transition: all ease 0.4s;
