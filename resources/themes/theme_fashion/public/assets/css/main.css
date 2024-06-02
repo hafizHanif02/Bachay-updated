@@ -10484,6 +10484,7 @@ a.img5:hover::before {
     border-radius: 20px;
     border: 0px solid red;
     padding: 2px 2px;
+    margin: 0 !important;
 }
 
 @media screen and (min-width: 992px) {
