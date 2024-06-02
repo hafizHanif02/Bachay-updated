@@ -42,27 +42,29 @@
         @endforeach
     </div>
 
-    <div class="grid-banner">
-        <a href="#" class="g-35">
+    <div class="continer-fluid">
+    <div class="row">
+        <a href="#" class="col-lg-4">
             <img src="https://bachay.com/public/assets/images/staticImages/Frame.jpg" alt="{{ translate('banner') }}" loading="lazy">
         </a>
-        <a href="#" class="g-45">
+        <a href="#" class="col-lg-5">
             <img src="https://bachay.com/public/assets/images/staticImages/Frame (1).jpg" alt="{{ translate('banner') }}" loading="lazy">
         </a>
 
         
-        <a href="#" class="g-20">
+        <a href="#" class="col-lg-3">
             <img src="https://bachay.com/public/assets/images/staticImages/Frame2.jpeg" alt="{{ translate('banner') }}" loading="lazy">
         </a>
-        <a href="#" class="g-20">
+        <a href="#" class="col-lg-3">
             <img src="https://bachay.com/public/assets/images/staticImages/Frame3.jpeg" alt="{{ translate('banner') }}" loading="lazy">
         </a>
-        <a href="#" class="g-35">
+        <a href="#" class="col-lg-4">
             <img src="https://bachay.com/public/assets/images/staticImages/Frame4.jpeg" alt="{{ translate('banner') }}" loading="lazy">
         </a>
-        <a href="#" class="g-45">
+        <a href="#" class="col-lg-5">
             <img src="https://bachay.com/public/assets/images/staticImages/frame5.jpeg" alt="{{ translate('banner') }}" loading="lazy">
         </a>
+    </div>
     </div>
 </section>
 @else
