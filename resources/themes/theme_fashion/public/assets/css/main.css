@@ -10486,12 +10486,14 @@ a.img5:hover::before {
     padding: 2px 2px;
 }
 
-.mobile-banner {
-    display: none !important;
+@media screen and (min-width: 992px) {
+    .mobile-banner {
+        display: none !important;
+    }
 }
 @media screen and (max-width: 992px) {
     .mobile-banner {
-        display: block;
+        display: block !important;
     }
     
     .grid-banner {
