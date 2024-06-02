@@ -43,7 +43,7 @@
     </div>
 
     <div class="continer-fluid">
-    <div class="row">
+    <div class="row grid-banner ">
         <a href="#" class="col-lg-4">
             <img src="https://bachay.com/public/assets/images/staticImages/Frame.jpg" alt="{{ translate('banner') }}" loading="lazy">
         </a>
