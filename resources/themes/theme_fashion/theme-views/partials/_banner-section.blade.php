@@ -11,6 +11,7 @@
             <img class="banner-slide-img d-lg-none d-xl-none" style="height: 400px;" alt="{{ translate('banner') }}" loading="lazy"
                  src="{{ getValidImage(path: 'storage/app/public/banner/'.$banner['mobile_photo'], type:'product') }}">
 
+                 <!-- old hidden / comented -->
             <!-- @if($banner['title'] && $banner['sub_title'])
                 <div class="content">
                     <h1 class="title mb-3">{{ $banner['title'] }} <br><span class="subtxt">{{ $banner['sub_title'] }}</span> </h1>
@@ -35,6 +36,9 @@
                 </filter>
                 </defs>
             </svg> -->
+             <!-- old hidden / comented -- end here -- -->
+
+
             @if ($main_banner->count() > 1)
             <img src="{{theme_asset('assets/img/arrow-icon.png')}}" class="banner-arrow d-sm-none" alt="{{ translate('banner') }}" loading="lazy">
             @endif
@@ -42,7 +46,7 @@
         @endforeach
     </div>
 
-    <div class="continer-fluid">
+    <div class="continer-fluid desktop-banner">
     <div class="row grid-banner ">
         <a href="#" class="col-xl-4 col-lg-5">
             <img src="https://bachay.com/public/assets/images/staticImages/Frame.jpg" alt="{{ translate('banner') }}" loading="lazy">

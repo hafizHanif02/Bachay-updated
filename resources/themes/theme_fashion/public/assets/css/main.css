@@ -2022,6 +2022,7 @@ header.bg-white {
 .banner-section {
     position: relative;
     background: var(--base);
+    display: none;
 }
 
 .banner-slide-next {
@@ -10481,6 +10482,15 @@ a.img5:hover::before {
     height: 300px;
     border-radius: 20px;
     border: 0px solid red;
-    padding: 1px 1px;
+    padding: 2px 2px;
 }
 
+@media screen and (max-width: 992px) {
+    .banner-section {
+        display: block;
+    }
+    
+    .grid-banner {
+        display: none;
+    }
+}
