@@ -4236,19 +4236,23 @@ header.bg-white {
     font-weight: 600;
 }
 
-.most-visited-category-wrapper .most-visited-item .title {
+.most-visited-category-wrapper .most-visited-item .title, .title2 {
     text-align: center;
     text-transform: uppercase;
-    color: #fff;
+    color: #1d1d1d;
     position: absolute;
-    bottom: 0%;
+    bottom: 31px;
     left: 50%;
     transform: translate(-50%, -50%);
     transition: all ease 0.4s;
     max-width: 100%;
     font-size: 1.4285714286rem;
     font-weight: 600;
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0);
+}
+.title2 {
+    bottom: 0px;
+    font-weight: normal;
 }
 
 @media (max-width: 767px) {

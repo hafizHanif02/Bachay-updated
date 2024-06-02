@@ -18,6 +18,7 @@
                                 src="{{ getValidImage(path: 'storage/app/public/category/' . $item->icon, type: 'category') }}"
                                 class="img-fluid mb-2">
                             <h4 class="title">{{ $item->name }}</h4>
+                            <h4 class="title2">Category</h4>
                             <!-- <div class="cont">
                                 <h6 class="text-white font-semibold text-uppercase">{{ $item->name }}</h6>
                                 <span>{{ $item->product_count }} {{ translate('product') }}</span>
