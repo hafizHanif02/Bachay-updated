@@ -1,7 +1,30 @@
 @if ($main_banner->count() > 0)
 <section class="banner-section ">
     <div class="slider owl-theme owl-carousel custom-single-slider mobile-banner">
-        @foreach($main_banner as $banner)
+
+    <a href="#" class="banner-slide" style="background: purple;">
+            <img class="banner-slide-img" src="https://bachay.com/public/assets/images/staticImages/Frame.jpg" alt="{{ translate('banner') }}" loading="lazy">
+        </a>
+        <a href="#" class="banner-slide" style="background: purple;">
+            <img class="banner-slide-img" src="https://bachay.com/public/assets/images/staticImages/Frame (1).jpg" alt="{{ translate('banner') }}" loading="lazy">
+        </a>
+
+        
+        <a href="#" class="banner-slide" style="background: purple;">
+            <img class="banner-slide-img" src="https://bachay.com/public/assets/images/staticImages/Frame2.jpeg" alt="{{ translate('banner') }}" loading="lazy">
+        </a>
+        <a href="#" class="banner-slide" style="background: purple;">
+            <img class="banner-slide-img" src="https://bachay.com/public/assets/images/staticImages/Frame3.jpeg" alt="{{ translate('banner') }}" loading="lazy">
+        </a>
+        <a href="#" class="banner-slide" style="background: purple;">
+            <img class="banner-slide-img" src="https://bachay.com/public/assets/images/staticImages/Frame4.jpeg" alt="{{ translate('banner') }}" loading="lazy">
+        </a>
+        <a href="#" class="banner-slide" style="background: purple;">
+            <img class="banner-slide-img" src="https://bachay.com/public/assets/images/staticImages/frame5.jpeg" alt="{{ translate('banner') }}" loading="lazy">
+        </a>
+
+        
+        <!-- @foreach($main_banner as $banner)
        
         <div class="banner-slide" style="background: {{ $banner['background_color'] }};">
 
@@ -9,7 +32,7 @@
                  src="{{ getValidImage(path: 'storage/app/public/banner/'.$banner['photo'], type:'product') }}">
 
             <img class="banner-slide-img d-lg-none d-xl-none" style="height: 400px;" alt="{{ translate('banner') }}" loading="lazy"
-                 src="{{ getValidImage(path: 'storage/app/public/banner/'.$banner['mobile_photo'], type:'product') }}">
+                 src="{{ getValidImage(path: 'storage/app/public/banner/'.$banner['mobile_photo'], type:'product') }}"> -->
 
                  <!-- old hidden / comented -->
             <!-- @if($banner['title'] && $banner['sub_title'])
@@ -39,11 +62,11 @@
              <!-- old hidden / comented -- end here -- -->
 
 
-            @if ($main_banner->count() > 1)
+            <!-- @if ($main_banner->count() > 1)
             <img src="{{theme_asset('assets/img/arrow-icon.png')}}" class="banner-arrow d-sm-none" alt="{{ translate('banner') }}" loading="lazy">
             @endif
         </div>
-        @endforeach
+        @endforeach -->
     </div>
 
     <div class="continer-fluid desktop-banner">
