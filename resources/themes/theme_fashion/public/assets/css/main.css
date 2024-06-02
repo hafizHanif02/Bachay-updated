@@ -10487,7 +10487,7 @@ a.img5:hover::before {
 }
 
 .mobile-banner {
-    display: none;
+    display: none !important;
 }
 @media screen and (max-width: 992px) {
     .mobile-banner {
