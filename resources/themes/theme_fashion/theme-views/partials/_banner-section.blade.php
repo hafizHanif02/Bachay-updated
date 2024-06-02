@@ -44,24 +44,24 @@
 
     <div class="continer-fluid">
     <div class="row grid-banner ">
-        <a href="#" class="col-lg-4">
+        <a href="#" class="col-xl-4 col-lg-5">
             <img src="https://bachay.com/public/assets/images/staticImages/Frame.jpg" alt="{{ translate('banner') }}" loading="lazy">
         </a>
-        <a href="#" class="col-lg-5">
+        <a href="#" class="col-xl-6 col-lg-7">
             <img src="https://bachay.com/public/assets/images/staticImages/Frame (1).jpg" alt="{{ translate('banner') }}" loading="lazy">
         </a>
 
         
-        <a href="#" class="col-lg-3">
+        <a href="#" class="col-xl-3 col-lg-6">
             <img src="https://bachay.com/public/assets/images/staticImages/Frame2.jpeg" alt="{{ translate('banner') }}" loading="lazy">
         </a>
-        <a href="#" class="col-lg-3">
+        <a href="#" class="col-xl-3 col-lg-6">
             <img src="https://bachay.com/public/assets/images/staticImages/Frame3.jpeg" alt="{{ translate('banner') }}" loading="lazy">
         </a>
-        <a href="#" class="col-lg-4">
+        <a href="#" class="col-xl-4 col-lg-5">
             <img src="https://bachay.com/public/assets/images/staticImages/Frame4.jpeg" alt="{{ translate('banner') }}" loading="lazy">
         </a>
-        <a href="#" class="col-lg-5">
+        <a href="#" class="col-xl-6 col-lg-7">
             <img src="https://bachay.com/public/assets/images/staticImages/frame5.jpeg" alt="{{ translate('banner') }}" loading="lazy">
         </a>
     </div>
