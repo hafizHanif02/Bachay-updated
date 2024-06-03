@@ -3,7 +3,7 @@
         <div class="section-title-3 mb-0">
             {{-- <div class="mb-32px"> --}}
             {{-- <h2 class="title mx-auto mb-0 text-capitalize">{{ translate('most_visited_categories') }}</h2> --}}
-            <h2 class="title mx-auto mb-3 text-capitalize">{{ translate('our_categories') }}</h2>
+            <!-- <h2 class="title mx-auto mb-3 text-capitalize">{{ translate('our_categories') }}</h2> -->
 
             {{-- </div> --}}
         </div>
@@ -98,7 +98,7 @@
                         <a href="{{ route('categories.detail', $item->name) }}"
                             class="most-visited-item d-block text-center ">
                             <img loading="lazy" alt="{{ translate('category') }}"
-                                src="https://bachay.com/public/assets/images/staticImages/boy6to24.png"
+                                src="https://bachay.com/public/assets/images/staticImages/bay6to24.png"
                                 class="img-fluid mb-2">
                             <h4 class="title">6-24 Months</h4>
                             <h4 class="title2">Boys Fashion</h4>
