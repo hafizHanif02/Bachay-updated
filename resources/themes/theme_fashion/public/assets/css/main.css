@@ -4242,21 +4242,22 @@ header.bg-white {
 .most-visited-category-wrapper .most-visited-item .title, .title2 {
     text-align: center;
     text-transform: uppercase;
-    color: #1d1d1d;
+    color: #0E0E0F;
     position: absolute;
     bottom: 31px;
     left: 50%;
     transform: translate(-50%, -50%);
     transition: all ease 0.4s;
     max-width: 100%;
-    font-size: 15px;
+    font-size: 17px;
     font-weight: 600;
     background: rgba(0, 0, 0, 0);
 }
 .title2 {
-    font-weight: 100;
-    font-size: 13px;
-    bottom: 9px;
+    font-weight: normal;
+    font-size: 17px;
+    bottom: 12px;
+    color: #3F3F46;
 }
 
 @media (max-width: 767px) {
