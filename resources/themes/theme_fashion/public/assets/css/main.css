@@ -10477,7 +10477,7 @@ a.img5:hover::before {
 .grid-banner {
     background: white;
     display: flex;
-    margin-top: 69px;
+    margin-top: 20px;
 }
 
 .grid-banner a img {
