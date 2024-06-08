@@ -6,8 +6,9 @@
             <h2 class="title text-capitalize">{{ translate('most_demanded_product') }}</h2>
         </div>
     </div>
-    <div class="container">
+    <div class="container-fluid page-padding">
         <div class="most-demanded-product-wrapper __bg-img cursor-pointer thisIsALinkElement" data-linkpath="{{ route('product', $most_demanded_product->product['slug']) }}">
+            
             <img loading="lazy" src="{{ getValidImage(path: 'storage/app/public/most-demanded/'.$most_demanded_product->banner, type:'banner') }}"
                 alt="{{ translate('banner') }}" class="inner-bg">
             <div class="most-demanded-product-content">

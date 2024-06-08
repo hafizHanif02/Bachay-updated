@@ -3031,7 +3031,7 @@ header.bg-white {
     flex-grow: 1;
     width: 8.5714285714rem;
     flex-grow: 1;
-    max-width: 140px;
+    /* max-width: 140px; */
     display: flex;
     padding: 0 10px;
 }
@@ -4108,7 +4108,7 @@ header.bg-white {
 .flash-deals-wrapper {
     flex-grow: 1;
     display: flex;
-    max-width: 53.0714285714rem;
+    /* max-width: 53.0714285714rem; */
     margin: 0 auto;
     border-radius: 0.2142857143rem;
     padding: 0.2857142857rem 0.6428571429rem;
@@ -4188,6 +4188,7 @@ header.bg-white {
     display: flex;
     position: relative;
     /* gap: 0.5714285714rem; */
+    margin-top: 19px;
 }
 
 .most-visited-category-wrapper > .most-visited-item {
@@ -4241,7 +4242,7 @@ header.bg-white {
 
 .most-visited-category-wrapper .most-visited-item .title, .title2 {
     text-align: center;
-    text-transform: uppercase;
+    
     color: #0E0E0F;
     position: absolute;
     bottom: 31px;
@@ -4252,6 +4253,7 @@ header.bg-white {
     font-size: 17px;
     font-weight: 600;
     background: rgba(0, 0, 0, 0);
+    width: 100%;
 }
 .title2 {
     font-weight: normal;
@@ -4666,7 +4668,7 @@ header.bg-white {
 
 @media (max-width: 1199px) {
     .product-wrapper .product-card {
-        width: 25%;
+        width: 33%;
     }
 }
 @media (max-width: 767px) {
@@ -10480,7 +10482,7 @@ a.img5:hover::before {
 .grid-banner {
     background: white;
     display: flex;
-    margin-top: 40px;
+    margin-top: 20px;
     padding-right: 20px;
     padding-left: 40px;
 }
@@ -10513,4 +10515,45 @@ a.img5:hover::before {
     .grid-banner {
         display: none;
     }
+}
+
+.promo-banner {
+    
+    display: flex;
+    padding-left: 40px;
+    padding-right: 20px;
+}
+
+.page-padding{
+    padding-left: 40px;
+    padding-right: 20px;
+}
+.promo-banner * {
+    
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+.w-66 {
+    width: 66%;
+    height: auto;
+}
+.w-33 {
+    width: 33%;
+}
+
+.w-55{
+    width: 60%;
+}
+
+.w-45{
+    width: 40%;
+}
+
+.promo-banner a {
+    padding: 4px;
+    
+}
+.promo-banner img {
+    border-radius: 15px;
 }

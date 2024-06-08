@@ -1,17 +1,27 @@
 <div class="product-card">
+    
     <div class="product-card-inner">
         <div class="img">
             <a href="{{route('product',$product->slug)}}" class="d-block h-100">
                 <img loading="lazy" class="w-100" alt="{{ translate('product') }}"
                      src="{{ getValidImage(path: 'storage/app/public/product/thumbnail/'.$product['thumbnail'], type: 'product') }}">
             </a>
-            {{$product->choice_options[0]}}
+            <p>Product Sizes:</p>
+                @if(is_array($product->sizes) && !empty($product->sizes))
+                    <ul>
+                        @foreach($product->sizes as $size)
+                            <li>{{ $size }}</li>
+                        @endforeach
+                    </ul>
+                @else
+                    <p>No sizes available.</p>
+                @endif
             @if (isset($product->created_at) && $product->created_at->diffInMonths(\Carbon\Carbon::now()) < 1)
                 <span class="badge badge-title z-2">{{translate('new')}}</span>
             @endif
 
             <div class="hover-content d-flex justify-content-between">
-                <a href="javascript:">{{ \Illuminate\Support\Str::limit(isset($product->category) ? $product->category->name:'', 15) }}</a>
+                <a href="javascript:">{{ \Illuminate\Support\Str::limit(isset($product->category) ? $product->category->name:'', 20) }}</a>
                 <div class="d-flex flex-wrap justify-content-between align-items-center column-gap-3">
                     <a href="javascript:" data-id="{{$product->id}}" class="d-inline-flex quickView_action">
                         <i class="bi bi-eye"></i>
@@ -31,7 +41,7 @@
         <div class="cont">
             <h6 class="title">
                 <a href="{{route('product',$product->slug)}}"
-                   title="{{ $product['name'] }}">{{ Str::limit($product['name'], 40) }}</a>
+                   title="{{ $product['name'] }}">{{ Str::limit($product['name'], 50) }}</a>
             </h6>
             <div class="d-flex align-items-center justify-content-between column-gap-2">
                 <h4 class="price flex-wrap">

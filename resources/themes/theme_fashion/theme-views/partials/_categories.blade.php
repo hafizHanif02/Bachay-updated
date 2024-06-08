@@ -8,7 +8,7 @@
             {{-- </div> --}}
         </div>
 
-        <div class="most-visited-category-wrapper align-items-center row">
+        <div class="most-visited-category-wrapper align-items-center row d-none d-sm-none d-md-flex">
             @foreach ($most_visited_categories as $key => $item)
                 {{-- @if ($key != 0 && $key < 8) --}}
                     <div class="col">
@@ -77,7 +77,190 @@
             
         </div>
 
-        <div class="most-visited-category-wrapper align-items-center row">
+        <div class="most-visited-category-wrapper align-items-center row d-none d-sm-none d-md-flex">
+           
+            <div class="col">
+                        <a href="{{ route('categories.detail', $item->name) }}"
+                            class="most-visited-item d-block text-center ">
+                            <img loading="lazy" alt="{{ translate('category') }}"
+                                src="https://bachay.com/public/assets/images/staticImages/girl2to4.png"
+                                class="img-fluid mb-2">
+                            <h4 class="title">2-4 Years</h4>
+                            <h4 class="title2">Girls Fashion</h4>
+                            <!-- <div class="cont">
+                                <h6 class="text-white font-semibold text-uppercase">{{ $item->name }}</h6>
+                                <span>{{ $item->product_count }} {{ translate('product') }}</span>
+                                <i class="bi bi-eye-fill"></i>
+                            </div> -->
+                        </a>
+            </div>
+            <div class="col">
+                        <a href="{{ route('categories.detail', $item->name) }}"
+                            class="most-visited-item d-block text-center ">
+                            <img loading="lazy" alt="{{ translate('category') }}"
+                                src="https://bachay.com/public/assets/images/staticImages/bay6to24.png"
+                                class="img-fluid mb-2">
+                            <h4 class="title">6-24 Months</h4>
+                            <h4 class="title2">Boys Fashion</h4>
+                            <!-- <div class="cont">
+                                <h6 class="text-white font-semibold text-uppercase">{{ $item->name }}</h6>
+                                <span>{{ $item->product_count }} {{ translate('product') }}</span>
+                                <i class="bi bi-eye-fill"></i>
+                            </div> -->
+                        </a>
+            </div>
+            <div class="col">
+                        <a href="{{ route('categories.detail', $item->name) }}"
+                            class="most-visited-item d-block text-center ">
+                            <img loading="lazy" alt="{{ translate('category') }}"
+                                src="https://bachay.com/public/assets/images/staticImages/boy2to4.png"
+                                class="img-fluid mb-2">
+                            <h4 class="title">2-4 Years</h4>
+                            <h4 class="title2">Boys Fashion</h4>
+                            <!-- <div class="cont">
+                                <h6 class="text-white font-semibold text-uppercase">{{ $item->name }}</h6>
+                                <span>{{ $item->product_count }} {{ translate('product') }}</span>
+                                <i class="bi bi-eye-fill"></i>
+                            </div> -->
+                        </a>
+            </div>
+            <div class="col">
+                        <a href="{{ route('categories.detail', $item->name) }}"
+                            class="most-visited-item d-block text-center ">
+                            <img loading="lazy" alt="{{ translate('category') }}"
+                                src="https://bachay.com/public/assets/images/staticImages/girl4to6.png"
+                                class="img-fluid mb-2">
+                            <h4 class="title">4-6 Years</h4>
+                            <h4 class="title2">Girls Fashion</h4>
+                            <!-- <div class="cont">
+                                <h6 class="text-white font-semibold text-uppercase">{{ $item->name }}</h6>
+                                <span>{{ $item->product_count }} {{ translate('product') }}</span>
+                                <i class="bi bi-eye-fill"></i>
+                            </div> -->
+                        </a>
+            </div>
+            <div class="col">
+                        <a href="{{ route('categories.detail', $item->name) }}"
+                            class="most-visited-item d-block text-center ">
+                            <img loading="lazy" alt="{{ translate('category') }}"
+                                src="https://bachay.com/public/assets/images/staticImages/boy4to6.png"
+                                class="img-fluid mb-2">
+                            <h4 class="title">4-6 Years</h4>
+                            <h4 class="title2">Boys Fashion</h4>
+                            <!-- <div class="cont">
+                                <h6 class="text-white font-semibold text-uppercase">{{ $item->name }}</h6>
+                                <span>{{ $item->product_count }} {{ translate('product') }}</span>
+                                <i class="bi bi-eye-fill"></i>
+                            </div> -->
+                        </a>
+            </div>
+
+            <div class="col">
+                        <a href="{{ route('categories.detail', $item->name) }}"
+                            class="most-visited-item d-block text-center ">
+                            <img loading="lazy" alt="{{ translate('category') }}"
+                                src="https://bachay.com/public/assets/images/staticImages/toys&bags.png"
+                                class="img-fluid mb-2">
+                            <h4 class="title">Toys & Bags</h4>
+                            <h4 class="title2">Kids Toys</h4>
+                            <!-- <div class="cont">
+                                <h6 class="text-white font-semibold text-uppercase">{{ $item->name }}</h6>
+                                <span>{{ $item->product_count }} {{ translate('product') }}</span>
+                                <i class="bi bi-eye-fill"></i>
+                            </div> -->
+                        </a>
+            </div>
+
+            <div class="col">
+                        <a href="{{ route('categories.detail', $item->name) }}"
+                            class="most-visited-item d-block text-center ">
+                            <img loading="lazy" alt="{{ translate('category') }}"
+                                src="https://bachay.com/public/assets/images/staticImages/inOutDoor.png"
+                                class="img-fluid mb-2">
+                            <h4 class="title">In/Out Doors</h4>
+                            <h4 class="title2">Kids Toys</h4>
+                            <!-- <div class="cont">
+                                <h6 class="text-white font-semibold text-uppercase">{{ $item->name }}</h6>
+                                <span>{{ $item->product_count }} {{ translate('product') }}</span>
+                                <i class="bi bi-eye-fill"></i>
+                            </div> -->
+                        </a>
+            </div>
+            
+        </div>
+
+        <!-- mobile view-->
+
+        <div class="most-visited-category-wrapper align-items-center row d-flex d-sm-flex d-md-none">
+            @foreach ($most_visited_categories as $key => $item)
+                {{-- @if ($key != 0 && $key < 8) --}}
+                    <div class="col">
+                        <a href="{{ route('categories.detail', $item->name) }}"
+                            class="most-visited-item d-block text-center ">
+                            <img loading="lazy" alt="{{ translate('category') }}"
+                                src="{{ getValidImage(path: 'storage/app/public/category/' . $item->icon, type: 'category') }}"
+                                class="img-fluid mb-2">
+                            <h4 class="title">{{ $item->name }}</h4>
+                            <h4 class="title2">Category</h4>
+                            <!-- <div class="cont">
+                                <h6 class="text-white font-semibold text-uppercase">{{ $item->name }}</h6>
+                                <span>{{ $item->product_count }} {{ translate('product') }}</span>
+                                <i class="bi bi-eye-fill"></i>
+                            </div> -->
+                        </a>
+                    </div>
+                {{-- @endif --}}
+            @endforeach
+
+            <div class="col">
+                        <a href="{{ route('categories.detail', $item->name) }}"
+                            class="most-visited-item d-block text-center ">
+                            <img loading="lazy" alt="{{ translate('category') }}"
+                                src="https://bachay.com/public/assets/images/staticImages/girl0to6.png"
+                                class="img-fluid mb-2">
+                            <h4 class="title">0-6 Months</h4>
+                            <h4 class="title2">Girls Fashion</h4>
+                            <!-- <div class="cont">
+                                <h6 class="text-white font-semibold text-uppercase">{{ $item->name }}</h6>
+                                <span>{{ $item->product_count }} {{ translate('product') }}</span>
+                                <i class="bi bi-eye-fill"></i>
+                            </div> -->
+                        </a>
+            </div>
+            <div class="col">
+                        <a href="{{ route('categories.detail', $item->name) }}"
+                            class="most-visited-item d-block text-center ">
+                            <img loading="lazy" alt="{{ translate('category') }}"
+                                src="https://bachay.com/public/assets/images/staticImages/boy0to6.png"
+                                class="img-fluid mb-2">
+                            <h4 class="title">0-6 Months</h4>
+                            <h4 class="title2">Boys Fashion</h4>
+                            <!-- <div class="cont">
+                                <h6 class="text-white font-semibold text-uppercase">{{ $item->name }}</h6>
+                                <span>{{ $item->product_count }} {{ translate('product') }}</span>
+                                <i class="bi bi-eye-fill"></i>
+                            </div> -->
+                        </a>
+            </div>
+            <div class="col">
+                        <a href="{{ route('categories.detail', $item->name) }}"
+                            class="most-visited-item d-block text-center ">
+                            <img loading="lazy" alt="{{ translate('category') }}"
+                                src="https://bachay.com/public/assets/images/staticImages/girl6to24.png"
+                                class="img-fluid mb-2">
+                            <h4 class="title">6-24 Months</h4>
+                            <h4 class="title2">Girls Fashion</h4>
+                            <!-- <div class="cont">
+                                <h6 class="text-white font-semibold text-uppercase">{{ $item->name }}</h6>
+                                <span>{{ $item->product_count }} {{ translate('product') }}</span>
+                                <i class="bi bi-eye-fill"></i>
+                            </div> -->
+                        </a>
+            </div>
+            
+        </div>
+
+        <div class="most-visited-category-wrapper align-items-center row d-none d-sm-none d-md-flex">
            
             <div class="col">
                         <a href="{{ route('categories.detail', $item->name) }}"

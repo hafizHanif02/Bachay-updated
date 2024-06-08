@@ -1,5 +1,5 @@
 <section class="py-4">
-    <div class="container">
+    <div class="container-fluid page-padding">
 
         @if (!empty($web_config['features_section']['features_section_top']))
             <div class="section-title text-center pt-xl-2">
@@ -33,7 +33,7 @@
 
 @if(!empty($web_config['features_section']['features_section_bottom']))
     <div class="support-section">
-        <div class="container">
+        <div class="container-fluid page-padding">
             <div class="support-wrapper">
                 @foreach(json_decode($web_config['features_section']['features_section_bottom']) as $item)
                     <div class="support-card mb-4">

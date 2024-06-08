@@ -1,5 +1,5 @@
 <section class="top-fashion-house section-gap pb-0">
-    <div class="container">
+    <div class="container-fluid page-padding">
         <div class="section-title-3 mb-0">
             <div class="mb-32px text-capitalize">
                 <div class="d-flex flex-wrap justify-content-between justify-content-lg-center row-gap-2 column-gap-4 align-items-center">

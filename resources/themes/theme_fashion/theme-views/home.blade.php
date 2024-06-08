@@ -40,6 +40,80 @@
         </div>
     @endif
 
+    <div class="promo-banner container-fluid">
+        <div class="w-66">
+            <div class="w-50">
+                <a href="#" target="_blank" class="img2">
+                    <img loading="lazy" src="{{ asset('public/assets/images/staticImages/bannerLeft.jpg') }}"
+                    class="img-fluid" alt="{{ translate('banner') }}">
+                </a>
+            </div>
+            <div class="w-50">
+            <a href="#" target="_blank" class="img2">
+                    <img loading="lazy" src="{{ asset('public/assets/images/staticImages/bannerLeft2.jpg') }}"
+                    class="img-fluid" alt="{{ translate('banner') }}">
+                </a>
+                <a href="#" target="_blank" class="img2">
+                    <img loading="lazy" src="{{ asset('public/assets/images/staticImages/bannerLeft3.jpg') }}"
+                    class="img-fluid" alt="{{ translate('banner') }}">
+                </a>
+            </div>
+            <div class="w-100">
+                <div class="w-33" style="padding: 0 5px;">
+                    <img loading="lazy" src="{{ asset('public/assets/images/staticImages/returnPolicy.png') }}"
+                        class="img-fluid" alt="{{ translate('banner') }}">
+                </div>
+                <div class="w-33" style="padding: 0 5px;">
+                    <img loading="lazy" src="{{ asset('public/assets/images/staticImages/returnPolicy.png') }}"
+                        class="img-fluid" alt="{{ translate('banner') }}">
+                </div>
+                <div class="w-33" style="padding: 0 5px;">
+                    <img loading="lazy" src="{{ asset('public/assets/images/staticImages/returnPolicy.png') }}"
+                        class="img-fluid" alt="{{ translate('banner') }}">
+                </div>
+             
+            </div>
+        </div>
+        <div class="w-33">
+            <div class="w-100">
+                <div class="w-45">
+                    <a href="#" target="_blank" class="img2">
+                        <img loading="lazy" src="{{ asset('public/assets/images/staticImages/bannerRight.jpg') }}"
+                        class="img-fluid" alt="{{ translate('banner') }}">
+                    </a>
+                    <a href="#" target="_blank" class="img2">
+                        <img loading="lazy" src="{{ asset('public/assets/images/staticImages/bannerBottom3.jpg') }}"
+                        class="img-fluid" alt="{{ translate('banner') }}">
+                    </a>
+                </div>
+                <div class="w-55">
+                    <a href="#" target="_blank" class="img2">
+                        <img loading="lazy" src="{{ asset('public/assets/images/staticImages/bannerRight3.jpg') }}"
+                        class="img-fluid" alt="{{ translate('banner') }}">
+                    </a>
+                </div>
+            </div>
+            <div class="w-100">
+                <div class="w-50">
+                    <a href="#" target="_blank" class="img2">
+                        <img loading="lazy" src="{{ asset('public/assets/images/staticImages/bannerRigh2.jpg') }}"
+                        class="img-fluid" alt="{{ translate('banner') }}">
+                    </a>
+                </div>
+                <div class="w-50">
+                    <a href="#" target="_blank" class="img2">
+                        <img loading="lazy" src="{{ asset('public/assets/images/staticImages/bannerBottom1.jpg') }}"
+                        class="img-fluid" alt="{{ translate('banner') }}">
+                    </a>
+                    <a href="#" target="_blank" class="img2">
+                        <img loading="lazy" src="{{ asset('public/assets/images/staticImages/bannerBottom2.jpg') }}"
+                        class="img-fluid" alt="{{ translate('banner') }}">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     @if ($web_config['flash_deals'])
         @include('theme-views.partials._flash-deals')
     @endif
@@ -53,10 +127,16 @@
         </div>
     @endif
 
-
+    <!-- Parenting banner -->
+    <div class="container-fluid">
+        <a href="/parenting" target="_blank">
+            <img loading="lazy" src="{{ asset('public/assets/images/staticImages/parentingBanner.png') }}"
+            class="img-fluid" alt="{{ translate('banner') }}">
+        </a>
+    </div>
 
     @if ($promo_banner_bottom)
-        <div class="container mt-2">
+        <div class="container-fluid page-padding mt-2">
             <div class="row">
         @foreach ($promo_banner_bottom as $key => $item)
             <div class="col-12 col-sm-6 col-md-4 col-lg-4" style="padding-top: 0.5rem; padding-bottom: 0.5rem">

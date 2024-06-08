@@ -670,11 +670,11 @@ class HomeController extends Controller
         // All product Section
         $all_products = $this->product->withSum('orderDetails', 'qty', function ($query) {
                 $query->where('delivery_status', 'delivered');
-            })->with(['category','reviews', 'flashDealProducts.flashDeal','wishList'=>function($query){
+            })->with(['category','reviews', 'flashDealProducts.flashDeal', 'wishList'=>function($query){
                 return $query->where('customer_id', Auth::guard('customer')->user()->id ?? 0);
             }])
             ->active()->orderBy('order_details_sum_qty', 'DESC')
-            ->paginate(20);
+            ->paginate(12);
         $all_products?->map(function ($product) use ($currentDate) {
             $flash_deal_status = 0;
             $flash_deal_end_date = 0;
@@ -790,18 +790,32 @@ class HomeController extends Controller
             })->latest()->take(4)->get();
 
             $sizes = [];
-            foreach ($all_products as $product) {
-                $choice_options = json_decode($product->choice_options, true);
-                if (is_array($choice_options) && !empty($choice_options)) {
-                    $title = $choice_options[0]['title'];
-                    if ($title == 'Size') {
-                        $options = $choice_options[0]['options'];
-                        foreach ($options as $option) {
-                            $sizes[] = $option;
-                        }
-                    }
-                }
+
+foreach ($all_products as $product) {
+    $temp_sizes = [];
+    $choice_options = json_decode($product->choice_options, true);
+    if (is_array($choice_options) && !empty($choice_options)) {
+        $title = $choice_options[0]['title'];
+        if ($title == 'Size') {
+            $options = $choice_options[0]['options'];
+
+            // Initialize the sizes array if it doesn't exist
+            if (!isset($product->sizes) || !is_array($product->sizes)) {
+                $product->sizes = [];
             }
+
+            foreach ($options as $option) {
+                $sizes[] = trim($option); // Collect all sizes in a separate array
+
+                // Directly add to the product sizes array
+                $temp_sizes[] = trim($option);
+            }
+            $product->sizes = $temp_sizes; // Reassign the array back to the product property
+        }
+    }
+}
+
+
             
             $custom_sort = function ($a, $b) {
                 $order = [

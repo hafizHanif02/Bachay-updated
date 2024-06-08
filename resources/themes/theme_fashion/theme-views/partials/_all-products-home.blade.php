@@ -1,5 +1,5 @@
 <section class="all-products-section scroll_to_form_top">
-    <div class="container">
+    <div class="container-fluid page-padding">
         <div class="section-title">
             <div class="d-flex flex-wrap justify-content-between row-gap-2 column-gap-4 align-items-center">
                 <h2 class="title mb-0 me-auto text-capitalize">{{ translate('all_products') }}</h2>
@@ -92,9 +92,9 @@
                     <div id="ajax_products_section">
                         @include('theme-views.product._ajax-products',['products'=>$all_products,'page'=>1,])
 
-                        @php($paginate_count = $all_products->total() > 20 ? ceil($all_products->total()/20) : 1)
+                        @php($paginate_count = $all_products->total() > 12 ? ceil($all_products->total()/12) : 1)
                         @php($page = 1)
-                        @if($all_products->total() > 20)
+                        @if($all_products->total() > 12)
                             <ul class="search-pagination justify-content-end">
                                 <li>
                                     <label for="paginate_{{($page-1)}}" class="paginate_{{($page-1)}}"

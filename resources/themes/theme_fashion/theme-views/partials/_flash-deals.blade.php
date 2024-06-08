@@ -1,5 +1,5 @@
 <section class="flash-deals-slider section-gap pb-0 pt-4">
-    <div class="container">
+    <div class="container-fluid page-padding">
         <div class="flash-deals-wrapper __bg-img mb-4 d-md-none" data-img="{{ theme_asset('assets/img/flash-deals/flash-deals.png') }}">
             <ul class="countdown" data-countdown="{{$web_config['flash_deals']?$web_config['flash_deals']['end_date']:''}}">
                 <li>
