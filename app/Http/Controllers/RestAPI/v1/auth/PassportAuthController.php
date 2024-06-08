@@ -77,7 +77,7 @@ class PassportAuthController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'email' => 'required',
-            'password' => 'required|min:6',
+            'password' => 'required|min:8',
             'guest_id' => 'required'
         ]);
 
