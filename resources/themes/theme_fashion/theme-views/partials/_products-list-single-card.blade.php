@@ -6,16 +6,7 @@
                 <img loading="lazy" class="w-100" alt="{{ translate('product') }}"
                      src="{{ getValidImage(path: 'storage/app/public/product/thumbnail/'.$product['thumbnail'], type: 'product') }}">
             </a>
-            <p>Product Sizes:</p>
-                @if(is_array($product->sizes) && !empty($product->sizes))
-                    <ul>
-                        @foreach($product->sizes as $size)
-                            <li>{{ $size }}</li>
-                        @endforeach
-                    </ul>
-                @else
-                    <p>No sizes available.</p>
-                @endif
+            
             @if (isset($product->created_at) && $product->created_at->diffInMonths(\Carbon\Carbon::now()) < 1)
                 <span class="badge badge-title z-2">{{translate('new')}}</span>
             @endif
@@ -39,6 +30,16 @@
             </div>
         </div>
         <div class="cont">
+        <p>Product Sizes:</p>
+                @if(is_array($product->sizes) && !empty($product->sizes))
+                    <ul>
+                        @foreach($product->sizes as $size)
+                            <li>{{ $size }}</li>
+                        @endforeach
+                    </ul>
+                @else
+                    <p>No sizes available.</p>
+                @endif
             <h6 class="title">
                 <a href="{{route('product',$product->slug)}}"
                    title="{{ $product['name'] }}">{{ Str::limit($product['name'], 50) }}</a>

@@ -15,6 +15,16 @@ use App\Http\Controllers\RestAPI\v1\auth\PassportAuthController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
  */
+
+ Route::options('/{any}', function (Request $request) {
+    return response()->json([], 200, [
+        'Access-Control-Allow-Origin' => '*',
+        'Access-Control-Allow-Methods' => 'GET, POST, PUT, DELETE, OPTIONS',
+        'Access-Control-Allow-Headers' => 'Content-Type, Authorization',
+    ]);
+})->where('any', '.*');
+
+
 Route::group(['namespace' => 'RestAPI\v1', 'prefix' => 'v1', 'middleware' => ['api_lang']], function () {
     Route::group(['namespace' => 'Customer', 'prefix' => 'customer', 'as' => 'customer.'], function () {
     
