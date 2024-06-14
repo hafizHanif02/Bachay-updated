@@ -3,7 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class CorsMiddleware
 {
@@ -14,11 +14,26 @@ class CorsMiddleware
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle(Request $request, Closure $next)
+    public function handle($request, Closure $next)
     {
-        return $next($request)
-            ->header('Access-Control-Allow-Origin', '*')
-            ->header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
-            ->header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+        $response = $next($request);
+
+        // Log request method and headers for debugging
+        Log::info('Request Method: ' . $request->getMethod());
+        Log::info('Request Headers: ' . json_encode($request->headers->all()));
+
+        // Set CORS headers
+        $response->headers->set('Access-Control-Allow-Origin', '*');
+        $response->headers->set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+        $response->headers->set('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+
+        if ($request->getMethod() === 'OPTIONS') {
+            $response->setStatusCode(200);
+        }
+
+        // Log response headers for debugging
+        Log::info('Response Headers: ' . json_encode($response->headers->all()));
+
+        return $response;
     }
 }
