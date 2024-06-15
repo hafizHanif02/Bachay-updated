@@ -521,6 +521,38 @@ class ProductController extends Controller
         return response()->json($product, 200);
     }
 
+    public function get_product_single(Request $request, $product_id)
+    {
+        $user = Helpers::get_customer($request);
+
+        $product = Product::with(['reviews.customer', 'seller.shop','tags'])
+            ->withCount(['wishList' => function($query) use($user){
+                $query->where('customer_id', $user != 'offline' ? $user->id : '0');
+            }])
+            ->where(['id' => $product_id])->first();
+
+        if (isset($product)) {
+            $product = Helpers::product_data_formatting($product, false);
+
+            if(isset($product->reviews) && !empty($product->reviews)){
+                $overallRating = getOverallRating($product->reviews);
+                $product['average_review'] = $overallRating[0];
+            }else{
+                $product['average_review'] = 0;
+            }
+
+            $temporary_close = Helpers::get_business_settings('temporary_close');
+            $inhouse_vacation = Helpers::get_business_settings('vacation_add');
+            $inhouse_vacation_start_date = $product['added_by'] == 'admin' ? $inhouse_vacation['vacation_start_date'] : null;
+            $inhouse_vacation_end_date = $product['added_by'] == 'admin' ? $inhouse_vacation['vacation_end_date'] : null;
+            $inhouse_temporary_close = $product['added_by'] == 'admin' ? $temporary_close['status'] : false;
+            $product['inhouse_vacation_start_date'] = $inhouse_vacation_start_date;
+            $product['inhouse_vacation_end_date'] = $inhouse_vacation_end_date;
+            $product['inhouse_temporary_close'] = $inhouse_temporary_close;
+        }
+        return response()->json($product, 200);
+    }
+
     public function get_best_sellings(Request $request)
     {
         $products = ProductManager::get_best_selling_products($request, $request['limit'], $request['offset']);

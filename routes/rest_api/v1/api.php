@@ -154,6 +154,7 @@ Route::group(['namespace' => 'RestAPI\v1', 'prefix' => 'v1', 'middleware' => ['a
         Route::get('/{id}', [CustomPageController::class, 'custom_page_detail'])->name('detail');
     });
     Route::get('products/list', 'ProductController@list');
+    Route::get('products/single/{product_id}', 'ProductController@get_product_single');
     Route::group(['middleware' => 'apiGuestCheck'], function () {
         Route::group(['prefix' => 'products'], function () {
             Route::get('latest', 'ProductController@get_latest_products');

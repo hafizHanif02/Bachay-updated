@@ -85,12 +85,12 @@
 @section('content')
 
     <section class="promo-page-header">
-        @if ($banner)
+        <!-- @if ($banner)
             <img loading="lazy" src="{{ getValidImage(path: 'storage/app/public/banner/'.($banner ? json_decode($banner['value'])->image:''), type:'banner') }}"
                  class="w-100" alt="{{ translate('banner') }}">
         @else
             <div class="product_blank_banner"></div>
-        @endif
+        @endif -->
     </section>
 
     <div class="container">
