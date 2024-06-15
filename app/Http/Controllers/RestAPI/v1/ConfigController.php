@@ -833,7 +833,8 @@ class ConfigController extends Controller
         $categories = $all_categories->get();
         
         foreach($categories as  $category){
-            $category->icon = asset('storage/app/category/'.$category->icon);
+            //https://bachay.com/storage/app/public/category/
+            $category->icon = asset('storage/app/public/category/'.$category->icon);
         }
         return response()->json([
             'categories' => $categories
