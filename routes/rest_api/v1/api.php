@@ -159,25 +159,27 @@ Route::group(['namespace' => 'RestAPI\v1', 'prefix' => 'v1', 'middleware' => ['a
     });
     Route::get('products/list', 'ProductController@list');
     Route::get('products/single/{product_id}', 'ProductController@get_product_single');
-    Route::group(['middleware' => 'apiGuestCheck'], function () {
-        Route::group(['prefix' => 'products'], function () {
-            Route::get('latest', 'ProductController@get_latest_products');
-            Route::get('featured', 'ProductController@get_featured_products');
-            Route::get('top-rated', 'ProductController@get_top_rated_products');
-            Route::any('search', 'ProductController@get_searched_products');
-            Route::post('filter', 'ProductController@product_filter');
-            Route::any('suggestion-product', 'ProductController@get_suggestion_product');
-            Route::get('details/{slug}', 'ProductController@get_product');
-            Route::get('related-products/{product_id}', 'ProductController@get_related_products');
-            Route::get('best-sellings', 'ProductController@get_best_sellings');
-            Route::get('home-categories', 'ProductController@get_home_categories');
-            Route::get('discounted-product', 'ProductController@get_discounted_product');
-            Route::get('most-demanded-product', 'ProductController@get_most_demanded_product');
-            Route::get('shop-again-product', 'ProductController@get_shop_again_product')->middleware('auth:api');
-            Route::get('just-for-you', 'ProductController@just_for_you');
-            Route::get('most-searching', 'ProductController@get_most_searching_products');
-        });
 
+    Route::group(['prefix' => 'products'], function () {
+        Route::get('latest', 'ProductController@get_latest_products');
+        Route::get('featured', 'ProductController@get_featured_products');
+        Route::get('top-rated', 'ProductController@get_top_rated_products');
+        Route::any('search', 'ProductController@get_searched_products');
+        Route::post('filter', 'ProductController@product_filter');
+        Route::any('suggestion-product', 'ProductController@get_suggestion_product');
+        Route::get('details/{slug}', 'ProductController@get_product');
+        Route::get('related-products/{product_id}', 'ProductController@get_related_products');
+        Route::get('best-sellings', 'ProductController@get_best_sellings');
+        Route::get('home-categories', 'ProductController@get_home_categories');
+        Route::get('discounted-product', 'ProductController@get_discounted_product');
+        Route::get('most-demanded-product', 'ProductController@get_most_demanded_product');
+        Route::get('shop-again-product', 'ProductController@get_shop_again_product')->middleware('auth:api');
+        Route::get('just-for-you', 'ProductController@just_for_you');
+        Route::get('most-searching', 'ProductController@get_most_searching_products');
+    });
+
+    Route::group(['middleware' => 'apiGuestCheck'], function () {
+        
         Route::group(['prefix' => 'seller'], function () {
             Route::get('{seller_id}/products', 'SellerController@get_seller_products');
             Route::get('{seller_id}/seller-best-selling-products', 'SellerController@get_seller_best_selling_products');
