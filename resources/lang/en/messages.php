@@ -7342,4 +7342,5 @@
   'too_many_attempts' => 'Too many attempts',
   'promo_deal_banner' => 'Promo deal banner',
   'season_banner' => 'Season banner',
+  'trends_banner' => 'Trends banner',
 );
