@@ -716,6 +716,36 @@ class ConfigController extends Controller
             'alert_promo_banner' => $main_banner
         ]);
     }
+
+    public function deal_banner(){
+        $theme_name = theme_root_path();
+
+        $main_banner = Banner::where(['banner_type'=> 'Promo Deal Banner', 'published'=> 1, 'theme'=>$theme_name])->latest()->get();
+
+        foreach($main_banner as $banner){
+            $banner->photo = asset('storage/app/public/banner/'.$banner->photo);
+            $banner->mobile_photo = asset('storage/app/public/banner/'.$banner->mobile_photo);
+        }
+
+        return response()->json([
+            'promo_deal_banner' => $main_banner
+        ]);
+    }
+
+    public function season_banner(){
+        $theme_name = theme_root_path();
+
+        $main_banner = Banner::where(['banner_type'=> 'Season Banner', 'published'=> 1, 'theme'=>$theme_name])->latest()->get();
+
+        foreach($main_banner as $banner){
+            $banner->photo = asset('storage/app/public/banner/'.$banner->photo);
+            $banner->mobile_photo = asset('storage/app/public/banner/'.$banner->mobile_photo);
+        }
+
+        return response()->json([
+            'season_banner' => $main_banner
+        ]);
+    }
     public function most_visited_categories(){
         $all_categories = Category::withCount(['product'=>function($query){
                                 $query->active();

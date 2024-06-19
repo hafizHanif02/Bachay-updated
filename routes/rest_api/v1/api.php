@@ -63,7 +63,9 @@ Route::group(['namespace' => 'RestAPI\v1', 'prefix' => 'v1', 'middleware' => ['a
     Route::get('top_sellers', 'ConfigController@top_sellers')->name('top_sellers');
     Route::get('topRatedShops', 'ConfigController@topRatedShops')->name('topRatedShops');
     Route::get('main_banner', 'ConfigController@main_banner')->name('main_banner');
-    Route::get('promo-alert-banner', 'ConfigController@alert_banner')->name('main_banner');
+    Route::get('promo-alert-banner', 'ConfigController@alert_banner');
+    Route::get('promo-deal-banner', 'ConfigController@deal_banner');
+    Route::get('promo-season-banner', 'ConfigController@season_banner');
     Route::get('most_visited_categories', 'ConfigController@most_visited_categories')->name('most_visited_categories');
     Route::get('random_product', 'ConfigController@random_product')->name('random_product');
     Route::get('decimal_point_settings', 'ConfigController@decimal_point_settings')->name('decimal_point_settings');
