@@ -73,7 +73,7 @@ class BannerService
                 "Promo Banner Right" => translate('promo_banner_right'),
                 "Promo Banner Bottom" => translate('promo_banner_bottom'),
                 "Parent Banner" => translate('parent_banner'),
-                "Alert Banner" => "Alert Banner",
+                "Alert Banner" => translate("alert_banner"),
             ];
         }
 
