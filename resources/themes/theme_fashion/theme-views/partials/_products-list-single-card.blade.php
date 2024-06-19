@@ -30,7 +30,8 @@
             </div>
         </div>
         <div class="cont">
-        <p>Product Sizes:</p>
+        <!-- <p>Product Sizes:</p>
+        
                 @if(is_array($product->sizes) && !empty($product->sizes))
                     <ul>
                         @foreach($product->sizes as $size)
@@ -39,11 +40,15 @@
                     </ul>
                 @else
                     <p>No sizes available.</p>
-                @endif
+                @endif -->
             <h6 class="title">
                 <a href="{{route('product',$product->slug)}}"
                    title="{{ $product['name'] }}">{{ Str::limit($product['name'], 50) }}</a>
             </h6>
+            <div class="rating">
+                        <i class="bi bi-star-fill text-star"></i>
+                        <span>{{round($product->reviews->avg('rating') ?? 0,1)}}</span>
+                    </div>
             <div class="d-flex align-items-center justify-content-between column-gap-2">
                 <h4 class="price flex-wrap">
                     <span>{{\App\Utils\Helpers::currency_converter($product->unit_price-\App\Utils\Helpers::get_product_discount($product,$product->unit_price))}}</span>

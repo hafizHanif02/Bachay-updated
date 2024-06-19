@@ -4088,7 +4088,10 @@ header.bg-white {
 
 .rating i {
     color: #b2b2b2;
-    font-size: 0.9285714286rem;
+    font-size: 20px;
+}
+.rating {
+    font-size: 20px;
 }
 
 .rating i.filled {
@@ -10556,4 +10559,29 @@ a.img5:hover::before {
 }
 .promo-banner img {
     border-radius: 15px;
+}
+
+.badge {
+    background-color: #d4d4d86b;
+    color: #0E0E0F;
+    font-size: 1em;
+    margin-right: 7px;
+}
+.badge-success {
+    background-color: #D7FAED;
+    color: #16A36D;
+}
+.badge-warning {
+    background-color: #FFF8EB;
+    color: #F5A50B;
+}
+
+.badge2 {
+    background: linear-gradient(45deg, #e0708c, #845ec3);
+    color: white;
+    padding: 20px;
+}
+
+.badge2:hover {
+    color: black;
 }

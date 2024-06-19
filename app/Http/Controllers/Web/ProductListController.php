@@ -450,9 +450,11 @@ class ProductListController extends Controller
     {
 
         $tag_category = [];
+        $subCategoryList = [];
         if($request->data_from == 'category')
         {
             $tag_category = Category::where('id',$request->id)->select('id', 'name')->get();
+            $subCategoryList = Category::where('parent_id', $request->id)->select('id', 'name')->get();
         }
 
         $tag_brand = [];
@@ -706,20 +708,48 @@ class ProductListController extends Controller
             }
         }
 
+        // $sizes = [];
+        //     foreach ($products as $product) {
+        //         $choice_options = json_decode($product->choice_options, true);
+        //         if (is_array($choice_options) && !empty($choice_options)) {
+        //             $title = $choice_options[0]['title'];
+        //             if ($title == 'Size') {
+        //                 $options = $choice_options[0]['options'];
+        //                 foreach ($options as $option) {
+        //                     $sizes[] = $option;
+        //                 }
+        //             }
+        //         }
+        //     }
         $sizes = [];
-            foreach ($products as $product) {
-                $choice_options = json_decode($product->choice_options, true);
-                if (is_array($choice_options) && !empty($choice_options)) {
-                    $title = $choice_options[0]['title'];
-                    if ($title == 'Size') {
-                        $options = $choice_options[0]['options'];
-                        foreach ($options as $option) {
-                            $sizes[] = $option;
-                        }
+        foreach ($products as $key => $product) {
+            $temp_sizes = [];
+            $choice_options = json_decode($product->choice_options, true);
+            if (is_array($choice_options) && !empty($choice_options)) {
+                $title = $choice_options[0]['title'];
+                if ($title == 'Size') {
+                    $options = $choice_options[0]['options'];
+    
+                    // Initialize the sizes array if it doesn't exist
+                    if (!isset($product->sizes) || !is_array($product->sizes)) {
+                        $product->sizes = [];
+                    }
+    
+                    foreach ($options as $option) {
+                        $sizes[] = trim($option); // Collect all sizes in a separate array
+    
+                        // Directly add to the product sizes array
+                        $temp_sizes[] = trim($option);
+                    }
+                    $product->sizes = $temp_sizes; // Reassign the array back to the product property
+                    if($key == 1) {
+                        
+                        //return $product;
                     }
                 }
             }
-            
+        }        
+        //return $products;
             $custom_sort = function ($a, $b) {
                 $order = [
                     "New Born" => -1,
@@ -756,8 +786,8 @@ class ProductListController extends Controller
             unset($sizes[$new_born_key]);
             unset($sizes[$preemie_key]);
             array_unshift($sizes, "Preemie", "New Born");
-
-        return view(VIEW_FILE_NAMES['products_view_page'], compact('sizes','products','tag_category','tag_brand','product_ids','categories','colors_in_shop','banner'));
+            
+        return view(VIEW_FILE_NAMES['products_view_page'], compact('sizes','products','tag_category','tag_brand','product_ids','categories','colors_in_shop','banner', 'subCategoryList'));
     }
 
     public function theme_all_purpose(Request $request)

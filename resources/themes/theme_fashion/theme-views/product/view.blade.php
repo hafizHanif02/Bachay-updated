@@ -116,6 +116,12 @@
                                 </a>
                             </li>
                         </ul>
+                        <div style="border:0px solid red;width: 66%;display: flex;align-items: stretch;">
+                            <a class="badge badge-warning" href="products?name=Free+Delivery&data_from=search&page=1"><img src="/public/images/flash.png" alt="Fast Delivery">Fast Delivery</a>
+                            <a class="badge badge-success" href="products?name=Free+Delivery&data_from=search&page=1"><img src="/public/images/ticket-discount.png" alt="Free Delivery">Free Delivery</a>
+                            <a class="badge badge-light" href="products?name=Free+Delivery&data_from=search&page=1">Best Selling</a>
+                            <a class="badge badge-light" href="products?name=Free+Delivery&data_from=search&page=1">Trending</a>
+                        </div>
                         <div
                             class="d-flex flex-wrap-reverse justify-content-between justify-content-sm-end align-items-center column-gap-3 row-gap-2 text-capitalize min-w-lg-190">
                             <div class="flex-grow-1">
@@ -150,6 +156,13 @@
                             </div>
                         </div>
                     </div>
+                    @if(count($subCategoryList) > 0)
+                    <div style="/* border:1px solid red; */width: 100%;display: flex;overflow: scroll;padding: 7px 0px;">
+                            @foreach($subCategoryList as $subCategory)
+                                <a class="badge badge2" href="products?name={{$subCategory['name']}}&data_from=search&page=1">{{ $subCategory['name'] }}</a>
+                            @endforeach
+                            </div>
+                        @endif
                 </div>
                 <main class="main-wrapper">
 
