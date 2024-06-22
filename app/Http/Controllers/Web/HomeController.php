@@ -670,7 +670,7 @@ class HomeController extends Controller
         // All product Section
         $all_products = $this->product->withSum('orderDetails', 'qty', function ($query) {
                 $query->where('delivery_status', 'delivered');
-            })->with(['category','reviews', 'flashDealProducts.flashDeal', 'wishList'=>function($query){
+            })->with(['category','reviews', 'flashDealProducts.flashDeal', 'tags','wishList'=>function($query){
                 return $query->where('customer_id', Auth::guard('customer')->user()->id ?? 0);
             }])
             ->active()->orderBy('order_details_sum_qty', 'DESC')

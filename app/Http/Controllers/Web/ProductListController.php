@@ -629,7 +629,7 @@ class ProductListController extends Controller
         }
 
         if ($request['data_from'] == 'discounted') {
-            $query = Product::with(['reviews'])->active()->where('discount', '!=', 0);
+            $query = Product::with(['reviews', 'tags'])->active()->where('discount', '!=', 0);
         }
 
         if ($request['sort_by'] == 'latest') {

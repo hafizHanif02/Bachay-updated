@@ -738,7 +738,7 @@ class ShopViewController extends Controller
         $products = Product::active()->withSum('orderDetails', 'qty', function ($query) {
                 $query->where('delivery_status', 'delivered');
             })
-            ->with(['wishList'=>function($query){
+            ->with(['tags','wishList'=>function($query){
                 return $query->where('customer_id', Auth::guard('customer')->user()->id ?? 0);
             }, 'compareList'=>function($query){
                 return $query->where('user_id', Auth::guard('customer')->user()->id ?? 0);
