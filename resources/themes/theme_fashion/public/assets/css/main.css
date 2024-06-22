@@ -10610,10 +10610,15 @@ a.img5:hover::before {
     background: linear-gradient(45deg, #e0708c, #845ec3);
     color: white;
     padding: 20px;
+    background: #fafafa;
+    color: black;
+    padding: 12px;
+    border: 0.1px solid gray;
 }
 
 .badge2:hover {
     color: black;
+    border: 1px solid black;
 }
 .product-card {
     position: relative;

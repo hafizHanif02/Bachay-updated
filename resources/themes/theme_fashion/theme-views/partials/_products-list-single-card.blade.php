@@ -101,7 +101,7 @@
 
                     @if($colors)
                         @foreach($colors as $color)
-                            <div style="width: 20px; height: 20px; background-color: {{ $color }}; display: inline-block; margin-right: 5px;"></div>
+                            <div style="width: 20px; height: 20px; background-color: {{ $color }}; display: inline-block; margin-right: 5px; border-radius: 50%"></div>
                         @endforeach
                     @endif
                 </div>
