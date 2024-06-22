@@ -838,7 +838,7 @@
                                 </ul>
                                 <div class="tab-content">
                                     @if ($product->details != null)
-                                        <div class="tab-pane fade show active" id="general-info">
+                                        <div class="tab-pane fade" id="general-info">
                                             <div class="general-information">
                                                 {!! $product->details !!}
                                             </div>
@@ -849,14 +849,14 @@
                                             </a>
                                         </div>
                                     @else
-                                        <div class="tab-pane fade show active" id="general-info">
+                                        <div class="tab-pane fade" id="general-info">
                                             <div class="general-information">
                                                 {{ translate('No_data_found') }}
                                             </div>
                                         </div>
                                     @endif
 
-                                    <div class="tab-pane fade" id="comments">
+                                    <div class="tab-pane fade  show active" id="comments">
                                         @if (count($product->reviews) > 0)
                                             <div class="comments-information">
                                                 <ul id="product-review-list">
