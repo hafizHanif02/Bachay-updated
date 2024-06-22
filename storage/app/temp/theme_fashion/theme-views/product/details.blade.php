@@ -763,12 +763,12 @@
                             <div class="product-information-inner">
                                 <ul class="nav nav-tabs nav--tabs-2 justify-content-center">
 
-                                    <li class="nav-item nav-item-ative">
+                                    <li class="nav-item ">
                                         <a href="#general-info" class="nav-link active"
                                            data-bs-toggle="tab">{{ translate('general_info') }}</a>
                                     </li>
 
-                                    <li class="nav-item">
+                                    <li class="nav-item nav-item-ative">
                                         <a href="#comments" class="nav-link"
                                            data-bs-toggle="tab">{{ translate('review') }}
                                             <sup>{{$product->reviews_count}}</sup></a>
