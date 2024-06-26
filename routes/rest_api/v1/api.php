@@ -23,6 +23,11 @@ Route::options('/{any}', function (Request $request) {
     ]);
 })->where('any', '.*');
 
+Route::get('/test-token', function () {
+    $user = App\Models\User::first();
+    $token = $user->createToken('LaravelAuthApp')->accessToken;
+    return response()->json(['token' => $token]);
+});
 
 Route::group(['namespace' => 'RestAPI\v1', 'prefix' => 'v1', 'middleware' => ['api_lang']], function () {
     Route::group(['namespace' => 'Customer', 'prefix' => 'customer', 'as' => 'customer.'], function () {

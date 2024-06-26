@@ -26,7 +26,7 @@
         "iyzico/iyzipay-php": "^2.0",
         "kingflamez/laravelrave": "^4.2",
         "laravel/framework": "^10.0",
-        "laravel/passport": "^11.0",
+        "laravel/passport": "^12.2",
         "laravel/sanctum": "^3.2",
         "laravel/socialite": "^5.2",
         "laravel/tinker": "^2.8",

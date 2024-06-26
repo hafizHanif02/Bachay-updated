@@ -299,7 +299,7 @@ class PassportAuthController extends Controller
         if (isset($user) && $user->is_active && (Auth::guard('customer')->user() != null)) {
             $wish_list = Wishlist::whereHas('wishlistProduct', function ($q) {
 
-                return $q;
+                //return $q;
             })->where('customer_id', auth('customer')->user()->id)->pluck('product_id')->toArray();
 
             $compare_list = ProductCompare::where('user_id', auth('customer')->id())->pluck('product_id')->toArray();

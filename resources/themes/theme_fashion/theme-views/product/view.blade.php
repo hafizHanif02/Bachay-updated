@@ -64,6 +64,7 @@
                     $('#loading').addClass('d-grid');
                 },
                 success: function (data) {
+                    console.log(data);
                     var tabId = '.scroll_to_form_top';
                     // Using scrollTop() method
                     var tabTopPosition = $(tabId).offset().top - 80;
@@ -71,6 +72,7 @@
 
                     $('#ajax_products_section').empty().html(data.html_products);
                     $('#selected_filter_area').empty().html(data.html_tags);
+                    // $('#sidebar').empty().html(data.html_filters);
                     productCommonActionForViewEvents();
                 },
                 complete: function () {
@@ -166,8 +168,8 @@
                 </div>
                 <main class="main-wrapper">
 
-                    <aside class="sidebar">
-                        @include('theme-views.partials.products._products-list-aside',['categories'=>$categories, 'colors'=>$colors_in_shop])
+                    <aside class="sidebar" id="sidebar">
+                        @include('theme-views.partials.products._products-list-aside',['categories'=>$categories, 'mergedChoices'=>$mergedChoices])
                     </aside>
 
                     <article class="article">

@@ -473,7 +473,7 @@ class ProductListController extends Controller
                         'compareList'=>function($query){
                             return $query->where('user_id', Auth::guard('customer')->user()->id ?? 0);
                         }]);
-
+        
         $product_ids = [];
         if ($request['data_from'] == 'category') {
             $products = $porduct_data->get();
@@ -487,7 +487,7 @@ class ProductListController extends Controller
             }
             $query = $porduct_data->whereIn('id', $product_ids);
         }
-
+        
         if ($request->has('search_category_value') && $request['search_category_value'] != 'all') {
             $products = $porduct_data->get();
             $product_ids = [];
@@ -500,7 +500,7 @@ class ProductListController extends Controller
             }
             $query = $porduct_data->whereIn('id', $product_ids);
         }
-
+        
         if ($request['data_from'] == 'brand') {
             $query = $porduct_data->where('brand_id', $request['id']);
         }
@@ -650,9 +650,9 @@ class ProductListController extends Controller
             $fetched = $fetched->whereBetween('unit_price', [Helpers::convert_currency_to_usd($request['min_price']), Helpers::convert_currency_to_usd($request['max_price'])]);
         }
         $common_query = $fetched;
-
+        
         $products = $common_query->paginate(20);
-
+        
         if ($request['ratings'] != null)
         {
             $products = $products->map(function($product) use($request){
@@ -722,9 +722,11 @@ class ProductListController extends Controller
         //         }
         //     }
         $sizes = [];
+        $filterOptions = [];
         foreach ($products as $key => $product) {
             $temp_sizes = [];
             $choice_options = json_decode($product->choice_options, true);
+            $filterOptions[] = $choice_options;
             if (is_array($choice_options) && !empty($choice_options)) {
                 $title = $choice_options[0]['title'];
                 if ($title == 'Size') {
@@ -749,6 +751,37 @@ class ProductListController extends Controller
                 }
             }
         }        
+        
+
+        $mergedChoices = [];
+
+        foreach ($filterOptions as $choices) {
+            foreach ($choices as $choice) {
+                if (!isset($mergedChoices[$choice['name']])) {
+                    $mergedChoices[$choice['name']] = [
+                        'name' => $choice['name'],
+                        'title' => $choice['title'],
+                        'options' => []
+                    ];
+                }
+                $mergedChoices[$choice['name']]['options'] = array_unique(array_merge($mergedChoices[$choice['name']]['options'], array_map('trim', $choice['options'])));
+            }
+        }
+
+        $allColors = [];
+
+        // Loop through each product to extract colors
+        foreach ($products as $productItem) {
+            $colors = json_decode($productItem['colors'], true);
+            if ($colors) {
+                $allColors = array_merge($allColors, $colors);
+            }
+        }
+        $mergedChoices['choice_0']['title'] = "Color";
+        // Remove duplicate colors
+        $mergedChoices['choice_0']['options'] = array_unique($allColors);
+        
+        //return $mergedChoices;
         //return $products;
             $custom_sort = function ($a, $b) {
                 $order = [
@@ -787,7 +820,7 @@ class ProductListController extends Controller
             unset($sizes[$preemie_key]);
             array_unshift($sizes, "Preemie", "New Born");
             
-        return view(VIEW_FILE_NAMES['products_view_page'], compact('sizes','products','tag_category','tag_brand','product_ids','categories','colors_in_shop','banner', 'subCategoryList'));
+        return view(VIEW_FILE_NAMES['products_view_page'], compact('mergedChoices','sizes','products','tag_category','tag_brand','product_ids','categories','colors_in_shop','banner', 'subCategoryList'));
     }
 
     public function theme_all_purpose(Request $request)

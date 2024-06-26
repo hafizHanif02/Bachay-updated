@@ -192,7 +192,35 @@
         </div>
     </div>
 </div>
-@isset($colors)
+@foreach($mergedChoices as $key => $filter)
+    <div class="widget">
+        <div class="widget-header open">
+            <h5 class="title">{{$filter['title']}}</h5>
+            <div class="chevron-icon">
+                <i class="bi bi-chevron-down"></i>
+            </div>
+        </div>
+        <div class="widget-body">
+            <div class="widget-body-inner">
+                <div class="all-brands">
+                        @foreach($filter['options'] as $options)
+                        <div class="form--check">
+                            <label class="form--check-inner brand_class_for_tag_gender">
+                                <input type="checkbox" name="{{$filter['title']}}[]"
+                                    value="{{ $options }}" >
+                                <span class="check-icon"><i class="bi bi-check"></i></span>
+                                <span class="form-check-label">{{ $options }}</span>
+                            </label>
+                        </div>
+                        @endforeach
+                </div>
+            </div>
+        </div>
+    </div>  
+    <hr/>
+@endforeach
+
+<!-- @isset($colors)
     <div class="widget">
         <div class="widget-header open">
             <h5 class="title">{{ translate('color') }}</h5>
@@ -296,4 +324,4 @@
         </div>
     </div>
 </div>  
-@endisset
+@endisset -->

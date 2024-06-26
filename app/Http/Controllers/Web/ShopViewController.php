@@ -704,6 +704,7 @@ class ShopViewController extends Controller
      */
     public function ajax_filter_products(Request $request)
     {
+        //return "testing";
         $categories = $request->category ?? [];
         $category = [];
         if($request->category)
@@ -897,9 +898,11 @@ class ShopViewController extends Controller
             
 
             $sizes = [];
+            $filterOptions = [];
             foreach ($products as $key => $product) {
                 $temp_sizes = [];
                 $choice_options = json_decode($product->choice_options, true);
+                $filterOptions[] = $choice_options;
                 if (is_array($choice_options) && !empty($choice_options)) {
                     $title = $choice_options[0]['title'];
                     if ($title == 'Size') {
@@ -925,11 +928,53 @@ class ShopViewController extends Controller
                 }
             }
             
+            $mergedChoices = [];
+
+        foreach ($filterOptions as $choices) {
+            foreach ($choices as $choice) {
+                if (!isset($mergedChoices[$choice['name']])) {
+                    $mergedChoices[$choice['name']] = [
+                        'name' => $choice['name'],
+                        'title' => $choice['title'],
+                        'options' => []
+                    ];
+                }
+                $mergedChoices[$choice['name']]['options'] = array_unique(array_merge($mergedChoices[$choice['name']]['options'], array_map('trim', $choice['options'])));
+            }
+        }
+
+        $allColors = [];
+
+        // Loop through each product to extract colors
+        foreach ($products as $productItem) {
+            $colors = json_decode($productItem['colors'], true);
+            if ($colors) {
+                $allColors = array_merge($allColors, $colors);
+            }
+        }
+        $mergedChoices['choice_0']['title'] = "Color";
+        // Remove duplicate colors
+        $mergedChoices['choice_0']['options'] = array_unique($allColors);
+        
+        // Categories start
+        $categories = Category::withCount(['product'=>function($query){
+            $query->active();
+        }])->with(['childes' => function ($query) {
+            $query->with(['childes' => function ($query) {
+                $query->withCount(['subSubCategoryProduct'])->where('position', 2);
+            }])->withCount(['subCategoryProduct'])->where('position', 1);
+        }, 'childes.childes'])
+        ->where('position', 0)->get();
+    // Categories End
+        
+    
 
         return response()->json([
             'html_products'=>view('theme-views.product._ajax-products',['products'=>$products,'paginate_count'=>$paginate_count,'page'=>($request->page??1), 'request_data'=>$request->all()])->render(),
             'html_tags'=>view('theme-views.product._selected_filter_tags',['tags_category'=>$category,'tags_brands'=>$brands,'rating'=>$rating, 'sort_by'=>$request['sort_by']])->render(),
             'products_count'=>$products_count,
+            'html_filters'=>view('theme-views.partials.products._products-list-aside',['categories'=>$categories, 'mergedChoices'=>$mergedChoices])->render(),
+            'mergedChoices' => $mergedChoices,
         ]);
     }
 
