@@ -183,6 +183,11 @@ Route::group(['namespace' => 'RestAPI\v1', 'prefix' => 'v1', 'middleware' => ['a
         Route::get('most-searching', 'ProductController@get_most_searching_products');
     });
 
+    Route::group(['prefix' => 'categories'], function () {
+        Route::get('/', 'CategoryController@get_categories');
+        Route::get('products/{category_id}', 'CategoryController@get_products');
+        Route::get('/find-what-you-need', 'CategoryController@find_what_you_need');
+    });
     Route::group(['middleware' => 'apiGuestCheck'], function () {
         
         Route::group(['prefix' => 'seller'], function () {
@@ -192,11 +197,7 @@ Route::group(['namespace' => 'RestAPI\v1', 'prefix' => 'v1', 'middleware' => ['a
             Route::get('{seller_id}/seller-recommended-products', 'SellerController@get_sellers_recommended_products');
         });
 
-        Route::group(['prefix' => 'categories'], function () {
-            Route::get('/', 'CategoryController@get_categories');
-            Route::get('products/{category_id}', 'CategoryController@get_products');
-            Route::get('/find-what-you-need', 'CategoryController@find_what_you_need');
-        });
+        
 
         Route::group(['prefix' => 'brands'], function () {
             Route::get('/', 'BrandController@get_brands');
