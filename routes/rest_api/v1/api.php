@@ -316,6 +316,8 @@ Route::group(['namespace' => 'RestAPI\v1', 'prefix' => 'v1', 'middleware' => ['a
     Route::get('coupon/list', 'CouponController@list')->middleware('auth:api');
     Route::get('coupon/applicable-list', 'CouponController@applicable_list')->middleware('auth:api');
     Route::get('coupons/{seller_id}/seller-wise-coupons', 'CouponController@get_seller_wise_coupon');
+    Route::get('coupon/first-order-discount', 'CouponController@first_order_discount')->middleware('auth:api');
+    Route::get('coupon/first-order-discount-guest', 'CouponController@first_order_discount_guest');
 
     Route::get('get-guest-id', 'GeneralController@get_guest_id');
 

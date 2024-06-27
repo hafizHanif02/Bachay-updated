@@ -667,7 +667,7 @@ class ProductController extends Controller
             ]
         );
 
-        return response()->json(['message' => translate('successfully_review_submitted')], 200);
+        return response()->json(['message' => 'Successfully Review Submitted'], 200);
     }
 
     public function submit_deliveryman_review(Request $request)
