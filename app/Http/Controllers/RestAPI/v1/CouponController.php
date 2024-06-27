@@ -209,7 +209,7 @@ class CouponController extends Controller
                 return response()->json('sorry this coupon is not valid for this user', 202);
             }
         
-            return $coupon_f;
+            return ['coupon' => $coupon_f, 'couponLimit' => $couponLimit, 'customer' => $request->user()];
             
     }
 }
