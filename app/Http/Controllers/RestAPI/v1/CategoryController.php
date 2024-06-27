@@ -66,7 +66,7 @@ class CategoryController extends Controller
 }
 
 public function get_banners(Request $request, $categories_id){
-    $main_banner = Banner::where(['resource_type'=> 'Main Banner', 'published'=> 1, 'resource_id'=>$categories_id])->latest()->get();
+    $main_banner = Banner::where(['resource_type'=> 'category', 'published'=> 1, 'resource_id'=>$categories_id])->latest()->get();
 
         foreach($main_banner as $banner){
             $banner->photo = asset('storage/app/public/banner/'.$banner->photo);
