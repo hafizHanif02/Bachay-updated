@@ -119,14 +119,5 @@ class CouponController extends Controller
         return back();
     }
 
-    public function first_order_discount_guest(Request $request)
-    {
-        $coupon_f = Coupon::where(['coupon_type' => 'first_order'])
-            ->where('status',1)
-            ->whereDate('start_date', '<=', date('Y-m-d'))
-            ->whereDate('expire_date', '>=', date('Y-m-d'))->first();
-            
-            return $coupon_f;
-            
-    }
+    
 }
