@@ -5,6 +5,7 @@ namespace App\Http\Controllers\RestAPI\v1;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Banner;
 use App\Utils\CategoryManager;
 use App\Utils\Helpers;
 use Illuminate\Http\Request;
