@@ -63,6 +63,19 @@ class CategoryController extends Controller
 
     return response()->json($categories, 200);
 }
+
+public function get_banners(Request $request, $categories_id){
+    $main_banner = Banner::where(['resource_type'=> 'Main Banner', 'published'=> 1, 'resource_id'=>$categories_id])->latest()->get();
+
+        foreach($main_banner as $banner){
+            $banner->photo = asset('storage/app/public/banner/'.$banner->photo);
+            $banner->mobile_photo = asset('storage/app/public/banner/'.$banner->mobile_photo);
+        }
+
+        return response()->json([
+            'category_banners' => $main_banner
+        ]);
+}
     public function get_products(Request $request, $id)
     {
         return response()->json(Helpers::product_data_formatting(CategoryManager::products($id, $request), true), 200);
