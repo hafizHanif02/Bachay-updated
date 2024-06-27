@@ -45,9 +45,7 @@ class CategoryController extends Controller
         
         
 
-        $categories = Category::when($request->has('seller_id') && !empty($request->seller_id), function ($query) use ($category_id) {
-            $query->whereIn('id', $category_id);
-        })
+        $categories = Category::whereIn('id', $category_id)        
         ->withCount(['product'=>function($query) use($request){
             $query->when($request->has('seller_id') && !empty($request->seller_id), function($query) use($request){
                 $query->where(['added_by'=>'seller','user_id'=>$request->seller_id,'status'=>'1']);
