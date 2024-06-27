@@ -1068,8 +1068,8 @@ class ConfigController extends Controller
         ]);
     }
 
-    public function childerens(){
-        $childs = FamilyRelation::where('user_id', Auth::guard('customer')->user()->id)->get();
+    public function childerens(Request $request){
+        $childs = FamilyRelation::where('user_id', $request->user()->id)->get();
         
         return response()->json([
             'childerens' => $childs
