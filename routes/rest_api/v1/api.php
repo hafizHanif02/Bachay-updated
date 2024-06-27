@@ -92,7 +92,7 @@ Route::group(['namespace' => 'RestAPI\v1', 'prefix' => 'v1', 'middleware' => ['a
     Route::get('currentDate', 'ConfigController@currentDate')->name('currentDate');
     Route::get('all_products', 'ConfigController@all_products')->name('all_products');
     Route::get('featured_deals', 'ConfigController@featured_deals')->name('featured_deals');
-    Route::get('childerens', 'ConfigController@childerens')->name('childerens');
+    Route::get('childerens', 'ConfigController@childerens')->name('childerens')->middleware('auth:api');
 
 
     Route::group(['prefix' => 'shipping-method','middleware'=>'apiGuestCheck'], function () {
