@@ -185,6 +185,8 @@ Route::group(['namespace' => 'RestAPI\v1', 'prefix' => 'v1', 'middleware' => ['a
 
     Route::group(['prefix' => 'categories'], function () {
         Route::get('/', 'CategoryController@get_categories');
+        Route::get('/sub-categories/{category_id}', 'CategoryController@get_sub_categories');
+        Route::get('banners/{category_id}', 'CategoryController@get_banners');
         Route::get('products/{category_id}', 'CategoryController@get_products');
         Route::get('/find-what-you-need', 'CategoryController@find_what_you_need');
     });
