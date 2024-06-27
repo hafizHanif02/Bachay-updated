@@ -190,4 +190,26 @@ class CouponController extends Controller
             return $coupon_f;
             
     }
+
+    public function first_order_discount(Request $request)
+    {
+        $coupon_f = Coupon::where(['coupon_type' => 'first_order'])
+            ->where('status',1)
+            ->whereDate('start_date', '<=', date('Y-m-d'))
+            ->whereDate('expire_date', '>=', date('Y-m-d'))->first();
+            
+        $couponLimit = Order::where(['customer_id'=> $request->user()->id, 'coupon_code'=> $coupon_f->code])
+            ->groupBy('order_group_id')->get()->count();
+
+        
+            if(!$coupon_f){
+                return response()->json(translate('invalid_coupon'), 202);
+            }
+            if($couponLimit>0){
+                return response()->json('sorry this coupon is not valid for this user', 202);
+            }
+        
+            return $coupon_f;
+            
+    }
 }
