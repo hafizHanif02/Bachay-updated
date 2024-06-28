@@ -559,8 +559,11 @@ class ProductController extends Controller
         }
 
         foreach ($product->color_image as $key => $image) {
-            $productArray['color_image'][$key]["image_name"] = "/storage/app/public/product/" . $image["image_name"];
-            $productArray['color_image'][$key]["color"] = "#" . $image["color"];
+            $imageData = is_string($image) ? json_decode($image, true) : (array) $image;
+            $productArray['color_image'][$key] = [
+                "image_name" => "/storage/app/public/product/" . $imageData['image_name'],
+                "color" => "#" . $imageData['color'],
+            ];
         }
 
         return response()->json($productArray, 200);
