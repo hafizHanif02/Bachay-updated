@@ -83,7 +83,7 @@ public function get_products(Request $request, $id)
     $formattedProducts = Helpers::product_data_formatting($products, true);
 
     $filterOptions = [];
-    foreach ($products as $key => $product) {
+    foreach ($products as $product) {
         $choice_options = is_string($product->choice_options) ? json_decode($product->choice_options, true) : (array) $product->choice_options;
         $filterOptions[] = $choice_options;
     }
@@ -106,7 +106,7 @@ public function get_products(Request $request, $id)
 
     // Loop through each product to extract colors
     foreach ($products as $productItem) {
-        $colors = is_string($productItem['colors']) ? json_decode($productItem['colors'], true) : (array) $productItem['colors'];
+        $colors = is_string($productItem->colors) ? json_decode($productItem->colors, true) : (array) $productItem->colors;
         if ($colors) {
             $allColors = array_merge($allColors, $colors);
         }
