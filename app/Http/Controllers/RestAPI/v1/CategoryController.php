@@ -84,11 +84,10 @@ public function get_products(Request $request, $id)
 
     $filterOptions = [];
     foreach ($products as $key => $product) {
-        
-        $choice_options = is_string($product->choice_options) ? json_decode($product->choice_options, true) : $product->choice_options;
+        $choice_options = is_string($product->choice_options) ? json_decode($product->choice_options, true) : (array) $product->choice_options;
         $filterOptions[] = $choice_options;
-    }       
-    
+    }
+
     $mergedChoices = [];
     foreach ($filterOptions as $choices) {
         foreach ($choices as $choice) {
@@ -107,7 +106,7 @@ public function get_products(Request $request, $id)
 
     // Loop through each product to extract colors
     foreach ($products as $productItem) {
-        $colors = is_string($productItem['colors']) ? json_decode($productItem['colors'], true) : [];
+        $colors = is_string($productItem['colors']) ? json_decode($productItem['colors'], true) : (array) $productItem['colors'];
         if ($colors) {
             $allColors = array_merge($allColors, $colors);
         }
@@ -119,9 +118,9 @@ public function get_products(Request $request, $id)
     // Remove duplicate colors
     $mergedChoices['choice_0']['options'] = array_unique($allColors);
 
-    //----------
     return response()->json(['product' => $formattedProducts, 'filter' => $mergedChoices], 200);
 }
+
 
 
 
