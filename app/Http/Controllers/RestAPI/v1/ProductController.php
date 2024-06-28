@@ -522,46 +522,53 @@ class ProductController extends Controller
     }
 
     public function get_product_single(Request $request, $product_id)
-    {
-        $user = Helpers::get_customer($request);
+{
+    $user = Helpers::get_customer($request);
 
-        $product = Product::with(['reviews.customer', 'seller.shop','tags'])
-            ->withCount(['wishList' => function($query) use($user){
-                $query->where('customer_id', $user != 'offline' ? $user->id : '0');
-            }])
-            ->where(['id' => $product_id])->first();
+    $product = Product::with(['reviews.customer', 'seller.shop', 'tags'])
+        ->withCount(['wishList' => function ($query) use ($user) {
+            $query->where('customer_id', $user != 'offline' ? $user->id : '0');
+        }])
+        ->where('id', $product_id)->first();
 
-        if (isset($product)) {
-            $product = Helpers::product_data_formatting($product, false);
+    if (isset($product)) {
+        // Format product data
+        $product = Helpers::product_data_formatting($product, false);
+        $productArray = $product->toArray(); // Convert to array for modifications
 
-            if(isset($product->reviews) && !empty($product->reviews)){
-                $overallRating = getOverallRating($product->reviews);
-                $product['average_review'] = $overallRating[0];
-            }else{
-                $product['average_review'] = 0;
-            }
-
-            $temporary_close = Helpers::get_business_settings('temporary_close');
-            $inhouse_vacation = Helpers::get_business_settings('vacation_add');
-            $inhouse_vacation_start_date = $product['added_by'] == 'admin' ? $inhouse_vacation['vacation_start_date'] : null;
-            $inhouse_vacation_end_date = $product['added_by'] == 'admin' ? $inhouse_vacation['vacation_end_date'] : null;
-            $inhouse_temporary_close = $product['added_by'] == 'admin' ? $temporary_close['status'] : false;
-            $product['inhouse_vacation_start_date'] = $inhouse_vacation_start_date;
-            $product['inhouse_vacation_end_date'] = $inhouse_vacation_end_date;
-            $product['inhouse_temporary_close'] = $inhouse_temporary_close;
-
-            $product['thumbnail'] = "/storage/app/public/product/thumbnail/".$product->thumbnail;
-            foreach($product->images as $key => $image){
-                $product['images'][$key] = "/storage/app/public/product/".$image;
-            }
-
-            foreach($product->color_image as $key => $image){
-                $product['color_image'][$key]["image_name"] = "/storage/app/public/product/".$image["image_name"];
-                $product['color_image'][$key]["color"] = "#".$image["color"];
-            }
+        if (isset($product->reviews) && !empty($product->reviews)) {
+            $overallRating = getOverallRating($product->reviews);
+            $productArray['average_review'] = $overallRating[0];
+        } else {
+            $productArray['average_review'] = 0;
         }
-        return response()->json($product, 200);
+
+        $temporary_close = Helpers::get_business_settings('temporary_close');
+        $inhouse_vacation = Helpers::get_business_settings('vacation_add');
+        $inhouse_vacation_start_date = $product->added_by == 'admin' ? $inhouse_vacation['vacation_start_date'] : null;
+        $inhouse_vacation_end_date = $product->added_by == 'admin' ? $inhouse_vacation['vacation_end_date'] : null;
+        $inhouse_temporary_close = $product->added_by == 'admin' ? $temporary_close['status'] : false;
+
+        $productArray['inhouse_vacation_start_date'] = $inhouse_vacation_start_date;
+        $productArray['inhouse_vacation_end_date'] = $inhouse_vacation_end_date;
+        $productArray['inhouse_temporary_close'] = $inhouse_temporary_close;
+
+        $productArray['thumbnail'] = "/storage/app/public/product/thumbnail/" . $product->thumbnail;
+        foreach ($product->images as $key => $image) {
+            $productArray['images'][$key] = "/storage/app/public/product/" . $image;
+        }
+
+        foreach ($product->color_image as $key => $image) {
+            $productArray['color_image'][$key]["image_name"] = "/storage/app/public/product/" . $image["image_name"];
+            $productArray['color_image'][$key]["color"] = "#" . $image["color"];
+        }
+
+        return response()->json($productArray, 200);
     }
+
+    return response()->json(null, 404);
+}
+
 
     public function get_best_sellings(Request $request)
     {
