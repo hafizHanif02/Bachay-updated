@@ -84,11 +84,11 @@ public function get_products(Request $request, $id)
 
     $filterOptions = [];
     foreach ($products as $key => $product) {
-        $temp_sizes = [];
-        $choice_options = is_string($product->choice_options) ? json_decode($product->choice_options, true) : [];
+        
+        $choice_options = is_string($product->choice_options) ? json_decode($product->choice_options, true) : $product->choice_options;
         $filterOptions[] = $choice_options;
     }       
-
+    
     $mergedChoices = [];
     foreach ($filterOptions as $choices) {
         foreach ($choices as $choice) {

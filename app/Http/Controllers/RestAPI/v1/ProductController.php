@@ -549,6 +549,16 @@ class ProductController extends Controller
             $product['inhouse_vacation_start_date'] = $inhouse_vacation_start_date;
             $product['inhouse_vacation_end_date'] = $inhouse_vacation_end_date;
             $product['inhouse_temporary_close'] = $inhouse_temporary_close;
+
+            $product['thumbnail'] = "/storage/app/public/product/thumbnail/".$product->thumbnail;
+            foreach($product->images as $key => $image){
+                $product['images'][$key] = "/storage/app/public/product/".$image;
+            }
+
+            foreach($product->color_image as $key => $image){
+                $product['color_image'][$key]["image_name"] = "/storage/app/public/product/".$image["image_name"];
+                $product['color_image'][$key]["color"] = "#".$image["color"];
+            }
         }
         return response()->json($product, 200);
     }
