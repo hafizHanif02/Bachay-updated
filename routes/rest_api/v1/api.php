@@ -108,8 +108,8 @@ Route::group(['namespace' => 'RestAPI\v1', 'prefix' => 'v1', 'middleware' => ['a
         Route::get('/', 'CartController@cart');
         Route::post('add', 'CartController@add_to_cart');
         Route::post('update', 'CartController@update_cart');
-        Route::delete('remove', 'CartController@remove_from_cart');
-        Route::delete('remove-all','CartController@remove_all_from_cart');
+        Route::post('remove', 'CartController@remove_from_cart');
+        Route::post('remove-all','CartController@remove_all_from_cart');
 
     });
 
