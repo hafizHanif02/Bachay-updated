@@ -1041,8 +1041,52 @@ class ConfigController extends Controller
             $product->thumbnail = asset('storage/app/public/product/thumbnail/'.$product->thumbnail);
         }
 
+        //-------------
+
+
+        $filterOptions = [];
+        foreach ($all_products as $product) {
+            $choice_options =  $product->choice_options;
+            //$choice_options = is_array($choice_options) ? $choice_options : []; // Ensure it's an array
+            $filterOptions[] = $choice_options;
+        }
+        //return $filterOptions;
+        $mergedChoices = [];
+        foreach ($filterOptions as $choices) {
+            $choices = json_decode($choices);
+            foreach ($choices as $choice) {
+                    if (!isset($mergedChoices[$choice->name])) {
+                        $mergedChoices[$choice->name] = [
+                            'name' => $choice->name,
+                            'title' => $choice->title,
+                            'options' => []
+                        ];
+                    }
+                    $mergedChoices[$choice->name]['options'] = array_unique(array_merge($mergedChoices[$choice->name]['options'], array_map('trim', $choice->options)));
+                
+            }
+        }
+        
+        $allColors = [];
+        foreach ($all_products as $productItem) {
+            $colors = is_string($productItem->colors) ? json_decode($productItem->colors, true) : $productItem->colors;
+            $colors = is_array($colors) ? $colors : []; // Ensure it's an array
+            if ($colors) {
+                $allColors = array_merge($allColors, $colors);
+            }
+        }
+
+        if (!isset($mergedChoices['choice_0'])) {
+            $mergedChoices['choice_0'] = ['title' => 'Color', 'options' => []];
+        }
+        $mergedChoices['choice_0']['options'] = array_unique($allColors);
+
+
+        //-------------
+
         return response()->json([
-            'all_products' => $all_products
+            'all_products' => $all_products,
+            'filter' => $mergedChoices
         ]);
 
 
