@@ -48,7 +48,7 @@
 @section('content')
 
     <section class="product-single-section pt-20px">
-        <div class="container">
+        <div class="container-fluid" style="padding: 0px 30px">
             <div class="section-title mb-4">
                 <div
                     class="d-flex flex-wrap justify-content-between row-gap-3 column-gap-2 align-items-center search-page-title">
@@ -90,9 +90,9 @@
 
             <div class="product-single-wrapper">
                 @if ($product->images != null && json_decode($product->images) > 0)
-                    <div class="product-single-thumb">
+                    <div class="product-single-thumb" style="display:flex;flex-direction: row-reverse;">
                         @if (json_decode($product->colors) && $product->color_image)
-                            <div class="overflow-hidden rounded">
+                            <div class="overflow-hidden this rounded" style="width: 80%">
                                 <div class="product-share-icons">
                                     <a href="javascript:" class="share-icon" title="{{ translate('share') }}">
                                         <i class="bi bi-share-fill"></i>
@@ -306,8 +306,8 @@
                             </div>
                         @endif
 
-                        <div class="overflow-hidden">
-                            <div id="sync2" class="owl-carousel owl-theme product-single-thumbnails">
+                        <div class="overflow-hidden" style="width: 20%">
+                            <div id="sync2" class="owl-carousel owl-theme product-single-thumbnails" style="display:flex;flex-direction: column;">
                                 @if ($product->images != null && json_decode($product->images) > 0)
                                     @if (json_decode($product->colors) && $product->color_image)
                                         @foreach (json_decode($product->color_image) as $key => $photo)

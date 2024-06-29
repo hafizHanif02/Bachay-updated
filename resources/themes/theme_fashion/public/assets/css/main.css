@@ -2189,6 +2189,16 @@ header.bg-white {
     display: flex;
 }
 
+#sync2 .owl-stage {
+    display: flex;
+    flex-direction: column;
+}
+
+#sync2 .owl-stage .owl-item {
+    width: 100% !important;
+    padding: 0 15px;
+}
+
 @media (max-width: 1199px) {
     .banner-slider .owl-stage .owl-item.selected-item {
         width: 70vw !important;
@@ -5227,7 +5237,7 @@ header.bg-white {
 
 @media (min-width: 767px) {
     .product-single-wrapper .product-single-thumb {
-        max-width: 382px;
+        max-width: 50%;
     }
 }
 /*Single Content*/
@@ -5557,7 +5567,7 @@ header.bg-white {
 }
 
 .product-single-thumb #sync2 {
-    margin-top: 1.7142857143rem;
+    /* margin-top: 1.7142857143rem; */
 }
 
 .product-single-thumb .main-thumb {

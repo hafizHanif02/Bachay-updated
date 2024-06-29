@@ -62,6 +62,8 @@ class CategoryController extends Controller
         ->priority()
         ->get();
 
+        $categories[0]['icon'] = asset('storage/app/public/product/thumbnail/' . $categories[0]['icon']);
+
     return response()->json($categories, 200);
 }
 
@@ -81,12 +83,13 @@ public function get_products(Request $request, $id)
 {
     $products = CategoryManager::products($id, $request);
     $formattedProducts = Helpers::product_data_formatting($products, true);
-
+    
     $filterOptions = [];
     foreach ($products as $product) {
         $choice_options =  $product->choice_options;
         //$choice_options = is_array($choice_options) ? $choice_options : []; // Ensure it's an array
         $filterOptions[] = $choice_options;
+
     }
     //return $filterOptions;
     $mergedChoices = [];
@@ -118,6 +121,43 @@ public function get_products(Request $request, $id)
         $mergedChoices['choice_0'] = ['title' => 'Color', 'options' => []];
     }
     $mergedChoices['choice_0']['options'] = array_unique($allColors);
+
+    foreach ($formattedProducts as $product) {
+        // Convert thumbnail path to URL
+        $product->thumbnail = asset('storage/app/public/product/thumbnail/' . $product->thumbnail);
+
+        // Convert images path to URL
+        $images = $product->images;
+        if (is_array($images)) {
+            $product->images = array_map(function($image) {
+                return asset('storage/app/public/product/' . $image);
+            }, $images);
+        } else {
+            $product->images = [];
+        }
+        
+        // Convert color_image path to URL
+        $colorImages = $product->color_image;
+        
+        if (is_array($colorImages)) {
+            
+            foreach ($colorImages as $key => $image) {
+                //return $image;
+                if (is_string($image)) {
+                    $colorImages[$key] = asset('storage/app/public/product/' . $image);
+                } elseif (is_array($image) && isset($image['color'], $image['image_name'])) {
+                    $colorImages[$key]['color'] = '#' . $image['color'];
+                    $colorImages[$key]['image_name'] = asset('storage/app/public/product/' . $image['image_name']);
+                } else {
+                    // Handle unexpected array structure
+                    $colorImages[$key] = null;  // or some default value
+                }
+            }
+            $product->color_image = $colorImages;
+        } else {
+            $product->color_image = [];
+        }
+    }
 
     return response()->json(['product' => $formattedProducts, 'filter' => $mergedChoices], 200);
 }

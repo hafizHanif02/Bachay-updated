@@ -130,15 +130,15 @@ class CartController extends Controller
     }
     public function remove_all_from_cart(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'key' => 'required'
-        ], [
-            'key.required' => translate('Cart key or ID is required!')
-        ]);
+        // $validator = Validator::make($request->all(), [
+        //     'key' => 'required'
+        // ], [
+        //     'key.required' => translate('Cart key or ID is required!')
+        // ]);
 
-        if ($validator->errors()->count() > 0) {
-            return response()->json(['errors' => Helpers::error_processor($validator)]);
-        }
+        // if ($validator->errors()->count() > 0) {
+        //     return response()->json(['errors' => Helpers::error_processor($validator)]);
+        // }
 
         $user = Helpers::get_customer($request);
         Cart::where([

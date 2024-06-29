@@ -957,6 +957,7 @@ class ConfigController extends Controller
         foreach($featured_products as $product){
             $product->thumbnail = asset('storage/app/public/product/thumbnail/'.$product->thumbnail);
         }
+
         return response()->json([
             'featured_products' => $featured_products
         ]);
@@ -1092,25 +1093,79 @@ class ConfigController extends Controller
 
     }
 
-    public function featured_deals(){
-        $featured_deals = $this->product->active()->with([
-            'flashDealProducts.flashDeal' => function($query){
-            return $query->whereDate('start_date', '<=', date('Y-m-d'))
-                ->whereDate('end_date', '>=', date('Y-m-d'));
-            }, 'wishList'=>function($query){
-                return $query->where('customer_id', Auth::guard('customer')->user()->id ?? 0);
-            }, 'compareList'=>function($query){
-                return $query->where('user_id', Auth::guard('customer')->user()->id ?? 0);
-            }
-            ])->whereHas('flashDealProducts.featureDeal', function($query){
-                $query->whereDate('start_date', '<=', date('Y-m-d'))
-                    ->whereDate('end_date', '>=', date('Y-m-d'));
-            })->latest()->take(4)->get();
+    public function featured_deals()
+{
+    // Use Carbon for date handling
+    $today = \Carbon\Carbon::today()->toDateString();
 
-        return response()->json([
-            'featured_deals' => $featured_deals
-        ]);
+    // Fetch featured deals with the necessary relationships and conditions
+    $featured_deals = $this->product->active()->with([
+        'flashDealProducts.flashDeal' => function($query) use ($today) {
+            $query->whereDate('start_date', '<=', $today)
+                ->whereDate('end_date', '>=', $today);
+        },
+        'wishList' => function($query) {
+            $customerId = Auth::guard('customer')->id();
+            if ($customerId) {
+                $query->where('customer_id', $customerId);
+            }
+        },
+        'compareList' => function($query) {
+            $customerId = Auth::guard('customer')->id();
+            if ($customerId) {
+                $query->where('user_id', $customerId);
+            }
+        }
+    ])->whereHas('flashDealProducts.flashDeal', function($query) use ($today) {
+        $query->whereDate('start_date', '<=', $today)
+            ->whereDate('end_date', '>=', $today);
+    })->latest()->take(4)->get();
+
+    // Process the images for each product
+    foreach ($featured_deals as $product) {
+        // Convert thumbnail path to URL
+        $product->thumbnail = asset('storage/app/public/product/thumbnail/' . $product->thumbnail);
+
+        // Convert images path to URL
+        $images = json_decode($product->images, true);
+        if (is_array($images)) {
+            $product->images = array_map(function($image) {
+                return asset('storage/app/public/product/' . $image);
+            }, $images);
+        } else {
+            $product->images = [];
+        }
+        
+        // Convert color_image path to URL
+        $colorImages = json_decode($product->color_image, true);
+        
+        if (is_array($colorImages)) {
+            
+            foreach ($colorImages as $key => $image) {
+                //return $image;
+                if (is_string($image)) {
+                    $colorImages[$key] = asset('storage/app/public/product/' . $image);
+                } elseif (is_array($image) && isset($image['color'], $image['image_name'])) {
+                    $colorImages[$key]['color'] = '#' . $image['color'];
+                    $colorImages[$key]['image_name'] = asset('storage/app/public/product/' . $image['image_name']);
+                } else {
+                    // Handle unexpected array structure
+                    $colorImages[$key] = null;  // or some default value
+                }
+            }
+            $product->color_image = $colorImages;
+        } else {
+            $product->color_image = [];
+        }
     }
+
+    return response()->json([
+        'featured_deals' => $featured_deals
+    ]);
+}
+
+
+    
 
     public function childerens(Request $request){
         $childs = FamilyRelation::where('user_id', $request->user()->id)->get();
