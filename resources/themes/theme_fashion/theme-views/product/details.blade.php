@@ -88,7 +88,8 @@
                 </div>
             @endif
 
-            <div class="product-single-wrapper">
+            <div class="product-single-wrapper" style="column-gap: 0;">
+                <div style="width:50%">
                 @if ($product->images != null && json_decode($product->images) > 0)
                     <div class="product-single-thumb" style="display:flex;flex-direction: row-reverse;">
                         @if (json_decode($product->colors) && $product->color_image)
@@ -379,383 +380,8 @@
                         </div>
                     </div>
                 @endif
-
-                <div class="product-single-content">
-                    <form class="cart add_to_cart_form" action="{{ route('cart.add') }}" id="add-to-cart-form"
-                        data-redirecturl="{{ route('checkout-details') }}"
-                        data-varianturl="{{ route('cart.variant_price') }}"
-                        data-errormessage="{{ translate('please_choose_all_the_options') }}"
-                        data-outofstock="{{ translate('sorry') . ', ' . translate('out_of_stock') }}.">
-                        @csrf
-                        <h3 class="title">{{ $product->name }}</h3>
-                        <input type="hidden" name="id" value="{{ $product->id }}">
-                        <div class="d-flex flex-wrap align-items-center column-gap-4">
-                            @if ($product->reviews_count > 0)
-                                <div class=" review position-relative">
-                                    <i class="bi bi-star-fill"></i>
-                                    <span>{{ round($overallRating[0], 1) }} <small>({{ $product->reviews_count }}
-                                            {{ translate('review') }})</small></span>
-
-                                    <div class="review-details-popup z-3">
-                                        <div class="mb-4px">{{ translate('rating') }}</div>
-                                        <div class="review-items d-flex flex-column row-gap-1">
-                                            <div class="d-flex column-gap-2 align-items-center">
-                                                <div class="stars">
-                                                    <i class="bi bi-star-fill"></i>
-                                                    <i class="bi bi-star-fill"></i>
-                                                    <i class="bi bi-star-fill"></i>
-                                                    <i class="bi bi-star-fill"></i>
-                                                    <i class="bi bi-star-fill"></i>
-                                                </div>
-                                                <span class="progress">
-                                                    <div class="progress-fill"
-                                                        style="--fill:{{ $rating[0] != 0 ? number_format(($rating[0] * 100) / array_sum($rating)) : 0 }}%">
-                                                    </div>
-                                                </span>
-                                                <span>({{ $rating[0] }})</span>
-                                            </div>
-                                            <div class="d-flex column-gap-2 align-items-center">
-                                                <div class="stars">
-                                                    <i class="bi bi-star-fill"></i>
-                                                    <i class="bi bi-star-fill"></i>
-                                                    <i class="bi bi-star-fill"></i>
-                                                    <i class="bi bi-star-fill"></i>
-                                                    <i class="bi bi-star-fill"></i>
-                                                </div>
-                                                <span class="progress">
-                                                    <div class="progress-fill"
-                                                        style="--fill:{{ $rating[1] != 0 ? number_format(($rating[1] * 100) / array_sum($rating)) : 0 }}%">
-                                                    </div>
-                                                </span>
-                                                <span>({{ $rating[1] }})</span>
-                                            </div>
-                                            <div class="d-flex column-gap-2 align-items-center">
-                                                <div class="stars">
-                                                    <i class="bi bi-star-fill"></i>
-                                                    <i class="bi bi-star-fill"></i>
-                                                    <i class="bi bi-star-fill"></i>
-                                                    <i class="bi bi-star-fill"></i>
-                                                    <i class="bi bi-star-fill"></i>
-                                                </div>
-                                                <span class="progress">
-                                                    <div class="progress-fill"
-                                                        style="--fill:{{ $rating[2] != 0 ? number_format(($rating[2] * 100) / array_sum($rating)) : 0 }}%">
-                                                    </div>
-                                                </span>
-                                                <span>({{ $rating[2] }})</span>
-                                            </div>
-                                            <div class="d-flex column-gap-2 align-items-center">
-                                                <div class="stars">
-                                                    <i class="bi bi-star-fill"></i>
-                                                    <i class="bi bi-star-fill"></i>
-                                                    <i class="bi bi-star-fill"></i>
-                                                    <i class="bi bi-star-fill"></i>
-                                                    <i class="bi bi-star-fill"></i>
-                                                </div>
-                                                <span class="progress">
-                                                    <div class="progress-fill"
-                                                        style="--fill:{{ $rating[3] != 0 ? number_format(($rating[3] * 100) / array_sum($rating)) : 0 }}%">
-                                                    </div>
-                                                </span>
-                                                <span>({{ $rating[3] }})</span>
-                                            </div>
-                                            <div class="d-flex column-gap-2 align-items-center">
-                                                <div class="stars">
-                                                    <i class="bi bi-star-fill"></i>
-                                                    <i class="bi bi-star-fill"></i>
-                                                    <i class="bi bi-star-fill"></i>
-                                                    <i class="bi bi-star-fill"></i>
-                                                    <i class="bi bi-star-fill"></i>
-                                                </div>
-                                                <span class="progress">
-                                                    <div class="progress-fill"
-                                                        style="--fill:{{ $rating[4] != 0 ? number_format(($rating[4] * 100) / array_sum($rating)) : 0 }}%">
-                                                    </div>
-                                                </span>
-                                                <span>({{ $rating[4] }})</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            @else
-                                <div class=" review position-relative">
-                                    <i class="bi bi-star-fill"></i>
-                                    <span>{{ round($overallRating[0], 1) }} <small
-                                            class="text-capitalize">({{ translate('no_review') }})</small></span>
-                                </div>
-                            @endif
-                            @if ($product['product_type'] == 'physical')
-                                <span class="badge badge-soft-success stock_status">
-                                    <span class="in_stock_status">{{ $product->current_stock }}</span>
-                                    {{ translate('stock_available') }}
-                                </span>
-                                <span
-                                    class="badge badge-soft-danger d-none out_of_stock_status">{{ translate('out_of_stock') }}</span>
-                                <span
-                                    class="badge badge-soft-secondary limited_status d-none">{{ translate('limited_stock') }}</span>
-                            @endif
-
-                        </div>
-                        <div class="categories">
-                            <span class="text-capitalize">{{ translate('category_tag') }} :</span>
-                            @if ($product->category_id)
-                                <a href="{{ route('products', ['id' => $product->category_id, 'data_from' => 'category', 'page' => 1]) }}"
-                                    class="text-base">
-                                    {{ ucwords(isset($product->category) ? $product->category->name : '') }}
-                                </a>
-                            @endif
-
-                            @if ($product->sub_category_id)
-                                <a href="{{ route('products', ['id' => $product->sub_category_id, 'data_from' => 'category', 'page' => 1]) }}"
-                                    class="text-base">
-                                    {{ ucwords(\App\Utils\CategoryManager::get_category_name($product->sub_category_id)) }}
-                                </a>
-                            @endif
-
-                            @if ($product->sub_sub_category_id)
-                                <a href="{{ route('products', ['id' => $product->sub_sub_category_id, 'data_from' => 'category', 'page' => 1]) }}"
-                                    class="text-base">
-                                    {{ ucwords(\App\Utils\CategoryManager::get_category_name($product->sub_sub_category_id)) }}
-                                </a>
-                            @endif
-                        </div>
-                        <hr>
-                        <div class="price">
-                            <h4>{!! getPriceRangeWithDiscount(product: $product) !!}
-                                @if ($product->discount > 0)
-                                    @if ($product->discount_type === 'percent')
-                                        <span class="badge bg-base">-{{ $product->discount }}%</span>
-                                    @else
-                                        <span class="badge bg-base">
-                                            {{ translate('save') }}
-                                            {{ webCurrencyConverter(amount: $product->discount) }}
-                                        </span>
-                                    @endif
-                                @endif
-                            </h4>
-                        </div>
-
-                        @if (count(json_decode($product->colors)) > 0)
-                            <div>
-                                <label class="form-label">{{ translate('color') }}</label>
-                                <div class="check-color-group justify-content-start align-items-center">
-                                    @foreach (json_decode($product->colors) as $key => $color)
-                                        <label>
-                                            <input type="radio" name="color" value="{{ $color }}"
-                                                {{ $key == 0 ? 'checked' : '' }}>
-                                            <span style="--base:{{ $color }}"
-                                                class="focus_preview_image_by_color"
-                                                data-colorid="preview-box-{{ str_replace('#', '', $color) }}"
-                                                id="color_variants_preview-box-{{ str_replace('#', '', $color) }}">
-                                                <i class="bi bi-check"></i>
-                                            </span>
-                                        </label>
-                                    @endforeach
-                                    <span class="color_name"></span>
-                                </div>
-                            </div>
-                        @endif
-
-                        @foreach (json_decode($product->choice_options) as $key => $choice)
-                            <div class="mt-20px">
-                                <label class="form-label">{{ translate($choice->title) }}</label>
-                                <div class="d-flex flex-wrap gap-2">
-                                    @foreach ($choice->options as $key => $option)
-                                        <label class="form-check-size">
-                                            <input type="radio" name="{{ $choice->name }}"
-                                                value="{{ $option }}" {{ $key == 0 ? 'checked' : '' }}>
-                                            <span class="form-check-label">{{ $option }}</span>
-                                        </label>
-                                    @endforeach
-                                </div>
-                            </div>
-                        @endforeach
-
-                        <div class="d-flex align-items-center row-gap-2 column-gap-4 mt-20px">
-                            <span>{{ translate('quantity') }} :</span>
-                            <div class="inc-inputs">
-                                <input type="number" name="quantity" value="{{ $product->minimum_order_qty ?? 1 }}"
-                                    class="form-control product_quantity__qty product_qty"
-                                    min="{{ $product->minimum_order_qty ?? 1 }}"
-                                    max="{{ $product['product_type'] == 'physical' ? $product->current_stock : 100 }}">
-                            </div>
-                        </div>
-                        <div class="btn-grp">
-                            @if (
-                                ($product->added_by == 'seller' &&
-                                    ($sellerTemporaryClose ||
-                                        (isset($product->seller->shop) &&
-                                            $product->seller->shop->vacation_status &&
-                                            $currentDate >= $sellerVacationStartDate &&
-                                            $currentDate <= $sellerVacationEndDate))) ||
-                                    ($product->added_by == 'admin' &&
-                                        ($inHouseTemporaryClose ||
-                                            ($inHouseVacationStatus &&
-                                                $currentDate >= $inHouseVacationStartDate &&
-                                                $currentDate <= $inHouseVacationEndDate))))
-                                <button type="button" class="btn btn-base text-capitalize font-medium" disabled>
-                                    @include('theme-views.partials.icons._cart-icon')
-                                    {{ translate('add_to_cart') }}</button>
-                                <button type="button"
-                                    class="buy_now_button btn btn-base __btn-outline-warning secondary-color fs-16 text-capitalize"
-                                    disabled>
-                                    @include('theme-views.partials.icons._buy-now')
-                                    {{ translate('buy_now') }}</span></button>
-                            @else
-                                <a href="javascript:" class="btn btn-base text-capitalize font-medium add_to_cart_button"
-                                    data-form-id="add-to-cart-form">
-                                    @include('theme-views.partials.icons._cart-icon')
-                                    {{ translate('add_to_cart') }}
-                                </a>
-                                @php($guestCheckout = getWebConfig(name: 'guest_checkout'))
-                                <a href="javascript:"
-                                    class="btn btn-base btn-md __btn-outline-warning secondary-color text-capitalize buy_now_function"
-                                    data-formid="add-to-cart-form"
-                                    data-authstatus="{{ $guestCheckout == 1 || Auth::guard('customer')->check() ? 'true' : 'false' }}"
-                                    data-route="{{ route('shop-cart') }}">
-                                    @include('theme-views.partials.icons._buy-now')
-                                    {{ translate('buy_now') }}</a>
-                            @endif
-
-                            <a href="javascript:" class="btn btn-base btn-sm __btn-outline addWishlist_function_view_page"
-                                data-id="{{ $product['id'] }}">
-                                <i
-                                    class="wishlist_{{ $product['id'] }} bi {{ $wishlistStatus == 1 ? 'bi-heart-fill text-danger' : 'bi-heart' }} font--lg"></i>
-                                <span
-                                    class="product_wishlist_count_status">{{ \App\Utils\format_biginteger($countWishlist) }}</span>
-                            </a>
-
-                            @php($compareList = count($product->compareList) > 0 ? 1 : 0)
-                            <a href="javascript:"
-                                class="addCompareList_view_page btn btn-base btn-sm __btn-outline text-base compare_list-{{ $product['id'] }} {{ $compareList == 1 ? 'compare_list_icon_active' : '' }}"
-                                data-id="{{ $product['id'] }}">
-                                @include('theme-views.partials.icons._compare')
-                            </a>
-                        </div>
-
-                        @if (
-                            ($product->added_by == 'seller' &&
-                                ($sellerTemporaryClose ||
-                                    (isset($product->seller->shop) &&
-                                        $product->seller->shop->vacation_status &&
-                                        $currentDate >= $sellerVacationStartDate &&
-                                        $currentDate <= $sellerVacationEndDate))) ||
-                                ($product->added_by == 'admin' &&
-                                    ($inHouseTemporaryClose ||
-                                        ($inHouseVacationStatus &&
-                                            $currentDate >= $inHouseVacationStartDate &&
-                                            $currentDate <= $inHouseVacationEndDate))))
-                            <div class="alert alert-danger mt-3" role="alert">
-                                {{ translate('this_shop_is_temporary_closed_or_on_vacation') }}
-                                .
-                                {{ translate('you_cannot_add_product_to_cart_from_this_shop_for_now') }}
-                            </div>
-                        @endif
-                    </form>
-                </div>
-
-                <div class="product-single-pricing">
-                    <div class="product-single-pricing-inner text-capitalize">
-                        <h6 class="subtitle">{{ translate('total_price_for_this_product') }} :</h6>
-                        <h3 class="price"><span
-                                class="total_price">{{ \App\Utils\Helpers::currency_converter($product->unit_price) }}</span>
-                            <sub>( {{ translate('vat') }} <span
-                                    class="tax_status">{{ $product->tax_model == 'include' ? 'incl.' : \App\Utils\Helpers::currency_converter($product->tax) }}</span>
-                                )</sub>
-                        </h3>
-
-                        <div class="delivery-information mt-3">
-                            <ul>
-                                @if (isset($product['product_type']) &&
-                                        $product['product_type'] == 'physical' &&
-                                        $deliveryInfo['shipping_type'] &&
-                                        $deliveryInfo['shipping_type'] != 'order_wise')
-                                    <li>
-                                        <img loading="lazy"
-                                            src="{{ theme_asset('assets/img/products/icons/delivery-charge.png') }}"
-                                            class="icons" alt="{{ translate('product') }}">
-                                        <div class="cont">
-                                            <div class="t-txt">{{ translate('delivery_charge') }} -</div>
-                                            <span class="mt-1"> {{ translate('start_from') }} <span
-                                                    class="text-base product_delivery_cost"
-                                                    id="product_delivery_cost">{{ \App\Utils\Helpers::currency_converter($deliveryInfo['delivery_cost']) }}</span></span>
-                                        </div>
-                                    </li>
-                                @elseif (isset($product['product_type']) &&
-                                        $product['product_type'] == 'physical' &&
-                                        $deliveryInfo['shipping_type'] == 'order_wise')
-                                    <li>
-                                        <img loading="lazy"
-                                            src="{{ theme_asset('assets/img/products/icons/delivery-charge.png') }}"
-                                            class="icons" alt="{{ translate('product') }}">
-                                        <div class="cont">
-                                            <div class="t-txt">{{ translate('delivery_charge') }} -</div>
-                                            <span class="mt-1"> {{ translate('start_from') }}
-                                                <span class="text-base">
-                                                    @if ($deliveryInfo['delivery_cost_max'] == $deliveryInfo['delivery_cost_min'] || $deliveryInfo['delivery_cost_max'] == 0)
-                                                        {{ \App\Utils\Helpers::currency_converter($deliveryInfo['delivery_cost_min']) }}
-                                                    @elseif ($deliveryInfo['delivery_cost_min'] == 0)
-                                                        {{ \App\Utils\Helpers::currency_converter($deliveryInfo['delivery_cost_max']) }}
-                                                    @else
-                                                        {{ \App\Utils\Helpers::currency_converter($deliveryInfo['delivery_cost_min']) }}
-                                                        -
-                                                        {{ \App\Utils\Helpers::currency_converter($deliveryInfo['delivery_cost_max']) }}
-                                                    @endif
-                                                </span>
-                                            </span>
-                                        </div>
-                                    </li>
-                                @endif
-                                @php($refundDayLimit = getWebConfig(name: 'refund_day_limit'))
-                                @if (isset($web_config['refund_policy']['status']) && $web_config['refund_policy']['status'] == 1 && $refundDayLimit > 0)
-                                    <li>
-                                        <img loading="lazy"
-                                            src="{{ theme_asset('assets/img/products/icons/warranty.png') }}"
-                                            class="icons" alt="{{ translate('product') }}">
-                                        <div class="cont">
-                                            <div class="t-txt">{{ translate('refund_policy') }}-</div>
-                                            <span class="mt-1">{{ $refundDayLimit }} {{ translate('days') }} <span
-                                                    class="text-base mx-1"><a href="{{ route('terms') }}"
-                                                        target="_blank"><u>{{ translate('refund_policy') }}</u></a></span></span>
-                                        </div>
-                                    </li>
-                                @endif
-                                @if ($product->added_by != 'admin')
-                                    <li>
-                                        <div class="cont">
-                                            <div class="d-flex gap-2">
-                                                @if (auth('customer')->id() == '')
-                                                    <a href="javascript:"
-                                                        class="btn w-100 d-flex align-items-center gap-4px py-3 justify-content-center rounded btn-soft-base btn-sm customer_login_register_modal">
-                                                        <img loading="lazy"
-                                                            src="{{ theme_asset('assets/img/products/icons/ask-about.png') }}"
-                                                            class="icons" alt="{{ translate('product') }}">
-                                                        <div class="t-txt">{{ translate('ask_about_this_product') }}
-                                                        </div>
-                                                    </a>
-                                                @else
-                                                    <a href="javascript:"
-                                                        class="btn w-100 d-flex align-items-center gap-4px py-3 justify-content-center rounded btn-soft-base btn-sm"
-                                                        data-bs-toggle="modal" data-bs-target="#contact_sellerModal">
-                                                        <img loading="lazy"
-                                                            src="{{ theme_asset('assets/img/products/icons/ask-about.png') }}"
-                                                            class="icons" alt="{{ translate('product') }}">
-                                                        <div class="t-txt">{{ translate('ask_about_this_product') }}
-                                                        </div>
-                                                    </a>
-                                                @endif
-
-                                            </div>
-                                        </div>
-                                    </li>
-                                @endif
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            @if ($product->reviews_count > 0)
-                <div class="details-review row-gap-4 mt-32px">
+                @if ($product->reviews_count > 0)
+                    <div class="details-review row-gap-4 mt-32px">
                     <div class="details-review-item">
                         <h2 class="title">{{ $overallRating[0] }}</h2>
                         <div class="text-star">
@@ -815,10 +441,442 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            @endif
+                    </div>
+                @endif
 
-            @if ($product->details != null || count($product->reviews) != 0)
+                <div class="tab-pane fade  show active" id="comments">
+                                        @if (count($product->reviews) > 0)
+                                            <div class="comments-information">
+                                                <ul id="product-review-list">
+                                                    @include(
+                                                        'theme-views.layouts.partials._product-reviews',
+                                                        ['productReviews' => $productReviews]
+                                                    )
+                                                </ul>
+                                            </div>
+                                            @if (count($product->reviews) > 2)
+                                                <a href="javascript:" id="load_review_function"
+                                                    class="product-information-view-more-custom see-more-details-review view_text"
+                                                    data-productid="{{ $product->id }}"
+                                                    data-routename="{{ route('review-list-product') }}"
+                                                    data-afterextend="{{ translate('see_less') }}"
+                                                    data-seemore="{{ translate('see_more') }}"
+                                                    data-onerror="{{ translate('no_more_review_remain_to_load') }}">{{ translate('see_more') }}</a>
+                                            @endif
+                                        @else
+                                            <div class="text-center w-100">
+                                                <div class="text-center pt-5 mb-5">
+                                                    <img loading="lazy"
+                                                        src="{{ theme_asset('assets/img/icons/review.svg') }}"
+                                                        alt="{{ translate('review') }}">
+                                                    <h5 class="my-3 pt-2 text-muted">{{ translate('not_reviewed_yet') }}
+                                                        !</h5>
+                                                    <p class="text-center text-muted">
+                                                        {{ translate('sorry_no_review_found_to_show_you') }}</p>
+                                                </div>
+                                            </div>
+                                        @endif
+                                    </div>
+                </div>
+                <div style="width: 50%;">
+                    <div class="product-single-content">
+                        <form class="cart add_to_cart_form" action="{{ route('cart.add') }}" id="add-to-cart-form"
+                            data-redirecturl="{{ route('checkout-details') }}"
+                            data-varianturl="{{ route('cart.variant_price') }}"
+                            data-errormessage="{{ translate('please_choose_all_the_options') }}"
+                            data-outofstock="{{ translate('sorry') . ', ' . translate('out_of_stock') }}.">
+                            @csrf
+                            <h3 class="title">{{ $product->name }}</h3>
+                            <input type="hidden" name="id" value="{{ $product->id }}">
+                            <div class="d-flex flex-wrap align-items-center column-gap-4">
+                                @if ($product->reviews_count > 0)
+                                    <div class=" review position-relative">
+                                        <i class="bi bi-star-fill"></i>
+                                        <span>{{ round($overallRating[0], 1) }} <small>({{ $product->reviews_count }}
+                                                {{ translate('review') }})</small></span>
+
+                                        <div class="review-details-popup z-3">
+                                            <div class="mb-4px">{{ translate('rating') }}</div>
+                                            <div class="review-items d-flex flex-column row-gap-1">
+                                                <div class="d-flex column-gap-2 align-items-center">
+                                                    <div class="stars">
+                                                        <i class="bi bi-star-fill"></i>
+                                                        <i class="bi bi-star-fill"></i>
+                                                        <i class="bi bi-star-fill"></i>
+                                                        <i class="bi bi-star-fill"></i>
+                                                        <i class="bi bi-star-fill"></i>
+                                                    </div>
+                                                    <span class="progress">
+                                                        <div class="progress-fill"
+                                                            style="--fill:{{ $rating[0] != 0 ? number_format(($rating[0] * 100) / array_sum($rating)) : 0 }}%">
+                                                        </div>
+                                                    </span>
+                                                    <span>({{ $rating[0] }})</span>
+                                                </div>
+                                                <div class="d-flex column-gap-2 align-items-center">
+                                                    <div class="stars">
+                                                        <i class="bi bi-star-fill"></i>
+                                                        <i class="bi bi-star-fill"></i>
+                                                        <i class="bi bi-star-fill"></i>
+                                                        <i class="bi bi-star-fill"></i>
+                                                        <i class="bi bi-star-fill"></i>
+                                                    </div>
+                                                    <span class="progress">
+                                                        <div class="progress-fill"
+                                                            style="--fill:{{ $rating[1] != 0 ? number_format(($rating[1] * 100) / array_sum($rating)) : 0 }}%">
+                                                        </div>
+                                                    </span>
+                                                    <span>({{ $rating[1] }})</span>
+                                                </div>
+                                                <div class="d-flex column-gap-2 align-items-center">
+                                                    <div class="stars">
+                                                        <i class="bi bi-star-fill"></i>
+                                                        <i class="bi bi-star-fill"></i>
+                                                        <i class="bi bi-star-fill"></i>
+                                                        <i class="bi bi-star-fill"></i>
+                                                        <i class="bi bi-star-fill"></i>
+                                                    </div>
+                                                    <span class="progress">
+                                                        <div class="progress-fill"
+                                                            style="--fill:{{ $rating[2] != 0 ? number_format(($rating[2] * 100) / array_sum($rating)) : 0 }}%">
+                                                        </div>
+                                                    </span>
+                                                    <span>({{ $rating[2] }})</span>
+                                                </div>
+                                                <div class="d-flex column-gap-2 align-items-center">
+                                                    <div class="stars">
+                                                        <i class="bi bi-star-fill"></i>
+                                                        <i class="bi bi-star-fill"></i>
+                                                        <i class="bi bi-star-fill"></i>
+                                                        <i class="bi bi-star-fill"></i>
+                                                        <i class="bi bi-star-fill"></i>
+                                                    </div>
+                                                    <span class="progress">
+                                                        <div class="progress-fill"
+                                                            style="--fill:{{ $rating[3] != 0 ? number_format(($rating[3] * 100) / array_sum($rating)) : 0 }}%">
+                                                        </div>
+                                                    </span>
+                                                    <span>({{ $rating[3] }})</span>
+                                                </div>
+                                                <div class="d-flex column-gap-2 align-items-center">
+                                                    <div class="stars">
+                                                        <i class="bi bi-star-fill"></i>
+                                                        <i class="bi bi-star-fill"></i>
+                                                        <i class="bi bi-star-fill"></i>
+                                                        <i class="bi bi-star-fill"></i>
+                                                        <i class="bi bi-star-fill"></i>
+                                                    </div>
+                                                    <span class="progress">
+                                                        <div class="progress-fill"
+                                                            style="--fill:{{ $rating[4] != 0 ? number_format(($rating[4] * 100) / array_sum($rating)) : 0 }}%">
+                                                        </div>
+                                                    </span>
+                                                    <span>({{ $rating[4] }})</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @else
+                                    <div class=" review position-relative">
+                                        <i class="bi bi-star-fill"></i>
+                                        <span>{{ round($overallRating[0], 1) }} <small
+                                                class="text-capitalize">({{ translate('no_review') }})</small></span>
+                                    </div>
+                                @endif
+                                @if ($product['product_type'] == 'physical')
+                                    <span class="badge badge-soft-success stock_status">
+                                        <span class="in_stock_status">{{ $product->current_stock }}</span>
+                                        {{ translate('stock_available') }}
+                                    </span>
+                                    <span
+                                        class="badge badge-soft-danger d-none out_of_stock_status">{{ translate('out_of_stock') }}</span>
+                                    <span
+                                        class="badge badge-soft-secondary limited_status d-none">{{ translate('limited_stock') }}</span>
+                                @endif
+
+                            </div>
+                            <div class="categories">
+                                <span class="text-capitalize">{{ translate('category_tag') }} :</span>
+                                @if ($product->category_id)
+                                    <a href="{{ route('products', ['id' => $product->category_id, 'data_from' => 'category', 'page' => 1]) }}"
+                                        class="text-base">
+                                        {{ ucwords(isset($product->category) ? $product->category->name : '') }}
+                                    </a>
+                                @endif
+
+                                @if ($product->sub_category_id)
+                                    <a href="{{ route('products', ['id' => $product->sub_category_id, 'data_from' => 'category', 'page' => 1]) }}"
+                                        class="text-base">
+                                        {{ ucwords(\App\Utils\CategoryManager::get_category_name($product->sub_category_id)) }}
+                                    </a>
+                                @endif
+
+                                @if ($product->sub_sub_category_id)
+                                    <a href="{{ route('products', ['id' => $product->sub_sub_category_id, 'data_from' => 'category', 'page' => 1]) }}"
+                                        class="text-base">
+                                        {{ ucwords(\App\Utils\CategoryManager::get_category_name($product->sub_sub_category_id)) }}
+                                    </a>
+                                @endif
+                            </div>
+                            <hr>
+                            <div class="price" >
+                                <h4 style="font-size: 30px;">{!! getPriceRangeWithDiscount(product: $product) !!}
+                                    @if ($product->discount > 0)
+                                        @if ($product->discount_type === 'percent')
+                                            <span class="badge bg-base" style="color: white;padding: 10px;">-{{ $product->discount }}%</span>
+                                        @else
+                                            <span class="badge bg-base" style="color: white;padding: 10px;">
+                                                {{ translate('save') }}
+                                                {{ webCurrencyConverter(amount: $product->discount) }}
+                                            </span>
+                                        @endif
+                                    @endif
+                                </h4>
+                            </div>
+
+                            @if (count(json_decode($product->colors)) > 0)
+                                <div>
+                                    <label class="form-label">{{ translate('color') }}</label>
+                                    <div class="check-color-group justify-content-start align-items-center">
+                                        @foreach (json_decode($product->colors) as $key => $color)
+                                            <label>
+                                                <input type="radio" name="color" value="{{ $color }}"
+                                                    {{ $key == 0 ? 'checked' : '' }}>
+                                                <span style="--base:{{ $color }}"
+                                                    class="focus_preview_image_by_color"
+                                                    data-colorid="preview-box-{{ str_replace('#', '', $color) }}"
+                                                    id="color_variants_preview-box-{{ str_replace('#', '', $color) }}">
+                                                    <i class="bi bi-check"></i>
+                                                </span>
+                                            </label>
+                                        @endforeach
+                                        <span class="color_name"></span>
+                                    </div>
+                                </div>
+                            @endif
+
+                            @foreach (json_decode($product->choice_options) as $key => $choice)
+                                <div class="mt-20px">
+                                    <label class="form-label">{{ translate($choice->title) }}</label>
+                                    <div class="d-flex flex-wrap gap-2">
+                                        @foreach ($choice->options as $key => $option)
+                                            <label class="form-check-size">
+                                                <input type="radio" name="{{ $choice->name }}"
+                                                    value="{{ $option }}" {{ $key == 0 ? 'checked' : '' }}>
+                                                <span class="form-check-label">{{ $option }}</span>
+                                            </label>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            @endforeach
+
+                            <div class="d-flex align-items-center row-gap-2 column-gap-4 mt-20px">
+                                <span>{{ translate('quantity') }} :</span>
+                                <div class="inc-inputs">
+                                    <input type="number" name="quantity" value="{{ $product->minimum_order_qty ?? 1 }}"
+                                        class="form-control product_quantity__qty product_qty"
+                                        min="{{ $product->minimum_order_qty ?? 1 }}"
+                                        max="{{ $product['product_type'] == 'physical' ? $product->current_stock : 100 }}">
+                                </div>
+                                <a href="javascript:" class="btn btn-base btn-sm __btn-outline addWishlist_function_view_page"
+                                    data-id="{{ $product['id'] }}">
+                                    <i
+                                        class="wishlist_{{ $product['id'] }} bi {{ $wishlistStatus == 1 ? 'bi-heart-fill text-danger' : 'bi-heart' }} font--lg"></i>
+                                    <span
+                                        class="product_wishlist_count_status">{{ \App\Utils\format_biginteger($countWishlist) }}</span>
+                                </a>
+                            </div>
+                            <div class="btn-grp">
+                                @if (
+                                    ($product->added_by == 'seller' &&
+                                        ($sellerTemporaryClose ||
+                                            (isset($product->seller->shop) &&
+                                                $product->seller->shop->vacation_status &&
+                                                $currentDate >= $sellerVacationStartDate &&
+                                                $currentDate <= $sellerVacationEndDate))) ||
+                                        ($product->added_by == 'admin' &&
+                                            ($inHouseTemporaryClose ||
+                                                ($inHouseVacationStatus &&
+                                                    $currentDate >= $inHouseVacationStartDate &&
+                                                    $currentDate <= $inHouseVacationEndDate))))
+                                    <button type="button" class="btn btn-base text-capitalize font-medium" disabled>
+                                        @include('theme-views.partials.icons._cart-icon')
+                                        {{ translate('add_to_cart') }}</button>
+                                    <!-- <button type="button"
+                                        class="buy_now_button btn btn-base __btn-outline-warning secondary-color fs-16 text-capitalize"
+                                        disabled>
+                                        @include('theme-views.partials.icons._buy-now')
+                                        {{ translate('buy_now') }}</span></button> -->
+                                @else
+                                    <a href="javascript:" class="btn btn-base text-capitalize font-medium add_to_cart_button btn-cart"
+                                        data-form-id="add-to-cart-form" style="width: 100%;background: linear-gradient(270deg, #845DC2 -0.09%, #D15EAA 36.37%, #F8931B 100.48%, #FFC65F 145.17%);border-radius: 27px;padding: 13px !important;">
+                                        @include('theme-views.partials.icons._cart-icon')
+                                        {{ translate('add_to_cart') }}
+                                    </a>
+                                    @php($guestCheckout = getWebConfig(name: 'guest_checkout'))
+                                    <!-- <a href="javascript:"
+                                        class="btn btn-base btn-md __btn-outline-warning secondary-color text-capitalize buy_now_function"
+                                        data-formid="add-to-cart-form"
+                                        data-authstatus="{{ $guestCheckout == 1 || Auth::guard('customer')->check() ? 'true' : 'false' }}"
+                                        data-route="{{ route('shop-cart') }}">
+                                        @include('theme-views.partials.icons._buy-now')
+                                        {{ translate('buy_now') }}</a>
+                                @endif -->
+
+                                
+
+                                <!-- @php($compareList = count($product->compareList) > 0 ? 1 : 0)
+                                <a href="javascript:"
+                                    class="addCompareList_view_page btn btn-base btn-sm __btn-outline text-base compare_list-{{ $product['id'] }} {{ $compareList == 1 ? 'compare_list_icon_active' : '' }}"
+                                    data-id="{{ $product['id'] }}">
+                                    @include('theme-views.partials.icons._compare')
+                                </a> -->
+                            </div>
+
+                            @if (
+                                ($product->added_by == 'seller' &&
+                                    ($sellerTemporaryClose ||
+                                        (isset($product->seller->shop) &&
+                                            $product->seller->shop->vacation_status &&
+                                            $currentDate >= $sellerVacationStartDate &&
+                                            $currentDate <= $sellerVacationEndDate))) ||
+                                    ($product->added_by == 'admin' &&
+                                        ($inHouseTemporaryClose ||
+                                            ($inHouseVacationStatus &&
+                                                $currentDate >= $inHouseVacationStartDate &&
+                                                $currentDate <= $inHouseVacationEndDate))))
+                                <div class="alert alert-danger mt-3" role="alert">
+                                    {{ translate('this_shop_is_temporary_closed_or_on_vacation') }}
+                                    .
+                                    {{ translate('you_cannot_add_product_to_cart_from_this_shop_for_now') }}
+                                </div>
+                            @endif
+                        </form>
+                    </div>
+                    <div class="coupon-card">
+                        <h3>Offers & Discount</h3>
+                        <div class="coupon">
+                            <img src="{{asset('/public/assets/images/staticImages/CouponCard.png')}}" alt="" style="width: 100%;padding: 10px;">
+                        </div>
+                    </div>
+                    <hr>
+                    <div>
+                        
+                                <div class="" id="general-info">
+                                            <div class="general-information">
+                                                {!! $product->details !!}
+                                            </div>
+                                            <a href="javascript:" class="product-information-view-more"
+                                                data-view-more="{{ translate('view_more') }}"
+                                                data-view-less="{{ translate('view_less') }}">
+                                                {{ translate('view_more') }}
+                                            </a>
+                                        </div>
+                    </div>
+                    <div class="product-single-pricing">
+                        <div class="product-single-pricing-inner text-capitalize">
+                            <h6 class="subtitle">{{ translate('total_price_for_this_product') }} :</h6>
+                            <h3 class="price"><span
+                                    class="total_price">{{ \App\Utils\Helpers::currency_converter($product->unit_price) }}</span>
+                                <sub>( {{ translate('vat') }} <span
+                                        class="tax_status">{{ $product->tax_model == 'include' ? 'incl.' : \App\Utils\Helpers::currency_converter($product->tax) }}</span>
+                                    )</sub>
+                            </h3>
+
+                            <div class="delivery-information mt-3">
+                                <ul>
+                                    @if (isset($product['product_type']) &&
+                                            $product['product_type'] == 'physical' &&
+                                            $deliveryInfo['shipping_type'] &&
+                                            $deliveryInfo['shipping_type'] != 'order_wise')
+                                        <li>
+                                            <img loading="lazy"
+                                                src="{{ theme_asset('assets/img/products/icons/delivery-charge.png') }}"
+                                                class="icons" alt="{{ translate('product') }}">
+                                            <div class="cont">
+                                                <div class="t-txt">{{ translate('delivery_charge') }} -</div>
+                                                <span class="mt-1"> {{ translate('start_from') }} <span
+                                                        class="text-base product_delivery_cost"
+                                                        id="product_delivery_cost">{{ \App\Utils\Helpers::currency_converter($deliveryInfo['delivery_cost']) }}</span></span>
+                                            </div>
+                                        </li>
+                                    @elseif (isset($product['product_type']) &&
+                                            $product['product_type'] == 'physical' &&
+                                            $deliveryInfo['shipping_type'] == 'order_wise')
+                                        <li>
+                                            <img loading="lazy"
+                                                src="{{ theme_asset('assets/img/products/icons/delivery-charge.png') }}"
+                                                class="icons" alt="{{ translate('product') }}">
+                                            <div class="cont">
+                                                <div class="t-txt">{{ translate('delivery_charge') }} -</div>
+                                                <span class="mt-1"> {{ translate('start_from') }}
+                                                    <span class="text-base">
+                                                        @if ($deliveryInfo['delivery_cost_max'] == $deliveryInfo['delivery_cost_min'] || $deliveryInfo['delivery_cost_max'] == 0)
+                                                            {{ \App\Utils\Helpers::currency_converter($deliveryInfo['delivery_cost_min']) }}
+                                                        @elseif ($deliveryInfo['delivery_cost_min'] == 0)
+                                                            {{ \App\Utils\Helpers::currency_converter($deliveryInfo['delivery_cost_max']) }}
+                                                        @else
+                                                            {{ \App\Utils\Helpers::currency_converter($deliveryInfo['delivery_cost_min']) }}
+                                                            -
+                                                            {{ \App\Utils\Helpers::currency_converter($deliveryInfo['delivery_cost_max']) }}
+                                                        @endif
+                                                    </span>
+                                                </span>
+                                            </div>
+                                        </li>
+                                    @endif
+                                    @php($refundDayLimit = getWebConfig(name: 'refund_day_limit'))
+                                    @if (isset($web_config['refund_policy']['status']) && $web_config['refund_policy']['status'] == 1 && $refundDayLimit > 0)
+                                        <li>
+                                            <img loading="lazy"
+                                                src="{{ theme_asset('assets/img/products/icons/warranty.png') }}"
+                                                class="icons" alt="{{ translate('product') }}">
+                                            <div class="cont">
+                                                <div class="t-txt">{{ translate('refund_policy') }}-</div>
+                                                <span class="mt-1">{{ $refundDayLimit }} {{ translate('days') }} <span
+                                                        class="text-base mx-1"><a href="{{ route('terms') }}"
+                                                            target="_blank"><u>{{ translate('refund_policy') }}</u></a></span></span>
+                                            </div>
+                                        </li>
+                                    @endif
+                                    @if ($product->added_by != 'admin')
+                                        <li>
+                                            <div class="cont">
+                                                <div class="d-flex gap-2">
+                                                    @if (auth('customer')->id() == '')
+                                                        <a href="javascript:"
+                                                            class="btn w-100 d-flex align-items-center gap-4px py-3 justify-content-center rounded btn-soft-base btn-sm customer_login_register_modal">
+                                                            <img loading="lazy"
+                                                                src="{{ theme_asset('assets/img/products/icons/ask-about.png') }}"
+                                                                class="icons" alt="{{ translate('product') }}">
+                                                            <div class="t-txt">{{ translate('ask_about_this_product') }}
+                                                            </div>
+                                                        </a>
+                                                    @else
+                                                        <a href="javascript:"
+                                                            class="btn w-100 d-flex align-items-center gap-4px py-3 justify-content-center rounded btn-soft-base btn-sm"
+                                                            data-bs-toggle="modal" data-bs-target="#contact_sellerModal">
+                                                            <img loading="lazy"
+                                                                src="{{ theme_asset('assets/img/products/icons/ask-about.png') }}"
+                                                                class="icons" alt="{{ translate('product') }}">
+                                                            <div class="t-txt">{{ translate('ask_about_this_product') }}
+                                                            </div>
+                                                        </a>
+                                                    @endif
+
+                                                </div>
+                                            </div>
+                                        </li>
+                                    @endif
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+
+            <!-- @if ($product->details != null || count($product->reviews) != 0)
                 <div class="row g-2 mt-4">
                     <div class="col-xl-8 col-lg-7">
                         <div class="product-information">
@@ -953,7 +1011,7 @@
                         </div>
                     </div>
                 @endif
-            @endif
+            @endif -->
 
             <div class="mt-4">
                 <div class="similler-product-slider-wrapper">

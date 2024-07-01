@@ -790,10 +790,11 @@ class HomeController extends Controller
             })->latest()->take(4)->get();
 
             $sizes = [];
-
+            $filterOptions = [];
 foreach ($all_products as $product) {
     $temp_sizes = [];
     $choice_options = json_decode($product->choice_options, true);
+    $filterOptions[] = $choice_options;
     if (is_array($choice_options) && !empty($choice_options)) {
         $title = $choice_options[0]['title'];
         if ($title == 'Size') {
@@ -813,8 +814,37 @@ foreach ($all_products as $product) {
             $product->sizes = $temp_sizes; // Reassign the array back to the product property
         }
     }
-}
+}    
 
+
+        $mergedChoices = [];
+
+            foreach ($filterOptions as $choices) {
+                foreach ($choices as $choice) {
+                    if (!isset($mergedChoices[$choice['name']])) {
+                        $mergedChoices[$choice['name']] = [
+                            'name' => $choice['name'],
+                            'title' => $choice['title'],
+                            'options' => []
+                        ];
+                    }
+                    $mergedChoices[$choice['name']]['options'] = array_unique(array_merge($mergedChoices[$choice['name']]['options'], array_map('trim', $choice['options'])));
+                }
+            }
+    
+            $allColors = [];
+    
+            // Loop through each product to extract colors
+            foreach ($all_products as $productItem) {
+                $colors = json_decode($productItem['colors'], true);
+                if ($colors) {
+                    $allColors = array_merge($allColors, $colors);
+                }
+            }
+            $mergedChoices['choice_0']['title'] = "Color";
+            // Remove duplicate colors
+            $mergedChoices['choice_0']['options'] = array_unique($allColors);
+            
 
             
             $custom_sort = function ($a, $b) {
@@ -856,9 +886,17 @@ foreach ($all_products as $product) {
             $custom_pages = CustomPage::get();
 
 
+
+            //-----------------
+
+            
+            
+                
+
+            //----------------
         return view(VIEW_FILE_NAMES['home'],
             compact(
-                'device','custom_pages','sizes','latest_products', 'deal_of_the_day', 'top_sellers','topRatedShops', 'main_banner','most_visited_categories',
+                'mergedChoices','device','custom_pages','sizes','latest_products', 'deal_of_the_day', 'top_sellers','topRatedShops', 'main_banner','most_visited_categories',
                 'random_product', 'decimal_point_settings', 'newSellers', 'sidebar_banner', 'top_side_banner', 'recent_order_shops',
                 'categories', 'colors_in_shop', 'all_products_info', 'most_searching_product', 'most_demanded_product', 'featured_products','promo_banner_left',
                 'promo_banner_middle_top','promo_banner_middle_bottom','promo_banner_right', 'promo_banner_bottom', 'currentDate', 'all_products',

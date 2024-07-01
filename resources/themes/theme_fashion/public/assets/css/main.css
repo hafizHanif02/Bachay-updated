@@ -261,7 +261,7 @@ h6 {
         line-height: 2.5714285714rem;
     }
     h3 {
-        font-size: 1.7142857143rem;
+        font-size: 1.5rem;
         line-height: 2.1428571429rem;
     }
 }
@@ -2961,7 +2961,7 @@ header.bg-white {
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    width: 1.4285714286rem;
+    width: 3.428571rem;
     aspect-ratio: 1;
     position: relative;
 }
@@ -5237,12 +5237,12 @@ header.bg-white {
 
 @media (min-width: 767px) {
     .product-single-wrapper .product-single-thumb {
-        max-width: 50%;
+        max-width: 100%;
     }
 }
 /*Single Content*/
 .product-single-content {
-    width: 300px;
+    /* width: 300px; */
     flex-grow: 1;
 }
 
@@ -5343,7 +5343,7 @@ header.bg-white {
 
 @media (min-width: 767px) {
     .product-single-wrapper .product-single-pricing {
-        max-width: 20.8571428571rem;
+        /* max-width: 20.8571428571rem; */
     }
 }
 @media (min-width: 992px) {
@@ -10663,4 +10663,8 @@ a.img5:hover::before {
 
 .product-card:hover .product-card-inner .img a img {
     transform: scale(1.1);
+}
+
+.coupon {
+    
 }
