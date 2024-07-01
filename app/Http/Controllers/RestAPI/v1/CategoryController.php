@@ -62,7 +62,9 @@ class CategoryController extends Controller
         ->priority()
         ->get();
 
-        $categories[0]['icon'] = asset('storage/app/public/product/thumbnail/' . $categories[0]['icon']);
+
+        //https://bachay.com/storage/app/public/category/
+        $categories[0]['icon'] = asset('storage/app/public/category/' . $categories[0]['icon']);
 
     return response()->json($categories, 200);
 }
