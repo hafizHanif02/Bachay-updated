@@ -64,7 +64,14 @@ class CategoryController extends Controller
 
 
         //https://bachay.com/storage/app/public/category/
-        $categories[0]['icon'] = asset('storage/app/public/category/' . $categories[0]['icon']);
+        $categories[0]['icon'] = asset('storage/app/category/' . $categories[0]['icon']);
+
+        foreach ($categories[0]['childes'] as $cate){
+            $cate['icon'] = asset('storage/app/category/' . $cate['icon']);
+            foreach($cate['childes'] as $sub){
+                $sub['icon'] = asset('storage/app/category/' . $sub['icon']);
+            }
+        }
 
     return response()->json($categories, 200);
 }
