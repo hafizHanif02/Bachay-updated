@@ -34,7 +34,7 @@ class CustomerController extends Controller
         $user->orders_count = User::withCount('orders')->find($user->id)->orders_count;
 
         $childs = FamilyRelation::where('user_id', $request->user()->id)->get();
-
+        return $childs;
         $father = 0;
         $mother = 0;
         $guardian = 0;
@@ -69,7 +69,7 @@ class CustomerController extends Controller
             if(strlen($tagline) > 0){
                 $tagline .= ' and ';
             }
-            $tagline .= 'I am your child.';
+            $tagline .= '';
         }
 
         $user->tagline = $tagline;
