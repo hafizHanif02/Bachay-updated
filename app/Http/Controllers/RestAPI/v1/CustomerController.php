@@ -34,18 +34,18 @@ class CustomerController extends Controller
         $user->orders_count = User::withCount('orders')->find($user->id)->orders_count;
 
         $childs = FamilyRelation::where('user_id', $request->user()->id)->get();
-        return $childs;
+        
         $father = 0;
         $mother = 0;
         $guardian = 0;
 
         $tagline = "";
         foreach ($childs as $key => $value) {
-            if($value->relaion_type == 'Father'){
+            if($value->relation_type == 'Father'){
                 $father++;
-            }elseif($value->relaion_type == 'Mother'){
+            }elseif($value->relation_type == 'Mother'){
                 $mother++;
-            }elseif($value->relaion_type == 'Guardian'){
+            }elseif($value->relation_type == 'Guardian'){
                 $guardian++;
             }
         }
