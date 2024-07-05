@@ -60,7 +60,7 @@ class CustomerController extends Controller
                 $tagline .= ' and ';
             }
             $tagline .= 'Mother of '.$mother;
-        }elseif($guardien > 0){
+        }elseif($guardian > 0){
             if(strlen($tagline) > 0){
                 $tagline .= ' and ';
             }
