@@ -10,7 +10,7 @@ use App\Models\VaccinationSubmission;
 
 class FamilyRelationController extends Controller
 {
-    public function childHome(){
+    public function childHome(Request $request){
         $user = $request->user();
         return $user;
             $childerens = FamilyRelation::where('user_id', auth('customer')->user()->id)->get();
