@@ -12,8 +12,10 @@ class FamilyRelationController extends Controller
 {
     public function childHome(Request $request){
         $user = $request->user();
-        return $user;
-            $childerens = FamilyRelation::where('user_id', auth('customer')->user()->id)->get();
+        
+            $childerens = FamilyRelation::where('user_id', $user->id)->get();
+            $child = FamilyRelation::where('id', $user->id)->with('parent','vaccination_submission.vaccination','growth')->get();
+            return $child;
         
     }
     public function index()
