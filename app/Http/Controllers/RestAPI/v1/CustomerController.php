@@ -20,6 +20,7 @@ use App\Utils\ImageManager;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
+use App\Models\FamilyRelation;
 
 class CustomerController extends Controller
 {
@@ -32,6 +33,46 @@ class CustomerController extends Controller
         $user->referral_user_count = $referral_user_count;
         $user->orders_count = User::withCount('orders')->find($user->id)->orders_count;
 
+        $childs = FamilyRelation::where('user_id', $request->user()->id)->get();
+
+        $father = 0;
+        $mother = 0;
+        $guardian = 0;
+
+        $tagline = "";
+        foreach ($childs as $key => $value) {
+            if($value->relaion_type == 'Father'){
+                $father++;
+            }elseif($value->relaion_type == 'Mother'){
+                $mother++;
+            }elseif($value->relaion_type == 'Guardian'){
+                $guardian++;
+            }
+        }
+
+        if($father > 0){
+            if(strlen($tagline) > 0){
+                $tagline .= ' and ';
+            }
+            $tagline .= 'Father of '.$father;
+        }elseif($mother > 0){
+            if(strlen($tagline) > 0){
+                $tagline .= ' and ';
+            }
+            $tagline .= 'Mother of '.$mother;
+        }elseif($guardien > 0){
+            if(strlen($tagline) > 0){
+                $tagline .= ' and ';
+            }
+            $tagline .= 'Guardian of '.$guardian;
+        }else{
+            if(strlen($tagline) > 0){
+                $tagline .= ' and ';
+            }
+            $tagline .= 'I am your child.';
+        }
+
+        $user->tagline = $tagline;
         return response()->json($user, 200);
     }
 
