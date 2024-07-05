@@ -125,7 +125,7 @@ Route::group(['namespace' => 'RestAPI\v1', 'prefix' => 'v1', 'middleware' => ['a
     });
 
     Route::group(['prefix' => 'child'], function () {
-       Route::get('/', [FamilyRelationController::class,'childHome']); 
+       Route::get('/', [FamilyRelationController::class,'childHome'])->middleware('auth:api'); 
     });
 
     Route::group(['prefix' => 'attributes'], function () {

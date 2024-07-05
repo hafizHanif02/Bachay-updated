@@ -290,14 +290,14 @@ class CustomerController extends Controller
             return response()->json(['errors' => Helpers::error_processor($validator)], 403);
         }
 
-        $zip_restrict_status = Helpers::get_business_settings('delivery_zip_code_area_restriction');
+        //$zip_restrict_status = Helpers::get_business_settings('delivery_zip_code_area_restriction');
         $country_restrict_status = Helpers::get_business_settings('delivery_country_restriction');
 
         if ($country_restrict_status && !self::delivery_country_exist_check($request->input('country'))) {
             return response()->json(['message' => translate('Delivery_unavailable_for_this_country')], 403);
 
         } elseif ($zip_restrict_status && !self::delivery_zipcode_exist_check($request->input('zip'))) {
-            return response()->json(['message' => translate('Delivery_unavailable_for_this_zip_code_area')], 403);
+            //return response()->json(['message' => translate('Delivery_unavailable_for_this_zip_code_area')], 403);
         }
 
         $user = Helpers::get_customer($request);

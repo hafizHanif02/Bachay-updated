@@ -11,12 +11,10 @@ use App\Models\VaccinationSubmission;
 class FamilyRelationController extends Controller
 {
     public function childHome(){
-        if(auth('customer')->check()){
-            dd(auth('customer')->user()->id);
+        $user = $request->user();
+        return $user;
             $childerens = FamilyRelation::where('user_id', auth('customer')->user()->id)->get();
-        }else{
-            return response()->json(['message' => 'Please Login First'], 401);
-        }
+        
     }
     public function index()
     {
