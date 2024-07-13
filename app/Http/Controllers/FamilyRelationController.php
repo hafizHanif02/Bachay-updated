@@ -26,9 +26,50 @@ class FamilyRelationController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'relation_type' => 'required',
+            'dob' => 'required',
+            'gender' => 'required',
+            
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => Helpers::error_processor($validator)], 403);
+        } else {
+            if ($request->hasFile('profile_picture')) {
+                $file = $request->file('profile_picture');
+                $extension = $file->getClientOriginalExtension();
+                $filename = $file->getClientOriginalName();
+                $file->move(public_path('assets/images/customers/child'), $filename);
+            } else {
+                $filename = null;
+            }
+            $childId = DB::table('family_relation')->insertGetId([
+                'user_id' => $request->user()->id,
+                'name' => $request->name,
+                'relation_type' => $request->relation_type,
+                'dob' => $request->dob,
+                'gender' => $request->gender,
+                'profile_picture' => ($filename ?? ''),
+            ]);
+            $Vaccinations = Vaccination::get();
+            foreach ($Vaccinations as $vaccination) {
+                $dateOfBirth = $request->dob;
+                $carbonDateOfBirth = Carbon::parse($dateOfBirth);
+                $resultDate = $carbonDateOfBirth->addWeeks($vaccination->age)->toDateString();
+                VaccinationSubmission::create([
+                    'user_id' => $request->user_id,
+                    'child_id' => $childId,
+                    'vaccination_id' => $vaccination->id,
+                    'vaccination_date' => $resultDate,
+                ]);
+            }
+            
+            return response()->json(['message' => 'New Childeren has been added successfully.'], 200);
+        }
     }
 
     /**

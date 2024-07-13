@@ -823,6 +823,384 @@ class ProductListController extends Controller
         return view(VIEW_FILE_NAMES['products_view_page'], compact('mergedChoices','sizes','products','tag_category','tag_brand','product_ids','categories','colors_in_shop','banner', 'subCategoryList'));
     }
 
+
+    public function product_list(Request $request)
+    {
+
+        $tag_category = [];
+        $subCategoryList = [];
+        if($request->data_from == 'category')
+        {
+            $tag_category = Category::where('id',$request->id)->select('id', 'name')->get();
+            $subCategoryList = Category::where('parent_id', $request->id)->select('id', 'name')->get();
+        }
+
+        $tag_brand = [];
+        if($request->data_from == 'brand')
+        {
+            $tag_brand = Brand::where('id', $request->id)->select('id','name')->get();
+        }
+        $request['sort_by'] == null ? $request['sort_by'] == 'latest' : $request['sort_by'];
+
+        $porduct_data = Product::active()->withSum('orderDetails', 'qty', function ($query) {
+                            $query->where('delivery_status', 'delivered');
+                        })
+                        ->with(['category','reviews','rating','wishList'=>function($query){
+                            return $query->where('customer_id', Auth::guard('customer')->user()->id ?? 0);
+                        },
+                        'compareList'=>function($query){
+                            return $query->where('user_id', Auth::guard('customer')->user()->id ?? 0);
+                        }]);
+        
+        $product_ids = [];
+        if ($request['data_from'] == 'category') {
+            $products = $porduct_data->get();
+            $product_ids = [];
+            foreach ($products as $product) {
+                foreach (json_decode($product['category_ids'], true) as $category) {
+                    if ($category['id'] == $request['id']) {
+                        array_push($product_ids, $product['id']);
+                    }
+                }
+            }
+            $query = $porduct_data->whereIn('id', $product_ids);
+        }
+        
+        if ($request->has('search_category_value') && $request['search_category_value'] != 'all') {
+            $products = $porduct_data->get();
+            $product_ids = [];
+            foreach ($products as $product) {
+                foreach (json_decode($product['category_ids'], true) as $category) {
+                    if ($category['id'] == $request['search_category_value']) {
+                        array_push($product_ids, $product['id']);
+                    }
+                }
+            }
+            $query = $porduct_data->whereIn('id', $product_ids);
+        }
+        
+        if ($request['data_from'] == 'brand') {
+            $query = $porduct_data->where('brand_id', $request['id']);
+        }
+
+        if ($request['data_from'] == 'latest') {
+            $query = $porduct_data;
+        }
+        if (!$request->has('data_from') || $request['data_from'] == 'default') {
+            $query = $porduct_data->orderBy('order_details_sum_qty', 'DESC');
+        }
+
+        if ($request['data_from'] == 'top-rated') {
+            $reviews = Review::select('product_id', DB::raw('AVG(rating) as count'))
+                ->groupBy('product_id')
+                ->orderBy("count", 'desc')->get();
+            $product_ids = [];
+            foreach ($reviews as $review) {
+                array_push($product_ids, $review['product_id']);
+            }
+            $query = $porduct_data->whereIn('id', $product_ids);
+        }
+
+        if ($request['data_from'] == 'best-selling') {
+            $details = OrderDetail::with('product')
+                ->select('product_id', DB::raw('COUNT(product_id) as count'))
+                ->groupBy('product_id')
+                ->orderBy("count", 'desc')
+                ->get();
+            $product_ids = [];
+            foreach ($details as $detail) {
+                array_push($product_ids, $detail['product_id']);
+            }
+            $query = $porduct_data->whereIn('id', $product_ids);
+        }
+
+        if ($request['data_from'] == 'most-favorite') {
+            $details = Wishlist::with('product')
+                ->select('product_id', DB::raw('COUNT(product_id) as count'))
+                ->groupBy('product_id')
+                ->orderBy("count", 'desc')
+                ->get();
+            $product_ids = [];
+            foreach ($details as $detail) {
+                array_push($product_ids, $detail['product_id']);
+            }
+            $query = $porduct_data->whereIn('id', $product_ids);
+        }
+
+        if ($request['data_from'] == 'featured') {
+            $query = Product::with(['reviews'])->active()->where('featured', 1);
+        }
+
+        if ($request->has('shop_id') && $request['shop_id'] == 0) {
+            $query = Product::active()
+                    ->with(['reviews'])
+                    ->where(['added_by'=>'admin','featured'=>1]);
+        }elseif($request->has('shop_id') && $request['shop_id'] != 0){
+            $query = Product::active()
+                        ->where(['added_by' => 'seller', 'featured' => 1])
+                        ->with(['reviews', 'seller.shop' => function($query) use ($request) {
+                            $query->where('id', $request->shop_id);
+                        }])
+                        ->whereHas('seller.shop', function($query) use ($request) {
+                            $query->where('id', $request->shop_id)->whereNotNull('id');
+                        });
+        }
+
+        if ($request['data_from'] == 'featured_deal') {
+            $featured_deal_id = FlashDeal::where(['status'=>1])->where(['deal_type'=>'feature_deal'])->pluck('id')->first();
+            $featured_deal_product_ids = FlashDealProduct::where('flash_deal_id',$featured_deal_id)->pluck('product_id')->toArray();
+            $query = Product::with(['reviews'])->active()->whereIn('id', $featured_deal_product_ids);
+        }
+
+        if ($request['data_from'] == 'search') {
+            $key = explode(' ', $request['name']);
+            $product_ids = Product::where(function ($q) use ($key) {
+                foreach ($key as $value) {
+                    $q->orWhere('name', 'like', "%{$value}%")
+                        ->orWhereHas('tags',function($query)use($value){
+                            $query->where('tag', 'like', "%{$value}%");
+                        });
+                }
+            })->pluck('id');
+
+            $sellers = Shop::where(function ($q) use ($request) {
+                $q->orWhere('name', 'like', "%{$request['name']}%");
+            })->whereHas('seller', function ($query) {
+                return $query->where(['status' => 'approved']);
+            })->with('products', function($query){
+                return $query->active()->where('added_by', 'seller');
+            })->get();
+
+            $seller_products = [];
+            foreach($sellers as $seller){
+                if(isset($seller->product) && $seller->product->count() > 0)
+                {
+                    $ids = $seller->product->pluck('id');
+                    array_push($seller_products, ...$ids);
+                }
+            }
+
+            $inhouse_product = [];
+            $company_name = Helpers::get_business_settings('company_name');
+
+            if (strpos($request['name'], $company_name) !== false) {
+                $inhouse_product = Product::active()->Where('added_by', 'admin')->pluck('id');
+            }
+
+            $product_ids = $product_ids->merge($seller_products)->merge($inhouse_product);
+
+
+            if($product_ids->count()==0)
+            {
+                $product_ids = Translation::where('translationable_type', 'App\Models\Product')
+                    ->where('key', 'name')
+                    ->where(function ($q) use ($key) {
+                        foreach ($key as $value) {
+                            $q->orWhere('value', 'like', "%{$value}%");
+                        }
+                    })
+                    ->pluck('translationable_id');
+            }
+
+            $query = $porduct_data->WhereIn('id', $product_ids);
+
+        }
+
+        if ($request['data_from'] == 'discounted') {
+            $query = Product::with(['reviews', 'tags'])->active()->where('discount', '!=', 0);
+        }
+
+        if ($request['sort_by'] == 'latest') {
+            $fetched = $query->latest();
+        } elseif ($request['sort_by'] == 'low-high') {
+            $fetched = $query->orderBy('unit_price', 'ASC');
+        } elseif ($request['sort_by'] == 'high-low') {
+            $fetched = $query->orderBy('unit_price', 'DESC');
+        } elseif ($request['sort_by'] == 'a-z') {
+            $fetched = $query->orderBy('name', 'ASC');
+        } elseif ($request['sort_by'] == 'z-a') {
+            $fetched = $query->orderBy('name', 'DESC');
+        } else {
+            $fetched = $query->latest();
+        }
+
+        if ($request['min_price'] != null || $request['max_price'] != null) {
+            $fetched = $fetched->whereBetween('unit_price', [Helpers::convert_currency_to_usd($request['min_price']), Helpers::convert_currency_to_usd($request['max_price'])]);
+        }
+        $common_query = $fetched;
+        
+        $products = $common_query->paginate(20);
+        
+        if ($request['ratings'] != null)
+        {
+            $products = $products->map(function($product) use($request){
+                $product->rating = $product->rating->pluck('average')[0];
+                return $product;
+            });
+            $products = $products->where('rating','>=',$request['ratings'])
+                ->where('rating','<',$request['ratings']+1)
+                ->paginate(20);
+        }
+
+        // Categories start
+        $categories = Category::withCount(['product'=>function($query){
+                $query->active();
+            }])->with(['childes' => function ($query) {
+                $query->with(['childes' => function ($query) {
+                    $query->withCount(['subSubCategoryProduct'])->where('position', 2);
+                }])->withCount(['subCategoryProduct'])->where('position', 1);
+            }, 'childes.childes'])
+            ->where('position', 0)->get();
+        // Categories End
+
+        // Colors Start
+        $colors_in_shop_merge = [];
+        $colors_collection = Product::active()
+            ->where('colors', '!=', '[]')
+            ->pluck('colors')
+            ->unique()
+            ->toArray();
+
+        foreach ($colors_collection as $color_json) {
+            $color_array = json_decode($color_json, true);
+            if($color_array){
+                $colors_in_shop_merge = array_merge($colors_in_shop_merge, $color_array);
+            }
+        }
+        $colors_in_shop = array_unique($colors_in_shop_merge);
+        // Colors End
+        $banner = \App\Models\BusinessSetting::where('type', 'banner_product_list_page')->whereJsonContains('value', ['status' => '1'])->first();
+
+        if ($request->ajax()) {
+            return response()->json([
+                'total_product'=>$products->total(),
+                'view' => view(VIEW_FILE_NAMES['products__ajax_partials'], compact('products','product_ids'))->render(),
+            ], 200);
+        }
+
+        if ($request['data_from'] == 'brand') {
+            $brand_data = Brand::active()->find((int)$request['id']);
+            if(!$brand_data) {
+                Toastr::warning(translate('not_found'));
+                return redirect('/');
+            }
+        }
+
+        // $sizes = [];
+        //     foreach ($products as $product) {
+        //         $choice_options = json_decode($product->choice_options, true);
+        //         if (is_array($choice_options) && !empty($choice_options)) {
+        //             $title = $choice_options[0]['title'];
+        //             if ($title == 'Size') {
+        //                 $options = $choice_options[0]['options'];
+        //                 foreach ($options as $option) {
+        //                     $sizes[] = $option;
+        //                 }
+        //             }
+        //         }
+        //     }
+        $sizes = [];
+        $filterOptions = [];
+        foreach ($products as $key => $product) {
+            $temp_sizes = [];
+            $choice_options = json_decode($product->choice_options, true);
+            $filterOptions[] = $choice_options;
+            if (is_array($choice_options) && !empty($choice_options)) {
+                $title = $choice_options[0]['title'];
+                if ($title == 'Size') {
+                    $options = $choice_options[0]['options'];
+    
+                    // Initialize the sizes array if it doesn't exist
+                    if (!isset($product->sizes) || !is_array($product->sizes)) {
+                        $product->sizes = [];
+                    }
+    
+                    foreach ($options as $option) {
+                        $sizes[] = trim($option); // Collect all sizes in a separate array
+    
+                        // Directly add to the product sizes array
+                        $temp_sizes[] = trim($option);
+                    }
+                    $product->sizes = $temp_sizes; // Reassign the array back to the product property
+                    if($key == 1) {
+                        
+                        //return $product;
+                    }
+                }
+            }
+        }        
+        
+
+        $mergedChoices = [];
+
+        foreach ($filterOptions as $choices) {
+            foreach ($choices as $choice) {
+                if (!isset($mergedChoices[$choice['name']])) {
+                    $mergedChoices[$choice['name']] = [
+                        'name' => $choice['name'],
+                        'title' => $choice['title'],
+                        'options' => []
+                    ];
+                }
+                $mergedChoices[$choice['name']]['options'] = array_unique(array_merge($mergedChoices[$choice['name']]['options'], array_map('trim', $choice['options'])));
+            }
+        }
+
+        $allColors = [];
+
+        // Loop through each product to extract colors
+        foreach ($products as $productItem) {
+            $colors = json_decode($productItem['colors'], true);
+            if ($colors) {
+                $allColors = array_merge($allColors, $colors);
+            }
+        }
+        $mergedChoices['choice_0']['title'] = "Color";
+        // Remove duplicate colors
+        $mergedChoices['choice_0']['options'] = array_unique($allColors);
+        
+        //return $mergedChoices;
+        //return $products;
+            $custom_sort = function ($a, $b) {
+                $order = [
+                    "New Born" => -1,
+                    "Preemie" => 0,
+                    "M" => 1,
+                    "Y" => 2,
+                ];
+                $pattern = '/(\d+)\s?[-to]+\s?(\d+)?\s?([MY])?/i';
+                preg_match($pattern, $a, $matches_a);
+                preg_match($pattern, $b, $matches_b);
+                $a_unit = isset($matches_a[3]) ? strtoupper($matches_a[3]) : '';
+                $b_unit = isset($matches_b[3]) ? strtoupper($matches_b[3]) : '';
+                $a_order = isset($order[$a_unit]) ? $order[$a_unit] : PHP_INT_MAX;
+                $b_order = isset($order[$b_unit]) ? $order[$b_unit] : PHP_INT_MAX;
+                if ($a_unit === "New Born" && $b_unit === "Preemie") {
+                    return -1;
+                } elseif ($a_unit === "Preemie" && $b_unit === "New Born") {
+                    return 1;
+                }
+                if ($a_unit === $b_unit) {
+                    $a_value = isset($matches_a[1]) ? (int)$matches_a[1] : null;
+                    $b_value = isset($matches_b[1]) ? (int)$matches_b[1] : null;
+            
+                    if ($a_value !== null && $b_value !== null) {
+                        return $a_value - $b_value;
+                    }
+                }
+                return $a_order <=> $b_order;
+            };
+            usort($sizes, $custom_sort);
+            $sizes = array_unique($sizes);
+            $new_born_key = array_search("New Born", $sizes);
+            $preemie_key = array_search("Preemie", $sizes);
+            unset($sizes[$new_born_key]);
+            unset($sizes[$preemie_key]);
+            array_unshift($sizes, "Preemie", "New Born");
+            
+        return view(VIEW_FILE_NAMES['products_view_page2'], compact('mergedChoices','sizes','products','tag_category','tag_brand','product_ids','categories','colors_in_shop','banner', 'subCategoryList'));
+    }
+
     public function theme_all_purpose(Request $request)
     {
         $request['sort_by'] == null ? $request['sort_by'] == 'latest' : $request['sort_by'];

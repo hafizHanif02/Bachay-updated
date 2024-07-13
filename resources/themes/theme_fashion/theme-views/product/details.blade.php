@@ -48,7 +48,7 @@
 @section('content')
 
     <section class="product-single-section pt-20px">
-        <div class="container-fluid" style="padding: 0px 30px">
+        <div class="container-fluid" style="padding: 0px 5%">
             <div class="section-title mb-4">
                 <div
                     class="d-flex flex-wrap justify-content-between row-gap-3 column-gap-2 align-items-center search-page-title">
@@ -478,7 +478,7 @@
                                         @endif
                                     </div>
                 </div>
-                <div style="width: 50%;">
+                <div style="width: 49%;">
                     <div class="product-single-content">
                         <form class="cart add_to_cart_form" action="{{ route('cart.add') }}" id="add-to-cart-form"
                             data-redirecturl="{{ route('checkout-details') }}"

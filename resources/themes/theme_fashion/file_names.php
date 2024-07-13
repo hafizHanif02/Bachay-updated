@@ -45,6 +45,7 @@ return [
     'product_search_result_for_compare_list' => 'theme-views.partials._search-result-for-compare-list',
     'refund_details' => 'theme-views.users-profile.refund-details',
     'products_view_page' => 'theme-views.product.view',
+    'products_view_page2' => 'theme-views.product.view2',
     'cart_list' => 'theme-views.order.cart-list',
     'order_shipping' => 'theme-views.checkout.shipping',
     'tracking-page' => 'theme-views.order.tracking-page',

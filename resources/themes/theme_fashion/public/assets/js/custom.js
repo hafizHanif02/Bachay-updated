@@ -959,6 +959,7 @@ $('#fashion_products_list_form').on('submit',function(event){
             'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
         }
     });
+    console.log(form.serialize());
     $.ajax({
         url: $(this).attr('action'),
         method: 'POST',

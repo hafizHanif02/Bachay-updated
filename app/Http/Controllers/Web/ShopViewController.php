@@ -16,6 +16,7 @@ use App\Models\Seller;
 use App\Models\Shop;
 use App\Models\ShopFollower;
 use App\Models\Wishlist;
+use App\Models\Attribute;
 use App\Utils\Helpers;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
@@ -703,115 +704,101 @@ class ShopViewController extends Controller
      * For Theme fashion, ALl purpose
      */
     public function ajax_filter_products(Request $request)
-    {
-        //return "testing";
-        $categories = $request->category ?? [];
-        $category = [];
-        if($request->category)
-        {
-            foreach($categories as $category)
-            {
-                $cat_info = Category::where(function ($query) use ($category) {
-                    if (is_numeric($category)) {
-                        $query->where('id', $category);
-                    } else {
-                        $query->where('name', $category);
-                    }
-                })->first();
-                $index = array_search($cat_info->parent_id, $categories);
-                if ($index !== false) {
-                    array_splice($categories, $index, 1);
+{
+    $attributeList = Attribute::get();
+    $categories = $request->category ?? [];
+    $category = [];
+    if ($request->category) {
+        foreach ($categories as $category) {
+            $cat_info = Category::where(function ($query) use ($category) {
+                if (is_numeric($category)) {
+                    $query->where('id', $category);
+                } else {
+                    $query->where('name', $category);
                 }
+            })->first();
+            $index = array_search($cat_info->parent_id, $categories);
+            if ($index !== false) {
+                array_splice($categories, $index, 1);
             }
-            $category = Category::whereIn('id', $request->category)->orwhereIn('name', $categories)
-                ->select('id', 'name')
-                ->get();
         }
+        $category = Category::whereIn('id', $request->category)->orWhereIn('name', $categories)
+            ->select('id', 'name')
+            ->get();
+    }
 
-        $brands = [];
-        if($request->brand)
-        {
-            $brands = Brand::whereIn('id', $request->brand)->select('id','name')->get();
-        }
-        $rating = $request->rating ?? [];
+    $brands = [];
+    if ($request->brand) {
+        $brands = Brand::whereIn('id', $request->brand)->select('id', 'name')->get();
+    }
+    $rating = $request->rating ?? [];
 
-        // products search
-        $products = Product::active()->withSum('orderDetails', 'qty', function ($query) {
-                $query->where('delivery_status', 'delivered');
+    $products = Product::active()->withSum('orderDetails', 'qty', function ($query) {
+            $query->where('delivery_status', 'delivered');
+        })
+        ->with(['tags', 'wishList' => function ($query) {
+            return $query->where('customer_id', Auth::guard('customer')->user()->id ?? 0);
+        }, 'compareList' => function ($query) {
+            return $query->where('user_id', Auth::guard('customer')->user()->id ?? 0);
+        }]);
+
+    // Apply Filters
+    $products = $products
+        ->when($request->has('shop_id') && $request->shop_id == '0', function ($query) {
+            return $query->where(['added_by' => 'admin']);
+        })
+        ->when($request->has('shop_id') && $request->shop_id != '0', function ($query) use ($request) {
+            return $query->where(['added_by' => 'seller', 'user_id' => $request->shop_id]);
+        })
+        ->when(!empty($request->brand), function ($query) use ($request) {
+            return $query->whereIn('brand_id', $request->brand);
+        })
+        ->when($request->has('category'), function ($query) use ($categories) {
+            return $query->whereIn('category_id', $categories)
+                ->orWhereIn('sub_category_id', $categories)
+                ->orWhereIn('sub_sub_category_id', $categories);
+        })
+        ->when($request->has('sort_by'), function ($query) use ($request) {
+            $query->when($request['sort_by'] == 'default', function ($query) {
+                return $query->orderBy('order_details_sum_qty', 'DESC');
+            })->when($request['sort_by'] == 'latest', function ($query) {
+                return $query->latest();
             })
-            ->with(['tags','wishList'=>function($query){
-                return $query->where('customer_id', Auth::guard('customer')->user()->id ?? 0);
-            }, 'compareList'=>function($query){
-                return $query->where('user_id', Auth::guard('customer')->user()->id ?? 0);
-            }])
-            ->when($request->has('shop_id') && $request->shop_id == '0', function ($query) {
-                return $query->where(['added_by' => 'admin']);
-            })
-            ->when($request->has('shop_id') && $request->shop_id != '0', function ($query) use ($request) {
-                return $query->where(['added_by' => 'seller', 'user_id'=> $request->shop_id]);
-            })
-            ->when(!empty($request->brand), function($query) use($request){
-                return $query->whereIn('brand_id', $request->brand);
-            })
-            ->when($request->has('category'), function($query) use($categories){
-                return $query->whereIn('category_id', $categories)
-                    ->orWhereIn('sub_category_id', $categories)
-                    ->orWhereIn('sub_sub_category_id', $categories);
-            })
-            // ->when($request->has('search_data_form') && $request->search_data_form == 'search', function($query) use($request){
-            //     return $query->when($request->search_category_value == 'all', function($query) use($request){
-            //         return $query->where('name', 'Like', '%' . $request->name . '%');
-            //     })->when($request->search_category_value != 'all', function($query) use($request){
-            //         return $query->where('category_id', $request->search_category_value)->where('name', 'Like', '%' . $request->name . '%');
-            //     });
-            // })
-            // ->when($request->has('search_data_form') && $request->search_data_form == 'discounted', function($query) use($request){
-            //     return $query->where('discount','!=',0);
-            // })
-            // ->when($request->has('search_data_form') && $request->search_data_form == 'featured', function($query) use($request){
-            //     return $query->where('featured', 1);
-            // })
-            ->when($request->has('sort_by'), function($query) use($request){
-                    $query->when($request['sort_by'] == 'default', function($query){
-                        return $query->orderBy('order_details_sum_qty', 'DESC');
-                    })->when($request['sort_by'] == 'latest', function($query){
-                        return $query->latest();
-                    })
-                    ->when($request['sort_by'] == 'low-high', function($query){
-                        return $query->orderBy('unit_price', 'ASC');
-                    })
-                    ->when($request['sort_by'] == 'high-low', function($query){
-                        return $query->orderBy('unit_price', 'DESC');
-                    })
-                    ->when($request['sort_by'] == 'a-z', function($query){
-                        return $query->orderBy('name', 'ASC');
-                    })
-                    ->when($request['sort_by'] == 'z-a', function($query){
-                        return $query->orderBy('name', 'DESC');
-                    })
-                    ->when($request['sort_by'] == '', function($query){
-                        return $query->orderBy('order_details_sum_qty', 'DESC');
-                    });
-            })
-            ->when(!empty($request['price_min']) || !empty($request['price_max']), function($query) use($request){
-                return $query->whereBetween('unit_price', [Helpers::convert_currency_to_usd((int)$request['price_min']), Helpers::convert_currency_to_usd((int)$request['price_max'])]);
-            })
-            ->when(!empty($request->colors), function($query) use($request){
-                return $query->where(function($query) use ($request) {
-                    foreach ($request->colors as $color) {
-                        $query->orWhere('colors', 'like', '%'.$color.'%');
-                    }
-                });
-            })
-            ->when($request->has('filter_by'), function($query) use($request){
-                $query->when($request['filter_by'] == 'default', function($query){
-                    return $query->orderBy('order_details_sum_qty', 'DESC');
+                ->when($request['sort_by'] == 'low-high', function ($query) {
+                    return $query->orderBy('unit_price', 'ASC');
                 })
-                ->when($request->filter_by == 'latest', function($query) use($request){
+                ->when($request['sort_by'] == 'high-low', function ($query) {
+                    return $query->orderBy('unit_price', 'DESC');
+                })
+                ->when($request['sort_by'] == 'a-z', function ($query) {
+                    return $query->orderBy('name', 'ASC');
+                })
+                ->when($request['sort_by'] == 'z-a', function ($query) {
+                    return $query->orderBy('name', 'DESC');
+                })
+                ->when($request['sort_by'] == '', function ($query) {
+                    return $query->orderBy('order_details_sum_qty', 'DESC');
+                });
+        })
+        ->when(!empty($request['price_min']) || !empty($request['price_max']), function ($query) use ($request) {
+            return $query->whereBetween('unit_price', [Helpers::convert_currency_to_usd((int)$request['price_min']), Helpers::convert_currency_to_usd((int)$request['price_max'])]);
+        })
+        ->when(!empty($request->Color), function ($query) use ($request) {
+            return $query->where(function ($query) use ($request) {
+                foreach ($request->Color as $color) {
+                    $query->orWhere('colors', 'like', '%' . $color . '%');
+                }
+            });
+        })
+        ->when($request->has('filter_by'), function ($query) use ($request) {
+            $query->when($request['filter_by'] == 'default', function ($query) {
+                return $query->orderBy('order_details_sum_qty', 'DESC');
+            })
+                ->when($request->filter_by == 'latest', function ($query) {
                     $query->latest();
-                })->when($request->filter_by == 'discount', function($query) use($request){
+                })->when($request->filter_by == 'discount', function ($query) {
                     $query->where('discount', '!=', 0);
-                })->when($request->filter_by == 'top_rated', function($query) use($request){
+                })->when($request->filter_by == 'top_rated', function ($query) {
                     $reviews = Review::select('product_id', DB::raw('AVG(rating) as count'))
                         ->groupBy('product_id')
                         ->orderBy("count", 'DESC')->get();
@@ -820,7 +807,7 @@ class ShopViewController extends Controller
                         array_push($product_ids, $review['product_id']);
                     }
                     $query->whereIn('id', $product_ids);
-                })->when($request->filter_by == 'best_selling', function($query) use($request){
+                })->when($request->filter_by == 'best_selling', function ($query) {
                     $details = OrderDetail::with('product')
                         ->select('product_id', DB::raw('COUNT(product_id) as count'))
                         ->groupBy('product_id')
@@ -831,9 +818,9 @@ class ShopViewController extends Controller
                         array_push($product_ids, $detail['product_id']);
                     }
                     $query->whereIn('id', $product_ids);
-                })->when($request->filter_by == 'featured', function($query) use($request){
+                })->when($request->filter_by == 'featured', function ($query) {
                     $query->where('featured', 1);
-                })->when($request->filter_by == 'most_loved', function($query) use($request){
+                })->when($request->filter_by == 'most_loved', function ($query) {
                     $details = Wishlist::with('product')
                         ->select('product_id', DB::raw('COUNT(product_id) as count'))
                         ->groupBy('product_id')
@@ -845,138 +832,124 @@ class ShopViewController extends Controller
                     }
                     $query->whereIn('id', $product_ids);
                 });
-            })
-            ->when(!empty($request->rating), function($query) use($request){
-                $query->with(['rating'])->whereHas('rating', function($query) use($request){
-                    return $query;
-                });
+        })
+        ->when(!empty($request->rating), function ($query) use ($request) {
+            $query->with(['rating'])->whereHas('rating', function ($query) use ($request) {
+                return $query;
             });
+        });
 
-        if ($request->has('rating')) {
-            $products = $products->get()->each(function($item){
-                if(isset($item->rating) && count($item->rating) != 0)
-                {
-                    return $item->rating_avg = (int)$item->rating[0]['average'] ?? [''];
-                }else{
-                    return $item->rating_avg = [];
-                }
-            });
-            $products = $products->whereIn('rating_avg',$request->rating);
-        }
-
-        $products_count = $products->count();
-        $paginate_limit = 20;
-        $paginate_count = ceil($products_count / $paginate_limit);
-
-        $products = $products->skip(($request->page - 1) * $paginate_limit)
-            ->take($paginate_limit)
-            ->paginate($paginate_limit);
-
-            $gender = [];
-            if($request->gender){
-                $products = Product::whereIn('gender', $request->gender)->get();
+    if ($request->has('rating')) {
+        $products = $products->get()->each(function ($item) {
+            if (isset($item->rating) && count($item->rating) != 0) {
+                return $item->rating_avg = (int)$item->rating[0]['average'] ?? [''];
+            } else {
+                return $item->rating_avg = [];
             }
-
-            $allProducts = [];
-            if ($request->size) {
-                // Assuming $products is a collection of products
-                $products = Product::get();
-                foreach ($products as $product) {
-                    $matchedOptions = json_decode($product->choice_options, true);
-                    if (!empty($matchedOptions)) {
-                        $title = $matchedOptions[0]['title'];
-                        $options = $matchedOptions[0]['options'];
-                        if($title == 'Size'){
-                            if(!empty(array_intersect($request->size, $options))){
-                                $allProducts[] = $product;
-                            }
-                        }
-                    }   
-                    }
-                $products = $allProducts;
-            }
-            
-
-            $sizes = [];
-            $filterOptions = [];
-            foreach ($products as $key => $product) {
-                $temp_sizes = [];
-                $choice_options = json_decode($product->choice_options, true);
-                $filterOptions[] = $choice_options;
-                if (is_array($choice_options) && !empty($choice_options)) {
-                    $title = $choice_options[0]['title'];
-                    if ($title == 'Size') {
-                        $options = $choice_options[0]['options'];
-        
-                        // Initialize the sizes array if it doesn't exist
-                        if (!isset($product->sizes) || !is_array($product->sizes)) {
-                            $product->sizes = [];
-                        }
-        
-                        foreach ($options as $option) {
-                            $sizes[] = trim($option); // Collect all sizes in a separate array
-        
-                            // Directly add to the product sizes array
-                            $temp_sizes[] = trim($option);
-                        }
-                        $product->sizes = $temp_sizes; // Reassign the array back to the product property
-                        if($key == 1) {
-                            
-                            //return $product;
-                        }
-                    }
-                }
-            }
-            
-            $mergedChoices = [];
-
-        foreach ($filterOptions as $choices) {
-            foreach ($choices as $choice) {
-                if (!isset($mergedChoices[$choice['name']])) {
-                    $mergedChoices[$choice['name']] = [
-                        'name' => $choice['name'],
-                        'title' => $choice['title'],
-                        'options' => []
-                    ];
-                }
-                $mergedChoices[$choice['name']]['options'] = array_unique(array_merge($mergedChoices[$choice['name']]['options'], array_map('trim', $choice['options'])));
-            }
-        }
-
-        $allColors = [];
-
-        // Loop through each product to extract colors
-        foreach ($products as $productItem) {
-            $colors = json_decode($productItem['colors'], true);
-            if ($colors) {
-                $allColors = array_merge($allColors, $colors);
-            }
-        }
-        $mergedChoices['choice_0']['title'] = "Color";
-        // Remove duplicate colors
-        $mergedChoices['choice_0']['options'] = array_unique($allColors);
-        
-        // Categories start
-        $categories = Category::withCount(['product'=>function($query){
-            $query->active();
-        }])->with(['childes' => function ($query) {
-            $query->with(['childes' => function ($query) {
-                $query->withCount(['subSubCategoryProduct'])->where('position', 2);
-            }])->withCount(['subCategoryProduct'])->where('position', 1);
-        }, 'childes.childes'])
-        ->where('position', 0)->get();
-    // Categories End
-        
-    
-
-        return response()->json([
-            'html_products'=>view('theme-views.product._ajax-products',['products'=>$products,'paginate_count'=>$paginate_count,'page'=>($request->page??1), 'request_data'=>$request->all()])->render(),
-            'html_tags'=>view('theme-views.product._selected_filter_tags',['tags_category'=>$category,'tags_brands'=>$brands,'rating'=>$rating, 'sort_by'=>$request['sort_by']])->render(),
-            'products_count'=>$products_count,
-            'html_filters'=>view('theme-views.partials.products._products-list-aside',['categories'=>$categories, 'mergedChoices'=>$mergedChoices])->render(),
-            'mergedChoices' => $mergedChoices,
-        ]);
+        });
+        $products = $products->whereIn('rating_avg', $request->rating);
     }
+
+    $products_count = $products->count();
+    $paginate_limit = 20;
+    $paginate_count = ceil($products_count / $paginate_limit);
+
+    $products = $products->skip(($request->page - 1) * $paginate_limit)
+        ->take($paginate_limit)
+        ->paginate($paginate_limit);
+
+    $gender = [];
+    if ($request->gender) {
+        $products = $products->whereIn('gender', $request->gender);
+    }
+
+    $allProducts = [];
+    if ($request->Size) {
+        foreach ($products as $product) {
+            $matchedOptions = json_decode($product->choice_options, true);
+            if (!empty($matchedOptions)) {
+                $title = $matchedOptions[0]['title'];
+                $options = $matchedOptions[0]['options'];
+                if ($title == 'Size') {
+                    if (!empty(array_intersect($request->Size, $options))) {
+                        $allProducts[] = $product;
+                        
+                    }
+                }
+            }
+        }
+        $products = $allProducts;
+    }
+
+    $sizes = [];
+    $filterOptions = [];
+    foreach ($products as $key => $product) {
+        $temp_sizes = [];
+        $choice_options = json_decode($product->choice_options, true);
+        $filterOptions[] = $choice_options;
+        if (is_array($choice_options) && !empty($choice_options)) {
+            $title = $choice_options[0]['title'];
+            if ($title == 'Size') {
+                $options = $choice_options[0]['options'];
+
+                if (!isset($product->sizes) || !is_array($product->sizes)) {
+                    $product->sizes = [];
+                }
+
+                foreach ($options as $option) {
+                    $sizes[] = trim($option);
+
+                    $temp_sizes[] = trim($option);
+                }
+                $product->sizes = $temp_sizes;
+                if ($key == 1) {
+                }
+            }
+        }
+    }
+
+    $mergedChoices = [];
+    foreach ($filterOptions as $choices) {
+        foreach ($choices as $choice) {
+            if (!isset($mergedChoices[$choice['name']])) {
+                $mergedChoices[$choice['name']] = [
+                    'name' => $choice['name'],
+                    'title' => $choice['title'],
+                    'options' => []
+                ];
+            }
+            $mergedChoices[$choice['name']]['options'] = array_unique(array_merge($mergedChoices[$choice['name']]['options'], array_map('trim', $choice['options'])));
+        }
+    }
+
+    $allColors = [];
+    foreach ($products as $productItem) {
+        $colors = json_decode($productItem['colors'], true);
+        if ($colors) {
+            $allColors = array_merge($allColors, $colors);
+        }
+    }
+    $mergedChoices['choice_0']['title'] = "Color";
+    $mergedChoices['choice_0']['options'] = array_unique($allColors);
+
+    $categories = Category::withCount(['product' => function ($query) {
+        $query->active();
+    }])->with(['childes' => function ($query) {
+        $query->with(['childes' => function ($query) {
+            $query->withCount(['subSubCategoryProduct'])->where('position', 2);
+        }])->withCount(['subCategoryProduct'])->where('position', 1);
+    }, 'childes.childes'])
+        ->where('position', 0)->get();
+
+    return response()->json([
+        'html_products' => view('theme-views.product._ajax-products', ['products' => $products, 'paginate_count' => $paginate_count, 'page' => ($request->page ?? 1), 'request_data' => $request->all()])->render(),
+        'html_tags' => view('theme-views.product._selected_filter_tags', ['tags_category' => $category, 'tags_brands' => $brands, 'rating' => $rating, 'sort_by' => $request['sort_by']])->render(),
+        'products_count' => $products_count,
+        'html_filters' => view('theme-views.partials.products._products-list-aside', ['categories' => $categories, 'mergedChoices' => $mergedChoices])->render(),
+        'mergedChoices' => $mergedChoices,
+    ]);
+}
+
 
     public function theme_all_purpose($request, $id){
         $business_mode=Helpers::get_business_settings('business_mode');
