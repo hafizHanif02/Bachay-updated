@@ -21,16 +21,19 @@ class CartController extends Controller
     {
         $user = Helpers::get_customer($request);
         $cart_query = Cart::with('product:id,name,slug,current_stock,minimum_order_qty,variation,thumbnail');
-        $cart_query['thumbnail'] = asset('storage/app/public/product/thumbnail/'.$cart_query['thumbnail']);
+        
         if($user == 'offline'){
             $cart = $cart_query->where(['customer_id' => $request->guest_id, 'is_guest'=>1])->get();
         }else{
             $cart = $cart_query->where(['customer_id' => $user->id, 'is_guest'=>'0'])->get();
         }
 
-
+        //return $cart;
+        
         if($cart) {
             foreach($cart as $key => $value){
+                $value['thumbnail'] = asset('storage/app/public/product/thumbnail/'.$value->thumbnail);
+
                 if(!isset($value['product'])){
                     $cart_data = Cart::find($value['id']);
                     $cart_data->delete();

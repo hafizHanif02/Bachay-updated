@@ -270,16 +270,36 @@ class CartManager
             $variations['color'] = $str;
         }
 
-        //Gets all the choice values of customer choice option and generate a string like Black-S-Cotton
+        // Gets all the choice values of customer choice option and generate a string like Black-S-Cotton
         $choices = [];
-        foreach (json_decode($product->choice_options) as $key => $choice) {
-            $choices[$choice->name] = $request[$choice->name];
-            $variations[$choice->title] = $request[$choice->name];
-            if ($str != null) {
-                $str .= '-' . str_replace(' ', '', $request[$choice->name]);
-            } else {
-                $str .= str_replace(' ', '', $request[$choice->name]);
+        $choice_options = $product->choice_options;
+
+        // Ensure $choice_options is a valid JSON string before decoding
+        if (is_string($choice_options)) {
+            $decoded_choice_options = json_decode($choice_options, true); // Decode as associative array
+        } else {
+            $decoded_choice_options = $choice_options; // If it's not a string, assume no choices
+        }
+
+        // Check if decoding was successful and it's an array
+        if (is_array($decoded_choice_options)) {
+            foreach ($decoded_choice_options as $key => $choice) {
+                if (isset($request[$choice['name']])) {
+                    $choices[$choice['name']] = $request[$choice['name']];
+                    $variations[$choice['title']] = $request[$choice['name']];
+                    if ($str != null) {
+                        $str .= '-' . str_replace(' ', '', $request[$choice['name']]);
+                    } else {
+                        $str .= str_replace(' ', '', $request[$choice['name']]);
+                    }
+                }
             }
+        } else {
+            // Handle case where choice_options is not a valid JSON or is null
+            return [
+                'status' => 0,
+                'message' => translate('Invalid choice options!')
+            ];
         }
 
         if ($user == 'offline') {

@@ -412,11 +412,21 @@ class CustomerController extends Controller
         $orders->map(function ($data) {
             $data->details->map(function ($query) {
                 $query['product'] = Helpers::product_data_formatting(json_decode($query['product'], true));
+                //$query['product']->thumbnail = asset('storage/app/public/product/thumbnail/'.$query['product']->thumbnail);
+
                 return $query;
             });
 
             return $data;
         });
+
+        foreach($orders->items() as $key => $order){
+            foreach($orders->items() as $key => $order){
+                $orders->items()[$key]['thumbnail'] = asset('storage/app/public/product/thumbnail/'.$order['thumbnail']);
+            }
+            
+            
+        }
 
         $orders = [
             'total_size' => $orders->total(),
