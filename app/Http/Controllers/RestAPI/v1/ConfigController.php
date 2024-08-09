@@ -1035,7 +1035,7 @@ class ConfigController extends Controller
             }
             $product['flash_deal_status'] = $flash_deal_status;
             $product['flash_deal_end_date'] = $flash_deal_end_date;
-            return $product;
+            //return $product;
         });
 
         foreach($all_products as $product){
@@ -1043,7 +1043,7 @@ class ConfigController extends Controller
         }
 
 
-        return $request;
+        //return $request;
 
         //-------------
 
