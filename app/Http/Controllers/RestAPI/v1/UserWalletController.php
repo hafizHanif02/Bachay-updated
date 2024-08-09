@@ -49,6 +49,24 @@ class UserWalletController extends Controller
         }
     }
 
+    public function balance(Request $request){
+        $wallet_status = Helpers::get_business_settings('wallet_status');
+        if($wallet_status == 1)
+        {
+            $user = $request->user();
+            $total_wallet_balance = $user->wallet_balance;
+            
+            return response()->json([
+                'total_wallet_balance'=>$total_wallet_balance,
+            ],200);
+
+        }else{
+
+            return response()->json(['message' => translate('access_denied!')], 422);
+        }
+
+    }
+
     public function bonus_list(Request $request)
     {
         $add_fund_bonus_categories = AddFundBonusCategories::active()

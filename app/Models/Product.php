@@ -149,7 +149,8 @@ class Product extends Model
         'meta_title' => 'string',
         'meta_description' => 'string',
         'meta_image' => 'string',
-        'is_shipping_cost_updated' => 'integer'
+        'is_shipping_cost_updated' => 'integer',
+        'choice_options' => 'array'
     ];
 
     public function translations(): MorphMany

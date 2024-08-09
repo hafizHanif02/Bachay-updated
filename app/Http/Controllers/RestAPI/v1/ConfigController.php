@@ -1011,7 +1011,7 @@ class ConfigController extends Controller
         ]);
     }
 
-    public function all_products(){
+    public function all_products(Request $request){
         $currentDate = date('Y-m-d H:i:s');
 
         $all_products = $this->product->withSum('orderDetails', 'qty', function ($query) {
@@ -1042,6 +1042,9 @@ class ConfigController extends Controller
             $product->thumbnail = asset('storage/app/public/product/thumbnail/'.$product->thumbnail);
         }
 
+
+        return $request;
+
         //-------------
 
 
@@ -1051,19 +1054,21 @@ class ConfigController extends Controller
             //$choice_options = is_array($choice_options) ? $choice_options : []; // Ensure it's an array
             $filterOptions[] = $choice_options;
         }
-        //return $filterOptions;
+        
         $mergedChoices = [];
         foreach ($filterOptions as $choices) {
-            $choices = json_decode($choices);
+            // $choices = json_decode($choices);
+            
             foreach ($choices as $choice) {
-                    if (!isset($mergedChoices[$choice->name])) {
-                        $mergedChoices[$choice->name] = [
-                            'name' => $choice->name,
-                            'title' => $choice->title,
+                
+                    if (!isset($mergedChoices[$choice['name']])) {
+                        $mergedChoices[$choice['name']] = [
+                            'name' => $choice['name'],
+                            'title' => $choice['title'],
                             'options' => []
                         ];
                     }
-                    $mergedChoices[$choice->name]['options'] = array_unique(array_merge($mergedChoices[$choice->name]['options'], array_map('trim', $choice->options)));
+                    $mergedChoices[$choice['name']]['options'] = array_unique(array_merge($mergedChoices[$choice['name']]['options'], array_map('trim', $choice['options'])));
                 
             }
         }

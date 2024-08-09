@@ -705,7 +705,10 @@ class ShopViewController extends Controller
      */
     public function ajax_filter_products(Request $request)
 {
-    $attributeList = Attribute::get();
+    
+    //return $request;
+    
+    //return $attributeList;
     $categories = $request->category ?? [];
     $category = [];
     if ($request->category) {
@@ -723,6 +726,23 @@ class ShopViewController extends Controller
             }
         }
         $category = Category::whereIn('id', $request->category)->orWhereIn('name', $categories)
+            ->select('id', 'name')
+            ->get();
+    }else if($request->data_from == 'category'){
+        foreach ($categories as $category) {
+            $cat_info = Category::where(function ($query) use ($category) {
+                if (is_numeric($category)) {
+                    $query->where('id', $category);
+                } else {
+                    $query->where('name', $category);
+                }
+            })->first();
+            $index = array_search($cat_info->parent_id, $categories);
+            if ($index !== false) {
+                array_splice($categories, $index, 1);
+            }
+        }
+        $category = Category::whereIn('id', $request->id)->orWhereIn('name', $categories)
             ->select('id', 'name')
             ->get();
     }
@@ -858,34 +878,60 @@ class ShopViewController extends Controller
         ->take($paginate_limit)
         ->paginate($paginate_limit);
 
-    $gender = [];
-    if ($request->gender) {
-        $products = $products->whereIn('gender', $request->gender);
-    }
-
-    $allProducts = [];
-    if ($request->Size) {
-        foreach ($products as $product) {
-            $matchedOptions = json_decode($product->choice_options, true);
-            if (!empty($matchedOptions)) {
-                $title = $matchedOptions[0]['title'];
-                $options = $matchedOptions[0]['options'];
-                if ($title == 'Size') {
-                    if (!empty(array_intersect($request->Size, $options))) {
-                        $allProducts[] = $product;
-                        
+    $attributeList = Attribute::get();
+    
+    
+    //return $attributeList;
+    foreach ($attributeList as $attribute) {
+        if ($request->has($attribute->name)) {
+            $allProducts = [];
+            foreach ($products as $product) {
+                $matchedOptions = $product->choice_options;
+                if (!empty($matchedOptions)) {
+                    $title = $matchedOptions[0]['title'];
+                    $options = $matchedOptions[0]['options'];
+                    if ($title == $attribute->name) {
+                        if (!empty(array_intersect($request[$attribute->name], $options))) {
+                            $allProducts[] = $product;
+                            
+                        }
                     }
                 }
             }
+            $products = $allProducts;
         }
-        $products = $allProducts;
     }
+
+    // Execute the query and get the results
+    
+    
+    // if ($request->gender) {
+    //     $products = $products->whereIn('gender', $request->gender);
+    // }
+
+    // $allProducts = [];
+    // if ($request->Size) {
+    //     foreach ($products as $product) {
+    //         $matchedOptions = json_decode($product->choice_options, true);
+    //         if (!empty($matchedOptions)) {
+    //             $title = $matchedOptions[0]['title'];
+    //             $options = $matchedOptions[0]['options'];
+    //             if ($title == 'Size') {
+    //                 if (!empty(array_intersect($request->Size, $options))) {
+    //                     $allProducts[] = $product;
+                        
+    //                 }
+    //             }
+    //         }
+    //     }
+    //     $products = $allProducts;
+    // }
 
     $sizes = [];
     $filterOptions = [];
     foreach ($products as $key => $product) {
         $temp_sizes = [];
-        $choice_options = json_decode($product->choice_options, true);
+        $choice_options = $product->choice_options;
         $filterOptions[] = $choice_options;
         if (is_array($choice_options) && !empty($choice_options)) {
             $title = $choice_options[0]['title'];

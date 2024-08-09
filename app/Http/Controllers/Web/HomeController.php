@@ -793,7 +793,7 @@ class HomeController extends Controller
             $filterOptions = [];
 foreach ($all_products as $product) {
     $temp_sizes = [];
-    $choice_options = json_decode($product->choice_options, true);
+    $choice_options = $product->choice_options;
     $filterOptions[] = $choice_options;
     if (is_array($choice_options) && !empty($choice_options)) {
         $title = $choice_options[0]['title'];

@@ -106,7 +106,7 @@ body {
     color: var(--text);
     line-height: 1.5714285714rem;
     overflow-x: hidden;
-    font-family: var(--body);
+    font-family: var(--heading);
     background: var(--body-bg);
     text-align: start;
     padding-top: 114px !important;
@@ -5941,7 +5941,7 @@ header.bg-white {
 .nav--tabs-3 .nav-item .nav-link {
     --text: #8e9ba9;
     color: var(--text);
-    font-size: 1rem;
+    font-size: 1.5rem;
     line-height: 1.2142857143rem;
     text-decoration: none;
     transition: all ease 0s;
@@ -5954,6 +5954,8 @@ header.bg-white {
 .nav--tabs-3 .nav-item .nav-link.active {
     color: var(--base);
     border-color: var(--base);
+    /* background: linear-gradient(90.27deg, rgb(132, 93, 194) -27.96%, rgb(249, 147, 39) -27.94%, rgb(213, 95, 173) 28.41%, rgb(132, 93, 194) 82.13%, rgb(132, 93, 194) 130.57%);
+    color: white; */
 }
 
 .nav--tabs-3 {
@@ -5967,7 +5969,7 @@ header.bg-white {
     background: transparent;
     border-inline-end: none;
     border-inline-start: none;
-    padding: 0.7142857143rem;
+    padding: 1.5rem;
     font-weight: 400;
 }
 
@@ -7141,6 +7143,8 @@ hr {
     font-size: 18px;
     line-height: 22px;
     color: var(--semi-title);
+    flex-direction: row;
+    justify-content: center;
 }
 
 .user-author-info img {
@@ -7253,7 +7257,7 @@ hr {
 .user-profile-wrapper {
     background: rgba(27, 127, 237, 0.02);
     margin-bottom: 2.4285714286rem;
-    padding: 2.6428571429rem 2.8571428571rem 0;
+    padding: 1.6428571429rem 1.8571428571rem 0;
 }
 
 .user-profile-wrapper .inner-div {
@@ -7264,7 +7268,7 @@ hr {
     -moz-column-gap: 24px;
     column-gap: 24px;
     row-gap: 20px;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 @media (max-width: 991px) {

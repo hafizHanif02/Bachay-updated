@@ -278,6 +278,7 @@ Route::group(['namespace' => 'RestAPI\v1', 'prefix' => 'v1', 'middleware' => ['a
 
         //wallet
         Route::group(['prefix' => 'wallet'], function () {
+            Route::get('balance', 'UserWalletController@balance');
             Route::get('list', 'UserWalletController@list');
             Route::get('bonus-list', 'UserWalletController@bonus_list');
         });

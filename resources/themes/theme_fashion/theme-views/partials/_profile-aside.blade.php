@@ -1,7 +1,7 @@
 @php
     $customer_info = \App\Utils\customer_info();
 @endphp
-<div class="user-profile-wrapper bg-section text-capitalize">
+<div class="user-profile-wrapper text-capitalize">
     <div class="d-flex justify-content-end">
         <div class="position-relative d-none d-md-block pb-2">
             <a class="profile-delete-dot" href="javascript:">
@@ -24,14 +24,7 @@
 
     <div class="inner-div">
         <div class="user-author-info-wrap">
-            <div class="user-author-info">
-                <img loading="lazy" alt="{{ translate('profile') }}"
-                     src="{{ getValidImage(path: 'storage/app/public/profile/'.$customer_info->image, type:'avatar') }}">
-                <div class="content">
-                    <h4 class="name mb-lg-2">{{$customer_info->f_name}} {{$customer_info->l_name}}</h4>
-                    <span>{{ translate('joined') }} {{date('d M, Y',strtotime($customer_info->created_at))}}</span>
-                </div>
-            </div>
+            
             <div class="d-md-none">
                 <button class="btn-circle btn btn-primary d-flex justify-content-center align-items-center size-1-2rem"
                         type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasProfile"
@@ -58,7 +51,7 @@
             </div>
         </div>
     </div>
-    <ul class="nav nav-tabs nav--tabs-3 justify-content-start mb-0 d-none d-md-flex">
+    <!-- <ul class="nav nav-tabs nav--tabs-3 justify-content-start mb-0 d-none d-md-flex">
         <li class="nav-item">
             <a href="{{ route('user-profile') }}"
                class="nav-link {{Request::is('user-profile') || Request::is('user-account') ||Request::is('account-address-*') ? 'active' :''}}">{{ translate('profile') }}</a>
@@ -115,7 +108,7 @@
                class="nav-link {{Request::is ('user-coupons') || Request::is('user-coupons*') ? 'active' : ''}}">{{ translate('coupons') }}</a>
         </li>
 
-    </ul>
+    </ul> -->
 </div>
 
 
