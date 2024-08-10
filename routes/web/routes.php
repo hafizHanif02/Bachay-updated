@@ -180,8 +180,8 @@ Route::group(['namespace' => 'Web', 'middleware' => ['maintenance_mode', 'guestC
 
     Route::get('/product/{slug}', 'ProductDetailsController@index')->name('product');
 
-    Route::get('products', 'ProductListController@products')->name('products');
-    Route::get('products2', 'ProductListController@product_list')->name('products-list');
+    // Route::get('products', 'ProductListController@products')->name('products');
+    Route::get('products', 'ProductListController@product_list')->name('products');
     Route::post('ajax-filter-products', 'ShopViewController@ajax_filter_products')->name('ajax-filter-products'); // Theme fashion, ALl purpose
     Route::get('ajax-filter-product', 'ShopViewController@ajax_filter_products')->name('ajax-filter-product'); // Theme fashion, ALl purpose
     Route::get('orderDetails', 'WebController@orderdetails')->name('orderdetails');

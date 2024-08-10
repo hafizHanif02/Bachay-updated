@@ -42,12 +42,12 @@
                         </div>
                     @endif
                 </div>
-                @php($wishlist = count($product->wishList) > 0 ? 1 : 0)
+                
                 <a href="javascript:" class="d-inline-flex wish-icon addWishlist_function_view_page"
                    data-id="{{ $product->id }}">
-                    <i class="wishlist_{{ $product->id }} bi {{ $wishlist == 1 ? 'bi-heart-fill text-danger' : 'bi-heart' }}"></i>
+                    <i class="wishlist_{{ $product->id }} bi {{ count($product->wishList) > 0 ? 'bi-heart-fill text-danger' : 'bi-heart' }}"></i>
                 </a>
-                @endphp
+                
             </div>
             <div class="d-flex align-items-center justify-content-between column-gap-2">
                 <h4 class="price flex-wrap">
@@ -89,7 +89,8 @@
                 <div class="d-flex flex-wrap overflow-hidden align-items-center row-gap-2 column-gap-2 mt-2">
                     @if(is_array($product->sizes) && !empty($product->sizes))
                         @foreach($product->sizes as $size)
-                            <span class="btn btn-outline-secondary">{{ $size }}</span>
+                            <a href="{{ route('product', $product->slug).'?size='.$size }}" class="btn btn-outline-secondary">{{ $size }}</a>
+                            {{-- <span class="btn btn-outline-secondary">{{ $size }}</span> --}}
                         @endforeach
                     @endif  
                 </div>
@@ -101,7 +102,7 @@
 
                     @if($colors)
                         @foreach($colors as $color)
-                            <div style="width: 20px; height: 20px; background-color: {{ $color }}; display: inline-block; margin-right: 5px; border-radius: 50%"></div>
+                            <a href="{{ route('product', $product->slug) }}?color={{ substr($color, 1) }}" style="width: 20px; height: 20px; background-color: {{ $color }}; display: inline-block; margin-right: 5px; border-radius: 50%"></a>
                         @endforeach
                     @endif
                 </div>

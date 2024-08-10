@@ -24,6 +24,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class ProductDetailsController extends Controller
 {
@@ -46,14 +47,15 @@ class ProductDetailsController extends Controller
      * @param string $slug
      * @return View
      */
-    public function index(string $slug): View|RedirectResponse
+    public function index(string $slug, Request $request): View|RedirectResponse
     {
+        
         $theme_name = theme_root_path();
 
         return match ($theme_name) {
             'default' => self::getDefaultTheme(slug: $slug),
             'theme_aster' => self::getThemeAster(slug: $slug),
-            'theme_fashion' => self::getThemeFashion(slug: $slug),
+            'theme_fashion' => self::getThemeFashion(slug: $slug, request: $request),
             'theme_all_purpose' => self::theme_all_purpose($slug),
         };
     }
@@ -244,7 +246,7 @@ class ProductDetailsController extends Controller
 
     // }
 
-    public function getThemeFashion($slug): View|RedirectResponse
+    public function getThemeFashion($slug, Request $request): View|RedirectResponse
     {
         $product = $this->productRepo->getWebFirstWhereActive(
             params: ['slug' => $slug, 'customer_id' => Auth::guard('customer')->user()->id ?? 0],
@@ -394,11 +396,25 @@ class ProductDetailsController extends Controller
                 offset: 1
             );
 
+            if($request->color){
+
+                $colorSelected = '#'.$request->color;
+            }else {
+
+                $colorSelected = json_decode($product->colors)[0];
+            }
+
+            if(isset($request->size)){
+                $sizeSelected = $request->size;
+            }else{
+
+                $sizeSelected = '';
+            }
             return view(VIEW_FILE_NAMES['products_details'], compact('product', 'wishlistStatus', 'countWishlist',
                 'relatedProducts', 'currentDate', 'sellerVacationStartDate', 'sellerVacationEndDate', 'rattingStatus', 'productsLatest',
                 'sellerTemporaryClose', 'inHouseVacationStartDate', 'inHouseVacationEndDate', 'inHouseVacationStatus', 'inHouseTemporaryClose',
                 'overallRating', 'decimalPointSettings', 'moreProductFromSeller', 'productsForReview', 'productsCount', 'totalReviews', 'rating', 'productReviews',
-                'avgRating', 'ratingPercentage', 'topRatedShops', 'newSellers', 'deliveryInfo', 'productsTopRated', 'productsThisStoreTopRated'));
+                'avgRating', 'ratingPercentage', 'topRatedShops', 'newSellers', 'deliveryInfo', 'productsTopRated', 'productsThisStoreTopRated', 'colorSelected', 'sizeSelected'));
         }
 
         Toastr::error(translate('not_found'));

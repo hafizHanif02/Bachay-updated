@@ -1895,6 +1895,7 @@ header.bg-white {
     gap: 0.3571428571rem;
     padding: 0.5rem 1rem;
     cursor: pointer;
+    margin: 0px 10px;
 }
 
 .__dropdown-menu .language li img {

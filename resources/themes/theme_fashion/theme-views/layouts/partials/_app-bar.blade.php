@@ -42,11 +42,11 @@
 
     @if (auth('customer')->check())
         <li>
-            {{-- <a href="{{ route('user-profile') }}"
+            <a href="{{ route('user-profile') }}"
                 class="d-flex align-items-center {{ Request::is('/user-profile') || Request::is('user-profile') ? 'active' : '' }} flex-column gap-1 py-3">
                 <i class="bi bi-person custom-icon"></i>
                 <span>{{ translate('profile') }}</span>
-            </a> --}}
+            </a>
             <a href="{{ Request::is('user-profile') ? 'javascript:void(0)' : route('user-profile') }}"
                 class="d-flex align-items-center {{ Request::is('/user-profile') || Request::is('user-profile') ? 'active' : '' }} flex-column gap-0 py-1">
                 @if(Request::is('/user-profile') || Request::is('user-profile'))

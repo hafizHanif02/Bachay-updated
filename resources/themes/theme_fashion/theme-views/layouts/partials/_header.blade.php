@@ -686,21 +686,45 @@
                             </a>
                             <div class="dropdown-menu __dropdown-menu" id="header-profile-dropdown">
                                 <ul class="language">
+                                <li class="thisIsALinkElement" data-linkpath="{{ route('account-oder') }}" style="font-weight: bold;border-bottom: 1px solid #bebebe;">
+                                        
+                                        <span>{{ auth('customer')->user()->f_name }} {{ auth('customer')->user()->l_name }}</span>
+                                    </li>
                                     <li class="thisIsALinkElement" data-linkpath="{{ route('account-oder') }}">
-                                        <img loading="lazy"
+                                        <!-- <img loading="lazy"
                                             src="{{ theme_asset('assets/img/user/shopping-bag.svg') }}"
-                                            alt="{{ translate('user') }}">
+                                            alt="{{ translate('user') }}"> -->
                                         <span>{{ translate('my_order') }}</span>
                                     </li>
-                                    <li class="thisIsALinkElement" data-linkpath="{{ route('user-profile') }}">
-                                        <img loading="lazy" src="{{ theme_asset('assets/img/user/profile.svg') }}"
-                                            alt="{{ translate('user') }}">
-                                        <span>{{ translate('my_profile') }}</span>
+                                    <li class="thisIsALinkElement" data-linkpath="{{route('my-child.list')}}">
+                                        
+                                        <span>My Child</span>
+                                    </li>
+                                    <li class="thisIsALinkElement" data-linkpath="{{route('wishlists')}}">
+                                        <!-- <img loading="lazy" src="{{ theme_asset('assets/img/user/profile.svg') }}"
+                                            alt="{{ translate('user') }}"> -->
+                                        <span>My Wishlist</span>
+                                    </li>
+                                    <li class="thisIsALinkElement" data-linkpath="{{ route('wallet') }}">
+                                        
+                                        <span>My Wallet</span>
+                                    </li>
+                                    <li class="thisIsALinkElement" data-linkpath="{{route('account-tickets')}}">
+                                        
+                                        <span>Support</span>
+                                    </li>
+                                    <li class="thisIsALinkElement" data-linkpath="{{route('refer-earn')}}">
+                                       
+                                        <span>Refer & Earn</span>
+                                    </li>
+                                    <li class="thisIsALinkElement" data-linkpath="{{route('user-coupons')}}">
+                                       
+                                        <span>Coupons</span>
                                     </li>
                                     <li class="thisIsALinkElement"
-                                        data-linkpath="{{ route('customer.auth.logout') }}">
-                                        <img loading="lazy" src="{{ theme_asset('assets/img/user/logout.svg') }}"
-                                            alt="{{ translate('user') }}">
+                                        data-linkpath="{{ route('customer.auth.logout') }}" style="border-top: 1px solid #bebebe;margin-top: 12px;">
+                                        <!-- <img loading="lazy" src="{{ theme_asset('assets/img/user/logout.svg') }}"
+                                            alt="{{ translate('user') }}"> -->
                                         <span>{{ translate('sign_Out') }}</span>
                                     </li>
                                 </ul>
@@ -750,6 +774,7 @@
 
         </div>
     </div>
+   
     <div class="nav-btn mt-3" id="mega-menu" class="hide-on-med-and-down"
         style="background-image: url('{{ asset('public/images/top-offer-bg.png') }}');">
         <div class="bg_mega_menu">
@@ -769,6 +794,15 @@
                                     <li class="collection-item">
                                         <h4>SHOP BY CATEGORY</h4>
                                     </li>
+                                    <?php
+
+                                        $allCategories = \App\Utils\Helpers::categoryList();
+                                    ?>
+                                    @foreach ($allCategories as $key => $category)
+                                        <li><a
+                                                href="#">{{ $category->name }}</a>
+                                        </li>
+                                    @endforeach
                                     <li><a href="#">Sets & Suits <span class="color">NEW</span></a></li>
                                     <li><a href="#">T-shirts <span class="color">NEW</span></a></li>
                                     <li><a href="">Nightwear</a></li>

@@ -3,7 +3,7 @@
 if (!function_exists('theme_asset')) {
     function theme_asset($path = null): string
     {
-        $themeName = env('WEB_THEME') == null ? 'default' : env('WEB_THEME');
+        $themeName = env('WEB_THEME') == null ? 'theme_fashion' : env('WEB_THEME');
         return asset("resources/themes/$themeName/public/$path");
     }
 }
@@ -11,7 +11,7 @@ if (!function_exists('theme_asset')) {
 if (!function_exists('theme_root_path')) {
     function theme_root_path(): string
     {
-        return env('WEB_THEME') == null ? 'default' : env('WEB_THEME');
+        return env('WEB_THEME') == null ? 'theme_fashion' : env('WEB_THEME');
     }
 }
 

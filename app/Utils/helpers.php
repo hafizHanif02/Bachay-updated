@@ -942,6 +942,10 @@ class Helpers
         return Category::select('name')->find($id)->name;
     }
 
+    public static function categoryList(){
+        return Category::where('home_status', true)->priority()->get();
+    }
+
     public static function set_symbol($amount)
     {
         $decimal_point_settings = Helpers::get_business_settings('decimal_point_settings');

@@ -641,7 +641,7 @@
                                         @foreach (json_decode($product->colors) as $key => $color)
                                             <label>
                                                 <input type="radio" name="color" value="{{ $color }}"
-                                                    {{ $key == 0 ? 'checked' : '' }}>
+                                                    {{ $colorSelected == $color ? 'checked' : '' }}>
                                                 <span style="--base:{{ $color }}"
                                                     class="focus_preview_image_by_color"
                                                     data-colorid="preview-box-{{ str_replace('#', '', $color) }}"
@@ -654,15 +654,25 @@
                                     </div>
                                 </div>
                             @endif
-
-                            @foreach (json_decode($product->choice_options) as $key => $choice)
+                                {{$sizeSelected}}
+                            @foreach ($product->choice_options as $key => $choice)
                                 <div class="mt-20px">
-                                    <label class="form-label">{{ translate($choice->title) }}</label>
+                                    <label class="form-label">{{ $choice['title'] }}</label>
                                     <div class="d-flex flex-wrap gap-2">
-                                        @foreach ($choice->options as $key => $option)
+                                        @foreach ($choice['options'] as $key => $option)
                                             <label class="form-check-size">
-                                                <input type="radio" name="{{ $choice->name }}"
+                                                
+                                                @if ($choice['title'] == 'Size')
+                                                
+                                                    @if($sizeSelected != '')
+                                                        <input type="radio" name="{{ $choice['name'] }}" value="{{ $option }}" {{ trim($sizeSelected) == trim($option) ? 'checked' : '' }}>
+                                                    @else
+                                                        <input type="radio" name="{{ $choice['name'] }}" value="{{ $option }}" {{ $key == 0 ? 'checked' : '' }}>
+                                                    @endif
+                                                @else
+                                                    <input type="radio" name="{{ $choice['name'] }}"
                                                     value="{{ $option }}" {{ $key == 0 ? 'checked' : '' }}>
+                                                @endif
                                                 <span class="form-check-label">{{ $option }}</span>
                                             </label>
                                         @endforeach
