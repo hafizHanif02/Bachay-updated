@@ -7,8 +7,7 @@
  */
 
 
-header('Access-Control-Allow-Origin: *');
-echo "test";
+
 
 define('LARAVEL_START', microtime(true));
 
