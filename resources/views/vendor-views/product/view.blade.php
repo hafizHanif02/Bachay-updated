@@ -318,6 +318,7 @@
 
                                 <div class="pair-list">
                                     @if ($product->choice_options != null)
+                                    {{dd($product->choice_options)}}
                                         @foreach ($product->choice_options as $key => $value)
                                             <div>
                                                 @if (!empty($value['options']))
