@@ -337,11 +337,11 @@
 
                                 <div class="pair-list">
                                     @if ($product->choice_options != null)
-                                    {{dd($product->choice_options)}}
+                                    
                                         @foreach ($product->choice_options as $key => $value)
                                             <div>
                                                 @if (!empty($value['options']))
-                                                    <span class="key text-nowrap">{{ $value->title }}</span>
+                                                    <span class="key text-nowrap">{{ $value['title'] }}</span>
                                                     <span>:</span>
                                                     <span class="value">
                                                     @foreach ($value->options as $index => $option)
