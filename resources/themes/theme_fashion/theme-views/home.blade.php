@@ -135,11 +135,12 @@
         </a>
     </div>
 
-    @if (count($promo_banner_bottom) > 0)
+    @if ($promo_banner_bottom)
     
         <div class="container-fluid page-padding mt-2">
             <div class="row">
         @foreach ($promo_banner_bottom as $key => $item)
+        
             <div class="col-12 col-sm-6 col-md-4 col-lg-4" style="padding-top: 0.5rem; padding-bottom: 0.5rem">
                 <a href="{{ $item['url'] }}" target="_blank" class="d-block promotional-banner" style="border-radius:0.42rem;">
                     <img loading="lazy" class="w-100" alt="{{ translate('banner') }}"
