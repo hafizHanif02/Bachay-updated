@@ -257,7 +257,7 @@ class CartController extends Controller
 
         //Gets all the choice values of customer choice option and generate a string like Black-S-Cotton
         $choices = [];
-        foreach (json_decode($product->choice_options) as $key => $choice) {
+        foreach ($product->choice_options as $key => $choice) {
 
             $choices[$choice->name] = $request[$choice->name];
             $variations[$choice->title] = $request[$choice->name];

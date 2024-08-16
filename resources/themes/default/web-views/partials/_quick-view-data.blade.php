@@ -185,7 +185,7 @@
 
                     </div>
 
-                    @foreach (json_decode($product->choice_options) as $key => $choice)
+                    @foreach ($product->choice_options as $key => $choice)
                         <div class="flex-start">
                             <div class="product-description-label text-dark font-bold mt-1 text-capitalize">
                                 {{ $choice->title }}:

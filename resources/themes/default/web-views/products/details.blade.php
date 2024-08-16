@@ -221,7 +221,7 @@
                                             }
                                         @endphp
                                     </div>
-                                    @foreach (json_decode($product->choice_options) as $key => $choice)
+                                    @foreach ($product->choice_options as $key => $choice)
                                         <div class="row flex-start mx-0 align-items-center">
                                             <div
                                                 class="product-description-label text-dark font-bold {{Session::get('direction') === "rtl" ? 'pl-2' : 'pr-2'}} text-capitalize mb-2">{{ $choice->title }}

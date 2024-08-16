@@ -310,7 +310,7 @@
                                                             </ul>
                                                         </div>
                                                     @endif
-                                                    @foreach (json_decode($product->choice_options) as  $choice)
+                                                    @foreach ($product->choice_options as  $choice)
                                                         <div class="d-flex gap-4 flex-wrap align-items-center mb-4">
                                                             <h6 class="fw-semibold">{{translate($choice->title)}}</h6>
                                                             <ul class="option-select-btn custom_01_option flex-wrap weight-style--two gap-2">

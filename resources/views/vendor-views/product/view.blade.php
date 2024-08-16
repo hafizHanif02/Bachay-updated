@@ -312,13 +312,13 @@
                             </div>
                         </div>
 
-                        @if ($product->product_type == 'physical' && count(json_decode($product->choice_options)) >0 || count(json_decode($product->colors)) >0 )
+                        @if ($product->product_type == 'physical' && count($product->choice_options) >0 || count(json_decode($product->colors)) >0 )
                             <div class="col-sm-6 col-xl-4">
                                 <h4 class="mb-3">{{ translate('available_variations') }}</h4>
 
                                 <div class="pair-list">
-                                    @if (json_decode($product->choice_options) != null)
-                                        @foreach (json_decode($product->choice_options) as $key => $value)
+                                    @if ($product->choice_options != null)
+                                        @foreach ($product->choice_options as $key => $value)
                                             <div>
                                                 @if (array_filter($value->options) != null)
                                                     <span class="key text-nowrap">

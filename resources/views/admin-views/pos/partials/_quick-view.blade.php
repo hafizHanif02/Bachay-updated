@@ -126,7 +126,7 @@
                             }
                         @endphp
                     </div>
-                    @foreach (json_decode($product->choice_options) as $key => $choice)
+                    @foreach ($product->choice_options as $key => $choice)
                         <div class="my-2">
                             <strong class="text-dark">{{ ucfirst($choice->title) }}</strong>
                         </div>

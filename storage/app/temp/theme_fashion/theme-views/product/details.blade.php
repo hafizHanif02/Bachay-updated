@@ -514,7 +514,7 @@
                             </div>
                         @endif
 
-                        @foreach (json_decode($product->choice_options) as $key => $choice)
+                        @foreach ($product->choice_options as $key => $choice)
                             <div class="mt-20px">
                                 <label class="form-label">{{translate($choice->title)}}</label>
                                 <div class="d-flex flex-wrap gap-2">
