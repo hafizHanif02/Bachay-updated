@@ -892,7 +892,103 @@ class HomeController extends Controller
 
             
             
-                
+            $sizes = [];
+            $filterOptions = [];
+        foreach ($all_products as $product) {
+            $temp_sizes = [];
+            $choice_options = $product->choice_options;
+            $filterOptions[] = $choice_options;
+            if (is_array($choice_options) && !empty($choice_options)) {
+                $title = $choice_options[0]['title'];
+                if ($title == 'Size') {
+                    $options = $choice_options[0]['options'];
+
+                    // Initialize the sizes array if it doesn't exist
+                    if (!isset($product->sizes) || !is_array($product->sizes)) {
+                        $product->sizes = [];
+                    }
+
+                    foreach ($options as $option) {
+                        $sizes[] = trim($option); // Collect all sizes in a separate array
+
+                        // Directly add to the product sizes array
+                        $temp_sizes[] = trim($option);
+                    }
+                    $product->sizes = $temp_sizes; // Reassign the array back to the product property
+                }
+            }
+        }    
+
+
+        $mergedChoices = [];
+
+            foreach ($filterOptions as $choices) {
+                foreach ($choices as $choice) {
+                    if (!isset($mergedChoices[$choice['name']])) {
+                        $mergedChoices[$choice['name']] = [
+                            'name' => $choice['name'],
+                            'title' => $choice['title'],
+                            'options' => []
+                        ];
+                    }
+                    $mergedChoices[$choice['name']]['options'] = array_unique(array_merge($mergedChoices[$choice['name']]['options'], array_map('trim', $choice['options'])));
+                }
+            }
+    
+            $allColors = [];
+    
+            // Loop through each product to extract colors
+            foreach ($all_products as $productItem) {
+                $colors = json_decode($productItem['colors'], true);
+                if ($colors) {
+                    $allColors = array_merge($allColors, $colors);
+                }
+            }
+            $mergedChoices['choice_0']['title'] = "Color";
+            // Remove duplicate colors
+            $mergedChoices['choice_0']['options'] = array_unique($allColors);
+            
+
+            
+            $custom_sort = function ($a, $b) {
+                $order = [
+                    "New Born" => -1,
+                    "Preemie" => 0,
+                    "M" => 1,
+                    "Y" => 2,
+                ];
+                $pattern = '/(\d+)\s?[-to]+\s?(\d+)?\s?([MY])?/i';
+                preg_match($pattern, $a, $matches_a);
+                preg_match($pattern, $b, $matches_b);
+                $a_unit = isset($matches_a[3]) ? strtoupper($matches_a[3]) : '';
+                $b_unit = isset($matches_b[3]) ? strtoupper($matches_b[3]) : '';
+                $a_order = isset($order[$a_unit]) ? $order[$a_unit] : PHP_INT_MAX;
+                $b_order = isset($order[$b_unit]) ? $order[$b_unit] : PHP_INT_MAX;
+                if ($a_unit === "New Born" && $b_unit === "Preemie") {
+                    return -1;
+                } elseif ($a_unit === "Preemie" && $b_unit === "New Born") {
+                    return 1;
+                }
+                if ($a_unit === $b_unit) {
+                    $a_value = isset($matches_a[1]) ? (int)$matches_a[1] : null;
+                    $b_value = isset($matches_b[1]) ? (int)$matches_b[1] : null;
+            
+                    if ($a_value !== null && $b_value !== null) {
+                        return $a_value - $b_value;
+                    }
+                }
+                return $a_order <=> $b_order;
+            };
+            usort($sizes, $custom_sort);
+            $sizes = array_unique($sizes);
+            $new_born_key = array_search("New Born", $sizes);
+            $preemie_key = array_search("Preemie", $sizes);
+            unset($sizes[$new_born_key]);
+            unset($sizes[$preemie_key]);
+            array_unshift($sizes, "Preemie", "New Born");
+            $custom_pages = CustomPage::get();
+
+
 
             //----------------
         return view(VIEW_FILE_NAMES['home'],

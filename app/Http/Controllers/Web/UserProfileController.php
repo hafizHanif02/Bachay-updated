@@ -1418,7 +1418,7 @@ class UserProfileController extends Controller
             
             $sizes = [];
             foreach ($all_products as $product) {
-                $choice_options = json_decode($product->choice_options, true);
+                $choice_options = $product->choice_options;
                 if (is_array($choice_options) && !empty($choice_options)) {
                     $title = $choice_options[0]['title'];
                     if ($title == 'Size') {
@@ -1474,13 +1474,19 @@ class UserProfileController extends Controller
             $genders = 'male';
             $custom_pages = CustomPage::get();
 
+            //---------------
+
+            
+
+
+            //---------------
             return view(VIEW_FILE_NAMES['home'],
         compact(
                 'custom_pages','genders','sizes','latest_products', 'deal_of_the_day', 'top_sellers','topRatedShops', 'main_banner','most_visited_categories',
                 'random_product', 'decimal_point_settings', 'newSellers', 'sidebar_banner', 'top_side_banner', 'recent_order_shops',
                 'categories', 'colors_in_shop', 'all_products_info', 'most_searching_product', 'most_demanded_product', 'featured_products','promo_banner_left',
                 'promo_banner_middle_top','promo_banner_middle_bottom','promo_banner_right', 'promo_banner_bottom', 'currentDate', 'all_products',
-                'featured_deals'
+                'featured_deals', 'mergedChoices'
             )
         );
     }
