@@ -792,30 +792,30 @@ class HomeController extends Controller
 
             $sizes = [];
             $filterOptions = [];
-foreach ($all_products as $product) {
-    $temp_sizes = [];
-    $choice_options = $product->choice_options;
-    $filterOptions[] = $choice_options;
-    if (is_array($choice_options) && !empty($choice_options)) {
-        $title = $choice_options[0]['title'];
-        if ($title == 'Size') {
-            $options = $choice_options[0]['options'];
+        foreach ($all_products as $product) {
+            $temp_sizes = [];
+            $choice_options = $product->choice_options;
+            $filterOptions[] = $choice_options;
+            if (is_array($choice_options) && !empty($choice_options)) {
+                $title = $choice_options[0]['title'];
+                if ($title == 'Size') {
+                    $options = $choice_options[0]['options'];
 
-            // Initialize the sizes array if it doesn't exist
-            if (!isset($product->sizes) || !is_array($product->sizes)) {
-                $product->sizes = [];
+                    // Initialize the sizes array if it doesn't exist
+                    if (!isset($product->sizes) || !is_array($product->sizes)) {
+                        $product->sizes = [];
+                    }
+
+                    foreach ($options as $option) {
+                        $sizes[] = trim($option); // Collect all sizes in a separate array
+
+                        // Directly add to the product sizes array
+                        $temp_sizes[] = trim($option);
+                    }
+                    $product->sizes = $temp_sizes; // Reassign the array back to the product property
+                }
             }
-
-            foreach ($options as $option) {
-                $sizes[] = trim($option); // Collect all sizes in a separate array
-
-                // Directly add to the product sizes array
-                $temp_sizes[] = trim($option);
-            }
-            $product->sizes = $temp_sizes; // Reassign the array back to the product property
-        }
-    }
-}    
+        }    
 
 
         $mergedChoices = [];
