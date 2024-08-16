@@ -339,7 +339,7 @@
                                     @if ($product->choice_options != null)
                                         @foreach ($product->choice_options as $key => $value)
                                             <div>
-                                                @if ($value->options != null)
+                                                @if (!empty($value['options']))
                                                     <span class="key text-nowrap">{{ translate($value->title) }}</span>
                                                     <span>:</span>
                                                     <span class="value">
