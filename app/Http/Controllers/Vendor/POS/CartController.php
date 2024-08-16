@@ -116,9 +116,9 @@ class CartController extends BaseController
         $variant = $this->cartService->makeVariation(
             request:$request,
             colorName: $colorName,
-            choiceOptions: json_decode($product['choice_options'])
+            choiceOptions: $product['choice_options']
         );
-        foreach (json_decode($product['choice_options']) as $choice) {
+        foreach ($product['choice_options'] as $choice) {
             $variations[$choice->title] = $request[$choice->name];
         }
         $discount = $this->getDiscountAmount(price: $product['unit_price'], discount: $product['discount'],discountType: $product['discount_type']);

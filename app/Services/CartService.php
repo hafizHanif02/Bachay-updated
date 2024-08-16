@@ -29,7 +29,7 @@ class CartService
         $variation = $this->makeVariation(
             request:$request,
             colorName: $colorName,
-            choiceOptions: json_decode($product['choice_options'])
+            choiceOptions: $product['choice_options']
         );
 
         if ($variation != null) {

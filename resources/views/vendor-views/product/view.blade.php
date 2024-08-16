@@ -327,9 +327,9 @@
                                                     </span>
                                                     <span>:</span>
                                                     <span class="value">
-                                                    @foreach ($value->options as $index => $option)
+                                                    @foreach ($value['options'] as $index => $option)
                                                             {{ $option }}
-                                                            @if ($index === array_key_last(($value->options)))
+                                                            @if ($index === array_key_last(($value['options'])))
                                                                 @break
                                                             @endif
                                                             ,
