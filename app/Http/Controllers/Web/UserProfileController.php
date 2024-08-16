@@ -1709,7 +1709,7 @@ class UserProfileController extends Controller
             
             $sizes = [];
             foreach ($all_products as $product) {
-                $choice_options = json_decode($product->choice_options, true);
+                $choice_options = $product->choice_options;
                 if (is_array($choice_options) && !empty($choice_options)) {
                     $title = $choice_options[0]['title'];
                     if ($title == 'Size') {
