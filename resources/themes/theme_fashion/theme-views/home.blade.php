@@ -136,6 +136,7 @@
     </div>
 
     @if ($promo_banner_bottom)
+    {{dd($promo_banner_bottom)}}
         <div class="container-fluid page-padding mt-2">
             <div class="row">
         @foreach ($promo_banner_bottom as $key => $item)
