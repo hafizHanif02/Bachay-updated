@@ -423,7 +423,7 @@ class ProductController extends Controller
             return [
                 'id' => $product['id'],
                 'name' => $product['name'],
-                'thumbnail' => $product['thumbnail']
+                'thumbnail' => asset('storage/app/public/product/thumbnail/' . $product->thumbnail),
             ];
         });
 
