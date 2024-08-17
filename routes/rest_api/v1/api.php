@@ -175,6 +175,7 @@ Route::group(['namespace' => 'RestAPI\v1', 'prefix' => 'v1', 'middleware' => ['a
         Route::get('featured', 'ProductController@get_featured_products');
         Route::get('top-rated', 'ProductController@get_top_rated_products');
         Route::any('search', 'ProductController@get_searched_products');
+        Route::any('search_suggestion', 'ProductController@get_searched_products_suggestion');
         Route::post('filter', 'ProductController@product_filter');
         Route::any('suggestion-product', 'ProductController@get_suggestion_product');
         Route::get('details/{slug}', 'ProductController@get_product');

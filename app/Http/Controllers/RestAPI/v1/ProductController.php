@@ -401,6 +401,30 @@ class ProductController extends Controller
         return response()->json($products, 200);
     }
 
+    public function get_searched_products_suggestion(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => Helpers::error_processor($validator)], 403);
+        }
+
+        $products = ProductManager::search_products($request, $request['name'], 'all', $request['limit'], $request['offset']);
+        
+        // If no products found, attempt a translated product search
+        if ($products['products'] == null) {
+            $products = ProductManager::translated_product_search($request['name'], 'all', $request['limit'], $request['offset']);
+        }
+
+        // Extract only the product names
+        $productNames = collect($products['products'])->pluck('name');
+
+        return response()->json(['product_names' => $productNames], 200);
+    }
+
+
     public function product_filter(Request $request)
     {
         $search = [base64_decode($request->search)];
