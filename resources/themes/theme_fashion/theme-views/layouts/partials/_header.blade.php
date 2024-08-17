@@ -781,7 +781,7 @@
             <ul
                 class="container-xxl sub-nav sub-nav-media-query d-flex justify-content-between align-items-center mb-0">
                 <li>
-                    <a href="#" class="all_categories">
+                    <a href="{{ route('products') }}" class="all_categories">
                         <img src="{{ asset('public/images/Union.png') }}" alt="" width="15px"
                             height="15px">
                         <span class="mt-1">Browse All
@@ -799,32 +799,15 @@
                                         $allCategories = \App\Utils\Helpers::categoryList();
                                     ?>
                                     @foreach ($allCategories as $key => $category)
-                                        <li><a
-                                                href="#">{{ $category->name }}</a>
+                                        <li>
+                                            <a href="{{ route('products') }}?id={{$category->id}}&name={{urlencode($category->name)}}&data_from=category&page=1">
+                                                <img src="{{ asset('public/images/category/'.$category->icon) }}">
+                                                {{ $category->name }}
+                                            </a>
+
                                         </li>
                                     @endforeach
-                                    <li><a href="#">Sets & Suits <span class="color">NEW</span></a></li>
-                                    <li><a href="#">T-shirts <span class="color">NEW</span></a></li>
-                                    <li><a href="">Nightwear</a></li>
-                                    <li><a href="#">Sweatshirts<span class="color">NEW</span></a></li>
-                                    <li><a href="#">Jackets <span class="color">NEW</span></a></li>
-                                    <li><a href="#">Sweaters<span class="color">NEW</span></a></li>
-                                    <li><a href="#">Ethnic Wear<span class="color">NEW</span></a></li>
-                                    <li><a href="#">Party Wear<span class="color">NEW</span></a></li>
-                                    <li><a href="#">Jeans & Trousers</a></li>
-                                    <li><a chref="#">Lounge & Trackpants</a></li>
-                                    <li><a href="#">Diaper & Bootie Leggings</a></li>
-                                    <li><a href="#">Shirts <span class="color">NEW</span></a></li>
-                                    <li><a href="#">Onesies & Rompers</a></li>
-                                    <li><a href="#">Athleisure & Sportswear</a></li>
-                                    <li><a href="#">Thermals <span class="color">NEW</span></a></li>
-                                    <li><a href="#">Inner Wear</a></li>
-                                    <li><a href="#">Caps & Gloves <span class="color">NEW</span></a></li>
-                                    <li><a href="#">Bath Time</a></li>
-                                    <li><a href="#">Swim Wear</a></li>
-                                    <li><a href="#">Rainwear</a></li>
-                                    <li><a href="#">Theme Costumes</a></li>
-                                    <li><a href="#">View All</a></li>
+                                    
                                 </ul>
                             </div>
                             <div class="sub-nav-column">
@@ -1839,6 +1822,10 @@
         </div>
     </div>
 
+    
+    
+    
+    
 </header>
 
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">

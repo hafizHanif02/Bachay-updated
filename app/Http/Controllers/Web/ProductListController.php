@@ -1413,6 +1413,6 @@ class ProductListController extends Controller
                 return redirect('/');
             }
         }
-        return view(VIEW_FILE_NAMES['products_view_page'], compact('products','product_ids','products_count','categories','colors_in_shop','banner','ratings'));
+        return view(VIEW_FILE_NAMES['products_view_page2'], compact('products','product_ids','products_count','categories','colors_in_shop','banner','ratings'));
     }
 }

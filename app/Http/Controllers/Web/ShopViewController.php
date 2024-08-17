@@ -706,7 +706,7 @@ class ShopViewController extends Controller
     public function ajax_filter_products(Request $request)
 {
     
-    //return $request;
+    //return $request->dataFrom ? $request->dataFrom : '';
     
     //return $attributeList;
     $categories = $request->category ?? [];
@@ -746,7 +746,7 @@ class ShopViewController extends Controller
             ->select('id', 'name')
             ->get();
     }
-
+    
     $brands = [];
     if ($request->brand) {
         $brands = Brand::whereIn('id', $request->brand)->select('id', 'name')->get();

@@ -29,7 +29,7 @@
 
             // Extract query parameters from the current URL
             var urlParams = new URLSearchParams(window.location.search);
-
+            
             // Get the category and size parameters
             var categoryParam = urlParams.get('category');
             var sizeParam = urlParams.get('size');
@@ -37,6 +37,9 @@
             // Split the parameters into arrays
             var categories = categoryParam ? categoryParam.split(',') : [];
             var sizes = sizeParam ? sizeParam.split(',') : [];
+
+            var dataFrom = urlParams.get('data_from');
+            var id = urlParams.get('id');
 
             // Trim and decode the values
             categories = categories.map(function(category) {
@@ -54,6 +57,8 @@
                 size: sizes,
                 // You can include other form data here if needed
                 // data: form.serialize(),
+                data_from: dataFrom,
+                id: id,
             };
             console.log(requestData);
             $.ajax({
@@ -167,7 +172,7 @@
                         @endif
                 </div>
                 <main class="main-wrapper">
-
+                    
                     <aside class="sidebar" id="sidebar">
                         @include('theme-views.partials.products._products-list-aside',['categories'=>$categories, 'mergedChoices'=>$mergedChoices])
                     </aside>
