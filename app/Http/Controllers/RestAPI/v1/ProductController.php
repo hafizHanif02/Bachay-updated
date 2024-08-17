@@ -418,11 +418,18 @@ class ProductController extends Controller
             $products = ProductManager::translated_product_search($request['name'], 'all', $request['limit'], $request['offset']);
         }
 
-        // Extract only the product names
-        $productNames = collect($products['products'])->pluck('name');
+        // Extract only the name, thumbnail, and id attributes
+        $productSuggestions = collect($products['products'])->map(function ($product) {
+            return [
+                'id' => $product['id'],
+                'name' => $product['name'],
+                'thumbnail' => $product['thumbnail']
+            ];
+        });
 
-        return response()->json(['product_names' => $productNames], 200);
+        return response()->json(['product_suggestions' => $productSuggestions], 200);
     }
+
 
 
     public function product_filter(Request $request)
