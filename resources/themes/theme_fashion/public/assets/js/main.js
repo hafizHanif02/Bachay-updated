@@ -160,21 +160,24 @@
         });
         //
         $(".product-information-view-more").on("click", function () {
-            if ($(this).closest(".product-information").hasClass("active")) {
-                $(this).closest(".product-information").removeClass("active");
+            let productInformation = $(this).closest("#general-info").find(".product-information");
+            
+            if (productInformation.hasClass("active")) {
+                productInformation.removeClass("active");
                 $(this).text($(this).data("view-more"));
             } else {
-                $(this).closest(".product-information").addClass("active");
+                productInformation.addClass("active");
                 $(this).text($(this).data("view-less"));
             }
         });
+        
         $(".product-information .nav-item-ative").on("click", function () {
-            $(this).closest(".product-information").removeClass("active");
-            $(this)
-                .closest(".product-information")
-                .find(".product-information-view-more")
-                .text($(".product-information-view-more").data("view-more"));
+            let productInformation = $(this).closest("#general-info").find(".product-information");
+            
+            productInformation.removeClass("active");
+            $(".product-information-view-more").text($(".product-information-view-more").data("view-more"));
         });
+        
         // Menu Active
         var current = location.pathname;
         var $path = current.substring(current.lastIndexOf("/") + 1);

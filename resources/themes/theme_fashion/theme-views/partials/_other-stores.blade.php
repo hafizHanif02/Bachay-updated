@@ -1,5 +1,5 @@
 <section class="others-section section-gap pb-0">
-    <div class="container-fluid page-padding">
+    <div class="container">
         <div class="section-title mb-0">
             <div class="mb-32px">
                 <div

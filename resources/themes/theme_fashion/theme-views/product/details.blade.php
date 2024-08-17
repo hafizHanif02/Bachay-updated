@@ -48,7 +48,7 @@
 @section('content')
 
     <section class="product-single-section pt-20px">
-        <div class="container-fluid" style="padding: 0px 5%">
+        <div class="container" style="padding: 0px 0%">
             <div class="section-title mb-4">
                 <div
                     class="d-flex flex-wrap justify-content-between row-gap-3 column-gap-2 align-items-center search-page-title">
@@ -89,54 +89,108 @@
             @endif
 
             <div class="product-single-wrapper" style="column-gap: 0;">
-                <div style="width:50%">
-                @if ($product->images != null && json_decode($product->images) > 0)
-                    <div class="product-single-thumb" style="display:flex;flex-direction: row-reverse;">
-                        @if (json_decode($product->colors) && $product->color_image)
-                            <div class="overflow-hidden this rounded" style="width: 80%">
-                                <div class="product-share-icons">
-                                    <a href="javascript:" class="share-icon" title="{{ translate('share') }}">
-                                        <i class="bi bi-share-fill"></i>
-                                    </a>
-                                    <ul>
-                                        <li>
-                                            <a href="javascript:" class="social_share_function"
-                                                data-url="{{ route('product', $product->slug) }}"
-                                                data-social="facebook.com/sharer/sharer.php?u=">
-                                                <i class="bi bi-facebook"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:" class="social_share_function"
-                                                data-url="{{ route('product', $product->slug) }}"
-                                                data-social="twitter.com/intent/tweet?text=">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
-                                                    fill="currentColor" class="bi bi-twitter-x" viewBox="0 0 16 16">
-                                                    <path
-                                                        d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865l8.875 11.633Z" />
-                                                </svg>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:" class="social_share_function"
-                                                data-url="{{ route('product', $product->slug) }}"
-                                                data-social="linkedin.com/shareArticle?mini=true&url=">
-                                                <i class="bi bi-linkedin"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:" class="social_share_function"
-                                                data-url="{{ route('product', $product->slug) }}"
-                                                data-social="api.whatsapp.com/send?text=">
-                                                <i class="bi bi-whatsapp"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div id="sync1" class="owl-carousel owl-theme product-single-main-slider">
-                                    @foreach (json_decode($product->color_image) as $key => $photo)
-                                        @if (count(json_decode($product->color_image)) > 1 &&
-                                                $key == 1 &&
+                <div style="width:45%">
+                    @if ($product->images != null && json_decode($product->images) > 0)
+                        <div class="product-single-thumb" style="display:flex;flex-direction: row-reverse;">
+                            @if (json_decode($product->colors) && $product->color_image)
+                                <div class="overflow-hidden this rounded" style="width: 80%">
+                                    <div class="product-share-icons">
+                                        <a href="javascript:" class="share-icon" title="{{ translate('share') }}">
+                                            <i class="bi bi-share-fill"></i>
+                                        </a>
+                                        <ul>
+                                            <li>
+                                                <a href="javascript:" class="social_share_function"
+                                                    data-url="{{ route('product', $product->slug) }}"
+                                                    data-social="facebook.com/sharer/sharer.php?u=">
+                                                    <i class="bi bi-facebook"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:" class="social_share_function"
+                                                    data-url="{{ route('product', $product->slug) }}"
+                                                    data-social="twitter.com/intent/tweet?text=">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
+                                                        fill="currentColor" class="bi bi-twitter-x" viewBox="0 0 16 16">
+                                                        <path
+                                                            d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865l8.875 11.633Z" />
+                                                    </svg>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:" class="social_share_function"
+                                                    data-url="{{ route('product', $product->slug) }}"
+                                                    data-social="linkedin.com/shareArticle?mini=true&url=">
+                                                    <i class="bi bi-linkedin"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:" class="social_share_function"
+                                                    data-url="{{ route('product', $product->slug) }}"
+                                                    data-social="api.whatsapp.com/send?text=">
+                                                    <i class="bi bi-whatsapp"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div id="sync1" class="owl-carousel owl-theme product-single-main-slider">
+                                        @foreach (json_decode($product->color_image) as $key => $photo)
+                                            @if (count(json_decode($product->color_image)) > 1 &&
+                                                    $key == 1 &&
+                                                    preg_match('/^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=|\?v=)([^#\&\?]*).*/', $product->video_url))
+                                                <div class="main-thumb border rounded overflow-hidden">
+                                                    <div class="" data-bs-toggle="modal" data-bs-target="#videoModal">
+                                                        <a href="javascript:">
+                                                            <img loading="lazy"
+                                                                src="https://i.ytimg.com/vi/{{ substr($product->video_url, strrpos($product->video_url, '/') + 1) }}/0.jpg"
+                                                                alt="{{ translate('products') }}"
+                                                                class="onerror-placeholder-image" height="380px">
+                                                        </a>
+                                                        <div class="play--icon">
+                                                            <i class="bi bi-play-btn-fill"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endif
+                                            @if ($photo->color != null)
+                                                <div class="main-thumb border rounded overflow-hidden">
+                                                    <div
+                                                        class="easyzoom easyzoom--overlay d-none d-md-none d-lg-block d-xl-block">
+                                                        <a
+                                                            href="{{ getValidImage(path: 'storage/app/public/product/' . $photo->image_name, type: 'product') }}">
+                                                            <img loading="lazy" alt="{{ translate('product') }}"
+                                                                src="{{ getValidImage(path: 'storage/app/public/product/' . $photo->image_name, type: 'product') }}">
+                                                        </a>
+                                                    </div>
+
+
+                                                    <div class="d-lg-none d-xl-none">
+                                                        <a
+                                                            href="{{ getValidImage(path: 'storage/app/public/product/' . $photo->image_name, type: 'product') }}" data-fancybox="gallery">
+                                                            <img loading="lazy" alt="{{ translate('product') }}"
+                                                                src="{{ getValidImage(path: 'storage/app/public/product/' . $photo->image_name, type: 'product') }}"
+                                                                >
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
+
+                                        @foreach (json_decode($product->color_image) as $key => $photo)
+                                            @if ($photo->color == null)
+                                                <div class="main-thumb border rounded overflow-hidden">
+                                                    <div class="easyzoom easyzoom--overlay">
+                                                        <a
+                                                            href="{{ getValidImage(path: 'storage/app/public/product/' . $photo->image_name, type: 'product') }}">
+                                                            <img loading="lazy" alt="{{ translate('product') }}"
+                                                                src="{{ getValidImage(path: 'storage/app/public/product/' . $photo->image_name, type: 'product') }}">
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
+
+                                        @if (count(json_decode($product->color_image)) < 1 &&
                                                 preg_match('/^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=|\?v=)([^#\&\?]*).*/', $product->video_url))
                                             <div class="main-thumb border rounded overflow-hidden">
                                                 <div class="" data-bs-toggle="modal" data-bs-target="#videoModal">
@@ -152,107 +206,88 @@
                                                 </div>
                                             </div>
                                         @endif
-                                        @if ($photo->color != null)
-                                            <div class="main-thumb border rounded overflow-hidden">
-                                                <div
-                                                    class="easyzoom easyzoom--overlay d-none d-md-none d-lg-block d-xl-block">
-                                                    <a
-                                                        href="{{ getValidImage(path: 'storage/app/public/product/' . $photo->image_name, type: 'product') }}">
-                                                        <img loading="lazy" alt="{{ translate('product') }}"
-                                                            src="{{ getValidImage(path: 'storage/app/public/product/' . $photo->image_name, type: 'product') }}">
-                                                    </a>
-                                                </div>
-
-
-                                                <div class="d-lg-none d-xl-none">
-                                                    <a
-                                                        href="{{ getValidImage(path: 'storage/app/public/product/' . $photo->image_name, type: 'product') }}" data-fancybox="gallery">
-                                                        <img loading="lazy" alt="{{ translate('product') }}"
-                                                            src="{{ getValidImage(path: 'storage/app/public/product/' . $photo->image_name, type: 'product') }}"
-                                                            >
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        @endif
-                                    @endforeach
-
-                                    @foreach (json_decode($product->color_image) as $key => $photo)
-                                        @if ($photo->color == null)
-                                            <div class="main-thumb border rounded overflow-hidden">
-                                                <div class="easyzoom easyzoom--overlay">
-                                                    <a
-                                                        href="{{ getValidImage(path: 'storage/app/public/product/' . $photo->image_name, type: 'product') }}">
-                                                        <img loading="lazy" alt="{{ translate('product') }}"
-                                                            src="{{ getValidImage(path: 'storage/app/public/product/' . $photo->image_name, type: 'product') }}">
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        @endif
-                                    @endforeach
-
-                                    @if (count(json_decode($product->color_image)) < 1 &&
-                                            preg_match('/^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=|\?v=)([^#\&\?]*).*/', $product->video_url))
-                                        <div class="main-thumb border rounded overflow-hidden">
-                                            <div class="" data-bs-toggle="modal" data-bs-target="#videoModal">
-                                                <a href="javascript:">
-                                                    <img loading="lazy"
-                                                        src="https://i.ytimg.com/vi/{{ substr($product->video_url, strrpos($product->video_url, '/') + 1) }}/0.jpg"
-                                                        alt="{{ translate('products') }}"
-                                                        class="onerror-placeholder-image" height="380px">
+                                    </div>
+                                </div>
+                            @else
+                                <div class="overflow-hidden rounded">
+                                    <div class="product-share-icons">
+                                        <a href="javascript:" class="share-icon" title="{{ translate('share') }}">
+                                            <i class="bi bi-share-fill"></i>
+                                        </a>
+                                        <ul>
+                                            <li>
+                                                <a href="javascript:" class="social_share_function"
+                                                    data-url="{{ route('product', $product->slug) }}"
+                                                    data-social="facebook.com/sharer/sharer.php?u=">
+                                                    <i class="bi bi-facebook"></i>
                                                 </a>
-                                                <div class="play--icon">
-                                                    <i class="bi bi-play-btn-fill"></i>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:" class="social_share_function"
+                                                    data-url="{{ route('product', $product->slug) }}"
+                                                    data-social="twitter.com/intent/tweet?text=">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
+                                                        fill="currentColor" class="bi bi-twitter-x" viewBox="0 0 16 16">
+                                                        <path
+                                                            d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865l8.875 11.633Z" />
+                                                    </svg>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:" class="social_share_function"
+                                                    data-url="{{ route('product', $product->slug) }}"
+                                                    data-social="linkedin.com/shareArticle?mini=true&url=">
+                                                    <i class="bi bi-linkedin"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:" class="social_share_function"
+                                                    data-url="{{ route('product', $product->slug) }}"
+                                                    data-social="api.whatsapp.com/send?text=">
+                                                    <i class="bi bi-whatsapp"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div id="sync1" class="owl-carousel owl-theme product-single-main-slider">
+                                        @foreach (json_decode($product->images) as $key => $photo)
+                                            @if (count(json_decode($product->images)) > 1 &&
+                                                    $key == 1 &&
+                                                    preg_match('/^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=|\?v=)([^#\&\?]*).*/', $product->video_url))
+                                                <div class="main-thumb border rounded overflow-hidden">
+                                                    <div class="" data-bs-toggle="modal" data-bs-target="#videoModal">
+                                                        <a href="javascript:">
+                                                            <img loading="lazy"
+                                                                src="https://i.ytimg.com/vi/{{ substr($product->video_url, strrpos($product->video_url, '/') + 1) }}/0.jpg"
+                                                                alt="{{ translate('products') }}"
+                                                                class="onerror-placeholder-image">
+                                                        </a>
+                                                        <div class="play--icon">
+                                                            <i class="bi bi-play-btn-fill"></i>
+                                                        </div>
+                                                    </div>
                                                 </div>
+                                            @endif
+                                            <div class="main-thumb border rounded overflow-hidden">
+                                                <div class="easyzoom easyzoom--overlay d-none d-md-none d-lg-block d-xl-block">
+                                                    <a
+                                                        href="{{ getValidImage(path: 'storage/app/public/product/' . $photo, type: 'product') }}">
+                                                        <img loading="lazy" alt="{{ translate('product') }}"
+                                                            src="{{ getValidImage(path: 'storage/app/public/product/' . $photo, type: 'product') }}">
+                                                    </a>
+                                                </div>
+                                                <div class="d-lg-none d-xl-none">
+                                                    <a href="{{ getValidImage(path: 'storage/app/public/product/' . $photo, type: 'product') }}" data-fancybox="gallery">
+                                                        <img loading="lazy" alt="{{ translate('product') }}"
+                                                            src="{{ getValidImage(path: 'storage/app/public/product/' . $photo, type: 'product') }}">
+                                                    </a>
+                                                </div>
+
+
+
                                             </div>
-                                        </div>
-                                    @endif
-                                </div>
-                            </div>
-                        @else
-                            <div class="overflow-hidden rounded">
-                                <div class="product-share-icons">
-                                    <a href="javascript:" class="share-icon" title="{{ translate('share') }}">
-                                        <i class="bi bi-share-fill"></i>
-                                    </a>
-                                    <ul>
-                                        <li>
-                                            <a href="javascript:" class="social_share_function"
-                                                data-url="{{ route('product', $product->slug) }}"
-                                                data-social="facebook.com/sharer/sharer.php?u=">
-                                                <i class="bi bi-facebook"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:" class="social_share_function"
-                                                data-url="{{ route('product', $product->slug) }}"
-                                                data-social="twitter.com/intent/tweet?text=">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
-                                                    fill="currentColor" class="bi bi-twitter-x" viewBox="0 0 16 16">
-                                                    <path
-                                                        d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865l8.875 11.633Z" />
-                                                </svg>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:" class="social_share_function"
-                                                data-url="{{ route('product', $product->slug) }}"
-                                                data-social="linkedin.com/shareArticle?mini=true&url=">
-                                                <i class="bi bi-linkedin"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:" class="social_share_function"
-                                                data-url="{{ route('product', $product->slug) }}"
-                                                data-social="api.whatsapp.com/send?text=">
-                                                <i class="bi bi-whatsapp"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div id="sync1" class="owl-carousel owl-theme product-single-main-slider">
-                                    @foreach (json_decode($product->images) as $key => $photo)
-                                        @if (count(json_decode($product->images)) > 1 &&
-                                                $key == 1 &&
+                                        @endforeach
+                                        @if (count(json_decode($product->images)) < 1 &&
                                                 preg_match('/^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=|\?v=)([^#\&\?]*).*/', $product->video_url))
                                             <div class="main-thumb border rounded overflow-hidden">
                                                 <div class="" data-bs-toggle="modal" data-bs-target="#videoModal">
@@ -268,52 +303,48 @@
                                                 </div>
                                             </div>
                                         @endif
-                                        <div class="main-thumb border rounded overflow-hidden">
-                                            <div class="easyzoom easyzoom--overlay d-none d-md-none d-lg-block d-xl-block">
-                                                <a
-                                                    href="{{ getValidImage(path: 'storage/app/public/product/' . $photo, type: 'product') }}">
-                                                    <img loading="lazy" alt="{{ translate('product') }}"
-                                                        src="{{ getValidImage(path: 'storage/app/public/product/' . $photo, type: 'product') }}">
-                                                </a>
-                                            </div>
-                                            <div class="d-lg-none d-xl-none">
-                                                <a href="{{ getValidImage(path: 'storage/app/public/product/' . $photo, type: 'product') }}" data-fancybox="gallery">
-                                                    <img loading="lazy" alt="{{ translate('product') }}"
-                                                        src="{{ getValidImage(path: 'storage/app/public/product/' . $photo, type: 'product') }}">
-                                                </a>
-                                            </div>
-
-
-
-                                        </div>
-                                    @endforeach
-                                    @if (count(json_decode($product->images)) < 1 &&
-                                            preg_match('/^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=|\?v=)([^#\&\?]*).*/', $product->video_url))
-                                        <div class="main-thumb border rounded overflow-hidden">
-                                            <div class="" data-bs-toggle="modal" data-bs-target="#videoModal">
-                                                <a href="javascript:">
-                                                    <img loading="lazy"
-                                                        src="https://i.ytimg.com/vi/{{ substr($product->video_url, strrpos($product->video_url, '/') + 1) }}/0.jpg"
-                                                        alt="{{ translate('products') }}"
-                                                        class="onerror-placeholder-image">
-                                                </a>
-                                                <div class="play--icon">
-                                                    <i class="bi bi-play-btn-fill"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @endif
+                                    </div>
                                 </div>
-                            </div>
-                        @endif
+                            @endif
 
-                        <div class="overflow-hidden" style="width: 20%">
-                            <div id="sync2" class="owl-carousel owl-theme product-single-thumbnails" style="display:flex;flex-direction: column;">
-                                @if ($product->images != null && json_decode($product->images) > 0)
-                                    @if (json_decode($product->colors) && $product->color_image)
-                                        @foreach (json_decode($product->color_image) as $key => $photo)
-                                            @if ($key == 1)
-                                                @if (preg_match('/^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=|\?v=)([^#\&\?]*).*/', $product->video_url))
+                            <div class="overflow-hidden" style="width: 20%">
+                                <div id="sync2" class="owl-carousel owl-theme product-single-thumbnails" style="display:flex;flex-direction: column;">
+                                    @if ($product->images != null && json_decode($product->images) > 0)
+                                        @if (json_decode($product->colors) && $product->color_image)
+                                            @foreach (json_decode($product->color_image) as $key => $photo)
+                                                @if ($key == 1)
+                                                    @if (preg_match('/^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=|\?v=)([^#\&\?]*).*/', $product->video_url))
+                                                        <div class="thumb youtube_video">
+                                                            <img loading="lazy"
+                                                                src="https://i.ytimg.com/vi/{{ substr($product->video_url, strrpos($product->video_url, '/') + 1) }}/0.jpg"
+                                                                class="w-100px onerror-placeholder-image"
+                                                                alt="{{ translate('products') }}">
+                                                            <div class="play--icon">
+                                                                <i class="bi bi-play-btn-fill"></i>
+                                                            </div>
+                                                        </div>
+                                                    @endif
+                                                @endif
+                                                @if ($photo->color != null)
+                                                    <div class="thumb color_variants_preview-box-{{ $photo->color }}">
+                                                        <img loading="lazy" alt="{{ translate('product') }}"
+                                                            src="{{ getValidImage(path: 'storage/app/public/product/' . $photo->image_name, type: 'product') }}">
+                                                    </div>
+                                                @endif
+                                            @endforeach
+
+                                            @foreach (json_decode($product->color_image) as $key => $photo)
+                                                @if ($photo->color == null)
+                                                    <img loading="lazy" alt="{{ translate('product') }}"
+                                                        src="{{ getValidImage(path: 'storage/app/public/product/' . $photo->image_name, type: 'product') }}">
+                                                @endif
+                                            @endforeach
+                                        @else
+                                            @php($product_images = json_decode($product->images))
+                                            @foreach ($product_images as $key => $photo)
+                                                @if (count($product_images) > 1 &&
+                                                        $key == 1 &&
+                                                        preg_match('/^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=|\?v=)([^#\&\?]*).*/', $product->video_url))
                                                     <div class="thumb youtube_video">
                                                         <img loading="lazy"
                                                             src="https://i.ytimg.com/vi/{{ substr($product->video_url, strrpos($product->video_url, '/') + 1) }}/0.jpg"
@@ -324,26 +355,13 @@
                                                         </div>
                                                     </div>
                                                 @endif
-                                            @endif
-                                            @if ($photo->color != null)
-                                                <div class="thumb color_variants_preview-box-{{ $photo->color }}">
-                                                    <img loading="lazy" alt="{{ translate('product') }}"
-                                                        src="{{ getValidImage(path: 'storage/app/public/product/' . $photo->image_name, type: 'product') }}">
+                                                <div class="thumb ">
+                                                    <img loading="lazy"
+                                                        src="{{ getValidImage(path: 'storage/app/public/product/' . $photo, type: 'product') }}"
+                                                        alt="{{ translate('product') }}">
                                                 </div>
-                                            @endif
-                                        @endforeach
-
-                                        @foreach (json_decode($product->color_image) as $key => $photo)
-                                            @if ($photo->color == null)
-                                                <img loading="lazy" alt="{{ translate('product') }}"
-                                                    src="{{ getValidImage(path: 'storage/app/public/product/' . $photo->image_name, type: 'product') }}">
-                                            @endif
-                                        @endforeach
-                                    @else
-                                        @php($product_images = json_decode($product->images))
-                                        @foreach ($product_images as $key => $photo)
-                                            @if (count($product_images) > 1 &&
-                                                    $key == 1 &&
+                                            @endforeach
+                                            @if (count($product_images) <= 1 &&
                                                     preg_match('/^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=|\?v=)([^#\&\?]*).*/', $product->video_url))
                                                 <div class="thumb youtube_video">
                                                     <img loading="lazy"
@@ -355,130 +373,112 @@
                                                     </div>
                                                 </div>
                                             @endif
-                                            <div class="thumb ">
-                                                <img loading="lazy"
-                                                    src="{{ getValidImage(path: 'storage/app/public/product/' . $photo, type: 'product') }}"
-                                                    alt="{{ translate('product') }}">
-                                            </div>
-                                        @endforeach
-                                        @if (count($product_images) <= 1 &&
-                                                preg_match('/^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=|\?v=)([^#\&\?]*).*/', $product->video_url))
-                                            <div class="thumb youtube_video">
-                                                <img loading="lazy"
-                                                    src="https://i.ytimg.com/vi/{{ substr($product->video_url, strrpos($product->video_url, '/') + 1) }}/0.jpg"
-                                                    class="w-100px onerror-placeholder-image"
-                                                    alt="{{ translate('products') }}">
-                                                <div class="play--icon">
-                                                    <i class="bi bi-play-btn-fill"></i>
-                                                </div>
-                                            </div>
                                         @endif
                                     @endif
-                                @endif
 
-                            </div>
-                        </div>
-                    </div>
-                @endif
-                @if ($product->reviews_count > 0)
-                    <div class="details-review row-gap-4 mt-32px">
-                    <div class="details-review-item">
-                        <h2 class="title">{{ $overallRating[0] }}</h2>
-                        <div class="text-star">
-                            @for ($i = 1; $i <= 5; $i++)
-                                @if ($i <= (int) $overallRating[0])
-                                    <i class="bi bi-star-fill"></i>
-                                @elseif ($overallRating[0] != 0 && $i <= (int) $overallRating[0] + 1.1 && $overallRating[0] > ((int) $overallRating[0]))
-                                    <i class="bi bi-star-half"></i>
-                                @else
-                                    <i class="bi bi-star"></i>
-                                @endif
-                            @endfor
-                        </div>
-                        <span>{{ $product->reviews_count }} {{ translate('reviews') }}</span>
-                    </div>
-                    <div class="details-review-item">
-                        <h2 class="title font-regular">{{ round($rattingStatus['positive']) }}%</h2>
-                        <span class="text-capitalize">{{ translate('positive_review') }}</span>
-                    </div>
-                    <div class="details-review-item details-review-info">
-                        <div class="item">
-                            <div class="form-label mb-3 d-flex justify-content-between">
-                                <span>{{ translate('positive') }}</span>
-                                <span>{{ round($rattingStatus['positive']) }}%</span>
-                            </div>
-                            <div class="progress">
-                                <div class="progress-fill" style="--fill:{{ round($rattingStatus['positive']) }}%">
                                 </div>
                             </div>
                         </div>
-                        <div class="item">
-                            <div class="form-label mb-3 d-flex justify-content-between">
-                                <span>{{ translate('good') }}</span>
-                                <span>{{ round($rattingStatus['good']) }}%</span>
+                    @endif
+                    @if ($product->reviews_count > 0)
+                        <div class="details-review row-gap-4 mt-32px">
+                        <div class="details-review-item">
+                            <h2 class="title">{{ $overallRating[0] }}</h2>
+                            <div class="text-star">
+                                @for ($i = 1; $i <= 5; $i++)
+                                    @if ($i <= (int) $overallRating[0])
+                                        <i class="bi bi-star-fill"></i>
+                                    @elseif ($overallRating[0] != 0 && $i <= (int) $overallRating[0] + 1.1 && $overallRating[0] > ((int) $overallRating[0]))
+                                        <i class="bi bi-star-half"></i>
+                                    @else
+                                        <i class="bi bi-star"></i>
+                                    @endif
+                                @endfor
                             </div>
-                            <div class="progress">
-                                <div class="progress-fill" style="--fill:{{ round($rattingStatus['good']) }}%"></div>
-                            </div>
+                            <span>{{ $product->reviews_count }} {{ translate('reviews') }}</span>
                         </div>
-                        <div class="item">
-                            <div class="form-label mb-3 d-flex justify-content-between">
-                                <span>{{ translate('neutral') }}</span>
-                                <span>{{ round($rattingStatus['neutral']) }}%</span>
-                            </div>
-                            <div class="progress">
-                                <div class="progress-fill" style="--fill:{{ round($rattingStatus['neutral']) }}%"></div>
-                            </div>
+                        <div class="details-review-item">
+                            <h2 class="title font-regular">{{ round($rattingStatus['positive']) }}%</h2>
+                            <span class="text-capitalize">{{ translate('positive_review') }}</span>
                         </div>
-                        <div class="item">
-                            <div class="form-label mb-3 d-flex justify-content-between">
-                                <span>{{ translate('negative') }}</span>
-                                <span>{{ round($rattingStatus['negative']) }}%</span>
-                            </div>
-                            <div class="progress">
-                                <div class="progress-fill" style="--fill:{{ round($rattingStatus['negative']) }}%">
+                        <div class="details-review-item details-review-info">
+                            <div class="item">
+                                <div class="form-label mb-3 d-flex justify-content-between fw-bold">
+                                    <span>{{ translate('positive') }}</span>
+                                    <span>{{ round($rattingStatus['positive']) }}%</span>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    </div>
-                @endif
-
-                <div class="tab-pane fade  show active" id="comments">
-                                        @if (count($product->reviews) > 0)
-                                            <div class="comments-information">
-                                                <ul id="product-review-list">
-                                                    @include(
-                                                        'theme-views.layouts.partials._product-reviews',
-                                                        ['productReviews' => $productReviews]
-                                                    )
-                                                </ul>
-                                            </div>
-                                            @if (count($product->reviews) > 2)
-                                                <a href="javascript:" id="load_review_function"
-                                                    class="product-information-view-more-custom see-more-details-review view_text"
-                                                    data-productid="{{ $product->id }}"
-                                                    data-routename="{{ route('review-list-product') }}"
-                                                    data-afterextend="{{ translate('see_less') }}"
-                                                    data-seemore="{{ translate('see_more') }}"
-                                                    data-onerror="{{ translate('no_more_review_remain_to_load') }}">{{ translate('see_more') }}</a>
-                                            @endif
-                                        @else
-                                            <div class="text-center w-100">
-                                                <div class="text-center pt-5 mb-5">
-                                                    <img loading="lazy"
-                                                        src="{{ theme_asset('assets/img/icons/review.svg') }}"
-                                                        alt="{{ translate('review') }}">
-                                                    <h5 class="my-3 pt-2 text-muted">{{ translate('not_reviewed_yet') }}
-                                                        !</h5>
-                                                    <p class="text-center text-muted">
-                                                        {{ translate('sorry_no_review_found_to_show_you') }}</p>
-                                                </div>
-                                            </div>
-                                        @endif
+                                <div class="progress">
+                                    <div class="progress-fill" style="--fill:{{ round($rattingStatus['positive']) }}%">
                                     </div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="form-label mb-3 d-flex justify-content-between fw-bold">
+                                    <span>{{ translate('good') }}</span>
+                                    <span>{{ round($rattingStatus['good']) }}%</span>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-fill" style="--fill:{{ round($rattingStatus['good']) }}%"></div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="form-label mb-3 d-flex justify-content-between fw-bold">
+                                    <span>{{ translate('neutral') }}</span>
+                                    <span>{{ round($rattingStatus['neutral']) }}%</span>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-fill" style="--fill:{{ round($rattingStatus['neutral']) }}%"></div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="form-label mb-3 d-flex justify-content-between fw-bold">
+                                    <span>{{ translate('negative') }}</span>
+                                    <span>{{ round($rattingStatus['negative']) }}%</span>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-fill" style="--fill:{{ round($rattingStatus['negative']) }}%">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    @endif
+
+                    <div class="tab-pane fade  show active" id="comments">
+                        @if (count($product->reviews) > 0)
+                            <div class="comments-information mt-4">
+                                <ul id="product-review-list">
+                                    @include(
+                                        'theme-views.layouts.partials._product-reviews',
+                                        ['productReviews' => $productReviews]
+                                    )
+                                </ul>
+                            </div>
+                            @if (count($product->reviews) > 2)
+                                <a href="javascript:" id="load_review_function"
+                                    class="product-information-view-more-custom see-more-details-review view_text"
+                                    data-productid="{{ $product->id }}"
+                                    data-routename="{{ route('review-list-product') }}"
+                                    data-afterextend="{{ translate('see_less') }}"
+                                    data-seemore="{{ translate('see_more') }}"
+                                    data-onerror="{{ translate('no_more_review_remain_to_load') }}">{{ translate('see_more') }}</a>
+                            @endif
+                        @else
+                            <div class="text-center w-100">
+                                <div class="text-center pt-5 mb-5">
+                                    <img loading="lazy"
+                                        src="{{ theme_asset('assets/img/icons/review.svg') }}"
+                                        alt="{{ translate('review') }}">
+                                    <h5 class="my-3 pt-2 text-muted">{{ translate('not_reviewed_yet') }}
+                                        !</h5>
+                                    <p class="text-center text-muted">
+                                        {{ translate('sorry_no_review_found_to_show_you') }}</p>
+                                </div>
+                            </div>
+                        @endif
+                    </div>
                 </div>
-                <div style="width: 49%;">
+                <div style="width: 54%;">
                     <div class="product-single-content">
                         <form class="cart add_to_cart_form" action="{{ route('cart.add') }}" id="add-to-cart-form"
                             data-redirecturl="{{ route('checkout-details') }}"
@@ -492,7 +492,7 @@
                                 @if ($product->reviews_count > 0)
                                     <div class=" review position-relative">
                                         <i class="bi bi-star-fill"></i>
-                                        <span>{{ round($overallRating[0], 1) }} <small>({{ $product->reviews_count }}
+                                        <span style="font-size: 1.3rem;">{{ round($overallRating[0], 1) }} <small>({{ $product->reviews_count }}
                                                 {{ translate('review') }})</small></span>
 
                                         <div class="review-details-popup z-3">
@@ -620,7 +620,7 @@
                             </div>
                             <hr>
                             <div class="price" >
-                                <h4 style="font-size: 30px;">{!! getPriceRangeWithDiscount(product: $product) !!}
+                                <h4 style="font-size: 30px;color:#835ec1;">{!! getPriceRangeWithDiscount(product: $product) !!}
                                     @if ($product->discount > 0)
                                         @if ($product->discount_type === 'percent')
                                             <span class="badge bg-base" style="color: white;padding: 10px;">-{{ $product->discount }}%</span>
@@ -635,8 +635,8 @@
                             </div>
 
                             @if (count(json_decode($product->colors)) > 0)
-                                <div>
-                                    <label class="form-label">{{ translate('color') }}</label>
+                                <div style="margin-top: 32px;">
+                                    <label class="form-label" style="font-size: 1.5rem;">{{ translate('color') }}</label>
                                     <div class="check-color-group justify-content-start align-items-center">
                                         @foreach (json_decode($product->colors) as $key => $color)
                                             <label>
@@ -656,9 +656,9 @@
                             @endif
                                 {{$sizeSelected}}
                             @foreach ($product->choice_options as $key => $choice)
-                                <div class="mt-20px">
-                                    <label class="form-label">{{ $choice['title'] }}</label>
-                                    <div class="d-flex flex-wrap gap-2">
+                                <div class="mt-30px">
+                                    <label class="form-label" style="font-size: 1.5rem;">{{ $choice['title'] }}</label>
+                                    <div class="d-flex flex-wrap gap-2" style="margin-top: 10px;">
                                         @foreach ($choice['options'] as $key => $option)
                                             <label class="form-check-size">
                                                 
@@ -680,7 +680,7 @@
                                 </div>
                             @endforeach
 
-                            <div class="d-flex align-items-center row-gap-2 column-gap-4 mt-20px">
+                            <div class="d-flex align-items-center row-gap-2 column-gap-4 mt-20px" style="font-size: 1.5rem;font-weight: bold;margin-top: 37px;">
                                 <span>{{ translate('quantity') }} :</span>
                                 <div class="inc-inputs">
                                     <input type="number" name="quantity" value="{{ $product->minimum_order_qty ?? 1 }}"
@@ -712,35 +712,35 @@
                                     <button type="button" class="btn btn-base text-capitalize font-medium" disabled>
                                         @include('theme-views.partials.icons._cart-icon')
                                         {{ translate('add_to_cart') }}</button>
-                                    <!-- <button type="button"
+                                    <button type="button"
                                         class="buy_now_button btn btn-base __btn-outline-warning secondary-color fs-16 text-capitalize"
                                         disabled>
                                         @include('theme-views.partials.icons._buy-now')
-                                        {{ translate('buy_now') }}</span></button> -->
+                                        {{ translate('buy_now') }}</span></button>
                                 @else
-                                    <a href="javascript:" class="btn btn-base text-capitalize font-medium add_to_cart_button btn-cart"
-                                        data-form-id="add-to-cart-form" style="width: 100%;background: linear-gradient(270deg, #845DC2 -0.09%, #D15EAA 36.37%, #F8931B 100.48%, #FFC65F 145.17%);border-radius: 27px;padding: 13px !important;">
+                                    <a href="javascript:" class="btn btn-base text-capitalize font-medium add_to_cart_button btn-cart gradient-border"
+                                        data-form-id="add-to-cart-form" style="width: 44%;background: linear-gradient(270deg, #845DC2 -0.09%, #D15EAA 36.37%, #F8931B 100.48%, #FFC65F 145.17%);border-radius: 8px;padding: 13px !important;">
                                         @include('theme-views.partials.icons._cart-icon')
                                         {{ translate('add_to_cart') }}
                                     </a>
                                     @php($guestCheckout = getWebConfig(name: 'guest_checkout'))
-                                    <!-- <a href="javascript:"
+                                     <a href="javascript:"
                                         class="btn btn-base btn-md __btn-outline-warning secondary-color text-capitalize buy_now_function"
                                         data-formid="add-to-cart-form"
                                         data-authstatus="{{ $guestCheckout == 1 || Auth::guard('customer')->check() ? 'true' : 'false' }}"
-                                        data-route="{{ route('shop-cart') }}">
+                                        data-route="{{ route('shop-cart') }}" style="width: 44%;">
                                         @include('theme-views.partials.icons._buy-now')
                                         {{ translate('buy_now') }}</a>
-                                @endif -->
+                                @endif
 
                                 
 
-                                <!-- @php($compareList = count($product->compareList) > 0 ? 1 : 0)
+                                @php($compareList = count($product->compareList) > 0 ? 1 : 0)
                                 <a href="javascript:"
                                     class="addCompareList_view_page btn btn-base btn-sm __btn-outline text-base compare_list-{{ $product['id'] }} {{ $compareList == 1 ? 'compare_list_icon_active' : '' }}"
                                     data-id="{{ $product['id'] }}">
                                     @include('theme-views.partials.icons._compare')
-                                </a> -->
+                                </a>
                             </div>
 
                             @if (
@@ -766,23 +766,29 @@
                     <div class="coupon-card">
                         <h3>Offers & Discount</h3>
                         <div class="coupon">
-                            <img src="{{asset('/public/assets/images/staticImages/CouponCard.png')}}" alt="" style="width: 100%;padding: 10px;">
+                            @foreach($coupons as $item)
+                                <div class="coupon-card" style="background-image: url({{asset('/public/assets/images/staticImages/CouponTemplate.png')}}); background-size: 100%; display: flex;flex-direction: column;align-content: center;justify-content: center;align-items: center; background-repeat: no-repeat; width: 580px; margin: 0 3px">
+                                    <div style="display: flex;flex-direction: row;align-items: flex-start;height:80px;gap: 10px; padding-top: 10px">
+                                        <img src="{{asset('/public/assets/images/icons/couponCart.png')}}" alt="" style="">
+                                        <div>
+                                            <h3>{{$item->title}}</h3>
+                                            <div>Minimum amount to purchase: <strong>{{$item->min_purchase}}</strong></div>
+                                            <div>Discount: <strong>{{$item->discount}} @if($item->discount_type == 'percentage')% off @else off @endif</strong></div>
+                                        </div>
+                                    </div>
+                                    <div style="height: 80px;display: flex;align-items: center;width: 100%;padding: 20px;">
+                                        <div style="width: 50%;/* border: 1px solid red; */background: #845dc2;color: white;padding: 9px;border-radius: 10px 0px 0px 10px;font-size: 1.2rem;text-align: center;">{{$item->code}}</div>
+                                        <button style="width: 50%;border: 0px solid red;background: white;color: #845dc2;padding: 9px;border-radius: 0px 10px 10px 0px;font-size: 1.2rem;text-align: center;">
+                                            <img src="{{asset('/public/assets/images/icons/copy.png')}}" alt="" style="">Click to Copy
+                                        </button>
+                                    </div>
+                                    
+                                </div>
+                            @endforeach
+                           
                         </div>
                     </div>
-                    <hr>
-                    <div>
-                        
-                                <div class="" id="general-info">
-                                            <div class="general-information">
-                                                {!! $product->details !!}
-                                            </div>
-                                            <a href="javascript:" class="product-information-view-more"
-                                                data-view-more="{{ translate('view_more') }}"
-                                                data-view-less="{{ translate('view_less') }}">
-                                                {{ translate('view_more') }}
-                                            </a>
-                                        </div>
-                    </div>
+                    <hr/>
                     <div class="product-single-pricing">
                         <div class="product-single-pricing-inner text-capitalize">
                             <h6 class="subtitle">{{ translate('total_price_for_this_product') }} :</h6>
@@ -882,12 +888,28 @@
                             </div>
                         </div>
                     </div>
+                    <hr>
+                    <div>
+                        <div class="" id="general-info">
+                            <div class="product-information">
+                                <div class="product-description">
+                                    {!! $product->details !!}
+                                </div>
+                            </div>
+                            <a href="javascript:" class="product-information-view-more"
+                                data-view-more="{{ translate('view_more') }}"
+                                data-view-less="{{ translate('view_less') }}">
+                                {{ translate('view_more') }}
+                            </a>
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
             
 
-            <!-- @if ($product->details != null || count($product->reviews) != 0)
-                <div class="row g-2 mt-4">
+             @if ($product->details != null || count($product->reviews) != 0)
+                {{-- <div class="row g-2 mt-4">
                     <div class="col-xl-8 col-lg-7">
                         <div class="product-information">
                             <div class="product-information-inner">
@@ -960,7 +982,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     @if ($productsThisStoreTopRated->count() > 0)
                         <div class="col-xl-4 col-lg-5">
                             <div
@@ -1021,9 +1043,9 @@
                         </div>
                     </div>
                 @endif
-            @endif -->
+            @endif
 
-            <div class="mt-4">
+            <div class="mt-4 container">
                 <div class="similler-product-slider-wrapper">
                     <div class="row g-0">
                         <div class="col-md-5 col-lg-4 col-xl-3">

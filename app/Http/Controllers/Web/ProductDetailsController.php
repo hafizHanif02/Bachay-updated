@@ -14,6 +14,7 @@ use App\Models\ProductTag;
 use App\Models\Seller;
 use App\Models\Tag;
 use App\Models\Wishlist;
+use App\Models\Coupon;
 use App\Repositories\DealOfTheDayRepository;
 use App\Repositories\WishlistRepository;
 use App\Traits\ProductTrait;
@@ -248,6 +249,15 @@ class ProductDetailsController extends Controller
 
     public function getThemeFashion($slug, Request $request): View|RedirectResponse
     {
+        $coupons = Coupon::with('seller')
+                    ->where(['status' => 1])
+                    ->whereIn('customer_id',[auth('customer')->id(), '0'])
+                    ->whereIn('customer_id',[auth('customer')->id(), '0'])
+                    ->whereDate('start_date', '<=', date('Y-m-d'))
+                    ->whereDate('expire_date', '>=', date('Y-m-d'))
+                    ->paginate(8);
+        
+        
         $product = $this->productRepo->getWebFirstWhereActive(
             params: ['slug' => $slug, 'customer_id' => Auth::guard('customer')->user()->id ?? 0],
             relations: ['reviews' => 'reviews', 'seller.shop' => 'seller.shop', 'wishList' => 'wishList', 'compareList' => 'compareList'],
@@ -414,7 +424,7 @@ class ProductDetailsController extends Controller
                 'relatedProducts', 'currentDate', 'sellerVacationStartDate', 'sellerVacationEndDate', 'rattingStatus', 'productsLatest',
                 'sellerTemporaryClose', 'inHouseVacationStartDate', 'inHouseVacationEndDate', 'inHouseVacationStatus', 'inHouseTemporaryClose',
                 'overallRating', 'decimalPointSettings', 'moreProductFromSeller', 'productsForReview', 'productsCount', 'totalReviews', 'rating', 'productReviews',
-                'avgRating', 'ratingPercentage', 'topRatedShops', 'newSellers', 'deliveryInfo', 'productsTopRated', 'productsThisStoreTopRated', 'colorSelected', 'sizeSelected'));
+                'avgRating', 'ratingPercentage', 'topRatedShops', 'newSellers', 'deliveryInfo', 'productsTopRated', 'productsThisStoreTopRated', 'colorSelected', 'sizeSelected', 'coupons'));
         }
 
         Toastr::error(translate('not_found'));
