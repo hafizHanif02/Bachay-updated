@@ -48,9 +48,12 @@
     </div>
 
     <!-- Full Width Banner -->
-    <div class="full-width-banner">
-        <img src="ad-banner.jpg" alt="Ad Banner">
-    </div>
+    @foreach ($brandBanner as $item)
+        <div class="full-width-banner">
+            <img src="{{asset('storage/app/public/banner')}}/{{ $item->photo }}" alt="{{ $item->title }}">
+        </div>
+    @endforeach
+    
 </div>
 
 <!-- Subcategories Section -->
