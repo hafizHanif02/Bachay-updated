@@ -59,22 +59,13 @@
 <!-- Subcategories Section -->
 <div class="container subcategory-container text-center">
     <div class="row">
-        <div class="col-3">
-            <img src="subcategory1.png" alt="Subcategory 1">
-            <p>Subcategory 1</p>
-        </div>
-        <div class="col-3">
-            <img src="subcategory2.png" alt="Subcategory 2">
-            <p>Subcategory 2</p>
-        </div>
-        <div class="col-3">
-            <img src="subcategory3.png" alt="Subcategory 3">
-            <p>Subcategory 3</p>
-        </div>
-        <div class="col-3">
-            <img src="subcategory4.png" alt="Subcategory 4">
-            <p>Subcategory 4</p>
-        </div>
+        @foreach ($subcategories[0]['childes'] as $subcategory)
+            <div class="col-3">
+                <img src="{{asset('storage/app/public/subcategory')}}/{{ $subcategory->icon }}" alt="{{ $subcategory->name }}">
+                <p>{{ $subcategory->name }}</p>
+            </div>
+        @endforeach
+        
     </div>
 </div>
 
