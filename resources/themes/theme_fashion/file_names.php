@@ -2,6 +2,7 @@
 
 return [
     'home' => 'theme-views.home',
+    'toys' => 'theme-views.pages.toys',
     'privacy_policy_page' => 'theme-views.pages.privacy-policy',
     'refund_policy_page' => 'theme-views.pages.refund-policy',
     'return_policy_page' => 'theme-views.pages.return-policy',

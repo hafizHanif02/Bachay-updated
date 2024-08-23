@@ -120,6 +120,7 @@ Route::group(['prefix' => 'categories','as' => 'categories.' ], function () {
 
 Route::group(['namespace' => 'Web', 'middleware' => ['maintenance_mode', 'guestCheck']], function () {
     Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/toys', 'HomeController@toys')->name('toys');
     Route::get('/', function(){
         return view('theme-views.coming-soon.coming-soon');
     });

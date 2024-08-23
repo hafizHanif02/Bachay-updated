@@ -792,30 +792,30 @@ class HomeController extends Controller
 
             $sizes = [];
             $filterOptions = [];
-foreach ($all_products as $product) {
-    $temp_sizes = [];
-    $choice_options = $product->choice_options;
-    $filterOptions[] = $choice_options;
-    if (is_array($choice_options) && !empty($choice_options)) {
-        $title = $choice_options[0]['title'];
-        if ($title == 'Size') {
-            $options = $choice_options[0]['options'];
+            foreach ($all_products as $product) {
+                $temp_sizes = [];
+                $choice_options = $product->choice_options;
+                $filterOptions[] = $choice_options;
+                if (is_array($choice_options) && !empty($choice_options)) {
+                    $title = $choice_options[0]['title'];
+                    if ($title == 'Size') {
+                        $options = $choice_options[0]['options'];
 
-            // Initialize the sizes array if it doesn't exist
-            if (!isset($product->sizes) || !is_array($product->sizes)) {
-                $product->sizes = [];
-            }
+                        // Initialize the sizes array if it doesn't exist
+                        if (!isset($product->sizes) || !is_array($product->sizes)) {
+                            $product->sizes = [];
+                        }
 
-            foreach ($options as $option) {
-                $sizes[] = trim($option); // Collect all sizes in a separate array
+                        foreach ($options as $option) {
+                            $sizes[] = trim($option); // Collect all sizes in a separate array
 
-                // Directly add to the product sizes array
-                $temp_sizes[] = trim($option);
-            }
-            $product->sizes = $temp_sizes; // Reassign the array back to the product property
-        }
-    }
-}    
+                            // Directly add to the product sizes array
+                            $temp_sizes[] = trim($option);
+                        }
+                        $product->sizes = $temp_sizes; // Reassign the array back to the product property
+                    }
+                }
+            }    
 
 
         $mergedChoices = [];
@@ -906,7 +906,8 @@ foreach ($all_products as $product) {
         );
     }
     
-    public function theme_all_purpose(){
+    public function theme_all_purpose()
+    {
         $user = Helpers::get_customer();
         $main_banner = $this->banner->where('banner_type','Main Banner')->where('published',1)->latest()->get();
         $footer_banner = $this->banner->where('banner_type', 'Footer Banner')->where('published', 1)->latest()->take(2)->get();
@@ -1105,6 +1106,10 @@ foreach ($all_products as $product) {
         return view(VIEW_FILE_NAMES['home'], compact('main_banner','footer_banner','categories','best_sellling_products',
             'discounted_products','featured_deals','just_for_you','deal_of_the_day','order_again_products','top_rated_brands','top_sellers',
             'more_sellers','latest_products_count', 'latest_products', 'category_wise_products'));
+    }
+
+    public function toys(Request $request){
+        return view(VIEW_FILE_NAMES['toys']);
     }
     
 
