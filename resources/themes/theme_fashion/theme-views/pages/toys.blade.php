@@ -32,7 +32,8 @@
         <div class="carousel-inner">
             @foreach($banners as $key => $banner)
                 <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
-                    <img src="{{asset('storage/app/public/banner')}}/{{ $banner->image }}" class="d-block w-100" alt="{{ $banner->title }}">
+                    {{-- storage/app/public/banner/2024-08-24-66c8fb459bd74.webp --}}
+                    <img src="{{asset('storage/app/public/banner')}}/{{ $banner->photo }}" class="d-block w-100" alt="{{ $banner->title }}">
                 </div>
             @endforeach
         </div>
