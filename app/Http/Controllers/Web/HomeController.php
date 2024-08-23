@@ -394,7 +394,7 @@ class HomeController extends Controller
         $banners = Banner::where(['resource_type'=> 'category', 'published'=> 1, 'resource_id'=>3, 'banner_type'=>'Promo Deal Banner'])->latest()->get();
         $brandBanner = Banner::where(['resource_type'=> 'brand', 'published'=> 1, 'resource_id'=>3, 'banner_type'=>'Brand Banner'])->latest()->get();
 
-        return view(VIEW_FILE_NAMES['toys'], compact('banners'));
+        return view(VIEW_FILE_NAMES['toys'], compact('banners', 'brandBanner'));
     }
     
 
