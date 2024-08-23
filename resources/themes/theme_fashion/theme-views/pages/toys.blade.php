@@ -58,16 +58,16 @@
 
 <!-- Subcategories Section -->
 <div class="container subcategory-container text-center">
-    <div class="row">
+    <div class="row flex-nowrap overflow-auto">
         @foreach ($subcategories[0]['childes'] as $subcategory)
-            <div class="col-3">
-                <img src="{{asset('storage/app/public/category')}}/{{ $subcategory->icon }}" alt="{{ $subcategory->name }}">
+            <div class="col-2 d-flex flex-column align-items-center" style="min-width: 80px;">
+                <img src="{{asset('storage/app/public/category')}}/{{ $subcategory->icon }}" alt="{{ $subcategory->name }}" class="img-fluid" style="max-width: 80px;">
                 <p>{{ $subcategory->name }}</p>
             </div>
         @endforeach
-        
     </div>
 </div>
+
 
 <!-- Best Selling Products -->
 <div class="container best-selling-section">
@@ -168,4 +168,28 @@
         max-width: 100px;
         margin: 10px;
     }
+    .subcategory-container {
+    padding: 20px 0;
+}
+
+.subcategory-container .row {
+    gap: 10px; /* Adjust the gap between subcategories */
+    padding: 10px;
+}
+
+.subcategory-container img {
+    border-radius: 50%; /* Make images circular */
+    transition: transform 0.3s ease; /* Add hover effect */
+}
+
+.subcategory-container img:hover {
+    transform: scale(1.1);
+}
+
+.subcategory-container p {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #333;
+}
+
 </style>
