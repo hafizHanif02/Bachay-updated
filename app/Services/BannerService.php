@@ -77,6 +77,7 @@ class BannerService
                 "Promo Deal Banner" => translate("promo_deal_banner"),
                 "Season Banner" => translate("season_banner"),
                 "Trends Banner" => translate("trends_banner"),
+                "Brand Banner" => 'Brand Banner',
             ];
         }
 
