@@ -61,7 +61,7 @@
     <div class="row">
         @foreach ($subcategories[0]['childes'] as $subcategory)
             <div class="col-3">
-                <img src="{{asset('storage/app/public/subcategory')}}/{{ $subcategory->icon }}" alt="{{ $subcategory->name }}">
+                <img src="{{asset('storage/app/public/category')}}/{{ $subcategory->icon }}" alt="{{ $subcategory->name }}">
                 <p>{{ $subcategory->name }}</p>
             </div>
         @endforeach
