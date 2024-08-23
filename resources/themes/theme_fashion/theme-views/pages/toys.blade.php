@@ -60,7 +60,7 @@
 <div class="container subcategory-container text-center">
     <div class="row flex-nowrap overflow-auto">
         @foreach ($subcategories[0]['childes'] as $subcategory)
-            <div class="col-2 d-flex flex-column align-items-center" style="min-width: 80px;">
+            <div class="col d-flex flex-column align-items-center">
                 <img src="{{asset('storage/app/public/category')}}/{{ $subcategory->icon }}" alt="{{ $subcategory->name }}" class="img-fluid" style="max-width: 80px;">
                 <p>{{ $subcategory->name }}</p>
             </div>
@@ -178,8 +178,12 @@
 }
 
 .subcategory-container img {
-    border-radius: 50%; /* Make images circular */
     transition: transform 0.3s ease; /* Add hover effect */
+    width: 120px;
+    height: auto;
+    object-fit: contain;
+    object-position: center;
+    padding: 5px;
 }
 
 .subcategory-container img:hover {
