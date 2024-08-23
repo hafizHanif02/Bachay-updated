@@ -390,7 +390,10 @@ class HomeController extends Controller
     
 
     public function toys(Request $request){
-        return view(VIEW_FILE_NAMES['toys']);
+        $theme_name = theme_root_path();
+        $banners = Banner::where(['resource_type'=> 'category', 'published'=> 1, 'resource_id'=>4])->latest()->get();
+
+        return view(VIEW_FILE_NAMES['toys'], compact('banners'));
     }
     
 
