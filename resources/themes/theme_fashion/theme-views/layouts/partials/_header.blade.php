@@ -277,13 +277,13 @@
     }
 </style>
 @if (isset($web_config['announcement']) && $web_config['announcement']['status'] == 1)
-    <div class="offer-bar" data-bg-img="{{ theme_asset('assets/img/media/top-offer-bg.png') }}">
+    <div class="offer-bar" data-bg-img="{{ theme_asset('assets/img/media/top-offer-bg2.jpg') }}">
         <div class="d-flex py-2 gap-2 align-items-center">
             <div class="offer-bar-close px-2">
                 <i class="bi bi-x-lg"></i>
             </div>
             <div class="top-offer-text flex-grow-1 d-flex justify-content-center fw-semibold text-center">
-                {{ $web_config['announcement']['announcement'] }}
+                {{-- {{ $web_config['announcement']['announcement'] }} --}}
             </div>
         </div>
     </div>

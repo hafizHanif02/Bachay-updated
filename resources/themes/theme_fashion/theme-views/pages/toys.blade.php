@@ -71,36 +71,16 @@
 
 <!-- Best Selling Products -->
 <div class="container best-selling-section">
-    <h3>Best Selling Products</h3>
+    <h3>Latest Products</h3>
     <div class="row">
-        <div class="col-6 col-md-3">
-            <div class="product-card">
-                <img src="product1.jpg" alt="Product 1">
-                <p>Product 1</p>
-                <p>$25.00</p>
+        @foreach($random_product as $product)
+            @if($product)
+            <div class="col-6 col-md-3">
+                @include('theme-views.partials._product-medium-card',['product'=>$product])
             </div>
-        </div>
-        <div class="col-6 col-md-3">
-            <div class="product-card">
-                <img src="product2.jpg" alt="Product 2">
-                <p>Product 2</p>
-                <p>$30.00</p>
-            </div>
-        </div>
-        <div class="col-6 col-md-3">
-            <div class="product-card">
-                <img src="product3.jpg" alt="Product 3">
-                <p>Product 3</p>
-                <p>$20.00</p>
-            </div>
-        </div>
-        <div class="col-6 col-md-3">
-            <div class="product-card">
-                <img src="product4.jpg" alt="Product 4">
-                <p>Product 4</p>
-                <p>$40.00</p>
-            </div>
-        </div>
+            @endif
+        @endforeach
+        
     </div>
 </div>
 
@@ -108,10 +88,10 @@
 <div class="container top-brands-section text-center">
     <h3>Our Favourite Brands</h3>
     <div class="d-flex justify-content-around">
-        <img src="brand1.png" alt="Brand 1">
-        <img src="brand2.png" alt="Brand 2">
-        <img src="brand3.png" alt="Brand 3">
-        <img src="brand4.png" alt="Brand 4">
+        @foreach($brands as $brand)
+            <img src="{{asset('storage/app/public/brand')}}/{{ $brand->photo }}" alt="{{ $brand->name }}">
+        @endforeach
+        
     </div>
 </div>
 

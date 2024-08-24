@@ -395,8 +395,12 @@ class HomeController extends Controller
         $brandBanner = Banner::where(['resource_type'=> 'category', 'published'=> 1, 'resource_id'=>3, 'banner_type'=>'Brand Banner'])->latest()->get();
 
         $subcategories = Category::where('parent_id', 3)->orderBy('id','asc')->get();
-        //return $subcategories;
-        return view(VIEW_FILE_NAMES['toys'], compact('banners', 'brandBanner', 'subcategories'));
+
+        $random_product =$this->product->where('category_id', 3)->active()->inRandomOrder()->take(5)->get();
+        
+        $brands = Brand::get();
+
+        return view(VIEW_FILE_NAMES['toys'], compact('banners', 'brandBanner', 'subcategories', 'random_product', 'brands'));
     }
     
 
