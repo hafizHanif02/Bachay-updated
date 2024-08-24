@@ -59,7 +59,7 @@
 <!-- Subcategories Section -->
 <div class="container subcategory-container text-center">
     <div class="row flex-nowrap overflow-auto">
-        @foreach ($subcategories[0]['childes'] as $subcategory)
+        @foreach ($subcategories as $subcategory)
             <div class="col d-flex flex-column align-items-center">
                 <img src="{{asset('storage/app/public/category')}}/{{ $subcategory->icon }}" alt="{{ $subcategory->name }}" class="img-fluid" style="max-width: 80px;">
                 <p>{{ $subcategory->name }}</p>
