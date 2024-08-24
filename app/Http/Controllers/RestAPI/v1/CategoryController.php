@@ -106,14 +106,14 @@ public function get_products(Request $request, $id)
     foreach ($filterOptions as $choices) {
         foreach ($choices as $choice) {
             
-                if (!isset($mergedChoices[$choice->name])) {
-                    $mergedChoices[$choice->name] = [
-                        'name' => $choice->name,
-                        'title' => $choice->title,
+                if (!isset($mergedChoices[$choice['name']])) {
+                    $mergedChoices[$choice['name']] = [
+                        'name' => $choice['name'],
+                        'title' => $choice['title'],
                         'options' => []
                     ];
                 }
-                $mergedChoices[$choice->name]['options'] = array_unique(array_merge($mergedChoices[$choice->name]['options'], array_map('trim', $choice->options)));
+                $mergedChoices[$choice['name']]['options'] = array_unique(array_merge($mergedChoices[$choice['name']]['options'], array_map('trim', $choice['options'])));
             
         }
     }
