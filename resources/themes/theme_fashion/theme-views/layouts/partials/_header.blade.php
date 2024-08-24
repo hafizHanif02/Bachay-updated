@@ -276,18 +276,7 @@
         -webkit-text-fill-color: transparent;
     }
 </style>
-@if (isset($web_config['announcement']) && $web_config['announcement']['status'] == 1)
-    <div class="offer-bar" data-bg-img="{{ theme_asset('assets/img/media/top-offer-bg2.jpg') }}">
-        <div class="d-flex py-2 gap-2 align-items-center">
-            <div class="offer-bar-close px-2">
-                <i class="bi bi-x-lg"></i>
-            </div>
-            <div class="top-offer-text flex-grow-1 d-flex justify-content-center fw-semibold text-center">
-                {{-- {{ $web_config['announcement']['announcement'] }} --}}
-            </div>
-        </div>
-    </div>
-@endif
+
 <header class="bg-base pb-0" id="header" style="background: #fff !important;">
     <div class="search-form-header d-xl-none">
         <div class="d-flex w-100 align-items-center">
@@ -316,7 +305,19 @@
             </form>
         </div>
     </div>
-    <div class="container">
+    <div class="container-fluid">
+        @if (isset($web_config['announcement']) && $web_config['announcement']['status'] == 1)
+            <div class="offer-bar" data-bg-img="{{ theme_asset('assets/img/media/top-offer-bg2.jpg') }}" style="margin-top: -10px; margin-bottom: 10px; display: none;">
+                <div class="d-flex py-2 gap-2 align-items-center">
+                    <div class="offer-bar-close px-2">
+                        <i class="bi bi-x-lg"></i>
+                    </div>
+                    <div class="top-offer-text flex-grow-1 d-flex justify-content-center fw-semibold text-center">
+                        {{-- {{ $web_config['announcement']['announcement'] }} --}}
+                    </div>
+                </div>
+            </div>
+        @endif
         {{-- <div class="mobile-header-top d-sm-none text-capitalize">
             <ul class="header-right-icons mb-2">
                 @if ($web_config['business_mode'] == 'multi' && $web_config['seller_registration'])
@@ -368,7 +369,7 @@
                 </li>
             </ul>
         </div> --}}
-        <div class="header-wrapper">
+        <div class="header-wrapper container">
             <div class="d-lg-none d-xl-none">
                 @if (session('switch_user'))
                     <?php $child = session('switch_user'); ?>
