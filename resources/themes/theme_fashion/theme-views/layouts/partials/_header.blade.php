@@ -307,7 +307,7 @@
     </div>
     <div class="container-fluid" style="padding: 0;color: black;">
         @if (isset($web_config['announcement']) && $web_config['announcement']['status'] == 1)
-            <div class="offer-bar" data-bg-img="{{ theme_asset('assets/img/media/top-offer-bg2.jpg') }}" style="margin-top: -10px; margin-bottom: 10px; display: none;    width: 100%;padding: 0;height: 39px;object-fit: contain;background-size: contain;">
+            <div class="offer-bar" data-bg-img="{{ theme_asset('assets/img/media/top-offer-bg2.jpg') }}" style="margin-top: -10px; margin-bottom: 10px; width: 100%;padding: 0;height: 39px;object-fit: contain;background-size: contain;">
                 <div class="d-flex py-2 gap-2 align-items-center">
                     <div class="offer-bar-close px-2">
                         <i class="bi bi-x-lg"></i>

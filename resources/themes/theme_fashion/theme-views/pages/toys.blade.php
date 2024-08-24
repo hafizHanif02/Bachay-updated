@@ -86,11 +86,17 @@
 
 <!-- Top Brands -->
 <div class="container top-brands-section text-center">
-    <h3>Our Favourite Brands</h3>
+    <h3>Top Brands</h3>
     <div class="d-flex justify-content-around">
         @foreach($brands as $brand)
-            <img src="{{asset('storage/app/public/brand')}}/{{ $brand->photo }}" alt="{{ $brand->name }}">
-        @endforeach
+        <div class="col-6 col-sm-4 col-md-3 col-xl-brands">
+            <a href="{{route('products',['id'=> $brand['id'],'data_from'=>'brand','brand_name'=>str_replace(' ', '_', $brand->name),'page'=>1])}}"
+               class="brands-item"  title="{{ $brand->name }}">
+                <img loading="lazy" src="{{ getValidImage(path: 'storage/app/public/brand/'.$brand->image, type:'brand') }}"
+                    class="img-fluid badge-soft-base" alt="{{ $brand->name }}">
+            </a>
+        </div>
+    @endforeach
         
     </div>
 </div>
