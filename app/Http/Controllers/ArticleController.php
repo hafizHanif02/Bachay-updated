@@ -75,11 +75,23 @@ class ArticleController extends Controller
             $filename = $file->getClientOriginalName();
             $file->move(public_path('assets/images/articles/thumbnail'), $filename);
         }
+
+        if($request->file('meta_image')){
+            $file = $request->file('meta_image');
+            $extension = $file->getClientOriginalExtension();
+            $filenameMeta = $file->getClientOriginalName();
+            $file->move(public_path('assets/images/articles/meta'), $filenameMeta);
+        }else {
+            $filenameMeta = '';
+        }
         Article::create([
             'title' => $request->title,
             'text' => $request->text,
             'thumbnail' => $filename,
             'article_category_id' => $request->article_category_id,
+            'meta_title' => $request->meta_title,
+            'meta_description' => $request->meta_description,
+            'meta_image' => $filenameMeta
         ]);
 
         Toastr::success('Article Added !');

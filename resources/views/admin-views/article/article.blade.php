@@ -47,6 +47,7 @@
                                         </select>
                                     </div>
                                 </div>
+                                
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label
@@ -55,6 +56,102 @@
                                         <div class="custom-file text-left">
                                             <input type="file" name="thumbnail" class="custom-file-input" >
                                             <label class="custom-file-label" for="customFileEg1">Choose File</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row g-2">
+                                <div class="col-md-12">
+                                    <div class="card-header">
+                                        <div class="d-flex gap-2">
+                                            <i class="tio-user-big"></i>
+                                            <h4 class="mb-0">
+                                                {{ translate('seo_section') }}
+                                                <span class="input-label-secondary cursor-pointer" data-toggle="tooltip"
+                                                    data-placement="right"
+                                                    title="{{ translate('add_meta_titles_descriptions_and_images_for_products').', '.translate('this_will_help_more_people_to_find_them_on_search_engines_and_see_the_right_details_while_sharing_on_other_social_platforms') }}">
+                                                    <img src="{{ asset('public/assets/back-end/img/info-circle.svg') }}" alt="">
+                                                </span>
+                                            </h4>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-8">
+                                                <div class="form-group">
+                                                    <label class="title-color">
+                                                        {{ translate('meta_Title') }}
+                                                        <span class="input-label-secondary cursor-pointer" data-toggle="tooltip"
+                                                              data-placement="right"
+                                                              title="{{ translate('add_the_products_title_name_taglines_etc_here').' '.translate('this_title_will_be_seen_on_Search_Engine_Results_Pages_and_while_sharing_the_products_link_on_social_platforms') .' [ '. translate('character_Limit') }} : 100 ]">
+                                                            <img src="{{ asset('public/assets/back-end/img/info-circle.svg') }}" alt="">
+                                                        </span>
+                                                    </label>
+                                                    <input type="text" name="meta_title" placeholder="{{ translate('meta_Title') }}"
+                                                           class="form-control">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="title-color">
+                                                        {{ translate('meta_Description') }}
+                                                        <span class="input-label-secondary cursor-pointer" data-toggle="tooltip"
+                                                              data-placement="right"
+                                                              title="{{ translate('write_a_short_description_of_the_InHouse_shops_product').' '.translate('this_description_will_be_seen_on_Search_Engine_Results_Pages_and_while_sharing_the_products_link_on_social_platforms') .' [ '. translate('character_Limit') }} : 100 ]">
+                                                            <img src="{{ asset('public/assets/back-end/img/info-circle.svg') }}" alt="">
+                                                        </span>
+                                                    </label>
+                                                    <textarea rows="4" type="text" name="meta_description" class="form-control"></textarea>
+                                                </div>
+                                            </div>
+                    
+                                            <div class="col-md-4">
+                                                <div class="d-flex justify-content-center">
+                                                    <div class="form-group w-100">
+                                                        <div class="d-flex align-items-center justify-content-between gap-2">
+                                                            <div>
+                                                                <label class="title-color" for="meta_Image">
+                                                                    {{ translate('meta_Image') }}
+                                                                </label>
+                                                                <span
+                                                                    class="badge badge-soft-info">{{ THEME_RATIO[theme_root_path()]['Meta Thumbnail'] }}</span>
+                                                                <span class="input-label-secondary cursor-pointer" data-toggle="tooltip"
+                                                                      title="{{ translate('add_Meta_Image_in') }} JPG, PNG or JPEG {{ translate('format_within') }} 2MB, {{ translate('which_will_be_shown_in_search_engine_results') }}.">
+                                                                    <img src="{{ asset('public/assets/back-end/img/info-circle.svg') }}"
+                                                                         alt="">
+                                                                </span>
+                                                            </div>
+                    
+                                                        </div>
+                    
+                                                        <div>
+                                                            <div class="custom_upload_input">
+                                                                <input type="file" name="meta_image"
+                                                                       class="custom-upload-input-file meta-img action-upload-color-image" id=""
+                                                                       data-imgpreview="pre_meta_image_viewer"
+                                                                       accept=".jpg, .webp, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*">
+                    
+                                                                <span class="delete_file_input btn btn-outline-danger btn-sm square-btn d--none">
+                                                                    <i class="tio-delete"></i>
+                                                                </span>
+                    
+                                                                <div class="img_area_with_preview position-absolute z-index-2">
+                                                                    <img id="pre_meta_image_viewer" class="h-auto bg-white onerror-add-class-d-none" alt=""
+                                                                         src="{{ asset('public/assets/back-end/img/icons/product-upload-icon.svg-dummy') }}">
+                                                                </div>
+                                                                <div
+                                                                    class="position-absolute h-100 top-0 w-100 d-flex align-content-center justify-content-center">
+                                                                    <div
+                                                                        class="d-flex flex-column justify-content-center align-items-center">
+                                                                        <img alt="" class="w-75"
+                                                                             src="{{ asset('public/assets/back-end/img/icons/product-upload-icon.svg') }}">
+                                                                        <h3 class="text-muted">{{ translate('Upload_Image') }}</h3>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                    
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

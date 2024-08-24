@@ -15,6 +15,9 @@ class Article extends Model
         'text',
         'thumbnail',
         'status',
+        'meta_title',
+        'meta_description',
+        'meta_image'
     ];
     protected $table = 'articles';
 
