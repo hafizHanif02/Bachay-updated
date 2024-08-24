@@ -163,6 +163,7 @@ Route::group(['namespace' => 'Web', 'middleware' => ['maintenance_mode', 'guestC
     Route::get('category-ajax/{id}', 'WebController@categories_by_category')->name('category-ajax');
 
     Route::get('brands', 'WebController@all_brands')->name('brands');
+    Route::get('brands/{slug}', 'WebController@all_brands')->name('brands');
     Route::get('vendors', 'WebController@all_sellers')->name('vendors');
     Route::get('seller-profile/{id}', 'WebController@seller_profile')->name('seller-profile');
 
