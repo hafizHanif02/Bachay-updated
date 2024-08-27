@@ -261,7 +261,7 @@ Route::group(['namespace' => 'RestAPI\v1', 'prefix' => 'v1', 'middleware' => ['a
         Route::group(['prefix' => 'wish-list'], function () {
             Route::get('/', 'CustomerController@wish_list');
             Route::post('add', 'CustomerController@add_to_wishlist');
-            Route::delete('remove', 'CustomerController@remove_from_wishlist');
+            Route::delete('remove2', 'CustomerController@remove_from_wishlist');
         });
 
         Route::group(['prefix' => 'order'], function () {
