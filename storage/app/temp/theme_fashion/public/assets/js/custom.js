@@ -976,7 +976,6 @@ $('#fashion_products_list_form').on('submit',function(event){
 
             $('#ajax_products_section').empty().html(data.html_products);
             $('#selected_filter_area').empty().html(data.html_tags);
-            $('#sidebar').empty().html(data.html_filters);
             productCommonActionForViewEvents();
         },
         complete: function () {

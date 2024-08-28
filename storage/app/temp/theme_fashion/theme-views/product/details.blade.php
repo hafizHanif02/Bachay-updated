@@ -514,7 +514,7 @@
                             </div>
                         @endif
 
-                        @foreach ($product->choice_options as $key => $choice)
+                        @foreach (json_decode($product->choice_options) as $key => $choice)
                             <div class="mt-20px">
                                 <label class="form-label">{{translate($choice->title)}}</label>
                                 <div class="d-flex flex-wrap gap-2">
@@ -763,12 +763,12 @@
                             <div class="product-information-inner">
                                 <ul class="nav nav-tabs nav--tabs-2 justify-content-center">
 
-                                    <li class="nav-item ">
+                                    <li class="nav-item nav-item-ative">
                                         <a href="#general-info" class="nav-link active"
                                            data-bs-toggle="tab">{{ translate('general_info') }}</a>
                                     </li>
 
-                                    <li class="nav-item nav-item-ative">
+                                    <li class="nav-item">
                                         <a href="#comments" class="nav-link"
                                            data-bs-toggle="tab">{{ translate('review') }}
                                             <sup>{{$product->reviews_count}}</sup></a>
