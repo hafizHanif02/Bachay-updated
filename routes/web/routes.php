@@ -510,5 +510,5 @@ Route::get('payment-success', 'Customer\PaymentController@success')->name('payme
 Route::get('payment-fail', 'Customer\PaymentController@fail')->name('payment-fail');
 
 Route::get('/test', function () {
-    return view('welcome');
+    return "welcome";
 });
