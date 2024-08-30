@@ -195,6 +195,7 @@ function addToCart(form_id, redirect_to_checkout = false, url = null) {
 
 function updateNavCart() {
     let url = $('#update_nav_cart_url').data('url');
+    console.log("URL:", url);
     $.post(url, {
         _token: $('meta[name="_token"]').attr('content')
     },
