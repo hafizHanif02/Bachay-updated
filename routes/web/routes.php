@@ -52,6 +52,13 @@ use App\Http\Controllers\Payment_Methods\SslCommerzPaymentController;
 
 Route::get('maintenance-mode', 'Web\WebController@maintenance_mode')->name('maintenance-mode');
 
+Route::get('/test-cors', function () {
+    return response('CORS test')
+        ->header('Access-Control-Allow-Origin', '*')
+        ->header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, DELETE, PUT')
+        ->header('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Csrf-Token');
+});
+
 Route::group(['namespace' => 'Web', 'middleware' => ['maintenance_mode', 'guestCheck']], function () {
     Route::group(['prefix' => 'product-compare', 'as' => 'product-compare.'], function () {
         Route::controller(ProductCompareController::class)->group(function () {

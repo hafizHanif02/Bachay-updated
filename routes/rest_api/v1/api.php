@@ -28,6 +28,13 @@ Route::options('/{any}', function (Request $request) {
     ]);
 })->where('any', '.*');
 
+Route::get('/test-cors', function () {
+    return response('CORS test')
+        ->header('Access-Control-Allow-Origin', '*')
+        ->header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, DELETE, PUT')
+        ->header('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Csrf-Token');
+});
+
 Route::get('/test-token', function () {
     $user = App\Models\User::first();
     $token = $user->createToken('LaravelAuthApp')->accessToken;
