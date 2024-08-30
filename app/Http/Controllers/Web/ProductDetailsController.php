@@ -411,7 +411,13 @@ class ProductDetailsController extends Controller
                 $colorSelected = '#'.$request->color;
             }else {
 
-                $colorSelected = json_decode($product->colors)[0];
+                if(count(json_decode($product->colors)) > 0) {
+
+                    $colorSelected = json_decode($product->colors)[0];
+                } else {
+
+                    $colorSelected = '';
+                }
             }
 
             if(isset($request->size)){
