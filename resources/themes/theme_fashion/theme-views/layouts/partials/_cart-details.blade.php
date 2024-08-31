@@ -275,13 +275,13 @@
                                                                 @php($variations = json_decode($cartItem->variations,true))
                                                                 @foreach ($product->choice_options as $k => $choice)
                                                                     <div class="d-flex column-gap-1">
-                                                                        <span> {{ translate( $choice->title )}} </span>
+                                                                        <span> {{ translate( $choice['title'] )}} </span>
                                                                         <span>:</span>
                                                                         <select
                                                                             class="no-border-select variants-class{{$key}} update_add_to_cart_by_variation_web"
                                                                             data-id="{{$cartItem['id']}}"
-                                                                            name="{{$choice->name}}">
-                                                                            @foreach ($choice->options as $value)
+                                                                            name="{{$choice['name']}}">
+                                                                            @foreach ($choice['options'] as $value)
                                                                                 <option
                                                                                     value="{{ trim($value) }}" {{in_array(trim($value),$variations,true) ? 'selected' : ''}}>{{ ucwords($value) }}</option>
                                                                             @endforeach
@@ -621,13 +621,13 @@
                                                         @php($variations = json_decode($cartItem->variations,true))
                                                         @foreach ($product->choice_options as $k => $choice)
                                                             <div class="d-flex column-gap-1">
-                                                                <span> {{ translate( $choice->title )}} </span>
+                                                                <span> {{ translate( $choice['title'] )}} </span>
                                                                 <span>:</span>
                                                                 <select
                                                                     class="no-border-select text-title variants-class{{$key}} update_add_to_cart_by_variation_mobile"
                                                                     data-id="{{$cartItem['id']}}"
-                                                                    name="{{$choice->name}}">
-                                                                    @foreach ($choice->options as $value)
+                                                                    name="{{$choice['name']}}">
+                                                                    @foreach ($choice['options'] as $value)
                                                                         <option
                                                                             value="{{ trim($value) }}" {{in_array(trim($value),$variations,true) ? 'selected' : ''}}>{{ ucwords($value) }}</option>
                                                                     @endforeach

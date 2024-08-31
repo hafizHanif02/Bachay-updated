@@ -127,16 +127,16 @@
                     </div>
                     @foreach ($product->choice_options as $key => $choice)
                         <div class="my-2">
-                            <strong class="text-dark">{{ ucfirst($choice->title) }}</strong>
+                            <strong class="text-dark">{{ ucfirst($choice['title']) }}</strong>
                         </div>
                         <div class="d-flex gap-2 flex-wrap">
-                            @foreach ($choice->options as $index => $option)
+                            @foreach ($choice['options'] as $index => $option)
                                 <input class="btn-check" type="radio"
-                                       id="{{ $choice->name }}-{{ $option }}"
-                                       name="{{ $choice->name }}" value="{{ $option }}"
+                                       id="{{ $choice['name'] }}-{{ $option }}"
+                                       name="{{ $choice['name'] }}" value="{{ $option }}"
                                        @if($index == 0) checked @endif autocomplete="off">
                                 <label class="btn btn-sm check-label border-0 mb-0"
-                                       for="{{ $choice->name }}-{{ $option }}">{{ $option }}</label>
+                                       for="{{ $choice['name'] }}-{{ $option }}">{{ $option }}</label>
                             @endforeach
                         </div>
                     @endforeach

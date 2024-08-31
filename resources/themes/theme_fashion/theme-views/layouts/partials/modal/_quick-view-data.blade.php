@@ -5,7 +5,11 @@
     </div>
     <div class="product-single-wrapper">
         @if($product->images!=null && json_decode($product->images)>0)
-            <div class="product-single-thumb">
+            <div class="product-single-thumb" style="
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+        ">
                 @if(json_decode($product->colors) && $product->color_image)
                     <div class="overflow-hidden rounded">
                         <div class="product-share-icons">
@@ -331,11 +335,11 @@
 
                 @foreach ($product->choice_options as $key => $choice)
                     <div class="mt-20px">
-                        <label class="form-label">{{translate($choice->title)}}</label>
+                        <label class="form-label">{{translate($choice['title'])}}</label>
                         <div class="d-flex flex-wrap gap-2">
-                            @foreach ($choice->options as $index => $option)
+                            @foreach ($choice['options'] as $index => $option)
                                 <label class="form-check-size">
-                                    <input type="radio" name="{{ $choice->name }}" value="{{ $option }}"
+                                    <input type="radio" name="{{ $choice['name'] }}" value="{{ $option }}"
                                             {{ $index == 0 ? 'checked' : '' }} >
                                     <span class="form-check-label">{{$option}}</span>
                                 </label>

@@ -323,7 +323,7 @@
                                             <div>
                                                 @if (!empty($value['options']))
                                                     <span class="key text-nowrap">
-                                                        {{ $value->title }}
+                                                        {{ $value['title'] }}
                                                     </span>
                                                     <span>:</span>
                                                     <span class="value">

@@ -95,10 +95,10 @@
                                             <div class="d-flex flex-wrap column-gap-3">
                                                 @foreach ($product->choice_options as $k => $choice)
                                                     <div class="d-flex column-gap-1">
-                                                        <span> {{ translate($choice->title)}} </span> <span>:</span>
+                                                        <span> {{ translate($choice['title'])}} </span> <span>:</span>
                                                         <select class="no-border-select text-title variants-class{{$key}} stock_check_for_product_web"
-                                                                data-id="{{$product->id}}" name="{{$choice->name}}">
-                                                            @foreach ($choice->options as $key=>$value)
+                                                                data-id="{{$product['id']}}" name="{{$choice['name']}}">
+                                                            @foreach ($choice['options'] as $key=>$value)
                                                                 <option value="{{ $value }}">{{ ucwords($value) }}</option>
                                                             @endforeach
                                                         </select>
@@ -254,10 +254,10 @@
                                     <div class="d-flex flex-wrap column-gap-1">
                                         @foreach ($product->choice_options as $k => $choice)
                                             <div class="d-flex column-gap-1">
-                                                <span> {{ translate($choice->title)}} </span> <span>:</span>
+                                                <span> {{ translate($choice['title'])}} </span> <span>:</span>
                                                 <select class="no-border-select text-title variants-class{{$key}} stock_check_for_product_mobile"
-                                                        data-id="{{$product->id}}" name="{{$choice->name}}">
-                                                    @foreach ($choice->options as $key=>$value)
+                                                        data-id="{{$product->id}}" name="{{$choice['name']}}">
+                                                    @foreach ($choice['options'] as $key=>$value)
                                                         <option value="{{ $value }}">{{ ucwords($value) }}</option>
                                                     @endforeach
                                                 </select>
