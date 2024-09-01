@@ -715,7 +715,7 @@ public function get_best_sellings(Request $request)
                     'discount' => $product['discount'],
                     'discount_type' => $product['discount_type'],
                     'net_price' => $netPrice ?? $product['unit_price'],
-                    'rating' => $product['rating'][0]->average,
+                    'rating' => $product['rating'],
                     "sold" => $product['order_details_sum_qty'],
                     'free_shipping' => $product['free_shipping'],
                 ];
