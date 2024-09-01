@@ -273,7 +273,7 @@
                                                                 @endif
 
                                                                 @php($variations = json_decode($cartItem->variations,true))
-                                                                @foreach (json_decode($product->choice_options) as $k => $choice)
+                                                                @foreach ($product->choice_options as $k => $choice)
                                                                     <div class="d-flex column-gap-1">
                                                                         <span> {{ translate( $choice->title )}} </span>
                                                                         <span>:</span>
@@ -619,7 +619,7 @@
                                                             </div>
                                                         @endif
                                                         @php($variations = json_decode($cartItem->variations,true))
-                                                        @foreach (json_decode($product->choice_options) as $k => $choice)
+                                                        @foreach ($product->choice_options as $k => $choice)
                                                             <div class="d-flex column-gap-1">
                                                                 <span> {{ translate( $choice->title )}} </span>
                                                                 <span>:</span>

@@ -195,7 +195,6 @@ function addToCart(form_id, redirect_to_checkout = false, url = null) {
 
 function updateNavCart() {
     let url = $('#update_nav_cart_url').data('url');
-    console.log("URL:", url);
     $.post(url, {
         _token: $('meta[name="_token"]').attr('content')
     },
@@ -977,6 +976,7 @@ $('#fashion_products_list_form').on('submit',function(event){
 
             $('#ajax_products_section').empty().html(data.html_products);
             $('#selected_filter_area').empty().html(data.html_tags);
+            $('#sidebar').empty().html(data.html_filters);
             productCommonActionForViewEvents();
         },
         complete: function () {
