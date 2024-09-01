@@ -380,8 +380,41 @@ class ProductController extends Controller
     {
         $products = ProductManager::get_top_rated_products($request, $request['limit'], $request['offset']);
         $products['products'] = Helpers::product_data_formatting($products['products'], true);
-        return response()->json($products, 200);
+    
+        // Use array_map to filter the products
+        $filteredProducts = array_map(function ($product) {
+            if ($product['discount_type'] == 'percent') {
+                $netPrice = round(($product['unit_price'] * (100 - $product['discount'])) / 100);
+            } else {
+                $netPrice = round($product['unit_price'] - $product['discount']);
+            }
+    
+            // Create a new array for modified images
+            $modifiedImages = array_map(function($image) {
+                return asset("/storage/app/public/product/" . $image);
+            }, $product['images']);
+    
+            return [
+                'id' => $product['id'],
+                'name' => $product['name'],
+                'images' => $modifiedImages,  // Use the modified images array
+                'thumbnail' => asset("/storage/app/public/product/thumbnail/" . $product['thumbnail']),
+                'unit_price' => round($product['unit_price']), // Round to nearest whole number
+                'discount' => $product['discount'],
+                'discount_type' => $product['discount_type'],
+                'net_price' => $netPrice ?? $product['unit_price'],
+                'rating' => $product['rating'][0]->average ?? null, // Handle case where rating might be null
+                "sold" => $product['order_details_sum_qty'] ?? 0, // Handle case where sold quantity might be null
+                'free_shipping' => $product['free_shipping'] ?? false, // Handle case where free_shipping might be null
+            ];
+        }, $products['products']);
+    
+        // Update the products array with the filtered products
+        $products['products'] = $filteredProducts;
+    
+        return response()->json($filteredProducts, 200);
     }
+    
 
     public function get_searched_products(Request $request)
     {
@@ -584,9 +617,9 @@ class ProductController extends Controller
         $productArray['inhouse_vacation_end_date'] = $inhouse_vacation_end_date;
         $productArray['inhouse_temporary_close'] = $inhouse_temporary_close;
 
-        $productArray['thumbnail'] = "/storage/app/public/product/thumbnail/" . $product->thumbnail;
+        $productArray['thumbnail'] = asset("/storage/app/public/product/thumbnail/" . $product->thumbnail);
         foreach ($product->images as $key => $image) {
-            $productArray['images'][$key] = "/storage/app/public/product/" . $image;
+            $productArray['images'][$key] = asset("/storage/app/public/product/" . $image);
         }
 
         foreach ($product->color_image as $key => $image) {
@@ -604,13 +637,45 @@ class ProductController extends Controller
 }
 
 
-    public function get_best_sellings(Request $request)
-    {
-        $products = ProductManager::get_best_selling_products($request, $request['limit'], $request['offset']);
-        $products['products'] = isset($products['products'][0]) ? Helpers::product_data_formatting($products['products'], true) : [];
+public function get_best_sellings(Request $request)
+{
+    $products = ProductManager::get_best_selling_products($request, $request['limit'], $request['offset']);
+    $products['products'] = isset($products['products'][0]) ? Helpers::product_data_formatting($products['products'], true) : [];
 
-        return response()->json($products, 200);
-    }
+    // Use array_map to filter the products
+    $filteredProducts = array_map(function ($product) {
+        if ($product['discount_type'] == 'percent') {
+            $netPrice = round(($product['unit_price'] * (100 - $product['discount'])) / 100);
+        } else {
+            $netPrice = round($product['unit_price'] - $product['discount']);
+        }
+
+        // Create a new array for modified images
+        $modifiedImages = array_map(function($image) {
+            return asset("/storage/app/public/product/" . $image);
+        }, $product['images']);
+
+        return [
+            'id' => $product['id'],
+            'name' => $product['name'],
+            'images' => $modifiedImages,  // Use the modified images array
+            'thumbnail' => asset("/storage/app/public/product/thumbnail/" . $product['thumbnail']),
+            'unit_price' => round($product['unit_price']), // Round to nearest whole number
+            'discount' => $product['discount'],
+            'discount_type' => $product['discount_type'],
+            'net_price' => $netPrice ?? $product['unit_price'],
+            'rating' => $product['rating'][0]->average ?? null, // Handle case where rating might be null
+            "sold" => $product['order_details_sum_qty'] ?? 0, // Handle case where sold quantity might be null
+            'free_shipping' => $product['free_shipping'] ?? false, // Handle case where free_shipping might be null
+        ];
+    }, $products['products']);
+
+    // Update the products array with the filtered products
+    $products['products'] = $filteredProducts;
+
+    return response()->json($filteredProducts, 200);
+}
+
 
     public function get_home_categories(Request $request)
     {
@@ -627,12 +692,45 @@ class ProductController extends Controller
         if (Product::find($id)) {
             $products = ProductManager::get_related_products($id, $request);
             $products = Helpers::product_data_formatting($products, true);
-            return response()->json($products, 200);
+            //return response()->json($products, 200);
+            // Use array_map to filter the products
+            $filteredProducts = array_map(function ($product) {
+                if ($product['discount_type'] == 'percent') {
+                    $netPrice = round(($product['unit_price'] * (100 - $product['discount'])) / 100);
+                } else {
+                    $netPrice = round($product['unit_price'] - $product['discount']);
+                }
+    
+                // Create a new array for modified images
+                $modifiedImages = array_map(function($image) {
+                    return asset("/storage/app/public/product/" . $image);
+                }, $product['images']);
+    
+                return [
+                    'id' => $product['id'],
+                    'name' => $product['name'],
+                    'images' => $modifiedImages,  // Use the modified images array
+                    'thumbnail' => asset("/storage/app/public/product/thumbnail/" . $product['thumbnail']),
+                    'unit_price' => round($product['unit_price']), // Round to nearest whole number
+                    'discount' => $product['discount'],
+                    'discount_type' => $product['discount_type'],
+                    'net_price' => $netPrice ?? $product['unit_price'],
+                    'rating' => $product['rating'][0]->average,
+                    "sold" => $product['order_details_sum_qty'],
+                    'free_shipping' => $product['free_shipping'],
+                ];
+            }, $products);
+    
+            return response()->json($filteredProducts, 200);
         }
+    
         return response()->json([
             'errors' => ['code' => 'product-001', 'message' => translate('product_not_found')]
         ], 404);
     }
+    
+
+    
 
     public function get_product_reviews($id)
     {
@@ -910,6 +1008,39 @@ class ProductController extends Controller
     {
         $products = ProductManager::get_best_selling_products($request, $request['limit'], $request['offset']);
         $products['products'] = Helpers::product_data_formatting($products['products'], true);
-        return response()->json($products, 200);
+    
+        // Use array_map to filter the products
+        $filteredProducts = array_map(function ($product) {
+            if ($product['discount_type'] == 'percent') {
+                $netPrice = round(($product['unit_price'] * (100 - $product['discount'])) / 100);
+            } else {
+                $netPrice = round($product['unit_price'] - $product['discount']);
+            }
+    
+            // Create a new array for modified images
+            $modifiedImages = array_map(function($image) {
+                return asset("/storage/app/public/product/" . $image);
+            }, $product['images']);
+    
+            return [
+                'id' => $product['id'],
+                'name' => $product['name'],
+                'images' => $modifiedImages,  // Use the modified images array
+                'thumbnail' => asset("/storage/app/public/product/thumbnail/" . $product['thumbnail']),
+                'unit_price' => round($product['unit_price']), // Round to nearest whole number
+                'discount' => $product['discount'],
+                'discount_type' => $product['discount_type'],
+                'net_price' => $netPrice ?? $product['unit_price'],
+                'rating' => $product['rating'][0]->average ?? null, // Handle case where rating might be null
+                "sold" => $product['order_details_sum_qty'] ?? 0, // Handle case where sold quantity might be null
+                'free_shipping' => $product['free_shipping'] ?? false, // Handle case where free_shipping might be null
+            ];
+        }, $products['products']);
+    
+        // Update the products array with the filtered products
+        $products['products'] = $filteredProducts;
+    
+        return response()->json($filteredProducts, 200);
     }
+    
 }

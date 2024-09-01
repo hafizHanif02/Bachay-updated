@@ -244,7 +244,9 @@ class ProductManager
         $products = Product::active()->with(['rating', 'flashDealProducts.flashDeal', 'tags','seller.shop'])
             ->withCount(['wishList' => function ($query) use ($user) {
                 $query->where('customer_id', $user != 'offline' ? $user->id : '0');
-            }])
+            }])->withSum('orderDetails', 'qty', function ($query) {
+                $query->where('delivery_status', 'delivered');
+            })
             ->where('category_ids', $product->category_ids)
             ->where('id', '!=', $product->id)
             ->limit(10)
