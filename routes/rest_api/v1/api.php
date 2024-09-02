@@ -139,14 +139,14 @@ Route::group(['namespace' => 'RestAPI\v1', 'prefix' => 'v1', 'middleware' => ['a
 
     Route::group(['prefix' => 'child'], function () {
        Route::get('/', [FamilyRelationController::class,'childHome'])->middleware('auth:api'); 
+       Route::get('detail/{id}', [FamilyRelationController::class,'childDetail'])->middleware('auth:api');
+       Route::post('add-child', [FamilyRelationController::class,'add_child'])->middleware('auth:api');
+       Route::post('update-child/{childId}', [FamilyRelationController::class,'update_child'])->middleware('auth:api');
+       Route::post('delete-child', [FamilyRelationController::class,'delete_child'])->middleware('auth:api');
     });
 
     Route::group(['prefix' => 'attributes'], function () {
         Route::get('/', 'AttributeController@get_attributes');
-    });
-
-    Route::group(['prefix' => 'attributes'], function () {
-        Route::get('/', [FamilyRelationController::class,'Childeren']);
     });
 
     Route::group(['prefix' => 'flash-deals'], function () {

@@ -39,44 +39,54 @@ class CouponController extends Controller
 
     public function applicable_list(Request $request) {
         $customer_id = $request->user() ? $request->user()->id : '0';
-
+    
+        // Fetch the products in the cart
         $cart_data = Cart::where(['customer_id'=> $customer_id, 'is_guest'=>'0'])->pluck('product_id');
         $product_group = Product::whereIn('id', $cart_data)->select('id', 'added_by', 'user_id')->get();
-
+    
         if($cart_data->count() > 0 && $product_group->count() > 0) {
             $coupons = Coupon::with('seller.shop')
                 ->select('coupons.*', DB::raw('DATE(expire_date) as plain_expire_date'))
                 ->withCount(['order'=>function($query) use($customer_id){
                     $query->where(['customer_id'=>$customer_id]);
                 }])
-                ->when($product_group->where('added_by', 'seller')->count() > 0, function($query) use($product_group) {
-                    $query->where(['coupon_bearer'=>'seller'])
-                        ->whereIn('seller_id', $product_group
-                        ->where('added_by', 'seller')
-                        ->pluck('user_id'))
-                        ->orWhereIn('seller_id', ['0']);
-                })
-                ->when($product_group->where('added_by', 'admin')->count() > 0, function($query){
-                    $query->where(['coupon_bearer'=>'inhouse']);
-                })
+               
                 ->where(['status' => 1])
                 ->whereIn('customer_id',[$customer_id, '0'])
                 ->whereDate('start_date', '<=', now())
                 ->whereDate('expire_date', '>=', now())
                 ->get();
-
-
-            $coupons = $coupons->filter(function($data) {
-                return (($data->order_count < $data->limit) || empty($data->limit)) && ($data->start_date <= now() && $data->expire_date >= now());
-            })->values();
-
-            $customer_order_count = Order::where('customer_id', $customer_id)->count();
-            if($customer_order_count > 0) {
-                $coupons = $coupons->whereNotIn('coupon_type', ['first_order']);
-            }
+    
+            // Filter and check each coupon for its usability
+            $coupons = $coupons->map(function($coupon) use ($customer_id) {
+                // Determine if the coupon is still valid for the user
+                $is_valid = ($coupon->order_count < $coupon->limit || empty($coupon->limit)) &&
+                            ($coupon->start_date <= now() && $coupon->expire_date >= now());
+    
+                // Check if the customer has used the coupon and if it's a first order coupon
+                $customer_order_count = Order::where('customer_id', $customer_id)->count();
+                if ($customer_order_count > 0 && $coupon->coupon_type == 'first_order') {
+                    $is_valid = false;
+                }
+    
+                return [
+                    'id' => $coupon->id,
+                    'code' => $coupon->code,
+                    'description' => $coupon->description,
+                    'discount' => $coupon->discount,
+                    'discount_type' => $coupon->discount_type,
+                    'expire_date' => $coupon->plain_expire_date,
+                    'is_valid' => $is_valid, // New field indicating if the coupon is valid for the user
+                    'reason' => $is_valid ? 'Valid' : 'Coupon limit exceeded or expired',
+                ];
+            })->values(); // Reset the keys of the collection
+    
+            return response()->json($coupons, 200);
         }
-        return response()->json($coupons ?? [], 200);
+    
+        return response()->json([], 200);
     }
+    
 
     public function apply(Request $request)
     {
