@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomPageController;
 use App\Http\Controllers\FamilyRelationController;
 use App\Http\Controllers\RestAPI\v1\auth\PassportAuthController;
-
+use App\Http\Controllers\ParentArticleController;
 
 header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS');
 header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token, Authorization, Accept,charset,boundary,Content-Length');
@@ -44,30 +44,30 @@ Route::group(['namespace' => 'RestAPI\v1', 'prefix' => 'v1', 'middleware' => ['a
             ->header('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Csrf-Token');
     });
     Route::group(['namespace' => 'Customer', 'prefix' => 'customer', 'as' => 'customer.'], function () {
-    
-    Route::group(['prefix' => 'auth', 'namespace' => 'auth'], function () {
-        Route::post('register', [PassportAuthController::class,'register']);
-        Route::post('login', [PassportAuthController::class,'verifyToken']);
-        Route::post('login-password', [PassportAuthController::class,'login']);
-        Route::post('token', [PassportAuthController::class,'TokenCheck']);
-        Route::get('logout', 'PassportAuthController@logout')->middleware('auth:api');
 
-        Route::post('check-phone', 'PhoneVerificationController@check_phone');
-        Route::post('resend-otp-check-phone', 'PhoneVerificationController@resend_otp_check_phone');
-        Route::post('verify-phone', 'PhoneVerificationController@verify_phone');
+        Route::group(['prefix' => 'auth', 'namespace' => 'auth'], function () {
+            Route::post('register', [PassportAuthController::class, 'register']);
+            Route::post('login', [PassportAuthController::class, 'verifyToken']);
+            Route::post('login-password', [PassportAuthController::class, 'login']);
+            Route::post('token', [PassportAuthController::class, 'TokenCheck']);
+            Route::get('logout', 'PassportAuthController@logout')->middleware('auth:api');
 
-        Route::post('check-email', 'EmailVerificationController@check_email');
-        Route::post('resend-otp-check-email', 'EmailVerificationController@resend_otp_check_email');
-        Route::post('verify-email', 'EmailVerificationController@verify_email');
+            Route::post('check-phone', 'PhoneVerificationController@check_phone');
+            Route::post('resend-otp-check-phone', 'PhoneVerificationController@resend_otp_check_phone');
+            Route::post('verify-phone', 'PhoneVerificationController@verify_phone');
 
-        Route::post('forgot-password', 'ForgotPassword@reset_password_request');
-        Route::post('verify-otp', 'ForgotPassword@otp_verification_submit');
-        Route::put('reset-password', 'ForgotPassword@reset_password_submit');
+            Route::post('check-email', 'EmailVerificationController@check_email');
+            Route::post('resend-otp-check-email', 'EmailVerificationController@resend_otp_check_email');
+            Route::post('verify-email', 'EmailVerificationController@verify_email');
 
-        Route::post('social-login', 'SocialAuthController@social_login');
-        Route::post('update-phone', 'SocialAuthController@update_phone');
+            Route::post('forgot-password', 'ForgotPassword@reset_password_request');
+            Route::post('verify-otp', 'ForgotPassword@otp_verification_submit');
+            Route::put('reset-password', 'ForgotPassword@reset_password_submit');
+
+            Route::post('social-login', 'SocialAuthController@social_login');
+            Route::post('update-phone', 'SocialAuthController@update_phone');
+        });
     });
-});
 
 
     Route::group(['prefix' => 'config'], function () {
@@ -108,25 +108,25 @@ Route::group(['namespace' => 'RestAPI\v1', 'prefix' => 'v1', 'middleware' => ['a
     Route::get('childerens', 'ConfigController@childerens')->name('childerens')->middleware('auth:api');
 
 
-    Route::group(['prefix' => 'shipping-method','middleware'=>'apiGuestCheck'], function () {
+    Route::group(['prefix' => 'shipping-method', 'middleware' => 'apiGuestCheck'], function () {
         Route::get('detail/{id}', 'ShippingMethodController@get_shipping_method_info');
         Route::get('by-seller/{id}/{seller_is}', 'ShippingMethodController@shipping_methods_by_seller');
         Route::post('choose-for-order', 'ShippingMethodController@choose_for_order');
         Route::get('chosen', 'ShippingMethodController@chosen_shipping_methods');
 
-        Route::get('check-shipping-type','ShippingMethodController@check_shipping_type');
+        Route::get('check-shipping-type', 'ShippingMethodController@check_shipping_type');
     });
 
-    Route::group(['prefix' => 'cart','middleware'=>'apiGuestCheck'], function () {
+    Route::group(['prefix' => 'cart', 'middleware' => 'apiGuestCheck'], function () {
         Route::get('/', 'CartController@cart');
         Route::post('add', 'CartController@add_to_cart');
         Route::post('update', 'CartController@update_cart');
         Route::post('remove', 'CartController@remove_from_cart');
-        Route::post('remove-all','CartController@remove_all_from_cart');
+        Route::post('remove-all', 'CartController@remove_all_from_cart');
 
     });
 
-    Route::group(['prefix' => 'customer/order', 'middleware'=>'apiGuestCheck'], function () {
+    Route::group(['prefix' => 'customer/order', 'middleware' => 'apiGuestCheck'], function () {
         Route::get('get-order-by-id', 'CustomerController@get_order_by_id');
     });
 
@@ -138,11 +138,11 @@ Route::group(['namespace' => 'RestAPI\v1', 'prefix' => 'v1', 'middleware' => ['a
     });
 
     Route::group(['prefix' => 'child'], function () {
-       Route::get('/', [FamilyRelationController::class,'childHome'])->middleware('auth:api'); 
-       Route::get('detail/{id}', [FamilyRelationController::class,'childDetail'])->middleware('auth:api');
-       Route::post('add-child', [FamilyRelationController::class,'add_child'])->middleware('auth:api');
-       Route::post('update-child/{childId}', [FamilyRelationController::class,'update_child'])->middleware('auth:api');
-       Route::post('delete-child', [FamilyRelationController::class,'delete_child'])->middleware('auth:api');
+        Route::get('/', [FamilyRelationController::class, 'childHome'])->middleware('auth:api');
+        Route::get('detail/{id}', [FamilyRelationController::class, 'childDetail'])->middleware('auth:api');
+        Route::post('add-child', [FamilyRelationController::class, 'add_child'])->middleware('auth:api');
+        Route::post('update-child/{childId}', [FamilyRelationController::class, 'update_child'])->middleware('auth:api');
+        Route::post('delete-child', [FamilyRelationController::class, 'delete_child'])->middleware('auth:api');
     });
 
     Route::group(['prefix' => 'attributes'], function () {
@@ -205,7 +205,7 @@ Route::group(['namespace' => 'RestAPI\v1', 'prefix' => 'v1', 'middleware' => ['a
         Route::get('/find-what-you-need', 'CategoryController@find_what_you_need');
     });
     Route::group(['middleware' => 'apiGuestCheck'], function () {
-        
+
         Route::group(['prefix' => 'seller'], function () {
             Route::get('{seller_id}/products', 'SellerController@get_seller_products');
             Route::get('{seller_id}/seller-best-selling-products', 'SellerController@get_seller_best_selling_products');
@@ -213,7 +213,7 @@ Route::group(['namespace' => 'RestAPI\v1', 'prefix' => 'v1', 'middleware' => ['a
             Route::get('{seller_id}/seller-recommended-products', 'SellerController@get_sellers_recommended_products');
         });
 
-        
+
 
         Route::group(['prefix' => 'brands'], function () {
             Route::get('/', 'BrandController@get_brands');
@@ -244,7 +244,7 @@ Route::group(['namespace' => 'RestAPI\v1', 'prefix' => 'v1', 'middleware' => ['a
     Route::group(['prefix' => 'customer', 'middleware' => 'auth:api'], function () {
         Route::get('info', 'CustomerController@info');
         Route::post('update-profile', 'CustomerController@update_profile');
-        Route::get('account-delete/{id}','CustomerController@account_delete');
+        Route::get('account-delete/{id}', 'CustomerController@account_delete');
 
         Route::group(['prefix' => 'address'], function () {
             Route::get('get/{id}', 'CustomerController@get_address');
@@ -313,8 +313,8 @@ Route::group(['namespace' => 'RestAPI\v1', 'prefix' => 'v1', 'middleware' => ['a
 
     Route::group(['prefix' => 'order'], function () {
         Route::get('track', 'OrderController@track_by_order_id');
-        Route::get('cancel-order','OrderController@order_cancel');
-        Route::post('track-order','OrderController@track_order');
+        Route::get('cancel-order', 'OrderController@order_cancel')->middleware('auth:api');
+        Route::post('track-order', 'OrderController@track_order');
     });
 
     Route::group(['prefix' => 'banners'], function () {
@@ -328,7 +328,7 @@ Route::group(['namespace' => 'RestAPI\v1', 'prefix' => 'v1', 'middleware' => ['a
         Route::get('more', 'SellerController@more_sellers');
     });
 
-    Route::group(['prefix' => 'coupon','middleware' => 'auth:api'], function () {
+    Route::group(['prefix' => 'coupon', 'middleware' => 'auth:api'], function () {
         Route::get('apply', 'CouponController@apply');
     });
     Route::get('coupon/list', 'CouponController@list')->middleware('auth:api');
@@ -349,4 +349,13 @@ Route::group(['namespace' => 'RestAPI\v1', 'prefix' => 'v1', 'middleware' => ['a
 
     Route::post('contact-us', 'GeneralController@contact_store');
     Route::put('customer/language-change', 'CustomerController@language_change')->middleware('auth:api');
+
+    Route::group(['prefix' => 'article'], function () {
+        Route::get('/', [ParentArticleController::class,'get_articles']);
+        Route::get('categories', [ParentArticleController::class,'get_article_categories']);
+        Route::get('trending', [ParentArticleController::class,'get_trending_articles']);
+        Route::get('latest', [ParentArticleController::class,'get_latest_articles']);
+        Route::get('random-category-articles', [ParentArticleController::class,'random_category_articles']);
+        Route::get('detail/{id}', [ParentArticleController::class,'detail']);
+    });
 });

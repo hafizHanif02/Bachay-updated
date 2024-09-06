@@ -322,6 +322,7 @@ class OrderController extends Controller
 
         $user = $request->user();
 
+        //return $order_details;
 
         $loyalty_point_status = Helpers::get_business_settings('loyalty_point_status');
         if($loyalty_point_status == 1)

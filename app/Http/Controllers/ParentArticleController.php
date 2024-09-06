@@ -164,4 +164,142 @@ class ParentArticleController extends Controller
         $article->delete();
         return redirect()->back();
     }
+
+    // APi methods
+
+    public function get_articles(Request $request)
+    {
+        $articles = ParentArticle::where('status', '1')->get();
+
+        foreach ($articles as $article) {
+            //http://localhost/public/assets/images/parent_articles/thumbnail/ZDVCV.jpg
+            $article->thumbnail = asset('public/assets/images/parent_articles/thumbnail/' . $article->thumbnail);
+        }
+
+        $modified_articles = $articles->map(function ($article) {
+            return [
+                'id' => $article->id,
+                'title' => $article->title,
+                'thumbnail' => $article->thumbnail,
+                'article_category_id' => $article->article_category_id,
+                'article_category' => $article->articlecategory->name,
+                'created_at' => $article->created_at,
+                'text' => $article->text
+            ];
+        });
+        return response()->json([
+            'articles' => $modified_articles
+        ]);
+    }
+
+    public function get_article_categories(Request $request)
+    {
+        $categories = ParentArticleCategory::where('status', '1')->get();
+        return response()->json([
+            'categories' => $categories
+        ]);
+    }
+
+    public function get_trending_articles(Request $request)
+    {
+        $articles = ParentArticle::where('status', '1')->take(3)->get();
+
+        foreach ($articles as $article) {
+            //http://localhost/public/assets/images/parent_articles/thumbnail/ZDVCV.jpg
+            $article->thumbnail = asset('public/assets/images/parent_articles/thumbnail/' . $article->thumbnail);
+        }
+
+        $modified_articles = $articles->map(function ($article) {
+            return [
+                'id' => $article->id,
+                'title' => $article->title,
+                'thumbnail' => $article->thumbnail,
+                'article_category_id' => $article->article_category_id,
+                'article_category' => $article->articlecategory->name,
+                'created_at' => $article->created_at,
+                'text' => $article->text
+            ];
+        });
+        return response()->json([
+            'articles' => $modified_articles
+        ]);
+    }
+
+    public function get_latest_articles(Request $request){
+        
+        $articles = ParentArticle::where('status', '1')
+            ->orderBy('created_at', 'desc') // Sort by created_at date in descending order (latest first)
+            ->take(3) // Limit to 3 articles
+            ->get();
+
+        foreach ($articles as $article) {
+            // Modify the thumbnail URL
+            $article->thumbnail = asset('public/assets/images/parent_articles/thumbnail/' . $article->thumbnail);
+        }
+
+        // Map the articles to the desired format
+        $modified_articles = $articles->map(function ($article) {
+            return [
+                'id' => $article->id,
+                'title' => $article->title,
+                'thumbnail' => $article->thumbnail,
+                'article_category_id' => $article->article_category_id,
+                'article_category' => $article->articlecategory->name,
+                'created_at' => $article->created_at,
+                'text' => $article->text
+            ];
+        });
+
+        // Return the response with only the latest 3 trending articles
+        return response()->json([
+            'articles' => $modified_articles
+        ]);
+    }
+
+    public function random_category_articles(Request $request){
+        
+        $count = 0;
+
+        while ($count == 0 || $count == 1) {
+            $category_articles = self::getRendomCategoryArticles($request);
+            $articles_count = ParentArticle::where('status', '1')->where('article_category_id', $category_articles->id)->inRandomOrder()->count();
+            $count = $articles_count;
+        }
+        
+        
+
+        $articles = ParentArticle::where('status', '1')->where('article_category_id', $category_articles->id)->with('articlecategory')->get();
+        foreach ($articles as $article) {
+            // Modify the thumbnail URL
+            $article->thumbnail = asset('public/assets/images/parent_articles/thumbnail/' . $article->thumbnail);
+        }
+        $modified_articles = $articles->map(function ($article) {
+            return [
+                'id' => $article->id,
+                'title' => $article->title,
+                'thumbnail' => $article->thumbnail,
+                'article_category_id' => $article->article_category_id,
+                'article_category' => $article->articlecategory->name,
+                'created_at' => $article->created_at,
+                'text' => $article->text
+            ];
+        });
+        return response()->json([
+            'category' => $category_articles,
+            'articles' => $articles
+        ]);
+    }
+
+    public function getRendomCategoryArticles(Request $request){    
+        $category_articles = ParentArticleCategory::where('status','1')->inRandomOrder()->take(1)->first();
+        return $category_articles;
+    }
+
+    public function detail($id){
+        $article = ParentArticle::with('articlecategory')->find($id);
+        $article->thumbnail = asset('public/assets/images/parent_articles/thumbnail/' . $article->thumbnail);
+        return response()->json([
+            'article' => $article
+        ]);
+    }
 }
