@@ -5,6 +5,7 @@ use App\Http\Controllers\CustomPageController;
 use App\Http\Controllers\FamilyRelationController;
 use App\Http\Controllers\RestAPI\v1\auth\PassportAuthController;
 use App\Http\Controllers\ParentArticleController;
+use App\Http\Controllers\QuizController;
 
 header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS');
 header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token, Authorization, Accept,charset,boundary,Content-Length');
@@ -357,5 +358,16 @@ Route::group(['namespace' => 'RestAPI\v1', 'prefix' => 'v1', 'middleware' => ['a
         Route::get('latest', [ParentArticleController::class,'get_latest_articles']);
         Route::get('random-category-articles', [ParentArticleController::class,'random_category_articles']);
         Route::get('detail/{id}', [ParentArticleController::class,'detail']);
+    });
+
+    Route::group(['prefix' => 'quiz', 'middleware' => 'auth:api'], function () {
+        Route::get('/banner', [QuizController::class,'banner']);
+        Route::get('/categories', [QuizController::class,'categories']);
+        Route::get('/categories/{id}', [QuizController::class,'categories_by_id']);
+        Route::get('/popular', [QuizController::class,'popular']);
+        Route::get('/most-recent', [QuizController::class,'most_recent']);
+        Route::get('/view/{id}', [QuizController::class,'quiz_view']);
+        Route::post('/submission', [QuizController::class,'submission']);
+        
     });
 });

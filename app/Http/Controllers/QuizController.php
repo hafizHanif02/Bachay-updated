@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Quiz;
 use App\Models\QuizCategory;
+use App\Models\QuizQuestion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Brian2694\Toastr\Facades\Toastr;
@@ -130,5 +131,67 @@ class QuizController extends Controller
         $quiz->delete();
         Toastr::success('Quiz Deleted');
         return redirect()->back();
+    }
+
+    public function banner() {
+        $quiz = Quiz::all();
+    
+        // Create a new array to store only the id and image
+        $quizBanner = [];
+    //public/assets/images/quiz
+        foreach ($quiz as $value) {
+            $quizBanner[] = [
+                'id' => $value->id,
+                'image' => asset('public/assets/images/quiz/' . $value->image)
+            ];
+        }
+    
+        // Return a JSON response with the id and image
+        return response()->json(['quiz_banner' => $quizBanner], 200);
+    }
+
+    public function categories() {
+        $quiz_categories = QuizCategory::get();
+
+        foreach ($quiz_categories as $value) {
+            $value->image = asset('public/assets/images/quiz/category/' . $value->image);
+        }
+        return response()->json($quiz_categories, 200);
+    }
+
+    public function categories_by_id($id) {
+        $quiz = Quiz::where('quiz_category_id', $id)->get();
+
+        foreach ($quiz as $value) {
+            $value->image = asset('public/assets/images/quiz/' . $value->image);
+        }
+
+        $categories = QuizCategory::find($id);
+        return response()->json(['quiz' => $quiz, 'categories' => $categories], 200);
+    }
+
+    public function popular() {
+        $quiz = Quiz::take(2)->get();
+        foreach ($quiz as $value) {
+            $value->image = asset('public/assets/images/quiz/' . $value->image);
+        }
+        return response()->json($quiz, 200);
+    }   
+    
+    public function most_recent(){
+        $quiz = Quiz::take(2)->orderBy('created_at','desc')->get();
+        foreach ($quiz as $value) {
+            $value->image = asset('public/assets/images/quiz/' . $value->image);
+        }
+        return response()->json($quiz, 200);
+    }
+
+    public function quiz_view($id) {
+       $quizQuestion = QuizQuestion::where("quiz_id",$id)->with('quiz')->with('answer')->with('correctAnswer')->get();
+       return response()->json($quizQuestion, 200);
+    }
+
+    public function submission(Request $request) {
+        return $request;
     }
 }
