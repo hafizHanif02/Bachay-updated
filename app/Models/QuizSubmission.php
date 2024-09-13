@@ -17,6 +17,7 @@ class QuizSubmission extends Model
         'user_id',  
         'child_id',  
         'quiz_id',  
+        'question_id',
         'answer_id',  
     ];
 

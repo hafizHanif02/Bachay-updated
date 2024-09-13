@@ -5,9 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Quiz;
 use App\Models\QuizCategory;
 use App\Models\QuizQuestion;
+use App\Models\QuizSubmission;
+use App\Models\FamilyRelation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Brian2694\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Validator;
+use App\Utils\Helpers;
 
 class QuizController extends Controller
 {
@@ -192,6 +196,54 @@ class QuizController extends Controller
     }
 
     public function submission(Request $request) {
-        return $request;
+        $validator = Validator::make($request->all(), [
+            'child_id' => 'required',
+            'quiz_question_id' => 'required',
+            'quiz_answer_id' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return response()->json(['errors' => Helpers::error_processor($validator)], 403);
+        }
+        $currentUser = $request->user();
+        $childSelected = FamilyRelation::where('user_id', $currentUser->id)->where('id', $request->child_id)->with('parent')->get();
+        
+        if ($childSelected->count() > 0) {
+            $childSelected = $childSelected[0];
+        } else {
+            return response()->json(['errors' => 'Child not found'], 403);
+        }
+        $quizQuestion = explode(",",$request->quiz_question_id);
+        $quizAnswers = explode(",",$request->quiz_answer_id);
+
+        if(count($quizAnswers) != count($quizQuestion)) {
+            return response()->json(['errors' => 'Invalid Answer'], 403);
+        }
+
+        $quizID = QuizQuestion::where('id', $quizQuestion[0])->first()->quiz_id;
+        $quizID = Quiz::where('id', $quizID)->first();
+
+        foreach($quizQuestion as $key => $value) {
+            $qID = QuizQuestion::where('id', $value)->first()->quiz_id;
+            if($quizID->id != $qID) {
+                return response()->json(['errors'=> 'Invalid Question'], 403);
+            }
+        }
+
+        foreach($quizQuestion as $key => $value) {
+            try {
+                QuizSubmission::create([
+                    'user_id' => $currentUser->id,
+                    'child_id' => $childSelected->id,
+                    'quiz_id' => $quizID->id,
+                    'question_id' => $value,
+                    'answer_id' => $quizAnswers[$key],
+                ]);
+            } catch (\Exception $exception) {
+                return response()->json(['errors' => $exception->getMessage()], 403);
+            }
+        }
+
+
+        return response()->json(['message' => 'Quiz Submitted'], 200);
     }
 }
