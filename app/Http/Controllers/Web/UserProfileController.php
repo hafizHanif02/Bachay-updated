@@ -76,6 +76,11 @@ class UserProfileController extends Controller
         return view(VIEW_FILE_NAMES['user_profile'], compact('customer_detail', 'addresses', 'wishlists', 'total_order', 'total_loyalty_point', 'total_wallet_balance'));
     }
 
+    public function user_profile_dashboard(Request $request){
+
+        return view(VIEW_FILE_NAMES['user_profile_dashboard']);
+    }
+
     public function user_account(Request $request)
     {
         $country_restrict_status = Helpers::get_business_settings('delivery_country_restriction');

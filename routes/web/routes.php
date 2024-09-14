@@ -224,6 +224,7 @@ Route::group(['namespace' => 'Web', 'middleware' => ['maintenance_mode', 'guestC
         Route::get('unswitch', [UserProfileController::class,'Unswitch'])->name('unswitch');
     // }
     //profile Route
+    Route::get('profile', 'UserProfileController@user_profile_dashboard')->name('profile')->middleware('customer');
     Route::get('user-profile', 'UserProfileController@user_profile')->name('user-profile')->middleware('customer'); //theme_aster
     Route::get('user-account', 'UserProfileController@user_account')->name('user-account')->middleware('customer');
     Route::post('user-account-update', 'UserProfileController@user_update')->name('user-update');

@@ -23,6 +23,7 @@ return [
     'get_child_modal' => 'theme-views.layouts.partials.modal._child',
     'get_register_modal_data' => 'theme-views.layouts.partials.modal._register',
     'user_profile' => 'theme-views.users-profile.user-profile',
+    'user_profile_dashboard' => 'theme-views.users-profile.user-profile-dashboard',
     'my_child' => 'theme-views.parenting.profile.my_child',
     'child_list' => 'theme-views.users-profile.child-list',
     'account_address_add' => 'theme-views.users-profile.account-address-add',
