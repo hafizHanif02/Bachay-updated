@@ -7,6 +7,8 @@ use App\Http\Controllers\RestAPI\v1\auth\PassportAuthController;
 use App\Http\Controllers\ParentArticleController;
 use App\Http\Controllers\QuizController;
 
+use App\Http\Controllers\API\FoodController;
+
 header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS');
 header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token, Authorization, Accept,charset,boundary,Content-Length');
 header('Access-Control-Allow-Origin: *');
@@ -370,4 +372,9 @@ Route::group(['namespace' => 'RestAPI\v1', 'prefix' => 'v1', 'middleware' => ['a
         Route::post('/submission', [QuizController::class,'submission']);
         
     });
+
+    Route::get('/food-categories', [FoodController::class, 'getFoodCategories']);
+    Route::get('/food-categories/{id}', [FoodController::class, 'getFoodDetails']);
+    Route::get('/food-details', [FoodController::class, 'getAllFoodItemDetail']);
+    Route::get('/food-details/{id}', [FoodController::class, 'getFoodItemDetail']);
 });
