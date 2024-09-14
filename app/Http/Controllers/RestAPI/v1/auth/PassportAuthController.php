@@ -267,16 +267,16 @@ class PassportAuthController extends Controller
         $phone_verification = Helpers::get_business_settings('phone_verification');
         $email_verification = Helpers::get_business_settings('email_verification');
         if ($phone_verification && !$user->is_phone_verified) {
-                return response()->json([
-                    'status' => 'error',
-                    'message' => translate('account_phone_not_verified'),
-                ]);
+                // return response()->json([
+                //     'status' => 'error',
+                //     'message' => translate('account_phone_not_verified'),
+                // ]);
         }
         if ($email_verification && !$user->is_email_verified) {
-                return response()->json([
-                    'status' => 'error',
-                    'message' => translate('account_email_not_verified'),
-                ]);
+                // return response()->json([
+                //     'status' => 'error',
+                //     'message' => translate('account_email_not_verified'),
+                // ]);
         }
 
         if (isset($user->temp_block_time) && Carbon::parse($user->temp_block_time)->DiffInSeconds() <= $temp_block_time) {
