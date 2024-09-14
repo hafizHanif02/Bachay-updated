@@ -120,7 +120,7 @@ Route::group(['namespace' => 'RestAPI\v1', 'prefix' => 'v1', 'middleware' => ['a
         Route::get('check-shipping-type', 'ShippingMethodController@check_shipping_type');
     });
 
-    Route::group(['prefix' => 'cart', 'middleware' => 'apiGuestCheck'], function () {
+    Route::group(['prefix' => 'cart', 'middleware' => 'auth:api'], function () {
         Route::get('/', 'CartController@cart');
         Route::post('add', 'CartController@add_to_cart');
         Route::post('update', 'CartController@update_cart');
