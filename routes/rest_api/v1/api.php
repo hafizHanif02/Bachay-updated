@@ -356,6 +356,7 @@ Route::group(['namespace' => 'RestAPI\v1', 'prefix' => 'v1', 'middleware' => ['a
     Route::group(['prefix' => 'article'], function () {
         Route::get('/', [ParentArticleController::class,'get_articles']);
         Route::get('categories', [ParentArticleController::class,'get_article_categories']);
+        Route::get('category/{catID}', [ParentArticleController::class,'category_articles']);
         Route::get('trending', [ParentArticleController::class,'get_trending_articles']);
         Route::get('latest', [ParentArticleController::class,'get_latest_articles']);
         Route::get('random-category-articles', [ParentArticleController::class,'random_category_articles']);

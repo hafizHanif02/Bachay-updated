@@ -290,6 +290,18 @@ class ParentArticleController extends Controller
         ]);
     }
 
+    public function category_articles(Request $request, $catID)
+    {
+        $articles = ParentArticle::where('status', '1')->where('article_category_id', $catID)->with('articlecategory')->get();
+        foreach ($articles as $article) {
+            // Modify the thumbnail URL
+            $article->thumbnail = asset('public/assets/images/parent_articles/thumbnail/' . $article->thumbnail);
+        }
+        return response()->json([
+            'articles' => $articles
+        ]);
+    }
+
     public function getRendomCategoryArticles(Request $request){    
         $category_articles = ParentArticleCategory::where('status','1')->inRandomOrder()->take(1)->first();
         return $category_articles;
