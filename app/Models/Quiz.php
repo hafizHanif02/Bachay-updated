@@ -26,6 +26,8 @@ class Quiz extends Model
     }
 
     public function quiz_question(){
-        return $this->hasMany(QuizQuestion::class, 'quiz_id');
+        return $this->hasMany(QuizQuestion::class, 'quiz_id')
+                    ->with('answer')         // To get all answers
+                    ->with('correctAnswer');  // To get the correct answer
     }
 }

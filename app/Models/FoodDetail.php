@@ -11,6 +11,7 @@ class FoodDetail extends Model
         'image',
         'nutrients',
         'additional_info',
+        'view_count',
     ];
 
     protected $casts = [

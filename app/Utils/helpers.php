@@ -1010,6 +1010,20 @@ class Helpers
 
         return $bonuses->max('applied_bonus_amount') ?? 0;
     }
+
+    public static function formatCount($count)
+    {
+        if ($count >= 1000 && $count < 1000000) {
+            // Show as 1.2k, 1.5k, etc.
+            return round($count / 1000, 1) . 'k';
+        } elseif ($count >= 1000000) {
+            // Show as 1.2M, 1.5M, etc.
+            return round($count / 1000000, 1) . 'M';
+        }
+
+        // Return as is if count is less than 1000
+        return $count;
+    }
 }
 
 

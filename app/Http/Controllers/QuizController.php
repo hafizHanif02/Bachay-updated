@@ -191,8 +191,28 @@ class QuizController extends Controller
     }
 
     public function quiz_view($id) {
-       $quizQuestion = QuizQuestion::where("quiz_id",$id)->with('quiz')->with('answer')->with('correctAnswer')->get();
-       return response()->json($quizQuestion, 200);
+       $quizQuestion = QuizQuestion::where("quiz_id",$id)->with('answer')->with('correctAnswer')->get();
+
+       $quiz = Quiz::find($id)->with('quiz_category')->with('quiz_question')->first();
+
+       $quiz_submission = QuizSubmission::where('quiz_id', $id)->get();
+       $quiz_submission_count = Helpers::formatCount($quiz_submission->count());
+
+
+       $topScore = self::getTopQuizResults($id);
+       return response()->json([
+        'id' => $quiz->id,
+        'image' => asset('public/assets/images/quiz/' . $quiz->image),
+        'category_name' => $quiz->quiz_category->name,
+        'name' => $quiz->name,
+        'question' => $quiz->quiz_question->count(),
+        'played' => $quiz_submission_count, 
+        'favorite' => 0, // need to work on this later
+        'points' => 100, // need to work on this later
+        'description' => $quiz->description,
+        'top_score' => $topScore,
+        'quiz_question' => $quizQuestion,
+       ], 200);
     }
 
     public function submission(Request $request) {
@@ -245,5 +265,64 @@ class QuizController extends Controller
 
 
         return response()->json(['message' => 'Quiz Submitted'], 200);
+    }
+
+    public function getTopQuizResults($quizId)
+    {
+        // Fetch all submissions for the quiz, grouped by child
+        $quizSubmissions = QuizSubmission::where('quiz_id', $quizId)
+            ->get()
+            ->groupBy('child_id');
+        
+        $results = [];
+
+        foreach ($quizSubmissions as $childId => $submissions) {
+            $totalQuestions = $submissions->count();
+            $correctAnswers = 0;
+
+            // Fetch child profile information
+            $child = FamilyRelation::find($childId);
+            
+            // Calculate the total time spent on the quiz (example: you must calculate or store this in DB)
+            $startTime = $submissions->first()->created_at;
+            $endTime = $submissions->last()->updated_at;
+            $totalTime = $endTime->diff($startTime);
+
+            // Loop through each submission for the child to calculate score
+            foreach ($submissions as $submission) {
+                // Fetch the correct answer for the question
+                $question = QuizQuestion::find($submission->question_id);
+
+                if ($question && $question->answer_id == $submission->answer_id) {
+                    // Answer is correct
+                    $correctAnswers++;
+                }
+            }
+
+            // Calculate the score (percentage or raw score)
+            $score = $correctAnswers * ($totalQuestions / 100) . ' / 100';
+
+            // Store the result for this child
+            $results[] = [
+                'child_id' => $childId,
+                'child_name' => $child->name,
+                'child_image' => asset($child->profile_picture), // Assuming profile_picture field exists
+                'total_questions' => $totalQuestions,
+                'correct_answers' => $correctAnswers,
+                'score' => $score,
+                'time_taken' => $totalTime->format('%i Mins %s Secs'), // Time in minutes and seconds
+            ];
+        }
+
+        // Sort the results by correct answers, highest first
+        usort($results, function ($a, $b) {
+            return $b['correct_answers'] - $a['correct_answers'];
+        });
+
+        // Limit to top 5 results
+        $topResults = array_slice($results, 0, 5);
+
+        // Return the top results
+        return $topResults;
     }
 }

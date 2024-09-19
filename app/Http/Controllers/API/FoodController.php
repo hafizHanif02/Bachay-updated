@@ -19,7 +19,7 @@ class FoodController extends Controller
     public function getFoodDetails($categoryId)
     {
         $foodDetails = FoodDetail::where('food_category_id', $categoryId)
-                                ->get(['id', 'name', 'nutrients', 'image', 'additional_info']);
+                                ->get(['id', 'name', 'nutrients', 'image', 'additional_info', 'view_count']);
         
         foreach ($foodDetails as $food) {
             // Update the image path to include the full asset URL
@@ -48,7 +48,7 @@ class FoodController extends Controller
     // Get details of a specific food item
     public function getFoodItemDetail($foodId)
     {
-        $foodItem = FoodDetail::find($foodId, ['id', 'name', 'nutrients', 'image', 'additional_info']);
+        $foodItem = FoodDetail::find($foodId, ['id', 'name', 'nutrients', 'image', 'additional_info', 'view_count']);
         
        
             $foodItem->image = asset($foodItem->image);
@@ -68,6 +68,8 @@ class FoodController extends Controller
             // Re-assign the modified additional_info back to the food item
             $foodItem->additional_info = $additionalInfo;
 
+            FoodDetail::where('id', $foodId)->increment('view_count', 1);
+
         if ($foodItem) {
             return response()->json(['food' => $foodItem], 200);
         } else {
@@ -77,7 +79,7 @@ class FoodController extends Controller
 
     public function getAllFoodItemDetail(){
         $foodDetails = FoodDetail::orderBy('id', 'desc')
-        ->get(['id', 'name', 'nutrients', 'image', 'additional_info']);
+        ->get(['id', 'name', 'nutrients', 'image', 'additional_info', 'view_count']);
 
         foreach ($foodDetails as $food) {
             // Update the image path to include the full asset URL
