@@ -166,6 +166,10 @@ class User extends Authenticatable
 
     }
 
+    public function qa() {
+        return $this->hasMany(QA::class, 'user_id');
+    }
+
     public function customer(): BelongsTo
     {
         return $this->belongsTo(User::class, 'customer_id');
@@ -181,5 +185,33 @@ class User extends Authenticatable
     {
         return $this->hasMany(ProductCompare::class, 'user_id');
     }
+
+    public function followers()
+    {
+        return $this->hasMany(UserFollower::class, 'user_id');
+    }
+
+    // Users that this user is following
+    public function following()
+    {
+        return $this->hasMany(UserFollower::class, 'follower_id');
+    }
+
+    public function answers()
+    {
+        return $this->hasMany(QAAnswer::class, 'userID');
+    }
+
+
+    public function upvotes()
+    {
+        return $this->hasMany(Upvote::class, 'userID');
+    }
+
+    public function likes()
+    {
+        return $this->hasMany(QAAnswerLike::class, 'userID');
+    }
+
 
 }

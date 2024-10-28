@@ -7,6 +7,11 @@ use App\Models\Wishlist;
 use App\Models\FamilyRelation;
 use App\Models\ProductCompare;
 use App\Models\ShippingAddress;
+use App\Models\UserFollower;
+use App\Models\QAAnswer;
+use App\Models\QA;
+use App\Models\Upvote;
+use App\Models\QAAnswerLike;
 use Laravel\Passport\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -78,5 +83,29 @@ class User extends Authenticatable
         return $this->hasMany(FamilyRelation::class,'user_id','id');
     }
     
+    public function followers()
+    {
+        return $this->hasMany(UserFollower::class, 'userID');
+    }
+
+    public function answers()
+    {
+        return $this->hasMany(QAAnswer::class, 'userID');
+    }
+
+    public function qa()
+    {
+        return $this->hasMany(QA::class, 'user_id');
+    }
+
+    public function upvotes()
+    {
+        return $this->hasMany(Upvote::class, 'userID');
+    }
+
+    public function likes()
+    {
+        return $this->hasMany(QAAnswerLike::class, 'userID');
+    }
 
 }

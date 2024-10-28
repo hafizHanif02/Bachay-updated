@@ -6,6 +6,7 @@ use App\Http\Controllers\FamilyRelationController;
 use App\Http\Controllers\RestAPI\v1\auth\PassportAuthController;
 use App\Http\Controllers\ParentArticleController;
 use App\Http\Controllers\QuizController;
+use App\Http\Controllers\QAController;
 
 use App\Http\Controllers\API\FoodController;
 
@@ -378,4 +379,20 @@ Route::group(['namespace' => 'RestAPI\v1', 'prefix' => 'v1', 'middleware' => ['a
     Route::get('/food-categories/{id}', [FoodController::class, 'getFoodDetails']);
     Route::get('/food-details', [FoodController::class, 'getAllFoodItemDetail']);
     Route::get('/food-details/{id}', [FoodController::class, 'getFoodItemDetail']);
+
+    Route::group(['prefix' => 'QA', 'middleware' => 'auth:api'], function () {
+        Route::get('tags-list', [QAController::class, 'tags_list']);
+        Route::get('qa-list', [QAController::class, 'qa_list']);
+        Route::post('qa-submit', [QAController::class, 'qa_submit']);
+        Route::post('qa-answer-submit', [QAController::class, 'qa_answer_submit']);
+
+        Route::post('qa-upvote', [QAController::class, 'upvoteQA']);
+        Route::post('qa-downvote', [QAController::class, 'downvoteQA']);
+        Route::post('qa-follow', [QAController::class, 'followQA']);
+        Route::post('qa-answer-like', [QAController::class, 'likeQAAnswer']);
+
+        Route::get('user-profile', [QAController::class, 'currentUserProfile']);
+        Route::post('follow-user', [QAController::class, 'followUser']);
+
+    });
 });
